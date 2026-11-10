@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.3.0
+   ICEINDEX v0.4.0
    FILE 2 — js/app.js
 
    APPLICATION + PLAYER ANALYTICS
@@ -45,7 +45,7 @@
     loading: true,
     ready: false,
 
-    page: "overview",
+    page: "home",
 
     query: "",
     dbSeason: "all",
@@ -358,6 +358,7 @@
         .find(Boolean) || "";
 
       const id = [...items]
+
         .reverse()
         .map(r => r.id)
         .find(Boolean) || "";
@@ -717,7 +718,6 @@
                   ${label}
                 </button>
               `).join("")}
-            </div>
 
             <div class="bars">
               ${top.map(r => `
@@ -1078,6 +1078,7 @@
 
             <div class="ice-compare-table">
               ${metrics.map(([label, metric]) => {
+
                 const a = valueOf(r1, metric);
                 const b = valueOf(r2, metric);
 
@@ -1438,6 +1439,7 @@
     return `
       <div class="ice-scout-card" id="ice-scout-card">
         <div class="ice-scout-header">
+
           ${image(record, "ice-scout-photo")}
 
           <div>
@@ -2133,10 +2135,99 @@
   }
 
   /* ==========================================================
+     ICEINDEX PLATFORM HOME — v0.4.0
+     Generic landing page, independent of OHL data availability.
+     ========================================================== */
+
+  const ICEINDEX_LEAGUES = Object.freeze([
+    { id: "ohl", short: "OHL", name: "Ontario Hockey League", active: true },
+    { id: "whl", short: "WHL", name: "Western Hockey League", active: false },
+    { id: "qmjhl", short: "QMJHL", name: "Quebec Maritimes Junior Hockey League", active: false }
+  ]);
+
+  function leagueTiles() {
+    return ICEINDEX_LEAGUES.map(league => `
+      <article class="ice-league-tile ${league.active ? "is-live" : "is-upcoming"}">
+        <div class="ice-league-monogram" aria-hidden="true">${esc(league.short)}</div>
+        <div class="ice-league-tile-body">
+          <h3>${esc(league.name)}</h3>
+          <p>${esc(league.short)} · ${league.active ? "Statistics & analytics" : "Future integration"}</p>
+        </div>
+        ${league.active
+          ? `<a class="btn primary" href="#overview" data-page="overview">Explore OHL <span aria-hidden="true">→</span></a>`
+          : `<span class="ice-soon" aria-label="Not yet available">Coming soon</span>`}
+      </article>
+    `).join("");
+  }
+
+
+  function featuredPlayer() {
+    const eligible = S.current.filter(row => Number(row.gp) > 0 && Number.isFinite(Number(row.pts)));
+    const leader = sortBy(eligible, "pts")[0];
+    if (!leader) {
+      return `<div class="ice-feature-empty">
+        <div class="ice-feature-placeholder" aria-hidden="true">★</div>
+        <div><span class="eyebrow">FEATURED PLAYER</span>
+          <h3>Top performers, coming into focus.</h3>
+          <p>${S.loading ? "Loading the latest OHL scoring leaders…" : "Current player statistics are temporarily unavailable. The league dashboard is still accessible."}</p>
+          <a href="#overview" data-page="overview" class="btn secondary">Visit OHL Dashboard</a>
+        </div>
+      </div>`;
+    }
+    return `<div class="ice-feature-player">
+      <div class="ice-feature-photo">${image(leader, "ice-feature-headshot")}</div>
+      <div class="ice-feature-details">
+        <span class="eyebrow">OHL · CURRENT POINTS LEADER</span>
+        <h3>${esc(leader.name)}</h3>
+        <p>${esc(leader.team || "Ontario Hockey League")} · ${esc(currentSeason())}</p>
+        <div class="ice-feature-numbers">
+          <div><strong>${fmt(leader.gp)}</strong><span>GP</span></div>
+          <div><strong>${fmt(leader.g)}</strong><span>Goals</span></div>
+          <div><strong>${fmt(leader.a)}</strong><span>Assists</span></div>
+          <div><strong>${fmt(leader.pts)}</strong><span>Points</span></div>
+        </div>
+        <a class="btn secondary" href="#profile" data-person="${esc(leader.key)}">View Player Profile <span aria-hidden="true">→</span></a>
+      </div>
+    </div>`;
+  }
+
+  function renderHome() {
+    main.innerHTML = `
+      <section class="ice-home-hero" aria-labelledby="ice-home-title">
+        <div class="ice-home-copy">
+          <span class="eyebrow">HOCKEY DATA INTELLIGENCE</span>
+          <h1 id="ice-home-title">Every player.<br>Every league.<br><em>One index.</em></h1>
+          <p>Discover standout talent, explore statistics and compare hockey players in one evolving analytics platform.</p>
+          <div class="ice-home-actions">
+            <a class="btn primary" href="#leagues" data-page="leagues">Select a League <span aria-hidden="true">→</span></a>
+            <a class="btn secondary" href="#players" data-page="players">Explore OHL Players</a>
+          </div>
+        </div>
+        <div class="ice-home-hero-mark" aria-hidden="true"><span>I</span><small>ICEINDEX</small></div>
+      </section>
+      <div class="ice-home-section-heading"><div><span class="eyebrow">THE SPOTLIGHT</span><h2>Featured player</h2></div><span class="ice-home-tag">Powered by OHLDataHub</span></div>
+      <section class="ice-feature-panel" aria-label="Featured player">${featuredPlayer()}</section>
+      <div class="ice-home-section-heading"><div><span class="eyebrow">EXPLORE HOCKEY</span><h2>Choose your league</h2></div><a href="#leagues" data-page="leagues" class="ice-text-link">All leagues →</a></div>
+      <div class="ice-league-grid">${leagueTiles()}</div>
+      <section class="ice-home-bottom"><div><span class="eyebrow">BUILT FOR THE GAME</span><h2>From the numbers to the next big name.</h2><p>Player databases, historical statistics, comparisons and scouting-style analytics — starting with the OHL, with room to grow.</p></div><a href="#analytics" data-page="analytics" class="btn secondary">Explore Analytics →</a></section>
+    `;
+  }
+
+  function renderLeagues() {
+    main.innerHTML = `
+      ${heading("ICEINDEX / LEAGUES", "Select a league", "Choose an available hockey league to explore player statistics, teams and analytics. More leagues will be added as verified data becomes available.")}
+      <div class="ice-league-grid ice-league-grid-page">${leagueTiles()}</div>
+      <section class="panel ice-leagues-note"><h2>More leagues are on the horizon.</h2><p>IceIndex currently supports the Ontario Hockey League. The WHL and QMJHL are planned, but their data sources and analytics have not yet been integrated.</p></section>
+    `;
+  }
+
+  /* ==========================================================
      19. PAGE ROUTER
      ========================================================== */
 
   const VALID_PAGES = new Set([
+    "home",
+    "leagues",
     "overview",
     "players",
     "profile",
@@ -2147,6 +2238,12 @@
   ]);
 
   function render() {
+    if (S.page === "home" || S.page === "leagues") {
+      if (S.page === "home") renderHome();
+      else renderLeagues();
+      updateNavigation();
+      return;
+    }
     if (!S.ready) {
       main.innerHTML = `
         <div class="empty">
@@ -2233,7 +2330,7 @@
   function navigate(page) {
     const next = VALID_PAGES.has(page)
       ? page
-      : "overview";
+      : "home";
 
     S.page = next;
 
@@ -2257,7 +2354,7 @@
 
     const next = VALID_PAGES.has(hash)
       ? hash
-      : "overview";
+      : "home";
 
     if (next !== S.page) {
       S.page = next;
@@ -2424,6 +2521,7 @@
     const element = event.target;
     if (element?.matches?.(".ice-player-picker-search")) {
       const picker = element.closest("[data-picker]");
+
       const select = picker?.querySelector("select");
       const results = picker?.querySelector(".ice-player-picker-results");
       if (select && results) {
@@ -2650,7 +2748,7 @@
       location.hash.replace(/^#/, "")
     )
       ? location.hash.replace(/^#/, "")
-      : "overview";
+      : "home";
 
     introStatus("Loading current OHL statistics…");
 
@@ -2738,26 +2836,17 @@
 
       updateStatus("Data unavailable");
 
-      main.innerHTML = `
-        ${heading(
-          "CONNECTION ERROR",
-          "Unable to load OHL statistics",
-          "Please check your connection and try again."
-        )}
-
-        <div class="notice">
-          ${esc(error.message || "Unknown loading error")}
-        </div>
-
-        <button class="btn primary" id="ice-retry">
-          Retry
-        </button>
-      `;
-
-      document.querySelector("#ice-retry")
-        ?.addEventListener("click", () => {
-          initialize();
-        });
+      S.loading = false;
+      if (S.page === "home" || S.page === "leagues") {
+        render();
+      } else {
+        main.innerHTML = `
+          ${heading("OHL DATA UNAVAILABLE", "Unable to load OHL statistics", "The league data source could not be reached. You can still return to IceIndex Home.")}
+          <div class="notice">${esc(error.message || "Unknown loading error")}</div>
+          <div class="ice-actions"><button class="btn primary" id="ice-retry">Retry</button><a class="btn secondary" href="#home" data-page="home">IceIndex Home</a></div>
+        `;
+        document.querySelector("#ice-retry")?.addEventListener("click", () => initialize());
+      }
     }
   }
 
@@ -2768,11 +2857,10 @@
   initialize();
 
   console.info(
-    "IceIndex application v0.3.0 initialized."
+    "IceIndex application v0.4.0 initialized."
   );
 
 })();
 
 /* ============================================================
-   END — ICEINDEX v0.3.0 js/app.js
-   ============================================================ */
+   END — ICEINDEX v0.4.0 js/app.js*/

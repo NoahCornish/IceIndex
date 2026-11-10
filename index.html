@@ -4,9 +4,9 @@
 
 <head>
   <!-- ========================================================
-       ICEINDEX v0.3.0
+       ICEINDEX v0.4.0
        FILE 4 — index.html
-       OHL Player Statistics & Analytics
+       Hockey Statistics & Player Analytics
        ======================================================== -->
 
   <meta charset="UTF-8">
@@ -28,7 +28,7 @@
 
   <meta
     name="description"
-    content="IceIndex is an independent Ontario Hockey League statistics and player analytics platform featuring historical OHL data, player profiles, comparisons, scouting percentiles, radar charts and interactive analytics."
+    content="IceIndex is an independent hockey analytics platform featuring player statistics, league dashboards, scouting comparisons and player discovery."
   >
 
   <meta
@@ -40,11 +40,11 @@
 
   <meta name="robots" content="index, follow">
 
-  <title>IceIndex | OHL Statistics & Player Analytics</title>
+  <title>IceIndex | Hockey Statistics & Player Analytics</title>
 
   <link
     rel="canonical"
-    href="https://noahcornish.github.io/iceindex/"
+    href="https://noahcornish.github.io/IceIndex/"
   >
 
   <!-- ========================================================
@@ -63,17 +63,17 @@
 
   <meta
     property="og:title"
-    content="IceIndex — OHL Player Statistics & Analytics"
+    content="IceIndex — Hockey Statistics & Player Analytics"
   >
 
   <meta
     property="og:description"
-    content="Explore Ontario Hockey League statistics, player development, scouting percentiles, radar comparisons and historical hockey data."
+    content="Explore hockey statistics, player profiles, scouting comparisons and league analytics on IceIndex."
   >
 
   <meta
     property="og:url"
-    content="https://noahcornish.github.io/iceindex/"
+    content="https://noahcornish.github.io/IceIndex/"
   >
 
   <meta
@@ -83,7 +83,7 @@
 
   <meta
     name="twitter:title"
-    content="IceIndex — OHL Player Analytics"
+    content="IceIndex — Hockey Player Analytics"
   >
 
   <meta
@@ -192,7 +192,7 @@
           </div>
 
           <div class="brand-subtitle">
-            OHL DATA INTELLIGENCE
+            HOCKEY DATA INTELLIGENCE
           </div>
 
         </div>
@@ -206,17 +206,21 @@
         aria-label="Main navigation"
       >
 
-        <div class="sidebar-label">
-          LEAGUE
-        </div>
+        <div class="sidebar-label">ICEINDEX</div>
+        <a class="nav-link active" href="#home" data-page="home" aria-current="page">
+          <span class="ice-nav-glyph" aria-hidden="true">⌂</span><span>Home</span>
+        </a>
+        <a class="nav-link" href="#leagues" data-page="leagues">
+          <span class="ice-nav-glyph" aria-hidden="true">▦</span><span>Select League</span>
+        </a>
+        <div class="sidebar-label ice-league-nav-label">ONTARIO HOCKEY LEAGUE</div>
 
         <!-- OVERVIEW -->
 
         <a
-          class="nav-link active"
+          class="nav-link"
           href="#overview"
           data-page="overview"
-          aria-current="page"
         >
 
           <svg
@@ -237,7 +241,7 @@
             <rect x="3" y="16" width="7" height="5" rx="1"></rect>
           </svg>
 
-          <span>League Overview</span>
+          <span>OHL Overview</span>
 
         </a>
 
@@ -399,7 +403,7 @@
           ADVANCED INTELLIGENCE
         </div>
 
-        <!-- NEW v0.3.0: PLAYER ANALYTICS -->
+        <!-- NEW v0.4.0: PLAYER ANALYTICS -->
 
         <a
           class="nav-link"
@@ -446,15 +450,15 @@
             aria-hidden="true"
           ></span>
 
-          <span>OHLDataHub Connected</span>
+          <span>OHL data source</span>
         </div>
 
         <div>
-          IceIndex v0.3.0
+          IceIndex v0.4.0
         </div>
 
         <div style="margin-top:5px">
-          Independent OHL analytics platform
+          Independent hockey analytics platform
         </div>
 
         <div style="margin-top:12px">
@@ -538,7 +542,7 @@
             class="topbar-meta"
             style="margin-top:2px"
           >
-            OHL Player Intelligence
+            Hockey Data Intelligence
           </div>
 
         </div>
@@ -557,7 +561,7 @@
           ></span>
 
           <span id="season-label">
-            Loading season
+            Select a league
           </span>
 
         </div>
@@ -570,7 +574,7 @@
           aria-live="polite"
           aria-atomic="true"
         >
-          Loading OHL data
+          OHL data loading in background
         </div>
 
       </div>
@@ -590,16 +594,15 @@
       <div class="page-heading">
 
         <div class="eyebrow">
-          OHL DATA INTELLIGENCE
+          HOCKEY DATA INTELLIGENCE
         </div>
 
         <h1>
-          Loading IceIndex
+          Every player. Every league. One index.
         </h1>
 
         <p>
-          Preparing Ontario Hockey League statistics
-          and player analytics.
+          Explore hockey statistics, featured players and league analytics.
         </p>
 
       </div>
@@ -663,7 +666,7 @@
         <span aria-hidden="true"> · </span>
 
         <span>
-          v0.3.0
+          v0.4.0
         </span>
 
       </div>
@@ -688,6 +691,7 @@
   <div
     id="intro-overlay"
     class="intro-overlay"
+    hidden
     role="dialog"
     aria-modal="true"
     aria-labelledby="intro-title"
@@ -788,7 +792,7 @@
           letter-spacing:.6px;
         "
       >
-        ICEINDEX v0.3.0
+        ICEINDEX v0.4.0
       </div>
 
     </div>

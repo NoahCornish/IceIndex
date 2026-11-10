@@ -3088,3 +3088,61 @@ footer {
 .ice-player-picker-option{display:block;width:100%;padding:11px 13px;text-align:left;border:0;border-bottom:1px solid #20394e;color:#f1f7fc;background:transparent;font-size:12px}
 .ice-player-picker-option:hover,.ice-player-picker-option:focus{background:#18354f;color:#92d5ff}
 .ice-player-picker-none{padding:13px;color:#91a9bc}
+
+
+/* ============================================================
+   ICEINDEX v0.4.0 — MULTI-LEAGUE PLATFORM HOME
+   Additive styles; preserves existing OHL page layouts.
+   ============================================================ */
+.ice-nav-glyph { width:18px; flex:0 0 18px; text-align:center; font-size:21px; line-height:1; }
+.ice-league-nav-label { margin-top:18px; }
+.ice-home-hero { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(200px,.55fr); align-items:center; gap:30px; min-height:370px; padding:48px; overflow:hidden; position:relative; background:radial-gradient(ellipse at 88% 20%,rgba(88,184,255,.19),transparent 45%),linear-gradient(125deg,#112e47,#081522 72%); border:1px solid var(--border-light); border-radius:24px; }
+.ice-home-copy { position:relative; z-index:1; min-width:0; }
+.ice-home-copy h1 { margin:16px 0 18px; font-size:clamp(40px,5vw,70px); line-height:1.04; letter-spacing:-2.6px; }
+.ice-home-copy h1 em { color:var(--accent-light); font-style:normal; }
+.ice-home-copy > p { max-width:560px; color:var(--text-soft); font-size:14px; line-height:1.8; }
+.ice-home-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+.ice-home-hero-mark { display:flex; flex-direction:column; align-items:center; justify-content:center; justify-self:center; width:min(100%,270px); aspect-ratio:1; border:1px solid rgba(146,213,255,.28); border-radius:50%; box-shadow:0 0 0 26px rgba(88,184,255,.035),0 0 0 65px rgba(88,184,255,.025); color:var(--accent-light); }
+.ice-home-hero-mark span { font-size:clamp(90px,11vw,145px); font-weight:900; line-height:1; }
+.ice-home-hero-mark small { font-size:11px; font-weight:800; letter-spacing:4px; }
+.ice-home-section-heading { display:flex; align-items:end; justify-content:space-between; flex-wrap:wrap; gap:12px; margin:34px 0 16px; }
+.ice-home-section-heading h2 { margin-top:7px; font-size:24px; }
+.ice-home-tag { color:var(--muted); font-size:11px; }
+.ice-text-link { color:var(--accent-light); font-size:12px; font-weight:750; }
+.ice-feature-panel { min-width:0; overflow:hidden; padding:25px; border:1px solid var(--border-light); border-radius:18px; background:linear-gradient(120deg,#112a40,#0b1b2b); }
+.ice-feature-player { display:grid; grid-template-columns:180px minmax(0,1fr); gap:28px; align-items:center; }
+.ice-feature-photo { display:flex; justify-content:center; }
+.ice-feature-headshot { position:relative; display:grid; place-items:center; width:170px; height:190px; overflow:hidden; background:var(--surface-3); border:1px solid var(--border-light); border-radius:16px; color:var(--accent-light); font-size:52px; font-weight:800; }
+.ice-feature-headshot img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; }
+.ice-feature-details { min-width:0; }
+.ice-feature-details h3 { margin:8px 0 5px; font-size:clamp(24px,3vw,35px); overflow-wrap:anywhere; }
+.ice-feature-details > p { color:var(--muted); font-size:12px; }
+.ice-feature-numbers { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:9px; margin:22px 0; max-width:560px; }
+.ice-feature-numbers div { display:flex; flex-direction:column; align-items:center; gap:3px; min-width:0; padding:12px 5px; border:1px solid var(--border); border-radius:10px; background:rgba(5,15,25,.4); }
+.ice-feature-numbers strong { font-size:25px; color:var(--text); font-variant-numeric:tabular-nums; }
+.ice-feature-numbers span { font-size:10px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); }
+.ice-feature-numbers div:last-child strong { color:var(--accent-light); }
+.ice-feature-empty { display:flex; align-items:center; gap:22px; min-height:160px; }
+.ice-feature-empty h3 { margin:8px 0; font-size:22px; }
+.ice-feature-empty p { max-width:580px; margin-bottom:16px; color:var(--muted); font-size:12px; }
+.ice-feature-placeholder { flex:0 0 105px; display:grid; place-items:center; width:105px; height:105px; border-radius:18px; color:var(--accent); font-size:45px; background:var(--surface-3); }
+.ice-league-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; }
+.ice-league-tile { display:flex; flex-direction:column; align-items:flex-start; gap:13px; min-width:0; min-height:235px; padding:22px; border:1px solid var(--border); border-radius:16px; background:var(--surface); }
+.ice-league-tile.is-live { border-color:var(--accent-border); background:linear-gradient(145deg,#112b43,var(--surface)); }
+.ice-league-monogram { display:grid; place-items:center; width:70px; height:70px; border-radius:15px; background:#173a56; border:1px solid #2e5b79; color:var(--accent-light); font-size:24px; font-weight:900; letter-spacing:-1px; }
+.ice-league-tile.is-upcoming .ice-league-monogram { color:var(--muted); background:var(--surface-2); border-color:var(--border); }
+.ice-league-tile-body { flex:1; min-width:0; }
+.ice-league-tile-body h3 { margin:0 0 5px; font-size:14px; overflow-wrap:anywhere; }
+.ice-league-tile-body p { color:var(--muted); font-size:11px; }
+.ice-soon { display:inline-flex; align-items:center; min-height:35px; padding:7px 12px; color:var(--muted); background:var(--surface-2); border:1px solid var(--border); border-radius:9px; font-size:11px; font-weight:700; }
+.ice-home-bottom { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:27px; margin-top:30px; background:var(--surface); border:1px solid var(--border); border-radius:16px; }
+.ice-home-bottom h2 { margin:8px 0; font-size:21px; }
+.ice-home-bottom p { max-width:660px; color:var(--muted); font-size:12px; }
+.ice-home-bottom .btn { flex-shrink:0; }
+.ice-league-grid-page { margin-top:22px; }
+.ice-leagues-note { margin-top:24px; }
+.ice-leagues-note p { margin-top:8px; color:var(--muted); font-size:12px; }
+@media (max-width:1100px) { .ice-league-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .ice-home-hero { padding:36px; } }
+@media (max-width:800px) { .ice-home-hero { grid-template-columns:1fr; min-height:0; padding:32px 25px; } .ice-home-hero-mark { display:none; } .ice-home-copy h1 { font-size:clamp(39px,8vw,57px); } .ice-feature-player { grid-template-columns:130px minmax(0,1fr); gap:18px; } .ice-feature-headshot { width:125px; height:145px; } }
+@media (max-width:600px) { .ice-home-hero { padding:29px 21px; } .ice-home-copy h1 { letter-spacing:-1.8px; } .ice-home-actions .btn { flex:1 1 auto; } .ice-league-grid { grid-template-columns:1fr; } .ice-league-tile { min-height:0; display:grid; grid-template-columns:60px minmax(0,1fr); align-items:center; gap:13px; padding:16px; } .ice-league-monogram { width:60px; height:60px; font-size:20px; grid-row:span 2; } .ice-league-tile .btn,.ice-league-tile .ice-soon { grid-column:2; justify-self:start; } .ice-feature-panel { padding:18px; } .ice-feature-player { grid-template-columns:1fr; gap:15px; } .ice-feature-photo { justify-content:flex-start; } .ice-feature-headshot { width:100px; height:110px; font-size:30px; } .ice-feature-numbers { gap:5px; } .ice-feature-numbers strong { font-size:20px; } .ice-feature-numbers span { font-size:9px; } .ice-feature-empty { align-items:flex-start; } .ice-feature-placeholder { flex-basis:65px; width:65px; height:65px; font-size:30px; } .ice-home-bottom { flex-direction:column; align-items:flex-start; } }
+@media (prefers-reduced-motion:reduce) { .ice-home-hero *, .ice-league-tile * { scroll-behavior:auto; } }
