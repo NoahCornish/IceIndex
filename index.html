@@ -1,18 +1,13 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-CA">
+
 <head>
-  <!-- ======================================================
-       ICEINDEX
-       Version 0.2.0
-       Ontario Hockey League Analytics
-
-       Website:
-       https://noahcornish.github.io/iceindex/
-
-       Data:
-       https://github.com/NoahCornish/OHLDataHub
-       ====================================================== -->
+  <!-- ========================================================
+       ICEINDEX v0.3.0
+       FILE 4 — index.html
+       OHL Player Statistics & Analytics
+       ======================================================== -->
 
   <meta charset="UTF-8">
 
@@ -21,45 +16,59 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover"
   >
 
-  <meta name="theme-color" content="#0a1321">
+  <meta
+    name="theme-color"
+    content="#07111d"
+  >
+
+  <meta
+    name="color-scheme"
+    content="dark"
+  >
 
   <meta
     name="description"
-    content="IceIndex is an independent Ontario Hockey League analytics platform featuring current and historical player statistics, career profiles, comparisons, draft-year analysis and team rosters."
+    content="IceIndex is an independent Ontario Hockey League statistics and player analytics platform featuring historical OHL data, player profiles, comparisons, scouting percentiles, radar charts and interactive analytics."
   >
 
   <meta
-    name="application-name"
+    name="keywords"
+    content="IceIndex, OHL, Ontario Hockey League, hockey statistics, player analytics, OHL stats, hockey scouting, player comparison, hockey data"
+  >
+
+  <meta name="author" content="Noah Cornish">
+
+  <meta name="robots" content="index, follow">
+
+  <title>IceIndex | OHL Statistics & Player Analytics</title>
+
+  <link
+    rel="canonical"
+    href="https://noahcornish.github.io/iceindex/"
+  >
+
+  <!-- ========================================================
+       SOCIAL SHARING
+       ======================================================== -->
+
+  <meta
+    property="og:type"
+    content="website"
+  >
+
+  <meta
+    property="og:site_name"
     content="IceIndex"
   >
-
-  <meta
-    name="apple-mobile-web-app-title"
-    content="IceIndex"
-  >
-
-  <meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
-  >
-
-  <meta
-    name="apple-mobile-web-app-status-bar-style"
-    content="black-translucent"
-  >
-
-  <meta name="color-scheme" content="dark">
-
-  <meta property="og:type" content="website">
 
   <meta
     property="og:title"
-    content="IceIndex | OHL Player Analytics"
+    content="IceIndex — OHL Player Statistics & Analytics"
   >
 
   <meta
     property="og:description"
-    content="Beyond the box score. Explore OHL player statistics, historical careers, comparisons and team rosters."
+    content="Explore Ontario Hockey League statistics, player development, scouting percentiles, radar comparisons and historical hockey data."
   >
 
   <meta
@@ -67,76 +76,74 @@
     content="https://noahcornish.github.io/iceindex/"
   >
 
-  <title>IceIndex | OHL Player Analytics</title>
-
-  <!-- ======================================================
-       PERFORMANCE
-       ====================================================== -->
-
-  <link
-    rel="preconnect"
-    href="https://raw.githubusercontent.com"
-    crossorigin
+  <meta
+    name="twitter:card"
+    content="summary"
   >
 
-  <link
-    rel="preconnect"
-    href="https://assets.leaguestat.com"
-    crossorigin
+  <meta
+    name="twitter:title"
+    content="IceIndex — OHL Player Analytics"
   >
 
-  <link
-    rel="dns-prefetch"
-    href="//raw.githubusercontent.com"
+  <meta
+    name="twitter:description"
+    content="OHL statistics, player profiles, historical data and advanced hockey analytics."
   >
 
-  <link
-    rel="dns-prefetch"
-    href="//assets.leaguestat.com"
-  >
-
-  <!-- ======================================================
-       BRANDING
-       ====================================================== -->
+  <!-- ========================================================
+       FAVICON
+       Inline SVG keeps this page independent of favicon files.
+       ======================================================== -->
 
   <link
     rel="icon"
     type="image/svg+xml"
-    href="assets/iceindex-icon.svg"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23081522'/%3E%3Cpath d='M18 14h28v7H35v22h11v7H18v-7h10V21H18z' fill='%2358b8ff'/%3E%3C/svg%3E"
   >
 
-  <!-- ======================================================
-       STYLES
-       ====================================================== -->
+  <!-- ========================================================
+       FONTS
+       System font stack is supplied by style.css.
+       ======================================================== -->
+
+  <!-- ========================================================
+       STYLESHEET
+       ======================================================== -->
 
   <link
     rel="stylesheet"
-    href="css/style.css?v=0.2.0"
+    href="css/style.css?v=0.3.0"
   >
 
-  <!-- ======================================================
-       JAVASCRIPT
+  <!-- ========================================================
+       JAVASCRIPT LOAD ORDER
 
-       Keep this order:
-       1. Data engine
-       2. Team branding
-       3. Application
+       1. OHL data engine
+       2. OHL team branding
+       3. Advanced analytics engine
+       4. Main application
 
-       defer preserves execution order.
-       ====================================================== -->
+       All scripts use defer to preserve execution order.
+       ======================================================== -->
 
   <script
-    src="js/ohl-data.js?v=0.2.0"
+    src="js/ohl-data.js?v=0.3.0"
     defer
   ></script>
 
   <script
-    src="js/ohl-branding.js?v=0.2.0"
+    src="js/ohl-branding.js?v=0.3.0"
     defer
   ></script>
 
   <script
-    src="js/app.js?v=0.2.0"
+    src="js/ohl-analytics.js?v=0.3.0"
+    defer
+  ></script>
+
+  <script
+    src="js/app.js?v=0.3.0"
     defer
   ></script>
 
@@ -144,355 +151,693 @@
 
 <body>
 
-  <!-- ======================================================
+  <!-- ========================================================
        ACCESSIBILITY
-       ====================================================== -->
+       ======================================================== -->
 
   <a
-    class="skip"
+    class="sr-only"
     href="#main-content"
   >
-    Skip to content
+    Skip to main content
   </a>
 
-  <!-- ======================================================
-       APPLICATION SHELL
-       ====================================================== -->
+  <!-- ========================================================
+       APPLICATION SIDEBAR
+       ======================================================== -->
 
-  <div class="shell">
+  <aside
+    id="sidebar"
+    class="sidebar"
+    aria-label="IceIndex sidebar"
+  >
 
-    <!-- Mobile navigation backdrop -->
-
-    <div
-      id="scrim"
-      class="scrim"
-      hidden
-    ></div>
-
-    <!-- ====================================================
-         SIDEBAR
-         ==================================================== -->
-
-    <aside
-      class="sidebar"
-      id="sidebar"
-      aria-label="Main navigation"
-    >
+    <div class="sidebar-inner">
 
       <!-- BRAND -->
 
-      <a
-        href="#overview"
-        class="brand"
-        aria-label="IceIndex homepage"
-      >
-
-        <span
-          class="brand-mark"
-          aria-hidden="true"
-        >
-          ✳
-        </span>
-
-        <span class="brand-copy">
-
-          ICE<b>INDEX</b>
-
-          <small>
-            BEYOND THE BOX SCORE
-          </small>
-
-        </span>
-
-      </a>
-
-      <!-- NAVIGATION -->
-
-      <div class="side-label">
-        WORKSPACE
-      </div>
-
-      <nav aria-label="IceIndex sections">
-
-        <a
-          href="#overview"
-          data-page="overview"
-          class="nav-link active"
-        >
-          <span aria-hidden="true">▤</span>
-          Overview
-        </a>
-
-        <a
-          href="#players"
-          data-page="players"
-          class="nav-link"
-        >
-          <span aria-hidden="true">⌕</span>
-          Player database
-        </a>
-
-        <a
-          href="#profile"
-          data-page="profile"
-          class="nav-link"
-        >
-          <span aria-hidden="true">◎</span>
-          Player Profile
-        </a>
-
-        <a
-          href="#compare"
-          data-page="compare"
-          class="nav-link"
-        >
-          <span aria-hidden="true">⇄</span>
-          Compare players
-        </a>
-
-        <a
-          href="#draft"
-          data-page="draft"
-          class="nav-link"
-        >
-          <span aria-hidden="true">★</span>
-          Draft Year Central
-        </a>
-
-        <a
-          href="#teams"
-          data-page="teams"
-          class="nav-link"
-        >
-          <span aria-hidden="true">▦</span>
-          Team explorer
-        </a>
-
-      </nav>
-
-      <!-- DATA STATUS -->
-
-      <div
-        class="sidebar-bottom"
-        id="data-status"
-        role="status"
-        aria-live="polite"
-      >
-        Connecting to OHLDataHub…
-      </div>
-
-    </aside>
-
-    <!-- ====================================================
-         MAIN APPLICATION
-         ==================================================== -->
-
-    <div class="main-wrap">
-
-      <!-- ==================================================
-           MOBILE / DESKTOP TOP BAR
-           ================================================== -->
-
-      <header class="topbar">
-
-        <!-- Mobile menu -->
-
-        <button
-          type="button"
-          class="menu-toggle"
-          id="menu-toggle"
-          aria-label="Open navigation"
-          aria-expanded="false"
-          aria-controls="sidebar"
-        >
-          <span aria-hidden="true">☰</span>
-        </button>
-
-        <!-- Compact branding -->
-
-        <div class="top-title">
-
-          <span class="top-brand-name">
-            ICEINDEX
-          </span>
-
-          <span
-            class="top-divider"
-            aria-hidden="true"
-          >
-            /
-          </span>
-
-          <strong class="top-league-name">
-            Ontario Hockey League
-          </strong>
-
-        </div>
-
-        <!-- Current season -->
-
-        <div class="top-actions">
-
-          <span
-            id="season-label"
-            class="season-label"
-          >
-            OHL
-          </span>
-
-          <span class="league-pill">
-            OHL
-          </span>
-
-        </div>
-
-      </header>
-
-      <!-- ==================================================
-           DYNAMIC CONTENT
-
-           app.js renders the active page here.
-
-           DO NOT rename this ID.
-           ================================================== -->
-
-      <main
-        class="content"
-        id="main-content"
-        tabindex="-1"
-      >
-
-        <!-- Initial loading state -->
+      <div class="sidebar-brand">
 
         <div
-          class="loading"
-          role="status"
-          aria-live="polite"
+          class="brand-icon"
+          aria-hidden="true"
         >
+          I
+        </div>
 
-          <div class="initial-loading">
+        <div>
 
-            <div
-              class="initial-loading-mark"
-              aria-hidden="true"
-            >
-              ✳
-            </div>
+          <div class="brand-name">
+            IceIndex
+          </div>
 
-            <div class="initial-loading-copy">
-
-              <strong>
-                ICEINDEX
-              </strong>
-
-              <span>
-                Loading OHL statistics…
-              </span>
-
-            </div>
-
+          <div class="brand-subtitle">
+            OHL DATA INTELLIGENCE
           </div>
 
         </div>
 
-      </main>
+      </div>
 
-      <!-- ==================================================
-           FOOTER
-           ================================================== -->
+      <!-- PRIMARY NAVIGATION -->
 
-      <footer class="footer">
+      <nav
+        class="sidebar-nav"
+        aria-label="Main navigation"
+      >
 
-        <strong>
-          ICEINDEX · v0.2.0
-        </strong>
+        <div class="sidebar-label">
+          LEAGUE
+        </div>
 
-        <span>
-          Independent OHL analytics ·
-          Not affiliated with the CHL or OHL
-        </span>
+        <!-- OVERVIEW -->
 
-      </footer>
+        <a
+          class="nav-link active"
+          href="#overview"
+          data-page="overview"
+          aria-current="page"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+            <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+            <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+          </svg>
+
+          <span>League Overview</span>
+
+        </a>
+
+        <!-- PLAYER DATABASE -->
+
+        <a
+          class="nav-link"
+          href="#players"
+          data-page="players"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-4-4"></path>
+          </svg>
+
+          <span>Player Database</span>
+
+        </a>
+
+        <!-- TEAM EXPLORER -->
+
+        <a
+          class="nav-link"
+          href="#teams"
+          data-page="teams"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+
+          <span>Team Explorer</span>
+
+        </a>
+
+        <div
+          class="sidebar-label"
+          style="margin-top:18px"
+        >
+          PLAYERS
+        </div>
+
+        <!-- PLAYER PROFILES -->
+
+        <a
+          class="nav-link"
+          href="#profile"
+          data-page="profile"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 21v-2a8 8 0 0 1 16 0v2"></path>
+          </svg>
+
+          <span>Player Profiles</span>
+
+        </a>
+
+        <!-- PLAYER COMPARISON -->
+
+        <a
+          class="nav-link"
+          href="#compare"
+          data-page="compare"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5" width="7" height="14" rx="1"></rect>
+            <rect x="14" y="5" width="7" height="14" rx="1"></rect>
+            <path d="M6 9h1M17 9h1M6 13h1M17 13h1"></path>
+          </svg>
+
+          <span>Player Comparison</span>
+
+        </a>
+
+        <!-- DRAFT YEAR CENTRAL -->
+
+        <a
+          class="nav-link"
+          href="#draft"
+          data-page="draft"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M8 21h8"></path>
+            <path d="M12 17v4"></path>
+            <path d="M7 4h10v6a5 5 0 0 1-10 0z"></path>
+            <path d="M7 6H4v3a4 4 0 0 0 4 4"></path>
+            <path d="M17 6h3v3a4 4 0 0 1-4 4"></path>
+          </svg>
+
+          <span>Draft Year Central</span>
+
+        </a>
+
+        <div
+          class="sidebar-label"
+          style="margin-top:18px"
+        >
+          ADVANCED INTELLIGENCE
+        </div>
+
+        <!-- NEW v0.3.0: PLAYER ANALYTICS -->
+
+        <a
+          class="nav-link"
+          href="#analytics"
+          data-page="analytics"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 3v18h18"></path>
+            <circle cx="8" cy="15" r="1.5"></circle>
+            <circle cx="13" cy="10" r="1.5"></circle>
+            <circle cx="18" cy="6" r="1.5"></circle>
+            <path d="m9.2 13.8 2.6-2.6"></path>
+            <path d="m14.2 8.8 2.6-1.6"></path>
+          </svg>
+
+          <span>Player Analytics</span>
+
+        </a>
+
+      </nav>
+
+      <!-- SIDEBAR FOOTER -->
+
+      <div class="sidebar-footer">
+
+        <div
+          class="status-pill"
+          style="margin-bottom:12px"
+        >
+          <span
+            class="live-dot"
+            aria-hidden="true"
+          ></span>
+
+          <span>OHLDataHub Connected</span>
+        </div>
+
+        <div>
+          IceIndex v0.3.0
+        </div>
+
+        <div style="margin-top:5px">
+          Independent OHL analytics platform
+        </div>
+
+        <div style="margin-top:12px">
+
+          <a
+            href="https://github.com/NoahCornish/iceindex"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Source on GitHub
+          </a>
+
+        </div>
+
+      </div>
 
     </div>
 
-  </div>
+  </aside>
 
-  <!-- ======================================================
-       INTRODUCTION / LOADING OVERLAY
-
-       Existing app.js controls:
-       #intro-overlay
-       #intro-progress
-       #intro-close
-
-       Preserve these IDs for compatibility.
-       ====================================================== -->
+  <!-- ========================================================
+       MOBILE SIDEBAR SCRIM
+       ======================================================== -->
 
   <div
-    class="intro-overlay"
+    id="scrim"
+    class="scrim"
+    aria-hidden="true"
+  ></div>
+
+  <!-- ========================================================
+       MAIN APPLICATION SHELL
+       ======================================================== -->
+
+  <div class="main-shell">
+
+    <!-- ======================================================
+         TOP HEADER
+         ====================================================== -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+          id="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-controls="sidebar"
+          aria-expanded="false"
+        >
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="21"
+            height="21"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+
+        </button>
+
+        <div>
+
+          <div class="topbar-title">
+            IceIndex
+          </div>
+
+          <div
+            class="topbar-meta"
+            style="margin-top:2px"
+          >
+            OHL Player Intelligence
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="topbar-right">
+
+        <!-- SEASON -->
+
+        <div class="season-pill">
+
+          <span
+            class="live-dot"
+            aria-hidden="true"
+          ></span>
+
+          <span id="season-label">
+            Loading season
+          </span>
+
+        </div>
+
+        <!-- DATA STATUS -->
+
+        <div
+          id="data-status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          Loading OHL data
+        </div>
+
+      </div>
+
+    </header>
+
+    <!-- ======================================================
+         MAIN CONTENT
+         All seven pages render into this container.
+         ====================================================== -->
+
+    <main
+      id="main-content"
+      tabindex="-1"
+    >
+
+      <div class="page-heading">
+
+        <div class="eyebrow">
+          OHL DATA INTELLIGENCE
+        </div>
+
+        <h1>
+          Loading IceIndex
+        </h1>
+
+        <p>
+          Preparing Ontario Hockey League statistics
+          and player analytics.
+        </p>
+
+      </div>
+
+      <div class="panel">
+
+        <div
+          class="loading-spinner"
+          aria-hidden="true"
+        ></div>
+
+        <div
+          class="text-center text-muted"
+          role="status"
+        >
+          Connecting to OHLDataHub…
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- ======================================================
+         APPLICATION FOOTER
+         ====================================================== -->
+
+    <footer class="site-footer">
+
+      <div>
+
+        <strong style="color:#f1f7fc">
+          IceIndex
+        </strong>
+
+        <span>
+          — Ontario Hockey League Statistics & Analytics
+        </span>
+
+      </div>
+
+      <div>
+
+        <a
+          href="https://github.com/NoahCornish/iceindex"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <span aria-hidden="true"> · </span>
+
+        <a
+          href="https://github.com/NoahCornish/OHLDataHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          OHLDataHub
+        </a>
+
+        <span aria-hidden="true"> · </span>
+
+        <span>
+          v0.3.0
+        </span>
+
+      </div>
+
+    </footer>
+
+  </div>
+
+  <!-- ========================================================
+       INTRO / LOADING OVERLAY
+
+       Compatible with js/app.js:
+         #intro-overlay
+         #intro-progress
+         #intro-close
+
+       The overlay is dismissible and will remain dismissed
+       for the current browser tab session.
+
+       ======================================================== -->
+
+  <div
     id="intro-overlay"
+    class="intro-overlay"
     role="dialog"
     aria-modal="true"
     aria-labelledby="intro-title"
     aria-describedby="intro-description"
   >
 
-    <div class="intro-dialog">
+    <div class="intro-card">
 
-      <span class="eyebrow">
-        WELCOME TO ICEINDEX
-      </span>
-
-      <h2 id="intro-title">
-        Beyond the box score.
-      </h2>
-
-      <p id="intro-description">
-        Your independent destination for Ontario
-        Hockey League statistics, player careers,
-        comparisons and historical analysis.
-      </p>
-
-      <!-- Loading status -->
+      <!-- ICEINDEX LOGO -->
 
       <div
-        class="intro-progress"
-        role="status"
-        aria-live="polite"
+        style="
+          display:grid;
+          place-items:center;
+          width:66px;
+          height:66px;
+          margin:0 auto 20px;
+          border-radius:18px;
+          background:#58b8ff;
+          color:#061522;
+          font-size:36px;
+          font-weight:900;
+          box-shadow:0 12px 35px rgba(88,184,255,.17);
+        "
+        aria-hidden="true"
+      >
+        I
+      </div>
+
+      <div
+        class="eyebrow"
+        style="margin-bottom:10px"
+      >
+        ONTARIO HOCKEY LEAGUE
+      </div>
+
+      <h1 id="intro-title">
+        IceIndex
+      </h1>
+
+      <p id="intro-description">
+        OHL statistics, player development,
+        historical records and advanced analytics.
+      </p>
+
+      <div
+        style="
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          gap:7px;
+          flex-wrap:wrap;
+          margin:20px 0;
+        "
       >
 
-        <span id="intro-progress">
-          Connecting to current-season statistics…
+        <span class="status-pill">
+          Player Database
         </span>
 
-        <span
-          class="intro-spinner"
-          aria-hidden="true"
-        ></span>
+        <span class="status-pill">
+          Historical Stats
+        </span>
+
+        <span class="status-pill">
+          Analytics
+        </span>
 
       </div>
 
-      <!-- Existing app.js close control -->
+      <div
+        class="loading-spinner"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        id="intro-progress"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        Connecting to OHLDataHub…
+      </div>
 
       <button
-        type="button"
-        class="btn intro-close"
         id="intro-close"
+        class="btn primary"
+        type="button"
       >
         Explore IceIndex
       </button>
 
-      <small class="intro-disclaimer">
-        Current-season statistics load first.
-        Historical records are retrieved separately.
-        Data availability depends on the source
-        and your connection.
-      </small>
+      <div
+        style="
+          margin-top:20px;
+          color:#6f8ca3;
+          font-size:10px;
+          letter-spacing:.6px;
+        "
+      >
+        ICEINDEX v0.3.0
+      </div>
 
     </div>
 
   </div>
+
+  <!-- ========================================================
+       JAVASCRIPT-FREE FALLBACK
+       ======================================================== -->
+
+  <noscript>
+
+    <div
+      style="
+        position:fixed;
+        inset:0;
+        z-index:9999;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:25px;
+        background:#07111d;
+        color:#f1f7fc;
+        text-align:center;
+        font-family:Arial,sans-serif;
+      "
+    >
+
+      <div style="max-width:450px">
+
+        <h1 style="color:#58b8ff">
+          IceIndex
+        </h1>
+
+        <p>
+          JavaScript is required to load OHL statistics,
+          player profiles and advanced analytics.
+        </p>
+
+        <p>
+          Please enable JavaScript in your browser
+          and refresh this page.
+        </p>
+
+      </div>
+
+    </div>
+
+  </noscript>
 
 </body>
 </html>
