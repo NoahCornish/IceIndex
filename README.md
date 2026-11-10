@@ -1,95 +1,61 @@
 
 # IceIndex 🏒
 
-**Hockey Data Intelligence | Version 0.4.0**
+**Hockey Data Intelligence · v0.5.0**
 
 *Every player. Every league. One index.*
 
-IceIndex is an independent hockey statistics and analytics platform designed to make player performance data accessible, searchable, and easy to explore.
+[Live website](https://noahcornish.github.io/IceIndex/) · [Source code](https://github.com/NoahCornish/IceIndex) · [Changelog](CHANGELOG.md)
 
-Originally developed as an Ontario Hockey League (OHL) statistics application, IceIndex is evolving into a multi-league hockey analytics platform.
+## Overview
 
-**Live Website:** https://noahcornish.github.io/IceIndex/
+IceIndex is an independent, browser-based hockey statistics and analytics platform. It currently supports the **Ontario Hockey League (OHL)**, bringing together player and team data, historical exploration, player comparisons, and advanced analytics in one interface.
 
-**Repository:** https://github.com/NoahCornish/IceIndex
+Version **0.5.0** refines the navigation and prepares the interface for additional leagues without claiming those leagues are available yet.
 
-## Version 0.4.0 — Platform Expansion
+## Features
 
-Version 0.4.0 introduces a new identity for IceIndex, including a dedicated homepage, league selection interface, featured player spotlight, and updated styling.
+- **Home:** IceIndex platform landing page and featured OHL content.
+- **League Directory:** OHL available; WHL and QMJHL identified as planned additions.
+- **OHL Overview:** League-level statistics and season context.
+- **Player Database:** Browse and search OHL player statistics.
+- **Player Profiles:** Explore individual player information and performance.
+- **Player Comparison:** Compare players side by side.
+- **Draft Year Central:** Explore players by draft year.
+- **Team Explorer:** Browse OHL teams and their statistics.
+- **Player Analytics:** Advanced visualizations and player performance insights, including percentile and chart-based views.
 
-The Ontario Hockey League remains the first fully supported league, with future expansion planned for the Western Hockey League (WHL) and Quebec Maritimes Junior Hockey League (QMJHL).
+Feature availability depends on the data provided by the underlying OHL datasets.
 
-## Current Features
+## What's new in v0.5.0
 
-### Platform Homepage
+- A **compact sidebar** with six top-level destinations: Home, League Directory, Overview, Players, Teams, and Analytics.
+- **Expandable Players and Analytics sections** to reduce visual clutter.
+- Automatic submenu expansion and active-page highlighting for direct links such as `#profile`, `#compare`, `#draft`, and `#analytics`.
+- An **active-league selector** designed for future expansion.
+- A single, minimal **data-status indicator** in the top bar, replacing repetitive status text and badges.
+- Cleaner sidebar footer and refined mobile navigation controls.
+- Updated version branding to **0.5.0**.
 
-- Dedicated IceIndex landing page.
-- Featured OHL player based on current-season points.
-- League selection interface.
-- Navigation to player databases and analytics.
-- Updated responsive styling.
+> **Development status:** v0.5.0 is the current interface development release. The navigation HTML has been prepared; full cross-browser and integration testing with the existing CSS and JavaScript should be completed before calling the release stable.
 
-### OHL Player Database
-
-- Searchable player statistics.
-- Current-season and historical player records.
-- Filtering by season and team.
-- Sortable statistical rankings.
-- Player profiles with career information.
-
-### Player Comparison
-
-- Compare individual player statistics.
-- Explore production across seasons.
-- Evaluate scoring and performance differences.
-
-### Player Analytics
-
-- Scouting-style percentile cards.
-- Peer-group comparisons by position, age, season, and games played.
-- Radar charts for player comparisons.
-- Interactive statistical scatter plots.
-- Analytics leaderboards.
-- Downloadable player analytics cards in PNG format.
-
-### Additional OHL Tools
-
-- Team Explorer.
-- Draft Year Central.
-- League overview and statistical leaders.
-
-## Supported Leagues
+## League support
 
 | League | Status |
-|---|---|
-| Ontario Hockey League (OHL) | Supported |
-| Western Hockey League (WHL) | Planned |
-| Quebec Maritimes Junior Hockey League (QMJHL) | Planned |
+| --- | --- |
+| Ontario Hockey League (OHL) | Available |
+| Western Hockey League (WHL) | Planned — not yet integrated |
+| Quebec Maritimes Junior Hockey League (QMJHL) | Planned — not yet integrated |
 
-Planned leagues are displayed in the interface but do not yet have integrated statistical databases.
-
-## Data Sources
-
-IceIndex's OHL statistics are powered by data from the **OHLDataHub** project.
-
-The application uses JavaScript data-loading modules to retrieve and process current and historical player statistics.
-
-Statistical analytics are calculated using the available underlying data. Percentile rankings represent a player's position within a selected comparison group and should not be interpreted as professional scouting grades or projections.
+IceIndex does **not** currently combine statistics across these leagues.
 
 ## Technology
 
-IceIndex is built using:
+IceIndex is a static web application built with **HTML, CSS, and vanilla JavaScript**, hosted on **GitHub Pages**. Existing data and analytics modules support the OHL experience; charts and downloadable visualizations use browser-based rendering techniques.
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- SVG-based data visualizations
-- HTML Canvas for downloadable player cards
-- GitHub Pages for website hosting
+The OHL data workflow is supported by [OHLDataHub](https://github.com/NoahCornish/OHLDataHub).
 
-The application is designed to operate as a static website without requiring a traditional backend server.
-
-## Project Structure
+## Project structure
 
 ```text
 IceIndex/
@@ -99,40 +65,38 @@ IceIndex/
 ├── js/
 │   ├── app.js
 │   ├── ohl-data.js
-│   ├── ohl-analytics.js
-│   └── ohl-branding.js
+│   ├── ohl-branding.js
+│   └── ohl-analytics.js
 ├── README.md
 └── CHANGELOG.md
 ```
 
-Additional data and asset files may be present in the repository.
+## Run locally
 
-## Development Roadmap
+1. Clone or download the repository.
+2. Serve the project directory with a local HTTP server (recommended for browser data loading).
+3. Open the local server URL in your browser.
 
-### v0.4.0 — Platform Foundation (Complete)
+For example, with Python installed:
 
-Establish the IceIndex identity, introduce league selection, and integrate the existing OHL statistics and analytics experience.
+```bash
+python3 -m http.server 8000
+```
 
-### Future Development
+Then visit `http://localhost:8000/`.
 
-- Expand statistical coverage beyond the OHL.
-- Improve player discovery and search.
-- Enhance mobile usability.
-- Expand analytical tools and visualizations.
-- Add additional features as validated data becomes available.
+## Roadmap
 
-Future features and release schedules are subject to development and data availability.
+- Finish v0.5.0 integration and responsive testing.
+- Refine shared CSS, tables, charts, and player cards.
+- Improve search and navigation across OHL tools.
+- Design league-independent data models and routing.
+- Explore WHL and QMJHL integrations when reliable data sources are available.
 
 ## Disclaimer
 
-IceIndex is an independent hockey analytics project and is not an official website of the Ontario Hockey League, Canadian Hockey League, or their member teams.
-
-All statistics depend on the accuracy and availability of their underlying data sources.
-
-Team names, logos, and related trademarks belong to their respective owners.
+IceIndex is an independent fan/developer analytics project and is not affiliated with or endorsed by the OHL, WHL, QMJHL, CHL, or their member clubs. League names, logos, and trademarks belong to their respective owners. Statistics are provided for informational purposes and may be revised by their sources.
 
 ---
 
-**IceIndex v0.4.0**
-
-*Built for the game. Powered by data.*
+**IceIndex v0.5.0** · *Every player. Every league. One index.*

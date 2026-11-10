@@ -1,110 +1,66 @@
 
-# IceIndex — Changelog
+# Changelog
 
-All notable changes to IceIndex are documented here.
+Notable IceIndex changes are documented here. Version 0.5.0 focuses on navigation and interface structure; additional league integrations remain future work.
 
-This project follows a version-based release structure as it develops into a multi-league hockey analytics platform.
+## [0.5.0] — 2026-11-10
 
----
+### Interface and navigation refinement
+
+#### Added
+
+- Compact, expandable sidebar navigation with six primary destinations: **Home**, **League Directory**, **Overview**, **Players**, **Teams**, and **Analytics**.
+- **Players** submenu for Player Database, Player Profiles, Player Comparison, and Draft Year Central.
+- **Analytics** submenu for Player Analytics, with room for future tools.
+- Automatic submenu expansion for direct links and active-route highlighting.
+- Active-league dropdown showing **OHL** as available and **WHL/QMJHL** as coming soon.
+- Small top-bar data-status indicator with loading, ready, and error visual states based on the application's status message.
+
+#### Changed
+
+- Consolidated navigation by removing multiple always-visible category headings.
+- Reduced repetitive season and data-source labels in the top bar and sidebar footer.
+- Simplified sidebar footer to version information and a GitHub link.
+- Refined mobile navigation with a dedicated close control.
+- Updated visible release labels and asset version query strings to **v0.5.0**.
+
+#### Preserved
+
+- Existing OHL routes: `#home`, `#leagues`, `#overview`, `#players`, `#profile`, `#compare`, `#draft`, `#teams`, and `#analytics`.
+- Existing OHL data and analytics modules and application integration IDs.
+
+#### Notes
+
+- **OHL remains the only supported league.** WHL and QMJHL are interface placeholders, not live integrations.
+- The status dot reflects messages reported by the application; it is not an independent uptime or data-integrity check.
+- The updated HTML is intended to work with existing application files, but full browser/integration testing is still required.
 
 ## [0.4.0] — 2026-11-10
 
-### Major Release: IceIndex Platform Foundation
+### Platform foundation
 
-Version 0.4.0 represents a major step in the development of IceIndex, transitioning the website from an OHL-focused statistics application toward a broader hockey analytics platform.
+#### Added
 
-### Added
+- IceIndex-branded homepage and multi-league platform positioning.
+- League directory with OHL available and WHL/QMJHL marked as planned.
+- Featured OHL player content and navigation into the OHL workspace.
 
-#### New Platform Homepage
+#### Changed
 
-- Introduced a dedicated IceIndex landing page.
-- Added the headline: *Every player. Every league. One index.*
-- Added a featured player spotlight highlighting the current OHL points leader.
-- Added direct navigation to league selection, OHL players, and analytics.
-- Introduced a platform-wide identity independent of any individual league.
+- Expanded the project's identity beyond an OHL-only presentation while retaining the OHL feature set.
+- Refined homepage, sidebar, and shared interface branding.
 
-#### League Selection
+#### Preserved
 
-- Added a dedicated league selection page.
-- Introduced league cards for the OHL, WHL, and QMJHL.
-- Enabled direct access to the OHL statistics dashboard.
-- Added Coming Soon indicators for leagues not yet supported.
+- OHL player database, player profiles, player comparisons, draft-year exploration, team explorer, and advanced player analytics.
 
-#### Platform Navigation
+## [0.3.0] — Earlier release
 
-- Added Home and Leagues routes.
-- Updated application routing to support platform-level pages alongside OHL-specific pages.
-- Added navigation handling for the new sections.
+### Advanced player analytics
 
-### Changed
-
-#### Branding and Design
-
-- Expanded IceIndex branding beyond the Ontario Hockey League.
-- Updated website styling to support the new homepage and league cards.
-- Introduced new visual elements for featured players and platform navigation.
-- Improved consistency between the main platform and existing OHL analytics sections.
-
-#### Application Architecture
-
-- Extended the existing JavaScript application to support a multi-league interface.
-- Separated general IceIndex platform pages from OHL-specific data views.
-- Preserved the existing OHL statistics and analytics functionality.
-- Allowed platform-level pages to render independently of OHL data availability.
-
-### Maintained
-
-- OHL player database and statistical filtering.
-- Individual player profiles.
-- Player comparison tools.
-- Team Explorer.
-- Draft Year Central.
-- Player Analytics dashboard.
-- Percentile-based scouting cards.
-- Radar and scatter plot visualizations.
-- Downloadable player analytics cards.
-- Current-season and historical OHL data loading.
-
-### Known Limitations
-
-- Only the OHL is currently supported.
-- WHL and QMJHL data integrations have not been implemented.
-- Featured player statistics depend on current OHL data availability.
-- Advanced analytics are limited by the available statistical data.
-- Expected goals and shot-map analytics require validated event-level data.
+- Expanded player analytics with visual performance comparisons.
+- Added percentile-based displays, radar/scatter visualizations, and downloadable player-card functionality.
 
 ---
 
-## [0.3.0] — Previous Release
-
-### Player Analytics
-
-- Introduced advanced OHL player analytics.
-- Added percentile-based player evaluation.
-- Added peer-group filtering.
-- Added player comparison radar charts.
-- Added interactive statistical scatter plots.
-- Added analytics leaderboards.
-- Added downloadable player analytics cards.
-
----
-
-## Upcoming Development
-
-### v0.5.0 — Proposed
-
-Potential priorities include:
-
-- Mobile interface refinements.
-- Improved player search and discovery.
-- Expanded player profile functionality.
-- Performance and accessibility improvements.
-- Preparation for additional league integrations.
-
-These are proposed development priorities, not confirmed features.
-
----
-
-**IceIndex**
-
-*Every player. Every league. One index.*
+**IceIndex** · *Every player. Every league. One index.*
