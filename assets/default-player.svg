@@ -1,0 +1,191 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 320 380"
+     role="img"
+     aria-label="IceIndex default hockey player">
+
+  <defs>
+    <linearGradient id="background"
+                    x1="0" y1="0"
+                    x2="1" y2="1">
+      <stop offset="0%" stop-color="#254562"/>
+      <stop offset="100%" stop-color="#0a1728"/>
+    </linearGradient>
+
+    <linearGradient id="jersey"
+                    x1="0" y1="0"
+                    x2="1" y2="1">
+      <stop offset="0%" stop-color="#345c7b"/>
+      <stop offset="100%" stop-color="#152b43"/>
+    </linearGradient>
+
+    <linearGradient id="helmet"
+                    x1="0" y1="0"
+                    x2="0" y2="1">
+      <stop offset="0%" stop-color="#426b89"/>
+      <stop offset="100%" stop-color="#1b344c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="320" height="380"
+        fill="url(#background)"/>
+
+  <!-- Background geometry -->
+
+  <circle cx="160" cy="155" r="125"
+          fill="none"
+          stroke="#78d5ff"
+          stroke-opacity=".08"
+          stroke-width="2"/>
+
+  <circle cx="160" cy="155" r="94"
+          fill="none"
+          stroke="#78d5ff"
+          stroke-opacity=".08"
+          stroke-width="2"/>
+
+  <path d="M0 290L320 115"
+        stroke="#78d5ff"
+        stroke-opacity=".07"
+        stroke-width="35"/>
+
+  <!-- Shoulders and jersey -->
+
+  <path
+    d="M92 243
+       C60 253 34 272 20 318
+       L0 380
+       H320
+       L300 318
+       C286 272 260 253 228 243
+       L193 225
+       H127Z"
+    fill="url(#jersey)"/>
+
+  <path d="M0 351H320"
+        stroke="#78d5ff"
+        stroke-opacity=".35"
+        stroke-width="7"/>
+
+  <path d="M0 369H320"
+        stroke="#78d5ff"
+        stroke-opacity=".15"
+        stroke-width="5"/>
+
+  <!-- Neck -->
+
+  <path d="M133 212V251
+           Q160 273 187 251
+           V212Z"
+        fill="#213c55"/>
+
+  <!-- Helmet -->
+
+  <path
+    d="M96 138
+       C96 83 121 56 160 56
+       C199 56 224 83 224 138
+       L217 166
+       H103Z"
+    fill="url(#helmet)"
+    stroke="#5d88a5"
+    stroke-width="3"/>
+
+  <path d="M106 126
+           Q160 102 214 126"
+        fill="none"
+        stroke="#78d5ff"
+        stroke-opacity=".45"
+        stroke-width="5"/>
+
+  <!-- Face shadow -->
+
+  <path
+    d="M110 153
+       C110 201 131 233 160 233
+       C189 233 210 201 210 153
+       Q160 141 110 153Z"
+    fill="#29455d"/>
+
+  <!-- Helmet visor -->
+
+  <path
+    d="M105 151
+       Q160 137 215 151
+       L209 172
+       Q160 160 111 172Z"
+    fill="#0a1728"
+    fill-opacity=".88"
+    stroke="#78d5ff"
+    stroke-opacity=".35"
+    stroke-width="2"/>
+
+  <!-- Chin guard -->
+
+  <path
+    d="M122 180
+       L133 214
+       L160 225
+       L187 214
+       L198 180"
+    fill="none"
+    stroke="#8eb1c8"
+    stroke-opacity=".45"
+    stroke-width="3"/>
+
+  <path d="M133 214L187 214"
+        stroke="#8eb1c8"
+        stroke-opacity=".4"
+        stroke-width="3"/>
+
+  <!-- Jersey collar -->
+
+  <path
+    d="M123 232
+       L160 263
+       L197 232"
+    fill="none"
+    stroke="#78d5ff"
+    stroke-opacity=".7"
+    stroke-width="6"/>
+
+  <!-- IceIndex chest emblem -->
+
+  <circle cx="160" cy="316" r="28"
+          fill="#0b1c2f"
+          stroke="#78d5ff"
+          stroke-opacity=".5"
+          stroke-width="2"/>
+
+  <g stroke="#78d5ff"
+     stroke-width="3"
+     stroke-linecap="round">
+
+    <path d="M160 296V336"/>
+    <path d="M140 316H180"/>
+    <path d="M146 302L174 330"/>
+    <path d="M174 302L146 330"/>
+
+  </g>
+
+  <circle cx="160" cy="316" r="4"
+          fill="#78d5ff"/>
+
+  <!-- Footer identity -->
+
+  <rect x="0" y="358"
+        width="320" height="22"
+        fill="#08111e"
+        fill-opacity=".8"/>
+
+  <text x="160" y="373"
+        text-anchor="middle"
+        font-family="Arial, sans-serif"
+        font-size="9"
+        font-weight="700"
+        letter-spacing="3"
+        fill="#91b3cb">
+    ICEINDEX
+  </text>
+
+</svg>

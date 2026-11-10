@@ -1,0 +1,46 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1321">
+<meta name="description" content="IceIndex — OHL career statistics, player profiles, historical comparisons and NHL draft-year analysis.">
+<title>IceIndex | OHL Intelligence</title>
+<link rel="preconnect" href="https://raw.githubusercontent.com">
+<link rel="preconnect" href="https://assets.leaguestat.com">
+<link rel="icon" href="assets/iceindex-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/ohl-data.js" defer></script>
+<script src="js/ohl-branding.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main-content">Skip to content</a>
+<div class="shell">
+<div id="scrim" class="scrim" hidden></div>
+<aside class="sidebar" id="sidebar" aria-label="Main navigation">
+<a href="#overview" class="brand"><span class="brand-mark">✳</span><span class="brand-copy">ICE<b>INDEX</b><small>BEYOND THE BOX SCORE</small></span></a>
+<div class="side-label">WORKSPACE</div>
+<nav>
+<a href="#overview" data-page="overview" class="nav-link active"><span>▤</span> Overview</a>
+<a href="#players" data-page="players" class="nav-link"><span>⌕</span> Player database</a>
+<a href="#profile" data-page="profile" class="nav-link"><span>◎</span> Player Profile</a>
+<a href="#compare" data-page="compare" class="nav-link"><span>⇄</span> Compare players</a>
+<a href="#draft" data-page="draft" class="nav-link"><span>★</span> Draft Year Central</a>
+<a href="#teams" data-page="teams" class="nav-link"><span>▦</span> Team explorer</a>
+</nav>
+<div class="sidebar-bottom" id="data-status" role="status">Connecting to OHLDataHub…</div>
+</aside>
+<div class="main-wrap">
+<header class="topbar"><button type="button" class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">☰</button><div class="top-title">ICEINDEX <span>/</span> <strong>Ontario Hockey League</strong></div><div class="top-actions"><span id="season-label">OHL</span><span class="league-pill">OHL</span></div></header>
+<main class="content" id="main-content" tabindex="-1"><div class="loading">Loading OHL data…</div></main>
+<footer class="footer"><strong>ICEINDEX · v0.1.0</strong><span>Independent analytics · Not affiliated with the CHL or OHL</span></footer>
+</div></div>
+<div class="intro-overlay" id="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="intro-title">
+ <div class="intro-dialog"><span class="eyebrow">WELCOME TO ICEINDEX</span><h2 id="intro-title">Beyond the box score.</h2>
+ <p>Independent OHL player intelligence. Compare careers, explore historical seasons, discover draft-year cohorts, and study every team.</p>
+ <div class="intro-progress"><span id="intro-progress">Connecting to current-season statistics…</span><span class="intro-spinner" aria-hidden="true"></span></div>
+ <button type="button" class="btn intro-close" id="intro-close">Explore IceIndex</button>
+ <small>Current-season data appears first. The historical archive loads separately; full coverage depends on network conditions.</small></div>
+</div>
+</body></html>
