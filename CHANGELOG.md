@@ -1,66 +1,62 @@
 
 # Changelog
 
-Notable IceIndex changes are documented here. Version 0.5.0 focuses on navigation and interface structure; additional league integrations remain future work.
+Notable changes to **IceIndex** are documented here.
 
-## [0.5.0] — 2026-11-10
+This changelog establishes **v0.6.0** as the current documented baseline. Earlier releases are not reconstructed without verified release records.
 
-### Interface and navigation refinement
+## [Unreleased]
 
-#### Added
+### Planned for v0.7.0
 
-- Compact, expandable sidebar navigation with six primary destinations: **Home**, **League Directory**, **Overview**, **Players**, **Teams**, and **Analytics**.
-- **Players** submenu for Player Database, Player Profiles, Player Comparison, and Draft Year Central.
-- **Analytics** submenu for Player Analytics, with room for future tools.
-- Automatic submenu expansion for direct links and active-route highlighting.
-- Active-league dropdown showing **OHL** as available and **WHL/QMJHL** as coming soon.
-- Small top-bar data-status indicator with loading, ready, and error visual states based on the application's status message.
+- Migrate the website's data-loading layer from legacy OHLDataHub paths to IceIndex's own processed OHL datasets.
+- Validate current-season and historical loading against the independent CSV structure.
+- Preserve existing website functionality while verifying player identities, headshots, and competition filters.
 
-#### Changed
+> These items are **not included in the v0.6.0 release**. A locally tested replacement JavaScript file does not constitute a published release.
 
-- Consolidated navigation by removing multiple always-visible category headings.
-- Reduced repetitive season and data-source labels in the top bar and sidebar footer.
-- Simplified sidebar footer to version information and a GitHub link.
-- Refined mobile navigation with a dedicated close control.
-- Updated visible release labels and asset version query strings to **v0.5.0**.
+## [0.6.0] — 2026-11-11
 
-#### Preserved
+### Added
 
-- Existing OHL routes: `#home`, `#leagues`, `#overview`, `#players`, `#profile`, `#compare`, `#draft`, `#teams`, and `#analytics`.
-- Existing OHL data and analytics modules and application integration IDs.
+- Centralized R refresh orchestration using `scripts/refresh.R`.
+- OHL collectors for seasons, teams, player rosters, skater statistics, and goalie statistics.
+- Current and historical OHL data storage with collection metadata.
+- Processed skater datasets: player directory, season statistics, career statistics, and team history.
+- Processed goalie datasets: goalie directory, season statistics, career statistics, and team history.
+- Consolidated processing workflow using `scripts/processing/ohl_process_all.R`.
+- Refresh history reporting in `data/ohl/metadata/refresh_log.csv`.
 
-#### Notes
+### Improved
 
-- **OHL remains the only supported league.** WHL and QMJHL are interface placeholders, not live integrations.
-- The status dot reflects messages reported by the application; it is not an independent uptime or data-integrity check.
-- The updated HTML is intended to work with existing application files, but full browser/integration testing is still required.
+- Player and goalie identity validation, duplicate detection, and career-statistic reconciliation.
+- Data-quality reporting that distinguishes critical CSV problems from optional missing values and intentionally empty audit files.
+- Final refresh summary showing collector outcomes, processing results, file changes, and system health.
 
-## [0.4.0] — 2026-11-10
+### Verified
 
-### Platform foundation
+A local refresh on **November 11, 2026** reported:
 
-#### Added
+- **6/6** refresh tasks successful.
+- **0** recorded errors and **0** recorded warnings in the master refresh summary.
+- **162** CSV files inspected and **0** CSV read failures.
+- **0** critical CSV issues.
+- **8,132** skater profiles and **662** goalie profiles.
+- **25,081** processed skater season records and **2,305** processed goalie season records.
+- **10,122** skater career records and **1,037** goalie career records.
+- **516** current-season skater records and **52** current-season goalie records collected.
 
-- IceIndex-branded homepage and multi-league platform positioning.
-- League directory with OHL available and WHL/QMJHL marked as planned.
-- Featured OHL player content and navigation into the OHL workspace.
+These figures are a dated local validation snapshot, not permanent dataset totals.
 
-#### Changed
+### Known Limitations
 
-- Expanded the project's identity beyond an OHL-only presentation while retaining the OHL feature set.
-- Refined homepage, sidebar, and shared interface branding.
-
-#### Preserved
-
-- OHL player database, player profiles, player comparisons, draft-year exploration, team explorer, and advanced player analytics.
-
-## [0.3.0] — Earlier release
-
-### Advanced player analytics
-
-- Expanded player analytics with visual performance comparisons.
-- Added percentile-based displays, radar/scatter visualizations, and downloadable player-card functionality.
+- The production website's transition to the independent IceIndex processed-data source is reserved for **v0.7.0**.
+- The goalie processing log indicates that career save percentage was unavailable where the required saves/shots-against inputs were missing; career goals-against average was calculated.
+- The player collector still listed **14 previously tracked historical roster failures**, despite reporting no new failures during the validation run.
+- Some optional source metadata fields are blank; these are not automatically treated as critical data failures.
 
 ---
 
-**IceIndex** · *Every player. Every league. One index.*
+## Versioning
+
+IceIndex uses `MAJOR.MINOR.PATCH` release labels. The project version is **v0.6.0** until the maintainer explicitly publishes a new release. Script maintenance and local experiments do not automatically change the project version.
