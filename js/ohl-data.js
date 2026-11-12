@@ -3,139 +3,97 @@
 
 /* ============================================================
    ICEINDEX
-   VERSION 0.2.0
-   FILE 4 OF 7 — js/ohl-data.js
+   VERSION 0.7.0
+   FILE: js/ohl-data.js
 
-   OHL DATA ENGINE
+   INDEPENDENT OHL SKATER DATA ENGINE
 
-   Compatible with:
-     js/app.js — IceIndex v0.2.0
-     js/ohl-branding.js
+   Data sources:
+     data/ohl/current/skater_stats.csv
+     data/processed/ohl/player_directory.csv
+     data/processed/ohl/player_seasons.csv
 
-   OHLDataHub source:
-     https://github.com/NoahCornish/OHLDataHub
-
-   Data files:
-     data/current/skaters.csv
-     data/player_directory.csv
-
-     data/historical/YYYY-season/skaters.csv
-
-   Optional optimized archive:
-     data/iceindex/archive.json
+   Features:
+     - Current regular-season statistics
+     - Historical regular-season statistics
+     - Historical playoff statistics
+     - Player directory and headshots
+     - Player identity reconciliation
+     - Season normalization
+     - Competition normalization
+     - CSV caching and retry handling
+     - Duplicate record protection
 
    Public API:
      window.loadOHLCurrent()
      window.loadOHLHistory(progressCallback)
+     window.IceIndexData
+
+   New playoff API:
+     IceIndexData.loadPlayoffs()
+     IceIndexData.loadAllHistory()
+     IceIndexData.loadHistory({
+       competition: "playoffs"
+     })
 
    ============================================================ */
 
 (function () {
 
-  /* ==========================================================
+  /* ============================================================
      01. CONFIGURATION
-     ========================================================== */
+     ============================================================ */
 
   const CONFIG = Object.freeze({
+    version: "0.7.0",
 
-    repository:
-      "NoahCornish/OHLDataHub",
-
-    branch:
-      "main",
+    repository: "NoahCornish/IceIndex",
+    branch: "main",
 
     currentPath:
-      "data/current/skaters.csv",
+      "data/ohl/current/skater_stats.csv",
 
     directoryPath:
-      "data/player_directory.csv",
+      "data/processed/ohl/player_directory.csv",
 
-    archivePath:
-      "data/iceindex/archive.json",
+    historicalPath:
+      "data/processed/ohl/player_seasons.csv",
 
-    historicalRoot:
-      "data/historical",
+    currentTimeout: 15000,
+    directoryTimeout: 15000,
+    historyTimeout: 45000,
 
-    historicalStartYear:
-      1997,
+    retryCount: 1,
 
-    historicalEndYear:
-      null,
+    currentCacheMs: 5 * 60 * 1000,
+    directoryCacheMs: 24 * 60 * 60 * 1000,
+    historyCacheMs: 24 * 60 * 60 * 1000,
 
-    historyConcurrency:
-      4,
-
-    currentTimeout:
-      10000,
-
-    directoryTimeout:
-      8000,
-
-    historyTimeout:
-      12000,
-
-    retryCount:
-      1,
-
-    cacheVersion:
-      "iceindex-v0.2.0",
-
-    /*
-      Current statistics use a short cache window.
-
-      Historical statistics are substantially
-      more stable and can remain cached longer.
-    */
-
-    currentCacheMs:
-      5 * 60 * 1000,
-
-    directoryCacheMs:
-      24 * 60 * 60 * 1000,
-
-    historyCacheMs:
-      7 * 24 * 60 * 60 * 1000
-
+    cacheVersion: "iceindex-v0.7.0"
   });
 
-
-  /* ==========================================================
-     02. DATA SOURCE URLS
-     ========================================================== */
-
-  const RAW_BASE =
-    `https://raw.githubusercontent.com/` +
-    `${CONFIG.repository}/` +
-    `${CONFIG.branch}/`;
-
-  /*
-    GitHub Pages and local deployment support.
-
-    If IceIndex is hosted on the same origin as
-    the data files, relative URLs can be used.
-
-    Otherwise the public OHLDataHub repository
-    is used.
-
-    Set window.ICEINDEX_DATA_BASE before this
-    script loads to override the data source.
-  */
+  /* ============================================================
+     02. DATA SOURCE
+     ============================================================ */
 
   const CUSTOM_BASE =
     typeof window.ICEINDEX_DATA_BASE === "string"
       ? window.ICEINDEX_DATA_BASE.trim()
       : "";
 
-  const DATA_BASE =
-    CUSTOM_BASE
-      ? CUSTOM_BASE.replace(/\/+$/, "") + "/"
-      : RAW_BASE;
+  const DEFAULT_BASE = new URL(
+    "../",
+    document.currentScript?.src ||
+      window.location.href
+  ).href;
+
+  const DATA_BASE = CUSTOM_BASE
+    ? CUSTOM_BASE.replace(/\/+$/, "") + "/"
+    : DEFAULT_BASE;
 
   function dataURL(path) {
-    return (
-      DATA_BASE +
-      String(path || "").replace(/^\/+/, "")
-    );
+    return DATA_BASE +
+      String(path || "").replace(/^\/+/, "");
   }
 
   function currentURL() {
@@ -147,44 +105,32 @@
   }
 
   function archiveURL() {
-    return dataURL(CONFIG.archivePath);
+    return dataURL(CONFIG.historicalPath);
   }
 
-  function historicalURL(endYear) {
-    return dataURL(
-      `${CONFIG.historicalRoot}/` +
-      `${endYear}-season/skaters.csv`
-    );
+  function historicalURL() {
+    return archiveURL();
   }
 
-
-  /* ==========================================================
-     03. SHARED MEMORY CACHE
-     ========================================================== */
+  /* ============================================================
+     03. MEMORY CACHE
+     ============================================================ */
 
   const memoryCache = new Map();
-
-  /*
-    Pending requests are shared so that two
-    consumers requesting the same file do not
-    generate duplicate network downloads.
-  */
-
   const pendingRequests = new Map();
 
   function cacheKey(url) {
-    return `${CONFIG.cacheVersion}:${url}`;
+    return CONFIG.cacheVersion + ":" + url;
   }
 
   function readMemory(url, ttl) {
-    const entry = memoryCache.get(
-      cacheKey(url)
-    );
+    const key = cacheKey(url);
+    const entry = memoryCache.get(key);
 
     if (!entry) return null;
 
     if (Date.now() - entry.time > ttl) {
-      memoryCache.delete(cacheKey(url));
+      memoryCache.delete(key);
       return null;
     }
 
@@ -192,21 +138,17 @@
   }
 
   function writeMemory(url, value) {
-    memoryCache.set(
-      cacheKey(url),
-      {
-        time: Date.now(),
-        value
-      }
-    );
+    memoryCache.set(cacheKey(url), {
+      time: Date.now(),
+      value
+    });
 
     return value;
   }
 
-
-  /* ==========================================================
-     04. FETCH WITH TIMEOUT AND RETRY
-     ========================================================== */
+  /* ============================================================
+     04. FETCH WITH RETRY
+     ============================================================ */
 
   function sleep(ms) {
     return new Promise(resolve =>
@@ -215,8 +157,7 @@
   }
 
   async function fetchTextOnce(url, timeout) {
-    const controller =
-      new AbortController();
+    const controller = new AbortController();
 
     const timer = setTimeout(
       () => controller.abort(),
@@ -226,18 +167,16 @@
     try {
       const response = await fetch(url, {
         method: "GET",
-        mode: "cors",
         credentials: "omit",
         signal: controller.signal
       });
 
       if (!response.ok) {
         const error = new Error(
-          `HTTP ${response.status}: ${url}`
+          "HTTP " + response.status + ": " + url
         );
 
         error.status = response.status;
-
         throw error;
       }
 
@@ -269,8 +208,7 @@
     }
 
     const promise = (async () => {
-
-      let lastError = null;
+      let lastError;
 
       for (
         let attempt = 0;
@@ -288,12 +226,6 @@
         } catch (error) {
           lastError = error;
 
-          /*
-            A missing historical season is not
-            transient. Do not repeatedly request
-            a confirmed HTTP 404.
-          */
-
           if (error.status === 404) {
             break;
           }
@@ -307,7 +239,6 @@
       }
 
       throw lastError;
-
     })();
 
     pendingRequests.set(key, promise);
@@ -320,19 +251,9 @@
     }
   }
 
-
-  /* ==========================================================
+  /* ============================================================
      05. CSV PARSER
-
-     Handles:
-       Quoted fields
-       Embedded commas
-       Escaped quotation marks
-       CRLF and LF
-       Quoted multiline values
-       UTF-8 BOM
-
-     ========================================================== */
+     ============================================================ */
 
   function parseCSV(text) {
     if (!text) return [];
@@ -343,7 +264,7 @@
     const rows = [];
 
     let row = [];
-    let field = "";
+    let fieldValue = "";
     let quoted = false;
 
     for (
@@ -358,7 +279,7 @@
           quoted &&
           source[i + 1] === '"'
         ) {
-          field += '"';
+          fieldValue += '"';
           i++;
         } else {
           quoted = !quoted;
@@ -367,12 +288,9 @@
         continue;
       }
 
-      if (
-        char === "," &&
-        !quoted
-      ) {
-        row.push(field);
-        field = "";
+      if (char === "," && !quoted) {
+        row.push(fieldValue);
+        fieldValue = "";
         continue;
       }
 
@@ -387,59 +305,57 @@
           i++;
         }
 
-        row.push(field);
+        row.push(fieldValue);
 
         if (
-          row.some(value =>
-            String(value).trim() !== ""
+          row.some(
+            value => value.trim() !== ""
           )
         ) {
           rows.push(row);
         }
 
         row = [];
-        field = "";
-
+        fieldValue = "";
         continue;
       }
 
-      field += char;
+      fieldValue += char;
     }
 
-    row.push(field);
+    row.push(fieldValue);
 
     if (
-      row.some(value =>
-        String(value).trim() !== ""
+      row.some(
+        value => value.trim() !== ""
       )
     ) {
       rows.push(row);
     }
 
-    if (!rows.length) {
-      return [];
-    }
+    if (!rows.length) return [];
 
     const headers = rows.shift().map(
-      header => String(header).trim()
+      value => value.trim()
     );
 
     return rows.map(values => {
       const result = {};
 
-      headers.forEach((header, index) => {
-        result[header] =
-          values[index] ?? "";
-      });
+      headers.forEach(
+        (header, index) => {
+          result[header] =
+            values[index] ?? "";
+        }
+      );
 
       return result;
     });
   }
 
-
-  /* ==========================================================
-     06. FIELD NAME NORMALIZATION
-     ========================================================== */
+  /* ============================================================
+     06. FIELD UTILITIES
+     ============================================================ */
 
   function normalizedFieldName(value) {
     return String(value || "")
@@ -450,45 +366,28 @@
   function field(row, ...names) {
     if (!row) return "";
 
-    /*
-      Try exact names first.
-    */
-
     for (const name of names) {
-      if (
-        Object.prototype.hasOwnProperty.call(
-          row,
-          name
-        )
-      ) {
-        const value = row[name];
+      const value = row[name];
 
-        if (
-          value !== null &&
-          value !== undefined &&
-          String(value).trim() !== ""
-        ) {
-          return value;
-        }
+      if (
+        value !== undefined &&
+        value !== null &&
+        String(value).trim() !== ""
+      ) {
+        return value;
       }
     }
 
-    /*
-      Then match case-insensitively and ignore
-      spaces, underscores and punctuation.
-    */
-
     const lookup = new Map();
 
-    for (const [key, value] of
-      Object.entries(row)
+    for (
+      const [key, value]
+      of Object.entries(row)
     ) {
-      const normalized =
-        normalizedFieldName(key);
-
-      if (!lookup.has(normalized)) {
-        lookup.set(normalized, value);
-      }
+      lookup.set(
+        normalizedFieldName(key),
+        value
+      );
     }
 
     for (const name of names) {
@@ -497,8 +396,8 @@
       );
 
       if (
-        value !== null &&
         value !== undefined &&
+        value !== null &&
         String(value).trim() !== ""
       ) {
         return value;
@@ -508,16 +407,11 @@
     return "";
   }
 
-
-  /* ==========================================================
-     07. NUMBER CONVERSION
-     ========================================================== */
-
   function number(value) {
     if (
       value === null ||
       value === undefined ||
-      value === ""
+      String(value).trim() === ""
     ) {
       return null;
     }
@@ -527,7 +421,6 @@
       .replace(/,/g, "");
 
     if (
-      cleaned === "" ||
       cleaned === "-" ||
       cleaned === "—" ||
       /^n\/a$/i.test(cleaned)
@@ -542,10 +435,9 @@
       : null;
   }
 
-
-  /* ==========================================================
-     08. NAME NORMALIZATION
-     ========================================================== */
+  /* ============================================================
+     07. NAME NORMALIZATION
+     ============================================================ */
 
   function normalizeName(value) {
     return String(value || "")
@@ -564,25 +456,11 @@
       .replace(/\s+/g, " ");
   }
 
+  /* ============================================================
+     08. DATE NORMALIZATION
+     ============================================================ */
 
-  /* ==========================================================
-     09. BIRTHDATE NORMALIZATION
-
-     Supported examples:
-       2007-02-15
-       2007/02/15
-       02/15/2007
-       15/02/2007
-       20070215
-       ISO datetime
-       YYYY-MM-DDT00:00:00
-
-     Ambiguous slash dates use month/day/year
-     unless the first component exceeds 12.
-
-     ========================================================== */
-
-  function validDate(year, month, day) {
+  function validISODate(year, month, day) {
     if (
       year < 1900 ||
       year > 2100 ||
@@ -591,22 +469,18 @@
       day < 1 ||
       day > 31
     ) {
-      return false;
+      return "";
     }
 
     const date = new Date(
       Date.UTC(year, month - 1, day)
     );
 
-    return (
-      date.getUTCFullYear() === year &&
-      date.getUTCMonth() === month - 1 &&
-      date.getUTCDate() === day
-    );
-  }
-
-  function isoDate(year, month, day) {
-    if (!validDate(year, month, day)) {
+    if (
+      date.getUTCFullYear() !== year ||
+      date.getUTCMonth() !== month - 1 ||
+      date.getUTCDate() !== day
+    ) {
       return "";
     }
 
@@ -618,53 +492,35 @@
   }
 
   function normalizeBirth(value) {
-    if (
-      value === null ||
-      value === undefined
-    ) {
-      return "";
-    }
-
-    const input = String(value).trim();
+    const input = String(
+      value ?? ""
+    ).trim();
 
     if (!input) return "";
-
-    /*
-      YYYY-MM-DD, YYYY/MM/DD,
-      or an ISO timestamp.
-    */
 
     let match = input.match(
       /^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/
     );
 
     if (match) {
-      return isoDate(
+      return validISODate(
         Number(match[1]),
         Number(match[2]),
         Number(match[3])
       );
     }
-
-    /*
-      YYYYMMDD
-    */
 
     match = input.match(
       /^(\d{4})(\d{2})(\d{2})$/
     );
 
     if (match) {
-      return isoDate(
+      return validISODate(
         Number(match[1]),
         Number(match[2]),
         Number(match[3])
       );
     }
-
-    /*
-      MM/DD/YYYY or DD/MM/YYYY.
-    */
 
     match = input.match(
       /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/
@@ -673,52 +529,30 @@
     if (match) {
       const first = Number(match[1]);
       const second = Number(match[2]);
-      const year = Number(match[3]);
 
-      const dayFirst = first > 12;
-
-      return isoDate(
-        year,
-        dayFirst ? second : first,
-        dayFirst ? first : second
+      return validISODate(
+        Number(match[3]),
+        first > 12 ? second : first,
+        first > 12 ? first : second
       );
     }
-
-    /*
-      Do not guess unsupported formats.
-      A guessed birthdate can incorrectly
-      merge two different players.
-    */
 
     return "";
   }
 
-
-  /* ==========================================================
-     10. PLAYER ID NORMALIZATION
-     ========================================================== */
+  /* ============================================================
+     09. PLAYER ID AND HEADSHOTS
+     ============================================================ */
 
   function normalizePlayerID(value) {
     const id = String(
       value ?? ""
     ).trim();
 
-    if (!id) return "";
-
-    /*
-      HockeyTech PlayerIDs are numeric.
-      Avoid accepting arbitrary text IDs.
-    */
-
     return /^\d+$/.test(id)
       ? id
       : "";
   }
-
-
-  /* ==========================================================
-     11. HEADSHOT URLS
-     ========================================================== */
 
   function hockeyTechPhoto(playerID) {
     const id = normalizePlayerID(
@@ -728,8 +562,9 @@
     if (!id) return "";
 
     return (
-      "https://assets.leaguestat.com/" +
-      `ohl/240x240/${id}.jpg`
+      "https://assets.leaguestat.com/ohl/240x240/" +
+      id +
+      ".jpg"
     );
   }
 
@@ -750,31 +585,15 @@
     }
 
     if (photo.startsWith("//")) {
-      return `https:${photo}`;
+      return "https:" + photo;
     }
-
-    /*
-      If PhotoURL is missing or malformed,
-      use the numeric PlayerID.
-    */
 
     return hockeyTechPhoto(playerID);
   }
 
-
-  /* ==========================================================
-     12. PLAYER DIRECTORY INDEX
-
-     Three lookup methods:
-
-       PlayerID
-       normalized name + birthdate
-       unique normalized name
-
-     Name-only matching is allowed only
-     when the name is unambiguous.
-
-     ========================================================== */
+  /* ============================================================
+     10. PLAYER DIRECTORY
+     ============================================================ */
 
   let directoryPromise = null;
 
@@ -786,24 +605,12 @@
   };
 
   function nameBirthKey(name, birth) {
-    const normalizedName =
-      normalizeName(name);
+    const normalized = normalizeName(name);
+    const date = normalizeBirth(birth);
 
-    const normalizedDOB =
-      normalizeBirth(birth);
-
-    if (
-      !normalizedName ||
-      !normalizedDOB
-    ) {
-      return "";
-    }
-
-    return (
-      normalizedName +
-      "|" +
-      normalizedDOB
-    );
+    return normalized && date
+      ? normalized + "|" + date
+      : "";
   }
 
   function buildDirectory(rows) {
@@ -812,74 +619,62 @@
     const nameCandidates = new Map();
 
     for (const row of rows) {
-      const name = displayName(
-        field(
-          row,
-          "Name",
-          "PlayerName",
-          "Player",
-          "FullName"
-        )
-      );
-
       const id = normalizePlayerID(
         field(
           row,
           "PlayerID",
           "PlayerId",
-          "player_id",
           "ID"
+        )
+      );
+
+      const name = displayName(
+        field(
+          row,
+          "PlayerName",
+          "Name",
+          "FullName"
         )
       );
 
       const birth = normalizeBirth(
         field(
           row,
-          "BD",
           "BirthDate",
-          "Birthdate",
-          "DateOfBirth",
-          "DOB",
-          "Birth"
+          "BD",
+          "DOB"
         )
       );
 
-      const rawPhoto = field(
+      const position = field(
         row,
-        "PhotoURL",
-        "PhotoUrl",
-        "Photo",
-        "Headshot",
-        "HeadshotURL",
-        "ImageURL"
+        "Position",
+        "Pos"
       );
 
-      if (!name && !id) {
+      const photo = normalizePhoto(
+        field(
+          row,
+          "PhotoURL",
+          "HeadshotURL"
+        ),
+        id
+      );
+
+      if (!id && !name) {
         continue;
       }
 
       const entry = {
-        name,
         id,
+        name,
         birth,
-        photo: normalizePhoto(
-          rawPhoto,
-          id
-        )
+        position,
+        photo
       };
 
       if (id) {
-        const existing = byID.get(id);
-
-        if (
-          !existing ||
-          (
-            !existing.photo &&
-            entry.photo
-          )
-        ) {
-          byID.set(id, entry);
-        }
+        byID.set(id, entry);
       }
 
       const key = nameBirthKey(
@@ -888,26 +683,24 @@
       );
 
       if (key) {
-        const existing =
-          byNameBirth.get(key);
-
-        if (!existing) {
+        if (!byNameBirth.has(key)) {
           byNameBirth.set(
             key,
             entry
           );
-        } else if (
-          existing.id !== entry.id
-        ) {
-          /*
-            Multiple IDs for the same
-            name and birthdate are ambiguous.
-          */
+        } else {
+          const previous =
+            byNameBirth.get(key);
 
-          byNameBirth.set(
-            key,
-            null
-          );
+          if (
+            previous &&
+            previous.id !== id
+          ) {
+            byNameBirth.set(
+              key,
+              null
+            );
+          }
         }
       }
 
@@ -916,7 +709,9 @@
 
       if (normalized) {
         if (
-          !nameCandidates.has(normalized)
+          !nameCandidates.has(
+            normalized
+          )
         ) {
           nameCandidates.set(
             normalized,
@@ -924,16 +719,12 @@
           );
         }
 
-        const candidates =
-          nameCandidates.get(normalized);
-
-        const identity =
-          id || `birth:${birth}`;
-
-        candidates.set(
-          identity,
-          entry
-        );
+        nameCandidates
+          .get(normalized)
+          .set(
+            id || "birth:" + birth,
+            entry
+          );
       }
     }
 
@@ -972,14 +763,19 @@
           directoryURL(),
           {
             ttl: CONFIG.directoryCacheMs,
-            timeout: CONFIG.directoryTimeout,
-            retries: 1
+            timeout: CONFIG.directoryTimeout
           }
         );
 
-        return buildDirectory(
-          parseCSV(text)
-        );
+        const rows = parseCSV(text);
+
+        if (!rows.length) {
+          throw new Error(
+            "Player directory is empty."
+          );
+        }
+
+        return buildDirectory(rows);
 
       } catch (error) {
         console.warn(
@@ -987,22 +783,12 @@
           error
         );
 
-        /*
-          Current statistics must still load
-          even if the headshot directory fails.
-        */
-
         return directoryIndex;
       }
     })();
 
     return directoryPromise;
   }
-
-
-  /* ==========================================================
-     13. RESOLVE PLAYER IDENTITY
-     ========================================================== */
 
   function directoryMatch(
     name,
@@ -1013,16 +799,6 @@
       playerID
     );
 
-    const normalizedDOB =
-      normalizeBirth(birth);
-
-    const normalizedName =
-      normalizeName(name);
-
-    /*
-      1. Direct PlayerID match.
-    */
-
     if (
       id &&
       directoryIndex.byID.has(id)
@@ -1030,45 +806,27 @@
       return directoryIndex.byID.get(id);
     }
 
-    /*
-      2. Name + birthdate match.
-    */
-
-    const combinedKey =
-      nameBirthKey(
-        name,
-        normalizedDOB
-      );
+    const key = nameBirthKey(
+      name,
+      birth
+    );
 
     if (
-      combinedKey &&
-      directoryIndex.byNameBirth.has(
-        combinedKey
-      )
+      key &&
+      directoryIndex.byNameBirth.has(key)
     ) {
-      return (
-        directoryIndex.byNameBirth.get(
-          combinedKey
-        ) || null
-      );
+      return directoryIndex.byNameBirth.get(key);
     }
-
-    /*
-      3. Unique name fallback.
-
-      If the historical record has a DOB,
-      reject a directory candidate whose
-      DOB explicitly conflicts.
-    */
 
     const candidate =
       directoryIndex.byUniqueName.get(
-        normalizedName
+        normalizeName(name)
       );
 
-    if (!candidate) {
-      return null;
-    }
+    if (!candidate) return null;
+
+    const normalizedDOB =
+      normalizeBirth(birth);
 
     if (
       normalizedDOB &&
@@ -1081,46 +839,18 @@
     return candidate;
   }
 
-
-  /* ==========================================================
-     14. STABLE PLAYER KEYS
-
-     Prefer:
-       PlayerID-backed canonical identity
-       name + DOB
-       name-only fallback
-
-     Directory resolution is shared across
-     current and historical records.
-
-     ========================================================== */
-
   function playerKey(
     name,
     birth,
     playerID
   ) {
-    const normalizedName =
-      normalizeName(name);
-
-    const normalizedDOB =
-      normalizeBirth(birth);
-
     const id = normalizePlayerID(
       playerID
     );
 
-    /*
-      Use the directory's canonical name
-      and birthdate when possible.
-
-      This allows older records without IDs
-      to join the current player career.
-    */
-
     const matched = directoryMatch(
       name,
-      normalizedDOB,
+      birth,
       id
     );
 
@@ -1130,45 +860,43 @@
       );
 
     const canonicalBirth =
-      matched?.birth ||
-      normalizedDOB;
+      normalizeBirth(
+        matched?.birth || birth
+      );
 
     if (
       canonicalName &&
       canonicalBirth
     ) {
       return (
-        `person:${canonicalName}|` +
+        "person:" +
+        canonicalName +
+        "|" +
         canonicalBirth
       );
     }
 
     if (matched?.id) {
-      return `playerid:${matched.id}`;
+      return "playerid:" + matched.id;
     }
 
     if (id) {
-      return `playerid:${id}`;
+      return "playerid:" + id;
     }
 
-    /*
-      A name-only key is a last resort.
-      It may not uniquely identify a player.
-    */
-
-    return `name:${normalizedName}`;
+    return "name:" + canonicalName;
   }
 
-
-  /* ==========================================================
-     15. SEASON UTILITIES
-     ========================================================== */
+  /* ============================================================
+     11. SEASON UTILITIES
+     ============================================================ */
 
   function seasonString(endYear) {
     const start = endYear - 1;
 
     return (
-      `${start}-` +
+      start +
+      "-" +
       String(endYear).slice(-2)
     );
   }
@@ -1180,12 +908,20 @@
 
     if (!input) return null;
 
-    /*
-      2026-27
-      2026/27
-    */
-
     let match = input.match(
+      /^(\d{4})\s+Season$/i
+    );
+
+    if (match) {
+      const end = Number(match[1]);
+
+      return {
+        season: seasonString(end),
+        endYear: end
+      };
+    }
+
+    match = input.match(
       /^(\d{4})[-/](\d{2})$/
     );
 
@@ -1207,10 +943,6 @@
       };
     }
 
-    /*
-      2026-2027
-    */
-
     match = input.match(
       /^(\d{4})[-/](\d{4})$/
     );
@@ -1223,11 +955,6 @@
         endYear: end
       };
     }
-
-    /*
-      2027
-      Interpreted as ending year.
-    */
 
     match = input.match(
       /^(\d{4})$/
@@ -1248,134 +975,111 @@
   function inferredCurrentEndYear() {
     const now = new Date();
 
-    /*
-      OHL seasons generally begin in fall.
-
-      July through December:
-        ending year = next calendar year
-
-      January through June:
-        ending year = current calendar year
-    */
-
-    return (
-      now.getUTCMonth() >= 6
-        ? now.getUTCFullYear() + 1
-        : now.getUTCFullYear()
-    );
+    return now.getUTCMonth() >= 6
+      ? now.getUTCFullYear() + 1
+      : now.getUTCFullYear();
   }
 
-
-  /* ==========================================================
-     16. TEAM AND POSITION NORMALIZATION
-     ========================================================== */
-
   function normalizeTeam(value) {
-    return String(
-      value ?? ""
-    )
+    return String(value ?? "")
       .trim()
       .replace(/\s+/g, " ");
   }
 
   function normalizePosition(value) {
-    const position = String(
-      value ?? ""
-    )
+    const position = String(value ?? "")
       .trim()
       .toUpperCase();
-
-    if (!position) return "";
 
     const known = {
       "CENTER": "C",
       "CENTRE": "C",
       "LEFT WING": "LW",
-      "LEFT WINGER": "LW",
       "RIGHT WING": "RW",
-      "RIGHT WINGER": "RW",
       "DEFENCE": "D",
       "DEFENSE": "D",
       "DEFENCEMAN": "D",
       "DEFENSEMAN": "D"
     };
 
-    return known[position] ||
-      position;
+    return known[position] || position;
   }
 
+  /* ============================================================
+     12. COMPETITION NORMALIZATION
+     ============================================================ */
 
-  /* ==========================================================
-     17. NORMALIZE STATISTICAL RECORD
+  function normalizeCompetition(value) {
+    const input = String(value ?? "")
+      .trim()
+      .toLowerCase()
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ");
 
-     Public record shape expected by app.js:
+    if (
+      input.includes("playoff") ||
+      input.includes("postseason") ||
+      input.includes("post season")
+    ) {
+      return "playoffs";
+    }
 
-       key
-       id
-       name
-       birth
-       photo
-       position
-       team
-       season
-       endYear
-       source
+    if (
+      input.includes("regular") ||
+      input === "season" ||
+      input === "reg" ||
+      input === "rs"
+    ) {
+      return "regular";
+    }
 
-       gp, g, a, pts
-       ppg, ppa, ppp
-       shg, sha, shpts
-       gwg, eng
-       pim, shots
-       plusMinus
+    return input;
+  }
 
-     ========================================================== */
+  /* ============================================================
+     13. NORMALIZE STATISTICAL RECORD
+     ============================================================ */
 
   function normalizeRecord(
     row,
     {
-      endYear,
+      endYear = null,
       source = "history"
     } = {}
   ) {
     if (!row) return null;
-
-    const name = displayName(
-      field(
-        row,
-        "Name",
-        "PlayerName",
-        "Player",
-        "FullName",
-        "Skater"
-      )
-    );
-
-    if (!name) return null;
 
     const rawID = normalizePlayerID(
       field(
         row,
         "PlayerID",
         "PlayerId",
-        "player_id",
         "ID"
+      )
+    );
+
+    const rawName = displayName(
+      field(
+        row,
+        "PlayerName",
+        "Name",
+        "FullName",
+        "Player",
+        "Skater"
       )
     );
 
     const rawBirth = normalizeBirth(
       field(
         row,
-        "BD",
         "BirthDate",
-        "Birthdate",
-        "DateOfBirth",
-        "DOB",
-        "Birth"
+        "BD",
+        "DOB"
       )
     );
 
     const matched = directoryMatch(
-      name,
+      rawName,
       rawBirth,
       rawID
     );
@@ -1385,23 +1089,24 @@
       matched?.id ||
       "";
 
+    const name =
+      rawName ||
+      matched?.name ||
+      "";
+
+    if (!name) return null;
+
     const birth =
       rawBirth ||
       matched?.birth ||
       "";
 
-    const rawPhoto = field(
-      row,
-      "PhotoURL",
-      "PhotoUrl",
-      "Photo",
-      "Headshot",
-      "HeadshotURL",
-      "ImageURL"
-    );
-
     const photo = normalizePhoto(
-      rawPhoto ||
+      field(
+        row,
+        "PhotoURL",
+        "HeadshotURL"
+      ) ||
       matched?.photo ||
       "",
       id
@@ -1410,6 +1115,7 @@
     const seasonField = parseSeason(
       field(
         row,
+        "HockeySeason",
         "Season",
         "SeasonName",
         "SeasonLabel",
@@ -1422,11 +1128,26 @@
       seasonField?.endYear ||
       inferredCurrentEndYear();
 
+    const competition =
+      normalizeCompetition(
+        field(
+          row,
+          "Competition",
+          "SeasonType",
+          "Type"
+        )
+      ) ||
+      (
+        source === "current"
+          ? "regular"
+          : ""
+      );
+
     const gp = number(
       field(
         row,
-        "GP",
         "GamesPlayed",
+        "GP",
         "Games"
       )
     );
@@ -1434,114 +1155,98 @@
     const g = number(
       field(
         row,
-        "G",
-        "Goals"
+        "Goals",
+        "G"
       )
     );
 
     const a = number(
       field(
         row,
-        "A",
-        "Assists"
+        "Assists",
+        "A"
       )
     );
 
     const rawPoints = number(
       field(
         row,
-        "PTS",
         "Points",
+        "PTS",
         "P"
       )
     );
 
-    const pts =
-      rawPoints !== null
-        ? rawPoints
-        : (
-            g !== null &&
-            a !== null
-              ? g + a
-              : null
-          );
+    const pts = rawPoints !== null
+      ? rawPoints
+      : g !== null && a !== null
+        ? g + a
+        : null;
 
     const ppg = number(
       field(
         row,
-        "PPG",
         "PowerPlayGoals",
-        "PowerplayGoals"
+        "PPG"
       )
     );
 
     const ppa = number(
       field(
         row,
-        "PPA",
         "PowerPlayAssists",
-        "PowerplayAssists"
+        "PPA"
       )
     );
 
     const rawPPP = number(
       field(
         row,
-        "PPP",
         "PowerPlayPoints",
-        "PowerplayPoints"
+        "PPP"
       )
     );
 
-    const ppp =
-      rawPPP !== null
-        ? rawPPP
-        : (
-            ppg !== null &&
-            ppa !== null
-              ? ppg + ppa
-              : null
-          );
+    const ppp = rawPPP !== null
+      ? rawPPP
+      : ppg !== null && ppa !== null
+        ? ppg + ppa
+        : null;
 
     const shg = number(
       field(
         row,
-        "SHG",
+        "ShorthandedGoals",
         "ShortHandedGoals",
-        "ShorthandedGoals"
+        "SHG"
       )
     );
 
     const sha = number(
       field(
         row,
-        "SHA",
+        "ShorthandedAssists",
         "ShortHandedAssists",
-        "ShorthandedAssists"
+        "SHA"
       )
     );
 
     const rawSHPTS = number(
       field(
         row,
-        "SHPTS",
-        "SHP",
+        "ShorthandedPoints",
         "ShortHandedPoints",
-        "ShorthandedPoints"
+        "SHPTS"
       )
     );
 
-    const shpts =
-      rawSHPTS !== null
-        ? rawSHPTS
-        : (
-            shg !== null &&
-            sha !== null
-              ? shg + sha
-              : null
-          );
+    const shpts = rawSHPTS !== null
+      ? rawSHPTS
+      : shg !== null && sha !== null
+        ? shg + sha
+        : null;
 
-    const normalized = {
+    const record = {
       key: playerKey(
         name,
         birth,
@@ -1558,14 +1263,16 @@
           row,
           "Position",
           "Pos"
-        )
+        ) ||
+        matched?.position ||
+        ""
       ),
 
       team: normalizeTeam(
         field(
           row,
-          "Team",
           "TeamName",
+          "Team",
           "Club"
         )
       ),
@@ -1575,8 +1282,8 @@
       ),
 
       endYear: resolvedEndYear,
-
       source,
+      competition,
 
       gp,
       g,
@@ -1604,16 +1311,16 @@
       gwg: number(
         field(
           row,
-          "GWG",
-          "GameWinningGoals"
+          "GameWinningGoals",
+          "GWG"
         )
       ),
 
       eng: number(
         field(
           row,
-          "ENG",
-          "EmptyNetGoals"
+          "EmptyNetGoals",
+          "ENG"
         )
       ),
 
@@ -1635,13 +1342,8 @@
       )
     };
 
-    /*
-      Preserve the raw source row for
-      future debugging and data extensions.
-    */
-
     Object.defineProperty(
-      normalized,
+      record,
       "_raw",
       {
         value: row,
@@ -1649,49 +1351,176 @@
       }
     );
 
-    return normalized;
+    return record;
   }
-
-
-  /* ==========================================================
-     18. NORMALIZE COMPLETE DATASET
-     ========================================================== */
 
   function normalizeRows(
     rows,
-    options
+    options = {}
   ) {
     const output = [];
 
     for (const row of rows) {
-      const normalized =
-        normalizeRecord(
-          row,
-          options
-        );
+      const record = normalizeRecord(
+        row,
+        options
+      );
 
-      if (normalized) {
-        output.push(normalized);
+      if (record) {
+        output.push(record);
       }
     }
 
     return output;
   }
 
+  /* ============================================================
+     14. RECORD RECONCILIATION
+     ============================================================ */
 
-  /* ==========================================================
-     19. CURRENT-SEASON DATA LOADING
+  const STAT_FIELDS = [
+    "gp",
+    "g",
+    "a",
+    "pts",
+    "plusMinus",
+    "ppg",
+    "ppa",
+    "ppp",
+    "shg",
+    "sha",
+    "shpts",
+    "gwg",
+    "eng",
+    "pim",
+    "shots"
+  ];
 
-     Performance priorities:
+  function hasStatistics(record) {
+    return STAT_FIELDS.some(
+      key => record[key] !== null
+    );
+  }
 
-       1. Begin skater CSV download immediately.
-       2. Begin player directory concurrently.
-       3. Share both requests across callers.
-       4. Avoid downloading historical CSVs
-          before current-season data is ready.
-       5. Return normalized records to app.js.
+  function completeness(record) {
+    return STAT_FIELDS.reduce(
+      (score, key) =>
+        score + (
+          record[key] !== null ? 1 : 0
+        ),
+      0
+    );
+  }
 
-     ========================================================== */
+  function recordIdentity(record) {
+    return [
+      record.key,
+      record.season,
+      record.competition,
+      normalizeName(record.team)
+    ].join("|");
+  }
+
+  function statisticalGroup(record) {
+    return [
+      record.key,
+      record.season,
+      record.competition
+    ].join("|");
+  }
+
+  function chooseRecord(previous, incoming) {
+    if (!previous) return incoming;
+
+    const oldScore =
+      completeness(previous);
+
+    const newScore =
+      completeness(incoming);
+
+    if (newScore > oldScore) {
+      return incoming;
+    }
+
+    if (oldScore > newScore) {
+      return previous;
+    }
+
+    if (
+      incoming.source === "current" &&
+      previous.source !== "current"
+    ) {
+      return incoming;
+    }
+
+    return previous;
+  }
+
+  function reconcileRecords(records) {
+    const merged = new Map();
+
+    for (const record of records) {
+      if (
+        !record ||
+        !record.key ||
+        !record.season ||
+        !["regular", "playoffs"].includes(
+          record.competition
+        )
+      ) {
+        continue;
+      }
+
+      const key = recordIdentity(
+        record
+      );
+
+      merged.set(
+        key,
+        chooseRecord(
+          merged.get(key),
+          record
+        )
+      );
+    }
+
+    let output = [...merged.values()];
+
+    const populatedGroups = new Set(
+      output
+        .filter(hasStatistics)
+        .map(statisticalGroup)
+    );
+
+    output = output.filter(record => {
+      if (hasStatistics(record)) {
+        return true;
+      }
+
+      return !populatedGroups.has(
+        statisticalGroup(record)
+      );
+    });
+
+    output = output.filter(
+      hasStatistics
+    );
+
+    output.sort(
+      (a, b) =>
+        a.endYear - b.endYear ||
+        a.name.localeCompare(b.name) ||
+        a.competition.localeCompare(
+          b.competition
+        )
+    );
+
+    return output;
+  }
+
+  /* ============================================================
+     15. CURRENT SEASON LOADER
+     ============================================================ */
 
   let currentPromise = null;
 
@@ -1701,783 +1530,636 @@
     }
 
     currentPromise = (async () => {
+      const started = performance.now();
 
-      const started =
-        performance.now();
-
-      /*
-        Start both requests concurrently.
-      */
-
-      const skatersPromise = fetchText(
+      const skatersTask = fetchText(
         currentURL(),
         {
           ttl: CONFIG.currentCacheMs,
-          timeout: CONFIG.currentTimeout,
-          retries: 1
+          timeout: CONFIG.currentTimeout
         }
       );
 
       const directoryTask =
         loadDirectory();
 
-      /*
-        Current statistics are required.
-        Directory enrichment is optional.
-      */
+      const text = await skatersTask;
+      const rows = parseCSV(text);
 
-      const text =
-        await skatersPromise;
-
-      const rawRows =
-        parseCSV(text);
-
-      if (!rawRows.length) {
+      if (!rows.length) {
         throw new Error(
-          "Current OHL skater CSV is empty."
+          "IceIndex current skater CSV is empty."
         );
       }
 
-      /*
-        Directory loading has a separate,
-        bounded timeout. Waiting for it allows
-        stable PlayerID, DOB and photo matching.
-      */
-
       await directoryTask;
 
-      const csvSeason =
-        rawRows
-          .map(row =>
-            parseSeason(
-              field(
-                row,
-                "Season",
-                "SeasonName",
-                "SeasonLabel",
-                "Year"
-              )
+      const detectedSeason = rows
+        .map(row =>
+          parseSeason(
+            field(
+              row,
+              "HockeySeason",
+              "Season",
+              "SeasonName",
+              "Year"
             )
           )
-          .find(Boolean);
+        )
+        .find(Boolean);
 
       const endYear =
-        csvSeason?.endYear ||
+        detectedSeason?.endYear ||
         inferredCurrentEndYear();
 
       const records = normalizeRows(
-        rawRows,
+        rows,
         {
           endYear,
           source: "current"
         }
+      ).map(record => ({
+        ...record,
+        competition: "regular"
+      }));
+
+      if (!records.length) {
+        throw new Error(
+          "IceIndex could not normalize current skater records."
+        );
+      }
+
+      const cleanedRecords =
+        reconcileRecords(records);
+
+      const elapsedMs = Math.round(
+        performance.now() - started
       );
 
-      const elapsed =
-        Math.round(
-          performance.now() - started
-        );
-
       console.info(
-        `IceIndex: loaded ${records.length} ` +
-        `current skaters in ${elapsed} ms.`
+        "IceIndex: loaded " +
+        cleanedRecords.length +
+        " current skaters in " +
+        elapsedMs +
+        " ms."
       );
 
       return {
-        season: seasonString(
-          endYear
-        ),
-
+        season: seasonString(endYear),
         endYear,
-        records,
-
+        records: cleanedRecords,
         directoryCount:
           directoryIndex.count,
-
-        elapsedMs:
-          elapsed,
-
-        source:
-          currentURL()
+        elapsedMs,
+        source: currentURL(),
+        competition: "regular"
       };
-
     })();
 
     try {
       return await currentPromise;
 
     } catch (error) {
-      /*
-        Allow the application to retry
-        after a transient loading failure.
-      */
-
       currentPromise = null;
-
       throw error;
     }
   }
 
-
-  /* ==========================================================
-     20. HISTORICAL SEASON RANGE
-
-     Historical directory naming:
-
-       1997-season/skaters.csv
-       1998-season/skaters.csv
-       ...
-       2026-season/skaters.csv
-
-     Do not include the current season here.
-     That avoids duplicate current-year rows.
-
-     ========================================================== */
-
-  function historicalYears() {
-    const current =
-      inferredCurrentEndYear();
-
-    const finalYear =
-      CONFIG.historicalEndYear ||
-      current - 1;
-
-    const years = [];
-
-    for (
-      let year =
-        CONFIG.historicalStartYear;
-      year <= finalYear;
-      year++
-    ) {
-      years.push(year);
-    }
-
-    return years;
-  }
-
-
-  /* ==========================================================
-     21. LOAD ONE HISTORICAL SEASON
-     ========================================================== */
-
-  async function loadHistoricalSeason(
-    endYear
-  ) {
-    const url =
-      historicalURL(endYear);
-
-    const text = await fetchText(
-      url,
-      {
-        ttl: CONFIG.historyCacheMs,
-        timeout: CONFIG.historyTimeout,
-        retries: 1
-      }
-    );
-
-    const rows =
-      parseCSV(text);
-
-    if (!rows.length) {
-      throw new Error(
-        `Historical season ${endYear} is empty.`
-      );
-    }
-
-    return normalizeRows(
-      rows,
-      {
-        endYear,
-        source: "history"
-      }
-    );
-  }
-
-
-  /* ==========================================================
-     22. ARCHIVE PROGRESS CALLBACK
-     ========================================================== */
-
-  function emitProgress(
-    callback,
-    state
-  ) {
-    if (
-      typeof callback !== "function"
-    ) {
-      return;
-    }
-
-    try {
-      callback({
-        total: state.total,
-        completed: state.completed,
-        loaded: state.loaded.length,
-        failed: state.failed.length,
-        records: state.records.length
-      });
-
-    } catch (error) {
-      /*
-        A UI callback should never break
-        the underlying data download.
-      */
-
-      console.warn(
-        "IceIndex progress callback error:",
-        error
-      );
-    }
-  }
-
-
-  /* ==========================================================
-     23. OPTIONAL PREBUILT ARCHIVE
-
-     Supported JSON formats:
-
-     A. Array of normalized or raw rows.
-
-     B. Object:
-          {
-            "records": [...],
-            "loaded": [1998, 1999],
-            "failed": []
-          }
-
-     C. Object:
-          {
-            "seasons": {
-              "1998": [...],
-              "1999": [...]
-            }
-          }
-
-     This archive is optional.
-
-     If unavailable, the loader falls back
-     to individual historical CSV files.
-
-     ========================================================== */
-
-  function normalizeArchiveJSON(
-    payload
-  ) {
-    if (!payload) {
-      return null;
-    }
-
-    const records = [];
-    const loaded = [];
-    const failed = [];
-
-    if (Array.isArray(payload)) {
-      for (const row of payload) {
-        const season = parseSeason(
-          field(
-            row,
-            "Season",
-            "season",
-            "Year",
-            "endYear"
-          )
-        );
-
-        const endYear =
-          Number(row.endYear) ||
-          season?.endYear;
-
-        if (!endYear) continue;
-
-        const normalized =
-          normalizeRecord(
-            row,
-            {
-              endYear,
-              source: "history"
-            }
-          );
-
-        if (normalized) {
-          records.push(normalized);
-        }
-
-        loaded.push(endYear);
-      }
-
-    } else if (
-      Array.isArray(payload.records)
-    ) {
-      for (const row of payload.records) {
-        const season = parseSeason(
-          field(
-            row,
-            "Season",
-            "season",
-            "Year",
-            "endYear"
-          )
-        );
-
-        const endYear =
-          Number(row.endYear) ||
-          season?.endYear;
-
-        if (!endYear) continue;
-
-        const normalized =
-          normalizeRecord(
-            row,
-            {
-              endYear,
-              source: "history"
-            }
-          );
-
-        if (normalized) {
-          records.push(normalized);
-        }
-      }
-
-      if (
-        Array.isArray(payload.loaded)
-      ) {
-        loaded.push(
-          ...payload.loaded
-        );
-      }
-
-      if (
-        Array.isArray(payload.failed)
-      ) {
-        failed.push(
-          ...payload.failed
-        );
-      }
-
-    } else if (
-      payload.seasons &&
-      typeof payload.seasons === "object"
-    ) {
-      for (
-        const [year, rows]
-        of Object.entries(
-          payload.seasons
-        )
-      ) {
-        const endYear =
-          Number(year);
-
-        if (
-          !Number.isInteger(endYear) ||
-          !Array.isArray(rows)
-        ) {
-          continue;
-        }
-
-        const normalized =
-          normalizeRows(
-            rows,
-            {
-              endYear,
-              source: "history"
-            }
-          );
-
-        records.push(
-          ...normalized
-        );
-
-        loaded.push(
-          endYear
-        );
-      }
-
-    } else {
-      return null;
-    }
-
-    if (!records.length) {
-      return null;
-    }
-
-    if (!loaded.length) {
-      loaded.push(
-        ...new Set(
-          records.map(
-            record => record.endYear
-          )
-        )
-      );
-    }
-
-    return {
-      records,
-      loaded: [
-        ...new Set(
-          loaded.map(Number)
-        )
-      ].sort((a, b) => a - b),
-
-      failed,
-
-      source: "archive-json"
-    };
-  }
-
-  async function tryPrebuiltArchive() {
-    const url =
-      archiveURL();
-
-    try {
-      const text = await fetchText(
-        url,
-        {
-          ttl: CONFIG.historyCacheMs,
-          timeout: CONFIG.historyTimeout,
-          retries: 0
-        }
-      );
-
-      const payload =
-        JSON.parse(text);
-
-      return normalizeArchiveJSON(
-        payload
-      );
-
-    } catch (error) {
-      /*
-        Missing archive is expected when
-        the optional build process has
-        not been configured.
-      */
-
-      if (error.status !== 404) {
-        console.info(
-          "IceIndex: prebuilt archive unavailable; " +
-          "using historical CSVs."
-        );
-      }
-
-      return null;
-    }
-  }
-
-
-  /* ==========================================================
-     24. HISTORICAL CSV WORKER POOL
-
-     Limits simultaneous downloads to
-     avoid overwhelming the browser and
-     the GitHub raw-content endpoint.
-
-     ========================================================== */
-
-  async function loadCSVArchive(
-    callback
-  ) {
-    const years =
-      historicalYears();
-
-    const state = {
-      total: years.length,
-      completed: 0,
-      loaded: [],
-      failed: [],
-      records: []
-    };
-
-    let nextIndex = 0;
-
-    emitProgress(
-      callback,
-      state
-    );
-
-    async function worker() {
-      while (true) {
-        const index =
-          nextIndex++;
-
-        if (
-          index >= years.length
-        ) {
-          return;
-        }
-
-        const year =
-          years[index];
-
-        try {
-          const records =
-            await loadHistoricalSeason(
-              year
-            );
-
-          state.records.push(
-            ...records
-          );
-
-          state.loaded.push(
-            year
-          );
-
-        } catch (error) {
-          state.failed.push(
-            {
-              year,
-              reason:
-                error.message ||
-                "Unknown error"
-            }
-          );
-
-          console.warn(
-            `IceIndex: historical season ` +
-            `${year} unavailable.`,
-            error
-          );
-        }
-
-        state.completed++;
-
-        emitProgress(
-          callback,
-          state
-        );
-      }
-    }
-
-    const workerCount =
-      Math.min(
-        CONFIG.historyConcurrency,
-        years.length
-      );
-
-    await Promise.all(
-      Array.from(
-        {
-          length: workerCount
-        },
-        () => worker()
-      )
-    );
-
-    state.records.sort(
-      (a, b) =>
-        a.endYear - b.endYear ||
-        a.name.localeCompare(
-          b.name
-        )
-    );
-
-    state.loaded.sort(
-      (a, b) => a - b
-    );
-
-    state.failed.sort(
-      (a, b) =>
-        a.year - b.year
-    );
-
-    return {
-      records:
-        state.records,
-
-      loaded:
-        state.loaded,
-
-      failed:
-        state.failed,
-
-      source:
-        "historical-csv",
-
-      total:
-        state.total
-    };
-  }
-
-
-  /* ==========================================================
-     25. HISTORICAL ARCHIVE PUBLIC LOADER
-
-     1. Wait for player directory.
-     2. Try prebuilt JSON archive.
-     3. Fall back to historical CSV files.
-     4. Report progress.
-     5. Share a single in-flight request.
-
-     ========================================================== */
+  /* ============================================================
+     16. HISTORICAL DATABASE LOADER
+     ============================================================ */
 
   let historyPromise = null;
+  let allHistoryPromise = null;
 
-  const historyListeners =
-    new Set();
+  const historyListeners = new Set();
 
-  function broadcastHistoryProgress(
-    progress
-  ) {
+  function emitHistoryProgress(status) {
     for (
       const listener
       of historyListeners
     ) {
       try {
-        listener(progress);
+        listener(status);
 
       } catch (error) {
         console.warn(
-          "IceIndex history listener error:",
+          "IceIndex history progress callback error:",
           error
         );
       }
     }
   }
 
+  function historicalYearsFromRecords(records) {
+    return [
+      ...new Set(
+        records.map(
+          record => record.endYear
+        )
+      )
+    ].sort(
+      (a, b) => a - b
+    );
+  }
+
+  /* ============================================================
+     17. ALL HISTORICAL COMPETITIONS
+     ============================================================ */
+
+  async function loadAllOHLHistory() {
+    if (allHistoryPromise) {
+      return allHistoryPromise;
+    }
+
+    allHistoryPromise = (async () => {
+      const started = performance.now();
+
+      await loadDirectory();
+
+      const text = await fetchText(
+        archiveURL(),
+        {
+          ttl: CONFIG.historyCacheMs,
+          timeout: CONFIG.historyTimeout
+        }
+      );
+
+      const rows = parseCSV(text);
+
+      if (!rows.length) {
+        throw new Error(
+          "IceIndex historical player_seasons.csv is empty."
+        );
+      }
+
+      const normalized = [];
+
+      let invalidRecords = 0;
+      let unknownCompetition = 0;
+
+      for (const row of rows) {
+        const season = parseSeason(
+          field(
+            row,
+            "HockeySeason",
+            "Season",
+            "SeasonName",
+            "SeasonLabel",
+            "Year"
+          )
+        );
+
+        if (!season) {
+          invalidRecords++;
+          continue;
+        }
+
+        const competition =
+          normalizeCompetition(
+            field(
+              row,
+              "Competition",
+              "SeasonType",
+              "Type"
+            )
+          );
+
+        if (
+          competition !== "regular" &&
+          competition !== "playoffs"
+        ) {
+          unknownCompetition++;
+          continue;
+        }
+
+        const record = normalizeRecord(
+          row,
+          {
+            endYear: season.endYear,
+            source: "history"
+          }
+        );
+
+        if (!record) {
+          invalidRecords++;
+          continue;
+        }
+
+        record.competition =
+          competition;
+
+        normalized.push(record);
+      }
+
+      const records =
+        reconcileRecords(normalized);
+
+      const regularRecords =
+        records.filter(
+          record =>
+            record.competition ===
+            "regular"
+        );
+
+      const playoffRecords =
+        records.filter(
+          record =>
+            record.competition ===
+            "playoffs"
+        );
+
+      const loaded =
+        historicalYearsFromRecords(
+          records
+        );
+
+      const elapsedMs = Math.round(
+        performance.now() - started
+      );
+
+      const result = {
+        records,
+        regularRecords,
+        playoffRecords,
+
+        loaded,
+        failed: [],
+        total: loaded.length,
+
+        source:
+          "iceindex-processed-csv",
+
+        elapsedMs,
+
+        counts: {
+          regular:
+            regularRecords.length,
+
+          playoffs:
+            playoffRecords.length,
+
+          total:
+            records.length,
+
+          invalid:
+            invalidRecords,
+
+          unknownCompetition
+        }
+      };
+
+      console.info(
+        "IceIndex historical skater data loaded.",
+        {
+          regular:
+            regularRecords.length,
+
+          playoffs:
+            playoffRecords.length,
+
+          seasons:
+            loaded.length,
+
+          invalidRecords,
+          unknownCompetition,
+          elapsedMs
+        }
+      );
+
+      return result;
+    })();
+
+    try {
+      return await allHistoryPromise;
+
+    } catch (error) {
+      allHistoryPromise = null;
+      throw error;
+    }
+  }
+
+  /* ============================================================
+     18. REGULAR-SEASON HISTORY
+     ============================================================ */
+
   async function loadOHLHistory(
-    progressCallback
+    progressCallback,
+    options = {}
   ) {
     if (
-      typeof progressCallback === "function"
+      progressCallback &&
+      typeof progressCallback === "object"
+    ) {
+      options = progressCallback;
+      progressCallback = null;
+    }
+
+    const requested = String(
+      options?.competition || "regular"
+    ).trim().toLowerCase();
+
+    const competition =
+      requested === "all"
+        ? "all"
+        : normalizeCompetition(
+            requested
+          );
+
+    if (
+      ![
+        "regular",
+        "playoffs",
+        "all"
+      ].includes(competition)
+    ) {
+      throw new Error(
+        "Invalid competition: " +
+        requested
+      );
+    }
+
+    if (
+      typeof progressCallback ===
+      "function"
     ) {
       historyListeners.add(
         progressCallback
       );
     }
 
-    if (historyPromise) {
+    if (
+      competition === "regular" &&
+      historyPromise
+    ) {
       return historyPromise;
     }
 
-    historyPromise = (async () => {
+    const task = (async () => {
+      const started = performance.now();
 
-      const started =
-        performance.now();
+      emitHistoryProgress({
+        total: 1,
+        completed: 0,
+        loaded: 0,
+        failed: 0,
+        records: 0
+      });
 
-      await loadDirectory();
+      const all =
+        await loadAllOHLHistory();
 
       /*
-        Prefer a single prebuilt archive.
+        Preserve the existing behavior:
+
+        Current regular-season statistics
+        come from the current CSV.
+
+        Historical regular-season statistics
+        exclude the current season.
+
+        Playoff records remain available
+        independently, including playoffs
+        in the current season.
       */
 
-      const prebuilt =
-        await tryPrebuiltArchive();
+      let records;
 
-      if (prebuilt) {
-        const result = {
-          ...prebuilt,
+      if (competition === "playoffs") {
+        records = all.playoffRecords;
 
-          elapsedMs:
-            Math.round(
-              performance.now() -
-              started
-            )
-        };
+      } else {
+        const current =
+          await loadOHLCurrent();
 
-        broadcastHistoryProgress({
-          total:
-            result.loaded.length,
+        const currentEndYear =
+          current.endYear;
 
-          completed:
-            result.loaded.length,
+        const historicalRegular =
+          all.regularRecords.filter(
+            record =>
+              record.endYear <
+              currentEndYear
+          );
 
-          loaded:
-            result.loaded.length,
+        if (competition === "regular") {
+          records = historicalRegular;
 
-          failed:
-            result.failed.length,
-
-          records:
-            result.records.length
-        });
-
-        console.info(
-          "IceIndex: historical archive loaded " +
-          `from JSON (${result.records.length} records).`
-        );
-
-        return result;
+        } else {
+          records = [
+            ...historicalRegular,
+            ...all.playoffRecords
+          ];
+        }
       }
 
-      /*
-        Fallback:
-        Load the historical CSV collection.
-      */
-
-      const result =
-        await loadCSVArchive(
-          broadcastHistoryProgress
-        );
-
-      result.elapsedMs =
-        Math.round(
-          performance.now() -
-          started
-        );
-
-      console.info(
-        "IceIndex: historical CSV archive loaded.",
-        {
-          records:
-            result.records.length,
-
-          seasons:
-            result.loaded.length,
-
-          failed:
-            result.failed.length,
-
-          elapsedMs:
-            result.elapsedMs
-        }
+      records = reconcileRecords(
+        records
       );
 
-      return result;
+      const loaded =
+        historicalYearsFromRecords(
+          records
+        );
 
+      const elapsedMs = Math.round(
+        performance.now() - started
+      );
+
+      const result = {
+        records,
+        loaded,
+        failed: [],
+        source:
+          "iceindex-processed-csv",
+        total: loaded.length,
+        elapsedMs,
+        competition
+      };
+
+      emitHistoryProgress({
+        total: loaded.length,
+        completed: loaded.length,
+        loaded: loaded.length,
+        failed: 0,
+        records: records.length
+      });
+
+      return result;
     })();
 
+    if (competition === "regular") {
+      historyPromise = task;
+    }
+
     try {
-      return await historyPromise;
+      return await task;
 
     } catch (error) {
-      historyPromise = null;
+      if (competition === "regular") {
+        historyPromise = null;
+      }
 
       throw error;
 
     } finally {
-      /*
-        Avoid retaining page callbacks
-        unnecessarily after completion.
-      */
-
       historyListeners.clear();
     }
   }
 
+  /* ============================================================
+     19. PLAYOFF HISTORY LOADER
+     ============================================================ */
 
-  /* ==========================================================
-     26. PUBLIC DEBUG UTILITIES
+  async function loadOHLPlayoffs(
+    progressCallback
+  ) {
+    return loadOHLHistory(
+      progressCallback,
+      {
+        competition: "playoffs"
+      }
+    );
+  }
 
-     These functions are intentionally
-     exposed for troubleshooting.
+  /* ============================================================
+     20. PLAYER HISTORY HELPERS
+     ============================================================ */
 
-     Example:
-       IceIndexData.inspect()
+  function recordsForPlayer(
+    records,
+    identity
+  ) {
+    const requested = String(
+      identity ?? ""
+    ).trim();
 
-     ========================================================== */
+    if (!requested) return [];
+
+    const normalized =
+      normalizeName(requested);
+
+    return records.filter(
+      record =>
+        record.key === requested ||
+        record.id === requested ||
+        normalizeName(record.name) ===
+          normalized
+    );
+  }
+
+  function sumStat(records, key) {
+    const values = records
+      .map(record => record[key])
+      .filter(
+        value =>
+          value !== null &&
+          value !== undefined
+      );
+
+    if (!values.length) {
+      return null;
+    }
+
+    return values.reduce(
+      (total, value) =>
+        total + value,
+      0
+    );
+  }
+
+  function aggregateStatistics(records) {
+    if (!records.length) return null;
+
+    const latest = [...records].sort(
+      (a, b) =>
+        b.endYear - a.endYear
+    )[0];
+
+    const result = {
+      ...latest,
+
+      season: "career",
+
+      seasons: [
+        ...new Set(
+          records.map(
+            record => record.season
+          )
+        )
+      ],
+
+      teams: [
+        ...new Set(
+          records
+            .map(
+              record => record.team
+            )
+            .filter(Boolean)
+        )
+      ]
+    };
+
+    for (const key of STAT_FIELDS) {
+      result[key] = sumStat(
+        records,
+        key
+      );
+    }
+
+    if (
+      result.pts === null &&
+      result.g !== null &&
+      result.a !== null
+    ) {
+      result.pts =
+        result.g + result.a;
+    }
+
+    if (
+      result.ppp === null &&
+      result.ppg !== null &&
+      result.ppa !== null
+    ) {
+      result.ppp =
+        result.ppg + result.ppa;
+    }
+
+    if (
+      result.shpts === null &&
+      result.shg !== null &&
+      result.sha !== null
+    ) {
+      result.shpts =
+        result.shg + result.sha;
+    }
+
+    result.pointsPerGame =
+      result.gp > 0 &&
+      result.pts !== null
+        ? result.pts / result.gp
+        : null;
+
+    result.goalsPerGame =
+      result.gp > 0 &&
+      result.g !== null
+        ? result.g / result.gp
+        : null;
+
+    return result;
+  }
+
+  /* ============================================================
+     21. DEBUG AND INSPECTION
+     ============================================================ */
 
   function inspect() {
     return {
-      version:
-        "0.2.0",
-
+      version: CONFIG.version,
       repository:
         CONFIG.repository,
 
-      dataBase:
-        DATA_BASE,
+      dataBase: DATA_BASE,
 
       currentURL:
         currentURL(),
@@ -2504,20 +2186,22 @@
         memoryCache.size,
 
       pendingRequests:
-        pendingRequests.size
+        pendingRequests.size,
+
+      currentLoaded:
+        currentPromise !== null,
+
+      historyLoaded:
+        historyPromise !== null,
+
+      allHistoryLoaded:
+        allHistoryPromise !== null
     };
   }
 
-
-  /* ==========================================================
-     27. EXPOSE PUBLIC API
-
-     Required by js/app.js:
-
-       loadOHLCurrent()
-       loadOHLHistory(callback)
-
-     ========================================================== */
+  /* ============================================================
+     22. PUBLIC API
+     ============================================================ */
 
   window.loadOHLCurrent =
     loadOHLCurrent;
@@ -2526,39 +2210,46 @@
     loadOHLHistory;
 
   window.IceIndexData = Object.freeze({
-    version:
-      "0.2.0",
+    version: CONFIG.version,
+    config: CONFIG,
 
-    config:
-      CONFIG,
+    // Existing API
+    loadCurrent: loadOHLCurrent,
+    loadHistory: loadOHLHistory,
+    loadDirectory,
 
-    loadCurrent:
-      loadOHLCurrent,
+    // New playoff API
+    loadPlayoffs: loadOHLPlayoffs,
+    loadAllHistory: loadAllOHLHistory,
 
-    loadHistory:
-      loadOHLHistory,
+    // Player statistics helpers
+    recordsForPlayer,
+    aggregateStatistics,
 
-    loadDirectory:
-      loadDirectory,
-
+    // Parsing and normalization
     parseCSV,
     normalizeRecord,
     normalizeBirth,
     normalizeName,
     normalizePlayerID,
+    normalizeCompetition,
+    parseSeason,
     hockeyTechPhoto,
     playerKey,
     seasonString,
+
+    // Data locations and inspection
     historicalURL,
     inspect
   });
 
   console.info(
-    "IceIndex data engine v0.2.0 ready."
+    "IceIndex independent OHL data engine v0.7.0 ready — regular season and playoffs supported."
   );
 
 })();
 
 /* ============================================================
-   END OF ICEINDEX v0.2.0 ohl-data.js
+   END OF ICEINDEX v0.7.0
+   FILE: js/ohl-data.js
    ============================================================ */

@@ -2328,7 +2328,7 @@ footer {
    28. MOBILE
    ============================================================ */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 
   :root {
     --sidebar-width: 260px;
@@ -3146,3 +3146,479 @@ footer {
 @media (max-width:800px) { .ice-home-hero { grid-template-columns:1fr; min-height:0; padding:32px 25px; } .ice-home-hero-mark { display:none; } .ice-home-copy h1 { font-size:clamp(39px,8vw,57px); } .ice-feature-player { grid-template-columns:130px minmax(0,1fr); gap:18px; } .ice-feature-headshot { width:125px; height:145px; } }
 @media (max-width:600px) { .ice-home-hero { padding:29px 21px; } .ice-home-copy h1 { letter-spacing:-1.8px; } .ice-home-actions .btn { flex:1 1 auto; } .ice-league-grid { grid-template-columns:1fr; } .ice-league-tile { min-height:0; display:grid; grid-template-columns:60px minmax(0,1fr); align-items:center; gap:13px; padding:16px; } .ice-league-monogram { width:60px; height:60px; font-size:20px; grid-row:span 2; } .ice-league-tile .btn,.ice-league-tile .ice-soon { grid-column:2; justify-self:start; } .ice-feature-panel { padding:18px; } .ice-feature-player { grid-template-columns:1fr; gap:15px; } .ice-feature-photo { justify-content:flex-start; } .ice-feature-headshot { width:100px; height:110px; font-size:30px; } .ice-feature-numbers { gap:5px; } .ice-feature-numbers strong { font-size:20px; } .ice-feature-numbers span { font-size:9px; } .ice-feature-empty { align-items:flex-start; } .ice-feature-placeholder { flex-basis:65px; width:65px; height:65px; font-size:30px; } .ice-home-bottom { flex-direction:column; align-items:flex-start; } }
 @media (prefers-reduced-motion:reduce) { .ice-home-hero *, .ice-league-tile * { scroll-behavior:auto; } }
+
+/* ============================================================
+   ICEINDEX v0.7.0 — SIDEBAR / NAVIGATION / STATUS
+   Moved from index.html; cascade order intentionally preserved.
+   ============================================================ */
+
+:root {
+      --ice-bg: #07111d;
+      --ice-surface: #0c1a29;
+      --ice-hover: #14283b;
+      --ice-border: #20364a;
+      --ice-text: #eaf3fb;
+      --ice-muted: #8ba4b9;
+      --ice-blue: #58b8ff;
+      --ice-green: #55d4a3;
+      --ice-amber: #eab95b;
+      --ice-red: #f07878;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar {
+      background: var(--ice-bg);
+    }
+
+    .sidebar-inner {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    /* BRAND */
+
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 18px 16px;
+      border-bottom: 1px solid var(--ice-border);
+    }
+
+    .sidebar-brand .brand-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--ice-blue);
+      color: #07111d;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .sidebar-brand .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -.8px;
+      line-height: 1.1;
+    }
+
+    .sidebar-brand .brand-subtitle {
+      margin-top: 4px;
+      font-size: 9px;
+      letter-spacing: 1px;
+      line-height: 1.4;
+      color: var(--ice-muted);
+    }
+
+    /* LEAGUE SELECTOR */
+
+    .ice-league-section {
+      padding: 12px;
+      border-bottom: 1px solid var(--ice-border);
+    }
+
+    .ice-league-caption {
+      margin-bottom: 8px;
+      padding-left: 3px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.3px;
+      color: #7894aa;
+    }
+
+    .ice-league-picker {
+      width: 100%;
+    }
+
+    .ice-league-picker summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px;
+      border: 1px solid #29475f;
+      border-radius: 10px;
+      background: #102438;
+      color: var(--ice-text);
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .ice-league-picker summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .ice-league-code {
+      display: grid;
+      place-items: center;
+      width: 37px;
+      height: 37px;
+      min-width: 37px;
+      border-radius: 9px;
+      background: #1b405c;
+      color: #8bd0ff;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .ice-league-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ice-league-name {
+      display: block;
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .ice-league-state {
+      display: block;
+      margin-top: 3px;
+      font-size: 10px;
+      color: var(--ice-muted);
+    }
+
+    .ice-league-chevron {
+      flex-shrink: 0;
+      color: var(--ice-muted);
+      transition: transform .2s ease;
+    }
+
+    .ice-league-picker[open] .ice-league-chevron {
+      transform: rotate(180deg);
+    }
+
+    .ice-league-menu {
+      display: grid;
+      gap: 3px;
+      margin-top: 7px;
+      padding: 5px;
+      border: 1px solid var(--ice-border);
+      border-radius: 10px;
+      background: var(--ice-surface);
+    }
+
+    .ice-league-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px;
+      border-radius: 7px;
+      color: var(--ice-text);
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .ice-league-option:hover {
+      background: var(--ice-hover);
+    }
+
+    .ice-league-option small {
+      color: var(--ice-muted);
+      font-size: 10px;
+    }
+
+    .ice-league-option.disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    /* COMPACT NAVIGATION */
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 12px 10px;
+    }
+
+    .sidebar-nav .nav-link,
+    .sidebar-nav .ice-nav-group-button {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      width: 100%;
+      min-height: 42px;
+      margin: 2px 0;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      color: var(--ice-muted);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .18s ease, color .18s ease;
+    }
+
+    .sidebar-nav .nav-link svg,
+    .sidebar-nav .ice-nav-group-button svg {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+    }
+
+    .sidebar-nav .nav-link:hover,
+    .sidebar-nav .ice-nav-group-button:hover {
+      background: var(--ice-hover);
+      color: var(--ice-text);
+    }
+
+    .sidebar-nav .nav-link.active,
+    .sidebar-nav .nav-link[aria-current="page"] {
+      background: #142d43;
+      color: #8bd0ff;
+      box-shadow: inset 3px 0 0 var(--ice-blue);
+    }
+
+    .ice-nav-divider {
+      height: 1px;
+      margin: 10px 7px;
+      background: var(--ice-border);
+    }
+
+    /* EXPANDABLE NAVIGATION */
+
+    .ice-nav-group-button {
+      position: relative;
+    }
+
+    .ice-nav-group-button[aria-expanded="true"] {
+      color: var(--ice-text);
+    }
+
+    .ice-nav-group-button.has-active-child {
+      color: #8bd0ff;
+    }
+
+    .ice-nav-chevron {
+      margin-left: auto;
+      width: 15px !important;
+      height: 15px !important;
+      transition: transform .2s ease;
+    }
+
+    .ice-nav-group-button[aria-expanded="true"]
+    .ice-nav-chevron {
+      transform: rotate(90deg);
+    }
+
+    .ice-nav-submenu {
+      display: none;
+      padding: 2px 0 5px 19px;
+      margin-left: 20px;
+      border-left: 1px solid #29475f;
+    }
+
+    .ice-nav-submenu.open {
+      display: block;
+    }
+
+    .sidebar-nav .ice-nav-submenu .nav-link {
+      min-height: 37px;
+      padding: 8px 10px;
+      font-size: 12px;
+      gap: 9px;
+    }
+
+    .sidebar-nav .ice-nav-submenu .nav-link svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    /* SIDEBAR FOOTER */
+
+    .sidebar-footer {
+      padding: 13px 17px 17px;
+      border-top: 1px solid var(--ice-border);
+      font-size: 11px;
+      color: var(--ice-muted);
+    }
+
+    .ice-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .ice-footer-version {
+      font-size: 11px;
+      font-weight: 700;
+      color: #b7cddd;
+    }
+
+    .ice-footer-github {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      color: var(--ice-muted);
+      text-decoration: none;
+    }
+
+    .ice-footer-github:hover {
+      background: var(--ice-hover);
+      color: var(--ice-blue);
+    }
+
+    /* DATA STATUS: ONE DOT */
+
+    .season-pill,
+    #data-status {
+      display: none !important;
+    }
+
+    .ice-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--ice-border);
+      border-radius: 50%;
+      background: #102438;
+      flex-shrink: 0;
+    }
+
+    .ice-status-dot {
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--ice-amber);
+      box-shadow: 0 0 0 4px rgba(234,185,91,.12);
+    }
+
+    .ice-status[data-state="ready"] .ice-status-dot {
+      background: var(--ice-green);
+      box-shadow: 0 0 0 4px rgba(85,212,163,.12);
+    }
+
+    .ice-status[data-state="error"] .ice-status-dot {
+      background: var(--ice-red);
+      box-shadow: 0 0 0 4px rgba(240,120,120,.12);
+    }
+
+    /* MOBILE */
+
+    .ice-sidebar-close {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-left: auto;
+      border: 1px solid var(--ice-border);
+      border-radius: 9px;
+      background: #142638;
+      color: var(--ice-text);
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .ice-sidebar-close {
+        display: flex;
+      }
+
+      .sidebar-brand {
+        padding: 15px;
+      }
+
+      .sidebar-nav .nav-link,
+      .sidebar-nav .ice-nav-group-button {
+        min-height: 44px;
+        font-size: 14px;
+      }
+
+      .sidebar-nav .ice-nav-submenu .nav-link {
+        min-height: 40px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar-title {
+        font-size: 16px;
+      }
+
+      .topbar-meta {
+        font-size: 10px;
+      }
+
+      .ice-status {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sidebar-nav .nav-link,
+      .sidebar-nav .ice-nav-group-button,
+      .ice-nav-chevron,
+      .ice-league-chevron {
+        transition: none;
+      }
+    }
+    #ice-goalies-menu .nav-link { padding-left: 26px; }
+    #ice-goalies-menu .nav-link span { font-size: inherit; }
+
+/* ============================================================
+   ICEINDEX v0.7.0 — INTRO / NO-SCRIPT UTILITIES
+   ============================================================ */
+.ice-intro-logo { display:grid; place-items:center; width:66px; height:66px; margin:0 auto 20px; border-radius:18px; background:var(--accent); color:#061522; font-size:36px; font-weight:900; }
+.ice-intro-eyebrow { margin-bottom:10px; }
+.ice-intro-tags { display:flex; align-items:center; justify-content:center; gap:7px; flex-wrap:wrap; margin:20px 0; }
+.ice-intro-version { margin-top:20px; color:var(--muted-2); font-size:10px; letter-spacing:.6px; }
+.ice-noscript { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:25px; background:var(--bg); color:var(--text); text-align:center; font-family:Arial,sans-serif; }
+.ice-noscript-inner { max-width:450px; }
+.ice-noscript-title { color:var(--accent); }
+/* Keep sidebar and content in sync at intermediate tablet widths. */
+@media (max-width:900px) { .main-shell,.app-main,.main-area { width:100%; margin-left:0; } #menu-toggle { display:inline-flex; } }
+/* ============================================================
+   ICEINDEX v0.7.0 — OVERVIEW PRODUCTION RANKINGS FIX
+   ============================================================ */
+
+.two-col > .panel {
+  min-width: 0;
+}
+
+.two-col > .panel .tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+.two-col > .panel .bars {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  width: 100%;
+  min-width: 0;
+}
+
+.two-col > .panel .bar-row {
+  width: 100%;
+  min-width: 0;
+}
+
+.two-col > .panel .track {
+  display: block;
+  width: 100%;
+}

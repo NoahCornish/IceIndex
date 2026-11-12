@@ -1,62 +1,276 @@
 
-# Changelog
+# IceIndex Changelog
 
-Notable changes to **IceIndex** are documented here.
+All notable changes to IceIndex are documented in this file.
 
-This changelog establishes **v0.6.0** as the current documented baseline. Earlier releases are not reconstructed without verified release records.
+IceIndex follows a version-based development approach, with each release introducing new functionality, improvements, and maintenance updates.
 
-## [Unreleased]
-
-### Planned for v0.7.0
-
-- Migrate the website's data-loading layer from legacy OHLDataHub paths to IceIndex's own processed OHL datasets.
-- Validate current-season and historical loading against the independent CSV structure.
-- Preserve existing website functionality while verifying player identities, headshots, and competition filters.
-
-> These items are **not included in the v0.6.0 release**. A locally tested replacement JavaScript file does not constitute a published release.
-
-## [0.6.0] — 2026-11-11
-
-### Added
-
-- Centralized R refresh orchestration using `scripts/refresh.R`.
-- OHL collectors for seasons, teams, player rosters, skater statistics, and goalie statistics.
-- Current and historical OHL data storage with collection metadata.
-- Processed skater datasets: player directory, season statistics, career statistics, and team history.
-- Processed goalie datasets: goalie directory, season statistics, career statistics, and team history.
-- Consolidated processing workflow using `scripts/processing/ohl_process_all.R`.
-- Refresh history reporting in `data/ohl/metadata/refresh_log.csv`.
-
-### Improved
-
-- Player and goalie identity validation, duplicate detection, and career-statistic reconciliation.
-- Data-quality reporting that distinguishes critical CSV problems from optional missing values and intentionally empty audit files.
-- Final refresh summary showing collector outcomes, processing results, file changes, and system health.
-
-### Verified
-
-A local refresh on **November 11, 2026** reported:
-
-- **6/6** refresh tasks successful.
-- **0** recorded errors and **0** recorded warnings in the master refresh summary.
-- **162** CSV files inspected and **0** CSV read failures.
-- **0** critical CSV issues.
-- **8,132** skater profiles and **662** goalie profiles.
-- **25,081** processed skater season records and **2,305** processed goalie season records.
-- **10,122** skater career records and **1,037** goalie career records.
-- **516** current-season skater records and **52** current-season goalie records collected.
-
-These figures are a dated local validation snapshot, not permanent dataset totals.
-
-### Known Limitations
-
-- The production website's transition to the independent IceIndex processed-data source is reserved for **v0.7.0**.
-- The goalie processing log indicates that career save percentage was unavailable where the required saves/shots-against inputs were missing; career goals-against average was calculated.
-- The player collector still listed **14 previously tracked historical roster failures**, despite reporting no new failures during the validation run.
-- Some optional source metadata fields are blank; these are not automatically treated as critical data failures.
+The project is currently in active development.
 
 ---
 
-## Versioning
+## [0.7.0] - 2026-11-12
 
-IceIndex uses `MAJOR.MINOR.PATCH` release labels. The project version is **v0.6.0** until the maintainer explicitly publishes a new release. Script maintenance and local experiments do not automatically change the project version.
+### OHL Data Platform and Automation
+
+Version 0.7.0 expands IceIndex into a more complete junior hockey statistics and analytics platform.
+
+This release focuses on OHL player and goaltender data, dashboard functionality, automated data processing, website navigation, and refresh monitoring.
+
+### Added
+
+#### Goaltender Statistics
+
+- Dedicated OHL goaltender database.
+- Goaltender profile pages.
+- Goaltender comparison interface.
+- Goaltender season statistics.
+- Goaltender career statistics.
+- Historical goaltending records.
+- Goaltender data processing integration.
+
+#### Player Features
+
+- Player database navigation.
+- Individual player profiles.
+- Player comparison interface.
+- Draft Year Central navigation.
+- Season and career statistical exploration.
+- Player identification and headshot support where available.
+
+#### Dashboard and Analytics
+
+- OHL overview dashboard.
+- Player production rankings.
+- Featured player presentation.
+- Team exploration.
+- Player analytics navigation.
+- Improved access to statistical tools.
+
+#### Automated Data Refresh
+
+- GitHub Actions data refresh workflow.
+- Automated execution of the master R pipeline.
+- Four targeted daily refresh times:
+  - 3:06 AM Eastern
+  - 12:02 PM Eastern
+  - 6:03 PM Eastern
+  - 10:25 PM Eastern
+- Manual workflow execution.
+- Automated commits of refreshed datasets.
+- Eastern daylight saving time scheduling logic.
+
+#### Refresh Metadata
+
+- Last successful refresh metadata support.
+- Sidebar data timestamp indicator.
+- Eastern Time timestamp formatting.
+- Integration with `last_updated.json`.
+- Timestamp display independent of browser visit time.
+
+#### Data Validation
+
+- Collector execution monitoring.
+- CSV structural validation.
+- Critical identifier checks.
+- Unexpected empty dataset detection.
+- Warning and error reporting.
+- File inventory comparisons.
+- Refresh execution timing.
+- Historical refresh logging.
+
+### Changed
+
+#### Website Interface
+
+- Refined dark navy and ice-blue visual design.
+- Improved sidebar navigation.
+- Compact league selection interface.
+- Expandable player navigation.
+- Expandable goaltender navigation.
+- Expandable analytics navigation.
+- Responsive mobile navigation.
+- Compact sidebar footer.
+- GitHub repository link in the sidebar.
+- Sidebar display of the current application version.
+
+#### Data Engine
+
+- Expanded master refresh orchestration.
+- Integrated skater and goaltender processing.
+- Improved pipeline execution summaries.
+- Improved data quality reporting.
+- Preserved existing collector execution order.
+- Added support for refresh metadata publication.
+
+#### GitHub Actions
+
+- Updated workflow verification paths.
+- Added verification of required OHL collectors.
+- Added verification of the OHL processing script.
+- Added refresh timestamp validation.
+- Preserved automated Git commits.
+- Updated scheduling configuration for multiple daily runs.
+
+### Fixed
+
+- Production Rankings layout issue caused by an unclosed HTML container.
+- Workflow project verification path mismatch.
+- Sidebar timestamp placement and visibility.
+- Separation of website loading status from actual data refresh time.
+
+### Technical Notes
+
+The primary data refresh script remains:
+
+```text
+scripts/refresh.R
+```
+
+The OHL processing script is:
+
+```text
+scripts/processing/ohl_process_all.R
+```
+
+Refresh history is stored at:
+
+```text
+data/ohl/metadata/refresh_log.csv
+```
+
+The latest successful refresh timestamp is stored at:
+
+```text
+data/ohl/metadata/last_updated.json
+```
+
+The website is deployed through GitHub Pages.
+
+Scheduled refresh execution may be delayed by GitHub Actions.
+
+---
+
+## [0.6.0] - Previous Development Release
+
+### Data Engine Foundation
+
+Version 0.6.0 established the central IceIndex data refresh architecture.
+
+### Added
+
+- Master R refresh script.
+- Project preflight verification.
+- Shared configuration initialization.
+- API client initialization.
+- OHL collector registry.
+- Sequential collector execution.
+- Before-and-after data inventories.
+- File change detection.
+- CSV data quality checks.
+- Collector execution timing.
+- Refresh history logging.
+- System health reporting.
+- OHL skater and goaltender processing orchestration.
+
+### Data Collection
+
+Introduced the registered OHL collection pipeline:
+
+- OHL seasons
+- OHL teams
+- OHL players
+- OHL skater statistics
+- OHL goaltender statistics
+
+### Infrastructure
+
+- Independent R data collection system.
+- Organized current and historical data directories.
+- Metadata storage.
+- Refresh logging.
+- GitHub repository integration.
+
+---
+
+## [0.5.0] - Earlier Development
+
+### Platform Foundation
+
+IceIndex developed as an independent hockey data platform with its own repository, website, and data collection architecture.
+
+### Highlights
+
+- Standalone IceIndex project structure.
+- HTML, CSS, and JavaScript website foundation.
+- OHL statistical data integration.
+- R-based collection scripts.
+- Central refresh orchestration.
+- GitHub Pages hosting.
+- Early dashboard and navigation development.
+
+---
+
+## Planned: [0.8.0]
+
+### Player Discovery and Data Exploration
+
+The next development release is expected to focus on usability, statistical exploration, and player discovery.
+
+Potential features include:
+
+- Global player search.
+- Shareable player profile URLs.
+- Sortable statistical tables.
+- CSV exports.
+- Statistical definitions and methodology.
+- Mobile interface improvements.
+- Additional data validation.
+- Historical performance charts.
+- Expanded player discovery tools.
+
+These features are planned and are not part of the completed v0.7.0 release.
+
+---
+
+## Long-Term Roadmap
+
+### Additional Leagues
+
+- Western Hockey League (WHL).
+- Quebec Maritimes Junior Hockey League (QMJHL).
+- Multi-league statistical exploration.
+
+### Advanced Analytics
+
+- Expanded scouting tools.
+- Player development analysis.
+- Historical performance comparisons.
+- Advanced statistical models.
+- Multi-season statistical visualizations.
+
+### Data Infrastructure
+
+- Additional automated collectors.
+- Expanded historical coverage.
+- Enhanced pipeline monitoring.
+- Improved data documentation.
+- Scalable multi-league processing.
+
+---
+
+## Project Information
+
+**Project:** IceIndex
+
+**Current Version:** 0.7.0
+
+**Developer:** Noah Cornish
+
+**Repository:** https://github.com/NoahCornish/IceIndex
+
+**Website:** https://noahcornish.github.io/IceIndex/
+
+---
+
+*Every player. Every league. One index.*

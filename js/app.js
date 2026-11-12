@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.4.0
+   ICEINDEX v0.7.0
    FILE 2 — js/app.js
 
    APPLICATION + PLAYER ANALYTICS
@@ -39,6 +39,11 @@
   const S = {
     current: [],
     history: [],
+    playoffs: [],
+    dbCompetition: "regular",
+    profileCompetition: "regular",
+    compareCompetitionA: "regular",
+    compareCompetitionB: "regular",
     people: [],
     byKey: new Map(),
     archive: null,
@@ -66,6 +71,7 @@
     draftSort: "pts",
 
     overviewMetric: "pts",
+    overviewCompetition: "regular",
 
     analyticsSeason: "current",
     analyticsPosition: "ALL",
@@ -213,7 +219,48 @@
   }
 
   function allRecords() {
-    return [...S.history, ...S.current];
+    return [...S.history, ...S.current].filter(r => competitionOf(r) === "regular");
+  }
+
+  function competitionOf(record) {
+    const raw = String(record?.competition || record?.seasonType || "regular").toLowerCase();
+    return /playoff|post.?season/.test(raw) ? "playoffs" : "regular";
+  }
+
+  function competitionRecords(type = "regular") {
+    return type === "playoffs" ? S.playoffs : allRecords();
+  }
+
+  function uniqueSeasons(rows) {
+    return [...new Set(rows.map(r => r.season).filter(Boolean))].sort().reverse();
+  }
+
+  function resolveRows(rows, type = "regular") {
+    if (type === "regular" && A?.seasonRecords) return A.seasonRecords(rows);
+    const map = new Map();
+    for (const r of rows) {
+      if (!r?.key || !r?.season) continue;
+      const key = [r.key, r.season, competitionOf(r), String(r.team || "").trim().toLowerCase()].join("|");
+      const old = map.get(key);
+      const quality = x => [x.gp,x.g,x.a,x.pts,x.shots].filter(v => v != null).length + (x.team ? 1 : 0);
+      if (!old || quality(r) > quality(old) || (quality(r) === quality(old) && r.source === "current")) map.set(key,r);
+    }
+    return [...map.values()].filter(r => r.gp != null || r.pts != null);
+  }
+
+  function recordsForPlayer(p, type = "regular") {
+    return type === "playoffs" ? (p.playoffSeasons || []) : p.seasons;
+  }
+
+  function careerForPlayer(p, type = "regular") {
+    return type === "playoffs" ? p.playoffCareer : p.career;
+  }
+
+  function competitionSelect(id, value) {
+    return `<select id="${esc(id)}" class="select" aria-label="Competition">
+      ${option("regular", "Regular Season", value)}
+      ${option("playoffs", "Playoffs", value)}
+    </select>`;
   }
 
   function seasonList() {
@@ -301,6 +348,7 @@
      03. PLAYER IDENTITY + SEASON MERGING
      ========================================================== */
 
+
   function mergeData() {
     const raw = allRecords();
 
@@ -337,7 +385,7 @@
 
     const groups = new Map();
 
-    for (const record of seasons) {
+    for (const record of [...seasons, ...resolveRows(S.playoffs, "playoffs")]) {
       if (!groups.has(record.key)) {
         groups.set(record.key, []);
       }
@@ -358,7 +406,6 @@
         .find(Boolean) || "";
 
       const id = [...items]
-
         .reverse()
         .map(r => r.id)
         .find(Boolean) || "";
@@ -373,7 +420,12 @@
         .map(r => r.position)
         .find(Boolean) || "";
 
+      const playoffSeasons = resolveRows(S.playoffs.filter(r => r.key === key), "playoffs")
+        .sort((a,b) => a.endYear - b.endYear);
+
       people.push({
+        playoffSeasons,
+        playoffCareer: aggregate(playoffSeasons),
         key,
         name: latest.name,
         id,
@@ -382,8 +434,8 @@
         position,
         team: latest.team,
         latestYear: latest.endYear,
-        seasons: items,
-        career: aggregate(items)
+        seasons: items.filter(r => competitionOf(r) === "regular"),
+        career: aggregate(items.filter(r => competitionOf(r) === "regular"))
       });
     }
 
@@ -423,12 +475,12 @@
     }
   }
 
-  function selectedRecord(player, season = "career") {
+  function selectedRecord(player, season = "career", type = "regular") {
     if (!player) return null;
-
+    const rows = recordsForPlayer(player, type);
     return season === "career"
-      ? player.career
-      : player.seasons.find(r => r.season === season) || null;
+      ? careerForPlayer(player, type)
+      : rows.find(r => r.season === season) || null;
   }
 
   // Searchable player selector. Keeps the original select event contract.
@@ -452,7 +504,7 @@
     return searchablePlayerSelect(id, selected, S.people);
   }
 
-  function playerSeasonSelect(id, player, selected, career = true) {
+  function playerSeasonSelect(id, player, selected, career = true, type = "regular") {
     if (!player) return "";
 
     return `
@@ -460,7 +512,7 @@
         ${career
           ? option("career", "Complete OHL career", selected)
           : ""}
-        ${player.seasons.map(r =>
+        ${recordsForPlayer(player, type).map(r =>
           option(r.season, r.season, selected)
         ).join("")}
       </select>
@@ -603,7 +655,9 @@
      ========================================================== */
 
   function renderOverview() {
-    const rows = S.current;
+    const rows = S.overviewCompetition === "playoffs"
+      ? resolveRows(S.playoffs, "playoffs").filter(r => r.endYear === currentYear())
+      : S.current;
 
     const leaders = [
       ["POINTS LEADER", "pts"],
@@ -661,7 +715,7 @@
         <h1>The league, by the numbers.</h1>
         <p>
           Current OHL production, historical player development,
-          and advanced player analytics powered by OHLDataHub.
+          and advanced player analytics powered by IceIndex.
         </p>
         <div class="hero-meta">
           <span class="live-dot"></span>
@@ -678,6 +732,7 @@
       <div class="leader-grid">${cards}</div>
 
       <div class="kpi-grid">
+
         <div class="kpi">
           <span>CURRENT SKATERS</span>
           <b>${fmt(rows.length)}</b>
@@ -718,6 +773,8 @@
                   ${label}
                 </button>
               `).join("")}
+            </div>
+            
 
             <div class="bars">
               ${top.map(r => `
@@ -769,11 +826,9 @@
      ========================================================== */
 
   function renderPlayers() {
-    const seasons = seasonList();
-
-    const teams = [...new Set(
-      allRecords().map(r => r.team).filter(Boolean)
-    )].sort();
+    const records = competitionRecords(S.dbCompetition);
+    const seasons = uniqueSeasons(records);
+    const teams = [...new Set(records.map(r => r.team).filter(Boolean))].sort();
 
     main.innerHTML =
       heading(
@@ -791,6 +846,8 @@
             placeholder="Search OHL players…"
             value="${esc(S.query)}"
           >
+
+          ${competitionSelect("db-competition", S.dbCompetition)}
 
           <select id="db-season" class="select">
             ${option("all", "All seasons", S.dbSeason)}
@@ -827,11 +884,10 @@
     const container = document.querySelector("#db-results");
     if (!container) return;
 
-    let rows = allRecords();
-
-    if (A?.seasonRecords) {
-      rows = A.seasonRecords(rows);
-    }
+    let rows = resolveRows(
+      competitionRecords(S.dbCompetition),
+      S.dbCompetition
+    );
 
     const query = S.query.trim().toLowerCase();
 
@@ -854,12 +910,18 @@
     rows = sortBy(rows, S.dbSort);
 
     const pageSize = 100;
-    const pages = Math.max(1, Math.ceil(rows.length / pageSize));
+    const pages = Math.max(
+      1,
+      Math.ceil(rows.length / pageSize)
+    );
 
     S.dbPage = clamp(S.dbPage, 1, pages);
 
     const start = (S.dbPage - 1) * pageSize;
-    const visible = rows.slice(start, start + pageSize);
+    const visible = rows.slice(
+      start,
+      start + pageSize
+    );
 
     container.innerHTML = `
       <div class="results-meta">
@@ -890,6 +952,7 @@
      08. PLAYER PROFILE
      ========================================================== */
 
+
   function renderProfile() {
     const p = person(S.profile);
 
@@ -898,88 +961,175 @@
       return;
     }
 
-    const r = selectedRecord(p, S.profileSeason) || p.career;
+    const competition = S.profileCompetition;
+    const rows = recordsForPlayer(p, competition);
+    const career = careerForPlayer(p, competition);
+
+    const r = selectedRecord(
+      p,
+      S.profileSeason,
+      competition
+    );
 
     const stats = [
-      ["GAMES", r.gp],
-      ["GOALS", r.g],
-      ["ASSISTS", r.a],
-      ["POINTS", r.pts],
+      ["GAMES", r?.gp],
+      ["GOALS", r?.g],
+      ["ASSISTS", r?.a],
+      ["POINTS", r?.pts],
       ["POINTS / GP", valueOf(r, "rate"), 2],
-      ["SHOTS", r.shots],
-      ["POWER-PLAY POINTS", r.ppp],
-      ["PENALTY MINUTES", r.pim]
+      ["SHOTS", r?.shots],
+      ["POWER-PLAY POINTS", r?.ppp],
+      ["PENALTY MINUTES", r?.pim]
     ];
+
+    const competitionLabel = competition === "playoffs"
+      ? "OHL Playoffs"
+      : "OHL Regular Season";
+
+    const seasonLabel = S.profileSeason === "career"
+      ? "Complete Career"
+      : S.profileSeason;
 
     main.innerHTML =
       heading(
         "PLAYER INTELLIGENCE",
         "Player Profile",
-        "Explore individual OHL careers and seasonal production."
+        "Explore individual OHL careers, regular-season production, and playoff performances."
       ) +
       archiveNotice() +
       `
         <div class="controls">
           ${playerSelect("profile-player", p.key)}
+
+          ${competitionSelect(
+            "profile-competition",
+            S.profileCompetition
+          )}
+
           ${playerSeasonSelect(
             "profile-season",
             p,
-            S.profileSeason
+            S.profileSeason,
+            true,
+            competition
           )}
         </div>
 
         <section class="panel">
           <div class="ice-player-header">
             ${image(p, "leader-photo")}
+
             <div>
-              <div class="eyebrow">${esc(p.position || "OHL SKATER")}</div>
+              <div class="eyebrow">
+                ${esc(p.position || "OHL SKATER")}
+              </div>
+
               <h2>${esc(p.name)}</h2>
+
               <p>${esc(p.team || "")}</p>
+
               <small>
-                ${p.birth ? `Born ${esc(p.birth)}` : "Birthdate unavailable"}
+                ${p.birth
+                  ? `Born ${esc(p.birth)}`
+                  : "Birthdate unavailable"}
               </small>
+
+              <div class="ice-scout-tags">
+                <span>${esc(competitionLabel)}</span>
+                <span>${esc(seasonLabel)}</span>
+              </div>
             </div>
+
             ${logo(p.team)}
           </div>
 
-          <div class="kpi-grid">
-            ${stats.map(([label, value, digits]) => `
-              <div class="kpi">
-                <span>${esc(label)}</span>
-                <b>${digits == null ? fmt(value) : dec(value, digits)}</b>
-              </div>
-            `).join("")}
-          </div>
+          ${r ? `
+            <div class="kpi-grid">
+              ${stats.map(([label, value, digits]) => `
+                <div class="kpi">
+                  <span>${esc(label)}</span>
+                  <b>
+                    ${digits == null
+                      ? fmt(value)
+                      : dec(value, digits)}
+                  </b>
+                </div>
+              `).join("")}
+            </div>
+          ` : empty(
+            competition === "playoffs"
+              ? "No playoff statistics are available for this player and season."
+              : "No regular-season statistics are available for this selection."
+          )}
 
           <div class="ice-actions">
-            <button class="btn primary"
-                    data-analyze="${esc(p.key)}">
+            <button
+              class="btn primary"
+              data-analyze="${esc(p.key)}">
               Analyze Player
             </button>
 
-            <button class="btn"
-                    data-compare-player="${esc(p.key)}">
+            <button
+              class="btn"
+              data-compare-player="${esc(p.key)}">
               Compare Player
             </button>
           </div>
         </section>
 
         ${panel(
-          "OHL Career History",
-          table(p.seasons)
+          competition === "playoffs"
+            ? "OHL Playoff Career History"
+            : "OHL Regular-Season Career History",
+          table(rows)
         )}
 
         ${panel(
           "Season Development",
-          developmentChart(p)
+          developmentChart(p, competition)
+        )}
+
+        ${panel(
+          "Career Summary",
+          `
+            <div class="kpi-grid">
+              <div class="kpi">
+                <span>COMPETITION</span>
+                <b>${competition === "playoffs"
+                  ? "Playoffs"
+                  : "Regular"}</b>
+              </div>
+
+              <div class="kpi">
+                <span>SEASONS</span>
+                <b>${fmt(rows.length)}</b>
+              </div>
+
+              <div class="kpi">
+                <span>CAREER GAMES</span>
+                <b>${fmt(career?.gp)}</b>
+              </div>
+
+              <div class="kpi">
+                <span>CAREER POINTS</span>
+                <b>${fmt(career?.pts)}</b>
+              </div>
+            </div>
+          `
         )}
       `;
   }
 
-  function developmentChart(p) {
-    const rows = p.seasons;
+  function developmentChart(p, competition = "regular") {
+    const rows = recordsForPlayer(p, competition);
 
-    if (!rows.length) return empty();
+    if (!rows.length) {
+      return empty(
+        competition === "playoffs"
+          ? "No playoff season history is available."
+          : "No regular-season history is available."
+      );
+    }
 
     const max = Math.max(
       1,
@@ -992,12 +1142,17 @@
           <div class="bar-row">
             <div>
               <span>${esc(r.season)}</span>
-              <b>${dec(valueOf(r, "rate"))} P/GP</b>
+
+              <b>
+                ${dec(valueOf(r, "rate"))} P/GP
+              </b>
             </div>
+
             <span class="track">
               <span style="width:${
                 clamp(
-                  (valueOf(r, "rate") || 0) / max * 100,
+                  (valueOf(r, "rate") || 0) /
+                  max * 100,
                   0,
                   100
                 )
@@ -1022,8 +1177,17 @@
       return;
     }
 
-    const r1 = selectedRecord(p1, S.compareSeasonA);
-    const r2 = selectedRecord(p2, S.compareSeasonB);
+    const r1 = selectedRecord(
+      p1,
+      S.compareSeasonA,
+      S.compareCompetitionA
+    );
+
+    const r2 = selectedRecord(
+      p2,
+      S.compareSeasonB,
+      S.compareCompetitionB
+    );
 
     const metrics = [
       ["Games Played", "gp"],
@@ -1038,32 +1202,57 @@
       ["Penalty Minutes", "pim"]
     ];
 
+    const competitionName = value =>
+      value === "playoffs"
+        ? "Playoffs"
+        : "Regular Season";
+
     main.innerHTML =
       heading(
         "HEAD-TO-HEAD",
         "Player Comparison",
-        "Compare OHL players across careers and individual seasons."
+        "Compare OHL players across regular seasons, playoffs, and complete careers."
       ) +
       `
         <div class="two-col">
           ${panel(
             "Player One",
-            playerSelect("compare-a", p1.key) +
-            playerSeasonSelect(
-              "compare-season-a",
-              p1,
-              S.compareSeasonA
-            )
+            `
+              ${playerSelect("compare-a", p1.key)}
+
+              ${competitionSelect(
+                "compare-competition-a",
+                S.compareCompetitionA
+              )}
+
+              ${playerSeasonSelect(
+                "compare-season-a",
+                p1,
+                S.compareSeasonA,
+                true,
+                S.compareCompetitionA
+              )}
+            `
           )}
 
           ${panel(
             "Player Two",
-            playerSelect("compare-b", p2.key) +
-            playerSeasonSelect(
-              "compare-season-b",
-              p2,
-              S.compareSeasonB
-            )
+            `
+              ${playerSelect("compare-b", p2.key)}
+
+              ${competitionSelect(
+                "compare-competition-b",
+                S.compareCompetitionB
+              )}
+
+              ${playerSeasonSelect(
+                "compare-season-b",
+                p2,
+                S.compareSeasonB,
+                true,
+                S.compareCompetitionB
+              )}
+            `
           )}
         </div>
 
@@ -1071,27 +1260,77 @@
           "Statistical Comparison",
           `
             <div class="ice-compare-head">
-              <div>${image(p1)} <strong>${esc(p1.name)}</strong></div>
+              <div>
+                ${image(p1)}
+                <strong>${esc(p1.name)}</strong>
+                <small>
+                  ${esc(competitionName(S.compareCompetitionA))}
+                  · ${esc(
+                    S.compareSeasonA === "career"
+                      ? "Career"
+                      : S.compareSeasonA
+                  )}
+                </small>
+              </div>
+
               <span>VS</span>
-              <div>${image(p2)} <strong>${esc(p2.name)}</strong></div>
+
+              <div>
+                ${image(p2)}
+                <strong>${esc(p2.name)}</strong>
+                <small>
+                  ${esc(competitionName(S.compareCompetitionB))}
+                  · ${esc(
+                    S.compareSeasonB === "career"
+                      ? "Career"
+                      : S.compareSeasonB
+                  )}
+                </small>
+              </div>
             </div>
+
+            ${!r1 || !r2 ? `
+              <div class="notice">
+                ${!r1 && !r2
+                  ? "Neither player has statistics for the selected competitions."
+                  : !r1
+                    ? `${esc(p1.name)} has no statistics for the selected competition.`
+                    : `${esc(p2.name)} has no statistics for the selected competition.`}
+              </div>
+            ` : ""}
 
             <div class="ice-compare-table">
               ${metrics.map(([label, metric]) => {
-
                 const a = valueOf(r1, metric);
                 const b = valueOf(r2, metric);
 
-                const digits = metric.endsWith("Rate") ||
-                  metric === "rate" ? 3 : 0;
+                const digits =
+                  metric.endsWith("Rate") ||
+                  metric === "rate"
+                    ? 3
+                    : 0;
 
                 return `
                   <div class="ice-compare-row">
-                    <strong class="${a != null && b != null && a > b ? "ice-win" : ""}">
+                    <strong class="${
+                      a != null &&
+                      b != null &&
+                      a > b
+                        ? "ice-win"
+                        : ""
+                    }">
                       ${dec(a, digits)}
                     </strong>
+
                     <span>${esc(label)}</span>
-                    <strong class="${a != null && b != null && b > a ? "ice-win" : ""}">
+
+                    <strong class="${
+                      a != null &&
+                      b != null &&
+                      b > a
+                        ? "ice-win"
+                        : ""
+                    }">
                       ${dec(b, digits)}
                     </strong>
                   </div>
@@ -1100,7 +1339,9 @@
             </div>
 
             <div class="ice-actions">
-              <button class="btn primary" data-go="analytics">
+              <button
+                class="btn primary"
+                data-go="analytics">
                 Advanced Radar Comparison
               </button>
             </div>
@@ -1112,6 +1353,7 @@
   /* ==========================================================
      10. DRAFT YEAR CENTRAL
      ========================================================== */
+
 
   function renderDraft() {
     if (!A) {
@@ -1133,8 +1375,10 @@
     )].sort((a, b) => b - a);
 
     if (S.draftYear === null) {
-      S.draftYear = years.find(y => y <= new Date().getFullYear()) ||
-        years[0] || null;
+      S.draftYear =
+        years.find(y => y <= new Date().getFullYear()) ||
+        years[0] ||
+        null;
     }
 
     let rows = withDraft.filter(
@@ -1145,7 +1389,9 @@
 
     if (query) {
       rows = rows.filter(r =>
-        `${r.name} ${r.team}`.toLowerCase().includes(query)
+        `${r.name} ${r.team}`
+          .toLowerCase()
+          .includes(query)
       );
     }
 
@@ -1167,15 +1413,21 @@
         <div class="controls">
           <select id="draft-year" class="select">
             ${years.map(y =>
-              option(y, `${y} NHL Draft Class`, S.draftYear)
+              option(
+                y,
+                `${y} NHL Draft Class`,
+                S.draftYear
+              )
             ).join("")}
           </select>
 
-          <input id="draft-search"
-                 class="input"
-                 type="search"
-                 value="${esc(S.draftQuery)}"
-                 placeholder="Search draft class…">
+          <input
+            id="draft-search"
+            class="input"
+            type="search"
+            value="${esc(S.draftQuery)}"
+            placeholder="Search draft class…"
+          >
 
           <select id="draft-sort" class="select">
             ${[
@@ -1218,12 +1470,19 @@
             );
 
             return `
-              <button class="ice-team-card"
-                      data-team="${esc(name)}">
+              <button
+                class="ice-team-card"
+                data-team="${esc(name)}">
+
                 ${logo(name)}
+
                 <strong>${esc(name)}</strong>
+
                 <span>${esc(code)}</span>
-                <small>${fmt(players.length)} skater records</small>
+
+                <small>
+                  ${fmt(players.length)} skater records
+                </small>
               </button>
             `;
           }).join("")}
@@ -1235,18 +1494,33 @@
      12. ANALYTICS DATA HELPERS
      ========================================================== */
 
+  /*
+    Analytics currently operate on regular-season
+    statistics only.
+
+    Playoff statistics are maintained separately
+    through S.playoffs and must not enter the
+    regular-season analytics cohort.
+
+    This prevents postseason records from being
+    mixed into regular-season percentile rankings.
+  */
+
   function analyticsRecords() {
     if (!A) return [];
 
     const rows = A.seasonRecords(allRecords());
 
     if (S.analyticsSeason === "current") {
-      return rows.filter(r => r.endYear === currentYear());
+      return rows.filter(
+        r => r.endYear === currentYear()
+      );
     }
 
     if (S.analyticsSeason !== "all") {
       return rows.filter(
-        r => r.endYear === Number(S.analyticsSeason)
+        r =>
+          r.endYear === Number(S.analyticsSeason)
       );
     }
 
@@ -1261,8 +1535,10 @@
 
     if (S.analyticsSeason === "current") {
       options.season = currentYear();
+
     } else if (S.analyticsSeason !== "all") {
-      options.season = Number(S.analyticsSeason);
+      options.season =
+        Number(S.analyticsSeason);
     }
 
     if (S.analyticsAge !== "all") {
@@ -1274,6 +1550,8 @@
   }
 
   function analyticsCohort() {
+    if (!A) return [];
+
     return A.buildCohort(
       analyticsRecords(),
       analyticsOptions()
@@ -1306,6 +1584,8 @@
   }
 
   function analyticsMetricOptions(selected) {
+    if (!A) return "";
+
     const allowed = [
       "pointsPerGame",
       "goalsPerGame",
@@ -1317,7 +1597,10 @@
       "goalShare",
       "pimPerGame",
       "plusMinusPerGame",
-      "gp", "g", "a", "pts"
+      "gp",
+      "g",
+      "a",
+      "pts"
     ];
 
     return allowed.map(key =>
@@ -1332,14 +1615,20 @@
   function analyticsPlayerOptions(selected) {
     const rows = analyticsCohort();
 
-    const keys = new Set(rows.map(r => r.key));
+    const keys = new Set(
+      rows.map(r => r.key)
+    );
 
     const available = S.people.filter(p =>
       keys.has(p.key)
     );
 
     return available.map(p =>
-      option(p.key, p.name, selected)
+      option(
+        p.key,
+        p.name,
+        selected
+      )
     ).join("");
   }
 
@@ -1352,12 +1641,17 @@
       return;
     }
 
-    if (!cohort.some(r => r.key === S.analyticsPlayer)) {
-      S.analyticsPlayer = sortBy(cohort, "pts")[0].key;
+    if (!cohort.some(
+      r => r.key === S.analyticsPlayer
+    )) {
+      S.analyticsPlayer =
+        sortBy(cohort, "pts")[0].key;
     }
 
     if (
-      !cohort.some(r => r.key === S.analyticsCompare) ||
+      !cohort.some(
+        r => r.key === S.analyticsCompare
+      ) ||
       S.analyticsCompare === S.analyticsPlayer
     ) {
       S.analyticsCompare = cohort.find(
@@ -1374,7 +1668,9 @@
     if (!result) {
       return `
         <div class="ice-percentile-row">
-          <span>Insufficient comparable data</span>
+          <span>
+            Insufficient comparable data
+          </span>
         </div>
       `;
     }
@@ -1385,20 +1681,32 @@
 
     return `
       <div class="ice-percentile-row">
+
         <div class="ice-percentile-top">
           <span>${esc(result.label)}</span>
-          <strong>${dec(value, 1)}th</strong>
+
+          <strong>
+            ${dec(value, 1)}th
+          </strong>
         </div>
 
         <div class="ice-percentile-track">
-          <div class="ice-percentile-fill"
-               style="width:${width}%"></div>
+          <div
+            class="ice-percentile-fill"
+            style="width:${width}%">
+          </div>
         </div>
 
         <div class="ice-percentile-meta">
-          <span>${dec(result.value, 2)}</span>
-          <span>n = ${fmt(result.sampleSize)}</span>
+          <span>
+            ${dec(result.value, 2)}
+          </span>
+
+          <span>
+            n = ${fmt(result.sampleSize)}
+          </span>
         </div>
+
       </div>
     `;
   }
@@ -1406,6 +1714,7 @@
   /* ==========================================================
      14. ANALYTICS PLAYER CARD
      ========================================================== */
+
 
   function renderAnalyticsCard(record, cohort) {
     if (!record) {
@@ -1782,6 +2091,7 @@
      17. PLAYER ANALYTICS PAGE
      ========================================================== */
 
+
   function renderAnalytics() {
     if (!A) {
       main.innerHTML = `
@@ -2119,7 +2429,7 @@
     ctx.strokeStyle="#29475f";ctx.beginPath();ctx.moveTo(64,1195);ctx.lineTo(936,1195);ctx.stroke();
     ctx.fillStyle="#8eaabe";ctx.font="18px Arial";
     ctx.fillText(`Compared with ${cohort.length} eligible season records`,64,1233);
-    ctx.textAlign="right";ctx.fillText("ICEINDEX · OHLDataHub",936,1233);ctx.textAlign="left";
+    ctx.textAlign="right";ctx.fillText("ICEINDEX · OHL",936,1233);ctx.textAlign="left";
     try {
       const blob = await new Promise(resolve => canvas.toBlob(resolve,"image/png"));
       if (!blob) throw new Error("PNG encoding failed");
@@ -2138,6 +2448,7 @@
      ICEINDEX PLATFORM HOME — v0.4.0
      Generic landing page, independent of OHL data availability.
      ========================================================== */
+
 
   const ICEINDEX_LEAGUES = Object.freeze([
     { id: "ohl", short: "OHL", name: "Ontario Hockey League", active: true },
@@ -2160,20 +2471,22 @@
     `).join("");
   }
 
-
   function featuredPlayer() {
     const eligible = S.current.filter(row => Number(row.gp) > 0 && Number.isFinite(Number(row.pts)));
     const leader = sortBy(eligible, "pts")[0];
+
     if (!leader) {
       return `<div class="ice-feature-empty">
         <div class="ice-feature-placeholder" aria-hidden="true">★</div>
-        <div><span class="eyebrow">FEATURED PLAYER</span>
+        <div>
+          <span class="eyebrow">FEATURED PLAYER</span>
           <h3>Top performers, coming into focus.</h3>
-          <p>${S.loading ? "Loading the latest OHL scoring leaders…" : "Current player statistics are temporarily unavailable. The league dashboard is still accessible."}</p>
+          <p>${S.loading ? "Loading the latest OHL scoring leaders…" : "Current player statistics are temporarily unavailable."}</p>
           <a href="#overview" data-page="overview" class="btn secondary">Visit OHL Dashboard</a>
         </div>
       </div>`;
     }
+
     return `<div class="ice-feature-player">
       <div class="ice-feature-photo">${image(leader, "ice-feature-headshot")}</div>
       <div class="ice-feature-details">
@@ -2186,7 +2499,7 @@
           <div><strong>${fmt(leader.a)}</strong><span>Assists</span></div>
           <div><strong>${fmt(leader.pts)}</strong><span>Points</span></div>
         </div>
-        <a class="btn secondary" href="#profile" data-person="${esc(leader.key)}">View Player Profile <span aria-hidden="true">→</span></a>
+        <a class="btn secondary" href="#profile" data-person="${esc(leader.key)}">View Player Profile →</a>
       </div>
     </div>`;
   }
@@ -2199,25 +2512,56 @@
           <h1 id="ice-home-title">Every player.<br>Every league.<br><em>One index.</em></h1>
           <p>Discover standout talent, explore statistics and compare hockey players in one evolving analytics platform.</p>
           <div class="ice-home-actions">
-            <a class="btn primary" href="#leagues" data-page="leagues">Select a League <span aria-hidden="true">→</span></a>
+            <a class="btn primary" href="#leagues" data-page="leagues">Select a League →</a>
             <a class="btn secondary" href="#players" data-page="players">Explore OHL Players</a>
           </div>
         </div>
-        <div class="ice-home-hero-mark" aria-hidden="true"><span>I</span><small>ICEINDEX</small></div>
+        <div class="ice-home-hero-mark" aria-hidden="true">
+          <span>I</span><small>ICEINDEX</small>
+        </div>
       </section>
-      <div class="ice-home-section-heading"><div><span class="eyebrow">THE SPOTLIGHT</span><h2>Featured player</h2></div><span class="ice-home-tag">Powered by OHLDataHub</span></div>
-      <section class="ice-feature-panel" aria-label="Featured player">${featuredPlayer()}</section>
-      <div class="ice-home-section-heading"><div><span class="eyebrow">EXPLORE HOCKEY</span><h2>Choose your league</h2></div><a href="#leagues" data-page="leagues" class="ice-text-link">All leagues →</a></div>
+
+      <div class="ice-home-section-heading">
+        <div><span class="eyebrow">THE SPOTLIGHT</span><h2>Featured player</h2></div>
+        <span class="ice-home-tag">Powered by IceIndex</span>
+      </div>
+
+      <section class="ice-feature-panel" aria-label="Featured player">
+        ${featuredPlayer()}
+      </section>
+
+      <div class="ice-home-section-heading">
+        <div><span class="eyebrow">EXPLORE HOCKEY</span><h2>Choose your league</h2></div>
+        <a href="#leagues" data-page="leagues" class="ice-text-link">All leagues →</a>
+      </div>
+
       <div class="ice-league-grid">${leagueTiles()}</div>
-      <section class="ice-home-bottom"><div><span class="eyebrow">BUILT FOR THE GAME</span><h2>From the numbers to the next big name.</h2><p>Player databases, historical statistics, comparisons and scouting-style analytics — starting with the OHL, with room to grow.</p></div><a href="#analytics" data-page="analytics" class="btn secondary">Explore Analytics →</a></section>
+
+      <section class="ice-home-bottom">
+        <div>
+          <span class="eyebrow">BUILT FOR THE GAME</span>
+          <h2>From the numbers to the next big name.</h2>
+          <p>Player databases, historical statistics, comparisons and scouting-style analytics — starting with the OHL, with room to grow.</p>
+        </div>
+        <a href="#analytics" data-page="analytics" class="btn secondary">Explore Analytics →</a>
+      </section>
     `;
   }
 
   function renderLeagues() {
     main.innerHTML = `
-      ${heading("ICEINDEX / LEAGUES", "Select a league", "Choose an available hockey league to explore player statistics, teams and analytics. More leagues will be added as verified data becomes available.")}
-      <div class="ice-league-grid ice-league-grid-page">${leagueTiles()}</div>
-      <section class="panel ice-leagues-note"><h2>More leagues are on the horizon.</h2><p>IceIndex currently supports the Ontario Hockey League. The WHL and QMJHL are planned, but their data sources and analytics have not yet been integrated.</p></section>
+      ${heading(
+        "ICEINDEX / LEAGUES",
+        "Select a league",
+        "Choose an available hockey league to explore player statistics, teams and analytics."
+      )}
+      <div class="ice-league-grid ice-league-grid-page">
+        ${leagueTiles()}
+      </div>
+      <section class="panel ice-leagues-note">
+        <h2>More leagues are on the horizon.</h2>
+        <p>IceIndex currently supports the Ontario Hockey League. The WHL and QMJHL are planned but not yet integrated.</p>
+      </section>
     `;
   }
 
@@ -2226,15 +2570,10 @@
      ========================================================== */
 
   const VALID_PAGES = new Set([
-    "home",
-    "leagues",
-    "overview",
-    "players",
-    "profile",
-    "compare",
-    "draft",
-    "teams",
-    "analytics"
+    "home", "leagues", "overview", "players",
+    "profile", "compare", "draft", "teams",
+    "analytics", "goalies", "goalie-profile",
+    "goalie-compare"
   ]);
 
   function render() {
@@ -2244,94 +2583,59 @@
       updateNavigation();
       return;
     }
+
+    if (["goalies", "goalie-profile", "goalie-compare"].includes(S.page)) {
+      window.IceIndexGoalies?.render(S.page, main);
+      updateNavigation();
+      return;
+    }
+
     if (!S.ready) {
-      main.innerHTML = `
-        <div class="empty">
-          Loading current OHL statistics…
-        </div>
-      `;
+      main.innerHTML = `<div class="empty">Loading current OHL statistics…</div>`;
       return;
     }
 
     switch (S.page) {
-      case "players":
-        renderPlayers();
-        break;
-
-      case "profile":
-        renderProfile();
-        break;
-
-      case "compare":
-        renderCompare();
-        break;
-
-      case "draft":
-        renderDraft();
-        break;
-
-      case "teams":
-        renderTeams();
-        break;
-
-      case "analytics":
-        renderAnalytics();
-        break;
-
-      default:
-        renderOverview();
-        break;
+      case "players": renderPlayers(); break;
+      case "profile": renderProfile(); break;
+      case "compare": renderCompare(); break;
+      case "draft": renderDraft(); break;
+      case "teams": renderTeams(); break;
+      case "analytics": renderAnalytics(); break;
+      default: renderOverview(); break;
     }
 
     updateNavigation();
   }
 
   function updateNavigation() {
-    document.querySelectorAll(
-      '[data-page], .nav-link[href^="#"]'
-    ).forEach(element => {
-      const target = element.dataset.page ||
-        element.getAttribute("href")?.replace(/^#/, "");
-
-      const active = target === S.page;
-
-      element.classList.toggle("active", active);
-
-      if (active) {
-        element.setAttribute("aria-current", "page");
-      } else {
-        element.removeAttribute("aria-current");
-      }
-    });
+    document.querySelectorAll('[data-page], .nav-link[href^="#"]')
+      .forEach(element => {
+        const target = element.dataset.page ||
+          element.getAttribute("href")?.replace(/^#/, "");
+        const active = target === S.page;
+        element.classList.toggle("active", active);
+        if (active) element.setAttribute("aria-current", "page");
+        else element.removeAttribute("aria-current");
+      });
   }
 
   function closeMenu() {
     sidebar?.classList.remove("open");
     scrim?.classList.remove("active");
     document.body.classList.remove("menu-open");
-
-    menuToggle?.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+    menuToggle?.setAttribute("aria-expanded", "false");
   }
 
   function openMenu() {
     sidebar?.classList.add("open");
     scrim?.classList.add("active");
     document.body.classList.add("menu-open");
-
-    menuToggle?.setAttribute(
-      "aria-expanded",
-      "true"
-    );
+    menuToggle?.setAttribute("aria-expanded", "true");
   }
 
   function navigate(page) {
-    const next = VALID_PAGES.has(page)
-      ? page
-      : "home";
-
+    const next = VALID_PAGES.has(page) ? page : "home";
     S.page = next;
 
     if (location.hash !== `#${next}`) {
@@ -2340,27 +2644,17 @@
 
     closeMenu();
     render();
-
-    window.scrollTo({
-      top: 0,
-      behavior: "auto"
-    });
+    window.scrollTo({ top: 0, behavior: "auto" });
   }
 
   function handleHash() {
-    const hash = location.hash
-      .replace(/^#/, "")
-      .split("?")[0];
-
-    const next = VALID_PAGES.has(hash)
-      ? hash
-      : "home";
+    const hash = location.hash.replace(/^#/, "").split("?")[0];
+    const next = VALID_PAGES.has(hash) ? hash : "home";
 
     if (next !== S.page) {
       S.page = next;
       render();
     }
-
     closeMenu();
   }
 
@@ -2369,11 +2663,15 @@
      ========================================================== */
 
   document.addEventListener("click", event => {
-    const choice = event.target.closest("[data-picker-choice]");
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const choice = target.closest("[data-picker-choice]");
     if (choice) {
       const picker = choice.closest("[data-picker]");
       const select = picker?.querySelector("select");
       const input = picker?.querySelector(".ice-player-picker-search");
+
       if (select && input) {
         select.value = choice.dataset.pickerChoice;
         input.value = choice.dataset.pickerLabel || "";
@@ -2382,17 +2680,13 @@
       }
       return;
     }
-    if (!event.target.closest("[data-picker]")) {
-      document.querySelectorAll(".ice-player-picker-results").forEach(el => el.hidden = true);
-    }
-    const target = event.target;
 
-    if (!(target instanceof Element)) {
-      return;
+    if (!target.closest("[data-picker]")) {
+      document.querySelectorAll(".ice-player-picker-results")
+        .forEach(el => el.hidden = true);
     }
 
     const playerLink = target.closest("[data-person]");
-
     if (playerLink) {
       event.preventDefault();
       S.profile = playerLink.dataset.person;
@@ -2402,7 +2696,6 @@
     }
 
     const go = target.closest("[data-go]");
-
     if (go) {
       event.preventDefault();
       navigate(go.dataset.go);
@@ -2410,7 +2703,6 @@
     }
 
     const profile = target.closest("[data-profile]");
-
     if (profile) {
       S.profile = profile.dataset.profile;
       S.profileSeason = "career";
@@ -2419,7 +2711,6 @@
     }
 
     const analyze = target.closest("[data-analyze]");
-
     if (analyze) {
       S.analyticsPlayer = analyze.dataset.analyze;
       navigate("analytics");
@@ -2427,7 +2718,6 @@
     }
 
     const compare = target.closest("[data-compare-player]");
-
     if (compare) {
       S.compareA = compare.dataset.comparePlayer;
       S.compareSeasonA = "career";
@@ -2436,27 +2726,15 @@
     }
 
     const metric = target.closest("[data-metric]");
-
     if (metric) {
       S.overviewMetric = metric.dataset.metric;
       renderOverview();
       return;
     }
 
-    const team = target.closest("[data-team]");
-
-    if (team) {
-      S.dbTeam = team.dataset.team;
-      S.dbSeason = currentSeason();
-      S.dbPage = 1;
-      navigate("players");
-      return;
-    }
-
-    const pagination = target.closest("[data-db-page]");
-
-    if (pagination) {
-      S.dbPage += pagination.dataset.dbPage === "next" ? 1 : -1;
+    const dbPage = target.closest("[data-db-page]");
+    if (dbPage) {
+      S.dbPage += dbPage.dataset.dbPage === "next" ? 1 : -1;
       updateDatabase();
       return;
     }
@@ -2471,17 +2749,25 @@
       return;
     }
 
-    if (target.closest("#download-player-card")) {
-      downloadPlayerCard();
+    const team = target.closest("[data-team]");
+    if (team) {
+      S.dbTeam = team.dataset.team;
+      S.dbSeason = "all";
+      S.dbPage = 1;
+      navigate("players");
       return;
     }
 
-    const dot = target.closest("[data-scatter-player]");
-
-    if (dot) {
-      S.profile = dot.dataset.scatterPlayer;
+    const scatter = target.closest("[data-scatter-player]");
+    if (scatter) {
+      S.profile = scatter.dataset.scatterPlayer;
       S.profileSeason = "career";
       navigate("profile");
+      return;
+    }
+
+    if (target.closest("#download-player-card")) {
+      downloadPlayerCard();
       return;
     }
 
@@ -2501,9 +2787,7 @@
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
-      closeMenu();
-    }
+    if (event.key === "Escape") closeMenu();
 
     if (
       (event.key === "Enter" || event.key === " ") &&
@@ -2511,7 +2795,6 @@
       event.target.matches("[data-scatter-player]")
     ) {
       event.preventDefault();
-
       S.profile = event.target.dataset.scatterPlayer;
       navigate("profile");
     }
@@ -2519,29 +2802,35 @@
 
   document.addEventListener("input", event => {
     const element = event.target;
+
     if (element?.matches?.(".ice-player-picker-search")) {
       const picker = element.closest("[data-picker]");
-
       const select = picker?.querySelector("select");
       const results = picker?.querySelector(".ice-player-picker-results");
+
       if (select && results) {
-        const query = element.value.trim().toLocaleLowerCase();
-        const matches = [...select.options].filter(o =>
-          o.textContent.toLocaleLowerCase().includes(query)
-        ).slice(0, 35);
+        const query = element.value.trim().toLowerCase();
+
+        const matches = [...select.options]
+          .filter(o => o.textContent.toLowerCase().includes(query))
+          .slice(0, 35);
+
         results.innerHTML = matches.map(o => `
-          <button type="button" role="option" class="ice-player-picker-option"
+          <button type="button" role="option"
+            class="ice-player-picker-option"
             data-picker-choice="${esc(o.value)}"
-            data-picker-label="${esc(o.textContent)}">${esc(o.textContent)}</button>
-        `).join("") || '<div class="ice-player-picker-none">No matching players</div>';
+            data-picker-label="${esc(o.textContent)}">
+            ${esc(o.textContent)}
+          </button>
+        `).join("") ||
+          '<div class="ice-player-picker-none">No matching players</div>';
+
         results.hidden = false;
       }
       return;
     }
 
-    if (!(element instanceof HTMLElement)) {
-      return;
-    }
+    if (!(element instanceof HTMLElement)) return;
 
     if (element.id === "db-search") {
       S.query = element.value;
@@ -2551,21 +2840,15 @@
 
     if (element.id === "draft-search") {
       S.draftQuery = element.value;
-
       const start = element.selectionStart;
       const end = element.selectionEnd;
 
       renderDraft();
 
-      const replacement =
-        document.querySelector("#draft-search");
-
+      const replacement = document.querySelector("#draft-search");
       replacement?.focus();
 
-      if (
-        start !== null &&
-        end !== null
-      ) {
+      if (start !== null && end !== null) {
         replacement?.setSelectionRange(start, end);
       }
     }
@@ -2573,13 +2856,23 @@
 
   document.addEventListener("change", event => {
     const element = event.target;
-
-    if (!(element instanceof HTMLElement)) {
-      return;
-    }
+    if (!(element instanceof HTMLElement)) return;
 
     const id = element.id;
     const value = element.value;
+
+    if (id === "overview-competition") {
+      S.overviewCompetition = value;
+      renderOverview();
+    }
+
+    if (id === "db-competition") {
+      S.dbCompetition = value;
+      S.dbSeason = "all";
+      S.dbTeam = "all";
+      S.dbPage = 1;
+      renderPlayers();
+    }
 
     if (id === "db-season") {
       S.dbSeason = value;
@@ -2605,6 +2898,12 @@
       renderProfile();
     }
 
+    if (id === "profile-competition") {
+      S.profileCompetition = value;
+      S.profileSeason = "career";
+      renderProfile();
+    }
+
     if (id === "profile-season") {
       S.profileSeason = value;
       renderProfile();
@@ -2618,6 +2917,18 @@
 
     if (id === "compare-b") {
       S.compareB = value;
+      S.compareSeasonB = "career";
+      renderCompare();
+    }
+
+    if (id === "compare-competition-a") {
+      S.compareCompetitionA = value;
+      S.compareSeasonA = "career";
+      renderCompare();
+    }
+
+    if (id === "compare-competition-b") {
+      S.compareCompetitionB = value;
       S.compareSeasonB = "career";
       renderCompare();
     }
@@ -2684,7 +2995,6 @@
   });
 
   scrim?.addEventListener("click", closeMenu);
-
   window.addEventListener("hashchange", handleHash);
 
   /* ==========================================================
@@ -2704,19 +3014,14 @@
     document.body.style.overflow = "";
 
     try {
-      sessionStorage.setItem(
-        "iceindex-intro-dismissed",
-        "1"
-      );
+      sessionStorage.setItem("iceindex-intro-dismissed", "1");
     } catch (_) {}
   }
 
   introClose?.addEventListener("click", dismissIntro);
 
   try {
-    if (
-      sessionStorage.getItem("iceindex-intro-dismissed") === "1"
-    ) {
+    if (sessionStorage.getItem("iceindex-intro-dismissed") === "1") {
       dismissIntro();
     }
   } catch (_) {}
@@ -2727,13 +3032,9 @@
 
   function updateStatus(message) {
     const status = document.querySelector("#data-status");
-
-    if (status) {
-      status.textContent = message;
-    }
+    if (status) status.textContent = message;
 
     const season = document.querySelector("#season-label");
-
     if (season && S.current.length) {
       season.textContent = currentSeason();
     }
@@ -2744,23 +3045,17 @@
      ========================================================== */
 
   async function initialize() {
-    S.page = VALID_PAGES.has(
-      location.hash.replace(/^#/, "")
-    )
+    S.page = VALID_PAGES.has(location.hash.replace(/^#/, ""))
       ? location.hash.replace(/^#/, "")
       : "home";
 
     introStatus("Loading current OHL statistics…");
-
     updateStatus("Loading current season");
-
     render();
 
     try {
       if (typeof window.loadOHLCurrent !== "function") {
-        throw new Error(
-          "OHL data engine is not available."
-        );
+        throw new Error("OHL data engine is not available.");
       }
 
       const current = await window.loadOHLCurrent();
@@ -2775,13 +3070,7 @@
       );
 
       introStatus("Current season ready.");
-
       render();
-
-      /*
-        The current season is now available.
-        Historical data loads separately.
-      */
 
       if (typeof window.loadOHLHistory === "function") {
         S.loading = true;
@@ -2796,8 +3085,17 @@
             progressElement.textContent =
               `${progress.completed}/${progress.total}`;
           }
-        }).then(result => {
-          S.history = result.records || [];
+        }, { competition: "all" }).then(result => {
+          S.history = result.regularRecords ||
+            (result.records || []).filter(r =>
+              competitionOf(r) === "regular"
+            );
+
+          S.playoffs = result.playoffRecords ||
+            (result.records || []).filter(r =>
+              competitionOf(r) === "playoffs"
+            );
+
           S.archive = result;
           S.loading = false;
 
@@ -2811,11 +3109,7 @@
 
         }).catch(error => {
           S.loading = false;
-
-          console.warn(
-            "IceIndex historical archive:",
-            error
-          );
+          console.warn("IceIndex historical archive:", error);
 
           updateStatus(
             "Current season ready · Historical archive unavailable"
@@ -2830,22 +3124,34 @@
     } catch (error) {
       console.error("IceIndex initialization failed:", error);
 
-      introStatus(
-        "Current OHL statistics could not be loaded."
-      );
-
+      introStatus("Current OHL statistics could not be loaded.");
       updateStatus("Data unavailable");
-
       S.loading = false;
+
       if (S.page === "home" || S.page === "leagues") {
         render();
       } else {
         main.innerHTML = `
-          ${heading("OHL DATA UNAVAILABLE", "Unable to load OHL statistics", "The league data source could not be reached. You can still return to IceIndex Home.")}
-          <div class="notice">${esc(error.message || "Unknown loading error")}</div>
-          <div class="ice-actions"><button class="btn primary" id="ice-retry">Retry</button><a class="btn secondary" href="#home" data-page="home">IceIndex Home</a></div>
+          ${heading(
+            "OHL DATA UNAVAILABLE",
+            "Unable to load OHL statistics",
+            "The league data source could not be reached."
+          )}
+
+          <div class="notice">
+            ${esc(error.message || "Unknown loading error")}
+          </div>
+
+          <div class="ice-actions">
+            <button class="btn primary" id="ice-retry">Retry</button>
+            <a class="btn secondary" href="#home" data-page="home">
+              IceIndex Home
+            </a>
+          </div>
         `;
-        document.querySelector("#ice-retry")?.addEventListener("click", () => initialize());
+
+        document.querySelector("#ice-retry")
+          ?.addEventListener("click", () => initialize());
       }
     }
   }
@@ -2856,11 +3162,6 @@
 
   initialize();
 
-  console.info(
-    "IceIndex application v0.4.0 initialized."
-  );
+  console.info("IceIndex application v0.7.0 initialized.");
 
 })();
-
-/* ============================================================
-   END — ICEINDEX v0.4.0 js/app.js*/

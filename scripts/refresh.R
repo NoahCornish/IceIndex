@@ -1689,6 +1689,50 @@ if (overall_failed) {
   
 }
 
+# ============================================================
+# PUBLISH LAST SUCCESSFUL DATA REFRESH
+# ============================================================
+# Reached only after collector/processor validation and
+# refresh-history logging have succeeded.
+# A failed run leaves the previously published timestamp intact.
+
+last_updated_file <- file.path(
+  ICEINDEX_PATHS$metadata,
+  "last_updated.json"
+)
+
+last_updated_time <- Sys.time()
+last_updated_json <- paste0(
+  '{\n',
+  '  "league": "OHL",\n',
+  '  "status": "success",\n',
+  '  "last_updated_utc": "', utc_time(last_updated_time), '",\n',
+  '  "run_id": "', refresh_run_id, '"\n',
+  '}\n'
+)
+
+tryCatch({
+  temp_metadata <- tempfile(
+    pattern = "iceindex_last_updated_",
+    tmpdir = dirname(last_updated_file),
+    fileext = ".json"
+  )
+  writeLines(last_updated_json, temp_metadata, useBytes = TRUE)
+  
+  # Replace only after the new JSON has been written successfully.
+  if (!file.copy(temp_metadata, last_updated_file, overwrite = TRUE)) {
+    stop("Could not publish last_updated.json")
+  }
+  unlink(temp_metadata)
+  log_ok("Published successful refresh timestamp: ", last_updated_file)
+}, error = function(e) {
+  if (exists("temp_metadata", inherits = FALSE) && file.exists(temp_metadata)) {
+    unlink(temp_metadata)
+  }
+  stop(paste("Refresh metadata publication failed:", conditionMessage(e)),
+       call. = FALSE)
+})
+
 if (overall_status == "WARNING") {
   
   cat(
