@@ -1,447 +1,240 @@
 
-# 🏒 IceIndex
+# IceIndex 🏒
 
-### Hockey Data Intelligence
+**Hockey Data Intelligence | v0.8.0 Release Candidate**
 
-**Every player. Every league. One index.**
+*Every player. Every league. One index.*
 
-[![Version](https://img.shields.io/badge/version-0.7.0-58b8ff)](https://github.com/NoahCornish/IceIndex)
-[![Platform](https://img.shields.io/badge/platform-GitHub%20Pages-07111d)](https://pages.github.com/)
-[![Language](https://img.shields.io/badge/data%20engine-R-276DC3)](https://www.r-project.org/)
-[![League](https://img.shields.io/badge/OHL-Available-22c55e)](https://ontariohockeyleague.com/)
-[![License](https://img.shields.io/badge/license-See%20Repository-lightgrey)](https://github.com/NoahCornish/IceIndex)
+IceIndex is an independent hockey statistics and analytics platform. It combines a responsive, browser-based research interface with an R-powered data collection and processing pipeline.
 
-**IceIndex** is an independent hockey statistics and analytics platform designed to organize, explore, and analyze player performance across junior hockey.
+**The Ontario Hockey League (OHL) is the currently supported league.** Expansion to other junior hockey leagues is a longer-term goal.
 
-Built using R, JavaScript, HTML, and CSS, IceIndex combines automated data collection with a responsive web interface.
-
-The platform currently supports the **Ontario Hockey League (OHL)**, with future expansion planned for additional leagues.
-
-### 🌐 Live Website
-
-**[Launch IceIndex](https://noahcornish.github.io/IceIndex/)**
-
-**Repository:** [github.com/NoahCornish/IceIndex](https://github.com/NoahCornish/IceIndex)
+- **Website:** https://noahcornish.github.io/IceIndex/
+- **Repository:** https://github.com/NoahCornish/IceIndex
+- **Release status:** v0.8.0 prepared for release; verify deployment before describing it as the live version.
 
 ---
 
-## 📊 Features
+## What's New in v0.8.0
 
-### Hockey Data Dashboard
+### Advanced OHL Statistics Database
 
-IceIndex provides a central interface for exploring hockey statistics and performance trends.
+A dedicated, compact statistics workspace for exploring OHL skater performance.
 
 Features include:
 
-- League overview dashboard
-- Player production rankings
-- Featured player statistics
-- Player performance summaries
-- Season-specific statistics
-- Historical statistical exploration
-- Responsive dashboard navigation
+- Season, competition (regular season/playoffs), team, position, player search, and games-played filters.
+- Customizable visible statistical columns and additional value filters.
+- Sortable statistics and league rankings.
+- Player headshots, team abbreviations, and links to player profiles.
+- Compact mobile table with sticky rank, player name, and team columns.
+- Horizontal scrolling for additional statistics.
+- CSV export of filtered statistics.
+- Statistical columns displayed only where supported by the underlying dataset.
 
-### Player Database
+The Statistics Database is designed to make detailed OHL statistical research accessible on both desktop and mobile devices.
 
-Explore OHL skaters through a searchable statistical database.
+### GM Player Comparison — 2 to 4 Players
 
-Available features include:
-
-- Player identification and team information
-- Season statistics
-- Career statistics
-- Player headshots where available
-- Statistical rankings
-- Individual player profiles
-- Historical player records
-
-### Player Profiles
-
-Individual player pages provide detailed statistical information.
-
-Profiles support:
-
-- Player identification
-- Team affiliations
-- Season-by-season performance
-- Career totals
-- Historical statistical records
-- Performance analysis
-
-### Player Comparison
-
-Compare player performance using available statistical records.
-
-The comparison interface is designed to support direct evaluation of individual players across selected statistical categories.
-
-### Draft Year Central
-
-Explore players by draft-year groupings to support age-based statistical analysis and player discovery.
-
-### Goaltender Database
-
-IceIndex includes a dedicated goaltender statistics system.
+A scouting-oriented workspace for comparing **two, three, or four OHL players** simultaneously.
 
 Features include:
 
-- Goaltender directory
-- Season statistics
-- Career statistics
-- Individual goaltender profiles
-- Goaltender comparisons
-- Historical goaltending records
+- Independent player, season, and regular-season/playoff selection.
+- Season-alignment control to support like-for-like comparisons when relevant records exist.
+- Player summary cards featuring headshots, games played, goals, points, and points per game.
+- Side-by-side statistical comparison matrix.
+- Statistical category filters and rate-only comparisons.
+- League percentile rankings with selectable minimum-games-played thresholds.
+- Peer-group comparisons against all skaters or forwards/defencemen where position data permits.
+- Highlighted statistical leaders.
+- CSV export and comparison-link controls.
+- Responsive layouts for desktop scouting analysis and mobile access.
 
-### Team Exploration
+**Statistical interpretation:** Percentiles compare a player's performance with qualifying skaters in the selected season, competition, and peer group. They are descriptive statistical rankings, not scouting grades or projections.
 
-Explore OHL teams and their associated player statistics.
+Career totals do not receive single-season percentiles. Comparisons involving different seasons, competitions, or career totals should be interpreted carefully.
 
-### Player Analytics
+### Player Discovery and Profiles
 
-IceIndex includes an analytics section designed to support deeper evaluation of player performance.
+IceIndex provides an integrated player research experience.
 
----
+- Global OHL player search.
+- Searchable historical player database.
+- Individual player profiles with headshots where available.
+- Regular-season and playoff statistics.
+- Season-by-season career histories.
+- Historical team information.
+- Career statistical highlights.
+- Season-specific OHL rankings.
+- Player comparison and analytics tools.
+- Draft Year Central navigation.
 
-## 🏆 Supported Leagues
+### Additional OHL Tools
 
-| League | Status |
-|---|---|
-| Ontario Hockey League (OHL) | Available |
-| Western Hockey League (WHL) | Planned |
-| Quebec Maritimes Junior Hockey League (QMJHL) | Planned |
+IceIndex also includes:
 
-The OHL is the initial focus of IceIndex.
-
-Additional league support will be introduced as new data collection and processing systems are developed.
-
----
-
-## ⚙️ IceIndex Data Engine
-
-IceIndex operates its own independent R-based data pipeline.
-
-The data engine is responsible for:
-
-1. Collecting hockey statistics.
-2. Processing raw datasets.
-3. Maintaining current and historical records.
-4. Validating generated data.
-5. Recording refresh activity.
-6. Publishing updated datasets to the website.
-
-The master orchestration script is:
-
-```text
-scripts/refresh.R
-```
-
-### OHL Data Collectors
-
-The current pipeline includes five primary collectors.
-
-| Collector | Script |
-|---|---|
-| OHL Seasons | `collect_seasons.R` |
-| OHL Teams | `collect_teams.R` |
-| OHL Players | `collect_players.R` |
-| OHL Skater Statistics | `collect_skater_stats.R` |
-| OHL Goaltender Statistics | `collect_goalie_stats.R` |
-
-Collectors are located in:
-
-```text
-scripts/league/ohl/
-```
-
-### Data Processing
-
-The OHL processing engine is located at:
-
-```text
-scripts/processing/ohl_process_all.R
-```
-
-The processing pipeline prepares statistical datasets used by the IceIndex website.
-
-### Data Validation
-
-The master refresh script performs checks including:
-
-- Required project files
-- Collector availability
-- Directory accessibility
-- Collector execution results
-- CSV readability
-- Critical statistical identifiers
-- Missing required columns
-- Unexpected empty datasets
-- Processing failures
-
-The pipeline records warnings, errors, execution times, and file changes.
+- OHL overview dashboard and statistical leaderboards.
+- Team exploration tools.
+- Goaltender database and individual goalie profiles.
+- Goaltender comparison and historical statistics.
+- Existing analytics views and visualizations.
 
 ---
 
-## 🔄 Automated Data Refresh
+## Data Platform
 
-IceIndex uses GitHub Actions to execute the data engine automatically.
+IceIndex maintains its **own OHL datasets** through R-based data collectors and processing scripts.
 
-The workflow is located at:
+The website uses JavaScript data-loading modules to serve its OHL statistical views.
 
-```text
-.github/workflows/refresh.yml
-```
+IceIndex is a standalone project and operates independently from OHLDataHub.
 
-### Daily Refresh Schedule
+The data workflow covers:
 
-IceIndex is configured to target four refreshes each day in Ontario local time.
+- OHL seasons and teams.
+- Team rosters.
+- Skater statistics.
+- Goaltender statistics.
+- Historical player records.
+- Season and career statistical tables.
+- Player and goaltender directories.
+- Data validation and refresh monitoring.
 
-| Refresh | Eastern Time |
-|---|---|
-| Overnight | 3:06 AM |
-| Midday | 12:02 PM |
-| Evening | 6:03 PM |
-| Night | 10:25 PM |
+GitHub Actions supports automated and manual data refreshes.
 
-The workflow accounts for Eastern Standard Time and Eastern Daylight Time.
+### Refreshing Data Locally
 
-GitHub Actions may delay scheduled workflow execution, so these times are scheduling targets rather than guaranteed execution times.
-
-Manual refreshes are also supported through GitHub Actions.
-
-### Refresh Process
-
-```text
-GitHub Actions
-      |
-      v
-Initialize R Environment
-      |
-      v
-Verify Project Structure
-      |
-      v
-Run scripts/refresh.R
-      |
-      v
-Collect OHL Data
-      |
-      v
-Process Skater and Goaltender Statistics
-      |
-      v
-Validate Datasets
-      |
-      v
-Generate Refresh Metadata
-      |
-      v
-Commit Updated Data
-      |
-      v
-GitHub Pages Website
-```
-
-### Last Updated Indicator
-
-IceIndex displays the latest successful data refresh timestamp in the website sidebar.
-
-The timestamp is sourced from:
-
-```text
-data/ohl/metadata/last_updated.json
-```
-
-The indicator displays the timestamp in Eastern Time.
-
-The timestamp reflects the completion of a successful data pipeline refresh, not necessarily the arrival of new game statistics.
-
----
-
-## 🗂️ Project Structure
-
-```text
-IceIndex/
-|
-|-- index.html
-|
-|-- css/
-|   |-- style.css
-|
-|-- js/
-|   |-- app.js
-|   |-- ohl-data.js
-|   |-- ohl-goalies.js
-|   |-- ohl-analytics.js
-|   |-- ohl-branding.js
-|   |-- maintenance.js
-|
-|-- scripts/
-|   |-- refresh.R
-|   |-- config.R
-|   |-- api_client.R
-|   |
-|   |-- league/
-|   |   |-- ohl/
-|   |       |-- collect_seasons.R
-|   |       |-- collect_teams.R
-|   |       |-- collect_players.R
-|   |       |-- collect_skater_stats.R
-|   |       |-- collect_goalie_stats.R
-|   |
-|   |-- processing/
-|       |-- ohl_process_all.R
-|
-|-- data/
-|   |-- raw/
-|   |
-|   |-- ohl/
-|       |-- current/
-|       |-- historical/
-|       |-- metadata/
-|           |-- refresh_log.csv
-|           |-- last_updated.json
-|
-|-- .github/
-|   |-- workflows/
-|       |-- refresh.yml
-|
-|-- README.md
-|-- CHANGELOG.md
-```
-
-This represents the primary project components. Additional generated data files and supporting scripts may be present.
-
----
-
-## 💻 Technology Stack
-
-| Technology | Purpose |
-|---|---|
-| R | Data collection and processing |
-| JavaScript | Interactive website functionality |
-| HTML5 | Website structure |
-| CSS3 | Responsive design |
-| GitHub Actions | Automated data refresh |
-| GitHub Pages | Website hosting |
-| CSV | Statistical data storage |
-| JSON | Refresh metadata |
-
-### R Dependencies
-
-The automated workflow installs:
-
-- `httr2`
-- `jsonlite`
-
-Additional dependencies may be required by individual collectors or processors.
-
----
-
-## 🚀 Running the Data Engine
-
-Clone the repository:
-
-```bash
-git clone https://github.com/NoahCornish/IceIndex.git
-```
-
-Navigate to the project:
-
-```bash
-cd IceIndex
-```
-
-Install the core R dependencies:
-
-```r
-install.packages(c("httr2", "jsonlite"))
-```
-
-Run the master refresh script from the repository root:
-
-```bash
-Rscript scripts/refresh.R
-```
-
-Alternatively, within R:
+From the IceIndex repository root in R or RStudio:
 
 ```r
 source("scripts/refresh.R")
 ```
 
-The pipeline will execute the registered OHL collectors, run processing, validate datasets, and record refresh results.
+The project requires R and the dependencies referenced in its collection and processing scripts.
+
+Review `scripts/config.R` and the relevant script imports before running a refresh.
+
+Data availability and source access can affect results.
+
+### Main Datasets
+
+| Dataset | Purpose |
+|---|---|
+| `data/processed/ohl/player_directory.csv` | Player identities and profile information |
+| `data/processed/ohl/player_seasons.csv` | Season- and competition-level skater statistics |
+| `data/processed/ohl/player_career.csv` | Aggregated skater career records |
+| `data/processed/ohl/player_teams.csv` | Player team histories |
+| `data/processed/ohl/goalie_directory.csv` | Goaltender identities |
+| `data/processed/ohl/goalie_seasons.csv` | Goaltender season records |
+| `data/processed/ohl/goalie_career.csv` | Goaltender career records |
+| `data/processed/ohl/goalie_teams.csv` | Goaltender team histories |
+| `data/ohl/metadata/last_updated.json` | Successful refresh timestamp |
+| `data/ohl/metadata/refresh_log.csv` | Refresh history |
+
+**Data note:** Available statistics vary by source, season, and competition. Some advanced metrics may be unavailable.
+
+Statistics may change following data refreshes or corrections. Regular-season and playoff records should be analyzed separately.
 
 ---
 
-## 📈 Development Roadmap
+## Technology
 
-### v0.7.0 — OHL Data Platform
+IceIndex uses a lightweight technology stack designed for maintainability and automated operation.
 
-- OHL skater database
-- OHL goaltender database
-- Individual player profiles
-- Player comparison tools
-- Team exploration
-- Player analytics
-- Automated R data collection
-- Historical data processing
-- Data quality validation
-- GitHub Actions integration
-- Sidebar refresh timestamp
-- Responsive navigation
+**Frontend**
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- GitHub Pages
 
-### v0.8.0 — Discovery and Usability
+**Data Processing**
+- R
+- CSV and JSON datasets
+- Automated collection and processing scripts
 
-Potential development priorities:
-
-- Global player search
-- Shareable player profile URLs
-- Improved sortable statistical tables
-- CSV data exports
-- Expanded statistical definitions
-- Mobile interface improvements
-- Enhanced data validation
-- Historical performance visualizations
-
-### Future Development
-
-Long-term goals include:
-
-- WHL data integration
-- QMJHL data integration
-- Multi-league player comparisons
-- Expanded scouting analytics
-- Advanced statistical models
-- Broader historical coverage
-- Additional hockey data products
-
-Roadmap items are planned features and may change during development.
+**Automation**
+- GitHub Actions
+- Scheduled and manual data refreshes
+- Validation and refresh logging
 
 ---
 
-## ⚠️ Data Disclaimer
+## Repository Structure
 
-IceIndex is an independent hockey analytics project.
-
-Statistical information is collected and processed from available hockey data sources.
-
-Data accuracy, completeness, and update frequency depend on source availability and the successful operation of the data pipeline.
-
-IceIndex is not presented as an official website of the Ontario Hockey League, Canadian Hockey League, or their member teams.
-
-Team names, logos, and other associated trademarks remain the property of their respective owners.
+```text
+IceIndex/
+├── .github/workflows/          # Automated refresh workflows
+├── assets/                     # Site assets
+├── css/
+│   └── style.css               # Responsive styling
+├── data/                       # Raw, historical and processed data
+├── js/
+│   ├── app.js                  # Site routes and interfaces
+│   ├── ohl-data.js             # OHL data loading
+│   ├── ohl-branding.js         # Team branding
+│   ├── ohl-analytics.js        # Analytics
+│   └── ohl-goalies.js          # Goaltender support
+├── scripts/
+│   ├── config.R
+│   ├── refresh.R               # Master refresh orchestration
+│   ├── league/ohl/             # OHL data collectors
+│   └── processing/             # Processed datasets
+├── index.html
+├── cooling.html                # Maintenance view
+├── README.md
+└── CHANGELOG.md
+```
 
 ---
 
-## 👨‍💻 Development
+## Release Checklist — v0.8.0
 
-**Created and maintained by Noah Cornish**
+Before publishing the release:
 
-GitHub: [NoahCornish](https://github.com/NoahCornish)
-
-Website: [IceIndex](https://noahcornish.github.io/IceIndex/)
+- [ ] Confirm all v0.8.0 frontend files and version labels are synchronized.
+- [ ] Test player selection with two, three, and four players.
+- [ ] Verify season alignment and regular-season/playoff separation.
+- [ ] Validate percentile calculations against source records.
+- [ ] Test CSV exports and comparison URLs in a fresh browser session.
+- [ ] Check sticky statistics columns and full player-name readability on mobile.
+- [ ] Verify automated refreshes and the last-updated timestamp.
+- [ ] Confirm GitHub Pages is serving the intended release files.
 
 ---
 
-**IceIndex v0.7.0**
+## Development Roadmap
 
-*Every player. Every league. One index.*
+Future development opportunities include:
+
+- Additional validated scouting metrics.
+- Team-strength and league-context analysis.
+- Expanded historical records and statistical documentation.
+- Player development tracking.
+- Game-level statistics and analysis.
+- Expanded data-quality reporting.
+- WHL and QMJHL support when reliable independent data collection becomes available.
+
+These are potential development directions rather than confirmed release commitments.
+
+---
+
+## Disclaimer
+
+IceIndex is an independent hockey analytics project and is not affiliated with or endorsed by the Ontario Hockey League, Canadian Hockey League, or their member teams.
+
+Team names, logos, and trademarks remain the property of their respective owners.
+
+Statistics and rankings depend on the completeness and accuracy of the underlying source data. Consequential figures should be verified against authoritative records.
+
+---
+
+## Maintainer
+
+Developed by [Noah Cornish](https://github.com/NoahCornish).
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+---
+
+*Built for the game. Powered by data.*

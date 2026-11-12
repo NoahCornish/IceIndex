@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.7.0 BETA
+   ICEINDEX v0.8.0
    FILE: js/ohl-goalies.js
 
    Independent OHL Goaltender Database

@@ -2,7 +2,7 @@
 # ============================================================
 # ICEINDEX DATA ENGINE
 # HOCKEYTECH API CLIENT
-# Version: 0.6.0
+# Version: 0.8.0
 # ============================================================
 
 # Requires scripts/config.R to be loaded first.

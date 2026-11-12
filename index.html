@@ -4,7 +4,7 @@
 <head>
 <script src="js/maintenance.js?v=0.6.0" defer></script>
   <!-- ======================================================
-       ICEINDEX v0.7.0
+       ICEINDEX v0.8.0
        Hockey Data Intelligence
        Compact Multi-League Navigation
        ====================================================== -->
@@ -45,10 +45,10 @@
 
   <!-- IceIndex application stylesheet (includes navigation and responsive styles) -->
 
-  <link rel="stylesheet" href="css/style.css?v=0.7.0">
+  <link rel="stylesheet" href="css/style.css?v=0.8.0">
 
   <!-- ======================================================
-       ICEINDEX v0.7.0 SIDEBAR STYLES
+       ICEINDEX v0.8.0 SIDEBAR STYLES
        ====================================================== -->
 
 
@@ -63,11 +63,11 @@
 
   <!-- EXISTING DATA ENGINES -->
 
-  <script src="js/ohl-data.js?v=0.7.0-beta" defer></script>
+  <script src="js/ohl-data.js?v=0.8.0" defer></script>
   <script src="js/ohl-branding.js?v=0.5.0" defer></script>
   <script src="js/ohl-analytics.js?v=0.5.0" defer></script>
-  <script src="js/ohl-goalies.js?v=0.7.0-beta" defer></script>
-  <script src="js/app.js?v=0.7.0-beta" defer></script>
+  <script src="js/ohl-goalies.js?v=0.8.0" defer></script>
+  <script src="js/app.js?v=0.8.0" defer></script>
 
 </head>
 
@@ -302,6 +302,13 @@
 
             <span>Player Database</span>
 
+          </a>
+
+          <a class="nav-link" href="#statistics" data-page="statistics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M3 3v18h18"></path><path d="M7 16v-5M12 16V7M17 16V5"></path>
+            </svg>
+            <span>Statistics Database</span>
           </a>
 
           <a class="nav-link"
@@ -562,6 +569,19 @@
 
     </header>
 
+    <!-- ICEINDEX v0.8.0 GLOBAL PLAYER SEARCH -->
+    <section class="ice-global-search" role="search" aria-label="Global OHL player search">
+      <div class="ice-global-search-inner">
+        <label for="ice-global-query" class="ice-global-search-label">FIND AN OHL PLAYER</label>
+        <div class="ice-global-search-control">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+          <input id="ice-global-query" type="search" placeholder="Search players across OHL history…" autocomplete="off" aria-autocomplete="list" aria-controls="ice-global-results" aria-expanded="false" aria-activedescendant="" />
+          <kbd class="ice-global-shortcut">/</kbd>
+        </div>
+        <div id="ice-global-results" class="ice-global-results" role="listbox" aria-label="Player matches" hidden></div>
+      </div>
+    </section>
+
     <!-- DYNAMIC CONTENT -->
 
     <main id="main-content" tabindex="-1">
@@ -681,7 +701,7 @@
       </button>
 
       <div class="ice-intro-version">
-        ICEINDEX v0.7.0
+        ICEINDEX v0.8.0
       </div>
 
     </div>

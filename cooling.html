@@ -1,28 +1,41 @@
 
 <!DOCTYPE html>
 <html lang="en-CA">
+
 <head>
+
   <!-- ======================================================
-       ICEINDEX v0.6.0
-       STANDALONE COOLING / MAINTENANCE PAGE
+       ICEINDEX v0.8.0
+       STANDALONE MAINTENANCE PAGE
+
+       Supports:
+         - Forced website updates
+         - Scheduled daily maintenance
+
+       Controlled by:
+         js/maintenance.js
        ====================================================== -->
 
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
 
   <meta name="theme-color" content="#07111d">
   <meta name="color-scheme" content="dark">
-
   <meta name="robots" content="noindex, nofollow">
 
   <title>IceIndex | Cooling Down</title>
 
-  <meta name="description"
-        content="IceIndex is temporarily cooling down while we refresh our hockey database.">
+  <meta
+    name="description"
+    content="IceIndex is temporarily unavailable while we update our hockey database and website."
+  >
 
   <style>
+
     /* ======================================================
        GLOBAL
        ====================================================== */
@@ -52,6 +65,7 @@
       min-height: 100dvh;
       margin: 0;
       overflow-x: hidden;
+
       background:
         radial-gradient(
           ellipse at 50% 25%,
@@ -59,7 +73,9 @@
           transparent 55%
         ),
         var(--bg);
+
       color: var(--text);
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -67,11 +83,16 @@
         Inter,
         Arial,
         sans-serif;
+
       -webkit-font-smoothing: antialiased;
     }
 
+    [hidden] {
+      display: none !important;
+    }
+
     /* ======================================================
-       BACKGROUND DETAILS
+       BACKGROUND
        ====================================================== */
 
     .background-grid {
@@ -79,6 +100,7 @@
       inset: 0;
       pointer-events: none;
       opacity: .16;
+
       background-image:
         linear-gradient(
           rgba(88, 184, 255, .12) 1px,
@@ -89,7 +111,9 @@
           rgba(88, 184, 255, .12) 1px,
           transparent 1px
         );
+
       background-size: 70px 70px;
+
       mask-image:
         linear-gradient(
           to bottom,
@@ -113,7 +137,7 @@
     }
 
     /* ======================================================
-       LAYOUT
+       PAGE LAYOUT
        ====================================================== */
 
     .page {
@@ -186,20 +210,27 @@
       text-align: center;
     }
 
+    /* ======================================================
+       SNOWFLAKE
+       ====================================================== */
+
     .snowflake-container {
       display: grid;
       place-items: center;
       width: 108px;
       height: 108px;
       margin: 0 auto 34px;
+
       border: 1px solid rgba(88, 184, 255, .25);
       border-radius: 30px;
+
       background:
         linear-gradient(
           145deg,
           rgba(88, 184, 255, .13),
           rgba(88, 184, 255, .025)
         );
+
       box-shadow:
         0 0 65px rgba(88, 184, 255, .08),
         inset 0 0 35px rgba(88, 184, 255, .035);
@@ -213,6 +244,7 @@
     }
 
     @keyframes breathe {
+
       0%, 100% {
         transform: scale(1);
         opacity: .85;
@@ -222,7 +254,12 @@
         transform: scale(1.09);
         opacity: 1;
       }
+
     }
+
+    /* ======================================================
+       HEADINGS
+       ====================================================== */
 
     .eyebrow {
       margin-bottom: 18px;
@@ -254,13 +291,14 @@
     }
 
     /* ======================================================
-       REFRESH STATUS
+       REFRESH PANEL
        ====================================================== */
 
     .refresh-panel {
       max-width: 450px;
       margin: 40px auto 0;
       padding: 23px 26px;
+
       border: 1px solid var(--border);
       border-radius: 16px;
       background: rgba(12, 27, 43, .8);
@@ -286,13 +324,16 @@
     .refresh-indicator::after {
       position: absolute;
       inset: -5px;
+
       border: 1px solid rgba(88, 184, 255, .4);
       border-radius: 50%;
+
       content: "";
       animation: pulse 2.5s ease-out infinite;
     }
 
     @keyframes pulse {
+
       0% {
         transform: scale(.7);
         opacity: .8;
@@ -302,6 +343,7 @@
         transform: scale(1.8);
         opacity: 0;
       }
+
     }
 
     .refresh-title {
@@ -317,6 +359,10 @@
       line-height: 1.6;
     }
 
+    /* ======================================================
+       ANIMATED PROGRESS
+       ====================================================== */
+
     .progress-track {
       height: 4px;
       margin-top: 22px;
@@ -329,6 +375,7 @@
       width: 35%;
       height: 100%;
       border-radius: inherit;
+
       background:
         linear-gradient(
           90deg,
@@ -336,10 +383,12 @@
           var(--blue),
           var(--blue-light)
         );
+
       animation: progress 2.8s ease-in-out infinite;
     }
 
     @keyframes progress {
+
       0% {
         transform: translateX(-110%);
       }
@@ -347,6 +396,7 @@
       100% {
         transform: translateX(390%);
       }
+
     }
 
     /* ======================================================
@@ -391,7 +441,9 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 25px 36px;
+
       border-top: 1px solid rgba(88, 184, 255, .1);
+
       color: #6f8ba0;
       font-size: 11px;
     }
@@ -410,6 +462,7 @@
        ====================================================== */
 
     @media (max-width: 600px) {
+
       .header {
         padding: 20px;
       }
@@ -451,16 +504,20 @@
         padding: 22px;
         text-align: center;
       }
+
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
         animation: none !important;
         transition: none !important;
       }
+
     }
+
   </style>
 
 </head>
@@ -472,7 +529,9 @@
 
   <div class="page">
 
-    <!-- HEADER -->
+    <!-- ====================================================
+         HEADER
+         ==================================================== -->
 
     <header class="header">
 
@@ -494,21 +553,30 @@
 
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- ====================================================
+         MAIN CONTENT
+         ==================================================== -->
 
     <main>
 
       <div class="content">
 
-        <div class="snowflake-container" aria-hidden="true">
+        <!-- SNOWFLAKE -->
 
-          <svg class="snowflake"
-               viewBox="0 0 24 24"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="1.4"
-               stroke-linecap="round"
-               stroke-linejoin="round">
+        <div
+          class="snowflake-container"
+          aria-hidden="true"
+        >
+
+          <svg
+            class="snowflake"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
 
             <path d="M12 2v20"></path>
             <path d="m5 6 14 12"></path>
@@ -527,65 +595,99 @@
 
         </div>
 
-        <div class="eyebrow">
+        <!-- DYNAMIC EYEBROW -->
+
+        <div
+          class="eyebrow"
+          id="maintenance-eyebrow"
+        >
           Scheduled Maintenance
         </div>
 
-        <h1>
+        <!-- DYNAMIC HEADING -->
+
+        <h1 id="maintenance-heading">
           ICEINDEX IS<br>
           <span>COOLING DOWN.</span>
         </h1>
 
-        <p class="description">
-          We're refreshing our hockey database to serve
-          you better. Our stats, player profiles and
-          analytics will be back shortly.
+        <!-- DYNAMIC DESCRIPTION -->
+
+        <p
+          class="description"
+          id="maintenance-description"
+        >
+          We're refreshing our hockey database during
+          our daily maintenance window. Our stats,
+          player profiles and analytics will be
+          back shortly.
         </p>
 
-        <!-- REFRESH STATUS -->
+        <!-- =================================================
+             REFRESH STATUS
+             ================================================= -->
 
         <div class="refresh-panel">
 
           <div class="refresh-heading">
 
-            <span class="refresh-indicator"
-                  aria-hidden="true"></span>
+            <span
+              class="refresh-indicator"
+              aria-hidden="true"
+            ></span>
 
-            <span class="refresh-title">
+            <span
+              class="refresh-title"
+              id="maintenance-status-title"
+            >
               Database maintenance window
             </span>
 
           </div>
 
-          <p class="refresh-description">
+          <p
+            class="refresh-description"
+            id="maintenance-status-description"
+          >
             IceIndex is temporarily unavailable while
-            scheduled maintenance is in progress.
+            scheduled daily maintenance is in progress.
           </p>
 
-          <div class="progress-track"
-               aria-hidden="true">
-
+          <div
+            class="progress-track"
+            aria-hidden="true"
+          >
             <div class="progress-bar"></div>
-
           </div>
 
         </div>
 
-        <!-- SCHEDULE -->
+        <!-- =================================================
+             DAILY SCHEDULE
+             HIDDEN DURING FORCED MAINTENANCE
+             ================================================= -->
 
-        <div class="schedule">
+        <div
+          class="schedule"
+          id="maintenance-schedule"
+        >
 
           <div class="schedule-label">
-            Weekly Maintenance Window
+            Daily Maintenance Window
           </div>
 
           <div class="schedule-time">
-            Mondays · 2:00–6:00 AM Eastern
+            Every Day · 2:00–6:00 AM Eastern
           </div>
 
         </div>
 
-        <p class="return-message">
+        <!-- RETURN MESSAGE -->
+
+        <p
+          class="return-message"
+          id="maintenance-return-message"
+        >
           We'll be back on the ice shortly.
         </p>
 
@@ -593,7 +695,9 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- ====================================================
+         FOOTER
+         ==================================================== -->
 
     <footer>
 
@@ -603,11 +707,13 @@
       </span>
 
       <span>
-        IceIndex v0.6.0
+        IceIndex v0.8.0
         ·
-        <a href="https://github.com/NoahCornish/IceIndex"
-           target="_blank"
-           rel="noopener noreferrer">
+        <a
+          href="https://github.com/NoahCornish/IceIndex"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           GitHub
         </a>
       </span>
@@ -616,12 +722,17 @@
 
   </div>
 
-<script src="js/maintenance.js?v=0.6.0"></script>
+  <!-- ======================================================
+       MAINTENANCE CONTROLLER
+       ====================================================== -->
 
-<script>
-  document.getElementById("current-year").textContent =
-    new Date().getFullYear();
-</script>
+  <script src="js/maintenance.js?v=0.8.1"></script>
+
+  <script>
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
+
 </html>

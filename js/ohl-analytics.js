@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.3.0
+   ICEINDEX v0.8.0
    FILE 1 — js/ohl-analytics.js
 
    PLAYER ANALYTICS ENGINE
@@ -2097,5 +2097,5 @@
 })();
 
 /* ============================================================
-   END — ICEINDEX v0.3.0 PLAYER ANALYTICS ENGINE
+   END — ICEINDEX v0.8.0 PLAYER ANALYTICS ENGINE
    ============================================================ */

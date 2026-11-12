@@ -2,7 +2,7 @@
 # ============================================================
 # ICEINDEX DATA ENGINE
 # COLLECT RAW OHL GOALIE STATISTICS
-# Version 0.6.0
+# Version 0.8.0
 # ============================================================
 #
 # SOURCE:

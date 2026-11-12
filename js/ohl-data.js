@@ -3,7 +3,7 @@
 
 /* ============================================================
    ICEINDEX
-   VERSION 0.7.0
+   VERSION 0.8.0
    FILE: js/ohl-data.js
 
    INDEPENDENT OHL SKATER DATA ENGINE
@@ -2250,6 +2250,6 @@
 })();
 
 /* ============================================================
-   END OF ICEINDEX v0.7.0
+   END OF ICEINDEX v0.8.0
    FILE: js/ohl-data.js
    ============================================================ */

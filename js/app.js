@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.7.0
+   ICEINDEX v0.8.0
    FILE 2 — js/app.js
 
    APPLICATION + PLAYER ANALYTICS
@@ -57,14 +57,42 @@
     dbTeam: "all",
     dbSort: "pts",
     dbPage: 1,
+    statsCompetition: "regular",
+    statsSeason: "current",
+    statsTeam: "all",
+    statsMetric: "pts",
+    statsMinGP: 0,
+    statsQuery: "",
+    statsPage: 1,
+    statsPosition: "all",
+    statsColumns: null,
+    statsShowColumns: false,
+    statsAdvancedFilters: false,
+    statsFilterMetric: "pts",
+    statsFilterMin: "",
+    statsFilterMax: "",
+    statsSortAscending: false,
 
     profile: null,
     profileSeason: "career",
+    profileTrendMetric: "rate",
 
     compareA: null,
     compareB: null,
     compareSeasonA: "career",
     compareSeasonB: "career",
+    compareCount: 2,
+    compareC: null,
+    compareD: null,
+    compareSeasonC: "career",
+    compareSeasonD: "career",
+    compareCompetitionC: "regular",
+    compareCompetitionD: "regular",
+    compareSortMetric: "pts",
+    compareMinGP: 10,
+    compareCohort: "all",
+    compareRateOnly: false,
+    compareFocus: "all",
 
     draftYear: null,
     draftQuery: "",
@@ -345,6 +373,110 @@
   }
 
   /* ==========================================================
+     v0.8.0 — GLOBAL PLAYER SEARCH
+     Uses the existing merged S.people directory, so no extra
+     CSV, API dependency, or refresh workflow changes are needed.
+     ========================================================== */
+
+  const globalQuery = document.querySelector("#ice-global-query");
+  const globalResults = document.querySelector("#ice-global-results");
+  let globalMatches = [];
+  let globalActive = -1;
+
+  function normalizeSearch(value) {
+    return String(value || "").normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase("en-CA").trim();
+  }
+
+  function closeGlobalSearch(clear = false) {
+    if (!globalResults || !globalQuery) return;
+    globalResults.hidden = true;
+    globalQuery.setAttribute("aria-expanded", "false");
+    globalQuery.removeAttribute("aria-activedescendant");
+    globalActive = -1;
+    if (clear) globalQuery.value = "";
+  }
+
+  function openGlobalPlayer(key) {
+    if (!person(key)) return;
+    S.profile = key;
+    S.profileSeason = "career";
+    S.profileCompetition = "regular";
+    closeGlobalSearch(true);
+    globalQuery?.blur();
+    navigate("profile");
+  }
+
+  function refreshGlobalSearch() {
+    if (!globalQuery || !globalResults) return;
+    const query = normalizeSearch(globalQuery.value);
+    if (!query) { closeGlobalSearch(); return; }
+    const terms = query.split(/\s+/).filter(Boolean);
+    globalMatches = S.people.map(p => {
+      const name = normalizeSearch(p.name);
+      const team = normalizeSearch(p.team);
+      const position = normalizeSearch(p.position);
+      const id = String(p.id || "");
+      const haystack = `${name} ${team} ${position} ${id}`;
+      if (!terms.every(term => haystack.includes(term))) return null;
+      const rank = name === query ? 0 : name.startsWith(query) ? 1 :
+        name.includes(query) ? 2 : 3;
+      return { player: p, rank };
+    }).filter(Boolean).sort((a,b) => a.rank-b.rank ||
+      (b.player.latestYear || 0)-(a.player.latestYear || 0) ||
+      a.player.name.localeCompare(b.player.name)).slice(0,12).map(x => x.player);
+    globalActive = -1;
+    globalResults.innerHTML = globalMatches.length ? globalMatches.map((p,i) => `
+      <button type="button" class="ice-global-result" role="option"
+        id="ice-global-option-${i}" aria-selected="false" data-global-player="${esc(p.key)}">
+        ${image(p)}
+        <span class="ice-global-result-info"><strong>${esc(p.name)}</strong>
+          <small>${esc([p.position, p.team].filter(Boolean).join(" · ") || "OHL Player")}</small></span>
+        <span class="ice-global-result-year">${esc(p.latestYear || "")}</span>
+      </button>`).join("") : `<div class="ice-global-empty">${S.loading ? "No matches yet — historical records are still loading." : "No matching OHL players found."}</div>`;
+    globalResults.hidden = false;
+    globalQuery.setAttribute("aria-expanded", "true");
+  }
+
+  function updateGlobalActive(index) {
+    if (!globalMatches.length) return;
+    globalActive = (index + globalMatches.length) % globalMatches.length;
+    globalResults.querySelectorAll(".ice-global-result").forEach((el,i) => {
+      el.classList.toggle("is-active",i === globalActive);
+      el.setAttribute("aria-selected",String(i === globalActive));
+    });
+    const selected = globalResults.querySelector(`#ice-global-option-${globalActive}`);
+    globalQuery.setAttribute("aria-activedescendant",selected?.id || "");
+    selected?.scrollIntoView({block:"nearest"});
+  }
+
+  globalQuery?.addEventListener("input",refreshGlobalSearch);
+  globalQuery?.addEventListener("focus",() => {
+    if (globalQuery.value.trim()) refreshGlobalSearch();
+  });
+  globalQuery?.addEventListener("keydown",event => {
+    if (event.key === "Escape") { closeGlobalSearch(); globalQuery.blur(); }
+    else if (event.key === "ArrowDown") { event.preventDefault(); updateGlobalActive(globalActive+1); }
+    else if (event.key === "ArrowUp") { event.preventDefault(); updateGlobalActive(globalActive-1); }
+    else if (event.key === "Enter" && globalMatches.length) {
+      event.preventDefault(); openGlobalPlayer(globalMatches[globalActive < 0 ? 0 : globalActive].key);
+    }
+  });
+  globalResults?.addEventListener("click",event => {
+    const target = event.target.closest("[data-global-player]");
+    if (target) openGlobalPlayer(target.dataset.globalPlayer);
+  });
+  document.addEventListener("pointerdown",event => {
+    if (!event.target.closest(".ice-global-search")) closeGlobalSearch();
+  });
+  document.addEventListener("keydown",event => {
+    if (event.key !== "/" || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    if (event.target.closest("input,textarea,select,[contenteditable='true']")) return;
+    event.preventDefault(); globalQuery?.focus();
+  });
+
+  /* ==========================================================
      03. PLAYER IDENTITY + SEASON MERGING
      ========================================================== */
 
@@ -447,6 +579,8 @@
       S.people.map(p => [p.key, p])
     );
 
+    if (globalQuery?.value.trim()) refreshGlobalSearch();
+
     const defaultPlayer = sortBy(
       S.current,
       "pts"
@@ -465,6 +599,8 @@
         p => p.key !== S.compareA
       )?.key || null;
     }
+
+    restoreCompareLink();
 
     if (!person(S.analyticsPlayer)) {
       S.analyticsPlayer = S.profile;
@@ -948,6 +1084,250 @@
     `;
   }
 
+
+  /* ==========================================================
+     STATISTICS DATABASE — SEASON LEADERBOARDS
+     ========================================================== */
+
+  const STATS_DEFINITIONS = [
+    {key:"gp",label:"GP",group:"Basics"},
+    {key:"g",label:"G",group:"Basics"},
+    {key:"a",label:"A",group:"Basics"},
+    {key:"pts",label:"PTS",group:"Basics"},
+    {key:"rate",label:"P/GP",group:"Basics",derived:true},
+    {key:"goalsRate",label:"G/GP",group:"Basics",derived:true},
+    {key:"assistsRate",label:"A/GP",group:"Basics",derived:true},
+    {key:"plusMinus",label:"+/-",group:"Basics"},
+    {key:"pim",label:"PIM",group:"Basics"},
+    {key:"shots",label:"SOG",group:"Shooting"},
+    {key:"shootingPct",label:"SH%",group:"Shooting",derived:true},
+    {key:"shotsPerGame",label:"S/GP",group:"Shooting",derived:true},
+    {key:"ppg",label:"PPG",group:"Power Play"},
+    {key:"ppa",label:"PPA",group:"Power Play"},
+    {key:"ppp",label:"PPP",group:"Power Play"},
+    {key:"shg",label:"SHG",group:"Shorthanded"},
+    {key:"sha",label:"SHA",group:"Shorthanded"},
+    {key:"shpts",label:"SHPTS",group:"Shorthanded"},
+    {key:"gwg",label:"GWG",group:"Situational"},
+    {key:"eng",label:"ENG",group:"Situational"},
+    {key:"nationality",label:"NAT",group:"Player"}
+  ];
+  const STATS_DEFAULT_COLUMNS = ["gp","g","a","pts","rate","plusMinus","pim","shots","shootingPct","ppg","ppa","ppp"];
+  const STATS_TEXT_FIELDS = new Set(["position","nationality"]);
+  const STATS_DERIVED_FIELDS = new Set(["rate","goalsRate","assistsRate","shootingPct","shotsPerGame"]);
+
+  const ICE_TEAM_CODES = {
+    "Barrie Colts":"BAR", "Brantford Bulldogs":"BFD", "Hamilton Bulldogs":"HAM",
+    "Brampton Steelheads":"BRM", "Mississauga Steelheads":"MISS",
+    "Erie Otters":"ER", "Flint Firebirds":"FLNT", "Guelph Storm":"GUE",
+    "Kingston Frontenacs":"KGN", "Kitchener Rangers":"KIT", "London Knights":"LDN",
+    "Niagara IceDogs":"NIAG", "North Bay Battalion":"NB", "Oshawa Generals":"OSH",
+    "Ottawa 67's":"OTT", "Ottawa 67’s":"OTT", "Owen Sound Attack":"OS",
+    "Peterborough Petes":"PBO", "Saginaw Spirit":"SAG", "Sarnia Sting":"SAR",
+    "Soo Greyhounds":"SOO", "Sault Ste. Marie Greyhounds":"SOO",
+    "Sudbury Wolves":"SBY", "Windsor Spitfires":"WSR"
+  };
+  function iceTeamAbbreviation(team) {
+    const name=String(team||"").trim();
+    if (!name || name==="—") return "—";
+    if (/^[A-Z]{2,5}$/.test(name)) return name;
+    if (ICE_TEAM_CODES[name]) return ICE_TEAM_CODES[name];
+    const normalized=name.toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]/g, "");
+    const match=Object.entries(ICE_TEAM_CODES).find(([key])=>key.toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]/g, "")===normalized);
+    return match?match[1]:name.split(/\s+/).map(x=>x[0]).join("").toUpperCase().slice(0,4);
+  }
+  function iceTeamShortLabel(row) {
+    const names=row.teamNames?.length?row.teamNames:[row.team];
+    return [...new Set(names.map(iceTeamAbbreviation))].join("/");
+  }
+
+  function statsMetricValue(r,key) {
+    if (key === "shootingPct") return r.shots > 0 && r.g != null ? r.g / r.shots * 100 : null;
+    if (key === "shotsPerGame") return r.gp > 0 && r.shots != null ? r.shots / r.gp : null;
+    if (key === "rate" || key === "goalsRate" || key === "assistsRate") return r[key];
+    return r[key] ?? null;
+  }
+
+  function statsRows() {
+    const base = resolveRows(competitionRecords(S.statsCompetition), S.statsCompetition);
+    const season = S.statsSeason === "current" ? uniqueSeasons(base)[0] : S.statsSeason;
+    const byPlayer = new Map();
+    for (const r of base) {
+      if (r.season !== season || !r.key) continue;
+      if (!byPlayer.has(r.key)) byPlayer.set(r.key, []);
+      byPlayer.get(r.key).push(r);
+    }
+    const rows=[];
+    for (const [key,stints] of byPlayer) {
+      const combined=stints.find(r=>/^(tot|total|all teams|multiple teams)$/i.test(String(r.team||"").trim()));
+      const source=combined?[combined]:stints;
+      const first=source[0];
+      const teams=[...new Set(stints.map(r=>r.team).filter(t=>t&&!/^(tot|total|all teams|multiple teams)$/i.test(t)))];
+      const row={...first,key,photo:stints.find(r=>r.photo)?.photo||first.photo,team:teams.join(" / ")||first.team||"—",teamNames:teams};
+      const numericFields=STATS_DEFINITIONS.filter(d=>!d.derived&&!STATS_TEXT_FIELDS.has(d.key)).map(d=>d.key);
+      for (const field of numericFields) {
+        const values=source.map(r=>r[field]).filter(v=>v!==null&&v!==undefined&&v!==""&&Number.isFinite(Number(v)));
+        if (!values.length) {row[field]=null;continue;}
+        row[field]=values.reduce((s,v)=>s+Number(v),0);
+      }
+      row.rate=row.gp>0&&row.pts!=null?row.pts/row.gp:null;
+      row.goalsRate=row.gp>0&&row.g!=null?row.g/row.gp:null;
+      row.assistsRate=row.gp>0&&row.a!=null?row.a/row.gp:null;
+      rows.push(row);
+    }
+    return rows;
+  }
+
+  function statsAvailableColumns(rows) {
+    return STATS_DEFINITIONS.filter(d=>rows.some(r=>{
+      const v=statsMetricValue(r,d.key);
+      return v!==null&&v!==undefined&&v!==""&&(!STATS_DERIVED_FIELDS.has(d.key)||Number.isFinite(v));
+    }));
+  }
+
+  function statsActiveColumns(available) {
+    const keys=new Set(available.map(d=>d.key));
+    if (!S.statsColumns) return STATS_DEFAULT_COLUMNS.filter(k=>keys.has(k));
+    return S.statsColumns.filter(k=>keys.has(k));
+  }
+
+  function statsFormat(r,key) {
+    const v=statsMetricValue(r,key);
+    if (v===null||v===undefined||v==="") return "—";
+    if (STATS_TEXT_FIELDS.has(key)) return esc(v);
+    if (key==="shootingPct") return `${dec(v,1)}%`;
+    if (STATS_DERIVED_FIELDS.has(key)) return dec(v,2);
+    if (key==="plusMinus") return Number(v)>0?`+${fmt(v)}`:fmt(v);
+    return fmt(v);
+  }
+
+  function statsFilteredRows() {
+    const q=S.statsQuery.trim().toLowerCase();
+    const min=S.statsFilterMin===""?null:Number(S.statsFilterMin);
+    const max=S.statsFilterMax===""?null:Number(S.statsFilterMax);
+    const metric=S.statsFilterMetric;
+    return statsRows().filter(r=>{
+      const position=String(r.position||"").toUpperCase();
+      if (q&&!`${r.name} ${r.team} ${position}`.toLowerCase().includes(q)) return false;
+      if (S.statsTeam!=="all"&&!r.teamNames.includes(S.statsTeam)) return false;
+      if (S.statsPosition!=="all"&&position!==S.statsPosition) return false;
+      if ((Number(r.gp)||0)<S.statsMinGP) return false;
+      if (min!==null||max!==null) {
+        const v=statsMetricValue(r,metric);
+        if (v===null||v===undefined||!Number.isFinite(Number(v))) return false;
+        if (min!==null&&Number(v)<min) return false;
+        if (max!==null&&Number(v)>max) return false;
+      }
+      return true;
+    });
+  }
+
+  function statsExportCSV() {
+    const rows=statsSortedRows();
+    const all=statsAvailableColumns(statsRows());
+    const selected=statsActiveColumns(all);
+    const defs=selected.map(k=>all.find(d=>d.key===k));
+    const quote=v=>`"${String(v??"").replace(/"/g,'""')}"`;
+    const lines=[["Player","Team","Season",...defs.map(d=>d.label)].map(quote).join(",")];
+    for (const r of rows) lines.push([r.name,r.team,r.season,...selected.map(k=>statsMetricValue(r,k)??"")].map(quote).join(","));
+    const blob=new Blob(["\ufeff",lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");a.href=url;a.download=`iceindex-${S.statsSeason}-${S.statsCompetition}.csv`;
+    document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }
+
+  function statsSortedRows() {
+    const metric=S.statsMetric;
+    return statsFilteredRows().sort((a,b)=>{
+      const x=statsMetricValue(a,metric),y=statsMetricValue(b,metric);
+      if (x==null&&y==null) return String(a.name).localeCompare(String(b.name));
+      if (x==null) return 1;
+      if (y==null) return -1;
+      const result=typeof x==="string"?String(x).localeCompare(String(y)):Number(x)-Number(y);
+      return (S.statsSortAscending?result:-result)||String(a.name).localeCompare(String(b.name));
+    });
+  }
+
+  function renderStatistics() {
+    const seasons=uniqueSeasons(competitionRecords(S.statsCompetition));
+    if (!seasons.length) {
+      main.innerHTML=heading("OHL STATISTICS","Statistics Database","Season-by-season skater leaderboards.")+empty("No statistics available.");
+      return;
+    }
+    if (S.statsSeason!=="current"&&!seasons.includes(S.statsSeason)) S.statsSeason="current";
+    const rows=statsRows();
+    const teams=[...new Set(rows.flatMap(r=>r.teamNames))].sort();
+    const positions=[...new Set(rows.map(r=>String(r.position||"").toUpperCase()).filter(Boolean))].sort();
+    const available=statsAvailableColumns(rows);
+    const selected=new Set(statsActiveColumns(available));
+    const groups=[...new Set(available.map(d=>d.group))];
+    main.innerHTML=heading("OHL STATISTICS","Statistics Database","Choose your columns, sort any statistic, and filter the full OHL skater table.")+archiveNotice()+`
+      <div class="ice-stats-toolbar">
+        <label>Search<input id="stats-search" class="input" type="search" placeholder="Player or team…" value="${esc(S.statsQuery)}"></label>
+        <label>Competition${competitionSelect("stats-competition",S.statsCompetition)}</label>
+        <label>Season<select id="stats-season" class="select">${option("current",`Latest (${seasons[0]})`,S.statsSeason)}${seasons.map(s=>option(s,s,S.statsSeason)).join("")}</select></label>
+        <label>Team<select id="stats-team" class="select">${option("all","All teams",S.statsTeam)}${teams.map(t=>option(t,t,S.statsTeam)).join("")}</select></label>
+        <label>Position<select id="stats-position" class="select">${option("all","All positions",S.statsPosition)}${positions.map(p=>option(p,p,S.statsPosition)).join("")}</select></label>
+        <label>Sort by<select id="stats-metric" class="select">${available.map(d=>option(d.key,d.label,S.statsMetric)).join("")}</select></label>
+      </div>
+      <div class="ice-stats-actions">
+        <button type="button" class="btn" id="stats-columns-toggle" aria-expanded="${S.statsShowColumns}">Columns (${selected.size} of ${available.length})</button>
+        <button type="button" class="btn" id="stats-filters-toggle" aria-expanded="${S.statsAdvancedFilters}">More filters</button>
+        <button type="button" class="btn" id="stats-sort-direction">${S.statsSortAscending?"Ascending ↑":"Descending ↓"}</button>
+        <button type="button" class="btn" id="stats-export">Download CSV</button>
+        <button type="button" class="btn" id="stats-clear">Clear all filters</button>
+        <button type="button" class="btn" id="stats-goalies">Goalie database ↗</button>
+      </div>
+      <section id="stats-columns-panel" class="ice-stats-config" ${S.statsShowColumns?"":"hidden"}>
+        <div class="ice-stats-config-head"><strong>Choose visible statistics</strong><div>
+          <button type="button" class="btn" id="stats-columns-all">Select all available</button>
+          <button type="button" class="btn" id="stats-columns-default">Default</button>
+          <button type="button" class="btn" id="stats-columns-none">Clear columns</button>
+        </div></div>
+        <div class="ice-stats-groups">${groups.map(group=>`<fieldset><legend>${esc(group)}</legend>${available.filter(d=>d.group===group).map(d=>`<label><input type="checkbox" data-stats-column="${esc(d.key)}" ${selected.has(d.key)?"checked":""}> ${esc(d.label)}</label>`).join("")}</fieldset>`).join("")}</div>
+        <p class="results-meta">Only statistics actually available in IceIndex's loaded records appear here. Additional CHLCards metrics require new source data.</p>
+      </section>
+      <section id="stats-filters-panel" class="ice-stats-config" ${S.statsAdvancedFilters?"":"hidden"}>
+        <div class="ice-stats-toolbar">
+          <label>Minimum GP<select id="stats-min-gp" class="select">${[[0,"Any GP"],[5,"5+ GP"],[10,"10+ GP"],[20,"20+ GP"],[40,"40+ GP"]].map(([k,v])=>option(k,v,S.statsMinGP)).join("")}</select></label>
+          <label>Filter statistic<select id="stats-filter-metric" class="select">${available.filter(d=>!STATS_TEXT_FIELDS.has(d.key)).map(d=>option(d.key,d.label,S.statsFilterMetric)).join("")}</select></label>
+          <label>Minimum value<input id="stats-filter-min" class="input" type="number" step="any" placeholder="No minimum" value="${esc(S.statsFilterMin)}"></label>
+          <label>Maximum value<input id="stats-filter-max" class="input" type="number" step="any" placeholder="No maximum" value="${esc(S.statsFilterMax)}"></label>
+        </div>
+      </section>
+      <div id="stats-results"></div>`;
+    updateStatistics();
+  }
+
+  function updateStatistics() {
+    const el=document.querySelector("#stats-results");if(!el)return;
+    const rows=statsSortedRows();
+    const available=statsAvailableColumns(statsRows());
+    const cols=statsActiveColumns(available);
+    const defs=cols.map(k=>available.find(d=>d.key===k));
+    const pageSize=50,pages=Math.max(1,Math.ceil(rows.length/pageSize));
+    S.statsPage=clamp(S.statsPage,1,pages);
+    const visible=rows.slice((S.statsPage-1)*pageSize,S.statsPage*pageSize);
+    const season=S.statsSeason==="current"?uniqueSeasons(competitionRecords(S.statsCompetition))[0]:S.statsSeason;
+    const grouped=[];
+    for (const d of defs) {
+      const last=grouped[grouped.length-1];
+      if(last&&last.name===d.group)last.count++;
+      else grouped.push({name:d.group,count:1});
+    }
+    el.innerHTML=`<div class="ice-stats-summary">
+      <div><strong>${fmt(rows.length)}</strong><span>Matching skaters</span></div>
+      <div><strong>${esc(season||"—")}</strong><span>Season</span></div>
+      <div><strong>${cols.length}</strong><span>Visible statistics</span></div>
+    </div><div class="results-meta">Available IceIndex records · no default games-played floor · ${S.statsCompetition==="playoffs"?"Playoffs":"Regular season"}. Click a column heading to sort.</div>
+    ${visible.length?`<div class="ice-stats-table-wrap" role="region" aria-label="Scrollable skater statistics" tabindex="0"><table class="ice-stats-table">
+      <thead><tr><th>#</th><th>Player</th><th>Team</th>${defs.map(d=>`<th><button type="button" data-stats-sort="${esc(d.key)}" title="Sort by ${esc(d.label)}">${esc(d.label)}${S.statsMetric===d.key?(S.statsSortAscending?" ↑":" ↓"):""}</button></th>`).join("")}</tr></thead>
+      <tbody>${visible.map((r,i)=>`<tr><td>${(S.statsPage-1)*pageSize+i+1}</td>
+      <td><button class="ice-stats-player" type="button" data-stats-player="${esc(r.key)}">${image(r,"ice-stats-headshot")}<span class="ice-stats-name">${esc(r.name)}</span></button></td><td title="${esc(r.team)}">${esc(iceTeamShortLabel(r))}</td>
+      ${cols.map(k=>`<td class="${k===S.statsMetric?"ice-stats-emphasis":""}">${statsFormat(r,k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`:empty("No skaters match these filters.")}
+    <div class="ice-pagination"><button class="btn" data-stats-page="prev" ${S.statsPage<=1?"disabled":""}>Previous</button><span>Page ${S.statsPage} of ${pages}</span><button class="btn" data-stats-page="next" ${S.statsPage>=pages?"disabled":""}>Next</button></div>`;
+  }
+
   /* ==========================================================
      08. PLAYER PROFILE
      ========================================================== */
@@ -1078,15 +1458,35 @@
         </section>
 
         ${panel(
+          "Career Highlights",
+          careerHighlights(p)
+        )}
+
+        ${panel(
+          "OHL Season Rankings",
+          seasonRankings(p)
+        )}
+
+        ${panel(
+          "OHL Career Timeline",
+          careerTimeline(p, competition)
+        )}
+
+        ${panel(
           competition === "playoffs"
-            ? "OHL Playoff Career History"
-            : "OHL Regular-Season Career History",
-          table(rows)
+            ? "Playoff Season Statistics"
+            : "Regular-Season Statistics",
+          profileStatsTable(p, competition)
         )}
 
         ${panel(
           "Season Development",
-          developmentChart(p, competition)
+          developmentChart(p, competition),
+          `<div class="ice-trend-switch" aria-label="Development chart metric">
+            ${[["rate","P/GP"],["g","Goals"],["a","Assists"],["pts","Points"]].map(([key,label]) =>
+              `<button type="button" class="btn ${S.profileTrendMetric === key ? "active" : ""}" data-profile-trend="${key}">${label}</button>`
+            ).join("")}
+          </div>`
         )}
 
         ${panel(
@@ -1120,234 +1520,456 @@
       `;
   }
 
-  function developmentChart(p, competition = "regular") {
-    const rows = recordsForPlayer(p, competition);
+  /* v0.8.0 — Automatically generated career highlights. */
+  function careerHighlights(p) {
+    const regular = recordsForPlayer(p, "regular") || [];
+    const playoffs = careerForPlayer(p, "playoffs");
+    const regularCareer = careerForPlayer(p, "regular");
 
-    if (!rows.length) {
-      return empty(
-        competition === "playoffs"
-          ? "No playoff season history is available."
-          : "No regular-season history is available."
-      );
+    // One season per year, even if the player changed OHL teams.
+    // Prefer a pre-aggregated season total when the source supplies one.
+    const bySeason = new Map();
+    for (const r of regular) {
+      if (!r?.season) continue;
+      if (!bySeason.has(r.season)) bySeason.set(r.season, []);
+      bySeason.get(r.season).push(r);
+    }
+    const seasons = [...bySeason].map(([season, records]) => {
+      const total = records.find(r => /^(total|all teams|combined)$/i.test(String(r.team || "").trim()));
+      const r = total || (records.length === 1 ? records[0] : aggregate(records));
+      return { ...r, season };
+    });
+
+    const best = (field, requireGP = false) => seasons
+      .filter(r => Number.isFinite(Number(r[field])) && r[field] != null && (!requireGP || Number(r.gp) > 0))
+      .sort((a, b) => Number(b[field]) - Number(a[field]) || Number(b.endYear || 0) - Number(a.endYear || 0))[0] || null;
+
+    const bestPoints = best("pts");
+    const mostGoals = best("g");
+    const bestRate = seasons
+      .filter(r => r.gp > 0 && r.pts != null && Number.isFinite(Number(r.pts / r.gp)))
+      .sort((a, b) => b.pts / b.gp - a.pts / a.gp || Number(b.endYear || 0) - Number(a.endYear || 0))[0] || null;
+
+    const cards = [
+      { icon: "★", label: "BEST SEASON", value: bestPoints ? `${fmt(bestPoints.pts)} PTS` : "—", sub: bestPoints?.season || "No season data", season: bestPoints?.season },
+      { icon: "◎", label: "MOST GOALS", value: mostGoals ? fmt(mostGoals.g) : "—", sub: mostGoals?.season || "No season data", season: mostGoals?.season },
+      { icon: "↗", label: "BEST POINTS / GP", value: bestRate ? dec(bestRate.pts / bestRate.gp, 2) : "—", sub: bestRate?.season || "No eligible season", season: bestRate?.season },
+      { icon: "▦", label: "SEASONS PLAYED", value: fmt(seasons.length), sub: "OHL regular season" },
+      { icon: "◆", label: "CAREER POINTS", value: regularCareer?.pts != null ? fmt(regularCareer.pts) : "—", sub: "Regular season" },
+      { icon: "✦", label: "PLAYOFF POINTS", value: playoffs?.pts != null ? fmt(playoffs.pts) : "—", sub: playoffs?.pts != null ? "OHL playoffs" : "Not available" }
+    ];
+
+    return `<div class="ice-highlights-grid">${cards.map(c => {
+      const content = `<span class="ice-highlight-label"><span aria-hidden="true">${c.icon}</span>${esc(c.label)}</span>
+        <strong class="ice-highlight-value">${esc(c.value)}</strong>
+        <span class="ice-highlight-season">${esc(c.sub)}</span>`;
+      return c.season
+        ? `<button type="button" class="ice-highlight-card ice-highlight-clickable" data-highlight-season="${esc(c.season)}" title="View ${esc(c.season)} regular-season statistics">${content}</button>`
+        : `<div class="ice-highlight-card">${content}</div>`;
+    }).join("")}</div>
+    <p class="ice-profile-note">Highlights are calculated from available IceIndex records. Season records are grouped by year; playoff totals are shown separately. Select a season highlight to view its regular-season statistics.</p>`;
+  }
+
+  /* v0.8.0 — Player season rankings, using the merged IceIndex archive. */
+  function seasonRankings(p) {
+    const season = S.profileSeason;
+    if (season === "career") {
+      return `<p class="ice-profile-note">Select a regular season above or in the career timeline to see how this player ranked against other OHL skaters.</p>`;
     }
 
-    const max = Math.max(
-      1,
-      ...rows.map(r => valueOf(r, "rate") || 0)
+    // Rankings are regular-season only, independent of the selected
+    // profile competition. One entry per player/season, never per team.
+    function seasonTotal(person) {
+      const rows = recordsForPlayer(person, "regular").filter(r => r.season === season);
+      if (!rows.length) return null;
+      const total = rows.find(r => /^(total|all teams|combined)$/i.test(String(r.team || "").trim()));
+      return total || (rows.length === 1 ? rows[0] : aggregate(rows));
+    }
+
+    const cohort = S.people.map(person => ({ person, record: seasonTotal(person) }))
+      .filter(x => x.record && Number(x.record.gp) > 0 &&
+        !/^(g|goalie|goaltender)$/i.test(String(x.person.position || "").trim()));
+    const chosen = cohort.find(x => x.person.key === p.key);
+    if (!chosen) return `<p class="ice-profile-note">No eligible regular-season skater record is available for ${esc(season)}.</p>`;
+
+    const minimumGames = 10;
+    const metrics = [
+      { label: "POINTS", field: "pts", suffix: " PTS" },
+      { label: "GOALS", field: "g", suffix: " G" },
+      { label: "ASSISTS", field: "a", suffix: " A" },
+      { label: "POINTS / GAME", field: "rate", suffix: " P/GP" }
+    ];
+    const cards = metrics.map(metric => {
+      const eligible = cohort.filter(x => {
+        const value = valueOf(x.record, metric.field);
+        return value != null && Number.isFinite(Number(value)) &&
+          (metric.field !== "rate" || Number(x.record.gp) >= minimumGames);
+      });
+      const value = valueOf(chosen.record, metric.field);
+      const isEligible = eligible.some(x => x.person.key === p.key);
+      const rank = isEligible ? 1 + eligible.filter(x =>
+        Number(valueOf(x.record, metric.field)) > Number(value) + 1e-9).length : null;
+      const ordinal = n => n + (n % 100 >= 11 && n % 100 <= 13 ? "th" :
+        n % 10 === 1 ? "st" : n % 10 === 2 ? "nd" : n % 10 === 3 ? "rd" : "th");
+      return `<div class="ice-ranking-card">
+        <span class="ice-ranking-label">${esc(metric.label)}</span>
+        <strong class="ice-ranking-position">${rank == null ? "—" : ordinal(rank)}</strong>
+        <span class="ice-ranking-value">${value == null ? "—" : metric.field === "rate" ? dec(value, 2) + metric.suffix : fmt(value) + metric.suffix}</span>
+        <small class="ice-ranking-cohort">${rank == null ? "Not eligible" : `of ${fmt(eligible.length)} ranked skaters`}</small>
+      </div>`;
+    });
+
+    return `<div class="ice-ranking-header"><span>${esc(season)} · Regular Season</span>
+      <span>${fmt(cohort.length)} skaters in available records</span></div>
+      <div class="ice-rankings-grid">${cards.join("")}</div>
+      <p class="ice-profile-note">Rankings are calculated from available IceIndex regular-season skater records, not independently verified complete league standings. Players with multiple team stints are counted once per season. Ties share a rank. Points/game requires at least ${minimumGames} games played. Rankings may change while historical data loads.</p>`;
+  }
+
+  function careerTimeline(p, competition = "regular") {
+    const rows = [...recordsForPlayer(p, competition)].sort((a,b) =>
+      a.endYear - b.endYear || String(a.team || "").localeCompare(String(b.team || ""))
     );
+    if (!rows.length) return empty("No season history is available for this competition.");
+    return `<div class="ice-career-timeline">
+      ${rows.map(r => `<button type="button"
+        class="ice-career-stop ${S.profileSeason === r.season ? "selected" : ""}"
+        data-profile-timeline="${esc(r.season)}"
+        aria-pressed="${S.profileSeason === r.season}">
+        <span class="ice-career-year">${esc(r.season || "Season unavailable")}</span>
+        <span class="ice-career-team">${logo(r.team)}<strong>${esc(r.team || "Unknown team")}</strong></span>
+        <span class="ice-career-production">${fmt(r.gp)} GP · ${fmt(r.g)} G · ${fmt(r.a)} A · <b>${fmt(r.pts)} PTS</b></span>
+      </button>`).join("")}
+    </div><p class="ice-profile-note">Select a season to update the player statistics above. Team history reflects the available source records.</p>`;
+  }
 
-    return `
-      <div class="bars">
-        ${rows.map(r => `
-          <div class="bar-row">
-            <div>
-              <span>${esc(r.season)}</span>
+  function profileStatsTable(p, competition = "regular") {
+    const rows = [...recordsForPlayer(p, competition)].sort((a,b) => a.endYear - b.endYear);
+    if (!rows.length) return empty("No statistics are available for this competition.");
+    const columns = [["gp","GP"],["g","G"],["a","A"],["pts","PTS"],["rate","P/GP"],["ppg","PPG"],["ppa","PPA"],["ppp","PPP"],["pim","PIM"],["shots","SOG"]];
+    const renderCells = r => columns.map(([key]) => `<td>${key === "rate" ? dec(valueOf(r,key),2) : fmt(r?.[key])}</td>`).join("");
+    const career = careerForPlayer(p, competition);
+    return `<div class="table-scroll ice-profile-table-scroll"><table class="data-table ice-profile-stats-table">
+      <thead><tr><th>SEASON</th><th>TEAM</th>${columns.map(([,label]) => `<th>${label}</th>`).join("")}</tr></thead>
+      <tbody>${rows.map(r => `<tr class="${S.profileSeason === r.season ? "ice-profile-selected-row" : ""}">
+        <td><button type="button" class="ice-season-link" data-profile-timeline="${esc(r.season)}">${esc(r.season)}</button></td>
+        <td>${esc(r.team || "—")}</td>${renderCells(r)}</tr>`).join("")}
+        ${career ? `<tr class="ice-profile-total"><td><strong>CAREER</strong></td><td>All teams</td>${renderCells(career)}</tr>` : ""}
+      </tbody></table></div>
+      <p class="ice-profile-note">Totals and per-game rates use the existing IceIndex career aggregation. Missing statistics are shown as —.</p>`;
+  }
 
-              <b>
-                ${dec(valueOf(r, "rate"))} P/GP
-              </b>
-            </div>
-
-            <span class="track">
-              <span style="width:${
-                clamp(
-                  (valueOf(r, "rate") || 0) /
-                  max * 100,
-                  0,
-                  100
-                )
-              }%"></span>
-            </span>
-          </div>
-        `).join("")}
-      </div>
-    `;
+  function developmentChart(p, competition = "regular") {
+    const rows = [...recordsForPlayer(p, competition)].sort((a,b) => a.endYear - b.endYear);
+    if (!rows.length) return empty("No season development history is available.");
+    const metric = S.profileTrendMetric;
+    const values = rows.map(r => valueOf(r, metric));
+    const max = Math.max(1, ...values.filter(v => v != null && Number.isFinite(Number(v))).map(Number));
+    return `<div class="bars ice-profile-development">
+      ${rows.map((r,i) => `<div class="bar-row"><div><span>${esc(r.season)} · ${esc(r.team || "")}</span>
+        <b>${metric === "rate" ? dec(values[i],2) : fmt(values[i])}${metric === "rate" ? " P/GP" : ""}</b></div>
+        <span class="track"><span style="width:${clamp(Number(values[i] || 0)/max*100,0,100)}%"></span></span>
+      </div>`).join("")}
+    </div>`;
   }
 
   /* ==========================================================
      09. PLAYER COMPARISON
      ========================================================== */
 
-  function renderCompare() {
-    const p1 = person(S.compareA);
-    const p2 = person(S.compareB);
+  const COMPARE_METRICS = [
+    ["Games played", "gp", "Volume"], ["Goals", "g", "Scoring"],
+    ["Assists", "a", "Scoring"], ["Points", "pts", "Scoring"],
+    ["Points / game", "rate", "Efficiency"],
+    ["Goals / game", "goalsRate", "Efficiency"],
+    ["Assists / game", "assistsRate", "Efficiency"],
+    ["Plus / minus", "plusMinus", "Other"],
+    ["Penalty minutes", "pim", "Other"],
+    ["Shots on goal", "shots", "Shooting"],
+    ["Shooting %", "shootingPct", "Shooting"],
+    ["Power-play goals", "ppg", "Power play"],
+    ["Power-play assists", "ppa", "Power play"],
+    ["Power-play points", "ppp", "Power play"],
+    ["Shorthanded goals", "shg", "Penalty kill"],
+    ["Shorthanded assists", "sha", "Penalty kill"],
+    ["Shorthanded points", "shp", "Penalty kill"]
+  ];
 
-    if (!p1 || !p2) {
-      main.innerHTML = empty("Two players are required.");
+  function compareMetric(record, key) {
+    if (!record) return null;
+    const n = field => {
+      const raw = record[field];
+      if (raw === null || raw === undefined || raw === "") return null;
+      const v = Number(raw);
+      return Number.isFinite(v) ? v : null;
+    };
+    const gp = n("gp");
+    if (key === "rate" || key === "goalsRate" || key === "assistsRate") {
+      const numerator = n(key === "rate" ? "pts" : key === "goalsRate" ? "g" : "a");
+      return gp > 0 && numerator !== null ? numerator / gp : null;
+    }
+    if (key === "shootingPct") {
+      const g = n("g"), shots = n("shots");
+      return g !== null && shots > 0 ? g / shots * 100 : null;
+    }
+    const aliases = {
+      plusMinus:["plusMinus","plusminus","plus_minus","pm"],
+      ppg:["ppg","powerPlayGoals"],
+      ppa:["ppa","powerPlayAssists"],
+      ppp:["ppp","powerPlayPoints"],
+      shg:["shg","shortHandedGoals"],
+      sha:["sha","shortHandedAssists"],
+      shp:["shp","shortHandedPoints"]
+    }[key] || [key];
+    for (const alias of aliases) {
+      const v = n(alias);
+      if (v !== null) return v;
+    }
+    return null;
+  }
+
+  const COMPARE_RATE_METRICS = new Set(["rate","goalsRate","assistsRate","shootingPct"]);
+  const COMPARE_REVERSE_METRICS = new Set(); // no automatic scouting judgement on PIM or +/-.
+
+  function comparePosition(p, record) {
+    const raw = String(record?.position || p?.position || "").trim().toUpperCase();
+    if (/^(D|LD|RD|DEFEN[CS]E|DEFEN[CS]EMAN)$/.test(raw)) return "D";
+    if (/^(C|LW|RW|F|CF|LF|RF|FORWARD|CENTRE|CENTER|LEFT WING|RIGHT WING)$/.test(raw)) return "F";
+    return "";
+  }
+
+  function compareCohortRows(season, competition, position, minGP) {
+    if (!season || season === "career") return [];
+    const raw = resolveRows(competitionRecords(competition), competition)
+      .filter(r => r.season === season && r.key);
+    const byKey = new Map();
+    for (const row of raw) {
+      const list = byKey.get(row.key) || [];
+      list.push(row);
+      byKey.set(row.key,list);
+    }
+    const result = [];
+    for (const [key, records] of byKey) {
+      const total = records.find(r=>/^(tot|total|all teams|multiple teams)$/i.test(String(r.team||"").trim()));
+      const source = total ? [total] : records;
+      const first = source[0];
+      const numericFields = ["gp","g","a","pts","shots","pim","plusMinus","ppg","ppa","ppp","shg","sha","shp"];
+      const merged = {...first};
+      for (const field of numericFields) {
+        const present = source.map(r=>compareMetric(r,field)).filter(v=>v!==null);
+        if (present.length) merged[field] = present.reduce((a,b)=>a+b,0);
+        else delete merged[field];
+      }
+      if ((compareMetric(merged,"gp") ?? 0) < minGP) continue;
+      if (position !== "all" && comparePosition(person(key),merged) !== position) continue;
+      result.push(merged);
+    }
+    return result;
+  }
+
+  function comparePercentile(value, values) {
+    if (value === null) return null;
+    const sorted = values.filter(v=>v!==null && Number.isFinite(v)).sort((a,b)=>a-b);
+    if (sorted.length < 5) return null;
+    const below = sorted.filter(v=>v<value).length;
+    const equal = sorted.filter(v=>v===value).length;
+    return Math.round(100*(below + equal/2)/sorted.length);
+  }
+
+  function comparePercentileFor(slot, key) {
+    if (!slot.player || slot.season === "career") return null;
+    const position = S.compareCohort === "same" ? comparePosition(slot.player,slot.record) : "all";
+    if (S.compareCohort === "same" && !position) return null;
+    const cohort = compareCohortRows(slot.season,slot.competition,position,S.compareMinGP);
+    const value = compareMetric(slot.record,key);
+    if ((compareMetric(slot.record,"gp") ?? 0) < S.compareMinGP) return null;
+    const values = cohort.map(r=>compareMetric(r,key)).filter(v=>v!==null);
+    const percentile = comparePercentile(value,values);
+    return percentile === null ? null : {percentile, n:values.length};
+  }
+
+  function compareColorClass(p) {
+    return p >= 90 ? "elite" : p >= 75 ? "high" : p >= 50 ? "mid" : "low";
+  }
+
+  function compareSlot(letter) {
+    return {
+      letter,
+      player: person(S["compare" + letter]),
+      season: S["compareSeason" + letter],
+      competition: S["compareCompetition" + letter]
+    };
+  }
+
+  function compareData() {
+    const letters = ["A", "B", "C", "D"].slice(0, S.compareCount);
+    const used = new Set();
+    return letters.map(letter => {
+      let slot = compareSlot(letter);
+      if (!slot.player || used.has(slot.player.key)) {
+        const replacement = S.people.find(p => !used.has(p.key));
+        if (replacement) {
+          S["compare" + letter] = replacement.key;
+          slot = compareSlot(letter);
+        }
+      }
+      if (slot.player) used.add(slot.player.key);
+      return { ...slot, record: selectedRecord(slot.player, slot.season, slot.competition) };
+    });
+  }
+
+  function compareValue(value, metric) {
+    if (value == null || !Number.isFinite(value)) return "—";
+    return ["rate","goalsRate","assistsRate"].includes(metric)
+      ? value.toFixed(3)
+      : metric === "shootingPct" ? value.toFixed(1) + "%" : Number(value).toLocaleString("en-CA");
+  }
+
+  function renderCompare() {
+    if (!S.people.length) {
+      main.innerHTML = empty("No player records available.");
       return;
     }
-
-    const r1 = selectedRecord(
-      p1,
-      S.compareSeasonA,
-      S.compareCompetitionA
+    S.compareCount = clamp(Number(S.compareCount) || 2,2,4);
+    const slots = compareData();
+    const isSameSeason = slots.every(s=>s.season !== "career" &&
+      s.season === slots[0].season && s.competition === slots[0].competition);
+    const data = COMPARE_METRICS.map(([label,key,group]) => ({
+      label,key,group,
+      values:slots.map(s=>compareMetric(s.record,key)),
+      percentiles:slots.map(s=>comparePercentileFor(s,key))
+    }));
+    const shown = data.filter(m =>
+      m.values.some(v=>v!==null) &&
+      (S.compareFocus==="all" || m.group===S.compareFocus) &&
+      (!S.compareRateOnly || COMPARE_RATE_METRICS.has(m.key))
     );
-
-    const r2 = selectedRecord(
-      p2,
-      S.compareSeasonB,
-      S.compareCompetitionB
-    );
-
-    const metrics = [
-      ["Games Played", "gp"],
-      ["Goals", "g"],
-      ["Assists", "a"],
-      ["Points", "pts"],
-      ["Points / Game", "rate"],
-      ["Goals / Game", "goalsRate"],
-      ["Assists / Game", "assistsRate"],
-      ["Power-Play Points", "ppp"],
-      ["Shots", "shots"],
-      ["Penalty Minutes", "pim"]
-    ];
-
-    const competitionName = value =>
-      value === "playoffs"
-        ? "Playoffs"
-        : "Regular Season";
-
-    main.innerHTML =
-      heading(
-        "HEAD-TO-HEAD",
-        "Player Comparison",
-        "Compare OHL players across regular seasons, playoffs, and complete careers."
-      ) +
-      `
-        <div class="two-col">
-          ${panel(
-            "Player One",
-            `
-              ${playerSelect("compare-a", p1.key)}
-
-              ${competitionSelect(
-                "compare-competition-a",
-                S.compareCompetitionA
-              )}
-
-              ${playerSeasonSelect(
-                "compare-season-a",
-                p1,
-                S.compareSeasonA,
-                true,
-                S.compareCompetitionA
-              )}
-            `
-          )}
-
-          ${panel(
-            "Player Two",
-            `
-              ${playerSelect("compare-b", p2.key)}
-
-              ${competitionSelect(
-                "compare-competition-b",
-                S.compareCompetitionB
-              )}
-
-              ${playerSeasonSelect(
-                "compare-season-b",
-                p2,
-                S.compareSeasonB,
-                true,
-                S.compareCompetitionB
-              )}
-            `
-          )}
+    const availableGroups = [...new Set(COMPARE_METRICS.map(m=>m[2]))];
+    const gp = slots.map(s=>compareMetric(s.record,"gp"));
+    const goals = slots.map(s=>compareMetric(s.record,"g"));
+    const points = slots.map(s=>compareMetric(s.record,"pts"));
+    const seasonName = s=>s.season==="career"?"Career":s.season;
+    main.innerHTML = heading(
+      "ICEINDEX | SCOUTING WORKSPACE",
+      "Player Comparison",
+      "A decision-support workspace for comparing 2–4 OHL players, their production and league context."
+    ) + `
+      <div class="ice-gm-toolbar">
+        <label>Compare</label>
+        <div class="ice-gm-count" role="group" aria-label="Number of players">
+          ${[2,3,4].map(n=>`<button type="button" data-compare-count="${n}"
+            class="btn ${S.compareCount===n?"primary":""}"
+            aria-pressed="${S.compareCount===n}">${n} players</button>`).join("")}
         </div>
-
-        ${panel(
-          "Statistical Comparison",
-          `
-            <div class="ice-compare-head">
-              <div>
-                ${image(p1)}
-                <strong>${esc(p1.name)}</strong>
-                <small>
-                  ${esc(competitionName(S.compareCompetitionA))}
-                  · ${esc(
-                    S.compareSeasonA === "career"
-                      ? "Career"
-                      : S.compareSeasonA
-                  )}
-                </small>
-              </div>
-
-              <span>VS</span>
-
-              <div>
-                ${image(p2)}
-                <strong>${esc(p2.name)}</strong>
-                <small>
-                  ${esc(competitionName(S.compareCompetitionB))}
-                  · ${esc(
-                    S.compareSeasonB === "career"
-                      ? "Career"
-                      : S.compareSeasonB
-                  )}
-                </small>
-              </div>
+        <button class="btn" type="button" id="compare-sync">Match first player's season</button>
+        <span class="ice-gm-hint">Choose independent seasons or align all players for a fairer comparison.</span>
+      </div>
+      <div class="ice-gm-selectors">
+        ${slots.map((s,i)=>`
+          <section class="ice-gm-selector">
+            <div class="ice-gm-slot-label">PLAYER ${i+1}</div>
+            ${playerSelect("compare-"+s.letter.toLowerCase(),s.player?.key)}
+            <div class="ice-gm-selector-fields">
+              <label><span>Competition</span>${competitionSelect("compare-competition-"+s.letter.toLowerCase(),s.competition)}</label>
+              <label><span>Season</span>${playerSeasonSelect("compare-season-"+s.letter.toLowerCase(),s.player,s.season,true,s.competition)}</label>
             </div>
-
-            ${!r1 || !r2 ? `
-              <div class="notice">
-                ${!r1 && !r2
-                  ? "Neither player has statistics for the selected competitions."
-                  : !r1
-                    ? `${esc(p1.name)} has no statistics for the selected competition.`
-                    : `${esc(p2.name)} has no statistics for the selected competition.`}
-              </div>
-            ` : ""}
-
-            <div class="ice-compare-table">
-              ${metrics.map(([label, metric]) => {
-                const a = valueOf(r1, metric);
-                const b = valueOf(r2, metric);
-
-                const digits =
-                  metric.endsWith("Rate") ||
-                  metric === "rate"
-                    ? 3
-                    : 0;
-
-                return `
-                  <div class="ice-compare-row">
-                    <strong class="${
-                      a != null &&
-                      b != null &&
-                      a > b
-                        ? "ice-win"
-                        : ""
-                    }">
-                      ${dec(a, digits)}
-                    </strong>
-
-                    <span>${esc(label)}</span>
-
-                    <strong class="${
-                      a != null &&
-                      b != null &&
-                      b > a
-                        ? "ice-win"
-                        : ""
-                    }">
-                      ${dec(b, digits)}
-                    </strong>
-                  </div>
-                `;
-              }).join("")}
+          </section>`).join("")}
+      </div>
+      <div class="ice-gm-context ${isSameSeason?"ice-gm-context-good":"ice-gm-context-caution"}">
+        <strong>${isSameSeason?"Aligned comparison":"Different comparison windows"}</strong>
+        <span>${isSameSeason
+          ? `All selected players are being compared in ${esc(slots[0].season)} ${slots[0].competition==="playoffs"?"playoffs":"regular season"}.`
+          : "Selections include different seasons, competitions or career totals. Use rates and league percentiles for context; raw totals may not be directly comparable."}</span>
+      </div>
+      <div class="ice-gm-kpi-grid">
+        ${slots.map((s,i)=>`
+          <article class="ice-gm-kpi">
+            <div class="ice-gm-kpi-player">${image(s.player)}<div><strong>${esc(s.player?.name||"—")}</strong><small>${esc(seasonName(s))} · ${s.competition==="playoffs"?"Playoffs":"Regular"}</small></div></div>
+            <div class="ice-gm-kpi-stats">
+              <div><strong>${compareValue(gp[i],"gp")}</strong><small>GP</small></div>
+              <div><strong>${compareValue(goals[i],"g")}</strong><small>G</small></div>
+              <div><strong>${compareValue(points[i],"pts")}</strong><small>PTS</small></div>
+              <div><strong>${compareValue(compareMetric(s.record,"rate"),"rate")}</strong><small>P/GP</small></div>
             </div>
+          </article>`).join("")}
+      </div>
+      <section class="ice-gm-tools" aria-label="Comparison filters">
+        <div class="ice-gm-tool"><label for="compare-min-gp">League percentile: minimum GP</label>
+          <select id="compare-min-gp" class="select">
+            ${[[0,"Any GP"],[5,"5+ GP"],[10,"10+ GP"],[20,"20+ GP"],[40,"40+ GP"]].map(([v,l])=>option(v,l,S.compareMinGP)).join("")}
+          </select></div>
+        <div class="ice-gm-tool"><label for="compare-cohort">League peer group</label>
+          <select id="compare-cohort" class="select">
+            ${option("all","All skaters",S.compareCohort)}
+            ${option("same","Same position group (F/D)",S.compareCohort)}
+          </select></div>
+        <div class="ice-gm-tool"><label for="compare-focus">Statistic group</label>
+          <select id="compare-focus" class="select">
+            ${option("all","All statistics",S.compareFocus)}
+            ${availableGroups.map(g=>option(g,g,S.compareFocus)).join("")}
+          </select></div>
+        <label class="ice-gm-rate-toggle"><input id="compare-rates-only" type="checkbox" ${S.compareRateOnly?"checked":""}> Rates only</label>
+      </section>
+      <div class="ice-gm-legend"><span class="ice-gm-percentile-pill elite">90th+</span> Top 10% of qualifying skaters
+        <span class="ice-gm-percentile-pill high">75–89th</span> Upper quartile
+        <span class="ice-gm-percentile-pill mid">50–74th</span> Above median
+        <span class="ice-gm-hint">Percentiles are within each player's selected season, competition and peer group.</span>
+      </div>
+      <div class="ice-gm-section-heading">
+        <div><h2>Scouting comparison matrix</h2>
+          <p>Values plus league percentile where available. Highest raw value in each row is highlighted.</p></div>
+        <div class="ice-gm-actions"><button type="button" class="btn" id="compare-copy-link">Copy comparison link</button>
+          <button type="button" class="btn" id="compare-download-csv">Download CSV</button></div>
+      </div>
+      <div class="ice-gm-scroll" tabindex="0" aria-label="Horizontally scrollable player comparison matrix">
+        <table class="ice-gm-table">
+          <thead><tr><th class="ice-gm-metric-col" scope="col">Statistic</th>
+            ${slots.map(s=>`<th scope="col" class="ice-gm-player-col">
+              <div class="ice-gm-head">${image(s.player)}
+                <div><strong>${esc(s.player?.name||"No player")}</strong>
+                  <small>${esc(seasonName(s))} · ${s.competition==="playoffs"?"Playoffs":"Regular"}</small>
+                </div>
+              </div></th>`).join("")}</tr></thead>
+          <tbody>${shown.map((m,i)=>{
+            const vals = m.values.filter(v=>v!==null);
+            const max = vals.length ? Math.max(...vals) : null;
+            const previous = shown[i-1];
+            const groupRow = !previous || previous.group!==m.group
+              ? `<tr class="ice-gm-group"><th colspan="${slots.length+1}" scope="rowgroup">${esc(m.group)}</th></tr>`:"";
+            return groupRow+`<tr><th scope="row" class="ice-gm-metric-col">${esc(m.label)}</th>
+              ${m.values.map((v,j)=>{
+                const pctile = m.percentiles[j];
+                return `<td class="${v!==null&&v===max&&vals.length>1?"ice-gm-best":""}">
+                  <div class="ice-gm-stat-number">${compareValue(v,m.key)}</div>
+                  ${pctile ? `<div class="ice-gm-percentile-pill ${compareColorClass(pctile.percentile)}"
+                     title="Percentile among ${pctile.n} eligible skaters">${pctile.percentile}th percentile</div>`:""}
+                </td>`;
+              }).join("")}</tr>`;
+          }).join("")}</tbody>
+        </table>
+      </div>
+      <p class="ice-gm-footnote">
+        Percentiles use the midrank method and only show with at least five qualifying skaters.
+        Career totals have no single-season percentile. Players below the minimum GP threshold have no percentile.
+        A missing statistic is shown as —, not zero. The data reflects available IceIndex records and may not cover every OHL skater.
+        High penalty minutes and plus/minus are descriptive, not automatically better scouting outcomes.
+      </p>`;
+  }
 
-            <div class="ice-actions">
-              <button
-                class="btn primary"
-                data-go="analytics">
-                Advanced Radar Comparison
-              </button>
-            </div>
-          `
-        )}
-      `;
+  function compareCSV() {
+    const slots = compareData();
+    const rows = [
+      ["Statistic",...slots.map(s=>`${s.player?.name||"Player"} (${s.season}, ${s.competition})`)],
+      ...COMPARE_METRICS.flatMap(([label,key])=>[
+        [label,...slots.map(s=>compareMetric(s.record,key) ?? "")],
+        [label + " (league percentile)",...slots.map(s=>comparePercentileFor(s,key)?.percentile ?? "")]
+      ])
+    ];
+    const csv = rows.map(row=>row.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\r\n");
+    const blob = new Blob([csv],{type:"text/csv;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href=url; a.download="iceindex-player-comparison.csv"; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 
   /* ==========================================================
@@ -2570,7 +3192,7 @@
      ========================================================== */
 
   const VALID_PAGES = new Set([
-    "home", "leagues", "overview", "players",
+    "home", "leagues", "overview", "players", "statistics",
     "profile", "compare", "draft", "teams",
     "analytics", "goalies", "goalie-profile",
     "goalie-compare"
@@ -2597,6 +3219,7 @@
 
     switch (S.page) {
       case "players": renderPlayers(); break;
+      case "statistics": renderStatistics(); break;
       case "profile": renderProfile(); break;
       case "compare": renderCompare(); break;
       case "draft": renderDraft(); break;
@@ -2647,8 +3270,35 @@
     window.scrollTo({ top: 0, behavior: "auto" });
   }
 
+  function restoreCompareLink() {
+    if (!location.hash.startsWith("#compare?")) return;
+    const params = new URLSearchParams(location.hash.split("?")[1] || "");
+    const n = Number(params.get("n"));
+    if ([2,3,4].includes(n)) S.compareCount = n;
+    const minGP = Number(params.get("minGP"));
+    if ([0,5,10,20,40].includes(minGP) && params.has("minGP")) S.compareMinGP = minGP;
+    if (["all","same"].includes(params.get("cohort"))) S.compareCohort = params.get("cohort");
+    if (["all","Volume","Scoring","Efficiency","Other","Shooting","Power play","Penalty kill"].includes(params.get("focus"))) S.compareFocus = params.get("focus");
+    S.compareRateOnly = params.get("rates") === "1";
+    for (const letter of ["A","B","C","D"]) {
+      const key = params.get("p"+letter);
+      const season = params.get("s"+letter);
+      const competition = params.get("c"+letter);
+      if (key && person(key)) S["compare"+letter] = key;
+      if (season) S["compareSeason"+letter] = season;
+      if (["regular","playoffs"].includes(competition)) S["compareCompetition"+letter] = competition;
+    }
+  }
+
   function handleHash() {
     const hash = location.hash.replace(/^#/, "").split("?")[0];
+    if (hash === "compare" && location.hash.includes("?")) {
+      restoreCompareLink();
+      S.page = "compare";
+      render();
+      closeMenu();
+      return;
+    }
     const next = VALID_PAGES.has(hash) ? hash : "home";
 
     if (next !== S.page) {
@@ -2686,12 +3336,76 @@
         .forEach(el => el.hidden = true);
     }
 
+    const highlight = target.closest("[data-highlight-season]");
+    if (highlight) {
+      S.profileCompetition = "regular";
+      S.profileSeason = highlight.dataset.highlightSeason;
+      renderProfile();
+      return;
+    }
+
+    const timeline = target.closest("[data-profile-timeline]");
+    if (timeline) {
+      S.profileSeason = timeline.dataset.profileTimeline;
+      renderProfile();
+      return;
+    }
+
+    const trend = target.closest("[data-profile-trend]");
+    if (trend) {
+      S.profileTrendMetric = trend.dataset.profileTrend;
+      renderProfile();
+      return;
+    }
+
     const playerLink = target.closest("[data-person]");
     if (playerLink) {
       event.preventDefault();
       S.profile = playerLink.dataset.person;
       S.profileSeason = "career";
       navigate("profile");
+      return;
+    }
+
+    if (target.closest("#compare-sync")) {
+      const base = compareSlot("A");
+      for (const letter of ["B","C","D"].slice(0,S.compareCount-1)) {
+        S["compareCompetition"+letter] = base.competition;
+        const other = person(S["compare"+letter]);
+        const hasSeason = base.season === "career" ||
+          recordsForPlayer(other,base.competition).some(r=>r.season===base.season);
+        S["compareSeason"+letter] = hasSeason ? base.season : "career";
+      }
+      renderCompare();
+      return;
+    }
+    const compareCount = target.closest("[data-compare-count]");
+    if (compareCount) {
+      S.compareCount = Number(compareCount.dataset.compareCount);
+      renderCompare();
+      return;
+    }
+    if (target.closest("#compare-download-csv")) {
+      compareCSV();
+      return;
+    }
+    if (target.closest("#compare-copy-link")) {
+      const params = new URLSearchParams();
+      params.set("n",String(S.compareCount));
+      params.set("minGP",String(S.compareMinGP));
+      params.set("cohort",S.compareCohort);
+      params.set("focus",S.compareFocus);
+      params.set("rates",S.compareRateOnly ? "1" : "0");
+      for (const letter of ["A","B","C","D"].slice(0,S.compareCount)) {
+        params.set("p"+letter,S["compare"+letter] || "");
+        params.set("s"+letter,S["compareSeason"+letter]);
+        params.set("c"+letter,S["compareCompetition"+letter]);
+      }
+      const link = location.href.split("#")[0] + "#compare?" + params.toString();
+      navigator.clipboard?.writeText(link).then(()=>{
+        const button = document.querySelector("#compare-copy-link");
+        if (button) button.textContent = "Link copied";
+      }).catch(()=>window.prompt("Copy comparison URL:",link));
       return;
     }
 
@@ -2730,6 +3444,66 @@
       S.overviewMetric = metric.dataset.metric;
       renderOverview();
       return;
+    }
+
+    const statsSort=target.closest("[data-stats-sort]");
+    if(statsSort) {
+      const key=statsSort.dataset.statsSort;
+      if(S.statsMetric===key) S.statsSortAscending=!S.statsSortAscending;
+      else {S.statsMetric=key;S.statsSortAscending=false;}
+      const metricSelect=document.querySelector("#stats-metric");if(metricSelect)metricSelect.value=key;
+      const direction=document.querySelector("#stats-sort-direction");if(direction)direction.textContent=S.statsSortAscending?"Ascending ↑":"Descending ↓";
+      S.statsPage=1;updateStatistics();return;
+    }
+    const statsColumn=target.closest("[data-stats-column]");
+    if(statsColumn) {
+      const checked=[...document.querySelectorAll("[data-stats-column]:checked")].map(x=>x.dataset.statsColumn);
+      S.statsColumns=checked;S.statsPage=1;
+      const button=document.querySelector("#stats-columns-toggle");
+      if(button)button.textContent=`Columns (${checked.length} of ${document.querySelectorAll("[data-stats-column]").length})`;
+      updateStatistics();return;
+    }
+    if(target.closest("#stats-columns-toggle")) {
+      S.statsShowColumns=!S.statsShowColumns;
+      const panel=document.querySelector("#stats-columns-panel");if(panel)panel.hidden=!S.statsShowColumns;
+      target.closest("button").setAttribute("aria-expanded",String(S.statsShowColumns));return;
+    }
+    if(target.closest("#stats-filters-toggle")) {
+      S.statsAdvancedFilters=!S.statsAdvancedFilters;
+      const panel=document.querySelector("#stats-filters-panel");if(panel)panel.hidden=!S.statsAdvancedFilters;
+      target.closest("button").setAttribute("aria-expanded",String(S.statsAdvancedFilters));return;
+    }
+    if(target.closest("#stats-columns-all")) {S.statsColumns=statsAvailableColumns(statsRows()).map(d=>d.key);renderStatistics();return;}
+    if(target.closest("#stats-columns-default")) {S.statsColumns=null;renderStatistics();return;}
+    if(target.closest("#stats-columns-none")) {S.statsColumns=[];renderStatistics();return;}
+    if(target.closest("#stats-sort-direction")) {S.statsSortAscending=!S.statsSortAscending;renderStatistics();return;}
+    if(target.closest("#stats-export")) {statsExportCSV();return;}
+    if(target.closest("#stats-goalies")) {navigate("goalies");return;}
+    const statsPlayer = target.closest("[data-stats-player]");
+    if (statsPlayer) {
+      S.profile = statsPlayer.dataset.statsPlayer;
+      S.profileSeason = "career";
+      navigate("profile");
+      return;
+    }
+    const statsPager = target.closest("[data-stats-page]");
+    if (statsPager) {
+      S.statsPage += statsPager.dataset.statsPage === "next" ? 1 : -1;
+      updateStatistics();
+      return;
+    }
+    if (target.closest("#stats-clear")) {
+      S.statsCompetition = "regular";
+      S.statsSeason = "current";
+      S.statsTeam = "all";
+      S.statsMetric = "pts";
+      S.statsMinGP = 0;
+      S.statsQuery = "";
+      S.statsPage = 1;
+      S.statsPosition="all";S.statsColumns=null;S.statsShowColumns=false;
+      S.statsAdvancedFilters=false;S.statsFilterMetric="pts";
+      S.statsFilterMin="";S.statsFilterMax="";S.statsSortAscending=false;
+      renderStatistics();return;
     }
 
     const dbPage = target.closest("[data-db-page]");
@@ -2832,6 +3606,18 @@
 
     if (!(element instanceof HTMLElement)) return;
 
+    if (element.matches?.("[data-stats-column]")) return;
+    if (element.id === "stats-filter-min" || element.id === "stats-filter-max") {
+      if(element.id === "stats-filter-min") S.statsFilterMin=element.value;
+      else S.statsFilterMax=element.value;
+      S.statsPage=1;updateStatistics();return;
+    }
+    if (element.id === "stats-search") {
+      S.statsQuery = element.value;
+      S.statsPage = 1;
+      updateStatistics();
+    }
+
     if (element.id === "db-search") {
       S.query = element.value;
       S.dbPage = 1;
@@ -2864,6 +3650,35 @@
     if (id === "overview-competition") {
       S.overviewCompetition = value;
       renderOverview();
+    }
+
+    if (id === "compare-min-gp") { S.compareMinGP = Number(value); renderCompare(); return; }
+    if (id === "compare-cohort") { S.compareCohort = value; renderCompare(); return; }
+    if (id === "compare-focus") { S.compareFocus = value; renderCompare(); return; }
+    if (id === "compare-rates-only") {
+      S.compareRateOnly = !!element.checked; renderCompare(); return;
+    }
+
+    if (id.startsWith("stats-") && id !== "stats-search") {
+      const keys = {
+        "stats-competition":"statsCompetition",
+        "stats-season":"statsSeason",
+        "stats-team":"statsTeam",
+        "stats-metric":"statsMetric",
+        "stats-min-gp":"statsMinGP",
+        "stats-position":"statsPosition",
+        "stats-filter-metric":"statsFilterMetric"
+      };
+      if (keys[id]) {
+        S[keys[id]] = id === "stats-min-gp" ? Number(value) : value;
+        S.statsPage = 1;
+        if (id === "stats-competition" || id === "stats-season") {
+          S.statsTeam = "all";
+          renderStatistics();
+        } else {
+          updateStatistics();
+        }
+      }
     }
 
     if (id === "db-competition") {
@@ -2907,6 +3722,32 @@
     if (id === "profile-season") {
       S.profileSeason = value;
       renderProfile();
+    }
+
+    const compareMatch = /^compare-(a|b|c|d)$/.exec(id);
+    const competitionMatch = /^compare-competition-(a|b|c|d)$/.exec(id);
+    const seasonMatch = /^compare-season-(a|b|c|d)$/.exec(id);
+    if (compareMatch || competitionMatch || seasonMatch) {
+      const letter = (compareMatch || competitionMatch || seasonMatch)[1].toUpperCase();
+      if (compareMatch) {
+        const duplicate = ["A","B","C","D"].some(other =>
+          other !== letter && S["compare"+other] === value &&
+          ["A","B","C","D"].indexOf(other) < S.compareCount);
+        if (duplicate) {
+          window.alert("Choose a different player for each comparison slot.");
+          renderCompare();
+          return;
+        }
+        S["compare"+letter] = value;
+        S["compareSeason"+letter] = "career";
+      } else if (competitionMatch) {
+        S["compareCompetition"+letter] = value;
+        S["compareSeason"+letter] = "career";
+      } else {
+        S["compareSeason"+letter] = value;
+      }
+      renderCompare();
+      return;
     }
 
     if (id === "compare-a") {
@@ -3045,9 +3886,8 @@
      ========================================================== */
 
   async function initialize() {
-    S.page = VALID_PAGES.has(location.hash.replace(/^#/, ""))
-      ? location.hash.replace(/^#/, "")
-      : "home";
+    const initialPage = location.hash.replace(/^#/, "").split("?")[0];
+    S.page = VALID_PAGES.has(initialPage) ? initialPage : "home";
 
     introStatus("Loading current OHL statistics…");
     updateStatus("Loading current season");
