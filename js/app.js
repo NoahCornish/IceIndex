@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.8.0
+   ICEINDEX v0.9.0
    FILE 2 — js/app.js
 
    APPLICATION + PLAYER ANALYTICS
@@ -50,7 +50,7 @@
     loading: true,
     ready: false,
 
-    page: "home",
+    page: "overview",
 
     query: "",
     dbSeason: "all",
@@ -76,6 +76,7 @@
     profile: null,
     profileSeason: "career",
     profileTrendMetric: "rate",
+    profileTrendAxis: "draft",
 
     compareA: null,
     compareB: null,
@@ -640,6 +641,46 @@
     return searchablePlayerSelect(id, selected, S.people);
   }
 
+  // NHL draft-year age labels: DY-1 is the season ending in the player's
+  // first eligible NHL draft year, DY+1 is the season ending one year later.
+  // These are estimates from the same birthdate-based rule as Draft Year Central.
+  function iceDraftYear(player) {
+    if (!player?.birth || typeof A?.estimatedDraftYear !== "function") return null;
+    const value = Number(A.estimatedDraftYear(player.birth));
+    return Number.isInteger(value) && value > 1900 ? value : null;
+  }
+
+  function iceSeasonEnd(season) {
+    const match = String(season || "").match(/(?:19|20)\d{2}\s*[-–/]\s*(\d{2,4})/);
+    if (!match) return null;
+    const start = Number(String(season).match(/(?:19|20)\d{2}/)?.[0]);
+    if (!Number.isFinite(start)) return null;
+    const tail = Number(match[1]);
+    return match[1].length === 2 ? Math.floor(start / 100) * 100 + tail + (tail < start % 100 ? 100 : 0) : tail;
+  }
+
+  function iceDYLabel(player, season) {
+    const draft = iceDraftYear(player), end = iceSeasonEnd(season);
+    if (draft == null || end == null) return null;
+    const offset = end - draft;
+    return `DY${offset === 0 ? "" : offset > 0 ? `+${offset}` : offset}`;
+  }
+
+  function icePlayerSeasons(player, type = "regular") {
+    const grouped = new Map();
+    for (const record of recordsForPlayer(player, type)) {
+      if (!record?.season) continue;
+      if (!grouped.has(record.season)) grouped.set(record.season, []);
+      grouped.get(record.season).push(record);
+    }
+    return [...grouped].map(([season, rows]) => {
+      // A combined/TOT row already includes the individual team stints.
+      const combined = rows.find(r => /^(tot|total|all teams|combined|multiple teams)$/i.test(String(r.team || "").trim()));
+      const record = combined || (rows.length === 1 ? rows[0] : aggregate(rows));
+      return {...record, season};
+    }).sort((a,b) => (iceSeasonEnd(a.season) || 0) - (iceSeasonEnd(b.season) || 0));
+  }
+
   function playerSeasonSelect(id, player, selected, career = true, type = "regular") {
     if (!player) return "";
 
@@ -648,8 +689,8 @@
         ${career
           ? option("career", "Complete OHL career", selected)
           : ""}
-        ${recordsForPlayer(player, type).map(r =>
-          option(r.season, r.season, selected)
+        ${icePlayerSeasons(player, type).map(r =>
+          option(r.season, `${r.season}${iceDYLabel(player,r.season) ? ` · ${iceDYLabel(player,r.season)}` : ""}`, selected)
         ).join("")}
       </select>
     `;
@@ -838,7 +879,7 @@
     const top = sortBy(
       rows,
       S.overviewMetric
-    ).slice(0, 8);
+    ).slice(0, 6);
 
     const max = Math.max(
       1,
@@ -846,13 +887,9 @@
     );
 
     main.innerHTML = `
-      <section class="hero">
+      <section class="hero ice-overview-hero">
         <div class="eyebrow">OHL / LEAGUE INTELLIGENCE</div>
-        <h1>The league, by the numbers.</h1>
-        <p>
-          Current OHL production, historical player development,
-          and advanced player analytics powered by IceIndex.
-        </p>
+        <h1>OHL Overview</h1>
         <div class="hero-meta">
           <span class="live-dot"></span>
           ${esc(currentSeason())}
@@ -865,34 +902,9 @@
         <h2>Players setting the pace</h2>
       </div>
 
-      <div class="leader-grid">${cards}</div>
+      <div class="leader-grid ice-overview-leaders">${cards}</div>
 
-      <div class="kpi-grid">
-
-        <div class="kpi">
-          <span>CURRENT SKATERS</span>
-          <b>${fmt(rows.length)}</b>
-        </div>
-        <div class="kpi">
-          <span>PLAYER DIRECTORY</span>
-          <b>${fmt(S.people.length)}</b>
-        </div>
-        <div class="kpi">
-          <span>ARCHIVE SEASONS</span>
-          <b>${fmt(S.archive?.loaded?.length || 0)}</b>
-        </div>
-        <div class="kpi">
-          <span>CURRENT GOALS</span>
-          <b>${fmt(rows.reduce((sum, r) => sum + (r.g || 0), 0))}</b>
-        </div>
-      </div>
-
-      <div class="two-col">
-        ${panel(
-          "Scoring Leaders",
-          table(sortBy(rows).slice(0, 10))
-        )}
-
+      <div class="ice-overview-rankings">
         ${panel(
           "Production Rankings",
           `
@@ -942,18 +954,6 @@
         )}
       </div>
 
-      <div class="callout">
-        <div>
-          <h2>Go beyond the box score.</h2>
-          <p>
-            Explore percentile scouting cards,
-            player comparisons, and interactive analytics.
-          </p>
-        </div>
-        <button class="btn primary" data-go="analytics">
-          Explore Player Analytics
-        </button>
-      </div>
     `;
   }
 
@@ -1266,18 +1266,30 @@
         <label>Search<input id="stats-search" class="input" type="search" placeholder="Player or team…" value="${esc(S.statsQuery)}"></label>
         <label>Competition${competitionSelect("stats-competition",S.statsCompetition)}</label>
         <label>Season<select id="stats-season" class="select">${option("current",`Latest (${seasons[0]})`,S.statsSeason)}${seasons.map(s=>option(s,s,S.statsSeason)).join("")}</select></label>
+      </div>
+      <div class="ice-stats-actions ice-stats-primary-actions">
+        <button type="button" class="btn" id="stats-filters-toggle" aria-controls="stats-filters-panel" aria-expanded="${S.statsAdvancedFilters}">All filters ${S.statsAdvancedFilters?"−":"+"}</button>
+        <button type="button" class="btn" id="stats-columns-toggle" aria-controls="stats-columns-panel" aria-expanded="${S.statsShowColumns}">Columns (${selected.size} of ${available.length})</button>
+        <button type="button" class="btn" id="stats-goalies">Goalie database ↗</button>
+      </div>
+      <section id="stats-filters-panel" class="ice-stats-config" ${S.statsAdvancedFilters?"":"hidden"}>
+        <div class="ice-stats-toolbar ice-stats-extra-toolbar">
         <label>Team<select id="stats-team" class="select">${option("all","All teams",S.statsTeam)}${teams.map(t=>option(t,t,S.statsTeam)).join("")}</select></label>
         <label>Position<select id="stats-position" class="select">${option("all","All positions",S.statsPosition)}${positions.map(p=>option(p,p,S.statsPosition)).join("")}</select></label>
         <label>Sort by<select id="stats-metric" class="select">${available.map(d=>option(d.key,d.label,S.statsMetric)).join("")}</select></label>
-      </div>
-      <div class="ice-stats-actions">
-        <button type="button" class="btn" id="stats-columns-toggle" aria-expanded="${S.statsShowColumns}">Columns (${selected.size} of ${available.length})</button>
-        <button type="button" class="btn" id="stats-filters-toggle" aria-expanded="${S.statsAdvancedFilters}">More filters</button>
-        <button type="button" class="btn" id="stats-sort-direction">${S.statsSortAscending?"Ascending ↑":"Descending ↓"}</button>
-        <button type="button" class="btn" id="stats-export">Download CSV</button>
-        <button type="button" class="btn" id="stats-clear">Clear all filters</button>
-        <button type="button" class="btn" id="stats-goalies">Goalie database ↗</button>
-      </div>
+        </div>
+        <div class="ice-stats-toolbar">
+          <label>Minimum GP<select id="stats-min-gp" class="select">${[[0,"Any GP"],[5,"5+ GP"],[10,"10+ GP"],[20,"20+ GP"],[40,"40+ GP"]].map(([k,v])=>option(k,v,S.statsMinGP)).join("")}</select></label>
+          <label>Filter statistic<select id="stats-filter-metric" class="select">${available.filter(d=>!STATS_TEXT_FIELDS.has(d.key)).map(d=>option(d.key,d.label,S.statsFilterMetric)).join("")}</select></label>
+          <label>Minimum value<input id="stats-filter-min" class="input" type="number" step="any" placeholder="No minimum" value="${esc(S.statsFilterMin)}"></label>
+          <label>Maximum value<input id="stats-filter-max" class="input" type="number" step="any" placeholder="No maximum" value="${esc(S.statsFilterMax)}"></label>
+        </div>
+        <div class="ice-stats-actions ice-stats-secondary-actions">
+          <button type="button" class="btn" id="stats-sort-direction">${S.statsSortAscending?"Ascending ↑":"Descending ↓"}</button>
+          <button type="button" class="btn" id="stats-export">Download CSV</button>
+          <button type="button" class="btn" id="stats-clear">Clear all filters</button>
+        </div>
+      </section>
       <section id="stats-columns-panel" class="ice-stats-config" ${S.statsShowColumns?"":"hidden"}>
         <div class="ice-stats-config-head"><strong>Choose visible statistics</strong><div>
           <button type="button" class="btn" id="stats-columns-all">Select all available</button>
@@ -1287,16 +1299,13 @@
         <div class="ice-stats-groups">${groups.map(group=>`<fieldset><legend>${esc(group)}</legend>${available.filter(d=>d.group===group).map(d=>`<label><input type="checkbox" data-stats-column="${esc(d.key)}" ${selected.has(d.key)?"checked":""}> ${esc(d.label)}</label>`).join("")}</fieldset>`).join("")}</div>
         <p class="results-meta">Only statistics actually available in IceIndex's loaded records appear here. Additional CHLCards metrics require new source data.</p>
       </section>
-      <section id="stats-filters-panel" class="ice-stats-config" ${S.statsAdvancedFilters?"":"hidden"}>
-        <div class="ice-stats-toolbar">
-          <label>Minimum GP<select id="stats-min-gp" class="select">${[[0,"Any GP"],[5,"5+ GP"],[10,"10+ GP"],[20,"20+ GP"],[40,"40+ GP"]].map(([k,v])=>option(k,v,S.statsMinGP)).join("")}</select></label>
-          <label>Filter statistic<select id="stats-filter-metric" class="select">${available.filter(d=>!STATS_TEXT_FIELDS.has(d.key)).map(d=>option(d.key,d.label,S.statsFilterMetric)).join("")}</select></label>
-          <label>Minimum value<input id="stats-filter-min" class="input" type="number" step="any" placeholder="No minimum" value="${esc(S.statsFilterMin)}"></label>
-          <label>Maximum value<input id="stats-filter-max" class="input" type="number" step="any" placeholder="No maximum" value="${esc(S.statsFilterMax)}"></label>
-        </div>
-      </section>
       <div id="stats-results"></div>`;
     updateStatistics();
+  }
+
+  function statsShortName(fullName) {
+    const parts=String(fullName||"").trim().split(/\s+/);
+    return parts.length>1?`${parts[0].charAt(0)}. ${parts.slice(1).join(" ")}`:String(fullName||"");
   }
 
   function updateStatistics() {
@@ -1315,15 +1324,11 @@
       if(last&&last.name===d.group)last.count++;
       else grouped.push({name:d.group,count:1});
     }
-    el.innerHTML=`<div class="ice-stats-summary">
-      <div><strong>${fmt(rows.length)}</strong><span>Matching skaters</span></div>
-      <div><strong>${esc(season||"—")}</strong><span>Season</span></div>
-      <div><strong>${cols.length}</strong><span>Visible statistics</span></div>
-    </div><div class="results-meta">Available IceIndex records · no default games-played floor · ${S.statsCompetition==="playoffs"?"Playoffs":"Regular season"}. Click a column heading to sort.</div>
+    el.innerHTML=`<div class="ice-stats-summary" aria-label="Statistics summary">${fmt(rows.length)} skaters <span aria-hidden="true">·</span> ${esc(season||"—")} <span aria-hidden="true">·</span> Sorted by ${esc(available.find(d=>d.key===S.statsMetric)?.label||S.statsMetric)} ${S.statsSortAscending?"↑":"↓"} <span aria-hidden="true">·</span> ${cols.length} columns</div><div class="results-meta">Available IceIndex records · no default games-played floor · ${S.statsCompetition==="playoffs"?"Playoffs":"Regular season"}. Click a column heading to sort.</div>
     ${visible.length?`<div class="ice-stats-table-wrap" role="region" aria-label="Scrollable skater statistics" tabindex="0"><table class="ice-stats-table">
       <thead><tr><th>#</th><th>Player</th><th>Team</th>${defs.map(d=>`<th><button type="button" data-stats-sort="${esc(d.key)}" title="Sort by ${esc(d.label)}">${esc(d.label)}${S.statsMetric===d.key?(S.statsSortAscending?" ↑":" ↓"):""}</button></th>`).join("")}</tr></thead>
       <tbody>${visible.map((r,i)=>`<tr><td>${(S.statsPage-1)*pageSize+i+1}</td>
-      <td><button class="ice-stats-player" type="button" data-stats-player="${esc(r.key)}">${image(r,"ice-stats-headshot")}<span class="ice-stats-name">${esc(r.name)}</span></button></td><td title="${esc(r.team)}">${esc(iceTeamShortLabel(r))}</td>
+      <td><button class="ice-stats-player" type="button" data-stats-player="${esc(r.key)}">${image(r,"ice-stats-headshot")}<span class="ice-stats-name" title="${esc(r.name)}">${esc(statsShortName(r.name))}</span></button></td><td title="${esc(r.team)}">${esc(iceTeamShortLabel(r))}</td>
       ${cols.map(k=>`<td class="${k===S.statsMetric?"ice-stats-emphasis":""}">${statsFormat(r,k)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`:empty("No skaters match these filters.")}
     <div class="ice-pagination"><button class="btn" data-stats-page="prev" ${S.statsPage<=1?"disabled":""}>Previous</button><span>Page ${S.statsPage} of ${pages}</span><button class="btn" data-stats-page="next" ${S.statsPage>=pages?"disabled":""}>Next</button></div>`;
   }
@@ -1332,6 +1337,47 @@
      08. PLAYER PROFILE
      ========================================================== */
 
+
+  /* v0.9.0: Shared analytics calculations for profile and comparison.
+     Missing underlying data is never silently treated as zero. */
+  const ADVANCED_METRICS = [
+    ["Points / game", "rate", "P/GP"],
+    ["Goals / game", "goalsRate", "G/GP"],
+    ["Assists / game", "assistsRate", "A/GP"],
+    ["Shots / game", "shotsRate", "S/GP"],
+    ["Shooting percentage", "shootingPct", "SH%"],
+    ["Points / shot", "pointsPerShot", "PTS/S"],
+    ["Goals / assists", "goalsAssistsRatio", "G/A"]
+  ];
+
+  function advancedProfile(p, record, season, competition) {
+    if (!record) return empty("No analytics available for this selection.");
+    const isCareer = season === "career";
+    const position = comparePosition(p, record);
+    const cohort = isCareer ? [] : compareCohortRows(season, competition, "all", 10);
+    const peers = position ? cohort.filter(row => comparePosition(person(row.key), row) === position) : [];
+    const metrics = ADVANCED_METRICS.map(([label,key,short]) => {
+      const value = compareMetric(record,key);
+      const eligible = (compareMetric(record,"gp") ?? 0) >= 10;
+      const percentile = !isCareer && eligible && value !== null
+        ? comparePercentile(value,cohort.map(row => compareMetric(row,key))) : null;
+      const positionPercentile = !isCareer && eligible && value !== null && position
+        ? comparePercentile(value,peers.map(row => compareMetric(row,key))) : null;
+      return {label,key,short,value,percentile,positionPercentile};
+    }).filter(metric => metric.value !== null);
+    if (!metrics.length) return empty("The source data does not contain enough information to calculate these metrics.");
+    return `<details class="ice-advanced-panel" open>
+      <summary>Advanced Analytics <span>${esc(season === "career" ? "Career" : season)} · ${competition === "playoffs" ? "Playoffs" : "Regular Season"}</span></summary>
+      <div class="ice-advanced-body">
+        <div class="ice-advanced-grid">${metrics.map(m=>`<article class="ice-advanced-card">
+          <span>${esc(m.label)}</span><strong>${compareValue(m.value,m.key)}</strong>
+          ${m.percentile !== null ? `<small>League: ${m.percentile}th percentile</small>` : ""}
+          ${m.positionPercentile !== null ? `<small>${position === "D" ? "Defencemen" : "Forwards"}: ${m.positionPercentile}th percentile</small>` : ""}
+        </article>`).join("")}</div>
+        <p class="ice-advanced-note">Rates are calculated from recorded games, goals, assists and shots. Percentiles require a single season, at least 10 player games and at least five eligible peers. Comparisons use the selected competition; missing values are not zero. No ice-time or per-60 estimates are used.</p>
+      </div>
+    </details>`;
+  }
 
   function renderProfile() {
     const p = person(S.profile);
@@ -1457,6 +1503,8 @@
           </div>
         </section>
 
+        ${panel("Advanced Analytics", advancedProfile(p, r, S.profileSeason, competition))}
+
         ${panel(
           "Career Highlights",
           careerHighlights(p)
@@ -1480,12 +1528,16 @@
         )}
 
         ${panel(
-          "Season Development",
+          "Player Development Tracker",
           developmentChart(p, competition),
-          `<div class="ice-trend-switch" aria-label="Development chart metric">
-            ${[["rate","P/GP"],["g","Goals"],["a","Assists"],["pts","Points"]].map(([key,label]) =>
-              `<button type="button" class="btn ${S.profileTrendMetric === key ? "active" : ""}" data-profile-trend="${key}">${label}</button>`
-            ).join("")}
+          `<div class="ice-development-controls">
+            <label>Track statistic<select id="profile-trend-metric" class="select" aria-label="Development statistic">
+              ${iceDevelopmentMetrics(p,competition).map(m => option(m.key,m.label,S.profileTrendMetric)).join("")}
+            </select></label>
+            <label>Season labels<select id="profile-trend-axis" class="select" aria-label="Development season labels">
+              ${option("draft","Draft years (DY)",S.profileTrendAxis)}
+              ${option("season","OHL seasons",S.profileTrendAxis)}
+            </select></label>
           </div>`
         )}
 
@@ -1658,18 +1710,71 @@
       <p class="ice-profile-note">Totals and per-game rates use the existing IceIndex career aggregation. Missing statistics are shown as —.</p>`;
   }
 
+  // Only show statistics backed by source data. Derived metrics use the
+  // same formulas as Player Compare; no ice-time or per-60 calculations.
+  const ICE_DEVELOPMENT_METRICS = [
+    ["gp","Games played"],["g","Goals"],["a","Assists"],["pts","Points"],
+    ["rate","Points / game"],["goalsRate","Goals / game"],
+    ["assistsRate","Assists / game"],["shots","Shots on goal"],
+    ["shotsRate","Shots / game"],["shootingPct","Shooting %"],
+    ["pointsPerShot","Points / shot"],["goalsAssistsRatio","Goals / assists"],
+    ["plusMinus","Plus / minus"],["pim","Penalty minutes"],
+    ["ppg","Power-play goals"],["ppa","Power-play assists"],
+    ["ppp","Power-play points"],["shg","Shorthanded goals"],
+    ["sha","Shorthanded assists"],["shp","Shorthanded points"],
+    ["gwg","Game-winning goals"],["eng","Empty-net goals"]
+  ];
+
+  function iceDevelopmentValue(record, metric) {
+    if (!record) return null;
+    const n = key => record[key] == null || record[key] === "" ? null : Number(record[key]);
+    const ratio = (a,b) => a != null && b != null && b > 0 && Number.isFinite(a/b) ? a/b : null;
+    const gp=n("gp"), goals=n("g"), assists=n("a"), points=n("pts"), shots=n("shots");
+    const derived = {
+      rate:()=>ratio(points,gp), goalsRate:()=>ratio(goals,gp),
+      assistsRate:()=>ratio(assists,gp), shotsRate:()=>ratio(shots,gp),
+      shootingPct:()=>{const v=ratio(goals,shots);return v==null?null:v*100;},
+      pointsPerShot:()=>ratio(points,shots),goalsAssistsRatio:()=>ratio(goals,assists),
+      shp:()=>n("shp") ?? n("shpts")
+    };
+    const value = derived[metric] ? derived[metric]() : n(metric);
+    return value != null && Number.isFinite(value) ? value : null;
+  }
+
+  function iceDevelopmentMetrics(player,competition) {
+    const rows=icePlayerSeasons(player,competition);
+    return ICE_DEVELOPMENT_METRICS.filter(([key]) => rows.some(r => iceDevelopmentValue(r,key) != null))
+      .map(([key,label])=>({key,label}));
+  }
+
   function developmentChart(p, competition = "regular") {
-    const rows = [...recordsForPlayer(p, competition)].sort((a,b) => a.endYear - b.endYear);
+    const rows = icePlayerSeasons(p, competition);
     if (!rows.length) return empty("No season development history is available.");
-    const metric = S.profileTrendMetric;
-    const values = rows.map(r => valueOf(r, metric));
-    const max = Math.max(1, ...values.filter(v => v != null && Number.isFinite(Number(v))).map(Number));
-    return `<div class="bars ice-profile-development">
-      ${rows.map((r,i) => `<div class="bar-row"><div><span>${esc(r.season)} · ${esc(r.team || "")}</span>
-        <b>${metric === "rate" ? dec(values[i],2) : fmt(values[i])}${metric === "rate" ? " P/GP" : ""}</b></div>
-        <span class="track"><span style="width:${clamp(Number(values[i] || 0)/max*100,0,100)}%"></span></span>
+    const metrics = iceDevelopmentMetrics(p,competition);
+    if (!metrics.length) return empty("No trackable statistics are available for these seasons.");
+    const metric = metrics.some(m=>m.key===S.profileTrendMetric) ? S.profileTrendMetric : metrics[0].key;
+    const name = metrics.find(m=>m.key===metric)?.label || metric;
+    const values = rows.map(r => iceDevelopmentValue(r,metric));
+    const available=values.filter(v=>v!=null);
+    const max = Math.max(1,...available.map(Math.abs));
+    const fractional = ["rate","goalsRate","assistsRate","shotsRate","shootingPct","pointsPerShot","goalsAssistsRatio"].includes(metric);
+    const format = v => v == null ? "—" : fractional ? `${dec(v,metric==="shootingPct"?1:2)}${metric==="shootingPct"?"%":""}` : fmt(v);
+    const axis = r => S.profileTrendAxis==="draft" ? (iceDYLabel(p,r.season)||r.season) : r.season;
+    const latest=rows.length>1 ? values[values.length-1] : null;
+    const previous=rows.length>1 ? values[values.length-2] : null;
+    const delta=latest!=null&&previous!=null ? latest-previous : null;
+    return `<div class="ice-development-head">
+      <div><strong>${esc(name)}</strong><span>${esc(competition==="playoffs"?"Playoffs":"Regular season")} · ${rows.length} seasons</span></div>
+      ${delta==null?"":`<span class="ice-development-delta">Latest change: ${delta>0?"+":""}${format(delta)}</span>`}
+    </div>
+    <div class="bars ice-profile-development" role="list" aria-label="${esc(name)} by ${S.profileTrendAxis==="draft"?"draft year":"season"}">
+      ${rows.map((r,i) => `<div class="bar-row ice-development-row ${S.profileSeason===r.season?"ice-development-selected":""}" role="listitem">
+        <div><span><b>${esc(axis(r))}</b> <small>${esc(r.season)}${r.team?` · ${esc(r.team)}`:""}</small></span>
+        <b>${format(values[i])}</b></div>
+        <span class="track"><span style="width:${values[i]==null?0:clamp(Math.abs(values[i])/max*100,0,100)}%"></span></span>
       </div>`).join("")}
-    </div>`;
+    </div>
+    <p class="ice-profile-note">DY labels are estimated from birthdate and NHL draft eligibility, not the player's actual selection. DY is the draft-year season; DY−1 is the preceding season. Seasons with multiple teams are counted once. Missing statistics are not treated as zero.</p>`;
   }
 
   /* ==========================================================
@@ -1682,6 +1787,9 @@
     ["Points / game", "rate", "Efficiency"],
     ["Goals / game", "goalsRate", "Efficiency"],
     ["Assists / game", "assistsRate", "Efficiency"],
+    ["Shots / game", "shotsRate", "Efficiency"],
+    ["Points / shot", "pointsPerShot", "Efficiency"],
+    ["Goals / assists", "goalsAssistsRatio", "Efficiency"],
     ["Plus / minus", "plusMinus", "Other"],
     ["Penalty minutes", "pim", "Other"],
     ["Shots on goal", "shots", "Shooting"],
@@ -1703,9 +1811,17 @@
       return Number.isFinite(v) ? v : null;
     };
     const gp = n("gp");
-    if (key === "rate" || key === "goalsRate" || key === "assistsRate") {
-      const numerator = n(key === "rate" ? "pts" : key === "goalsRate" ? "g" : "a");
+    if (["rate", "goalsRate", "assistsRate", "shotsRate"].includes(key)) {
+      const numerator = n(key === "rate" ? "pts" : key === "goalsRate" ? "g" : key === "assistsRate" ? "a" : "shots");
       return gp > 0 && numerator !== null ? numerator / gp : null;
+    }
+    if (key === "pointsPerShot") {
+      const pts = n("pts"), shots = n("shots");
+      return pts !== null && shots > 0 ? pts / shots : null;
+    }
+    if (key === "goalsAssistsRatio") {
+      const g = n("g"), a = n("a");
+      return g !== null && a > 0 ? g / a : null;
     }
     if (key === "shootingPct") {
       const g = n("g"), shots = n("shots");
@@ -1727,7 +1843,7 @@
     return null;
   }
 
-  const COMPARE_RATE_METRICS = new Set(["rate","goalsRate","assistsRate","shootingPct"]);
+  const COMPARE_RATE_METRICS = new Set(["rate","goalsRate","assistsRate","shotsRate","shootingPct","pointsPerShot","goalsAssistsRatio"]);
   const COMPARE_REVERSE_METRICS = new Set(); // no automatic scouting judgement on PIM or +/-.
 
   function comparePosition(p, record) {
@@ -1819,7 +1935,7 @@
 
   function compareValue(value, metric) {
     if (value == null || !Number.isFinite(value)) return "—";
-    return ["rate","goalsRate","assistsRate"].includes(metric)
+    return ["rate","goalsRate","assistsRate","shotsRate","pointsPerShot","goalsAssistsRatio"].includes(metric)
       ? value.toFixed(3)
       : metric === "shootingPct" ? value.toFixed(1) + "%" : Number(value).toLocaleString("en-CA");
   }
@@ -1914,6 +2030,21 @@
         <span class="ice-gm-percentile-pill mid">50–74th</span> Above median
         <span class="ice-gm-hint">Percentiles are within each player's selected season, competition and peer group.</span>
       </div>
+      <details class="ice-advanced-panel ice-compare-visual" open>
+        <summary>Advanced Analytics — visual comparison <span>Rates and efficiency</span></summary>
+        <div class="ice-advanced-body">
+          <div class="ice-compare-visual-legend">${slots.map((slot,i)=>`<span><i class="ice-compare-swatch ice-compare-swatch-${i}"></i>${esc(slot.player?.name||"Player "+(i+1))}</span>`).join("")}</div>
+          ${ADVANCED_METRICS.map(([label,key])=>{
+            const values=slots.map(slot=>compareMetric(slot.record,key));
+            const valid=values.filter(v=>v!==null && Number.isFinite(v));
+            if (!valid.length) return "";
+            const maximum=Math.max(...valid,0.000001);
+            return `<div class="ice-compare-visual-row"><strong>${esc(label)}</strong>
+              <div class="ice-compare-visual-bars">${values.map((v,i)=>`<div class="ice-compare-visual-item"><span class="ice-compare-visual-label">${esc(slots[i].player?.name||"Player "+(i+1))}</span><div class="ice-compare-track"><span class="ice-compare-fill ice-compare-fill-${i}" style="width:${v===null?0:clamp(v/maximum*100,0,100)}%"></span></div><b>${compareValue(v,key)}</b></div>`).join("")}</div></div>`;
+          }).join("")}
+          <p class="ice-advanced-note">Bars are scaled to the largest available value within each metric. Values are not adjusted for age, ice time, or strength of schedule.</p>
+        </div>
+      </details>
       <div class="ice-gm-section-heading">
         <div><h2>Scouting comparison matrix</h2>
           <p>Values plus league percentile where available. Highest raw value in each row is highlighted.</p></div>
@@ -3192,16 +3323,15 @@
      ========================================================== */
 
   const VALID_PAGES = new Set([
-    "home", "leagues", "overview", "players", "statistics",
+    /* "home", */ "leagues", "overview", "players", "statistics",
     "profile", "compare", "draft", "teams",
     "analytics", "goalies", "goalie-profile",
     "goalie-compare"
   ]);
 
   function render() {
-    if (S.page === "home" || S.page === "leagues") {
-      if (S.page === "home") renderHome();
-      else renderLeagues();
+    if (S.page === "leagues") {
+      renderLeagues();
       updateNavigation();
       return;
     }
@@ -3258,7 +3388,7 @@
   }
 
   function navigate(page) {
-    const next = VALID_PAGES.has(page) ? page : "home";
+    const next = VALID_PAGES.has(page) ? page : "overview";
     S.page = next;
 
     if (location.hash !== `#${next}`) {
@@ -3299,7 +3429,7 @@
       closeMenu();
       return;
     }
-    const next = VALID_PAGES.has(hash) ? hash : "home";
+    const next = VALID_PAGES.has(hash) ? hash : "overview";
 
     if (next !== S.page) {
       S.page = next;
@@ -3471,7 +3601,7 @@
     if(target.closest("#stats-filters-toggle")) {
       S.statsAdvancedFilters=!S.statsAdvancedFilters;
       const panel=document.querySelector("#stats-filters-panel");if(panel)panel.hidden=!S.statsAdvancedFilters;
-      target.closest("button").setAttribute("aria-expanded",String(S.statsAdvancedFilters));return;
+      target.closest("button").setAttribute("aria-expanded",String(S.statsAdvancedFilters));target.closest("button").textContent=`All filters ${S.statsAdvancedFilters?"−":"+"}`;return;
     }
     if(target.closest("#stats-columns-all")) {S.statsColumns=statsAvailableColumns(statsRows()).map(d=>d.key);renderStatistics();return;}
     if(target.closest("#stats-columns-default")) {S.statsColumns=null;renderStatistics();return;}
@@ -3719,6 +3849,17 @@
       renderProfile();
     }
 
+    if (id === "profile-trend-metric") {
+      S.profileTrendMetric = value;
+      renderProfile();
+      return;
+    }
+    if (id === "profile-trend-axis") {
+      S.profileTrendAxis = value;
+      renderProfile();
+      return;
+    }
+
     if (id === "profile-season") {
       S.profileSeason = value;
       renderProfile();
@@ -3887,7 +4028,8 @@
 
   async function initialize() {
     const initialPage = location.hash.replace(/^#/, "").split("?")[0];
-    S.page = VALID_PAGES.has(initialPage) ? initialPage : "home";
+    S.page = VALID_PAGES.has(initialPage) ? initialPage : "overview";
+    if (initialPage === "home") history.replaceState(null, "", "#overview");
 
     introStatus("Loading current OHL statistics…");
     updateStatus("Loading current season");
@@ -3968,7 +4110,7 @@
       updateStatus("Data unavailable");
       S.loading = false;
 
-      if (S.page === "home" || S.page === "leagues") {
+      if (S.page === "leagues") {
         render();
       } else {
         main.innerHTML = `
@@ -3984,8 +4126,8 @@
 
           <div class="ice-actions">
             <button class="btn primary" id="ice-retry">Retry</button>
-            <a class="btn secondary" href="#home" data-page="home">
-              IceIndex Home
+            <a class="btn secondary" href="#overview" data-page="overview">
+              OHL Overview
             </a>
           </div>
         `;

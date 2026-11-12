@@ -4,7 +4,7 @@
 <head>
 <script src="js/maintenance.js?v=0.6.0" defer></script>
   <!-- ======================================================
-       ICEINDEX v0.8.0
+       ICEINDEX v0.9.0
        Hockey Data Intelligence
        Compact Multi-League Navigation
        ====================================================== -->
@@ -45,10 +45,10 @@
 
   <!-- IceIndex application stylesheet (includes navigation and responsive styles) -->
 
-  <link rel="stylesheet" href="css/style.css?v=0.8.0">
+  <link rel="stylesheet" href="css/style.css?v=0.9.0">
 
   <!-- ======================================================
-       ICEINDEX v0.8.0 SIDEBAR STYLES
+       ICEINDEX v0.9.0 SIDEBAR STYLES
        ====================================================== -->
 
 
@@ -67,7 +67,7 @@
   <script src="js/ohl-branding.js?v=0.5.0" defer></script>
   <script src="js/ohl-analytics.js?v=0.5.0" defer></script>
   <script src="js/ohl-goalies.js?v=0.8.0" defer></script>
-  <script src="js/app.js?v=0.8.0" defer></script>
+  <script src="js/app.js?v=0.9.0" defer></script>
 
 </head>
 
@@ -194,7 +194,8 @@
       <nav class="sidebar-nav"
            aria-label="Main navigation">
 
-        <!-- HOME -->
+        <!-- HOME DISABLED: retained for future use.
+        HOME NAVIGATION
 
         <a class="nav-link active"
            href="#home"
@@ -213,6 +214,8 @@
           <span>Home</span>
 
         </a>
+
+        -->
 
         <!-- LEAGUE DIRECTORY -->
 
@@ -238,9 +241,10 @@
 
         <!-- OVERVIEW -->
 
-        <a class="nav-link"
+        <a class="nav-link active"
            href="#overview"
-           data-page="overview">
+           data-page="overview"
+           aria-current="page">
 
           <svg viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="1.8"
@@ -457,7 +461,7 @@
         <div class="ice-footer-row">
 
           <span class="ice-footer-version">
-            IceIndex v0.8.0
+            IceIndex v0.9.0
           </span>
 
           <a class="ice-footer-github"
@@ -552,24 +556,30 @@
 
         <!-- SINGLE STATUS INDICATOR -->
 
-        <div id="ice-data-indicator"
+        <button type="button" id="ice-data-indicator"
              class="ice-status"
              data-state="loading"
-             role="status"
-             aria-live="polite"
+             aria-haspopup="dialog"
+             aria-controls="ice-status-popover"
+             aria-expanded="false"
              aria-label="Hockey data loading"
              title="Hockey data loading">
 
           <span class="ice-status-dot"
                 aria-hidden="true"></span>
 
-        </div>
-
+        </button>
+        <section id="ice-status-popover" class="ice-status-popover" role="dialog" aria-label="IceIndex data status" hidden>
+          <div class="ice-status-popover-head"><strong>IceIndex data status</strong><button type="button" id="ice-status-close" aria-label="Close status details">×</button></div>
+          <p id="ice-status-description">Checking the latest data refresh…</p>
+          <p class="ice-status-timestamp">Last successful refresh: <strong id="ice-status-refresh">Checking…</strong></p>
+          <small>This indicator describes data freshness, not website uptime.</small>
+        </section>
       </div>
 
     </header>
 
-    <!-- ICEINDEX v0.8.0 GLOBAL PLAYER SEARCH -->
+    <!-- ICEINDEX v0.9.0 GLOBAL PLAYER SEARCH -->
     <section class="ice-global-search" role="search" aria-label="Global OHL player search">
       <div class="ice-global-search-inner">
         <label for="ice-global-query" class="ice-global-search-label">FIND AN OHL PLAYER</label>
@@ -636,7 +646,7 @@
 
         <span aria-hidden="true"> · </span>
 
-        <span>v0.8.0</span>
+        <span>v0.9.0</span>
 
       </div>
 
@@ -701,7 +711,7 @@
       </button>
 
       <div class="ice-intro-version">
-        ICEINDEX v0.8.0
+        ICEINDEX v0.9.0
       </div>
 
     </div>
@@ -740,6 +750,32 @@
 
       const indicator =
         document.getElementById("ice-data-indicator");
+
+      /* STATUS DETAILS — refresh metadata and accessible popover */
+      const statusPopover=document.getElementById("ice-status-popover");
+      const statusRefresh=document.getElementById("ice-status-refresh");
+      const statusDescription=document.getElementById("ice-status-description");
+      function closeStatusPopover(){if(!statusPopover)return;statusPopover.hidden=true;indicator?.setAttribute("aria-expanded","false");}
+      indicator?.addEventListener("click",()=>{if(!statusPopover)return;statusPopover.hidden=!statusPopover.hidden;indicator.setAttribute("aria-expanded",String(!statusPopover.hidden));});
+      document.getElementById("ice-status-close")?.addEventListener("click",()=>{closeStatusPopover();indicator?.focus();});
+      document.addEventListener("pointerdown",e=>{if(!statusPopover?.hidden&&!statusPopover?.contains(e.target)&&!indicator?.contains(e.target))closeStatusPopover();});
+      document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!statusPopover?.hidden){closeStatusPopover();indicator?.focus();}});
+      (async function loadStatusDetails(){
+        try{
+          const response=await fetch("data/ohl/metadata/last_updated.json",{cache:"no-store"});
+          if(!response.ok)throw Error("Refresh metadata unavailable");
+          const metadata=await response.json();
+          const date=new Date(metadata.last_updated_utc);
+          if(!Number.isFinite(date.getTime()))throw Error("No valid refresh time");
+          statusRefresh.textContent=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Toronto",month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"}).format(date);
+          const ageHours=(Date.now()-date.getTime())/3600000;
+          const failed=metadata.status==="failed"||metadata.status==="error";
+          const delayed=ageHours>48;
+          indicator.dataset.refreshState=failed?"failed":delayed?"delayed":"fresh";
+          statusDescription.textContent=failed?"A refresh failure is reported in the metadata. Previously loaded data may still be available.":delayed?"The last successful refresh is more than 48 hours old. Data may be delayed.":"The latest recorded refresh is recent (within 48 hours).";
+          indicator.title=statusDescription.textContent;
+        }catch(error){statusRefresh.textContent="Unavailable";statusDescription.textContent="Refresh timing could not be verified. This does not confirm a failed refresh.";indicator.dataset.refreshState="unknown";}
+      })();
 
       /* LAST SUCCESSFUL REFRESH — SIDEBAR ONLY */
       (async function loadLastUpdated() {
@@ -828,7 +864,7 @@
       function updateNavigation() {
         const page = (
           window.location.hash.slice(1).split(/[/?]/)[0] ||
-          "home"
+          "overview"
         ).toLowerCase();
 
         const links = document.querySelectorAll(
