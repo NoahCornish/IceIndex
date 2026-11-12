@@ -11,13 +11,15 @@
 # Configuration:
 #   scripts/config.R
 #
-# Daily Eastern refresh targets:
-#   3:06 AM
-#   12:02 PM
-#   6:03 PM
-#   10:25 PM
+# Refresh targets (America/Toronto):
+#   03:06
+#   12:02
+#   18:03
+#   22:25
 #
-# Automatically handles EST / EDT.
+# OHLpkg:
+#   Installed fresh from the public GitHub repository.
+#   Latest main-branch code is used on every refresh.
 #
 # ============================================================
 
@@ -28,7 +30,6 @@ name: Refresh IceIndex Data
 # ============================================================
 
 on:
-
   schedule:
 
     # 3:06 AM Eastern
@@ -65,13 +66,9 @@ concurrency:
 # ============================================================
 
 jobs:
-
   refresh-data:
-
     name: Refresh OHL Datasets
-
     runs-on: ubuntu-latest
-
     timeout-minutes: 60
 
     steps:
@@ -95,102 +92,102 @@ jobs:
             exit 0
           fi
 
-          # GitHub schedules use UTC.
-          # The paired hours represent EST and EDT.
+          # Each cron expression contains two possible
+          # UTC hours: one for EDT and one for EST.
           #
-          # Compare the scheduled occurrence with the
-          # applicable Eastern UTC offset.
+          # Evaluate both candidate scheduled UTC times
+          # against America/Toronto.
           #
-          # GitHub does not expose the exact scheduled
-          # execution timestamp, so this uses the current
-          # date and scheduled UTC hour as an approximation.
-
-          offset=$(TZ=America/Toronto date +%z)
-
-          if [[ "$offset" == "-0400" ]]; then
-            season="EDT"
-          else
-            season="EST"
-          fi
-
-          echo "Eastern timezone: $season"
-          echo "Triggered schedule: $SCHEDULE"
-          echo "Runner started: $(date -u)"
+          # This avoids checking only the runner's current
+          # hour, which can be incorrect when GitHub starts
+          # a scheduled job late.
 
           case "$SCHEDULE" in
-
             "6 7,8 * * *")
+              candidate_hours="7 8"
+              target_local="03:06"
               target_minute="06"
-              if [[ "$season" == "EDT" ]]; then
-                target_hour="07"
-              else
-                target_hour="08"
-              fi
               ;;
 
             "2 16,17 * * *")
+              candidate_hours="16 17"
+              target_local="12:02"
               target_minute="02"
-              if [[ "$season" == "EDT" ]]; then
-                target_hour="16"
-              else
-                target_hour="17"
-              fi
               ;;
 
             "3 22,23 * * *")
+              candidate_hours="22 23"
+              target_local="18:03"
               target_minute="03"
-              if [[ "$season" == "EDT" ]]; then
-                target_hour="22"
-              else
-                target_hour="23"
-              fi
               ;;
 
             "25 2,3 * * *")
+              candidate_hours="2 3"
+              target_local="22:25"
               target_minute="25"
-              if [[ "$season" == "EDT" ]]; then
-                target_hour="02"
-              else
-                target_hour="03"
-              fi
               ;;
 
             *)
-              echo "Unknown cron schedule."
+              echo "ERROR: Unrecognized schedule."
               exit 1
               ;;
-
           esac
 
-          current_hour=$(date -u +%H)
+          now_epoch=$(date -u +%s)
+          approved=false
 
-          echo "Expected UTC hour: $target_hour"
-          echo "Current UTC hour: $current_hour"
-
-          # Allow execution within the scheduled hour
-          # or the following hour if GitHub starts late.
+          # Search recent scheduled occurrences.
+          # The matching occurrence must be within
+          # the previous 2 hours.
           #
-          # This is a best-effort safeguard against
+          # This is a best-effort allowance for
           # GitHub Actions scheduling delays.
 
-          next_hour=$(printf "%02d" \
-            $(( (10#$target_hour + 1) % 24 )))
+          for days_ago in 0 1; do
+            utc_date=$(date -u -d \
+              "$days_ago days ago" +%Y-%m-%d)
 
-          if [[ "$current_hour" == "$target_hour" ]] ||
-             [[ "$current_hour" == "$next_hour" ]]; then
+            for hour in $candidate_hours; do
+              padded_hour=$(printf "%02d" "$hour")
 
-            echo "Scheduled refresh approved."
+              candidate_utc="${utc_date}T${padded_hour}:${target_minute}:00Z"
+
+              candidate_epoch=$(date -u -d \
+                "$candidate_utc" +%s)
+
+              age_seconds=$((now_epoch - candidate_epoch))
+
+              # Ignore future occurrences and runs
+              # delayed by more than two hours.
+
+              if (( age_seconds < 0 || age_seconds > 7200 )); then
+                continue
+              fi
+
+              actual_local=$(TZ=America/Toronto \
+                date -d "@$candidate_epoch" +%H:%M)
+
+              echo "Candidate UTC: $candidate_utc"
+              echo "Candidate Eastern: $actual_local"
+              echo "Expected Eastern: $target_local"
+
+              if [[ "$actual_local" == "$target_local" ]]; then
+                approved=true
+                break 2
+              fi
+            done
+          done
+
+          if [[ "$approved" == "true" ]]; then
+            echo "Scheduled Eastern refresh approved."
             echo "run_refresh=true" >> "$GITHUB_OUTPUT"
-
           else
-
-            echo "Inactive EST/EDT schedule occurrence."
+            echo "Inactive EST/EDT occurrence."
             echo "run_refresh=false" >> "$GITHUB_OUTPUT"
-
           fi
 
       # ======================================================
-      # STEP 2: CHECKOUT REPOSITORY
+      # STEP 2: CHECKOUT ICEINDEX
       # ======================================================
 
       - name: Checkout IceIndex
@@ -216,7 +213,7 @@ jobs:
       - name: Install system dependencies
         if: steps.eastern-time.outputs.run_refresh == 'true'
         run: |
-          set -e
+          set -euo pipefail
 
           sudo apt-get update
 
@@ -227,67 +224,116 @@ jobs:
             libgit2-dev
 
       # ======================================================
-      # STEP 5: INSTALL R PACKAGES AND OHLPKG
+      # STEP 5: INSTALL R PACKAGES AND LATEST OHLPKG
       # ======================================================
 
-      - name: Install R packages
+      - name: Install R packages and latest OHLpkg
         if: steps.eastern-time.outputs.run_refresh == 'true'
+        shell: bash
+        env:
+          GITHUB_PAT: ""
+          GITHUB_TOKEN: ""
         run: |
-          Rscript -e '
-            options(
-              repos = c(
-                CRAN = "https://cloud.r-project.org"
+          set -euo pipefail
+
+          echo "========================================"
+          echo " ICEINDEX PACKAGE INSTALLATION"
+          echo "========================================"
+
+          Rscript - <<'RSCRIPT'
+          options(
+            repos = c(
+              CRAN = "https://cloud.r-project.org"
+            ),
+            timeout = 300
+          )
+
+          # ----------------------------------------------
+          # INSTALL CORE R PACKAGES
+          # ----------------------------------------------
+
+          required <- c(
+            "httr2",
+            "jsonlite",
+            "remotes"
+          )
+
+          missing <- required[
+            !vapply(
+              required,
+              requireNamespace,
+              logical(1),
+              quietly = TRUE
+            )
+          ]
+
+          if (length(missing) > 0) {
+            install.packages(missing)
+          }
+
+          # ----------------------------------------------
+          # INSTALL LATEST PUBLIC OHLPKG
+          # ----------------------------------------------
+
+          # Download directly from GitHub's public
+          # archive endpoint instead of using the
+          # GitHub API or an authentication token.
+
+          package_url <- paste0(
+            "https://github.com/NoahCornish/",
+            "OHLpkg/archive/refs/heads/main.tar.gz"
+          )
+
+          cat("Downloading latest OHLpkg...\n")
+
+          remotes::install_url(
+            package_url,
+            dependencies = NA,
+            upgrade = "never",
+            quiet = FALSE
+          )
+
+          # ----------------------------------------------
+          # VERIFY REQUIRED PACKAGES
+          # ----------------------------------------------
+
+          required_packages <- c(
+            "httr2",
+            "jsonlite",
+            "OHLpkg"
+          )
+
+          missing_packages <- required_packages[
+            !vapply(
+              required_packages,
+              requireNamespace,
+              logical(1),
+              quietly = TRUE
+            )
+          ]
+
+          if (length(missing_packages) > 0) {
+            stop(
+              "Missing R packages: ",
+              paste(
+                missing_packages,
+                collapse = ", "
               )
             )
+          }
 
-            cat("Installing IceIndex dependencies...\n")
+          cat(
+            "OHLpkg version:",
+            as.character(packageVersion("OHLpkg")),
+            "\n"
+          )
 
-            install.packages(
-              c(
-                "httr2",
-                "jsonlite",
-                "remotes"
-              )
-            )
+          cat("R package verification passed.\n")
+          RSCRIPT
 
-            cat("Installing NoahCornish/OHLpkg...\n")
-
-            remotes::install_github(
-              "NoahCornish/OHLpkg",
-              dependencies = TRUE,
-              upgrade = "never"
-            )
-
-            required <- c(
-              "httr2",
-              "jsonlite",
-              "OHLpkg"
-            )
-
-            missing <- required[
-              !vapply(
-                required,
-                requireNamespace,
-                logical(1),
-                quietly = TRUE
-              )
-            ]
-
-            if (length(missing) > 0) {
-              stop(
-                "Missing R packages: ",
-                paste(missing, collapse = ", ")
-              )
-            }
-
-            cat(
-              "OHLpkg version:",
-              as.character(packageVersion("OHLpkg")),
-              "\n"
-            )
-
-            cat("All required R packages verified.\n")
-          '
+          echo "========================================"
+          echo " PACKAGE INSTALLATION COMPLETE"
+          echo "========================================"
 
       # ======================================================
       # STEP 6: VERIFY PROJECT STRUCTURE
@@ -295,8 +341,9 @@ jobs:
 
       - name: Verify IceIndex scripts
         if: steps.eastern-time.outputs.run_refresh == 'true'
+        shell: bash
         run: |
-          set -e
+          set -euo pipefail
 
           echo "========================================"
           echo " ICEINDEX PROJECT VERIFICATION"
@@ -320,18 +367,15 @@ jobs:
 
           echo "OHL processing script verified."
 
-          echo "========================================"
-          echo " PROJECT STRUCTURE VERIFIED"
-          echo "========================================"
-
       # ======================================================
-      # STEP 7: RUN MASTER DATA REFRESH
+      # STEP 7: RUN MASTER REFRESH
       # ======================================================
 
       - name: Refresh all IceIndex datasets
         if: steps.eastern-time.outputs.run_refresh == 'true'
+        shell: bash
         run: |
-          set -e
+          set -euo pipefail
 
           echo "========================================"
           echo " ICEINDEX DATA ENGINE"
@@ -350,71 +394,69 @@ jobs:
 
       - name: Verify last successful refresh timestamp
         if: steps.eastern-time.outputs.run_refresh == 'true'
+        shell: bash
         run: |
-          Rscript -e '
-            path <- "data/ohl/metadata/last_updated.json"
+          set -euo pipefail
 
-            if (!file.exists(path)) {
-              stop(
-                "Missing last_updated.json. ",
-                "Check scripts/refresh.R."
-              )
-            }
+          Rscript - <<'RSCRIPT'
+          path <- "data/ohl/metadata/last_updated.json"
 
-            metadata <- jsonlite::fromJSON(path)
-
-            if (
-              is.null(metadata$last_updated_utc) ||
-              length(metadata$last_updated_utc) != 1 ||
-              is.na(metadata$last_updated_utc) ||
-              !nzchar(metadata$last_updated_utc)
-            ) {
-              stop(
-                "Missing or invalid last_updated_utc."
-              )
-            }
-
-            timestamp <- as.POSIXct(
-              metadata$last_updated_utc,
-              format = "%Y-%m-%dT%H:%M:%SZ",
-              tz = "UTC"
+          if (!file.exists(path)) {
+            stop(
+              "Missing last_updated.json. ",
+              "Check scripts/refresh.R."
             )
+          }
 
-            if (is.na(timestamp)) {
-              stop("Invalid UTC timestamp format.")
-            }
+          metadata <- jsonlite::fromJSON(path)
 
-            cat(
-              "Last successful refresh:",
-              metadata$last_updated_utc,
-              "\n"
-            )
+          if (
+            is.null(metadata$last_updated_utc) ||
+            length(metadata$last_updated_utc) != 1 ||
+            is.na(metadata$last_updated_utc) ||
+            !nzchar(metadata$last_updated_utc)
+          ) {
+            stop("Missing or invalid last_updated_utc.")
+          }
 
-            cat("Refresh metadata verified.\n")
-          '
+          timestamp <- as.POSIXct(
+            metadata$last_updated_utc,
+            format = "%Y-%m-%dT%H:%M:%SZ",
+            tz = "UTC"
+          )
+
+          if (is.na(timestamp)) {
+            stop("Invalid UTC timestamp format.")
+          }
+
+          cat(
+            "Last successful refresh:",
+            metadata$last_updated_utc,
+            "\n"
+          )
+
+          cat("Refresh metadata verified.\n")
+          RSCRIPT
 
       # ======================================================
-      # STEP 9: DISPLAY REFRESHED DATA
+      # STEP 9: DISPLAY DATA INVENTORY
       # ======================================================
 
       - name: Display refreshed datasets
         if: steps.eastern-time.outputs.run_refresh == 'true'
+        shell: bash
         run: |
-          set -e
+          set -euo pipefail
 
           echo "========================================"
           echo " ICEINDEX DATA INVENTORY"
           echo "========================================"
 
           if [ -d data ]; then
-
             find data -type f | sort
-
           else
-
             echo "ERROR: Data directory missing."
             exit 1
-
           fi
 
           echo "========================================"
@@ -427,8 +469,9 @@ jobs:
 
       - name: Commit refreshed datasets
         if: steps.eastern-time.outputs.run_refresh == 'true'
+        shell: bash
         run: |
-          set -e
+          set -euo pipefail
 
           echo "========================================"
           echo " ICEINDEX DATA PUBLICATION"
@@ -442,12 +485,9 @@ jobs:
           git add data/
 
           if git diff --cached --quiet; then
-
             echo "No dataset changes detected."
             echo "Repository already up to date."
-
           else
-
             echo "Dataset changes detected."
 
             git commit \
@@ -456,7 +496,6 @@ jobs:
             git push
 
             echo "Updated datasets committed successfully."
-
           fi
 
       # ======================================================
@@ -465,13 +504,14 @@ jobs:
 
       - name: Refresh summary
         if: steps.eastern-time.outputs.run_refresh == 'true'
+        shell: bash
         run: |
           echo "========================================"
           echo " ICEINDEX DATA ENGINE"
           echo " REFRESH COMPLETE"
           echo "========================================"
           echo " OHL collectors executed."
-          echo " OHLpkg installed and verified."
+          echo " Latest OHLpkg installed."
           echo " Processing completed."
           echo " Refresh timestamp verified."
           echo " Data committed if changes were found."
