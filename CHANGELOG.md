@@ -1,71 +1,188 @@
 
-# IceIndex Changelog
+# Changelog
 
-All notable changes to IceIndex are documented here.
+All notable changes to IceIndex are documented in this file.
 
-IceIndex is an independent hockey data intelligence platform focused on player statistics, historical records, and analytics.
+Version numbering follows the project's development milestones.
 
 ---
 
-## [0.9.0] - 2026-11-12
+## [0.10.0] - 2026-11-13
+
+### Major Release: Interactive Shot Maps & Interface Refinement
+
+Version 0.10.0 introduces interactive shot-location analytics, enhanced player-event information, and a new day/night appearance system.
+
+This release focuses on improving player profiles, event visualization, and overall website presentation.
 
 ### Added
 
-- Introduced a compact, mobile-friendly filtering interface for the OHL Statistics Database.
-- Added an expandable **All Filters** panel containing:
-  - Team filtering
-  - Position filtering
-  - Statistic sorting
-  - Minimum games played
-  - Minimum and maximum statistic values
-  - Ascending and descending sorting
-  - CSV export
-  - Clear all filters
-- Added a separate **Columns** panel for customizing visible statistics.
-- Added an interactive data-status indicator in the application header.
-- Added a status popover displaying the latest recorded data refresh timestamp and data freshness information.
-- Added visual indicators for recent, delayed, and reported failed data refreshes.
+#### Interactive Shot Maps
+
+- Added player shot and goal location maps.
+- Added recorded event markers.
+- Added separate visual identification for shots and goals.
+- Added Dots and Zones visualization modes.
+- Added shot-event type filtering.
+- Added period filtering.
+- Added event counts and shot/goal summaries.
+- Added interactive event-detail panels.
+- Added desktop hover interactions.
+- Added click-to-open event information.
+- Added mobile tap interactions.
+- Added keyboard-accessible marker interactions.
+- Added support for available event-level metadata.
+- Added attacking-half rink visualization.
+
+#### Event Information
+
+- Added game-date information to event details.
+- Added opposing-team information where available.
+- Added period and game-clock information when recorded.
+- Added game-score information when available.
+- Added support for goalie information where recorded.
+- Added support for goal-assist information where recorded.
+- Added clearer identification of goals versus shots.
+- Added readable event-information layouts.
+
+#### Shot-Location Processing
+
+- Added processing support for shot and goal event coordinates.
+- Added normalization of attacking direction.
+- Added team/game-based attacking-direction inference.
+- Added support for retaining original event coordinates.
+- Added processed player shot-location CSV output.
+- Added support for event metadata in the shot-location pipeline.
+
+#### Day/Night Appearance
+
+- Added automatic theme switching based on Eastern Time.
+- Added the original Navy & Ice Blue daytime theme.
+- Added the Amber & Graphite nighttime theme.
+- Added a manual sun/moon theme control.
+- Added automatic daytime activation at 7:00 AM.
+- Added automatic nighttime activation at 5:00 PM.
+- Added coordinated nighttime styling for shot maps and controls.
 
 ### Changed
 
-- Reorganized the Statistics Database controls to prioritize Search, Competition, and Season.
-- Replaced the larger statistics summary cards with a compact inline summary displaying:
-  - Number of matching skaters
-  - Selected season
-  - Active sorting statistic
-  - Number of visible columns
-- Abbreviated player first names in the Statistics Database table to improve readability, particularly on mobile devices.
-- Preserved full player names in search results and player profiles.
-- Improved the organization of advanced filtering and column-selection controls.
-- Updated application version references to v0.9.0.
+#### Shot-Map Presentation
 
-### Improved
+- Reworked the initial shot-coordinate visualization.
+- Improved rink-coordinate scaling and positioning.
+- Replaced the original full-rink display with an attacking-half presentation.
+- Updated rink proportions and visual styling.
+- Improved shot and goal marker contrast.
+- Improved marker-information panel readability.
+- Updated shot-map styling for both themes.
+- Reduced unnecessary technical information displayed to users.
+- Added disclosure for events outside the visible rink area.
 
-- Reduced visual clutter in the Statistics Database.
-- Improved access to statistics filters on smaller screens.
-- Maintained horizontal scrolling for wide statistics tables.
-- Improved visibility of data freshness information.
-- Distinguished data refresh status from website uptime.
+#### Player Profiles
 
-### Technical
+- Simplified player-profile descriptions.
+- Improved the visual hierarchy of profile information.
+- Reduced redundant explanatory text.
+- Improved integration between player statistics and shot maps.
 
-- Updated `index.html`, `css/style.css`, and `js/app.js`.
-- Preserved the existing OHL data loading architecture.
-- Preserved existing GitHub Actions and data refresh workflows.
-- Verified JavaScript syntax successfully.
+#### Website Interface
 
-### Verification
+- Simplified page headings and introductory descriptions.
+- Removed unnecessary development-oriented text.
+- Reduced redundant labels.
+- Improved spacing and consistency.
+- Refined navigation presentation.
+- Improved consistency between statistical panels.
+- Preserved responsive desktop and mobile layouts.
 
-The changes above were confirmed through source-code inspection.
+#### Status Indicator
 
-Full browser-based functional testing and live deployment verification have not been completed.
+- Improved the refresh-status information panel.
+- Adjusted panel positioning to avoid overlapping content.
+- Improved readability of refresh timestamps.
+- Integrated the theme switch beside the status indicator.
+
+### Fixed
+
+- Corrected earlier shot-map coordinate placement issues.
+- Improved alignment between event markers and rink geometry.
+- Corrected several attacking-direction visualization problems.
+- Improved consistency between Dots and Zones modes.
+- Improved handling of events outside the attacking-half display.
+- Improved marker interaction behaviour on smaller screens.
+- Improved event-detail panel positioning.
+- Removed unexplained numeric shot-type codes from the visible event panel.
+- Improved separation between final game scores and event-specific information.
+
+### Data Integrity
+
+- Original recorded event coordinates are retained in the source data.
+- Events excluded from the half-rink visualization are not deleted from the dataset.
+- Displayed shot and goal counts should distinguish visible events from total available events.
+- Event details are populated only when corresponding data fields are available.
+- No expected-goals values are generated without an underlying statistical model.
+
+### Known Limitations
+
+- Shot-map coverage currently focuses on 2026–27.
+- Historical shot-map support is not yet complete.
+- Event metadata availability varies between games.
+- Goalie and assist information may be missing.
+- Shot-type codes require verified mappings.
+- Some attacking directions are inferred.
+- Events outside the displayed attacking half are not plotted.
+- Full end-to-end browser and dataset validation remains necessary before final release.
 
 ---
 
-## Project
+## [0.9.0] - Previous Development Release
 
-**IceIndex — Hockey Data Intelligence**
+### Changed
 
-Repository: https://github.com/NoahCornish/IceIndex
+- Introduced the condensed IceIndex overview layout.
+- Refined the website's multi-page navigation.
+- Improved the organization of OHL statistics and player exploration.
+- Established the condensed overview as the baseline for subsequent development.
 
-Website: https://noahcornish.github.io/IceIndex/
+---
+
+## [0.8.0] - Previous Development Release
+
+### Added
+
+- Independent OHL data-loading infrastructure.
+- Historical player-statistics support.
+- Regular-season and playoff data handling.
+- Expanded goalie statistics infrastructure.
+- Team-branding and historical franchise support.
+- Maintenance controller functionality.
+
+---
+
+## [0.7.0] - Previous Development Release
+
+### Changed
+
+- Transitioned website data sourcing toward IceIndex's independent processed CSV infrastructure.
+- Reduced architectural dependence on external project data pipelines.
+
+---
+
+## Future Development
+
+### Planned
+
+- Historical shot-map expansion
+- Additional OHL season support
+- Verified shot-type descriptions
+- Richer game-event information
+- Improved goalie attribution
+- More complete goal-assist attribution
+- Expanded player analytics
+- Team-level shot maps
+- Additional league coverage
+- Improved automated data maintenance
+
+---
+
+**IceIndex — Independent Hockey Data & Analytics**

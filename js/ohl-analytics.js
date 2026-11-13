@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.8.0
+   ICEINDEX v0.10.0
    FILE 1 — js/ohl-analytics.js
 
    PLAYER ANALYTICS ENGINE

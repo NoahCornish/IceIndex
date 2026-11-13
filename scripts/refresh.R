@@ -2,7 +2,7 @@
 # ============================================================
 # ICEINDEX DATA ENGINE
 # MASTER REFRESH SCRIPT
-# VERSION 0.8.0
+# VERSION 0.10.0
 # ============================================================
 #
 # PURPOSE:
@@ -24,6 +24,8 @@
 #   - Historical refresh CSV logging
 #   - Final system health summary
 #   - OHL skater and goalie processing after collection
+#   - Incremental game-event refresh and player game-log enrichment
+#   - Player game-log reconciliation and metadata validation
 #
 # CURRENT COLLECTORS:
 #   OHL Seasons
@@ -31,6 +33,11 @@
 #   OHL Players
 #   OHL Skater Statistics
 #   OHL Goalie Statistics
+#
+# GAME PIPELINE:
+#   scripts/games/update_all_game_events.R
+#   scripts/games/build_game_logs.R
+#   scripts/games/enrich_game_logs.R
 #
 # PROCESSOR:
 #   scripts/processing/ohl_process_all.R
@@ -64,7 +71,7 @@ options(
   scipen = 999
 )
 
-REFRESH_VERSION <- "0.6.0"
+REFRESH_VERSION <- "0.10.0"
 ICEINDEX_VERSION <- REFRESH_VERSION
 
 refresh_start <- Sys.time()
@@ -565,7 +572,7 @@ for (i in seq_len(nrow(collectors))) {
 
 log_info(
   "Registered collectors: ",
-  nrow(collectors) + 1L
+  nrow(collectors)
 )
 
 
@@ -1011,6 +1018,167 @@ if (all(results$Status == "SUCCESS") &&
 
 
 # ============================================================
+# 6C. OHL PLAYER GAME LOG PIPELINE — v0.10.0
+# ============================================================
+# Runs only after the original OHL pipeline succeeds.
+# Dependencies are strict: event cache -> builder -> enrichment.
+# All three scripts retain their own validated logic.
+# ============================================================
+
+section("6C. OHL PLAYER GAME LOG PIPELINE")
+
+game_tasks <- data.frame(
+  Task = c(
+    "OHL Game Event Collection",
+    "OHL Player Game Log Builder",
+    "OHL Player Game Log Enrichment"
+  ),
+  Script = c(
+    "scripts/games/update_all_game_events.R",
+    "scripts/games/build_game_logs.R",
+    "scripts/games/enrich_game_logs.R"
+  ),
+  stringsAsFactors = FALSE
+)
+
+record_skipped_task <- function(name, reason) {
+  log_error(name, " skipped: ", reason)
+  results <<- rbind(results, data.frame(
+    Task = name,
+    Status = "FAILED",
+    Seconds = 0,
+    New_Files = 0L,
+    Modified_Files = 0L,
+    Removed_Files = 0L,
+    Warnings = 0L,
+    Error_Message = paste0("Skipped: ", reason),
+    stringsAsFactors = FALSE
+  ))
+}
+
+upstream_ok <- all(results$Status == "SUCCESS")
+
+for (i in seq_len(nrow(game_tasks))) {
+  if (upstream_ok) {
+    task_status <- run_collector(game_tasks$Task[i], game_tasks$Script[i])
+    upstream_ok <- identical(task_status, "SUCCESS")
+  } else {
+    record_skipped_task(
+      game_tasks$Task[i],
+      "preceding collection or processing task failed"
+    )
+  }
+}
+
+# ============================================================
+# 6D. GAME LOG DATA VALIDATION
+# ============================================================
+# Validate complete game-log keys, metadata and every original
+# statistical column. The collector's cache status is a heuristic;
+# this is a structural/reconciliation check, not official game finality.
+# ============================================================
+
+section("6D. OHL PLAYER GAME LOG VALIDATION")
+
+game_validation <- function() {
+  game_dir <- file.path("data", "games", "2026-27")
+  base_path <- file.path(game_dir, "player_game_logs.csv")
+  enriched_path <- file.path(game_dir, "player_game_logs_enriched.csv")
+  validation_path <- file.path(
+    game_dir, "player_game_log_enrichment_validation.csv"
+  )
+  
+  for (path in c(base_path, enriched_path, validation_path)) {
+    if (!file.exists(path)) stop("Missing required game-log file: ", path)
+  }
+  
+  read_data <- function(path) {
+    read.csv(path, colClasses = "character", check.names = FALSE,
+             stringsAsFactors = FALSE, na.strings = character())
+  }
+  
+  original <- read_data(base_path)
+  enriched <- read_data(enriched_path)
+  audit <- read_data(validation_path)
+  
+  if (!nrow(original) || nrow(original) != nrow(enriched)) {
+    stop("Player game-log row counts are empty or do not match")
+  }
+  keys <- c("game_id", "player_id")
+  required_metadata <- c(
+    "player_name", "team_id", "team_code", "team_name",
+    "game_date", "home_away", "opponent_team_id",
+    "opponent_team_name"
+  )
+  if (length(setdiff(c(keys, required_metadata), names(enriched)))) {
+    stop("Enriched game logs lack required identity/metadata columns")
+  }
+  if (length(setdiff(names(original), names(enriched)))) {
+    stop("Enriched game logs dropped original statistical columns")
+  }
+  original_keys <- paste(original$game_id, original$player_id, sep = "\r")
+  enriched_keys <- paste(enriched$game_id, enriched$player_id, sep = "\r")
+  if (anyDuplicated(original_keys) || anyDuplicated(enriched_keys) ||
+      !identical(original_keys, enriched_keys)) {
+    stop("Player-game keys are duplicated or reordered")
+  }
+  for (column in names(original)) {
+    if (!identical(original[[column]], enriched[[column]])) {
+      stop("Original game-log data changed: ", column)
+    }
+  }
+  for (column in required_metadata) {
+    values <- trimws(enriched[[column]])
+    if (any(is.na(values) | values == "")) {
+      stop("Missing enriched values in: ", column)
+    }
+  }
+  if (any(!enriched$home_away %in% c("H", "A"))) {
+    stop("Unexpected home/away codes in game logs")
+  }
+  if (any(is.na(as.Date(enriched$game_date, format = "%Y-%m-%d")))) {
+    stop("Invalid game dates in enriched game logs")
+  }
+  if (nrow(audit) > 0L) {
+    stop("Game-log enrichment validation has ", nrow(audit), " warnings")
+  }
+  log_ok("Player-game rows: ", nrow(enriched))
+  log_ok("Games with player logs: ", length(unique(enriched$game_id)))
+  log_ok("All original columns and metadata validated")
+  TRUE
+}
+
+validation_started <- Sys.time()
+validation_error <- ""
+validation_status <- if (!upstream_ok) {
+  validation_error <- "Skipped: game pipeline failed"
+  log_error(validation_error)
+  "FAILED"
+} else {
+  tryCatch({
+    game_validation()
+    "SUCCESS"
+  }, error = function(e) {
+    validation_error <<- conditionMessage(e)
+    log_error("Game-log validation: ", validation_error)
+    "FAILED"
+  })
+}
+
+results <- rbind(results, data.frame(
+  Task = "OHL Player Game Log Validation",
+  Status = validation_status,
+  Seconds = elapsed_seconds(validation_started),
+  New_Files = 0L,
+  Modified_Files = 0L,
+  Removed_Files = 0L,
+  Warnings = 0L,
+  Error_Message = validation_error,
+  stringsAsFactors = FALSE
+))
+
+
+# ============================================================
 # FUTURE COLLECTORS
 # ============================================================
 #
@@ -1018,8 +1186,6 @@ if (all(results$Status == "SUCCESS") &&
 #
 # Possible additions:
 #
-# OHL Games
-# OHL Player Game Logs
 # OHL Goalie Game Logs
 # OHL Shots
 # OHL Play-by-Play
@@ -1128,7 +1294,9 @@ critical_processed_keys <- list(
 is_expected_empty <- function(path) {
   normalized <- gsub("\\\\", "/", path)
   grepl("^data/audits/", normalized) ||
-    grepl("^data/ohl/metadata/.*_failed\\.csv$", normalized)
+    grepl("^data/ohl/metadata/.*_failed\\.csv$", normalized) ||
+    grepl("^data/games/[^/]+/player_game_log_enrichment_validation\\.csv$", normalized) ||
+    grepl("^data/games/[^/]+/game_log_validation\\.csv$", normalized)
 }
 
 for (file in csv_files) {
@@ -1579,11 +1747,11 @@ log_info(
   "Tasks successful: ",
   successful_tasks,
   "/",
-  nrow(collectors) + 1L
+  nrow(results)
 )
 
 log_info(
-  "Collector failures: ",
+  "Failed tasks: ",
   failed_tasks
 )
 

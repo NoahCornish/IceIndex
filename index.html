@@ -4,7 +4,7 @@
 <head>
 <script src="js/maintenance.js?v=0.6.0" defer></script>
   <!-- ======================================================
-       ICEINDEX v0.9.0
+       ICEINDEX v0.10.0
        Hockey Data Intelligence
        Compact Multi-League Navigation
        ====================================================== -->
@@ -45,10 +45,40 @@
 
   <!-- IceIndex application stylesheet (includes navigation and responsive styles) -->
 
-  <link rel="stylesheet" href="css/style.css?v=0.9.0">
+  <script>
+    /* Use Eastern time and retain a manual override only until the next 7 AM / 5 PM boundary. */
+    (function () {
+      const KEY = 'iceindex-theme-override-v010';
+      const zone = 'America/Toronto';
+      function clock() {
+        const parts = new Intl.DateTimeFormat('en-CA', {timeZone:zone,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+        const v = Object.fromEntries(parts.map(p => [p.type,p.value]));
+        return {day:v.year+'-'+v.month+'-'+v.day,minute:Number(v.hour)*60+Number(v.minute)};
+      }
+      function schedule() { const t=clock(); return t.minute>=420&&t.minute<1020?'day':'night'; }
+      function boundaryKey() { const t=clock(); return t.day+'-'+(t.minute<420?'before7':t.minute<1020?'day':'evening'); }
+      function effective() {
+        try {const o=JSON.parse(localStorage.getItem(KEY)||'null'); if(o&&o.boundary===boundaryKey()&&['day','night'].includes(o.theme))return o.theme;} catch(e){}
+        return schedule();
+      }
+      function apply() {
+        const theme=effective();
+        document.documentElement.dataset.iceTheme=theme;
+        const link=document.getElementById('ice-theme-stylesheet');
+        if(link){const href=theme==='day'?'css/style.css?v=0.10.0-halfmap':'css/style-night.css?v=0.10.0-halfmap';if(link.getAttribute('href')!==href)link.setAttribute('href',href);}
+        const button=document.getElementById('ice-theme-toggle');
+        if(button){const next=theme==='day'?'night':'day';button.setAttribute('aria-label','Switch to '+next+' theme');button.setAttribute('title','Switch to '+next+' theme (automatic at 7 AM and 5 PM ET)');button.setAttribute('aria-pressed',String(theme==='night'));}
+      }
+      window.IceIndexTheme={apply,toggle:function(){const next=effective()==='day'?'night':'day';try{localStorage.setItem(KEY,JSON.stringify({theme:next,boundary:boundaryKey()}));}catch(e){}apply();}};
+      document.documentElement.dataset.iceTheme=effective();
+      document.addEventListener('DOMContentLoaded',function(){apply();document.getElementById('ice-theme-toggle')?.addEventListener('click',window.IceIndexTheme.toggle);setInterval(apply,30000);document.addEventListener('visibilitychange',function(){if(!document.hidden)apply();});});
+    })();
+  </script>
+  <link id="ice-theme-stylesheet" rel="stylesheet" href="css/style.css?v=0.10.0-halfmap">
+  <script>window.IceIndexTheme.apply();</script>
 
   <!-- ======================================================
-       ICEINDEX v0.9.0 SIDEBAR STYLES
+       ICEINDEX v0.10.0 SIDEBAR STYLES
        ====================================================== -->
 
 
@@ -67,7 +97,9 @@
   <script src="js/ohl-branding.js?v=0.5.0" defer></script>
   <script src="js/ohl-analytics.js?v=0.5.0" defer></script>
   <script src="js/ohl-goalies.js?v=0.8.0" defer></script>
-  <script src="js/app.js?v=0.9.0" defer></script>
+  <script src="js/game-logs.js?v=0.10.0" defer></script>
+  <script src="js/shot-map.js?v=0.10.0-halfmap" defer></script>
+  <script src="js/app.js?v=0.10.0" defer></script>
 
 </head>
 
@@ -315,6 +347,8 @@
             <span>Statistics Database</span>
           </a>
 
+          <a class="nav-link" href="#game-logs" data-page="game-logs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 4 2 5-7"/></svg><span>Game Logs</span></a>
+
           <a class="nav-link"
              href="#profile"
              data-page="profile">
@@ -461,7 +495,7 @@
         <div class="ice-footer-row">
 
           <span class="ice-footer-version">
-            IceIndex v0.9.0
+            IceIndex v0.10.0
           </span>
 
           <a class="ice-footer-github"
@@ -554,6 +588,12 @@
           Loading OHL data…
         </div>
 
+        <!-- MANUAL DAY / NIGHT THEME SWITCH -->
+        <button type="button" id="ice-theme-toggle" class="ice-theme-toggle" aria-label="Switch colour theme" title="Switch colour theme" aria-pressed="false">
+          <svg class="ice-theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          <svg class="ice-theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.1A8.6 8.6 0 0 1 8.9 3.6 8.7 8.7 0 1 0 20.4 15.1Z"/></svg>
+        </button>
+
         <!-- SINGLE STATUS INDICATOR -->
 
         <button type="button" id="ice-data-indicator"
@@ -573,19 +613,19 @@
           <div class="ice-status-popover-head"><strong>IceIndex data status</strong><button type="button" id="ice-status-close" aria-label="Close status details">×</button></div>
           <p id="ice-status-description">Checking the latest data refresh…</p>
           <p class="ice-status-timestamp">Last successful refresh: <strong id="ice-status-refresh">Checking…</strong></p>
-          <small>This indicator describes data freshness, not website uptime.</small>
+          
         </section>
       </div>
 
     </header>
 
-    <!-- ICEINDEX v0.9.0 GLOBAL PLAYER SEARCH -->
+    <!-- ICEINDEX v0.10.0 GLOBAL PLAYER SEARCH -->
     <section class="ice-global-search" role="search" aria-label="Global OHL player search">
       <div class="ice-global-search-inner">
-        <label for="ice-global-query" class="ice-global-search-label">FIND AN OHL PLAYER</label>
+        <label for="ice-global-query" class="ice-global-search-label">PLAYER SEARCH</label>
         <div class="ice-global-search-control">
           <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
-          <input id="ice-global-query" type="search" placeholder="Search players across OHL history…" autocomplete="off" aria-autocomplete="list" aria-controls="ice-global-results" aria-expanded="false" aria-activedescendant="" />
+          <input id="ice-global-query" type="search" placeholder="Search OHL players…" autocomplete="off" aria-autocomplete="list" aria-controls="ice-global-results" aria-expanded="false" aria-activedescendant="" />
           <kbd class="ice-global-shortcut">/</kbd>
         </div>
         <div id="ice-global-results" class="ice-global-results" role="listbox" aria-label="Player matches" hidden></div>
@@ -607,8 +647,7 @@
         </h1>
 
         <p>
-          Explore hockey statistics, player profiles,
-          team performance and advanced analytics.
+          Explore player statistics, profiles and league analytics.
         </p>
 
       </div>
@@ -646,7 +685,7 @@
 
         <span aria-hidden="true"> · </span>
 
-        <span>v0.9.0</span>
+        <span>v0.10.0</span>
 
       </div>
 
@@ -681,18 +720,10 @@
       </h1>
 
       <p id="intro-description">
-        Every player. Every league. One index.
-        Explore hockey statistics, historical records,
-        player development and advanced analytics.
+        Explore OHL players, statistics and performance trends.
       </p>
 
-      <div class="ice-intro-tags">
-
-        <span class="status-pill">Player Database</span>
-        <span class="status-pill">Historical Stats</span>
-        <span class="status-pill">Analytics</span>
-
-      </div>
+      
 
       <div class="loading-spinner"
            aria-hidden="true"></div>
@@ -710,9 +741,7 @@
         Explore IceIndex
       </button>
 
-      <div class="ice-intro-version">
-        ICEINDEX v0.9.0
-      </div>
+      
 
     </div>
 
@@ -755,8 +784,8 @@
       const statusPopover=document.getElementById("ice-status-popover");
       const statusRefresh=document.getElementById("ice-status-refresh");
       const statusDescription=document.getElementById("ice-status-description");
-      function closeStatusPopover(){if(!statusPopover)return;statusPopover.hidden=true;indicator?.setAttribute("aria-expanded","false");}
-      indicator?.addEventListener("click",()=>{if(!statusPopover)return;statusPopover.hidden=!statusPopover.hidden;indicator.setAttribute("aria-expanded",String(!statusPopover.hidden));});
+      function closeStatusPopover(){if(!statusPopover)return;statusPopover.hidden=true;document.querySelector(".topbar")?.classList.remove("ice-status-open");indicator?.setAttribute("aria-expanded","false");}
+      indicator?.addEventListener("click",()=>{if(!statusPopover)return;statusPopover.hidden=!statusPopover.hidden;document.querySelector(".topbar")?.classList.toggle("ice-status-open",!statusPopover.hidden);indicator.setAttribute("aria-expanded",String(!statusPopover.hidden));});
       document.getElementById("ice-status-close")?.addEventListener("click",()=>{closeStatusPopover();indicator?.focus();});
       document.addEventListener("pointerdown",e=>{if(!statusPopover?.hidden&&!statusPopover?.contains(e.target)&&!indicator?.contains(e.target))closeStatusPopover();});
       document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!statusPopover?.hidden){closeStatusPopover();indicator?.focus();}});

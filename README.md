@@ -1,313 +1,302 @@
-# IceIndex 🏒
 
-**IceIndex is an independent Ontario Hockey League (OHL) statistics and player analytics platform.**
+# IceIndex
 
-Built to make OHL data easier to explore, compare, and understand, IceIndex brings together player statistics, historical performance, draft-year development, team information, and analytical tools in a clean, mobile-friendly interface.
+**Independent Hockey Data & Analytics**
 
-**Current Version:** v0.9.0  
-**League:** Ontario Hockey League (OHL)  
-**Developer:** Noah Cornish  
-**Status:** Active Development
+IceIndex is an independent hockey statistics and analytics platform built to make junior hockey data accessible, organized, and easy to explore.
 
-### 🌐 Website
+The project combines player statistics, historical records, game logs, interactive shot maps, and advanced analytics in a responsive web interface.
 
-**[Launch IceIndex](https://noahcornish.github.io/IceIndex/)**
+**Current Version:** v0.10.0  
+**Primary League:** Ontario Hockey League (OHL)  
+**Status:** Active Development  
+**Developer:** Noah Cornish
+
+**Website:** https://noahcornish.github.io/IceIndex/  
+**Repository:** https://github.com/NoahCornish/IceIndex
 
 ---
 
-## About IceIndex
+## Overview
 
-IceIndex is designed for hockey fans, analysts, scouts, researchers, and anyone interested in exploring OHL player performance.
+IceIndex is designed to provide a centralized destination for exploring hockey statistics across seasons, teams, and individual players.
 
-The platform combines traditional hockey statistics with player development analysis and interactive comparison tools.
+The platform emphasizes:
 
-Rather than simply displaying season totals, IceIndex helps users examine how players perform, how their production changes between seasons, and how their statistics compare with other players.
+- Independent data collection and processing
+- Historical player statistics
+- Interactive player profiles
+- Detailed statistical comparisons
+- Game-by-game performance analysis
+- Shot and goal location visualization
+- Advanced statistical metrics
+- Mobile-friendly presentation
 
-IceIndex is a standalone project, separate from OHLDataHub.
+IceIndex is a standalone project with its own data-processing infrastructure, separate from OHLDataHub.
+
+---
 
 ## Features
 
-### 📊 OHL Statistics Database
+### Player Database
 
-Explore OHL player statistics across supported seasons and competitions.
-
-Features include:
-
-- Searchable player statistics.
-- Season and competition selection.
-- Team and position filtering.
-- Customizable statistical columns.
-- Sorting by available statistics.
-- Minimum-games-played filtering.
-- Advanced statistical filters.
-- Ascending and descending sorting.
-- CSV export.
-- Direct access to player profiles.
-- Dedicated goalie statistics.
-
-The statistics interface uses compact primary filters, with additional options available through expandable controls.
-
-### 👤 Player Profiles
-
-Individual player profiles provide a detailed view of OHL performance.
-
-Profiles include:
-
-- Player identification and available biographical information.
-- Team and season information.
-- Historical season statistics.
-- Career production.
-- Advanced statistical analysis.
-- Player development tracking.
-- Draft-year season labels.
-- Season-specific statistical selection.
-
-Player profiles are designed to support both quick statistical lookups and more detailed performance analysis.
-
-### 📈 Advanced Player Analytics
-
-IceIndex calculates advanced metrics using available recorded statistics.
-
-Supported calculations include:
-
-- Points per game (PPG).
-- Goals per game (GPG).
-- Assists per game (APG).
-- Shots per game (SPG).
-- Shooting percentage (SH%).
-- Goals-to-assists ratio.
-- Points per shot.
-- League percentile rankings.
-- Position-specific percentile comparisons.
-- Age-adjusted production where sufficient data is available.
-
-Advanced analytics are integrated into Player Profiles and Player Compare rather than creating a separate analytics page.
-
-**IceIndex does not calculate per-60 statistics or estimated ice-time metrics because reliable player ice-time data is not currently available.**
-
-Metrics requiring unavailable source data are treated as unavailable rather than estimated.
-
-### 📉 Player Development Tracker
-
-The Player Development Tracker allows users to examine statistical progression across multiple OHL seasons.
+Explore OHL player statistics with searchable and sortable tables.
 
 Features include:
 
-- User-selectable development metrics.
-- Historical season-by-season charts.
-- Regular-season and draft-year labeling.
-- Season-over-season statistical changes.
-- Selected-season highlighting.
-- Support for available goals, assists, points, shots, shooting percentages, and other trackable statistics.
-- Consolidation of multiple team stints within a season to avoid double-counting.
+- Player and team searches
+- Regular-season and playoff statistics
+- Season selection
+- Historical player records
+- Statistical sorting and filtering
+- Customizable statistical columns
 
-Available metrics depend on the underlying dataset.
+### Player Profiles
 
-#### Draft-Year Tracking
+Individual player profiles combine career statistics and season-specific performance.
 
-IceIndex supports draft-year-based development labels:
+Available information includes:
 
-| Label | Meaning |
-|---|---|
-| DY−2 | Two seasons before draft year |
-| DY−1 | One season before draft year |
-| DY | Draft-year season |
-| DY+1 | First season after draft year |
-| DY+2 | Second season after draft year |
+- Player name, team, and photograph
+- Career and season totals
+- Games played, goals, assists, and points
+- Points per game
+- Shots and shooting percentage, where available
+- Power-play production
+- Penalty minutes
+- Historical season breakdowns
 
-Draft-year labels are also included in player season selectors.
+### Interactive Shot Maps
 
-These labels provide an alternative way to evaluate development relative to NHL draft eligibility.
+Version 0.10.0 introduces interactive shot and goal location visualization.
 
-### ⚖️ Player Compare
+Shot-map features include:
 
-Compare two to four OHL players using the existing comparison interface.
+- Attacking-half rink visualization
+- Individual shot and goal markers
+- Separate marker colours for shots and goals
+- Dots and Zones display modes
+- Event-type filtering
+- Period filtering
+- Interactive event information panels
+- Game information linked to available event records
+- Responsive desktop and mobile interactions
 
-Features include:
+**Shot-map coverage:** Currently focused on the 2026–27 OHL season.
 
-- Side-by-side player statistics.
-- Advanced performance metrics.
-- Visual statistical comparisons.
-- Percentile-based analysis.
-- Historical season selection.
-- CSV export.
-- Shareable comparisons.
+Shot locations are derived from recorded game-event coordinates and transformed into a common attacking direction.
 
-The comparison tools are designed to make differences in production easier to identify without relying exclusively on raw season totals.
+Events outside the displayed rink area are excluded from the visualization but retained in the underlying data.
 
-### 🏒 Team Information
+Shot-map event details depend on the fields available in the source records.
 
-Explore OHL teams and their associated player statistics through the existing team interfaces.
+### Player Game Logs
 
-Team information connects users with relevant player records and available season data.
+Explore individual player performances on a game-by-game basis.
 
-### 🎯 Draft Year Central
+Available features include:
 
-IceIndex includes draft-oriented tools for examining players through the context of NHL draft eligibility.
+- Game dates and opponents
+- Home and away information
+- Goals, assists, and points
+- Shots, where recorded
+- Penalty minutes
+- Faceoff statistics, where available
+- Game-level filtering and sorting
 
-Draft-year analysis supports prospect research and comparisons across player development stages.
+### Advanced Analytics
 
-### 🔍 Player Search
+IceIndex includes tools for examining player performance beyond traditional counting statistics.
 
-Search the available player directory and open individual player profiles.
+Metrics and visualizations include:
 
-IceIndex uses player identifiers to connect records across supported datasets and seasons.
+- Points per game
+- Goals per game
+- Assists per game
+- Shots per game
+- Shooting percentage
+- Power-play production
+- Statistical percentiles
+- Radar charts
+- Scatter plots
+- Player comparisons
+- Age and position cohorts
 
-### 🏠 Overview Dashboard
+Advanced metrics depend on source-data availability and should not be interpreted as comprehensive tracking or expected-goals models.
 
-The Overview dashboard is the default IceIndex landing page.
+### Team Explorer
 
-It provides a condensed introduction to available league information, player production, and statistics.
+Explore OHL teams and their associated player statistics.
 
-The interface is designed to minimize unnecessary scrolling, particularly on mobile devices.
+### Draft Year Central
 
-The previous Home page is deactivated, with its code retained for potential future use.
+Review and compare players by draft-year cohorts.
 
 ---
 
-## Mobile-First Design
+## Day and Night Themes
 
-IceIndex is designed to work across desktop computers, tablets, and mobile devices.
+IceIndex v0.10.0 includes an automatic day/night colour system.
 
-Interface features include:
+| Time (Eastern) | Theme |
+|---|---|
+| 7:00 AM – 4:59 PM | Navy & Ice Blue |
+| 5:00 PM – 6:59 AM | Amber & Graphite |
 
-- Responsive layouts.
-- Compact statistics controls.
-- Expandable advanced filters.
-- Mobile-friendly navigation.
-- Horizontal scrolling for wide statistical tables.
-- Customizable columns.
-- Condensed Overview layout.
-- Responsive player analytics.
-- Compact player development controls.
+The daytime theme uses the original IceIndex blue palette.
 
-Player names are abbreviated in the main statistics tables to improve readability on smaller screens. Full names remain available in player profiles, search, and relevant interface elements.
+The nighttime theme introduces warmer graphite, tan, and amber colours intended to reduce visual harshness during evening use.
 
-## Data Sources
+A sun/moon control allows users to manually switch themes.
 
-IceIndex uses OHL statistical information collected and processed through its own data pipeline.
-
-The project uses the **[OHLpkg R package](https://github.com/NoahCornish/OHLpkg)** for supported OHL data retrieval operations.
-
-OHLpkg is maintained separately and provides functions for accessing OHL information through supported HockeyTech data feeds.
-
-IceIndex maintains its own processed data files and automated refresh workflows rather than relying on another website repository to supply its datasets.
-
-### Data Updates
-
-IceIndex uses R scripts and GitHub Actions to support automated data updates.
-
-The project includes:
-
-- Central refresh orchestration.
-- Configuration management.
-- Data retrieval and processing.
-- Processed CSV datasets.
-- Refresh metadata.
-- Scheduled GitHub Actions workflows.
-
-The website includes a data-status indicator that provides information about the latest recorded refresh.
-
-This indicator represents **data freshness and refresh status**, not website uptime.
-
-### Data Accuracy
-
-IceIndex aims to preserve the accuracy of its source statistics.
-
-Important considerations:
-
-- Statistical availability varies by season and competition.
-- Some advanced metrics require fields that may not exist in every dataset.
-- Missing statistics should not be interpreted as zero.
-- Percentile comparisons depend on the selected comparison population.
-- Draft-year labels depend on available player information and eligibility calculations.
-- Historical data may be corrected or updated by its original provider.
-
-IceIndex is an independent analytics project and is not an official OHL website.
+The schedule follows Eastern Time, including daylight saving time.
 
 ---
 
-## Technology
+## Data Architecture
 
-IceIndex uses a lightweight static website architecture.
+IceIndex maintains its own data files and processing workflows.
 
-| Component | Technology |
-|---|---|
-| Frontend | HTML5 |
-| Styling | CSS3 |
-| Interactivity | JavaScript |
-| Data collection | R |
-| OHL data retrieval | OHLpkg |
-| Data storage | CSV and JSON |
-| Automation | GitHub Actions |
-| Hosting | GitHub Pages |
-| Version control | Git and GitHub |
+The platform uses:
 
-This architecture allows the website to operate without requiring a continuously running application server.
+- R for data collection, cleaning, and processing
+- CSV files for processed datasets
+- JavaScript for data loading and interactive visualizations
+- HTML and CSS for the website
+- GitHub for source control and publishing
+- GitHub Actions for automated workflows
 
-## Repository
+### Main Project Structure
 
-**[GitHub — NoahCornish/IceIndex](https://github.com/NoahCornish/IceIndex)**
+```text
+IceIndex/
+|
+|-- index.html
+|-- cooling.html
+|
+|-- css/
+|   |-- style.css
+|   |-- style-night.css
+|
+|-- js/
+|   |-- app.js
+|   |-- ohl-data.js
+|   |-- ohl-branding.js
+|   |-- ohl-analytics.js
+|   |-- ohl-goalies.js
+|   |-- game-logs.js
+|   |-- shot-map.js
+|   |-- maintenance.js
+|
+|-- data/
+|   |-- ohl/
+|   |-- processed/
+|   |-- games/
+|
+|-- scripts/
+|   |-- games/
+|
+|-- .github/
+|   |-- workflows/
+|
+|-- README.md
+|-- CHANGELOG.md
+```
 
-The repository contains the IceIndex website, supporting scripts, processed datasets, and automation workflows.
+The directory structure may evolve as additional leagues and datasets are introduced.
 
-Key project components include:
+---
 
-- `index.html` — Main website entry point.
-- `css/style.css` — Website styling and responsive layouts.
-- `js/app.js` — Interface logic and statistical visualizations.
-- `scripts/` — Data processing and update scripts.
-- `scripts/refresh.R` — Central refresh orchestration.
-- `scripts/config.R` — Shared configuration.
-- `data/` — Stored and processed statistical datasets.
-- `.github/workflows/` — Automated GitHub Actions workflows.
+## Shot-Location Data
+
+Shot maps use processed event-location data.
+
+Current source:
+
+`data/games/2026-27/player_shot_locations.csv`
+
+The shot-map processing workflow:
+
+1. Reads cached OHL game-event records.
+2. Extracts recorded shot and goal events.
+3. Associates events with players, teams, and games.
+4. Retains original event coordinates.
+5. Normalizes attacking direction for visualization.
+6. Generates processed CSV output.
+7. Displays events through the website.
+
+The visualization is not a substitute for manually verified rink-tracking data.
+
+Attacking direction and location normalization may involve inference where the source does not explicitly identify rink orientation.
+
+---
+
+## Data Availability and Limitations
+
+IceIndex is an independent analytics project.
+
+Data availability varies by season, competition, and statistical category.
+
+Some limitations include:
+
+- Historical coverage may be incomplete.
+- Certain game-event fields may not be available.
+- Shot locations depend on source-coordinate quality.
+- Not all shot types have verified text descriptions.
+- Goalie and assist details may be unavailable for individual events.
+- Advanced tracking statistics are not available for every player.
+- Historical shot-map coverage is still being developed.
+
+Missing information is not intentionally replaced with estimated values presented as verified facts.
+
+---
 
 ## Development Roadmap
 
-### v0.9.0 — Player Analytics and Development
+Planned development priorities include:
 
-- Advanced player statistics.
-- Expanded player comparison tools.
-- Customizable player development tracking.
-- Draft-year season labels.
-- Condensed Overview dashboard.
-- Improved mobile statistics controls.
-- Data refresh-status information.
+- Expanded historical shot-map coverage
+- Improved event-level metadata
+- More detailed goalie and assist information
+- Additional OHL seasons
+- Expanded team analytics
+- Improved mobile interactions
+- Further statistical visualizations
+- Automated historical data refreshes
+- Additional hockey leagues
 
-### Future — Game-Level Analytics
-
-Planned development includes:
-
-- Individual game results.
-- Player game logs.
-- Opponent-based statistical filtering.
-- Home and away splits.
-- Game-by-game production.
-- Even-strength and special-teams analysis.
-- Historical game data collection.
-- Shot-location tracking and visualizations where reliable coordinates are available.
-
-Game-level analytics are **not included in v0.9.0**.
-
-### Long-Term Vision
-
-The long-term goal is to develop IceIndex into a comprehensive OHL research platform that combines historical player statistics, draft-year development, game-level performance, and event-based analytics.
+These features are development goals and are not guaranteed to be available in the current release.
 
 ---
 
-## Version History
+## Maintenance
 
-See [CHANGELOG.md](CHANGELOG.md) for detailed release information.
+IceIndex includes a maintenance controller and a dedicated cooling page.
 
-**Current release: v0.9.0**
+Maintenance scheduling and forced maintenance can be configured through the website's maintenance script.
 
-## Developer
-
-Developed and maintained by **Noah Cornish**.
-
-- [GitHub Profile](https://github.com/NoahCornish)
-- [IceIndex Website](https://noahcornish.github.io/IceIndex/)
+During maintenance, the website may display a temporary cooling-down message while data processing or updates take place.
 
 ---
 
-**IceIndex — Explore the numbers behind OHL hockey.**
+## Disclaimer
+
+IceIndex is an independent hockey data project.
+
+It is not officially affiliated with, endorsed by, or operated by the Ontario Hockey League, Canadian Hockey League, or their member teams.
+
+Team names, logos, and other trademarks remain the property of their respective owners.
+
+Statistics and event information are provided for informational and analytical purposes.
+
+---
+
+## Author
+
+**Noah Cornish**
+
+GitHub: https://github.com/NoahCornish
+
+---
+
+**IceIndex v0.10.0 — Independent Hockey Data & Analytics**

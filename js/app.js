@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.9.0
+   ICEINDEX v0.10.0
    FILE 2 — js/app.js
 
    APPLICATION + PLAYER ANALYTICS
@@ -888,17 +888,17 @@
 
     main.innerHTML = `
       <section class="hero ice-overview-hero">
-        <div class="eyebrow">OHL / LEAGUE INTELLIGENCE</div>
+        
         <h1>OHL Overview</h1>
         <div class="hero-meta">
           <span class="live-dot"></span>
           ${esc(currentSeason())}
-          · ${fmt(rows.length)} skater records
+          · ${fmt(rows.length)} skaters
         </div>
       </section>
 
       <div class="section-title">
-        <span class="eyebrow">CURRENT SEASON</span>
+        
         <h2>Players setting the pace</h2>
       </div>
 
@@ -968,9 +968,9 @@
 
     main.innerHTML =
       heading(
-        "HISTORICAL DATABASE",
+        "OHL PLAYERS",
         "OHL Player Database",
-        "Search current and historical OHL skater statistics."
+        "Explore OHL skaters across seasons."
       ) +
       archiveNotice() +
       `
@@ -1261,7 +1261,7 @@
     const available=statsAvailableColumns(rows);
     const selected=new Set(statsActiveColumns(available));
     const groups=[...new Set(available.map(d=>d.group))];
-    main.innerHTML=heading("OHL STATISTICS","Statistics Database","Choose your columns, sort any statistic, and filter the full OHL skater table.")+archiveNotice()+`
+    main.innerHTML=heading("OHL STATISTICS","Statistics Database","Explore and compare OHL skater statistics.")+archiveNotice()+`
       <div class="ice-stats-toolbar">
         <label>Search<input id="stats-search" class="input" type="search" placeholder="Player or team…" value="${esc(S.statsQuery)}"></label>
         <label>Competition${competitionSelect("stats-competition",S.statsCompetition)}</label>
@@ -1297,7 +1297,7 @@
           <button type="button" class="btn" id="stats-columns-none">Clear columns</button>
         </div></div>
         <div class="ice-stats-groups">${groups.map(group=>`<fieldset><legend>${esc(group)}</legend>${available.filter(d=>d.group===group).map(d=>`<label><input type="checkbox" data-stats-column="${esc(d.key)}" ${selected.has(d.key)?"checked":""}> ${esc(d.label)}</label>`).join("")}</fieldset>`).join("")}</div>
-        <p class="results-meta">Only statistics actually available in IceIndex's loaded records appear here. Additional CHLCards metrics require new source data.</p>
+        
       </section>
       <div id="stats-results"></div>`;
     updateStatistics();
@@ -1324,7 +1324,7 @@
       if(last&&last.name===d.group)last.count++;
       else grouped.push({name:d.group,count:1});
     }
-    el.innerHTML=`<div class="ice-stats-summary" aria-label="Statistics summary">${fmt(rows.length)} skaters <span aria-hidden="true">·</span> ${esc(season||"—")} <span aria-hidden="true">·</span> Sorted by ${esc(available.find(d=>d.key===S.statsMetric)?.label||S.statsMetric)} ${S.statsSortAscending?"↑":"↓"} <span aria-hidden="true">·</span> ${cols.length} columns</div><div class="results-meta">Available IceIndex records · no default games-played floor · ${S.statsCompetition==="playoffs"?"Playoffs":"Regular season"}. Click a column heading to sort.</div>
+    el.innerHTML=`<div class="ice-stats-summary" aria-label="Statistics summary">${fmt(rows.length)} skaters <span aria-hidden="true">·</span> ${esc(season||"—")} <span aria-hidden="true">·</span> Sorted by ${esc(available.find(d=>d.key===S.statsMetric)?.label||S.statsMetric)} ${S.statsSortAscending?"↑":"↓"} <span aria-hidden="true">·</span> ${cols.length} columns</div>
     ${visible.length?`<div class="ice-stats-table-wrap" role="region" aria-label="Scrollable skater statistics" tabindex="0"><table class="ice-stats-table">
       <thead><tr><th>#</th><th>Player</th><th>Team</th>${defs.map(d=>`<th><button type="button" data-stats-sort="${esc(d.key)}" title="Sort by ${esc(d.label)}">${esc(d.label)}${S.statsMetric===d.key?(S.statsSortAscending?" ↑":" ↓"):""}</button></th>`).join("")}</tr></thead>
       <tbody>${visible.map((r,i)=>`<tr><td>${(S.statsPage-1)*pageSize+i+1}</td>
@@ -1418,14 +1418,15 @@
 
     main.innerHTML =
       heading(
-        "PLAYER INTELLIGENCE",
+        "OHL PLAYERS",
         "Player Profile",
-        "Explore individual OHL careers, regular-season production, and playoff performances."
+        "Career statistics, season performance and shot locations."
       ) +
       archiveNotice() +
       `
         <div class="controls">
           ${playerSelect("profile-player", p.key)}
+          <button type="button" class="btn" data-open-game-logs="${esc(p.id)}">View Game Logs →</button>
 
           ${competitionSelect(
             "profile-competition",
@@ -1503,6 +1504,8 @@
           </div>
         </section>
 
+        ${window.IceIndexShotMap?.markup(p, S.profileSeason, competition) || ""}
+
         ${panel("Advanced Analytics", advancedProfile(p, r, S.profileSeason, competition))}
 
         ${panel(
@@ -1570,6 +1573,7 @@
           `
         )}
       `;
+    window.IceIndexShotMap?.mount(p, S.profileSeason, competition);
   }
 
   /* v0.8.0 — Automatically generated career highlights. */
@@ -1965,9 +1969,9 @@
     const points = slots.map(s=>compareMetric(s.record,"pts"));
     const seasonName = s=>s.season==="career"?"Career":s.season;
     main.innerHTML = heading(
-      "ICEINDEX | SCOUTING WORKSPACE",
+      "PLAYER ANALYSIS",
       "Player Comparison",
-      "A decision-support workspace for comparing 2–4 OHL players, their production and league context."
+      "Compare player performance side by side."
     ) + `
       <div class="ice-gm-toolbar">
         <label>Compare</label>
@@ -2212,7 +2216,7 @@
       heading(
         "THE LEAGUE",
         "Team Explorer",
-        "Explore the 20 current Ontario Hockey League clubs."
+        "Teams, rosters and performance."
       ) +
       `
         <div class="ice-team-grid">
@@ -2849,7 +2853,7 @@
     if (!A) {
       main.innerHTML = `
         ${heading(
-          "PLAYER INTELLIGENCE",
+          "OHL PLAYERS",
           "Player Analytics",
           "Advanced OHL player analysis."
         )}
@@ -3324,7 +3328,7 @@
 
   const VALID_PAGES = new Set([
     /* "home", */ "leagues", "overview", "players", "statistics",
-    "profile", "compare", "draft", "teams",
+    "profile", "game-logs", "compare", "draft", "teams",
     "analytics", "goalies", "goalie-profile",
     "goalie-compare"
   ]);
@@ -3351,6 +3355,7 @@
       case "players": renderPlayers(); break;
       case "statistics": renderStatistics(); break;
       case "profile": renderProfile(); break;
+      case "game-logs": window.IceIndexGameLogs?.render(main, S.people, S.profile); break;
       case "compare": renderCompare(); break;
       case "draft": renderDraft(); break;
       case "teams": renderTeams(); break;
@@ -3485,6 +3490,13 @@
     if (trend) {
       S.profileTrendMetric = trend.dataset.profileTrend;
       renderProfile();
+      return;
+    }
+
+    const logsLink = target.closest("[data-open-game-logs]");
+    if (logsLink) {
+      window.IceIndexGameLogs?.selectPlayer(logsLink.dataset.openGameLogs);
+      navigate("game-logs");
       return;
     }
 

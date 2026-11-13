@@ -2,7 +2,7 @@
 "use strict";
 
 /* ============================================================
-   ICEINDEX v0.8.0
+   ICEINDEX v0.10.0
    FILE 5 — js/ohl-branding.js
 
    OHL TEAM BRANDING ENGINE
