@@ -1,0 +1,53 @@
+
+====================================
+ICEINDEX — PLAYER GAME LOG BUILDER
+Version: v0.10.0
+====================================
+Season: 2026-27 
+Cached games: 201 
+
+Processed: 25 / 201 
+Processed: 50 / 201 
+Processed: 75 / 201 
+Processed: 100 / 201 
+Processed: 125 / 201 
+Processed: 150 / 201 
+Processed: 175 / 201 
+Processed: 200 / 201 
+Processed: 201 / 201 
+
+====================================
+ICEINDEX — RECONCILIATION
+====================================
+Raw goal events: 1374 
+Player goals: 1374 
+Player assists: 2259 
+Raw shot events: 12173 
+Player shot events: 12173 
+Raw faceoffs: 12085 
+Player faceoff attempts: 24170 
+Published faceoff wins: 12085 
+Published faceoff losses: 12085 
+Unresolved faceoff games: 0 
+
+====================================
+ICEINDEX GAME LOGS COMPLETE
+====================================
+Games: 201 
+Player-game rows: 6462 
+Goals: 1374 
+Assists: 2259 
+Points: 3633 
+Shot events: 12173 
+Player PIM: 4948 
+Faceoff attempts: 24170 
+Faceoff wins (published): 12085 
+Faceoff losses (published): 12085 
+Faceoff games unresolved: 0 
+
+VALIDATION WARNINGS:
+No warnings.
+
+Files saved to: data/games/2026-27 
+
+ICEINDEX BUILD FINISHED

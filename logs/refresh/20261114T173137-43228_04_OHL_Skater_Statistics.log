@@ -1,0 +1,30 @@
+
+====================================================
+           ICEINDEX SKATER STATISTICS              
+                  VERSION 0.6.0                     
+====================================================
+Current OHL season year: 2027 
+Current season entries: 1 
+Historical season entries: 55 
+Historical seasons pending: 0 
+Total seasons to process: 1 
+
+[1/1] 2027 Season (Regular Season)
+Records: 523 
+Columns: 91 
+
+====================================================
+       ICEINDEX SKATER STATISTICS SUMMARY          
+====================================================
+Current records: 523 
+Historical records: 25081 
+Current seasons updated: 1 
+Historical seasons updated: 0 
+Historical seasons cached: 55 
+Failed this run: 0 
+Tracked failures: 0 
+Current file: data/ohl/current/skater_stats.csv 
+Historical file: data/ohl/historical/skater_stats.csv 
+====================================================
+
+IceIndex skater statistics updated successfully.

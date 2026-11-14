@@ -1,0 +1,3515 @@
+{
+  "GC": {
+    "Parameters": {
+      "feed": "gc",
+      "key": "f1aa699db3d81487",
+      "game_id": "29051",
+      "client_code": "ohl",
+      "tab": "gamesummary",
+      "lang_code": "en",
+      "fmt": "json",
+      "lang_id": 1
+    },
+    "Gamesummary": {
+      "meta": {
+        "id": "29051",
+        "season_id": "88",
+        "league_id": "1",
+        "home_team": "2",
+        "visiting_team": "8",
+        "game_number": "60",
+        "game_letter": "",
+        "type_id": "",
+        "if_necessary": "0",
+        "quick_score": "0",
+        "mvp1": "9313",
+        "mvp2": "9408",
+        "mvp3": "10082",
+        "featured_player_id": "",
+        "date_played": "2026-10-04",
+        "date_tbd": "0",
+        "schedule_time": "14:05:00",
+        "time_tbd": "0",
+        "timezone": "America/Toronto",
+        "start_time": "14:05:00",
+        "end_time": "16:30:00",
+        "forfeit": "0",
+        "shootout": "0",
+        "shootout_first_shooter_home": "0",
+        "attendance": "2286",
+        "location": "124",
+        "home_coach": "",
+        "home_assistant_coach1": "0",
+        "home_assistant_coach2": "0",
+        "home_manager": "",
+        "visiting_coach": "",
+        "visiting_assistant_coach1": "0",
+        "visiting_assistant_coach2": "0",
+        "visiting_manager": "",
+        "period": "3",
+        "game_clock": "00:00:00",
+        "status": "4",
+        "started": "1",
+        "pending_final": "0",
+        "final": "1",
+        "home_goal_count": "6",
+        "visiting_goal_count": "8",
+        "home_goals_actual": "0",
+        "visiting_goals_actual": "0",
+        "public_notes": "",
+        "private_notes": "",
+        "league_game_notes": "",
+        "home_team_notes": "",
+        "visiting_team_notes": "",
+        "capacity": "",
+        "schedule_notes": "",
+        "schedule_notes_fr": "",
+        "home_audio_url": "https://www.kingstondaily.ca/player/cklc-98-9-fm/",
+        "home_video_url": "https://flosports.link/ohl-kgn",
+        "home_webcast_url": "https://flosports.link/ohl-kgn",
+        "home_audio_url_fr": "",
+        "home_video_url_fr": "",
+        "home_webcast_url_fr": "",
+        "visiting_webcast_url": "https://flosports.link/ohl-er",
+        "visiting_video_url": "https://flosports.link/ohl-er",
+        "visiting_audio_url": "https://www.iheart.com/live/wjet-am-1400-8290/?sc=inferno&campid=a&pname=WJET-AM",
+        "visiting_webcast_url_fr": "",
+        "visiting_video_url_fr": "",
+        "visiting_audio_url_fr": "",
+        "tickets_url": "https://am.ticketmaster.com/frontenacs/",
+        "tickets_url_fr": "",
+        "last_modified": "2026-10-21 03:39:02",
+        "imported_id": "",
+        "created": "2026-06-15 20:06:43",
+        "htv_game_id": "1152306",
+        "flo_core_event_id": "16025227",
+        "flo_live_event_id": "253068",
+        "uses_spalk_rc": "",
+        "tournament_id": "",
+        "start_time_without_seconds": "14:05",
+        "end_time_without_seconds": "16:30",
+        "12_hour_start_time_without_seconds": "2:05 pm",
+        "12_hour_end_time_without_seconds": "4:30 pm",
+        "length": "2:25",
+        "timezone_short": "EDT"
+      },
+      "txt_title": "GAME SUMMARY",
+      "txt_scoring": "Scoring",
+      "txt_total": "Total",
+      "txt_shots": "Shots",
+      "game_ident": "29051",
+      "game_date": "Sunday, October  4, 2026",
+      "game_length": "2:25",
+      "status_title": "End",
+      "status_value": "Final",
+      "periods": {
+        "1": {
+          "id": "1",
+          "short_name": "1",
+          "long_name": "1st",
+          "sort_order": "1",
+          "period_id": "1",
+          "length": "1200",
+          "mandatory": "1"
+        },
+        "2": {
+          "id": "2",
+          "short_name": "2",
+          "long_name": "2nd",
+          "sort_order": "2",
+          "period_id": "2",
+          "length": "1200",
+          "mandatory": "1"
+        },
+        "3": {
+          "id": "3",
+          "short_name": "3",
+          "long_name": "3rd",
+          "sort_order": "3",
+          "period_id": "3",
+          "length": "1200",
+          "mandatory": "1"
+        }
+      },
+      "shootout": "0",
+      "visitor": {
+        "id": "8",
+        "league_id": "1",
+        "code": "ER",
+        "team_code": "ER",
+        "address1": "809 French Street",
+        "address2": "",
+        "province": "PA",
+        "postal": "16501",
+        "country": "Erie",
+        "phone": "814-455-7779",
+        "fax": "",
+        "active": "1",
+        "placeholder": "0",
+        "team_id": "8",
+        "lang_id": "1",
+        "season_id": "88",
+        "name": "Erie Otters",
+        "city": "Erie",
+        "nickname": "Otters",
+        "logo_caption": ""
+      },
+      "home": {
+        "id": "2",
+        "league_id": "1",
+        "code": "KGN",
+        "team_code": "KGN",
+        "address1": "P.O. Box 665",
+        "address2": "",
+        "province": "ON",
+        "postal": "K7L 4X1",
+        "country": "Kingston",
+        "phone": "613-542-4042",
+        "fax": "613-542-2834",
+        "active": "1",
+        "placeholder": "0",
+        "team_id": "2",
+        "lang_id": "1",
+        "season_id": "88",
+        "name": "Kingston Frontenacs",
+        "city": "Kingston",
+        "nickname": "Frontenacs",
+        "logo_caption": ""
+      },
+      "visitor_division": "Midwest Division",
+      "visitor_division_id": "4",
+      "home_division": "East Division",
+      "home_division_id": "1",
+      "mvp_type": 1,
+      "shootoutDetail": [],
+      "mvps": [
+        {
+          "player_id": "9313",
+          "first_name": "Michael",
+          "last_name": "Dec",
+          "jersey_number": "25",
+          "home": 0
+        },
+        {
+          "player_id": "9408",
+          "first_name": "Mclean",
+          "last_name": "Agrette",
+          "jersey_number": "92",
+          "home": 0
+        },
+        {
+          "player_id": "10082",
+          "first_name": "Adam",
+          "last_name": "Goljer",
+          "jersey_number": "8",
+          "home": 1
+        }
+      ],
+      "venue": "Slush Puppie Place",
+      "referee1": "Ryan Harrison (3)",
+      "referee2": "Sean Kimmerly (10)",
+      "linesman1": "Brian Birkhoff (91)",
+      "linesman2": "Josh Miller (54)",
+      "officialsOnIce": [
+        {
+          "official_type_id": "1",
+          "description": "Referee 1",
+          "first_name": "Ryan",
+          "last_name": "Harrison",
+          "jersey_number": "3",
+          "person_id": "6620"
+        },
+        {
+          "official_type_id": "2",
+          "description": "Referee 2",
+          "first_name": "Sean",
+          "last_name": "Kimmerly",
+          "jersey_number": "10",
+          "person_id": "8317"
+        },
+        {
+          "official_type_id": "3",
+          "description": "Linesman 1",
+          "first_name": "Brian",
+          "last_name": "Birkhoff",
+          "jersey_number": "91",
+          "person_id": "8292"
+        },
+        {
+          "official_type_id": "4",
+          "description": "Linesman 2",
+          "first_name": "Josh",
+          "last_name": "Miller",
+          "jersey_number": "54",
+          "person_id": "9243"
+        }
+      ],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Al",
+          "last_name": "McArthur",
+          "jersey_number": "0",
+          "person_id": "5897"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Dave",
+          "last_name": "Garrison",
+          "jersey_number": "0",
+          "person_id": "6183"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Louis",
+          "last_name": "Cabral",
+          "jersey_number": "0",
+          "person_id": "5883"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Victoria",
+          "last_name": "Cadue",
+          "jersey_number": "0",
+          "person_id": "8110"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Doug",
+          "last_name": "Graham",
+          "jersey_number": "0",
+          "person_id": "7366"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Pat",
+          "last_name": "Brown",
+          "jersey_number": "0",
+          "person_id": "6814"
+        }
+      ],
+      "homeShootout": 0,
+      "visitorShootout": 0,
+      "benchGoalCount": null,
+      "penalties": [
+        {
+          "event": "penalty",
+          "time_off_formatted": "12:30",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "1",
+          "period": "1st",
+          "offence": "30",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Slashing",
+          "s": 750,
+          "player_penalized_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          },
+          "player_served_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "12:30",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "1",
+          "period": "1st",
+          "offence": "29",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Roughing",
+          "s": 750,
+          "player_penalized_info": {
+            "player_id": "10082",
+            "jersey_number": "8",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Adam",
+            "last_name": "Goljer"
+          },
+          "player_served_info": {
+            "player_id": "10082",
+            "jersey_number": "8",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Adam",
+            "last_name": "Goljer"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "12:39",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "1",
+          "period": "1st",
+          "offence": "34",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Tripping",
+          "s": 759,
+          "player_penalized_info": {
+            "player_id": "8820",
+            "jersey_number": "27",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Vann",
+            "last_name": "Williamson"
+          },
+          "player_served_info": {
+            "player_id": "8820",
+            "jersey_number": "27",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Vann",
+            "last_name": "Williamson"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "2:52",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "22",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Inter. on Goaltender",
+          "s": 172,
+          "player_penalized_info": {
+            "player_id": "9409",
+            "jersey_number": "14",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Tyler",
+            "last_name": "Cooper"
+          },
+          "player_served_info": {
+            "player_id": "9409",
+            "jersey_number": "14",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Tyler",
+            "last_name": "Cooper"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "5:37",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "17",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Hooking",
+          "s": 337,
+          "player_penalized_info": {
+            "player_id": "8780",
+            "jersey_number": "2",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Ty",
+            "last_name": "Henry"
+          },
+          "player_served_info": {
+            "player_id": "8780",
+            "jersey_number": "2",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Ty",
+            "last_name": "Henry"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "8:35",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "21",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Interference",
+          "s": 515,
+          "player_penalized_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          },
+          "player_served_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "13:44",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "15",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Holding",
+          "s": 824,
+          "player_penalized_info": {
+            "player_id": "9315",
+            "jersey_number": "3",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Oliver",
+            "last_name": "Turner"
+          },
+          "player_served_info": {
+            "player_id": "9315",
+            "jersey_number": "3",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Oliver",
+            "last_name": "Turner"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "14:16",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "14",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "High Sticking",
+          "s": 856,
+          "player_penalized_info": {
+            "player_id": "9538",
+            "jersey_number": "74",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Nolan",
+            "last_name": "Snyder"
+          },
+          "player_served_info": {
+            "player_id": "9538",
+            "jersey_number": "74",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Nolan",
+            "last_name": "Snyder"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "16:56",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "34",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Tripping",
+          "s": 1016,
+          "player_penalized_info": {
+            "player_id": "9410",
+            "jersey_number": "80",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Jake",
+            "last_name": "Murray"
+          },
+          "player_served_info": {
+            "player_id": "9410",
+            "jersey_number": "80",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Jake",
+            "last_name": "Murray"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "1:52",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "7",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Cross Checking",
+          "s": 112,
+          "player_penalized_info": {
+            "player_id": "8780",
+            "jersey_number": "2",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Ty",
+            "last_name": "Henry"
+          },
+          "player_served_info": {
+            "player_id": "8780",
+            "jersey_number": "2",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Ty",
+            "last_name": "Henry"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "4:15",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "14",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "High Sticking",
+          "s": 255,
+          "player_penalized_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          },
+          "player_served_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "4:15",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "14",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "High Sticking",
+          "s": 255,
+          "player_penalized_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          },
+          "player_served_info": {
+            "player_id": "9832",
+            "jersey_number": "27",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Colin",
+            "last_name": "Kennedy"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "18:38",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "80",
+          "pp": "0",
+          "bench": "1",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Bench Minor",
+          "s": 1118,
+          "player_penalized_info": {
+            "team_id": "8",
+            "team_code": "ER"
+          },
+          "player_served_info": {
+            "player_id": "9404",
+            "jersey_number": "10",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Tristen",
+            "last_name": "Trevino"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "18:38",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "33",
+          "pp": "0",
+          "bench": "1",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Too Many Men",
+          "s": 1118,
+          "player_penalized_info": {
+            "team_id": "2",
+            "team_code": "KGN"
+          },
+          "player_served_info": {
+            "player_id": "9137",
+            "jersey_number": "22",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Nolan",
+            "last_name": "Buttar"
+          }
+        }
+      ],
+      "goals": [
+        {
+          "event": "goal",
+          "x_location": "631",
+          "y_location": "190",
+          "time": "7:38",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "1",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "1",
+          "s": 458,
+          "goal_scorer": {
+            "player_id": "9525",
+            "jersey_number": "91",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Robin",
+            "last_name": "Kuzma"
+          },
+          "assist1_player": {
+            "player_id": "10082",
+            "jersey_number": "8",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Adam",
+            "last_name": "Goljer"
+          },
+          "assist2_player": {
+            "player_id": "9327",
+            "jersey_number": "36",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Landon",
+            "last_name": "Wright"
+          },
+          "plus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9327",
+              "jersey_number": "36",
+              "first_name": "Landon",
+              "last_name": "Wright"
+            },
+            {
+              "player_id": "9498",
+              "jersey_number": "41",
+              "first_name": "Aleks",
+              "last_name": "Kulemin"
+            },
+            {
+              "player_id": "9525",
+              "jersey_number": "91",
+              "first_name": "Robin",
+              "last_name": "Kuzma"
+            },
+            {
+              "player_id": "9537",
+              "jersey_number": "92",
+              "first_name": "Dante",
+              "last_name": "D'Andrea"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "8780",
+              "jersey_number": "2",
+              "first_name": "Ty",
+              "last_name": "Henry"
+            },
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9833",
+              "jersey_number": "21",
+              "first_name": "Luka",
+              "last_name": "Arkko"
+            },
+            {
+              "player_id": "9166",
+              "jersey_number": "81",
+              "first_name": "Evan",
+              "last_name": "Headrick"
+            },
+            {
+              "player_id": "9680",
+              "jersey_number": "89",
+              "first_name": "Ulysses",
+              "last_name": "Lombardi"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "647",
+          "y_location": "178",
+          "time": "10:18",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "1",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "2",
+          "s": 618,
+          "goal_scorer": {
+            "player_id": "9498",
+            "jersey_number": "41",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Aleks",
+            "last_name": "Kulemin"
+          },
+          "assist1_player": {
+            "player_id": "9537",
+            "jersey_number": "92",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Dante",
+            "last_name": "D'Andrea"
+          },
+          "assist2_player": {
+            "player_id": null,
+            "jersey_number": null,
+            "team_id": null,
+            "team_code": null,
+            "first_name": null,
+            "last_name": null
+          },
+          "plus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9327",
+              "jersey_number": "36",
+              "first_name": "Landon",
+              "last_name": "Wright"
+            },
+            {
+              "player_id": "9498",
+              "jersey_number": "41",
+              "first_name": "Aleks",
+              "last_name": "Kulemin"
+            },
+            {
+              "player_id": "9525",
+              "jersey_number": "91",
+              "first_name": "Robin",
+              "last_name": "Kuzma"
+            },
+            {
+              "player_id": "9537",
+              "jersey_number": "92",
+              "first_name": "Dante",
+              "last_name": "D'Andrea"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9823",
+              "jersey_number": "4",
+              "first_name": "Broden",
+              "last_name": "McArthur"
+            },
+            {
+              "player_id": "9409",
+              "jersey_number": "14",
+              "first_name": "Tyler",
+              "last_name": "Cooper"
+            },
+            {
+              "player_id": "9449",
+              "jersey_number": "34",
+              "first_name": "Kase",
+              "last_name": "Kamzik"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9410",
+              "jersey_number": "80",
+              "first_name": "Jake",
+              "last_name": "Murray"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "69",
+          "y_location": "172",
+          "time": "18:58",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "1",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "1",
+          "s": 1138,
+          "goal_scorer": {
+            "player_id": "9833",
+            "jersey_number": "21",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Luka",
+            "last_name": "Arkko"
+          },
+          "assist1_player": {
+            "player_id": "9823",
+            "jersey_number": "4",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Broden",
+            "last_name": "McArthur"
+          },
+          "assist2_player": {
+            "player_id": "9130",
+            "jersey_number": "73",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Lucas",
+            "last_name": "Ambrosio"
+          },
+          "plus": [
+            {
+              "player_id": "9823",
+              "jersey_number": "4",
+              "first_name": "Broden",
+              "last_name": "McArthur"
+            },
+            {
+              "player_id": "9833",
+              "jersey_number": "21",
+              "first_name": "Luka",
+              "last_name": "Arkko"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9166",
+              "jersey_number": "81",
+              "first_name": "Evan",
+              "last_name": "Headrick"
+            },
+            {
+              "player_id": "9680",
+              "jersey_number": "89",
+              "first_name": "Ulysses",
+              "last_name": "Lombardi"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9137",
+              "jersey_number": "22",
+              "first_name": "Nolan",
+              "last_name": "Buttar"
+            },
+            {
+              "player_id": "9327",
+              "jersey_number": "36",
+              "first_name": "Landon",
+              "last_name": "Wright"
+            },
+            {
+              "player_id": "9498",
+              "jersey_number": "41",
+              "first_name": "Aleks",
+              "last_name": "Kulemin"
+            },
+            {
+              "player_id": "9500",
+              "jersey_number": "77",
+              "first_name": "Matthew",
+              "last_name": "Henderson"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "600",
+          "y_location": "150",
+          "time": "0:46",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "2",
+          "s": 46,
+          "goal_scorer": {
+            "player_id": "9166",
+            "jersey_number": "81",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Evan",
+            "last_name": "Headrick"
+          },
+          "assist1_player": {
+            "player_id": "9680",
+            "jersey_number": "89",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Ulysses",
+            "last_name": "Lombardi"
+          },
+          "assist2_player": {
+            "player_id": "9833",
+            "jersey_number": "21",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Luka",
+            "last_name": "Arkko"
+          },
+          "plus": [
+            {
+              "player_id": "9823",
+              "jersey_number": "4",
+              "first_name": "Broden",
+              "last_name": "McArthur"
+            },
+            {
+              "player_id": "9833",
+              "jersey_number": "21",
+              "first_name": "Luka",
+              "last_name": "Arkko"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9166",
+              "jersey_number": "81",
+              "first_name": "Evan",
+              "last_name": "Headrick"
+            },
+            {
+              "player_id": "9680",
+              "jersey_number": "89",
+              "first_name": "Ulysses",
+              "last_name": "Lombardi"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9158",
+              "jersey_number": "9",
+              "first_name": "Alex",
+              "last_name": "McLean"
+            },
+            {
+              "player_id": "9481",
+              "jersey_number": "13",
+              "first_name": "Gavin",
+              "last_name": "Christie"
+            },
+            {
+              "player_id": "9137",
+              "jersey_number": "22",
+              "first_name": "Nolan",
+              "last_name": "Buttar"
+            },
+            {
+              "player_id": "9538",
+              "jersey_number": "74",
+              "first_name": "Nolan",
+              "last_name": "Snyder"
+            },
+            {
+              "player_id": "9500",
+              "jersey_number": "77",
+              "first_name": "Matthew",
+              "last_name": "Henderson"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "639",
+          "y_location": "152",
+          "time": "2:01",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "2",
+          "s": 121,
+          "goal_scorer": {
+            "player_id": "9313",
+            "jersey_number": "25",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Michael",
+            "last_name": "Dec"
+          },
+          "assist1_player": {
+            "player_id": "9408",
+            "jersey_number": "92",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Mclean",
+            "last_name": "Agrette"
+          },
+          "assist2_player": {
+            "player_id": "8780",
+            "jersey_number": "2",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Ty",
+            "last_name": "Henry"
+          },
+          "plus": [
+            {
+              "player_id": "8780",
+              "jersey_number": "2",
+              "first_name": "Ty",
+              "last_name": "Henry"
+            },
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9313",
+              "jersey_number": "25",
+              "first_name": "Michael",
+              "last_name": "Dec"
+            },
+            {
+              "player_id": "9285",
+              "jersey_number": "91",
+              "first_name": "Liam",
+              "last_name": "Beamish"
+            },
+            {
+              "player_id": "9408",
+              "jersey_number": "92",
+              "first_name": "Mclean",
+              "last_name": "Agrette"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9529",
+              "jersey_number": "10",
+              "first_name": "Tomas",
+              "last_name": "Pobezal"
+            },
+            {
+              "player_id": "9139",
+              "jersey_number": "47",
+              "first_name": "Adam",
+              "last_name": "Kelly"
+            },
+            {
+              "player_id": "9525",
+              "jersey_number": "91",
+              "first_name": "Robin",
+              "last_name": "Kuzma"
+            },
+            {
+              "player_id": "9537",
+              "jersey_number": "92",
+              "first_name": "Dante",
+              "last_name": "D'Andrea"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "119",
+          "y_location": "107",
+          "time": "3:34",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "2",
+          "goal_type": "PP",
+          "location_set": "0",
+          "power_play": "1",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "5",
+          "s": 214,
+          "goal_scorer": {
+            "player_id": "9538",
+            "jersey_number": "74",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Nolan",
+            "last_name": "Snyder"
+          },
+          "assist1_player": {
+            "player_id": "9529",
+            "jersey_number": "10",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Tomas",
+            "last_name": "Pobezal"
+          },
+          "assist2_player": {
+            "player_id": "9412",
+            "jersey_number": "86",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Alex",
+            "last_name": "Misiak"
+          },
+          "plus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9158",
+              "jersey_number": "9",
+              "first_name": "Alex",
+              "last_name": "McLean"
+            },
+            {
+              "player_id": "9529",
+              "jersey_number": "10",
+              "first_name": "Tomas",
+              "last_name": "Pobezal"
+            },
+            {
+              "player_id": "9538",
+              "jersey_number": "74",
+              "first_name": "Nolan",
+              "last_name": "Snyder"
+            },
+            {
+              "player_id": "9412",
+              "jersey_number": "86",
+              "first_name": "Alex",
+              "last_name": "Misiak"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "8780",
+              "jersey_number": "2",
+              "first_name": "Ty",
+              "last_name": "Henry"
+            },
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9313",
+              "jersey_number": "25",
+              "first_name": "Michael",
+              "last_name": "Dec"
+            },
+            {
+              "player_id": "9285",
+              "jersey_number": "91",
+              "first_name": "Liam",
+              "last_name": "Beamish"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "639",
+          "y_location": "205",
+          "time": "6:03",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "goal_type": "SH",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "1",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "1",
+          "s": 363,
+          "goal_scorer": {
+            "player_id": "9410",
+            "jersey_number": "80",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Jake",
+            "last_name": "Murray"
+          },
+          "assist1_player": {
+            "player_id": "9361",
+            "jersey_number": "13",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Kayden",
+            "last_name": "Edwards"
+          },
+          "assist2_player": {
+            "player_id": null,
+            "jersey_number": null,
+            "team_id": null,
+            "team_code": null,
+            "first_name": null,
+            "last_name": null
+          },
+          "plus": [
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9361",
+              "jersey_number": "13",
+              "first_name": "Kayden",
+              "last_name": "Edwards"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9410",
+              "jersey_number": "80",
+              "first_name": "Jake",
+              "last_name": "Murray"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9158",
+              "jersey_number": "9",
+              "first_name": "Alex",
+              "last_name": "McLean"
+            },
+            {
+              "player_id": "9529",
+              "jersey_number": "10",
+              "first_name": "Tomas",
+              "last_name": "Pobezal"
+            },
+            {
+              "player_id": "9538",
+              "jersey_number": "74",
+              "first_name": "Nolan",
+              "last_name": "Snyder"
+            },
+            {
+              "player_id": "9412",
+              "jersey_number": "86",
+              "first_name": "Alex",
+              "last_name": "Misiak"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "158",
+          "y_location": "287",
+          "time": "9:44",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "2",
+          "goal_type": "PP",
+          "location_set": "0",
+          "power_play": "1",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "2",
+          "s": 584,
+          "goal_scorer": {
+            "player_id": "10082",
+            "jersey_number": "8",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Adam",
+            "last_name": "Goljer"
+          },
+          "assist1_player": {
+            "player_id": "9529",
+            "jersey_number": "10",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Tomas",
+            "last_name": "Pobezal"
+          },
+          "assist2_player": {
+            "player_id": "9412",
+            "jersey_number": "86",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Alex",
+            "last_name": "Misiak"
+          },
+          "plus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9158",
+              "jersey_number": "9",
+              "first_name": "Alex",
+              "last_name": "McLean"
+            },
+            {
+              "player_id": "9529",
+              "jersey_number": "10",
+              "first_name": "Tomas",
+              "last_name": "Pobezal"
+            },
+            {
+              "player_id": "9538",
+              "jersey_number": "74",
+              "first_name": "Nolan",
+              "last_name": "Snyder"
+            },
+            {
+              "player_id": "9412",
+              "jersey_number": "86",
+              "first_name": "Alex",
+              "last_name": "Misiak"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9313",
+              "jersey_number": "25",
+              "first_name": "Michael",
+              "last_name": "Dec"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9285",
+              "jersey_number": "91",
+              "first_name": "Liam",
+              "last_name": "Beamish"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "48",
+          "y_location": "205",
+          "time": "10:46",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "2",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "3",
+          "s": 646,
+          "goal_scorer": {
+            "player_id": "9498",
+            "jersey_number": "41",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Aleks",
+            "last_name": "Kulemin"
+          },
+          "assist1_player": {
+            "player_id": "9327",
+            "jersey_number": "36",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Landon",
+            "last_name": "Wright"
+          },
+          "assist2_player": {
+            "player_id": null,
+            "jersey_number": null,
+            "team_id": null,
+            "team_code": null,
+            "first_name": null,
+            "last_name": null
+          },
+          "plus": [
+            {
+              "player_id": "9481",
+              "jersey_number": "13",
+              "first_name": "Gavin",
+              "last_name": "Christie"
+            },
+            {
+              "player_id": "9307",
+              "jersey_number": "25",
+              "first_name": "André",
+              "last_name": "Mondoux"
+            },
+            {
+              "player_id": "9327",
+              "jersey_number": "36",
+              "first_name": "Landon",
+              "last_name": "Wright"
+            },
+            {
+              "player_id": "9498",
+              "jersey_number": "41",
+              "first_name": "Aleks",
+              "last_name": "Kulemin"
+            },
+            {
+              "player_id": "9525",
+              "jersey_number": "91",
+              "first_name": "Robin",
+              "last_name": "Kuzma"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9315",
+              "jersey_number": "3",
+              "first_name": "Oliver",
+              "last_name": "Turner"
+            },
+            {
+              "player_id": "9413",
+              "jersey_number": "6",
+              "first_name": "Julius",
+              "last_name": "Saari"
+            },
+            {
+              "player_id": "9361",
+              "jersey_number": "13",
+              "first_name": "Kayden",
+              "last_name": "Edwards"
+            },
+            {
+              "player_id": "9409",
+              "jersey_number": "14",
+              "first_name": "Tyler",
+              "last_name": "Cooper"
+            },
+            {
+              "player_id": "9410",
+              "jersey_number": "80",
+              "first_name": "Jake",
+              "last_name": "Murray"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "637",
+          "y_location": "211",
+          "time": "11:24",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "2",
+          "s": 684,
+          "goal_scorer": {
+            "player_id": "9130",
+            "jersey_number": "73",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Lucas",
+            "last_name": "Ambrosio"
+          },
+          "assist1_player": {
+            "player_id": "9285",
+            "jersey_number": "91",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Liam",
+            "last_name": "Beamish"
+          },
+          "assist2_player": {
+            "player_id": "9823",
+            "jersey_number": "4",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Broden",
+            "last_name": "McArthur"
+          },
+          "plus": [
+            {
+              "player_id": "9823",
+              "jersey_number": "4",
+              "first_name": "Broden",
+              "last_name": "McArthur"
+            },
+            {
+              "player_id": "9313",
+              "jersey_number": "25",
+              "first_name": "Michael",
+              "last_name": "Dec"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9166",
+              "jersey_number": "81",
+              "first_name": "Evan",
+              "last_name": "Headrick"
+            },
+            {
+              "player_id": "9285",
+              "jersey_number": "91",
+              "first_name": "Liam",
+              "last_name": "Beamish"
+            },
+            {
+              "player_id": "9408",
+              "jersey_number": "92",
+              "first_name": "Mclean",
+              "last_name": "Agrette"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9529",
+              "jersey_number": "10",
+              "first_name": "Tomas",
+              "last_name": "Pobezal"
+            },
+            {
+              "player_id": "9307",
+              "jersey_number": "25",
+              "first_name": "André",
+              "last_name": "Mondoux"
+            },
+            {
+              "player_id": "8820",
+              "jersey_number": "27",
+              "first_name": "Vann",
+              "last_name": "Williamson"
+            },
+            {
+              "player_id": "9139",
+              "jersey_number": "47",
+              "first_name": "Adam",
+              "last_name": "Kelly"
+            },
+            {
+              "player_id": "9412",
+              "jersey_number": "86",
+              "first_name": "Alex",
+              "last_name": "Misiak"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "625",
+          "y_location": "191",
+          "time": "15:49",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "2",
+          "goal_type": "PP",
+          "location_set": "0",
+          "power_play": "1",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "3",
+          "s": 949,
+          "goal_scorer": {
+            "player_id": "9408",
+            "jersey_number": "92",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Mclean",
+            "last_name": "Agrette"
+          },
+          "assist1_player": {
+            "player_id": "9313",
+            "jersey_number": "25",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Michael",
+            "last_name": "Dec"
+          },
+          "assist2_player": {
+            "player_id": null,
+            "jersey_number": null,
+            "team_id": null,
+            "team_code": null,
+            "first_name": null,
+            "last_name": null
+          },
+          "plus": [
+            {
+              "player_id": "8780",
+              "jersey_number": "2",
+              "first_name": "Ty",
+              "last_name": "Henry"
+            },
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9313",
+              "jersey_number": "25",
+              "first_name": "Michael",
+              "last_name": "Dec"
+            },
+            {
+              "player_id": "9166",
+              "jersey_number": "81",
+              "first_name": "Evan",
+              "last_name": "Headrick"
+            },
+            {
+              "player_id": "9408",
+              "jersey_number": "92",
+              "first_name": "Mclean",
+              "last_name": "Agrette"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9158",
+              "jersey_number": "9",
+              "first_name": "Alex",
+              "last_name": "McLean"
+            },
+            {
+              "player_id": "9307",
+              "jersey_number": "25",
+              "first_name": "André",
+              "last_name": "Mondoux"
+            },
+            {
+              "player_id": "8820",
+              "jersey_number": "27",
+              "first_name": "Vann",
+              "last_name": "Williamson"
+            },
+            {
+              "player_id": "9525",
+              "jersey_number": "91",
+              "first_name": "Robin",
+              "last_name": "Kuzma"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "92",
+          "y_location": "82",
+          "time": "4:02",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "3",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "1",
+          "game_tieing": "0",
+          "scorer_goal_num": "3",
+          "s": 242,
+          "goal_scorer": {
+            "player_id": "9285",
+            "jersey_number": "91",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Liam",
+            "last_name": "Beamish"
+          },
+          "assist1_player": {
+            "player_id": "9313",
+            "jersey_number": "25",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Michael",
+            "last_name": "Dec"
+          },
+          "assist2_player": {
+            "player_id": "9404",
+            "jersey_number": "10",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Tristen",
+            "last_name": "Trevino"
+          },
+          "plus": [
+            {
+              "player_id": "8780",
+              "jersey_number": "2",
+              "first_name": "Ty",
+              "last_name": "Henry"
+            },
+            {
+              "player_id": "9823",
+              "jersey_number": "4",
+              "first_name": "Broden",
+              "last_name": "McArthur"
+            },
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9313",
+              "jersey_number": "25",
+              "first_name": "Michael",
+              "last_name": "Dec"
+            },
+            {
+              "player_id": "9285",
+              "jersey_number": "91",
+              "first_name": "Liam",
+              "last_name": "Beamish"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "8820",
+              "jersey_number": "27",
+              "first_name": "Vann",
+              "last_name": "Williamson"
+            },
+            {
+              "player_id": "9327",
+              "jersey_number": "36",
+              "first_name": "Landon",
+              "last_name": "Wright"
+            },
+            {
+              "player_id": "9498",
+              "jersey_number": "41",
+              "first_name": "Aleks",
+              "last_name": "Kulemin"
+            },
+            {
+              "player_id": "9500",
+              "jersey_number": "77",
+              "first_name": "Matthew",
+              "last_name": "Henderson"
+            },
+            {
+              "player_id": "9525",
+              "jersey_number": "91",
+              "first_name": "Robin",
+              "last_name": "Kuzma"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "555",
+          "y_location": "288",
+          "time": "4:35",
+          "team_id": "2",
+          "home": "1",
+          "period_id": "3",
+          "goal_type": "PP",
+          "location_set": "0",
+          "power_play": "1",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "0",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "4",
+          "s": 275,
+          "goal_scorer": {
+            "player_id": "9158",
+            "jersey_number": "9",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Alex",
+            "last_name": "McLean"
+          },
+          "assist1_player": {
+            "player_id": "9529",
+            "jersey_number": "10",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Tomas",
+            "last_name": "Pobezal"
+          },
+          "assist2_player": {
+            "player_id": "10082",
+            "jersey_number": "8",
+            "team_id": "2",
+            "team_code": "KGN",
+            "first_name": "Adam",
+            "last_name": "Goljer"
+          },
+          "plus": [
+            {
+              "player_id": "10082",
+              "jersey_number": "8",
+              "first_name": "Adam",
+              "last_name": "Goljer"
+            },
+            {
+              "player_id": "9158",
+              "jersey_number": "9",
+              "first_name": "Alex",
+              "last_name": "McLean"
+            },
+            {
+              "player_id": "9529",
+              "jersey_number": "10",
+              "first_name": "Tomas",
+              "last_name": "Pobezal"
+            },
+            {
+              "player_id": "9538",
+              "jersey_number": "74",
+              "first_name": "Nolan",
+              "last_name": "Snyder"
+            },
+            {
+              "player_id": "9412",
+              "jersey_number": "86",
+              "first_name": "Alex",
+              "last_name": "Misiak"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9404",
+              "jersey_number": "10",
+              "first_name": "Tristen",
+              "last_name": "Trevino"
+            },
+            {
+              "player_id": "9833",
+              "jersey_number": "21",
+              "first_name": "Luka",
+              "last_name": "Arkko"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9166",
+              "jersey_number": "81",
+              "first_name": "Evan",
+              "last_name": "Headrick"
+            }
+          ]
+        },
+        {
+          "event": "goal",
+          "x_location": "79",
+          "y_location": "176",
+          "time": "13:40",
+          "team_id": "8",
+          "home": "0",
+          "period_id": "3",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "1",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "4",
+          "s": 820,
+          "goal_scorer": {
+            "player_id": "9285",
+            "jersey_number": "91",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Liam",
+            "last_name": "Beamish"
+          },
+          "assist1_player": {
+            "player_id": "9313",
+            "jersey_number": "25",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Michael",
+            "last_name": "Dec"
+          },
+          "assist2_player": {
+            "player_id": "9130",
+            "jersey_number": "73",
+            "team_id": "8",
+            "team_code": "ER",
+            "first_name": "Lucas",
+            "last_name": "Ambrosio"
+          },
+          "plus": [
+            {
+              "player_id": "9823",
+              "jersey_number": "4",
+              "first_name": "Broden",
+              "last_name": "McArthur"
+            },
+            {
+              "player_id": "9313",
+              "jersey_number": "25",
+              "first_name": "Michael",
+              "last_name": "Dec"
+            },
+            {
+              "player_id": "9130",
+              "jersey_number": "73",
+              "first_name": "Lucas",
+              "last_name": "Ambrosio"
+            },
+            {
+              "player_id": "9285",
+              "jersey_number": "91",
+              "first_name": "Liam",
+              "last_name": "Beamish"
+            },
+            {
+              "player_id": "9408",
+              "jersey_number": "92",
+              "first_name": "Mclean",
+              "last_name": "Agrette"
+            }
+          ],
+          "minus": [
+            {
+              "player_id": "9307",
+              "jersey_number": "25",
+              "first_name": "André",
+              "last_name": "Mondoux"
+            },
+            {
+              "player_id": "8820",
+              "jersey_number": "27",
+              "first_name": "Vann",
+              "last_name": "Williamson"
+            },
+            {
+              "player_id": "9327",
+              "jersey_number": "36",
+              "first_name": "Landon",
+              "last_name": "Wright"
+            },
+            {
+              "player_id": "9498",
+              "jersey_number": "41",
+              "first_name": "Aleks",
+              "last_name": "Kulemin"
+            },
+            {
+              "player_id": "9525",
+              "jersey_number": "91",
+              "first_name": "Robin",
+              "last_name": "Kuzma"
+            }
+          ]
+        }
+      ],
+      "goalies": {
+        "visitor": [
+          {
+            "id": "80696",
+            "player_id": "9831",
+            "first_name": "Liam",
+            "last_name": "Karbowski",
+            "period_start": "1st",
+            "time_start": "0:00",
+            "period_end": "3rd",
+            "time_end": "20:00",
+            "saves": "25",
+            "secs": "3600",
+            "seconds": "3600",
+            "goals_against": "6",
+            "win": "1",
+            "loss": "0",
+            "shootout_loss": "0",
+            "ot_loss": "0",
+            "tie": "0",
+            "shutout": "0",
+            "shootout_goals_against": "0",
+            "shootout_saves": "0",
+            "line": "",
+            "secs_mmss": "60:00",
+            "shots_against": 31
+          }
+        ],
+        "home": [
+          {
+            "id": "80695",
+            "player_id": "9527",
+            "first_name": "Matthew",
+            "last_name": "Minchak",
+            "period_start": "1st",
+            "time_start": "0:00",
+            "period_end": "3rd",
+            "time_end": "17:15",
+            "saves": "31",
+            "secs": "3435",
+            "seconds": "3435",
+            "goals_against": "8",
+            "win": "0",
+            "loss": "1",
+            "shootout_loss": "0",
+            "ot_loss": "0",
+            "tie": "0",
+            "shutout": "0",
+            "shootout_goals_against": "0",
+            "shootout_saves": "0",
+            "line": "1",
+            "secs_mmss": "57:15",
+            "shots_against": 39
+          }
+        ]
+      },
+      "home_team_lineup": {
+        "goalies": [
+          {
+            "person_id": "9296",
+            "player_id": "9535",
+            "first_name": "Royden",
+            "last_name": "Smith",
+            "start": "0",
+            "position": "7",
+            "position_str": "G",
+            "status": "",
+            "rookie": "1",
+            "seconds": 0,
+            "time": null,
+            "shots_against": 0,
+            "goals_against": 0,
+            "saves": 0,
+            "goals": 0,
+            "assists": 0,
+            "pim": 0,
+            "shots": "0",
+            "line": "2",
+            "jersey_number": "29"
+          },
+          {
+            "person_id": "9288",
+            "player_id": "9527",
+            "first_name": "Matthew",
+            "last_name": "Minchak",
+            "start": "1",
+            "position": "7",
+            "position_str": "G",
+            "status": "",
+            "rookie": "0",
+            "seconds": 3435,
+            "time": "57:15",
+            "shots_against": 39,
+            "goals_against": 8,
+            "saves": 31,
+            "goals": 0,
+            "assists": 0,
+            "pim": 0,
+            "shots": "0",
+            "line": "1",
+            "jersey_number": "76"
+          }
+        ],
+        "players": [
+          {
+            "person_id": "9910",
+            "player_id": "10082",
+            "first_name": "Adam",
+            "last_name": "Goljer",
+            "start": "0",
+            "position": "6",
+            "position_str": "RD",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 2,
+            "plusminus": -1,
+            "pim": 2,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "3",
+            "shots_on": "2",
+            "power_play_goals": 1,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "8"
+          },
+          {
+            "person_id": "8855",
+            "player_id": "9158",
+            "first_name": "Alex",
+            "last_name": "McLean",
+            "start": "1",
+            "position": "4",
+            "position_str": "C",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 0,
+            "plusminus": -2,
+            "pim": 0,
+            "faceoff_wins": "5",
+            "faceoff_attempts": "15",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "4",
+            "shots_on": "1",
+            "power_play_goals": 1,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "9"
+          },
+          {
+            "person_id": "9290",
+            "player_id": "9529",
+            "first_name": "Tomas",
+            "last_name": "Pobezal",
+            "start": "0",
+            "position": "4",
+            "position_str": "C",
+            "status": "A",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 3,
+            "plusminus": -3,
+            "pim": 0,
+            "faceoff_wins": "8",
+            "faceoff_attempts": "18",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "5",
+            "shots_on": "3",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "10"
+          },
+          {
+            "person_id": "9227",
+            "player_id": "9481",
+            "first_name": "Gavin",
+            "last_name": "Christie",
+            "start": "1",
+            "position": "6",
+            "position_str": "RD",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "0",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "13"
+          },
+          {
+            "person_id": "8826",
+            "player_id": "9137",
+            "first_name": "Nolan",
+            "last_name": "Buttar",
+            "start": "1",
+            "position": "3",
+            "position_str": "LW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -2,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "1",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "2",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "22"
+          },
+          {
+            "person_id": "9038",
+            "player_id": "9307",
+            "first_name": "André",
+            "last_name": "Mondoux",
+            "start": "0",
+            "position": "5",
+            "position_str": "LD",
+            "status": "A",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -1,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "0",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "25"
+          },
+          {
+            "person_id": "8348",
+            "player_id": "8820",
+            "first_name": "Vann",
+            "last_name": "Williamson",
+            "start": "0",
+            "position": "6",
+            "position_str": "RD",
+            "status": "C",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -3,
+            "pim": 2,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "27"
+          },
+          {
+            "person_id": "9408",
+            "player_id": "9643",
+            "first_name": "Ty",
+            "last_name": "Robar",
+            "start": "0",
+            "position": "4",
+            "position_str": "C",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "1",
+            "faceoff_attempts": "3",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "0",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "4",
+            "jersey_number": "28"
+          },
+          {
+            "person_id": "9059",
+            "player_id": "9327",
+            "first_name": "Landon",
+            "last_name": "Wright",
+            "start": "0",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 2,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "3",
+            "shots_on": "2",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "36"
+          },
+          {
+            "person_id": "9259",
+            "player_id": "9498",
+            "first_name": "Aleks",
+            "last_name": "Kulemin",
+            "start": "0",
+            "position": "4",
+            "position_str": "C",
+            "status": "",
+            "rookie": "0",
+            "goals": 2,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "9",
+            "faceoff_attempts": "21",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "5",
+            "shots_on": "4",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "41"
+          },
+          {
+            "person_id": "8828",
+            "player_id": "9139",
+            "first_name": "Adam",
+            "last_name": "Kelly",
+            "start": "0",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -2,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "1",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "47"
+          },
+          {
+            "person_id": "9548",
+            "player_id": "9756",
+            "first_name": "Logan",
+            "last_name": "Prud'homme",
+            "start": "0",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "0",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "4",
+            "jersey_number": "55"
+          },
+          {
+            "person_id": "9549",
+            "player_id": "9757",
+            "first_name": "Roman",
+            "last_name": "Vanacker",
+            "start": "0",
+            "position": "3",
+            "position_str": "LW",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "0",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "4",
+            "jersey_number": "71"
+          },
+          {
+            "person_id": "9299",
+            "player_id": "9538",
+            "first_name": "Nolan",
+            "last_name": "Snyder",
+            "start": "1",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 0,
+            "plusminus": -2,
+            "pim": 2,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "1",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "1",
+            "power_play_goals": 1,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "74"
+          },
+          {
+            "person_id": "9261",
+            "player_id": "9500",
+            "first_name": "Matthew",
+            "last_name": "Henderson",
+            "start": "1",
+            "position": "5",
+            "position_str": "LD",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -3,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "77"
+          },
+          {
+            "person_id": "9157",
+            "player_id": "9412",
+            "first_name": "Alex",
+            "last_name": "Misiak",
+            "start": "0",
+            "position": "3",
+            "position_str": "LW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 2,
+            "plusminus": -2,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "1",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "0",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "86"
+          },
+          {
+            "person_id": "9286",
+            "player_id": "9525",
+            "first_name": "Robin",
+            "last_name": "Kuzma",
+            "start": "0",
+            "position": "3",
+            "position_str": "LW",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "2",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "91"
+          },
+          {
+            "person_id": "9298",
+            "player_id": "9537",
+            "first_name": "Dante",
+            "last_name": "D'Andrea",
+            "start": "0",
+            "position": "5",
+            "position_str": "LD",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 1,
+            "plusminus": "+1",
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "92"
+          }
+        ]
+      },
+      "visitor_team_lineup": {
+        "goalies": [
+          {
+            "person_id": "9624",
+            "player_id": "9831",
+            "first_name": "Liam",
+            "last_name": "Karbowski",
+            "start": "1",
+            "position": "7",
+            "position_str": "G",
+            "status": "",
+            "rookie": "1",
+            "seconds": 3600,
+            "time": "60:00",
+            "shots_against": 31,
+            "goals_against": 6,
+            "saves": 25,
+            "goals": 0,
+            "assists": 0,
+            "pim": 0,
+            "shots": "0",
+            "line": "",
+            "jersey_number": "30"
+          },
+          {
+            "person_id": "8250",
+            "player_id": "8754",
+            "first_name": "David",
+            "last_name": "Egorov",
+            "start": "0",
+            "position": "7",
+            "position_str": "G",
+            "status": "",
+            "rookie": "0",
+            "seconds": 0,
+            "time": null,
+            "shots_against": 0,
+            "goals_against": 0,
+            "saves": 0,
+            "goals": 0,
+            "assists": 0,
+            "pim": 0,
+            "shots": "0",
+            "line": "",
+            "jersey_number": "88"
+          }
+        ],
+        "players": [
+          {
+            "person_id": "8279",
+            "player_id": "8780",
+            "first_name": "Ty",
+            "last_name": "Henry",
+            "start": "0",
+            "position": "5",
+            "position_str": "LD",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 1,
+            "plusminus": "+1",
+            "pim": 4,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "4",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "2"
+          },
+          {
+            "person_id": "9046",
+            "player_id": "9315",
+            "first_name": "Oliver",
+            "last_name": "Turner",
+            "start": "0",
+            "position": "6",
+            "position_str": "RD",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -1,
+            "pim": 2,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "3"
+          },
+          {
+            "person_id": "9616",
+            "player_id": "9823",
+            "first_name": "Broden",
+            "last_name": "McArthur",
+            "start": "1",
+            "position": "6",
+            "position_str": "RD",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 2,
+            "plusminus": "+4",
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "3",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "4"
+          },
+          {
+            "person_id": "9158",
+            "player_id": "9413",
+            "first_name": "Julius",
+            "last_name": "Saari",
+            "start": "0",
+            "position": "5",
+            "position_str": "LD",
+            "status": "A",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -1,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "6"
+          },
+          {
+            "person_id": "9149",
+            "player_id": "9404",
+            "first_name": "Tristen",
+            "last_name": "Trevino",
+            "start": "0",
+            "position": "6",
+            "position_str": "RD",
+            "status": "C",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 1,
+            "plusminus": "+2",
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "4",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "10"
+          },
+          {
+            "person_id": "9101",
+            "player_id": "9361",
+            "first_name": "Kayden",
+            "last_name": "Edwards",
+            "start": "0",
+            "position": "3",
+            "position_str": "LW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 1,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "2",
+            "faceoff_attempts": "2",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "4",
+            "jersey_number": "13"
+          },
+          {
+            "person_id": "9154",
+            "player_id": "9409",
+            "first_name": "Tyler",
+            "last_name": "Cooper",
+            "start": "0",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -2,
+            "pim": 2,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "4",
+            "jersey_number": "14"
+          },
+          {
+            "person_id": "9626",
+            "player_id": "9833",
+            "first_name": "Luka",
+            "last_name": "Arkko",
+            "start": "1",
+            "position": "3",
+            "position_str": "LW",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 1,
+            "plusminus": "+1",
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "5",
+            "shots_on": "3",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "21"
+          },
+          {
+            "person_id": "9044",
+            "player_id": "9313",
+            "first_name": "Michael",
+            "last_name": "Dec",
+            "start": "0",
+            "position": "3",
+            "position_str": "LW",
+            "status": "A",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 3,
+            "plusminus": "+4",
+            "pim": 0,
+            "faceoff_wins": "3",
+            "faceoff_attempts": "4",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "25"
+          },
+          {
+            "person_id": "9625",
+            "player_id": "9832",
+            "first_name": "Colin",
+            "last_name": "Kennedy",
+            "start": "0",
+            "position": "4",
+            "position_str": "C",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 8,
+            "faceoff_wins": "4",
+            "faceoff_attempts": "6",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "27"
+          },
+          {
+            "person_id": "9195",
+            "player_id": "9449",
+            "first_name": "Kase",
+            "last_name": "Kamzik",
+            "start": "0",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": -1,
+            "pim": 0,
+            "faceoff_wins": "1",
+            "faceoff_attempts": "2",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "",
+            "jersey_number": "34"
+          },
+          {
+            "person_id": "8819",
+            "player_id": "9130",
+            "first_name": "Lucas",
+            "last_name": "Ambrosio",
+            "start": "1",
+            "position": "5",
+            "position_str": "LD",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 2,
+            "plusminus": "+4",
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "73"
+          },
+          {
+            "person_id": "9155",
+            "player_id": "9410",
+            "first_name": "Jake",
+            "last_name": "Murray",
+            "start": "0",
+            "position": "4",
+            "position_str": "C",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 0,
+            "plusminus": -1,
+            "pim": 2,
+            "faceoff_wins": "5",
+            "faceoff_attempts": "9",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "2",
+            "power_play_goals": 0,
+            "short_handed_goals": 1,
+            "game_winning_goal": 0,
+            "line": "4",
+            "jersey_number": "80"
+          },
+          {
+            "person_id": "8863",
+            "player_id": "9166",
+            "first_name": "Evan",
+            "last_name": "Headrick",
+            "start": "1",
+            "position": "4",
+            "position_str": "C",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 0,
+            "plusminus": "+2",
+            "pim": 0,
+            "faceoff_wins": "14",
+            "faceoff_attempts": "22",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "5",
+            "shots_on": "5",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "81"
+          },
+          {
+            "person_id": "9451",
+            "player_id": "9680",
+            "first_name": "Ulysses",
+            "last_name": "Lombardi",
+            "start": "1",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "0",
+            "goals": 0,
+            "assists": 1,
+            "plusminus": "+1",
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "1",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "1",
+            "shots_on": "1",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "2",
+            "jersey_number": "89"
+          },
+          {
+            "person_id": "9014",
+            "player_id": "9285",
+            "first_name": "Liam",
+            "last_name": "Beamish",
+            "start": "0",
+            "position": "4",
+            "position_str": "C",
+            "status": "",
+            "rookie": "0",
+            "goals": 2,
+            "assists": 1,
+            "plusminus": "+4",
+            "pim": 0,
+            "faceoff_wins": "9",
+            "faceoff_attempts": "14",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "3",
+            "shots_on": "2",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 1,
+            "line": "1",
+            "jersey_number": "91"
+          },
+          {
+            "person_id": "9153",
+            "player_id": "9408",
+            "first_name": "Mclean",
+            "last_name": "Agrette",
+            "start": "0",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "0",
+            "goals": 1,
+            "assists": 1,
+            "plusminus": "+3",
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "0",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "2",
+            "shots_on": "1",
+            "power_play_goals": 1,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "1",
+            "jersey_number": "92"
+          },
+          {
+            "person_id": "9627",
+            "player_id": "9834",
+            "first_name": "Paul",
+            "last_name": "Schuster",
+            "start": "0",
+            "position": "2",
+            "position_str": "RW",
+            "status": "",
+            "rookie": "1",
+            "goals": 0,
+            "assists": 0,
+            "plusminus": 0,
+            "pim": 0,
+            "faceoff_wins": "0",
+            "faceoff_attempts": "1",
+            "hits": "0",
+            "icings": null,
+            "offsides": null,
+            "shots": "0",
+            "shots_on": "0",
+            "power_play_goals": 0,
+            "short_handed_goals": 0,
+            "game_winning_goal": 0,
+            "line": "3",
+            "jersey_number": "96"
+          }
+        ]
+      },
+      "game_date_iso_8601": "2026-10-04T14:05:00-04:00",
+      "coaches": {
+        "visitor": [
+          {
+            "coach_id": "266",
+            "last_name": "Mallette",
+            "first_name": "Kris",
+            "description": "Head Coach",
+            "person_role_id": "2",
+            "person_id": "9079"
+          },
+          {
+            "coach_id": "146",
+            "last_name": "Brown",
+            "first_name": "Dave",
+            "description": "General Manager",
+            "person_role_id": "7",
+            "person_id": "5166"
+          }
+        ],
+        "home": [
+          {
+            "coach_id": "257",
+            "last_name": "Mann",
+            "first_name": "Troy",
+            "description": "Head Coach",
+            "person_role_id": "2",
+            "person_id": "8708"
+          },
+          {
+            "coach_id": "233",
+            "last_name": "Cooper",
+            "first_name": "Kory",
+            "description": "General Manager",
+            "person_role_id": "7",
+            "person_id": "352"
+          }
+        ]
+      },
+      "pimBench": {
+        "visitor": 2,
+        "home": 2
+      },
+      "powerPlayGoals": {
+        "visitor": 1,
+        "home": 3
+      },
+      "powerPlayCount": {
+        "visitor": 2,
+        "home": 8
+      },
+      "goalCount": {
+        "visitor": 8,
+        "home": 6
+      },
+      "assistCount": {
+        "visitor": 14,
+        "home": 10
+      },
+      "pointsCount": {
+        "visitor": 22,
+        "home": 16
+      },
+      "pimTotal": {
+        "visitor": 20,
+        "home": 8
+      },
+      "infCount": {
+        "visitor": 10,
+        "home": 4
+      },
+      "shotsByPeriod": {
+        "visitor": {
+          "1": 10,
+          "2": 18,
+          "3": 11
+        },
+        "home": {
+          "1": 7,
+          "2": 11,
+          "3": 13
+        }
+      },
+      "penaltyshots": {
+        "visitor": [],
+        "home": []
+      },
+      "totalFaceoffs": {
+        "visitor": {
+          "att": 61,
+          "won": 38
+        },
+        "home": {
+          "att": 61,
+          "won": 23
+        }
+      },
+      "totalHits": {
+        "visitor": 0,
+        "home": 0
+      },
+      "totalGoals": {
+        "visitor": 8,
+        "home": 6
+      },
+      "totalShots": {
+        "visitor": 39,
+        "home": 31
+      },
+      "totalShotsOn": {
+        "visitor": 20,
+        "home": 19
+      },
+      "goalsByPeriod": {
+        "visitor": {
+          "1": 1,
+          "2": 5,
+          "3": 2
+        },
+        "home": {
+          "1": 2,
+          "2": 3,
+          "3": 1
+        }
+      }
+    }
+  }
+}

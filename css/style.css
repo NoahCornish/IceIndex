@@ -4218,3 +4218,51 @@ html[data-ice-theme="night"] .ice-theme-moon{display:block}
 .ism-half-rink>path:first-of-type{fill:#121f2c;stroke:#8294a2}
 .ism-half-rink>path:last-of-type{stroke:#8294a2}
 .ism-rink-wrap{background:#0d1925!important}
+
+
+/* IceIndex — responsive Player Development Tracker line chart */
+.ice-dev-chart{width:100%;overflow-x:auto;overflow-y:hidden;margin:10px 0 16px}
+.ice-dev-chart svg{display:block;width:100%;height:auto;min-width:360px;overflow:visible}
+.ice-dev-grid{stroke:var(--border-light);stroke-width:1;stroke-dasharray:4 6;opacity:.7}
+.ice-dev-tick,.ice-dev-season-label{fill:var(--muted);font-size:13px;font-weight:500}
+.ice-dev-axis-label{fill:var(--text-soft);font-size:15px;font-weight:750}
+.ice-dev-line{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.ice-dev-point circle{fill:var(--surface);stroke:var(--accent-light);stroke-width:4;transition:r .15s ease}
+.ice-dev-point:hover circle,.ice-dev-point:focus circle{r:10}
+.ice-dev-point:focus{outline:none}
+.ice-dev-value{fill:var(--accent-light);font-size:15px;font-weight:800}
+@media(max-width:600px){.ice-dev-chart svg{min-width:440px}.ice-dev-chart{scrollbar-width:thin}}
+
+
+/* ============================================================
+   ICEINDEX OFFICIAL BRAND LOGO — shared across day/night themes
+   ============================================================ */
+.sidebar-brand .ice-brand-logo {
+  width: 48px; height: 48px; flex: 0 0 48px;
+  object-fit: contain; display: block;
+}
+.topbar-right .ice-header-logo {
+  width: 32px; height: 32px; flex: 0 0 32px;
+  object-fit: contain; display: block;
+}
+.ice-refresh-stamp::after { content: ""; display: block; clear: both; }
+.ice-refresh-stamp .ice-footer-logo {
+  width: 32px; height: 32px; object-fit: contain;
+  float: right; margin: 2px 0 5px 8px;
+}
+.ice-overview-brand-row { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.ice-overview-brand-row h1 { margin: 0; min-width: 0; }
+.ice-overview-brand-row .ice-overview-logo {
+  width: 88px; height: 80px; flex: 0 0 88px; object-fit: contain;
+}
+.ice-home-hero-mark .ice-home-brand-logo {
+  display: block; width: min(100%, 240px); height: auto;
+  max-height: 230px; object-fit: contain; margin: auto;
+}
+@media (max-width: 650px) {
+  .sidebar-brand .ice-brand-logo { width: 42px; height: 42px; flex-basis: 42px; }
+  .topbar-right .ice-header-logo { width: 25px; height: 25px; flex-basis: 25px; }
+  .ice-overview-brand-row { gap: 10px; }
+  .ice-overview-brand-row .ice-overview-logo { width: 54px; height: 52px; flex-basis: 54px; }
+  .ice-home-hero-mark .ice-home-brand-logo { width: min(100%, 160px); }
+}

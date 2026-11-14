@@ -1,0 +1,350 @@
+
+====================================================================
+ICEINDEX | OHL MASTER PROCESSING v0.6.1
+====================================================================
+[ OK ] ohl_players.R found and syntax validated
+[ OK ] ohl_goalies.R found and syntax validated
+[ OK ] Cleaned OHL database found
+
+====================================================================
+RUNNING OHL SKATER ENGINE
+====================================================================
+
+====================================================================
+ICEINDEX OHL PLAYER DATABASE | v0.6.0
+====================================================================
+[ OK ] Cleaned OHL database found
+
+====================================================================
+1. LOADING PLAYER REFERENCE DATA
+====================================================================
+[ OK ] Player reference records: 31870
+
+====================================================================
+2. LOADING CLEANED SEASON STATISTICS
+====================================================================
+[ OK ] Season files discovered: 55
+[ OK ] Statistical records loaded: 25081
+
+====================================================================
+3. VALIDATING PLAYER IDENTIFIERS
+====================================================================
+[ OK ] All statistical identifiers present
+
+====================================================================
+4. CHECKING FOR DOUBLE COUNTING
+====================================================================
+[ OK ] Duplicate player-season-team records: 0
+
+====================================================================
+5. VALIDATING MULTI-TEAM SEASONS
+====================================================================
+[ OK ] Unreviewed multi-team seasons: 0
+
+====================================================================
+6. CHECKING AGGREGATE RECORDS
+====================================================================
+[ OK ] Named aggregate records: 0
+[ OK ] Numeric statistical columns selected: GamesPlayed, Goals, Assists, Points, PlusMinus, PIM, Shots, PowerPlayGoals, PowerPlayAssists, PowerPlayPoints, ShorthandedGoals, ShorthandedAssists, ShorthandedPoints, GameWinningGoals, OvertimeGoals, EmptyNetGoals, ShootoutGoals, ShootoutAttempts, FaceoffWins, Hits, MajorPenalties, MinorPenalties
+
+====================================================================
+8. BUILDING PLAYER DIRECTORY
+====================================================================
+[ OK ] Reference profiles: 8104
+
+====================================================================
+9. RECOVERING UNMATCHED PLAYERS
+====================================================================
+[ OK ] Recovered player profiles: 28
+[ OK ] Total directory profiles: 8132
+
+====================================================================
+10. VALIDATING PLAYER DIRECTORY
+====================================================================
+[ OK ] Unmatched statistical PlayerIDs: 0
+[ OK ] Duplicate directory PlayerIDs: 0
+
+====================================================================
+11. BUILDING PLAYER SEASON RECORDS
+====================================================================
+[ OK ] Player season records: 25081
+
+====================================================================
+12. CALCULATING CAREER TOTALS
+====================================================================
+[ OK ] Career/competition records: 10122
+
+====================================================================
+13. RECONCILING CAREER TOTALS
+====================================================================
+[ OK ] Career reconciliation mismatches: 0
+
+====================================================================
+14. BUILDING PLAYER TEAM HISTORY
+====================================================================
+[ OK ] Player/team history records: 25081
+
+====================================================================
+15. FINAL QUALITY GATE
+====================================================================
+[ OK ] NoDuplicateStatIdentities
+[ OK ] NoUnreviewedMultiTeamSeasons
+[ OK ] NoNamedAggregates
+[ OK ] NoDuplicateDirectoryIDs
+[ OK ] AllStatPlayersInDirectory
+[ OK ] AllStatRowsPreserved
+[ OK ] UniqueCareerIdentities
+[ OK ] CareerKeysComplete
+[ OK ] All quality checks passed
+
+====================================================================
+16. GENERATING PROCESSING REPORT
+====================================================================
+
+====================================================================
+17. STAGING PLAYER DATABASE
+====================================================================
+[ OK ] player_directory.csv | 8132 rows
+[ OK ] player_seasons.csv | 25081 rows
+[ OK ] player_career.csv | 10122 rows
+[ OK ] player_teams.csv | 25081 rows
+[ OK ] processing_report.csv | 17 rows
+[ OK ] recovered_players.csv | 28 rows
+
+====================================================================
+18. PUBLISHING PLAYER DATABASE
+====================================================================
+[ OK ] Validated player database published
+
+====================================================================
+ICEINDEX PLAYER DATABASE COMPLETE
+====================================================================
+[INFO] Version: 0.6.0
+[INFO] Player profiles: 8132
+[INFO] Recovered profiles: 28
+[INFO] Season records: 25081
+[INFO] Career records: 10122
+[INFO] Team history records: 25081
+[INFO] Unmatched PlayerIDs: 0
+[INFO] Duplicate statistical identities: 0
+[INFO] Career reconciliation mismatches: 0
+[INFO] Quality gate: PASSED
+[INFO] Runtime: 5.39 seconds
+[INFO] Original source files modified: 0
+
+ICEINDEX OHL PLAYER DATABASE SUCCESSFULLY BUILT
+[ OK ] OHL SKATER ENGINE completed successfully
+
+====================================================================
+RUNNING OHL GOALIE ENGINE
+====================================================================
+
+====================================================================
+ICEINDEX OHL GOALIE DATABASE | v0.6.0
+====================================================================
+[ OK ] Cleaned OHL database found
+
+====================================================================
+1. LOADING PLAYER REFERENCE DATA
+====================================================================
+[ OK ] Player reference rows: 31870
+
+====================================================================
+2. LOADING CLEANED GOALIE STATISTICS
+====================================================================
+[ OK ] Season files: 55
+[ OK ] Goalie records: 2305
+
+====================================================================
+3. VALIDATING GOALIE IDENTIFIERS
+====================================================================
+[ OK ] All required identifiers present
+
+====================================================================
+4. CHECKING FOR DOUBLE COUNTING
+====================================================================
+[ OK ] Duplicate identities: 0
+[ OK ] Unreviewed multi-team seasons: 0
+[ OK ] Named aggregate records: 0
+
+====================================================================
+5. DETECTING GOALIE STATISTICAL FIELDS
+====================================================================
+[INFO] Counting fields: GamesPlayed, Wins, Losses, Ties, ShootoutLosses, Shutouts, GoalsAgainst, Saves, MinutesPlayed, SecondsPlayed, Goals, Assists, Points, PIM
+[INFO] Rate fields: SavePercentage, GoalsAgainstAverage
+
+====================================================================
+6. STANDARDIZING STATISTICAL TYPES
+====================================================================
+[ OK ] Numeric fields validated: 16
+
+====================================================================
+7. BUILDING GOALIE DIRECTORY
+====================================================================
+[ OK ] Reference goalie profiles: 650
+
+====================================================================
+8. RECOVERING MISSING GOALIE PROFILES
+====================================================================
+[ OK ] Recovered goalie profiles: 12
+[ OK ] Total goalie profiles: 662
+[ OK ] Unmatched goalie PlayerIDs: 0
+
+====================================================================
+9. BUILDING GOALIE SEASON RECORDS
+====================================================================
+[ OK ] Goalie season records: 2305
+
+====================================================================
+10. CALCULATING GOALIE CAREER TOTALS
+====================================================================
+[ OK ] Goalie career records: 1037
+
+====================================================================
+11. CALCULATING CAREER RATE STATISTICS
+====================================================================
+[WARN] Save percentage unavailable: Saves and/or ShotsAgainst missing.
+[ OK ] Career GAA calculated
+
+====================================================================
+12. RECONCILING CAREER STATISTICS
+====================================================================
+[ OK ] Career counting-stat mismatches: 0
+
+====================================================================
+13. BUILDING GOALIE TEAM HISTORY
+====================================================================
+[ OK ] Goalie team history records: 2305
+
+====================================================================
+14. FINAL QUALITY GATE
+====================================================================
+[ OK ] NoDuplicateIdentities
+[ OK ] NoUnreviewedMultiTeamSeasons
+[ OK ] NoNamedAggregateRows
+[ OK ] AllGoaliesInDirectory
+[ OK ] NoDuplicateDirectoryIDs
+[ OK ] AllSeasonRowsPreserved
+[ OK ] NoDuplicateCareerIDs
+[ OK ] CareerIdentitiesComplete
+[ OK ] All goalie quality checks passed
+
+====================================================================
+15. GENERATING PROCESSING REPORT
+====================================================================
+
+====================================================================
+16. STAGING GOALIE DATABASE
+====================================================================
+[ OK ] goalie_directory.csv | 662 rows
+[ OK ] goalie_seasons.csv | 2305 rows
+[ OK ] goalie_career.csv | 1037 rows
+[ OK ] goalie_teams.csv | 2305 rows
+[ OK ] goalie_recovered_players.csv | 12 rows
+[ OK ] goalie_processing_report.csv | 16 rows
+
+====================================================================
+17. PUBLISHING GOALIE DATABASE
+====================================================================
+[ OK ] Validated goalie database published
+
+====================================================================
+ICEINDEX GOALIE DATABASE COMPLETE
+====================================================================
+[INFO] Version: 0.6.0
+[INFO] Goalie profiles: 662
+[INFO] Recovered profiles: 12
+[INFO] Season records: 2305
+[INFO] Career records: 1037
+[INFO] Team history records: 2305
+[INFO] Duplicate identities: 0
+[INFO] Career reconciliation mismatches: 0
+[INFO] Quality gate: PASSED
+[INFO] Runtime: 0.56 seconds
+[INFO] Original source files modified: 0
+
+ICEINDEX OHL GOALIE DATABASE SUCCESSFULLY BUILT
+[ OK ] OHL GOALIE ENGINE completed successfully
+
+====================================================================
+LOADING PROCESSED OHL DATABASE
+====================================================================
+[ OK ] player_directory.csv: 8132 records
+[ OK ] player_seasons.csv: 25081 records
+[ OK ] player_career.csv: 10122 records
+[ OK ] player_teams.csv: 25081 records
+[ OK ] processing_report.csv: 17 records
+[ OK ] goalie_directory.csv: 662 records
+[ OK ] goalie_seasons.csv: 2305 records
+[ OK ] goalie_career.csv: 1037 records
+[ OK ] goalie_teams.csv: 2305 records
+[ OK ] goalie_processing_report.csv: 16 records
+
+====================================================================
+VALIDATING PLAYER IDENTITIES
+====================================================================
+[ OK ] Skater directory: identities validated
+[ OK ] Goalie directory: identities validated
+[ OK ] Skater seasons: identities validated
+[ OK ] Goalie seasons: identities validated
+[ OK ] Skater careers: identities validated
+[ OK ] Goalie careers: identities validated
+
+====================================================================
+VALIDATING PLAYER REFERENCES
+====================================================================
+[ OK ] Skater seasons: all PlayerIDs matched
+[ OK ] Skater careers: all PlayerIDs matched
+[ OK ] Skater teams: all PlayerIDs matched
+[ OK ] Goalie seasons: all PlayerIDs matched
+[ OK ] Goalie careers: all PlayerIDs matched
+[ OK ] Goalie teams: all PlayerIDs matched
+
+====================================================================
+VALIDATING TEAM HISTORY
+====================================================================
+[ OK ] Skater team history: 25081 records
+[ OK ] Goalie team history: 2305 records
+
+====================================================================
+VERIFYING SKATER QUALITY
+====================================================================
+[ OK ] SKATER quality gate passed
+[ OK ] SKATER career reconciliation passed
+
+====================================================================
+VERIFYING GOALIE QUALITY
+====================================================================
+[ OK ] GOALIE quality gate passed
+[ OK ] GOALIE career reconciliation passed
+
+====================================================================
+CREATING CONSOLIDATED PROCESSING REPORT
+====================================================================
+[ OK ] Consolidated processing summary published
+
+====================================================================
+ICEINDEX | OHL PROCESSING COMPLETE
+====================================================================
+
+SKATER DATABASE
+Profiles:       8132
+Season records: 25081
+Career records: 10122
+Team records:   25081
+
+GOALIE DATABASE
+Profiles:       662
+Season records: 2305
+Career records: 1037
+Team records:   2305
+
+COMBINED DATABASE
+Season records: 27386
+Career records: 11159
+
+Runtime: 6.1 seconds
+
+====================================================================
+ICEINDEX OHL MASTER PROCESSING SUCCESSFUL
+====================================================================

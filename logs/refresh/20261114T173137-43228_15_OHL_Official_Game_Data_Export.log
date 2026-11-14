@@ -1,0 +1,23 @@
+Building official CSVs from 207 cached games...
+  Parsing 1/207: 28993.json
+  Parsing 25/207: 29017.json
+  Parsing 50/207: 29042.json
+  Parsing 75/207: 29067.json
+  Parsing 100/207: 29092.json
+  Parsing 125/207: 29117.json
+  Parsing 150/207: 29142.json
+  Parsing 175/207: 29167.json
+  Parsing 200/207: 29192.json
+  Parsing 207/207: 29199.json
+metadata        207 rows -> official_game_metadata.csv
+teams           414 rows -> official_team_stats.csv
+periods        1298 rows -> official_period_stats.csv
+goals          1374 rows -> official_scoring_plays.csv
+on_ice        13197 rows -> official_goal_on_ice.csv
+goalies         806 rows -> official_goalie_stats.csv
+skaters        7247 rows -> official_skater_stats.csv
+penalties      2416 rows -> official_penalties.csv
+stars           621 rows -> official_three_stars.csv
+officials      2019 rows -> official_game_officials.csv
+Score validation: 201 completed checked | 8 expected shootout differences | 0 unexplained mismatches | 6 unfinished skipped
+Official game data export complete.

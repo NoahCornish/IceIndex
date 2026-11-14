@@ -1,0 +1,415 @@
+"game_id","side","team_id","team_name","team_code","goals","shots_on_goal","power_play_goals","power_play_opportunities","faceoff_wins","faceoff_attempts","penalty_minutes"
+"28993","visitor","4","Oshawa Generals","OSH",3,18,1,2,29,71,9
+"28993","home","18","Brampton Steelheads","BRAM",2,20,0,2,42,71,6
+"28994","visitor","20","Niagara IceDogs","NIAG",1,12,0,3,28,54,15
+"28994","home","1","Brantford Bulldogs","BFD",3,14,0,2,26,54,17
+"28995","visitor","8","Erie Otters","ER",5,18,2,3,32,61,21
+"28995","home","9","Guelph Storm","GUE",1,18,0,5,29,61,17
+"28996","visitor","11","Owen Sound Attack","OS",1,15,1,3,31,50,15
+"28996","home","10","Kitchener Rangers","KIT",0,15,0,2,19,50,17
+"28997","visitor","17","Windsor Spitfires","WSR",2,8,0,5,16,51,15
+"28997","home","14","London Knights","LDN",3,9,1,3,35,51,19
+"28998","visitor","7","Barrie Colts","BAR",1,13,1,3,24,64,22
+"28998","home","19","North Bay Battalion","NB",2,18,0,4,40,64,18
+"28999","visitor","34","Saginaw Spirit","SAG",4,12,1,3,21,56,17
+"28999","home","16","Soo Greyhounds","SOO",5,16,1,5,35,56,13
+"29000","visitor","6","Peterborough Petes","PBO",1,13,0,6,29,62,12
+"29000","home","12","Sudbury Wolves","SBY",2,14,0,4,33,62,16
+"29001","visitor","12","Sudbury Wolves","SBY",6,14,2,6,34,59,11
+"29001","home","7","Barrie Colts","BAR",0,13,0,2,25,59,20
+"29002","visitor","9","Guelph Storm","GUE",0,17,0,2,39,62,17
+"29002","home","1","Brantford Bulldogs","BFD",6,26,3,4,23,62,13
+"29003","visitor","18","Brampton Steelheads","BRAM",1,17,0,1,33,56,10
+"29003","home","20","Niagara IceDogs","NIAG",4,15,0,5,23,56,2
+"29004","visitor","10","Kitchener Rangers","KIT",4,17,1,8,30,73,26
+"29004","home","11","Owen Sound Attack","OS",1,7,1,6,43,73,28
+"29005","visitor","13","Flint Firebirds","FLNT",5,15,2,6,32,55,14
+"29005","home","34","Saginaw Spirit","SAG",4,15,3,5,23,55,17
+"29006","visitor","15","Sarnia Sting","SAR",4,17,3,8,35,59,16
+"29006","home","16","Soo Greyhounds","SOO",3,13,2,4,24,59,24
+"29007","visitor","14","London Knights","LDN",6,5,1,3,24,56,12
+"29007","home","17","Windsor Spitfires","WSR",2,20,1,5,32,56,8
+"29008","visitor","5","Ottawa 67's","OTT",2,12,1,2,24,52,10
+"29008","home","2","Kingston Frontenacs","KGN",3,8,0,3,28,52,8
+"29009","visitor","19","North Bay Battalion","NB",2,15,1,6,33,71,38
+"29009","home","4","Oshawa Generals","OSH",7,19,2,7,38,71,31
+"29010","visitor","18","Brampton Steelheads","BRAM",2,4,0,1,27,56,11
+"29010","home","19","North Bay Battalion","NB",5,15,2,3,29,56,7
+"29011","visitor","15","Sarnia Sting","SAR",4,16,3,6,30,71,17
+"29011","home","6","Peterborough Petes","PBO",7,18,2,4,41,71,26
+"29012","visitor","6","Peterborough Petes","PBO",2,21,1,6,33,61,11
+"29012","home","1","Brantford Bulldogs","BFD",5,15,1,3,28,61,17
+"29013","visitor","4","Oshawa Generals","OSH",0,18,0,3,29,68,12
+"29013","home","9","Guelph Storm","GUE",6,22,1,5,39,68,8
+"29014","visitor","15","Sarnia Sting","SAR",5,14,0,3,32,66,13
+"29014","home","2","Kingston Frontenacs","KGN",3,17,1,4,34,66,11
+"29015","visitor","8","Erie Otters","ER",4,15,1,5,32,68,17
+"29015","home","10","Kitchener Rangers","KIT",3,14,1,6,36,68,15
+"29016","visitor","11","Owen Sound Attack","OS",4,8,3,7,26,58,23
+"29016","home","14","London Knights","LDN",7,17,1,7,32,58,23
+"29017","visitor","20","Niagara IceDogs","NIAG",3,16,2,6,38,55,8
+"29017","home","34","Saginaw Spirit","SAG",5,21,0,3,17,55,14
+"29018","visitor","18","Brampton Steelheads","BRAM",3,15,1,4,43,68,6
+"29018","home","16","Soo Greyhounds","SOO",6,12,1,3,25,68,8
+"29019","visitor","7","Barrie Colts","BAR",2,14,1,4,32,61,17
+"29019","home","12","Sudbury Wolves","SBY",5,23,0,4,29,61,20
+"29020","visitor","13","Flint Firebirds","FLNT",4,11,0,4,36,66,17
+"29020","home","17","Windsor Spitfires","WSR",2,13,0,4,30,66,17
+"29021","visitor","4","Oshawa Generals","OSH",4,16,1,8,30,73,10
+"29021","home","7","Barrie Colts","BAR",2,6,0,4,43,73,19
+"29022","visitor","2","Kingston Frontenacs","KGN",4,21,0,4,33,66,12
+"29022","home","1","Brantford Bulldogs","BFD",10,22,3,5,33,66,10
+"29023","visitor","10","Kitchener Rangers","KIT",4,22,1,4,37,66,16
+"29023","home","8","Erie Otters","ER",3,15,1,3,29,66,18
+"29024","visitor","20","Niagara IceDogs","NIAG",5,13,2,3,20,57,20
+"29024","home","13","Flint Firebirds","FLNT",2,20,0,5,37,57,16
+"29025","visitor","9","Guelph Storm","GUE",5,24,2,8,28,58,18
+"29025","home","11","Owen Sound Attack","OS",1,12,1,5,30,58,22
+"29026","visitor","5","Ottawa 67's","OTT",6,10,1,3,22,66,10
+"29026","home","6","Peterborough Petes","PBO",3,13,2,2,44,66,12
+"29027","visitor","17","Windsor Spitfires","WSR",6,13,1,2,35,66,8
+"29027","home","34","Saginaw Spirit","SAG",3,12,1,3,31,66,6
+"29028","visitor","19","North Bay Battalion","NB",4,15,1,6,28,62,14
+"29028","home","16","Soo Greyhounds","SOO",5,12,1,3,34,62,20
+"29029","visitor","2","Kingston Frontenacs","KGN",3,6,0,2,20,57,4
+"29029","home","10","Kitchener Rangers","KIT",6,12,0,2,37,57,4
+"29030","visitor","1","Brantford Bulldogs","BFD",5,9,2,3,27,58,13
+"29030","home","4","Oshawa Generals","OSH",3,11,0,2,31,58,17
+"29031","visitor","15","Sarnia Sting","SAR",10,17,1,6,31,63,15
+"29031","home","5","Ottawa 67's","OTT",3,12,0,3,32,63,18
+"29032","visitor","18","Brampton Steelheads","BRAM",2,10,2,6,40,64,17
+"29032","home","12","Sudbury Wolves","SBY",4,14,1,6,24,64,17
+"29033","visitor","20","Niagara IceDogs","NIAG",2,13,0,5,26,50,4
+"29033","home","7","Barrie Colts","BAR",1,12,0,2,24,50,10
+"29034","visitor","8","Erie Otters","ER",0,12,0,4,28,63,8
+"29034","home","6","Peterborough Petes","PBO",4,13,2,4,35,63,8
+"29035","visitor","19","North Bay Battalion","NB",2,7,0,5,24,58,17
+"29035","home","17","Windsor Spitfires","WSR",3,9,0,5,34,58,17
+"29036","visitor","18","Brampton Steelheads","BRAM",4,25,2,6,31,62,8
+"29036","home","1","Brantford Bulldogs","BFD",5,8,0,4,31,62,12
+"29037","visitor","17","Windsor Spitfires","WSR",2,13,0,1,28,63,15
+"29037","home","9","Guelph Storm","GUE",4,18,1,4,35,63,9
+"29038","visitor","6","Peterborough Petes","PBO",3,13,0,3,30,61,2
+"29038","home","2","Kingston Frontenacs","KGN",5,16,1,1,31,61,6
+"29039","visitor","34","Saginaw Spirit","SAG",3,10,1,2,29,61,8
+"29039","home","10","Kitchener Rangers","KIT",4,14,2,2,32,61,8
+"29040","visitor","19","North Bay Battalion","NB",1,14,0,0,23,58,8
+"29040","home","14","London Knights","LDN",4,11,0,2,35,58,4
+"29041","visitor","5","Ottawa 67's","OTT",4,13,1,5,33,63,8
+"29041","home","4","Oshawa Generals","OSH",1,17,0,4,30,63,10
+"29042","visitor","16","Soo Greyhounds","SOO",4,14,0,5,32,70,7
+"29042","home","15","Sarnia Sting","SAR",3,18,0,1,38,70,15
+"29043","visitor","20","Niagara IceDogs","NIAG",1,19,0,7,24,63,35
+"29043","home","12","Sudbury Wolves","SBY",7,12,5,8,39,63,28
+"29044","visitor","15","Sarnia Sting","SAR",3,26,2,5,40,83,12
+"29044","home","7","Barrie Colts","BAR",5,13,1,5,43,83,12
+"29045","visitor","34","Saginaw Spirit","SAG",3,8,2,3,32,64,8
+"29045","home","18","Brampton Steelheads","BRAM",2,8,1,3,32,64,8
+"29046","visitor","19","North Bay Battalion","NB",3,21,0,5,39,66,27
+"29046","home","1","Brantford Bulldogs","BFD",6,15,3,7,27,66,23
+"29047","visitor","16","Soo Greyhounds","SOO",3,12,1,6,32,51,6
+"29047","home","13","Flint Firebirds","FLNT",2,14,0,2,19,51,14
+"29048","visitor","8","Erie Otters","ER",1,15,0,2,38,62,10
+"29048","home","5","Ottawa 67's","OTT",6,23,2,5,24,62,4
+"29049","visitor","17","Windsor Spitfires","WSR",4,23,0,4,25,58,12
+"29049","home","11","Owen Sound Attack","OS",1,11,0,3,33,58,14
+"29050","visitor","10","Kitchener Rangers","KIT",0,14,0,6,24,59,15
+"29050","home","9","Guelph Storm","GUE",6,13,2,4,35,59,19
+"29051","visitor","8","Erie Otters","ER",8,20,1,2,38,61,20
+"29051","home","2","Kingston Frontenacs","KGN",6,19,3,8,23,61,8
+"29052","visitor","13","Flint Firebirds","FLNT",7,17,3,7,23,56,17
+"29052","home","14","London Knights","LDN",2,12,0,6,33,56,19
+"29053","visitor","15","Sarnia Sting","SAR",3,9,1,1,22,52,11
+"29053","home","4","Oshawa Generals","OSH",0,20,0,3,30,52,7
+"29054","visitor","1","Brantford Bulldogs","BFD",0,16,0,4,29,74,12
+"29054","home","11","Owen Sound Attack","OS",3,22,1,4,45,74,12
+"29055","visitor","10","Kitchener Rangers","KIT",2,11,1,3,33,55,14
+"29055","home","13","Flint Firebirds","FLNT",5,11,1,6,22,55,8
+"29056","visitor","2","Kingston Frontenacs","KGN",7,16,1,3,36,60,6
+"29056","home","7","Barrie Colts","BAR",4,12,0,2,24,60,8
+"29057","visitor","5","Ottawa 67's","OTT",1,20,1,3,18,45,16
+"29057","home","20","Niagara IceDogs","NIAG",2,10,0,1,27,45,23
+"29058","visitor","12","Sudbury Wolves","SBY",3,8,1,6,29,55,17
+"29058","home","19","North Bay Battalion","NB",4,17,1,6,26,55,17
+"29059","visitor","2","Kingston Frontenacs","KGN",4,14,0,2,31,61,0
+"29059","home","18","Brampton Steelheads","BRAM",2,12,0,0,30,61,7
+"29060","visitor","11","Owen Sound Attack","OS",2,12,0,4,34,72,22
+"29060","home","9","Guelph Storm","GUE",3,15,1,4,38,72,22
+"29061","visitor","8","Erie Otters","ER",4,21,1,3,38,78,14
+"29061","home","14","London Knights","LDN",3,12,1,7,40,78,8
+"29062","visitor","4","Oshawa Generals","OSH",0,15,0,3,24,55,10
+"29062","home","15","Sarnia Sting","SAR",4,17,2,4,31,55,8
+"29063","visitor","10","Kitchener Rangers","KIT",2,8,1,2,30,60,8
+"29063","home","16","Soo Greyhounds","SOO",3,17,0,4,30,60,4
+"29064","visitor","6","Peterborough Petes","PBO",3,19,2,5,32,54,22
+"29064","home","12","Sudbury Wolves","SBY",7,14,5,6,22,54,15
+"29065","visitor","2","Kingston Frontenacs","KGN",4,16,0,1,27,57,6
+"29065","home","1","Brantford Bulldogs","BFD",2,16,0,2,30,57,4
+"29066","visitor","5","Ottawa 67's","OTT",3,16,0,2,29,54,6
+"29066","home","8","Erie Otters","ER",0,25,0,2,25,54,6
+"29067","visitor","15","Sarnia Sting","SAR",4,15,2,6,22,51,12
+"29067","home","13","Flint Firebirds","FLNT",6,22,3,3,29,51,17
+"29068","visitor","7","Barrie Colts","BAR",2,10,1,4,24,55,10
+"29068","home","20","Niagara IceDogs","NIAG",4,14,1,5,31,55,8
+"29069","visitor","9","Guelph Storm","GUE",10,34,3,6,34,73,28
+"29069","home","11","Owen Sound Attack","OS",5,24,2,6,39,73,28
+"29070","visitor","10","Kitchener Rangers","KIT",2,18,0,5,17,45,19
+"29070","home","34","Saginaw Spirit","SAG",4,19,1,6,28,45,17
+"29071","visitor","6","Peterborough Petes","PBO",2,3,1,7,29,56,8
+"29071","home","16","Soo Greyhounds","SOO",1,7,0,4,27,56,14
+"29072","visitor","4","Oshawa Generals","OSH",5,17,0,1,28,52,2
+"29072","home","17","Windsor Spitfires","WSR",1,11,0,1,24,52,2
+"29073","visitor","5","Ottawa 67's","OTT",4,9,1,4,24,58,21
+"29073","home","1","Brantford Bulldogs","BFD",3,19,0,4,34,58,21
+"29074","visitor","7","Barrie Colts","BAR",2,14,0,4,33,68,6
+"29074","home","8","Erie Otters","ER",3,24,0,3,35,68,10
+"29075","visitor","6","Peterborough Petes","PBO",1,8,0,2,29,65,12
+"29075","home","19","North Bay Battalion","NB",3,14,2,6,36,65,6
+"29076","visitor","34","Saginaw Spirit","SAG",3,14,0,0,31,69,4
+"29076","home","17","Windsor Spitfires","WSR",2,23,0,1,38,69,2
+"29077","visitor","14","London Knights","LDN",4,14,1,2,26,47,12
+"29077","home","10","Kitchener Rangers","KIT",3,17,2,3,21,47,10
+"29078","visitor","9","Guelph Storm","GUE",5,19,1,4,29,60,17
+"29078","home","15","Sarnia Sting","SAR",2,12,0,4,31,60,15
+"29079","visitor","16","Soo Greyhounds","SOO",5,10,1,3,19,53,9
+"29079","home","20","Niagara IceDogs","NIAG",4,15,0,1,34,53,13
+"29080","visitor","19","North Bay Battalion","NB",2,9,0,4,24,59,6
+"29080","home","6","Peterborough Petes","PBO",4,7,0,3,35,59,8
+"29081","visitor","12","Sudbury Wolves","SBY",6,16,1,4,27,62,10
+"29081","home","17","Windsor Spitfires","WSR",2,22,0,4,35,62,15
+"29082","visitor","5","Ottawa 67's","OTT",6,15,2,3,34,65,16
+"29082","home","18","Brampton Steelheads","BRAM",2,6,1,2,31,65,18
+"29083","visitor","7","Barrie Colts","BAR",0,14,0,3,23,56,12
+"29083","home","1","Brantford Bulldogs","BFD",1,17,1,5,33,56,6
+"29084","visitor","16","Soo Greyhounds","SOO",3,22,1,5,24,51,6
+"29084","home","8","Erie Otters","ER",1,16,0,2,27,51,12
+"29085","visitor","13","Flint Firebirds","FLNT",2,11,0,3,25,59,10
+"29085","home","9","Guelph Storm","GUE",3,11,0,3,34,59,10
+"29086","visitor","4","Oshawa Generals","OSH",4,17,0,3,38,67,8
+"29086","home","2","Kingston Frontenacs","KGN",5,17,0,3,29,67,11
+"29087","visitor","20","Niagara IceDogs","NIAG",2,16,2,6,21,54,15
+"29087","home","10","Kitchener Rangers","KIT",5,11,1,4,33,54,19
+"29088","visitor","12","Sudbury Wolves","SBY",1,6,1,4,18,56,13
+"29088","home","14","London Knights","LDN",4,9,0,2,38,56,17
+"29089","visitor","34","Saginaw Spirit","SAG",9,33,4,11,36,64,16
+"29089","home","15","Sarnia Sting","SAR",2,13,2,6,28,64,23
+"29090","visitor","11","Owen Sound Attack","OS",3,7,1,4,40,66,20
+"29090","home","17","Windsor Spitfires","WSR",11,24,4,8,26,66,12
+"29091","visitor","2","Kingston Frontenacs","KGN",2,9,1,3,28,58,2
+"29091","home","18","Brampton Steelheads","BRAM",5,15,0,1,30,58,6
+"29092","visitor","14","London Knights","LDN",7,24,2,4,31,53,22
+"29092","home","8","Erie Otters","ER",1,17,1,2,22,53,25
+"29093","visitor","11","Owen Sound Attack","OS",2,5,1,5,30,63,12
+"29093","home","13","Flint Firebirds","FLNT",3,11,0,6,33,63,10
+"29094","visitor","4","Oshawa Generals","OSH",2,7,0,2,29,72,4
+"29094","home","5","Ottawa 67's","OTT",3,21,0,2,43,72,4
+"29095","visitor","7","Barrie Colts","BAR",0,8,0,3,22,65,16
+"29095","home","6","Peterborough Petes","PBO",6,12,5,6,43,65,10
+"29096","visitor","15","Sarnia Sting","SAR",4,17,3,5,32,60,9
+"29096","home","34","Saginaw Spirit","SAG",7,13,0,1,28,60,17
+"29097","visitor","16","Soo Greyhounds","SOO",2,18,1,4,26,61,18
+"29097","home","1","Brantford Bulldogs","BFD",5,15,1,5,35,61,16
+"29098","visitor","12","Sudbury Wolves","SBY",2,7,0,2,32,57,15
+"29098","home","9","Guelph Storm","GUE",5,16,1,4,25,57,11
+"29099","visitor","20","Niagara IceDogs","NIAG",5,7,1,2,29,62,10
+"29099","home","19","North Bay Battalion","NB",4,26,0,4,33,62,6
+"29100","visitor","10","Kitchener Rangers","KIT",2,11,0,2,27,49,6
+"29100","home","4","Oshawa Generals","OSH",1,10,0,1,22,49,8
+"29101","visitor","11","Owen Sound Attack","OS",2,15,1,4,25,54,16
+"29101","home","34","Saginaw Spirit","SAG",1,23,1,5,29,54,14
+"29102","visitor","14","London Knights","LDN",4,9,2,7,25,61,21
+"29102","home","15","Sarnia Sting","SAR",6,16,4,9,36,61,18
+"29103","visitor","11","Owen Sound Attack","OS",3,15,0,1,38,67,6
+"29103","home","7","Barrie Colts","BAR",4,15,1,2,29,67,4
+"29104","visitor","12","Sudbury Wolves","SBY",4,11,1,3,30,63,6
+"29104","home","19","North Bay Battalion","NB",3,19,1,3,33,63,6
+"29105","visitor","4","Oshawa Generals","OSH",4,14,2,3,33,60,7
+"29105","home","6","Peterborough Petes","PBO",5,14,1,1,27,60,11
+"29106","visitor","17","Windsor Spitfires","WSR",4,16,3,6,33,62,11
+"29106","home","16","Soo Greyhounds","SOO",5,9,1,2,29,62,19
+"29107","visitor","1","Brantford Bulldogs","BFD",8,17,4,8,26,62,12
+"29107","home","18","Brampton Steelheads","BRAM",2,17,1,5,36,62,19
+"29108","visitor","5","Ottawa 67's","OTT",2,8,1,4,22,52,26
+"29108","home","2","Kingston Frontenacs","KGN",4,9,3,6,30,52,22
+"29109","visitor","9","Guelph Storm","GUE",3,17,0,6,25,60,8
+"29109","home","10","Kitchener Rangers","KIT",6,13,1,4,35,60,12
+"29110","visitor","15","Sarnia Sting","SAR",4,5,2,7,17,52,6
+"29110","home","14","London Knights","LDN",6,15,0,2,35,52,16
+"29111","visitor","8","Erie Otters","ER",3,11,0,0,33,61,4
+"29111","home","20","Niagara IceDogs","NIAG",4,16,0,1,28,61,2
+"29112","visitor","6","Peterborough Petes","PBO",0,11,0,3,26,64,16
+"29112","home","4","Oshawa Generals","OSH",5,9,0,5,38,64,12
+"29113","visitor","13","Flint Firebirds","FLNT",4,14,2,5,34,56,14
+"29113","home","34","Saginaw Spirit","SAG",3,21,1,7,22,56,10
+"29114","visitor","19","North Bay Battalion","NB",5,17,0,2,20,48,10
+"29114","home","12","Sudbury Wolves","SBY",3,14,0,3,28,48,8
+"29115","visitor","19","North Bay Battalion","NB",7,14,0,2,26,67,24
+"29115","home","7","Barrie Colts","BAR",4,19,2,6,41,67,16
+"29116","visitor","18","Brampton Steelheads","BRAM",4,13,1,3,33,59,8
+"29116","home","1","Brantford Bulldogs","BFD",2,18,0,4,26,59,6
+"29117","visitor","20","Niagara IceDogs","NIAG",2,21,1,5,32,64,18
+"29117","home","8","Erie Otters","ER",5,25,2,5,32,64,18
+"29118","visitor","34","Saginaw Spirit","SAG",2,17,1,6,19,52,12
+"29118","home","13","Flint Firebirds","FLNT",6,13,2,5,33,52,16
+"29119","visitor","14","London Knights","LDN",1,20,0,4,28,54,21
+"29119","home","11","Owen Sound Attack","OS",5,16,2,5,26,54,18
+"29120","visitor","16","Soo Greyhounds","SOO",3,12,0,4,30,55,27
+"29120","home","17","Windsor Spitfires","WSR",4,9,2,6,25,55,20
+"29121","visitor","8","Erie Otters","ER",5,10,1,3,32,61,13
+"29121","home","18","Brampton Steelheads","BRAM",2,10,0,2,29,61,15
+"29122","visitor","16","Soo Greyhounds","SOO",0,15,0,1,18,47,10
+"29122","home","13","Flint Firebirds","FLNT",1,15,1,4,29,47,4
+"29123","visitor","10","Kitchener Rangers","KIT",5,16,1,4,29,58,15
+"29123","home","9","Guelph Storm","GUE",6,22,1,3,29,58,17
+"29124","visitor","12","Sudbury Wolves","SBY",3,12,1,8,34,60,16
+"29124","home","4","Oshawa Generals","OSH",2,26,0,6,26,60,23
+"29125","visitor","2","Kingston Frontenacs","KGN",6,9,1,1,30,61,6
+"29125","home","5","Ottawa 67's","OTT",1,10,1,3,31,61,2
+"29126","visitor","7","Barrie Colts","BAR",4,17,2,2,25,71,10
+"29126","home","11","Owen Sound Attack","OS",5,22,2,4,46,71,6
+"29127","visitor","18","Brampton Steelheads","BRAM",2,12,1,2,30,55,18
+"29127","home","5","Ottawa 67's","OTT",5,20,0,2,25,55,18
+"29128","visitor","15","Sarnia Sting","SAR",3,21,0,3,23,62,12
+"29128","home","11","Owen Sound Attack","OS",4,23,2,4,39,62,10
+"29129","visitor","34","Saginaw Spirit","SAG",2,13,0,4,22,51,6
+"29129","home","16","Soo Greyhounds","SOO",5,10,1,3,29,51,8
+"29130","visitor","14","London Knights","LDN",5,9,1,3,29,53,8
+"29130","home","19","North Bay Battalion","NB",4,11,1,4,24,53,6
+"29131","visitor","1","Brantford Bulldogs","BFD",3,12,0,7,35,65,11
+"29131","home","6","Peterborough Petes","PBO",4,11,0,2,30,65,21
+"29132","visitor","8","Erie Otters","ER",0,9,0,2,31,55,2
+"29132","home","17","Windsor Spitfires","WSR",3,12,0,1,24,55,4
+"29133","visitor","4","Oshawa Generals","OSH",5,13,1,8,35,59,8
+"29133","home","18","Brampton Steelheads","BRAM",2,16,0,3,24,59,18
+"29134","visitor","6","Peterborough Petes","PBO",1,16,0,7,35,67,21
+"29134","home","2","Kingston Frontenacs","KGN",4,22,1,6,32,67,23
+"29135","visitor","13","Flint Firebirds","FLNT",0,19,0,4,38,63,4
+"29135","home","10","Kitchener Rangers","KIT",3,14,0,2,25,63,8
+"29136","visitor","19","North Bay Battalion","NB",7,16,1,2,25,65,16
+"29136","home","20","Niagara IceDogs","NIAG",3,9,1,7,40,65,6
+"29137","visitor","1","Brantford Bulldogs","BFD",3,11,1,4,22,50,8
+"29137","home","5","Ottawa 67's","OTT",1,19,0,4,28,50,8
+"29138","visitor","7","Barrie Colts","BAR",2,11,1,5,25,54,15
+"29138","home","34","Saginaw Spirit","SAG",0,17,0,3,29,54,17
+"29139","visitor","8","Erie Otters","ER",4,15,0,1,27,60,9
+"29139","home","15","Sarnia Sting","SAR",3,13,0,0,33,60,11
+"29140","visitor","9","Guelph Storm","GUE",4,14,2,5,31,67,10
+"29140","home","16","Soo Greyhounds","SOO",3,9,1,4,36,67,12
+"29141","visitor","14","London Knights","LDN",3,22,2,4,31,63,8
+"29141","home","12","Sudbury Wolves","SBY",4,17,1,3,32,63,10
+"29142","visitor","7","Barrie Colts","BAR",3,7,1,2,23,58,12
+"29142","home","13","Flint Firebirds","FLNT",4,13,0,6,35,58,4
+"29143","visitor","17","Windsor Spitfires","WSR",8,25,1,6,32,67,14
+"29143","home","11","Owen Sound Attack","OS",0,7,0,7,35,67,12
+"29144","visitor","9","Guelph Storm","GUE",5,14,2,3,34,73,12
+"29144","home","34","Saginaw Spirit","SAG",3,16,0,6,39,73,6
+"29145","visitor","17","Windsor Spitfires","WSR",3,10,0,2,24,55,9
+"29145","home","18","Brampton Steelheads","BRAM",0,9,0,2,31,55,9
+"29146","visitor","1","Brantford Bulldogs","BFD",0,6,0,0,28,56,12
+"29146","home","2","Kingston Frontenacs","KGN",5,16,2,5,28,56,2
+"29147","visitor","6","Peterborough Petes","PBO",4,22,1,4,32,57,6
+"29147","home","20","Niagara IceDogs","NIAG",3,11,0,2,25,57,13
+"29148","visitor","74","Val-d'Or Foreurs","VDO",4,13,2,4,26,64,14
+"29148","home","19","North Bay Battalion","NB",2,9,0,4,38,64,14
+"29149","visitor","5","Ottawa 67's","OTT",7,10,3,6,22,69,23
+"29149","home","4","Oshawa Generals","OSH",6,14,2,4,47,69,27
+"29150","visitor","13","Flint Firebirds","FLNT",5,19,0,2,27,56,4
+"29150","home","15","Sarnia Sting","SAR",1,6,0,2,29,56,4
+"29151","visitor","14","London Knights","LDN",5,16,2,5,27,55,6
+"29151","home","16","Soo Greyhounds","SOO",4,13,1,3,28,55,10
+"29152","visitor","66","Rouyn-Noranda Huskies","RN",4,16,3,6,35,64,10
+"29152","home","12","Sudbury Wolves","SBY",3,16,1,3,29,64,16
+"29153","visitor","9","Guelph Storm","GUE",3,15,0,2,34,60,27
+"29153","home","10","Kitchener Rangers","KIT",2,6,1,1,26,60,29
+"29154","visitor","12","Sudbury Wolves","SBY",3,11,0,2,23,45,8
+"29154","home","7","Barrie Colts","BAR",1,5,1,4,22,45,4
+"29155","visitor","2","Kingston Frontenacs","KGN",3,12,1,4,25,50,8
+"29155","home","5","Ottawa 67's","OTT",1,20,0,4,25,50,8
+"29156","visitor","11","Owen Sound Attack","OS",4,20,1,6,26,59,6
+"29156","home","15","Sarnia Sting","SAR",5,12,2,3,33,59,12
+"29157","visitor","8","Erie Otters","ER",7,8,1,3,24,60,13
+"29157","home","16","Soo Greyhounds","SOO",0,12,0,3,36,60,13
+"29158","visitor","18","Brampton Steelheads","BRAM",6,12,0,3,33,69,10
+"29158","home","20","Niagara IceDogs","NIAG",3,14,0,3,36,69,10
+"29159","visitor","17","Windsor Spitfires","WSR",4,13,3,5,21,60,13
+"29159","home","6","Peterborough Petes","PBO",3,10,1,3,39,60,17
+"29160","visitor","8","Erie Otters","ER",6,9,1,4,37,75,10
+"29160","home","13","Flint Firebirds","FLNT",4,12,0,4,38,75,11
+"29161","visitor","11","Owen Sound Attack","OS",1,22,0,0,26,56,16
+"29161","home","9","Guelph Storm","GUE",2,19,0,2,30,56,12
+"29162","visitor","4","Oshawa Generals","OSH",2,7,0,2,30,68,28
+"29162","home","2","Kingston Frontenacs","KGN",5,11,2,8,38,68,16
+"29163","visitor","19","North Bay Battalion","NB",2,10,1,4,23,54,18
+"29163","home","10","Kitchener Rangers","KIT",5,15,0,2,31,54,22
+"29164","visitor","34","Saginaw Spirit","SAG",3,18,1,2,20,59,8
+"29164","home","14","London Knights","LDN",5,18,1,3,39,59,6
+"29165","visitor","17","Windsor Spitfires","WSR",5,11,0,0,33,61,7
+"29165","home","5","Ottawa 67's","OTT",4,8,0,1,28,61,5
+"29166","visitor","1","Brantford Bulldogs","BFD",3,8,2,5,22,51,23
+"29166","home","15","Sarnia Sting","SAR",2,14,1,6,29,51,21
+"29167","visitor","16","Soo Greyhounds","SOO",7,18,1,5,32,67,4
+"29167","home","12","Sudbury Wolves","SBY",3,10,0,1,35,67,10
+"29168","visitor","18","Brampton Steelheads","BRAM",5,14,0,3,35,62,6
+"29168","home","13","Flint Firebirds","FLNT",4,13,0,3,27,62,6
+"29169","visitor","19","North Bay Battalion","NB",6,16,1,4,29,69,14
+"29169","home","9","Guelph Storm","GUE",10,28,4,7,40,69,8
+"29170","visitor","10","Kitchener Rangers","KIT",3,23,1,5,29,56,15
+"29170","home","11","Owen Sound Attack","OS",2,13,1,4,27,56,17
+"29171","visitor","8","Erie Otters","ER",0,16,0,5,27,51,8
+"29171","home","34","Saginaw Spirit","SAG",5,25,1,4,24,51,10
+"29172","visitor","7","Barrie Colts","BAR",1,10,0,3,26,60,8
+"29172","home","16","Soo Greyhounds","SOO",2,8,1,3,34,60,8
+"29173","visitor","17","Windsor Spitfires","WSR",4,13,1,3,27,54,18
+"29173","home","2","Kingston Frontenacs","KGN",3,15,1,5,27,54,13
+"29174","visitor","1","Brantford Bulldogs","BFD",5,10,1,3,25,54,12
+"29174","home","4","Oshawa Generals","OSH",2,18,0,5,29,54,8
+"29175","visitor","20","Niagara IceDogs","NIAG",2,9,1,6,21,56,11
+"29175","home","6","Peterborough Petes","PBO",3,25,0,3,35,56,17
+"29176","visitor","18","Brampton Steelheads","BRAM",4,20,2,3,25,58,6
+"29176","home","34","Saginaw Spirit","SAG",6,17,2,3,33,58,6
+"29177","visitor","14","London Knights","LDN",2,18,0,2,32,65,14
+"29177","home","15","Sarnia Sting","SAR",4,11,0,6,33,65,6
+"29178","visitor","7","Barrie Colts","BAR",3,13,0,1,24,58,4
+"29178","home","12","Sudbury Wolves","SBY",6,21,0,2,34,58,2
+"29179","visitor","16","Soo Greyhounds","SOO",1,17,0,2,26,59,18
+"29179","home","12","Sudbury Wolves","SBY",4,18,3,8,33,59,10
+"29180","visitor","9","Guelph Storm","GUE",5,12,3,6,34,64,8
+"29180","home","14","London Knights","LDN",2,13,1,3,30,64,14
+"29181","visitor","7","Barrie Colts","BAR",4,14,0,3,29,60,2
+"29181","home","11","Owen Sound Attack","OS",3,21,0,1,31,60,6
+"29182","visitor","10","Kitchener Rangers","KIT",6,17,2,4,23,52,10
+"29182","home","8","Erie Otters","ER",2,23,1,5,29,52,8
+"29183","visitor","15","Sarnia Sting","SAR",0,3,0,2,38,70,15
+"29183","home","19","North Bay Battalion","NB",2,13,1,4,32,70,11
+"29184","visitor","2","Kingston Frontenacs","KGN",2,14,1,5,27,74,4
+"29184","home","6","Peterborough Petes","PBO",7,16,2,2,47,74,10
+"29185","visitor","5","Ottawa 67's","OTT",4,29,0,5,23,46,14
+"29185","home","34","Saginaw Spirit","SAG",2,22,1,4,23,46,16
+"29186","visitor","20","Niagara IceDogs","NIAG",1,11,0,4,38,65,2
+"29186","home","17","Windsor Spitfires","WSR",4,14,0,1,27,65,8
+"29187","visitor","5","Ottawa 67's","OTT",0,8,0,5,26,47,4
+"29187","home","13","Flint Firebirds","FLNT",4,8,0,1,21,47,12
+"29188","visitor","1","Brantford Bulldogs","BFD",2,9,1,3,32,54,10
+"29188","home","9","Guelph Storm","GUE",5,14,0,3,22,54,10
+"29189","visitor","18","Brampton Steelheads","BRAM",4,8,0,1,30,58,16
+"29189","home","2","Kingston Frontenacs","KGN",1,15,0,4,28,58,9
+"29190","visitor","7","Barrie Colts","BAR",2,13,1,5,30,67,12
+"29190","home","10","Kitchener Rangers","KIT",4,16,3,4,37,67,14
+"29191","visitor","6","Peterborough Petes","PBO",6,17,0,1,32,75,20
+"29191","home","4","Oshawa Generals","OSH",4,13,1,4,43,75,14
+"29192","visitor","14","London Knights","LDN",4,18,1,5,29,65,11
+"29192","home","16","Soo Greyhounds","SOO",5,8,2,3,36,65,15
+"29193","visitor","15","Sarnia Sting","SAR",2,12,0,3,27,57,7
+"29193","home","12","Sudbury Wolves","SBY",4,19,0,1,30,57,11
+"29194","visitor","18","Brampton Steelheads","BRAM",0,0,0,0,0,0,0
+"29194","home","7","Barrie Colts","BAR",0,0,0,0,0,0,0
+"29195","visitor","4","Oshawa Generals","OSH",0,0,0,0,0,0,0
+"29195","home","1","Brantford Bulldogs","BFD",0,0,0,0,0,0,0
+"29196","visitor","20","Niagara IceDogs","NIAG",0,0,0,0,0,0,0
+"29196","home","8","Erie Otters","ER",0,0,0,0,0,0,0
+"29197","visitor","17","Windsor Spitfires","WSR",0,0,0,0,0,0,0
+"29197","home","13","Flint Firebirds","FLNT",0,0,0,0,0,0,0
+"29198","visitor","9","Guelph Storm","GUE",0,0,0,0,0,0,0
+"29198","home","11","Owen Sound Attack","OS",0,0,0,0,0,0,0
+"29199","visitor","14","London Knights","LDN",0,0,0,0,0,0,0
+"29199","home","34","Saginaw Spirit","SAG",0,0,0,0,0,0,0

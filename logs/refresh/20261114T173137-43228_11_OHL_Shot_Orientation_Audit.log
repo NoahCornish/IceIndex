@@ -1,0 +1,26 @@
+
+ICEINDEX v0.10.0 ATTACKING DIRECTION AUDIT
+Games: 201  Events: 13547  Shots: 12173  Goals: 1374 
+Missing coordinates: 0 
+Candidate directions:
+
+high_x_net  low_x_net unresolved 
+       585        588        922 
+Opposite-team consistency:
+
+  CONFLICT   opposite unverified 
+         2       1100        993 
+Period flip check:
+
+  CONFLICT    flipped unverified 
+        42          2       2051 
+Raw x/y ranges:
+       x               y        
+ Min.   :  0.0   Min.   :  0.0  
+ 1st Qu.:103.0   1st Qu.:107.0  
+ Median :247.0   Median :149.0  
+ Mean   :297.3   Mean   :149.3  
+ 3rd Qu.:495.0   3rd Qu.:191.0  
+ Max.   :583.0   Max.   :297.0  
+Audit saved: data/games/2026-27/shot_orientation_audit.csv 
+IMPORTANT: This is an inference audit, NOT a validated orientation mapping. Do not overwrite the shot CSV yet.

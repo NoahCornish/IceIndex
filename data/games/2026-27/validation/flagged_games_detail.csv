@@ -1,0 +1,9 @@
+"game_id","date","status","final","shootout","home","visitor","home_score","visitor_score","home_goal_events","visitor_goal_events","home_difference","visitor_difference","goal_count_match","previously_flagged"
+"29036","2026-10-02","Final SO",TRUE,TRUE,"Brantford Bulldogs","Brampton Steelheads",5,4,4,4,1,0,FALSE,TRUE
+"29061","2026-10-09","Final SO",TRUE,FALSE,"London Knights","Erie Otters",3,4,3,3,0,1,FALSE,TRUE
+"29073","2026-10-11","Final SO",TRUE,FALSE,"Brantford Bulldogs","Ottawa 67's",3,4,3,3,0,1,FALSE,TRUE
+"29076","2026-10-12","Final SO",TRUE,FALSE,"Windsor Spitfires","Saginaw Spirit",2,3,2,2,0,1,FALSE,TRUE
+"29077","2026-10-13","Final SO",TRUE,FALSE,"Kitchener Rangers","London Knights",3,4,3,3,0,1,FALSE,TRUE
+"29113","2026-10-23","Final SO",TRUE,FALSE,"Saginaw Spirit","Flint Firebirds",3,4,3,3,0,1,FALSE,TRUE
+"29124","2026-10-25","Final SO",TRUE,FALSE,"Oshawa Generals","Sudbury Wolves",2,3,2,2,0,1,FALSE,TRUE
+"29192","2026-11-13","Final SO",TRUE,TRUE,"Soo Greyhounds","London Knights",5,4,4,4,1,0,FALSE,TRUE

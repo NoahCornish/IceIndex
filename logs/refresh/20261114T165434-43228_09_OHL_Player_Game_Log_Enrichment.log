@@ -1,0 +1,50 @@
+
+====================================
+ICEINDEX — PLAYER ENRICHMENT
+Version: v0.10.0
+====================================
+Player-game rows: 6462 
+Schedule games: 683 
+Cached games: 201 
+
+Processed: 25 / 201 
+Processed: 50 / 201 
+Processed: 75 / 201 
+Processed: 100 / 201 
+Processed: 125 / 201 
+Processed: 150 / 201 
+Processed: 175 / 201 
+Processed: 200 / 201 
+Processed: 201 / 201 
+
+====================================
+ICEINDEX — ENRICHMENT RECONCILIATION
+====================================
+Player-game rows: 6462 
+Unique games: 201 
+Player names:              6462 / 6462 (100.00%)
+Team IDs:                  6462 / 6462 (100.00%)
+Team codes:                6462 / 6462 (100.00%)
+Team names:                6462 / 6462 (100.00%)
+Game dates:                6462 / 6462 (100.00%)
+Home/away:                 6462 / 6462 (100.00%)
+Opponent IDs:              6462 / 6462 (100.00%)
+Opponent names:            6462 / 6462 (100.00%)
+
+STATISTICS PRESERVED
+G: 1374
+A: 2259
+P: 3633
+PIM: 4948
+FO_ATT: 24170
+FO_WIN: 12085
+FO_LOSS: 12085
+
+VALIDATION WARNINGS
+None.
+
+FILES SAVED
+data/games/2026-27/player_game_logs_enriched.csv 
+data/games/2026-27/player_game_log_enrichment_validation.csv 
+
+ICEINDEX v0.10.0 ENRICHMENT FINISHED

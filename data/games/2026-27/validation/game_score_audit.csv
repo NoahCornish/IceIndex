@@ -1,0 +1,208 @@
+"game_id","date","status","final","shootout","home","visitor","home_score","visitor_score","home_goal_events","visitor_goal_events","home_difference","visitor_difference","goal_count_match","previously_flagged"
+"28993","2026-09-18","Final",TRUE,FALSE,"Brampton Steelheads","Oshawa Generals",2,3,2,3,0,0,TRUE,FALSE
+"28994","2026-09-18","Final",TRUE,FALSE,"Brantford Bulldogs","Niagara IceDogs",3,1,3,1,0,0,TRUE,FALSE
+"28995","2026-09-18","Final",TRUE,FALSE,"Guelph Storm","Erie Otters",1,5,1,5,0,0,TRUE,FALSE
+"28996","2026-09-18","Final",TRUE,FALSE,"Kitchener Rangers","Owen Sound Attack",0,1,0,1,0,0,TRUE,FALSE
+"28997","2026-09-18","Final OT",TRUE,FALSE,"London Knights","Windsor Spitfires",3,2,3,2,0,0,TRUE,FALSE
+"28998","2026-09-18","Final",TRUE,FALSE,"North Bay Battalion","Barrie Colts",2,1,2,1,0,0,TRUE,FALSE
+"28999","2026-09-18","Final OT",TRUE,FALSE,"Soo Greyhounds","Saginaw Spirit",5,4,5,4,0,0,TRUE,FALSE
+"29000","2026-09-18","Final",TRUE,FALSE,"Sudbury Wolves","Peterborough Petes",2,1,2,1,0,0,TRUE,FALSE
+"29001","2026-09-19","Final",TRUE,FALSE,"Barrie Colts","Sudbury Wolves",0,6,0,6,0,0,TRUE,FALSE
+"29002","2026-09-19","Final",TRUE,FALSE,"Brantford Bulldogs","Guelph Storm",6,0,6,0,0,0,TRUE,FALSE
+"29003","2026-09-19","Final",TRUE,FALSE,"Niagara IceDogs","Brampton Steelheads",4,1,4,1,0,0,TRUE,FALSE
+"29004","2026-09-19","Final",TRUE,FALSE,"Owen Sound Attack","Kitchener Rangers",1,4,1,4,0,0,TRUE,FALSE
+"29005","2026-09-19","Final",TRUE,FALSE,"Saginaw Spirit","Flint Firebirds",4,5,4,5,0,0,TRUE,FALSE
+"29006","2026-09-19","Final",TRUE,FALSE,"Soo Greyhounds","Sarnia Sting",3,4,3,4,0,0,TRUE,FALSE
+"29007","2026-09-19","Final",TRUE,FALSE,"Windsor Spitfires","London Knights",2,6,2,6,0,0,TRUE,FALSE
+"29008","2026-09-20","Final OT",TRUE,FALSE,"Kingston Frontenacs","Ottawa 67's",3,2,3,2,0,0,TRUE,FALSE
+"29009","2026-09-20","Final",TRUE,FALSE,"Oshawa Generals","North Bay Battalion",7,2,7,2,0,0,TRUE,FALSE
+"29010","2026-09-24","Final",TRUE,FALSE,"North Bay Battalion","Brampton Steelheads",5,2,5,2,0,0,TRUE,FALSE
+"29011","2026-09-24","Final",TRUE,FALSE,"Peterborough Petes","Sarnia Sting",7,4,7,4,0,0,TRUE,FALSE
+"29012","2026-09-25","Final",TRUE,FALSE,"Brantford Bulldogs","Peterborough Petes",5,2,5,2,0,0,TRUE,FALSE
+"29013","2026-09-25","Final",TRUE,FALSE,"Guelph Storm","Oshawa Generals",6,0,6,0,0,0,TRUE,FALSE
+"29014","2026-09-25","Final",TRUE,FALSE,"Kingston Frontenacs","Sarnia Sting",3,5,3,5,0,0,TRUE,FALSE
+"29015","2026-09-25","Final",TRUE,FALSE,"Kitchener Rangers","Erie Otters",3,4,3,4,0,0,TRUE,FALSE
+"29016","2026-09-25","Final",TRUE,FALSE,"London Knights","Owen Sound Attack",7,4,7,4,0,0,TRUE,FALSE
+"29017","2026-09-25","Final",TRUE,FALSE,"Saginaw Spirit","Niagara IceDogs",5,3,5,3,0,0,TRUE,FALSE
+"29018","2026-09-25","Final",TRUE,FALSE,"Soo Greyhounds","Brampton Steelheads",6,3,6,3,0,0,TRUE,FALSE
+"29019","2026-09-25","Final",TRUE,FALSE,"Sudbury Wolves","Barrie Colts",5,2,5,2,0,0,TRUE,FALSE
+"29020","2026-09-25","Final",TRUE,FALSE,"Windsor Spitfires","Flint Firebirds",2,4,2,4,0,0,TRUE,FALSE
+"29021","2026-09-26","Final",TRUE,FALSE,"Barrie Colts","Oshawa Generals",2,4,2,4,0,0,TRUE,FALSE
+"29022","2026-09-26","Final",TRUE,FALSE,"Brantford Bulldogs","Kingston Frontenacs",10,4,10,4,0,0,TRUE,FALSE
+"29023","2026-09-26","Final OT",TRUE,FALSE,"Erie Otters","Kitchener Rangers",3,4,3,4,0,0,TRUE,FALSE
+"29024","2026-09-26","Final",TRUE,FALSE,"Flint Firebirds","Niagara IceDogs",2,5,2,5,0,0,TRUE,FALSE
+"29025","2026-09-26","Final",TRUE,FALSE,"Owen Sound Attack","Guelph Storm",1,5,1,5,0,0,TRUE,FALSE
+"29026","2026-09-26","Final",TRUE,FALSE,"Peterborough Petes","Ottawa 67's",3,6,3,6,0,0,TRUE,FALSE
+"29027","2026-09-26","Final",TRUE,FALSE,"Saginaw Spirit","Windsor Spitfires",3,6,3,6,0,0,TRUE,FALSE
+"29028","2026-09-26","Final",TRUE,FALSE,"Soo Greyhounds","North Bay Battalion",5,4,5,4,0,0,TRUE,FALSE
+"29029","2026-09-27","Final",TRUE,FALSE,"Kitchener Rangers","Kingston Frontenacs",6,3,6,3,0,0,TRUE,FALSE
+"29030","2026-09-27","Final",TRUE,FALSE,"Oshawa Generals","Brantford Bulldogs",3,5,3,5,0,0,TRUE,FALSE
+"29031","2026-09-27","Final",TRUE,FALSE,"Ottawa 67's","Sarnia Sting",3,10,3,10,0,0,TRUE,FALSE
+"29032","2026-09-27","Final",TRUE,FALSE,"Sudbury Wolves","Brampton Steelheads",4,2,4,2,0,0,TRUE,FALSE
+"29033","2026-10-01","Final OT",TRUE,FALSE,"Barrie Colts","Niagara IceDogs",1,2,1,2,0,0,TRUE,FALSE
+"29034","2026-10-01","Final",TRUE,FALSE,"Peterborough Petes","Erie Otters",4,0,4,0,0,0,TRUE,FALSE
+"29035","2026-10-01","Final",TRUE,FALSE,"Windsor Spitfires","North Bay Battalion",3,2,3,2,0,0,TRUE,FALSE
+"29036","2026-10-02","Final SO",TRUE,TRUE,"Brantford Bulldogs","Brampton Steelheads",5,4,4,4,1,0,FALSE,TRUE
+"29037","2026-10-02","Final",TRUE,FALSE,"Guelph Storm","Windsor Spitfires",4,2,4,2,0,0,TRUE,FALSE
+"29038","2026-10-02","Final",TRUE,FALSE,"Kingston Frontenacs","Peterborough Petes",5,3,5,3,0,0,TRUE,FALSE
+"29039","2026-10-02","Final OT",TRUE,FALSE,"Kitchener Rangers","Saginaw Spirit",4,3,4,3,0,0,TRUE,FALSE
+"29040","2026-10-02","Final",TRUE,FALSE,"London Knights","North Bay Battalion",4,1,4,1,0,0,TRUE,FALSE
+"29041","2026-10-02","Final",TRUE,FALSE,"Oshawa Generals","Ottawa 67's",1,4,1,4,0,0,TRUE,FALSE
+"29042","2026-10-02","Final OT",TRUE,FALSE,"Sarnia Sting","Soo Greyhounds",3,4,3,4,0,0,TRUE,FALSE
+"29043","2026-10-02","Final",TRUE,FALSE,"Sudbury Wolves","Niagara IceDogs",7,1,7,1,0,0,TRUE,FALSE
+"29044","2026-10-03","Final",TRUE,FALSE,"Barrie Colts","Sarnia Sting",5,3,5,3,0,0,TRUE,FALSE
+"29045","2026-10-03","Final OT",TRUE,FALSE,"Brampton Steelheads","Saginaw Spirit",2,3,2,3,0,0,TRUE,FALSE
+"29046","2026-10-03","Final",TRUE,FALSE,"Brantford Bulldogs","North Bay Battalion",6,3,6,3,0,0,TRUE,FALSE
+"29047","2026-10-03","Final",TRUE,FALSE,"Flint Firebirds","Soo Greyhounds",2,3,2,3,0,0,TRUE,FALSE
+"29048","2026-10-03","Final",TRUE,FALSE,"Ottawa 67's","Erie Otters",6,1,6,1,0,0,TRUE,FALSE
+"29049","2026-10-03","Final",TRUE,FALSE,"Owen Sound Attack","Windsor Spitfires",1,4,1,4,0,0,TRUE,FALSE
+"29050","2026-10-04","Final",TRUE,FALSE,"Guelph Storm","Kitchener Rangers",6,0,6,0,0,0,TRUE,FALSE
+"29051","2026-10-04","Final",TRUE,FALSE,"Kingston Frontenacs","Erie Otters",6,8,6,8,0,0,TRUE,FALSE
+"29052","2026-10-04","Final",TRUE,FALSE,"London Knights","Flint Firebirds",2,7,2,7,0,0,TRUE,FALSE
+"29053","2026-10-04","Final",TRUE,FALSE,"Oshawa Generals","Sarnia Sting",0,3,0,3,0,0,TRUE,FALSE
+"29054","2026-10-04","Final",TRUE,FALSE,"Owen Sound Attack","Brantford Bulldogs",3,0,3,0,0,0,TRUE,FALSE
+"29055","2026-10-07","Final",TRUE,FALSE,"Flint Firebirds","Kitchener Rangers",5,2,5,2,0,0,TRUE,FALSE
+"29056","2026-10-08","Final",TRUE,FALSE,"Barrie Colts","Kingston Frontenacs",4,7,4,7,0,0,TRUE,FALSE
+"29057","2026-10-08","Final OT",TRUE,FALSE,"Niagara IceDogs","Ottawa 67's",2,1,2,1,0,0,TRUE,FALSE
+"29058","2026-10-08","Final OT",TRUE,FALSE,"North Bay Battalion","Sudbury Wolves",4,3,4,3,0,0,TRUE,FALSE
+"29059","2026-10-09","Final",TRUE,FALSE,"Brampton Steelheads","Kingston Frontenacs",2,4,2,4,0,0,TRUE,FALSE
+"29060","2026-10-09","Final",TRUE,FALSE,"Guelph Storm","Owen Sound Attack",3,2,3,2,0,0,TRUE,FALSE
+"29061","2026-10-09","Final SO",TRUE,FALSE,"London Knights","Erie Otters",3,4,3,3,0,1,FALSE,TRUE
+"29062","2026-10-09","Final",TRUE,FALSE,"Sarnia Sting","Oshawa Generals",4,0,4,0,0,0,TRUE,FALSE
+"29063","2026-10-09","Final OT",TRUE,FALSE,"Soo Greyhounds","Kitchener Rangers",3,2,3,2,0,0,TRUE,FALSE
+"29064","2026-10-09","Final",TRUE,FALSE,"Sudbury Wolves","Peterborough Petes",7,3,7,3,0,0,TRUE,FALSE
+"29065","2026-10-10","Final",TRUE,FALSE,"Brantford Bulldogs","Kingston Frontenacs",2,4,2,4,0,0,TRUE,FALSE
+"29066","2026-10-10","Final",TRUE,FALSE,"Erie Otters","Ottawa 67's",0,3,0,3,0,0,TRUE,FALSE
+"29067","2026-10-10","Final",TRUE,FALSE,"Flint Firebirds","Sarnia Sting",6,4,6,4,0,0,TRUE,FALSE
+"29068","2026-10-10","Final",TRUE,FALSE,"Niagara IceDogs","Barrie Colts",4,2,4,2,0,0,TRUE,FALSE
+"29069","2026-10-10","Final",TRUE,FALSE,"Owen Sound Attack","Guelph Storm",5,10,5,10,0,0,TRUE,FALSE
+"29070","2026-10-10","Final",TRUE,FALSE,"Saginaw Spirit","Kitchener Rangers",4,2,4,2,0,0,TRUE,FALSE
+"29071","2026-10-10","Final OT",TRUE,FALSE,"Soo Greyhounds","Peterborough Petes",1,2,1,2,0,0,TRUE,FALSE
+"29072","2026-10-10","Final",TRUE,FALSE,"Windsor Spitfires","Oshawa Generals",1,5,1,5,0,0,TRUE,FALSE
+"29073","2026-10-11","Final SO",TRUE,FALSE,"Brantford Bulldogs","Ottawa 67's",3,4,3,3,0,1,FALSE,TRUE
+"29074","2026-10-11","Final",TRUE,FALSE,"Erie Otters","Barrie Colts",3,2,3,2,0,0,TRUE,FALSE
+"29075","2026-10-12","Final",TRUE,FALSE,"North Bay Battalion","Peterborough Petes",3,1,3,1,0,0,TRUE,FALSE
+"29076","2026-10-12","Final SO",TRUE,FALSE,"Windsor Spitfires","Saginaw Spirit",2,3,2,2,0,1,FALSE,TRUE
+"29077","2026-10-13","Final SO",TRUE,FALSE,"Kitchener Rangers","London Knights",3,4,3,3,0,1,FALSE,TRUE
+"29078","2026-10-14","Final",TRUE,FALSE,"Sarnia Sting","Guelph Storm",2,5,2,5,0,0,TRUE,FALSE
+"29079","2026-10-15","Final OT",TRUE,FALSE,"Niagara IceDogs","Soo Greyhounds",4,5,4,5,0,0,TRUE,FALSE
+"29080","2026-10-15","Final",TRUE,FALSE,"Peterborough Petes","North Bay Battalion",4,2,4,2,0,0,TRUE,FALSE
+"29081","2026-10-15","Final",TRUE,FALSE,"Windsor Spitfires","Sudbury Wolves",2,6,2,6,0,0,TRUE,FALSE
+"29082","2026-10-16","Final",TRUE,FALSE,"Brampton Steelheads","Ottawa 67's",2,6,2,6,0,0,TRUE,FALSE
+"29083","2026-10-16","Final",TRUE,FALSE,"Brantford Bulldogs","Barrie Colts",1,0,1,0,0,0,TRUE,FALSE
+"29084","2026-10-16","Final",TRUE,FALSE,"Erie Otters","Soo Greyhounds",1,3,1,3,0,0,TRUE,FALSE
+"29085","2026-10-16","Final OT",TRUE,FALSE,"Guelph Storm","Flint Firebirds",3,2,3,2,0,0,TRUE,FALSE
+"29086","2026-10-16","Final OT",TRUE,FALSE,"Kingston Frontenacs","Oshawa Generals",5,4,5,4,0,0,TRUE,FALSE
+"29087","2026-10-16","Final",TRUE,FALSE,"Kitchener Rangers","Niagara IceDogs",5,2,5,2,0,0,TRUE,FALSE
+"29088","2026-10-16","Final",TRUE,FALSE,"London Knights","Sudbury Wolves",4,1,4,1,0,0,TRUE,FALSE
+"29089","2026-10-16","Final",TRUE,FALSE,"Sarnia Sting","Saginaw Spirit",2,9,2,9,0,0,TRUE,FALSE
+"29090","2026-10-16","Final",TRUE,FALSE,"Windsor Spitfires","Owen Sound Attack",11,3,11,3,0,0,TRUE,FALSE
+"29091","2026-10-17","Final",TRUE,FALSE,"Brampton Steelheads","Kingston Frontenacs",5,2,5,2,0,0,TRUE,FALSE
+"29092","2026-10-17","Final",TRUE,FALSE,"Erie Otters","London Knights",1,7,1,7,0,0,TRUE,FALSE
+"29093","2026-10-17","Final",TRUE,FALSE,"Flint Firebirds","Owen Sound Attack",3,2,3,2,0,0,TRUE,FALSE
+"29094","2026-10-17","Final OT",TRUE,FALSE,"Ottawa 67's","Oshawa Generals",3,2,3,2,0,0,TRUE,FALSE
+"29095","2026-10-17","Final",TRUE,FALSE,"Peterborough Petes","Barrie Colts",6,0,6,0,0,0,TRUE,FALSE
+"29096","2026-10-17","Final",TRUE,FALSE,"Saginaw Spirit","Sarnia Sting",7,4,7,4,0,0,TRUE,FALSE
+"29097","2026-10-18","Final",TRUE,FALSE,"Brantford Bulldogs","Soo Greyhounds",5,2,5,2,0,0,TRUE,FALSE
+"29098","2026-10-18","Final",TRUE,FALSE,"Guelph Storm","Sudbury Wolves",5,2,5,2,0,0,TRUE,FALSE
+"29099","2026-10-18","Final",TRUE,FALSE,"North Bay Battalion","Niagara IceDogs",4,5,4,5,0,0,TRUE,FALSE
+"29100","2026-10-18","Final",TRUE,FALSE,"Oshawa Generals","Kitchener Rangers",1,2,1,2,0,0,TRUE,FALSE
+"29101","2026-10-18","Final",TRUE,FALSE,"Saginaw Spirit","Owen Sound Attack",1,2,1,2,0,0,TRUE,FALSE
+"29102","2026-10-21","Final",TRUE,FALSE,"Sarnia Sting","London Knights",6,4,6,4,0,0,TRUE,FALSE
+"29103","2026-10-22","Final OT",TRUE,FALSE,"Barrie Colts","Owen Sound Attack",4,3,4,3,0,0,TRUE,FALSE
+"29104","2026-10-22","Final",TRUE,FALSE,"North Bay Battalion","Sudbury Wolves",3,4,3,4,0,0,TRUE,FALSE
+"29105","2026-10-22","Final OT",TRUE,FALSE,"Peterborough Petes","Oshawa Generals",5,4,5,4,0,0,TRUE,FALSE
+"29106","2026-10-22","Final OT",TRUE,FALSE,"Soo Greyhounds","Windsor Spitfires",5,4,5,4,0,0,TRUE,FALSE
+"29107","2026-10-23","Final",TRUE,FALSE,"Brampton Steelheads","Brantford Bulldogs",2,8,2,8,0,0,TRUE,FALSE
+"29108","2026-10-23","Final",TRUE,FALSE,"Kingston Frontenacs","Ottawa 67's",4,2,4,2,0,0,TRUE,FALSE
+"29109","2026-10-23","Final",TRUE,FALSE,"Kitchener Rangers","Guelph Storm",6,3,6,3,0,0,TRUE,FALSE
+"29110","2026-10-23","Final",TRUE,FALSE,"London Knights","Sarnia Sting",6,4,6,4,0,0,TRUE,FALSE
+"29111","2026-10-23","Final OT",TRUE,FALSE,"Niagara IceDogs","Erie Otters",4,3,4,3,0,0,TRUE,FALSE
+"29112","2026-10-23","Final",TRUE,FALSE,"Oshawa Generals","Peterborough Petes",5,0,5,0,0,0,TRUE,FALSE
+"29113","2026-10-23","Final SO",TRUE,FALSE,"Saginaw Spirit","Flint Firebirds",3,4,3,3,0,1,FALSE,TRUE
+"29114","2026-10-23","Final",TRUE,FALSE,"Sudbury Wolves","North Bay Battalion",3,5,3,5,0,0,TRUE,FALSE
+"29115","2026-10-24","Final",TRUE,FALSE,"Barrie Colts","North Bay Battalion",4,7,4,7,0,0,TRUE,FALSE
+"29116","2026-10-24","Final",TRUE,FALSE,"Brantford Bulldogs","Brampton Steelheads",2,4,2,4,0,0,TRUE,FALSE
+"29117","2026-10-24","Final",TRUE,FALSE,"Erie Otters","Niagara IceDogs",5,2,5,2,0,0,TRUE,FALSE
+"29118","2026-10-24","Final",TRUE,FALSE,"Flint Firebirds","Saginaw Spirit",6,2,6,2,0,0,TRUE,FALSE
+"29119","2026-10-24","Final",TRUE,FALSE,"Owen Sound Attack","London Knights",5,1,5,1,0,0,TRUE,FALSE
+"29120","2026-10-24","Final",TRUE,FALSE,"Windsor Spitfires","Soo Greyhounds",4,3,4,3,0,0,TRUE,FALSE
+"29121","2026-10-25","Final",TRUE,FALSE,"Brampton Steelheads","Erie Otters",2,5,2,5,0,0,TRUE,FALSE
+"29122","2026-10-25","Final",TRUE,FALSE,"Flint Firebirds","Soo Greyhounds",1,0,1,0,0,0,TRUE,FALSE
+"29123","2026-10-25","Final OT",TRUE,FALSE,"Guelph Storm","Kitchener Rangers",6,5,6,5,0,0,TRUE,FALSE
+"29124","2026-10-25","Final SO",TRUE,FALSE,"Oshawa Generals","Sudbury Wolves",2,3,2,2,0,1,FALSE,TRUE
+"29125","2026-10-25","Final",TRUE,FALSE,"Ottawa 67's","Kingston Frontenacs",1,6,1,6,0,0,TRUE,FALSE
+"29126","2026-10-25","Final OT",TRUE,FALSE,"Owen Sound Attack","Barrie Colts",5,4,5,4,0,0,TRUE,FALSE
+"29127","2026-10-28","Final",TRUE,FALSE,"Ottawa 67's","Brampton Steelheads",5,2,5,2,0,0,TRUE,FALSE
+"29128","2026-10-28","Final",TRUE,FALSE,"Owen Sound Attack","Sarnia Sting",4,3,4,3,0,0,TRUE,FALSE
+"29129","2026-10-28","Final",TRUE,FALSE,"Soo Greyhounds","Saginaw Spirit",5,2,5,2,0,0,TRUE,FALSE
+"29130","2026-10-29","Final OT",TRUE,FALSE,"North Bay Battalion","London Knights",4,5,4,5,0,0,TRUE,FALSE
+"29131","2026-10-29","Final",TRUE,FALSE,"Peterborough Petes","Brantford Bulldogs",4,3,4,3,0,0,TRUE,FALSE
+"29132","2026-10-29","Final",TRUE,FALSE,"Windsor Spitfires","Erie Otters",3,0,3,0,0,0,TRUE,FALSE
+"29133","2026-10-30","Final",TRUE,FALSE,"Brampton Steelheads","Oshawa Generals",2,5,2,5,0,0,TRUE,FALSE
+"29134","2026-10-30","Final",TRUE,FALSE,"Kingston Frontenacs","Peterborough Petes",4,1,4,1,0,0,TRUE,FALSE
+"29135","2026-10-30","Final",TRUE,FALSE,"Kitchener Rangers","Flint Firebirds",3,0,3,0,0,0,TRUE,FALSE
+"29136","2026-10-30","Final",TRUE,FALSE,"Niagara IceDogs","North Bay Battalion",3,7,3,7,0,0,TRUE,FALSE
+"29137","2026-10-30","Final",TRUE,FALSE,"Ottawa 67's","Brantford Bulldogs",1,3,1,3,0,0,TRUE,FALSE
+"29138","2026-10-30","Final",TRUE,FALSE,"Saginaw Spirit","Barrie Colts",0,2,0,2,0,0,TRUE,FALSE
+"29139","2026-10-30","Final",TRUE,FALSE,"Sarnia Sting","Erie Otters",3,4,3,4,0,0,TRUE,FALSE
+"29140","2026-10-30","Final",TRUE,FALSE,"Soo Greyhounds","Guelph Storm",3,4,3,4,0,0,TRUE,FALSE
+"29141","2026-10-30","Final OT",TRUE,FALSE,"Sudbury Wolves","London Knights",4,3,4,3,0,0,TRUE,FALSE
+"29142","2026-10-31","Final OT",TRUE,FALSE,"Flint Firebirds","Barrie Colts",4,3,4,3,0,0,TRUE,FALSE
+"29143","2026-10-31","Final",TRUE,FALSE,"Owen Sound Attack","Windsor Spitfires",0,8,0,8,0,0,TRUE,FALSE
+"29144","2026-10-31","Final",TRUE,FALSE,"Saginaw Spirit","Guelph Storm",3,5,3,5,0,0,TRUE,FALSE
+"29145","2026-11-01","Final",TRUE,FALSE,"Brampton Steelheads","Windsor Spitfires",0,3,0,3,0,0,TRUE,FALSE
+"29146","2026-11-01","Final",TRUE,FALSE,"Kingston Frontenacs","Brantford Bulldogs",5,0,5,0,0,0,TRUE,FALSE
+"29147","2026-11-01","Final OT",TRUE,FALSE,"Niagara IceDogs","Peterborough Petes",3,4,3,4,0,0,TRUE,FALSE
+"29148","2026-11-01","Final",TRUE,FALSE,"North Bay Battalion","Val-d'Or Foreurs",2,4,2,4,0,0,TRUE,FALSE
+"29149","2026-11-01","Final OT",TRUE,FALSE,"Oshawa Generals","Ottawa 67's",6,7,6,7,0,0,TRUE,FALSE
+"29150","2026-11-01","Final",TRUE,FALSE,"Sarnia Sting","Flint Firebirds",1,5,1,5,0,0,TRUE,FALSE
+"29151","2026-11-01","Final OT",TRUE,FALSE,"Soo Greyhounds","London Knights",4,5,4,5,0,0,TRUE,FALSE
+"29152","2026-11-01","Final",TRUE,FALSE,"Sudbury Wolves","Rouyn-Noranda Huskies",3,4,3,4,0,0,TRUE,FALSE
+"29153","2026-11-03","Final",TRUE,FALSE,"Kitchener Rangers","Guelph Storm",2,3,2,3,0,0,TRUE,FALSE
+"29154","2026-11-04","Final",TRUE,FALSE,"Barrie Colts","Sudbury Wolves",1,3,1,3,0,0,TRUE,FALSE
+"29155","2026-11-04","Final",TRUE,FALSE,"Ottawa 67's","Kingston Frontenacs",1,3,1,3,0,0,TRUE,FALSE
+"29156","2026-11-04","Final",TRUE,FALSE,"Sarnia Sting","Owen Sound Attack",5,4,5,4,0,0,TRUE,FALSE
+"29157","2026-11-04","Final",TRUE,FALSE,"Soo Greyhounds","Erie Otters",0,7,0,7,0,0,TRUE,FALSE
+"29158","2026-11-05","Final",TRUE,FALSE,"Niagara IceDogs","Brampton Steelheads",3,6,3,6,0,0,TRUE,FALSE
+"29159","2026-11-05","Final",TRUE,FALSE,"Peterborough Petes","Windsor Spitfires",3,4,3,4,0,0,TRUE,FALSE
+"29160","2026-11-06","Final",TRUE,FALSE,"Flint Firebirds","Erie Otters",4,6,4,6,0,0,TRUE,FALSE
+"29161","2026-11-06","Final OT",TRUE,FALSE,"Guelph Storm","Owen Sound Attack",2,1,2,1,0,0,TRUE,FALSE
+"29162","2026-11-06","Final",TRUE,FALSE,"Kingston Frontenacs","Oshawa Generals",5,2,5,2,0,0,TRUE,FALSE
+"29163","2026-11-06","Final",TRUE,FALSE,"Kitchener Rangers","North Bay Battalion",5,2,5,2,0,0,TRUE,FALSE
+"29164","2026-11-06","Final",TRUE,FALSE,"London Knights","Saginaw Spirit",5,3,5,3,0,0,TRUE,FALSE
+"29165","2026-11-06","Final",TRUE,FALSE,"Ottawa 67's","Windsor Spitfires",4,5,4,5,0,0,TRUE,FALSE
+"29166","2026-11-06","Final",TRUE,FALSE,"Sarnia Sting","Brantford Bulldogs",2,3,2,3,0,0,TRUE,FALSE
+"29167","2026-11-06","Final",TRUE,FALSE,"Sudbury Wolves","Soo Greyhounds",3,7,3,7,0,0,TRUE,FALSE
+"29168","2026-11-07","Final",TRUE,FALSE,"Flint Firebirds","Brampton Steelheads",4,5,4,5,0,0,TRUE,FALSE
+"29169","2026-11-07","Final",TRUE,FALSE,"Guelph Storm","North Bay Battalion",10,6,10,6,0,0,TRUE,FALSE
+"29170","2026-11-07","Final OT",TRUE,FALSE,"Owen Sound Attack","Kitchener Rangers",2,3,2,3,0,0,TRUE,FALSE
+"29171","2026-11-07","Final",TRUE,FALSE,"Saginaw Spirit","Erie Otters",5,0,5,0,0,0,TRUE,FALSE
+"29172","2026-11-07","Final",TRUE,FALSE,"Soo Greyhounds","Barrie Colts",2,1,2,1,0,0,TRUE,FALSE
+"29173","2026-11-08","Final",TRUE,FALSE,"Kingston Frontenacs","Windsor Spitfires",3,4,3,4,0,0,TRUE,FALSE
+"29174","2026-11-08","Final",TRUE,FALSE,"Oshawa Generals","Brantford Bulldogs",2,5,2,5,0,0,TRUE,FALSE
+"29175","2026-11-08","Final OT",TRUE,FALSE,"Peterborough Petes","Niagara IceDogs",3,2,3,2,0,0,TRUE,FALSE
+"29176","2026-11-08","Final",TRUE,FALSE,"Saginaw Spirit","Brampton Steelheads",6,4,6,4,0,0,TRUE,FALSE
+"29177","2026-11-08","Final",TRUE,FALSE,"Sarnia Sting","London Knights",4,2,4,2,0,0,TRUE,FALSE
+"29178","2026-11-08","Final",TRUE,FALSE,"Sudbury Wolves","Barrie Colts",6,3,6,3,0,0,TRUE,FALSE
+"29179","2026-11-10","Final",TRUE,FALSE,"Sudbury Wolves","Soo Greyhounds",4,1,4,1,0,0,TRUE,FALSE
+"29180","2026-11-11","Final",TRUE,FALSE,"London Knights","Guelph Storm",2,5,2,5,0,0,TRUE,FALSE
+"29181","2026-11-11","Final OT",TRUE,FALSE,"Owen Sound Attack","Barrie Colts",3,4,3,4,0,0,TRUE,FALSE
+"29182","2026-11-12","Final",TRUE,FALSE,"Erie Otters","Kitchener Rangers",2,6,2,6,0,0,TRUE,FALSE
+"29183","2026-11-12","Final",TRUE,FALSE,"North Bay Battalion","Sarnia Sting",2,0,2,0,0,0,TRUE,FALSE
+"29184","2026-11-12","Final",TRUE,FALSE,"Peterborough Petes","Kingston Frontenacs",7,2,7,2,0,0,TRUE,FALSE
+"29185","2026-11-12","Final",TRUE,FALSE,"Saginaw Spirit","Ottawa 67's",2,4,2,4,0,0,TRUE,FALSE
+"29186","2026-11-12","Final",TRUE,FALSE,"Windsor Spitfires","Niagara IceDogs",4,1,4,1,0,0,TRUE,FALSE
+"29187","2026-11-13","Final",TRUE,FALSE,"Flint Firebirds","Ottawa 67's",4,0,4,0,0,0,TRUE,FALSE
+"29188","2026-11-13","Final",TRUE,FALSE,"Guelph Storm","Brantford Bulldogs",5,2,5,2,0,0,TRUE,FALSE
+"29189","2026-11-13","Final",TRUE,FALSE,"Kingston Frontenacs","Brampton Steelheads",1,4,1,4,0,0,TRUE,FALSE
+"29190","2026-11-13","Final",TRUE,FALSE,"Kitchener Rangers","Barrie Colts",4,2,4,2,0,0,TRUE,FALSE
+"29191","2026-11-13","Final",TRUE,FALSE,"Oshawa Generals","Peterborough Petes",4,6,4,6,0,0,TRUE,FALSE
+"29192","2026-11-13","Final SO",TRUE,TRUE,"Soo Greyhounds","London Knights",5,4,4,4,1,0,FALSE,TRUE
+"29193","2026-11-13","Final",TRUE,FALSE,"Sudbury Wolves","Sarnia Sting",4,2,4,2,0,0,TRUE,FALSE
+"29194","2026-11-14"," 7:30 PM",FALSE,FALSE,"Barrie Colts","Brampton Steelheads",0,0,0,0,0,0,TRUE,FALSE
+"29195","2026-11-14"," 7:00 PM",FALSE,FALSE,"Brantford Bulldogs","Oshawa Generals",0,0,0,0,0,0,TRUE,FALSE
+"29196","2026-11-14"," 6:00 PM",FALSE,FALSE,"Erie Otters","Niagara IceDogs",0,0,0,0,0,0,TRUE,FALSE
+"29197","2026-11-14"," 7:00 PM",FALSE,FALSE,"Flint Firebirds","Windsor Spitfires",0,0,0,0,0,0,TRUE,FALSE
+"29198","2026-11-14"," 7:00 PM",FALSE,FALSE,"Owen Sound Attack","Guelph Storm",0,0,0,0,0,0,TRUE,FALSE
+"29199","2026-11-14"," 7:05 PM",FALSE,FALSE,"Saginaw Spirit","London Knights",0,0,0,0,0,0,TRUE,FALSE

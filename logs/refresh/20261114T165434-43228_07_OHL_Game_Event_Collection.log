@@ -1,0 +1,200 @@
+
+====================================
+ICEINDEX — ALL GAME EVENTS
+Development: v0.10.0
+====================================
+
+Season: 2026-27 
+Recent refresh window: 7 days
+Suspicious cache threshold: 10 events
+
+Discovered games: 683 
+Games dated today or earlier: 207 
+Games to attempt: 32 
+
+Refresh reasons:
+
+missing_cache   recent_game 
+            6            26 
+
+[1/32] Game 29169 (recent_game)
+Existing events: 179 
+New events: 179 
+SAVED: 179 events
+
+[2/32] Game 29168 (recent_game)
+Existing events: 150 
+New events: 150 
+SAVED: 150 events
+
+[3/32] Game 29170 (recent_game)
+Existing events: 135 
+New events: 135 
+SAVED: 135 events
+
+[4/32] Game 29171 (recent_game)
+Existing events: 126 
+New events: 126 
+SAVED: 126 events
+
+[5/32] Game 29172 (recent_game)
+Existing events: 140 
+New events: 140 
+SAVED: 140 events
+
+[6/32] Game 29173 (recent_game)
+Existing events: 137 
+New events: 137 
+SAVED: 137 events
+
+[7/32] Game 29175 (recent_game)
+Existing events: 154 
+New events: 154 
+SAVED: 154 events
+
+[8/32] Game 29177 (recent_game)
+Existing events: 154 
+New events: 154 
+SAVED: 154 events
+
+[9/32] Game 29178 (recent_game)
+Existing events: 133 
+New events: 133 
+SAVED: 133 events
+
+[10/32] Game 29176 (recent_game)
+Existing events: 135 
+New events: 135 
+SAVED: 135 events
+
+[11/32] Game 29174 (recent_game)
+Existing events: 140 
+New events: 140 
+SAVED: 140 events
+
+[12/32] Game 29179 (recent_game)
+Existing events: 152 
+New events: 152 
+SAVED: 152 events
+
+[13/32] Game 29180 (recent_game)
+Existing events: 143 
+New events: 143 
+SAVED: 143 events
+
+[14/32] Game 29181 (recent_game)
+Existing events: 131 
+New events: 131 
+SAVED: 131 events
+
+[15/32] Game 29182 (recent_game)
+Existing events: 133 
+New events: 133 
+SAVED: 133 events
+
+[16/32] Game 29183 (recent_game)
+Existing events: 164 
+New events: 164 
+SAVED: 164 events
+
+[17/32] Game 29184 (recent_game)
+Existing events: 163 
+New events: 163 
+SAVED: 163 events
+
+[18/32] Game 29185 (recent_game)
+Existing events: 142 
+New events: 142 
+SAVED: 142 events
+
+[19/32] Game 29186 (recent_game)
+Existing events: 125 
+New events: 125 
+SAVED: 125 events
+
+[20/32] Game 29187 (recent_game)
+Existing events: 124 
+New events: 124 
+SAVED: 124 events
+
+[21/32] Game 29190 (recent_game)
+Existing events: 145 
+New events: 145 
+SAVED: 145 events
+
+[22/32] Game 29189 (recent_game)
+Existing events: 137 
+New events: 137 
+SAVED: 137 events
+
+[23/32] Game 29191 (recent_game)
+Existing events: 177 
+New events: 177 
+SAVED: 177 events
+
+[24/32] Game 29193 (recent_game)
+Existing events: 143 
+New events: 143 
+SAVED: 143 events
+
+[25/32] Game 29188 (recent_game)
+Existing events: 132 
+New events: 132 
+SAVED: 132 events
+
+[26/32] Game 29192 (recent_game)
+Existing events: 157 
+New events: 157 
+SAVED: 157 events
+
+[27/32] Game 29196 (missing_cache)
+Existing events: 0 
+No usable event data returned.
+
+[28/32] Game 29195 (missing_cache)
+Existing events: 0 
+No usable event data returned.
+
+[29/32] Game 29197 (missing_cache)
+Existing events: 0 
+No usable event data returned.
+
+[30/32] Game 29198 (missing_cache)
+Existing events: 0 
+No usable event data returned.
+
+[31/32] Game 29199 (missing_cache)
+Existing events: 0 
+No usable event data returned.
+
+[32/32] Game 29194 (missing_cache)
+Existing events: 0 
+No usable event data returned.
+
+====================================
+ICEINDEX COLLECTION COMPLETE
+====================================
+Discovered games: 683 
+Eligible games: 207 
+Games attempted: 32 
+
+THIS RUN
+New downloads: 0 
+Refreshed caches: 26 
+Protected caches: 0 
+Empty responses: 6 
+Failures: 0 
+
+CACHE INVENTORY
+Cached game files: 201 
+
+usable 
+   201 
+
+FILES
+data/games/2026-27/schedule.csv 
+data/games/2026-27/manifest.csv 
+data/games/2026-27/event_columns.csv 
+data/games/2026-27/events 
+
+ICEINDEX v0.10.0 EVENT COLLECTION FINISHED

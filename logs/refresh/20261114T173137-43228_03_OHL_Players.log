@@ -1,0 +1,65 @@
+
+==========================================
+ICEINDEX: OHL PLAYER COLLECTION
+==========================================
+Current regular season: 88 
+Total rosters: 1278 
+Cached: 1258 
+To collect: 20 
+Historical failures waiting for retry: 14 
+[1/20] Season 88 | Team 7
+  Players: 28 
+[2/20] Season 88 | Team 18
+  Players: 28 
+[3/20] Season 88 | Team 1
+  Players: 25 
+[4/20] Season 88 | Team 8
+  Players: 26 
+[5/20] Season 88 | Team 13
+  Players: 29 
+[6/20] Season 88 | Team 9
+  Players: 27 
+[7/20] Season 88 | Team 2
+  Players: 25 
+[8/20] Season 88 | Team 10
+  Players: 26 
+[9/20] Season 88 | Team 14
+  Players: 24 
+[10/20] Season 88 | Team 20
+  Players: 26 
+  Progress saved.
+[11/20] Season 88 | Team 19
+  Players: 26 
+[12/20] Season 88 | Team 4
+  Players: 27 
+[13/20] Season 88 | Team 5
+  Players: 26 
+[14/20] Season 88 | Team 11
+  Players: 26 
+[15/20] Season 88 | Team 6
+  Players: 25 
+[16/20] Season 88 | Team 34
+  Players: 26 
+[17/20] Season 88 | Team 15
+  Players: 27 
+[18/20] Season 88 | Team 16
+  Players: 27 
+[19/20] Season 88 | Team 12
+  Players: 28 
+[20/20] Season 88 | Team 17
+  Players: 25 
+  Progress saved.
+
+==========================================
+ICEINDEX PLAYER COLLECTION SUMMARY
+==========================================
+Player records: 38870 
+Unique players: 8709 
+Rosters updated: 20 
+New failures: 0 
+Tracked failures: 14 
+Output: data/ohl/historical/players.csv 
+Completion cache: data/ohl/metadata/players_completed.csv 
+Failure report: data/ohl/metadata/players_failed.csv 
+==========================================
+IceIndex player collection complete.

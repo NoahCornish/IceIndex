@@ -1,0 +1,492 @@
+/* IceIndex OHL Game Centre — scoped to .igc; inherits both site themes */
+.igc{min-width:0;max-width:100%}.igc .igc-panel{margin:20px 0;padding:22px;min-width:0}.igc-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.igc-kpis>div{border:1px solid var(--border);border-radius:13px;background:var(--surface);padding:17px;min-width:0}.igc-kpis small{display:block;color:var(--muted);font-size:12px}.igc-kpis strong{display:block;font-size:26px;color:var(--text);margin-top:5px}.igc-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:12px;align-items:end}.igc-filters label,.igc-shot-controls label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:12px;color:var(--text-soft);min-width:0}.igc-filters .select,.igc-shot-controls .select{width:100%;min-width:0}.igc-list-head,.igc-section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 14px}.igc-list-head h2,.igc-section-title h2{margin:0}.igc-list-head span,.igc-section-title span{font-size:12px;color:var(--muted)}.igc-games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.igc-game{min-width:0;width:100%;display:block;text-align:left;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:15px;cursor:pointer}.igc-game:hover,.igc-game:focus-visible{border-color:var(--accent);background:var(--surface-hover)}.igc-game-date,.igc-game-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted)}.igc-game-teams{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center;font-size:14px;font-weight:650;margin:13px 0}.igc-game-teams span{overflow-wrap:anywhere}.igc-game-teams strong{font-size:19px;color:var(--text)}.igc-status{text-transform:uppercase;letter-spacing:.06em;font-size:10px;font-weight:800}.igc-final{color:var(--green)}.igc-live{color:var(--orange)}.igc-upcoming{color:var(--accent)}.igc-pagination{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}.igc-pagination span{color:var(--muted);font-size:12px}.igc-note{font-size:12px;line-height:1.65;color:var(--muted);margin:14px 0 0}.igc-matchup{display:flex;align-items:center;justify-content:space-between;gap:20px}.igc-matchup h1{font-size:clamp(21px,2.8vw,31px);margin:10px 0}.igc-matchup h1 span{font-size:.65em;color:var(--muted);font-weight:500}.igc-matchup p{margin:0}.igc-final-score{text-align:center;white-space:nowrap}.igc-final-score span{font-size:clamp(26px,4vw,44px);font-weight:850;display:block}.igc-final-score small{text-transform:uppercase;color:var(--muted)}.igc-detail-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}.igc-table-scroll{overflow:auto;max-width:100%}.igc-table{width:100%;border-collapse:collapse;min-width:480px;font-size:12px}.igc-table th,.igc-table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}.igc-table th{color:var(--muted);font-size:11px;text-transform:capitalize}.igc-empty-note{padding:22px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;color:var(--muted);font-size:13px;line-height:1.7;overflow-wrap:anywhere}.igc-raw{margin-top:15px}.igc-raw summary{cursor:pointer;color:var(--accent);font-weight:650}.igc-shot-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.igc-rink-wrap{width:100%;max-width:360px;margin:0 auto;min-width:0}.igc-rink{width:100%;height:auto;display:block;overflow:hidden}.igc-legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:11px}.igc-shot-dot,.igc-goal-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#ed555f;margin-right:4px}.igc-goal-dot{background:#ed555f}.igc .btn{max-width:100%}@media(max-width:1150px){.igc-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.igc-detail-grid{grid-template-columns:1fr}}@media(max-width:680px){.igc-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.igc-games{grid-template-columns:1fr}.igc-filters{grid-template-columns:1fr}.igc .igc-panel{padding:14px;margin:14px 0}.igc-matchup{align-items:flex-start;flex-direction:column}.igc-final-score{text-align:left}.igc-shot-controls{grid-template-columns:1fr}.igc-list-head,.igc-section-title{align-items:flex-start;flex-direction:column}.igc-pagination{gap:8px}.igc-game{padding:13px}}
+
+/* Box-score upgrade */
+.igc-scoreboard{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:18px;margin-top:16px}.igc-score-team{display:flex;flex-direction:column;gap:5px;min-width:0}.igc-score-team:last-child{text-align:right}.igc-score-team small,.igc-score-middle small{color:var(--muted);font-size:11px}.igc-score-team strong{font-size:clamp(15px,2.2vw,23px);overflow-wrap:anywhere}.igc-score-team span{font-size:clamp(34px,5vw,54px);font-weight:850;line-height:1.1}.igc-score-middle{text-align:center;display:flex;flex-direction:column;gap:5px}.igc-score-middle strong{color:var(--accent);font-size:12px;letter-spacing:.08em}.igc-summary-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.igc-summary-metrics>div{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:13px}.igc-summary-metrics small{display:block;color:var(--muted);font-size:11px}.igc-summary-metrics strong{display:block;color:var(--text);font-size:24px;margin-top:5px}.igc-goals{display:flex;flex-direction:column;gap:10px}.igc-goal{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);padding:12px}.igc-goal-time{min-width:52px;display:flex;flex-direction:column;gap:4px}.igc-goal-time strong{color:var(--accent)}.igc-goal-time span,.igc-goal-main small,.igc-goal-main span{font-size:11px;color:var(--muted)}.igc-goal-main{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px}.igc-goal-main strong{font-size:14px}.igc-goal-marker{font-size:10px;color:var(--accent);font-weight:800}.igc-team-heading{margin:22px 0 10px;font-size:16px}.igc-box-table th:not(:first-child),.igc-box-table td:not(:first-child){text-align:right}.igc-box-table tfoot{background:var(--surface-2)}.igc-raw{border-top:1px solid var(--border);padding:14px 0}.igc-raw summary{font-size:13px}@media(max-width:680px){.igc-summary-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.igc-scoreboard{gap:8px}.igc-score-middle strong{font-size:10px}.igc-score-team strong{font-size:13px}.igc-goal{gap:8px}.igc-goal-marker{display:none}}
+
+/* Premium Game Centre enhancement — scoped to .igc */
+.igc .page-heading{padding:22px 0 8px}.igc .page-heading h1{font-size:clamp(32px,4.2vw,58px);letter-spacing:-.045em;line-height:1.05}.igc .page-heading .eyebrow{letter-spacing:.2em;font-size:11px;font-weight:850}.igc .page-heading p{max-width:720px;line-height:1.6}
+.igc .igc-kpis>div{border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.06)}.igc .igc-kpis strong{font-size:clamp(23px,3vw,36px);letter-spacing:-.04em}
+.igc .igc-game{border-radius:16px;padding:18px;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;position:relative;overflow:hidden}.igc .igc-game:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.14)}.igc .igc-game-teams{gap:12px 14px}.igc .igc-card-team{display:flex;align-items:center;gap:12px;min-width:0}.igc .igc-card-team>span:last-child{min-width:0;overflow-wrap:anywhere}.igc .igc-team-logo{width:38px;height:38px;object-fit:contain;flex:0 0 38px}.igc .igc-logo-fallback{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:50%;font-size:10px;color:var(--muted);font-weight:800}.igc .igc-game-teams strong{font-size:24px;font-variant-numeric:tabular-nums}.igc .igc-game-foot{padding-top:10px;border-top:1px solid var(--border)}
+.igc .igc-scoreboard{min-height:190px;gap:14px}.igc .igc-score-team{align-items:flex-start}.igc .igc-score-team:last-child{align-items:flex-end}.igc .igc-hero-logo{width:84px;height:84px;object-fit:contain;margin:5px 0}.igc .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(40px,5.5vw,72px)}.igc .igc-score-middle{padding:14px;border-radius:14px;background:var(--surface-2);min-width:86px}
+.igc .igc-goal{padding:15px;border-radius:14px}.igc .igc-goal-main{flex-direction:row;align-items:center;gap:12px}.igc .igc-goal-text{display:flex;flex-direction:column;gap:4px;min-width:0}.igc .igc-goal-text small{display:flex;align-items:center;gap:5px}.igc .igc-mini-logo{width:19px;height:19px;object-fit:contain}.igc .igc-goal-photo{width:50px;height:50px;flex:0 0 50px}.igc .igc-goal-text strong{font-size:15px}
+.igc .igc-player-cell{display:flex;align-items:center;gap:10px;font-weight:650}.igc .igc-player-photo{width:34px;height:34px;flex:0 0 34px}.igc .igc-photo-frame{display:inline-flex;position:relative;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;background:var(--surface-2);border:1px solid var(--border)}.igc .igc-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}.igc .igc-photo-initials{font-size:10px;font-weight:850;color:var(--muted)}.igc .igc-photo-fallback{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);font-size:10px;color:var(--muted)}.igc .igc-team-heading{display:flex;align-items:center;gap:10px;font-size:19px;margin-top:26px}.igc .igc-heading-logo{width:36px;height:36px;object-fit:contain}.igc .igc-box-table tbody tr:hover{background:var(--surface-2)}.igc .igc-box-table td{padding-top:7px;padding-bottom:7px}
+.igc .igc-filters{grid-template-columns:repeat(4,minmax(0,1fr)) auto auto}.igc .igc-filters button{white-space:nowrap}
+@media(max-width:1100px){.igc .igc-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.igc .igc-filters button{width:100%}}
+@media(max-width:680px){.igc .igc-filters{grid-template-columns:1fr 1fr}.igc .igc-filters label{grid-column:span 2}.igc .igc-hero-logo{width:55px;height:55px}.igc .igc-score-team strong{font-size:12px}.igc .igc-scoreboard{min-height:160px}.igc .igc-card-team{gap:8px}.igc .igc-team-logo{width:32px;height:32px;flex-basis:32px}.igc .igc-game-teams strong{font-size:20px}.igc .igc-goal-photo{width:40px;height:40px;flex-basis:40px}}
+
+/* Clean, phone-first Game Centre */
+.igc .page-heading{padding:6px 0 4px}.igc .page-heading h1{font-size:clamp(27px,4vw,44px)}
+.igc .page-heading p{font-size:13px;margin:6px 0 10px}
+.igc .igc-panel{margin:12px 0;padding:18px}
+.igc .igc-section-title{margin:4px 0 14px}
+.igc .igc-section-title h2{font-size:clamp(17px,2.2vw,22px)}
+.igc .igc-scoreboard{min-height:0;margin-top:8px}
+.igc .igc-raw{margin:4px 0;padding:10px 0}
+.igc .igc-box-table{min-width:0;width:100%}
+.igc .igc-box-table th,.igc .igc-box-table td{padding:9px 7px}
+.igc .igc-box-table td:first-child,.igc .igc-box-table th:first-child{white-space:normal}
+.igc .igc-detail-grid{gap:12px}
+.igc .igc-note{font-size:11px}
+@media(max-width:680px){
+ .igc .igc-panel{padding:13px;margin:10px 0;border-radius:14px}
+ .igc .igc-optional-stat{display:none}
+ .igc .igc-box-table{font-size:11px}
+ .igc .igc-box-table th,.igc .igc-box-table td{padding:8px 5px}
+ .igc .igc-player-photo{width:28px;height:28px;flex-basis:28px}
+ .igc .igc-player-cell{gap:6px;font-size:11px}
+ .igc .igc-score-team span:not(.igc-logo-fallback){font-size:38px}
+ .igc .igc-hero-logo{width:46px;height:46px}
+ .igc .igc-score-middle{min-width:56px;padding:8px 5px}
+ .igc .igc-score-team strong{font-size:12px}
+ .igc .igc-goal{padding:10px}
+ .igc .igc-goal-photo{width:34px;height:34px;flex-basis:34px}
+ .igc .igc-shot-controls{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+ .igc .igc-shot-controls label{font-size:10px}
+ .igc .igc-shot-controls .select{font-size:11px;padding:8px 4px}
+ .igc .igc-filters{gap:8px}
+}
+
+/* Games with published scores but no verified final status */
+.igc-unconfirmed{color:var(--orange,#eab45c)}
+
+/* Compact game-level assists (individual goal attribution not available in shot CSV) */
+.igc-assist-summary{margin-top:16px;padding:14px;border:1px solid var(--border,rgba(160,160,160,.22));border-radius:12px}.igc-assist-summary h3{margin:0 0 5px;font-size:1rem}.igc-assist-summary p{margin:0 0 10px;font-size:.78rem;opacity:.7;line-height:1.45}.igc-assist-team{margin-top:9px;font-size:.83rem;line-height:1.6}.igc-assist-team strong{display:flex;align-items:center;gap:6px}.igc-assist-team>div{margin-left:24px;opacity:.86}.igc-assist-team .igc-mini-logo{width:18px;height:18px;object-fit:contain}
+
+/* IceIndex Game Centre — compact editorial box score, November 2026 */
+.igc.igc-boxscore{--igc-tight:10px}
+.igc.igc-boxscore>.igc-panel{padding:18px 22px;margin:12px 0 18px}
+.igc.igc-boxscore>.igc-panel .eyebrow{font-size:10px;letter-spacing:.14em;opacity:.72}
+.igc.igc-boxscore .igc-scoreboard{min-height:0;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px}
+.igc.igc-boxscore .igc-hero-logo{width:60px;height:60px;margin:3px 0}
+.igc.igc-boxscore .igc-score-team{gap:3px}
+.igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(38px,4.6vw,58px)}
+.igc.igc-boxscore .igc-score-middle{padding:9px 12px;background:transparent;min-width:70px}
+.igc.igc-boxscore .igc-score-middle strong{font-size:11px}
+.igc.igc-boxscore .igc-detail-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+.igc.igc-boxscore .igc-detail-grid>.igc-panel{padding:18px;margin:0;min-width:0}
+.igc.igc-boxscore .igc-section-title{margin:0 0 14px;flex-direction:row;align-items:center}
+.igc.igc-boxscore .igc-section-title h2{font-size:20px;letter-spacing:-.025em}
+.igc.igc-boxscore .igc-goals{gap:0}
+.igc.igc-boxscore .igc-goal{background:transparent;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:11px 2px;gap:10px}
+.igc.igc-boxscore .igc-goal:last-child{border-bottom:0}
+.igc.igc-boxscore .igc-goal-time{min-width:39px;gap:2px}
+.igc.igc-boxscore .igc-goal-time strong{font-size:12px}
+.igc.igc-boxscore .igc-goal-time span{font-size:11px}
+.igc.igc-boxscore .igc-goal-photo{width:38px;height:38px;flex-basis:38px}
+.igc.igc-boxscore .igc-goal-main{gap:10px}
+.igc.igc-boxscore .igc-goal-text{gap:2px}
+.igc.igc-boxscore .igc-goal-text strong{font-size:14px;line-height:1.2}
+.igc.igc-boxscore .igc-goal-text small{font-size:10px}
+.igc.igc-boxscore .igc-mini-logo{width:15px;height:15px}
+.igc.igc-boxscore .igc-assist-summary{margin-top:10px;padding:0;border:0;border-top:1px solid var(--border);border-radius:0}
+.igc.igc-boxscore .igc-assist-summary summary{padding:12px 2px;cursor:pointer;color:var(--text-soft);font-size:12px;font-weight:700}
+.igc.igc-boxscore .igc-assist-content{padding:0 4px 12px}
+.igc.igc-boxscore .igc-assist-team{font-size:12px;margin:9px 0}
+.igc.igc-boxscore .igc-shot-controls{gap:7px;margin:0 0 12px}
+.igc.igc-boxscore .igc-shot-controls label{font-size:10px}
+.igc.igc-boxscore .igc-shot-controls .select{font-size:12px;padding:8px 6px}
+.igc.igc-boxscore .igc-rink-wrap{max-width:310px}
+.igc.igc-boxscore .igc-legend{justify-content:center;font-size:11px;margin-top:5px}
+.igc.igc-boxscore .igc-rink{max-height:440px}
+@media(max-width:900px){.igc.igc-boxscore .igc-detail-grid{grid-template-columns:1fr}.igc.igc-boxscore .igc-rink-wrap{max-width:320px}}
+@media(max-width:680px){
+ .igc.igc-boxscore>.igc-panel{padding:14px;margin:10px 0 12px}
+ .igc.igc-boxscore .igc-detail-grid>.igc-panel{padding:14px}
+ .igc.igc-boxscore .igc-hero-logo{width:46px;height:46px}
+ .igc.igc-boxscore .igc-score-team strong{font-size:12px}
+ .igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:42px}
+ .igc.igc-boxscore .igc-score-middle{padding:6px 3px;min-width:62px}
+ .igc.igc-boxscore .igc-section-title h2{font-size:19px}
+ .igc.igc-boxscore .igc-goal{padding:10px 0}
+ .igc.igc-boxscore .igc-goal-photo{width:38px;height:38px;flex-basis:38px}
+ .igc.igc-boxscore .igc-rink-wrap{max-width:290px}
+}
+
+/* Game Centre: compact goal-strength chips and full-rink map */
+.igc-strength{display:inline-block;margin-left:7px;padding:2px 5px;border:1px solid var(--border);border-radius:5px;color:var(--accent);font-size:10px;vertical-align:middle}
+.igc.igc-boxscore .igc-rink{max-height:none}
+.igc.igc-boxscore .igc-rink-wrap{max-width:350px}
+@media(max-width:680px){.igc.igc-boxscore .igc-rink-wrap{max-width:300px}}
+
+/* Enhanced Game Centre: data cards and shot detail explorer */
+.igc-metadata .igc-fact-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.igc-fact{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:13px;min-width:0}.igc-fact small{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.igc-fact strong{display:block;font-size:14px;overflow-wrap:anywhere}.igc-period-table td small{display:block;color:var(--muted);font-size:10px}.igc-onice{font-size:11px;color:var(--muted)}.igc-interactive-shot{cursor:pointer;outline:none}.igc-interactive-shot:hover,.igc-interactive-shot:focus{stroke:#fff;stroke-width:3;filter:drop-shadow(0 0 5px #fff)}.igc-shot-modal[hidden]{display:none!important}.igc-shot-modal{position:fixed;inset:0;background:rgba(2,9,18,.83);z-index:10000;display:flex;align-items:center;justify-content:center;padding:18px}.igc-modal-box{position:relative;width:min(520px,100%);max-height:88vh;overflow:auto;border:1px solid var(--border-light);border-radius:18px;background:var(--surface);color:var(--text);padding:23px;box-shadow:0 22px 80px #0008}.igc-modal-box h2{font-size:20px;margin:0 0 17px}.igc-modal-close{position:absolute;right:14px;top:12px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:9px;font-size:24px;width:38px;height:38px;cursor:pointer}.igc-shot-detail-top{display:flex;align-items:center;gap:13px;margin:0 0 16px}.igc-shot-detail-top strong,.igc-shot-detail-top span{display:block}.igc-shot-detail-top span{color:var(--muted);font-size:12px}.igc-shot-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0}.igc-shot-fields>div{padding:9px 11px;background:var(--surface-2);border-radius:9px;min-width:0}.igc-shot-fields dt{font-size:10px;color:var(--muted)}.igc-shot-fields dd{margin:3px 0 0;font-size:12px;font-weight:650;overflow-wrap:anywhere}@media(max-width:760px){.igc-metadata .igc-fact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.igc-shot-fields{grid-template-columns:1fr 1fr}.igc-modal-box{padding:17px}}
+
+/* Game Centre accuracy and usability improvements */
+.igc .igc-panel{margin:14px 0;padding:20px}
+.igc .igc-metadata .igc-fact-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.igc .igc-goalie-unverified{border:1px solid var(--border);background:var(--surface-2);padding:18px;border-radius:12px;color:var(--text-soft);line-height:1.6}
+.igc .igc-goalie-unverified strong{color:var(--text)}
+.igc .igc-goalie-unverified p{margin:8px 0 0;color:var(--muted);font-size:13px}
+.igc .igc-goalie-names{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.igc .igc-goalie-names span{border:1px solid var(--border);padding:5px 10px;border-radius:999px;font-size:12px}
+.igc .igc-interactive-shot{cursor:pointer;transition:stroke-width .15s,opacity .15s}
+.igc .igc-interactive-shot:hover,.igc .igc-interactive-shot:focus{stroke:#fff;stroke-width:3.5;outline:none}
+.igc .igc-shot-fields>div{padding:8px 0}
+.igc .igc-rink-wrap{max-width:320px}
+.igc .igc-goal{padding:13px 0}
+@media(max-width:700px){.igc .igc-metadata .igc-fact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.igc .igc-panel{padding:15px}.igc .igc-rink-wrap{max-width:300px}}
+
+/* IceIndex v0.10.0 official Game Centre enhancements */
+.igc-boxscore .igc-panel{border-radius:18px}.igc-boxscore .igc-section-title{gap:12px;flex-wrap:wrap}
+.igc-player-cell{display:inline-flex;align-items:center;gap:9px;min-width:150px}.igc-mini-portrait{display:inline-flex;width:30px;height:30px;flex:0 0 30px;border-radius:50%;overflow:hidden;background:#152b45;align-items:center;justify-content:center;font-size:10px}.igc-mini-portrait img{width:100%;height:100%;object-fit:cover}.igc-stars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.igc-star{display:flex;align-items:center;flex-direction:column;gap:9px;padding:16px 8px;border:1px solid rgba(135,175,210,.22);border-radius:14px;text-align:center}.igc-star-rank{font-size:12px;letter-spacing:.06em;font-weight:800;color:#7ac7f7}.igc-star-photo{width:72px;height:72px;border-radius:50%;overflow:hidden;background:#152b45;display:flex;align-items:center;justify-content:center}.igc-star-photo img{width:100%;height:100%;object-fit:cover}.igc-table td,.igc-table th{white-space:nowrap}.igc-table td:first-child,.igc-table th:first-child{white-space:normal}@media(max-width:620px){.igc-stars{gap:6px}.igc-star{padding:10px 5px;font-size:11px}.igc-star-photo{width:48px;height:48px}.igc-boxscore .igc-panel{border-radius:12px}}
+/* IceIndex OHL Game Centre — scoped to .igc; inherits both site themes */
+.igc{min-width:0;max-width:100%}.igc .igc-panel{margin:20px 0;padding:22px;min-width:0}.igc-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.igc-kpis>div{border:1px solid var(--border);border-radius:13px;background:var(--surface);padding:17px;min-width:0}.igc-kpis small{display:block;color:var(--muted);font-size:12px}.igc-kpis strong{display:block;font-size:26px;color:var(--text);margin-top:5px}.igc-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:12px;align-items:end}.igc-filters label,.igc-shot-controls label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:12px;color:var(--text-soft);min-width:0}.igc-filters .select,.igc-shot-controls .select{width:100%;min-width:0}.igc-list-head,.igc-section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 14px}.igc-list-head h2,.igc-section-title h2{margin:0}.igc-list-head span,.igc-section-title span{font-size:12px;color:var(--muted)}.igc-games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.igc-game{min-width:0;width:100%;display:block;text-align:left;background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:15px;cursor:pointer}.igc-game:hover,.igc-game:focus-visible{border-color:var(--accent);background:var(--surface-hover)}.igc-game-date,.igc-game-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:var(--muted)}.igc-game-teams{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center;font-size:14px;font-weight:650;margin:13px 0}.igc-game-teams span{overflow-wrap:anywhere}.igc-game-teams strong{font-size:19px;color:var(--text)}.igc-status{text-transform:uppercase;letter-spacing:.06em;font-size:10px;font-weight:800}.igc-final{color:var(--green)}.igc-live{color:var(--orange)}.igc-upcoming{color:var(--accent)}.igc-pagination{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:20px}.igc-pagination span{color:var(--muted);font-size:12px}.igc-note{font-size:12px;line-height:1.65;color:var(--muted);margin:14px 0 0}.igc-matchup{display:flex;align-items:center;justify-content:space-between;gap:20px}.igc-matchup h1{font-size:clamp(21px,2.8vw,31px);margin:10px 0}.igc-matchup h1 span{font-size:.65em;color:var(--muted);font-weight:500}.igc-matchup p{margin:0}.igc-final-score{text-align:center;white-space:nowrap}.igc-final-score span{font-size:clamp(26px,4vw,44px);font-weight:850;display:block}.igc-final-score small{text-transform:uppercase;color:var(--muted)}.igc-detail-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;align-items:start}.igc-table-scroll{overflow:auto;max-width:100%}.igc-table{width:100%;border-collapse:collapse;min-width:480px;font-size:12px}.igc-table th,.igc-table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}.igc-table th{color:var(--muted);font-size:11px;text-transform:capitalize}.igc-empty-note{padding:22px;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;color:var(--muted);font-size:13px;line-height:1.7;overflow-wrap:anywhere}.igc-raw{margin-top:15px}.igc-raw summary{cursor:pointer;color:var(--accent);font-weight:650}.igc-shot-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.igc-rink-wrap{width:100%;max-width:360px;margin:0 auto;min-width:0}.igc-rink{width:100%;height:auto;display:block;overflow:hidden}.igc-legend{display:flex;gap:16px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:11px}.igc-shot-dot,.igc-goal-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#ed555f;margin-right:4px}.igc-goal-dot{background:#ed555f}.igc .btn{max-width:100%}@media(max-width:1150px){.igc-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.igc-detail-grid{grid-template-columns:1fr}}@media(max-width:680px){.igc-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.igc-games{grid-template-columns:1fr}.igc-filters{grid-template-columns:1fr}.igc .igc-panel{padding:14px;margin:14px 0}.igc-matchup{align-items:flex-start;flex-direction:column}.igc-final-score{text-align:left}.igc-shot-controls{grid-template-columns:1fr}.igc-list-head,.igc-section-title{align-items:flex-start;flex-direction:column}.igc-pagination{gap:8px}.igc-game{padding:13px}}
+
+/* Box-score upgrade */
+.igc-scoreboard{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:18px;margin-top:16px}.igc-score-team{display:flex;flex-direction:column;gap:5px;min-width:0}.igc-score-team:last-child{text-align:right}.igc-score-team small,.igc-score-middle small{color:var(--muted);font-size:11px}.igc-score-team strong{font-size:clamp(15px,2.2vw,23px);overflow-wrap:anywhere}.igc-score-team span{font-size:clamp(34px,5vw,54px);font-weight:850;line-height:1.1}.igc-score-middle{text-align:center;display:flex;flex-direction:column;gap:5px}.igc-score-middle strong{color:var(--accent);font-size:12px;letter-spacing:.08em}.igc-summary-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.igc-summary-metrics>div{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:13px}.igc-summary-metrics small{display:block;color:var(--muted);font-size:11px}.igc-summary-metrics strong{display:block;color:var(--text);font-size:24px;margin-top:5px}.igc-goals{display:flex;flex-direction:column;gap:10px}.igc-goal{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);padding:12px}.igc-goal-time{min-width:52px;display:flex;flex-direction:column;gap:4px}.igc-goal-time strong{color:var(--accent)}.igc-goal-time span,.igc-goal-main small,.igc-goal-main span{font-size:11px;color:var(--muted)}.igc-goal-main{display:flex;flex:1;min-width:0;flex-direction:column;gap:3px}.igc-goal-main strong{font-size:14px}.igc-goal-marker{font-size:10px;color:var(--accent);font-weight:800}.igc-team-heading{margin:22px 0 10px;font-size:16px}.igc-box-table th:not(:first-child),.igc-box-table td:not(:first-child){text-align:right}.igc-box-table tfoot{background:var(--surface-2)}.igc-raw{border-top:1px solid var(--border);padding:14px 0}.igc-raw summary{font-size:13px}@media(max-width:680px){.igc-summary-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.igc-scoreboard{gap:8px}.igc-score-middle strong{font-size:10px}.igc-score-team strong{font-size:13px}.igc-goal{gap:8px}.igc-goal-marker{display:none}}
+
+/* Premium Game Centre enhancement — scoped to .igc */
+.igc .page-heading{padding:22px 0 8px}.igc .page-heading h1{font-size:clamp(32px,4.2vw,58px);letter-spacing:-.045em;line-height:1.05}.igc .page-heading .eyebrow{letter-spacing:.2em;font-size:11px;font-weight:850}.igc .page-heading p{max-width:720px;line-height:1.6}
+.igc .igc-kpis>div{border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,.06)}.igc .igc-kpis strong{font-size:clamp(23px,3vw,36px);letter-spacing:-.04em}
+.igc .igc-game{border-radius:16px;padding:18px;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;position:relative;overflow:hidden}.igc .igc-game:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.14)}.igc .igc-game-teams{gap:12px 14px}.igc .igc-card-team{display:flex;align-items:center;gap:12px;min-width:0}.igc .igc-card-team>span:last-child{min-width:0;overflow-wrap:anywhere}.igc .igc-team-logo{width:38px;height:38px;object-fit:contain;flex:0 0 38px}.igc .igc-logo-fallback{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--border);border-radius:50%;font-size:10px;color:var(--muted);font-weight:800}.igc .igc-game-teams strong{font-size:24px;font-variant-numeric:tabular-nums}.igc .igc-game-foot{padding-top:10px;border-top:1px solid var(--border)}
+.igc .igc-scoreboard{min-height:190px;gap:14px}.igc .igc-score-team{align-items:flex-start}.igc .igc-score-team:last-child{align-items:flex-end}.igc .igc-hero-logo{width:84px;height:84px;object-fit:contain;margin:5px 0}.igc .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(40px,5.5vw,72px)}.igc .igc-score-middle{padding:14px;border-radius:14px;background:var(--surface-2);min-width:86px}
+.igc .igc-goal{padding:15px;border-radius:14px}.igc .igc-goal-main{flex-direction:row;align-items:center;gap:12px}.igc .igc-goal-text{display:flex;flex-direction:column;gap:4px;min-width:0}.igc .igc-goal-text small{display:flex;align-items:center;gap:5px}.igc .igc-mini-logo{width:19px;height:19px;object-fit:contain}.igc .igc-goal-photo{width:50px;height:50px;flex:0 0 50px}.igc .igc-goal-text strong{font-size:15px}
+.igc .igc-player-cell{display:flex;align-items:center;gap:10px;font-weight:650}.igc .igc-player-photo{width:34px;height:34px;flex:0 0 34px}.igc .igc-photo-frame{display:inline-flex;position:relative;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;background:var(--surface-2);border:1px solid var(--border)}.igc .igc-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}.igc .igc-photo-initials{font-size:10px;font-weight:850;color:var(--muted)}.igc .igc-photo-fallback{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);font-size:10px;color:var(--muted)}.igc .igc-team-heading{display:flex;align-items:center;gap:10px;font-size:19px;margin-top:26px}.igc .igc-heading-logo{width:36px;height:36px;object-fit:contain}.igc .igc-box-table tbody tr:hover{background:var(--surface-2)}.igc .igc-box-table td{padding-top:7px;padding-bottom:7px}
+.igc .igc-filters{grid-template-columns:repeat(4,minmax(0,1fr)) auto auto}.igc .igc-filters button{white-space:nowrap}
+@media(max-width:1100px){.igc .igc-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.igc .igc-filters button{width:100%}}
+@media(max-width:680px){.igc .igc-filters{grid-template-columns:1fr 1fr}.igc .igc-filters label{grid-column:span 2}.igc .igc-hero-logo{width:55px;height:55px}.igc .igc-score-team strong{font-size:12px}.igc .igc-scoreboard{min-height:160px}.igc .igc-card-team{gap:8px}.igc .igc-team-logo{width:32px;height:32px;flex-basis:32px}.igc .igc-game-teams strong{font-size:20px}.igc .igc-goal-photo{width:40px;height:40px;flex-basis:40px}}
+
+/* Clean, phone-first Game Centre */
+.igc .page-heading{padding:6px 0 4px}.igc .page-heading h1{font-size:clamp(27px,4vw,44px)}
+.igc .page-heading p{font-size:13px;margin:6px 0 10px}
+.igc .igc-panel{margin:12px 0;padding:18px}
+.igc .igc-section-title{margin:4px 0 14px}
+.igc .igc-section-title h2{font-size:clamp(17px,2.2vw,22px)}
+.igc .igc-scoreboard{min-height:0;margin-top:8px}
+.igc .igc-raw{margin:4px 0;padding:10px 0}
+.igc .igc-box-table{min-width:0;width:100%}
+.igc .igc-box-table th,.igc .igc-box-table td{padding:9px 7px}
+.igc .igc-box-table td:first-child,.igc .igc-box-table th:first-child{white-space:normal}
+.igc .igc-detail-grid{gap:12px}
+.igc .igc-note{font-size:11px}
+@media(max-width:680px){
+ .igc .igc-panel{padding:13px;margin:10px 0;border-radius:14px}
+ .igc .igc-optional-stat{display:none}
+ .igc .igc-box-table{font-size:11px}
+ .igc .igc-box-table th,.igc .igc-box-table td{padding:8px 5px}
+ .igc .igc-player-photo{width:28px;height:28px;flex-basis:28px}
+ .igc .igc-player-cell{gap:6px;font-size:11px}
+ .igc .igc-score-team span:not(.igc-logo-fallback){font-size:38px}
+ .igc .igc-hero-logo{width:46px;height:46px}
+ .igc .igc-score-middle{min-width:56px;padding:8px 5px}
+ .igc .igc-score-team strong{font-size:12px}
+ .igc .igc-goal{padding:10px}
+ .igc .igc-goal-photo{width:34px;height:34px;flex-basis:34px}
+ .igc .igc-shot-controls{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+ .igc .igc-shot-controls label{font-size:10px}
+ .igc .igc-shot-controls .select{font-size:11px;padding:8px 4px}
+ .igc .igc-filters{gap:8px}
+}
+
+/* Games with published scores but no verified final status */
+.igc-unconfirmed{color:var(--orange,#eab45c)}
+
+/* Compact game-level assists (individual goal attribution not available in shot CSV) */
+.igc-assist-summary{margin-top:16px;padding:14px;border:1px solid var(--border,rgba(160,160,160,.22));border-radius:12px}.igc-assist-summary h3{margin:0 0 5px;font-size:1rem}.igc-assist-summary p{margin:0 0 10px;font-size:.78rem;opacity:.7;line-height:1.45}.igc-assist-team{margin-top:9px;font-size:.83rem;line-height:1.6}.igc-assist-team strong{display:flex;align-items:center;gap:6px}.igc-assist-team>div{margin-left:24px;opacity:.86}.igc-assist-team .igc-mini-logo{width:18px;height:18px;object-fit:contain}
+
+/* IceIndex Game Centre — compact editorial box score, November 2026 */
+.igc.igc-boxscore{--igc-tight:10px}
+.igc.igc-boxscore>.igc-panel{padding:18px 22px;margin:12px 0 18px}
+.igc.igc-boxscore>.igc-panel .eyebrow{font-size:10px;letter-spacing:.14em;opacity:.72}
+.igc.igc-boxscore .igc-scoreboard{min-height:0;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px}
+.igc.igc-boxscore .igc-hero-logo{width:60px;height:60px;margin:3px 0}
+.igc.igc-boxscore .igc-score-team{gap:3px}
+.igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(38px,4.6vw,58px)}
+.igc.igc-boxscore .igc-score-middle{padding:9px 12px;background:transparent;min-width:70px}
+.igc.igc-boxscore .igc-score-middle strong{font-size:11px}
+.igc.igc-boxscore .igc-detail-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start}
+.igc.igc-boxscore .igc-detail-grid>.igc-panel{padding:18px;margin:0;min-width:0}
+.igc.igc-boxscore .igc-section-title{margin:0 0 14px;flex-direction:row;align-items:center}
+.igc.igc-boxscore .igc-section-title h2{font-size:20px;letter-spacing:-.025em}
+.igc.igc-boxscore .igc-goals{gap:0}
+.igc.igc-boxscore .igc-goal{background:transparent;border:0;border-bottom:1px solid var(--border);border-radius:0;padding:11px 2px;gap:10px}
+.igc.igc-boxscore .igc-goal:last-child{border-bottom:0}
+.igc.igc-boxscore .igc-goal-time{min-width:39px;gap:2px}
+.igc.igc-boxscore .igc-goal-time strong{font-size:12px}
+.igc.igc-boxscore .igc-goal-time span{font-size:11px}
+.igc.igc-boxscore .igc-goal-photo{width:38px;height:38px;flex-basis:38px}
+.igc.igc-boxscore .igc-goal-main{gap:10px}
+.igc.igc-boxscore .igc-goal-text{gap:2px}
+.igc.igc-boxscore .igc-goal-text strong{font-size:14px;line-height:1.2}
+.igc.igc-boxscore .igc-goal-text small{font-size:10px}
+.igc.igc-boxscore .igc-mini-logo{width:15px;height:15px}
+.igc.igc-boxscore .igc-assist-summary{margin-top:10px;padding:0;border:0;border-top:1px solid var(--border);border-radius:0}
+.igc.igc-boxscore .igc-assist-summary summary{padding:12px 2px;cursor:pointer;color:var(--text-soft);font-size:12px;font-weight:700}
+.igc.igc-boxscore .igc-assist-content{padding:0 4px 12px}
+.igc.igc-boxscore .igc-assist-team{font-size:12px;margin:9px 0}
+.igc.igc-boxscore .igc-shot-controls{gap:7px;margin:0 0 12px}
+.igc.igc-boxscore .igc-shot-controls label{font-size:10px}
+.igc.igc-boxscore .igc-shot-controls .select{font-size:12px;padding:8px 6px}
+.igc.igc-boxscore .igc-rink-wrap{max-width:310px}
+.igc.igc-boxscore .igc-legend{justify-content:center;font-size:11px;margin-top:5px}
+.igc.igc-boxscore .igc-rink{max-height:440px}
+@media(max-width:900px){.igc.igc-boxscore .igc-detail-grid{grid-template-columns:1fr}.igc.igc-boxscore .igc-rink-wrap{max-width:320px}}
+@media(max-width:680px){
+ .igc.igc-boxscore>.igc-panel{padding:14px;margin:10px 0 12px}
+ .igc.igc-boxscore .igc-detail-grid>.igc-panel{padding:14px}
+ .igc.igc-boxscore .igc-hero-logo{width:46px;height:46px}
+ .igc.igc-boxscore .igc-score-team strong{font-size:12px}
+ .igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:42px}
+ .igc.igc-boxscore .igc-score-middle{padding:6px 3px;min-width:62px}
+ .igc.igc-boxscore .igc-section-title h2{font-size:19px}
+ .igc.igc-boxscore .igc-goal{padding:10px 0}
+ .igc.igc-boxscore .igc-goal-photo{width:38px;height:38px;flex-basis:38px}
+ .igc.igc-boxscore .igc-rink-wrap{max-width:290px}
+}
+/* IceIndex v0.10.0 interactive Game Centre: compact, tabbed, mobile first */
+.igc-modern .igc-game-hero{padding:20px 24px!important;margin-top:10px!important}
+.igc-modern .igc-hero-top,.igc-modern .igc-hero-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:11px}
+.igc-modern .igc-hero-top{letter-spacing:.1em;text-transform:uppercase;font-weight:750}
+.igc-modern .igc-hero-status{color:var(--accent);font-weight:850}
+.igc-modern .igc-scoreboard{max-width:680px;margin:12px auto!important;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr);min-height:0!important;align-items:center}
+.igc-modern .igc-score-team,.igc-modern .igc-score-team:last-child{align-items:center;text-align:center;gap:3px}
+.igc-modern .igc-hero-logo{width:60px;height:60px;object-fit:contain}
+.igc-modern .igc-score-team strong{font-size:clamp(13px,2vw,19px);line-height:1.2}
+.igc-modern .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(43px,6vw,70px);line-height:1.08}
+.igc-modern .igc-score-middle{min-width:0;background:none;padding:0;gap:2px}
+.igc-modern .igc-score-middle strong{font-size:20px;color:var(--muted)}
+.igc-modern .igc-hero-foot{border-top:1px solid var(--border);padding-top:12px;justify-content:center;gap:8px 22px;letter-spacing:0}
+.igc-modern .igc-tabs{display:flex;gap:4px;overflow-x:auto;position:sticky;top:0;z-index:20;padding:8px 4px;background:var(--bg,#07131f);scrollbar-width:thin;border-bottom:1px solid var(--border);margin:4px 0 12px}
+.igc-modern .igc-tab{flex:0 0 auto;white-space:nowrap;border:0;border-radius:9px;background:transparent;color:var(--muted);padding:11px 15px;font:inherit;font-size:12px;font-weight:750;cursor:pointer}
+.igc-modern .igc-tab[aria-selected=true]{background:var(--surface-2);color:var(--accent);box-shadow:inset 0 -2px var(--accent)}
+.igc-modern .igc-tab:hover{color:var(--text);background:var(--surface-2)}
+.igc-modern .igc-tab-panel[hidden]{display:none!important}
+.igc-modern .igc-compare{margin:12px 0 18px}
+.igc-modern .igc-compare-legend{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px;margin:0 0 12px}
+.igc-modern .igc-compare-legend span{display:flex;align-items:center;gap:7px}
+.igc-modern .igc-compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.igc-modern .igc-metric{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:15px 17px;text-align:left;cursor:pointer;min-width:0;transition:border-color .15s,transform .15s}
+.igc-modern .igc-metric:hover,.igc-modern .igc-metric:focus-visible{border-color:var(--accent);transform:translateY(-1px)}
+.igc-modern .igc-metric-label{display:flex;justify-content:space-between;color:var(--text-soft);font-size:12px;font-weight:750}
+.igc-modern .igc-metric-label span{color:var(--accent)}
+.igc-modern .igc-metric-values{display:flex;align-items:center;justify-content:space-between;gap:7px;margin:11px 0}
+.igc-modern .igc-metric-values strong{font-size:clamp(22px,3vw,30px);font-variant-numeric:tabular-nums}
+.igc-modern .igc-metric-values small{font-size:10px;color:var(--muted);text-align:center}
+.igc-modern .igc-metric-track{display:block;overflow:hidden;height:5px;border-radius:5px;background:#758da3}
+.igc-modern .igc-metric-track i{display:block;height:100%;background:var(--accent,#55b8e8)}
+.igc-modern .igc-quick-links{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}
+.igc-modern .igc-quick-links button{padding:11px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);color:var(--text);font-weight:700;cursor:pointer}
+.igc-modern .igc-tab-panel>.igc-panel{margin:10px 0!important}
+.igc-modern .igc-rink-wrap{max-width:450px!important}
+.igc-modern .igc-rink{max-height:660px}
+@media(max-width:650px){.igc-modern .igc-game-hero{padding:14px!important}.igc-modern .igc-hero-logo{width:46px;height:46px}.igc-modern .igc-scoreboard{grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:4px}.igc-modern .igc-score-middle strong{font-size:15px}.igc-modern .igc-score-middle small{font-size:9px}.igc-modern .igc-hero-foot{font-size:10px}.igc-modern .igc-compare-grid{grid-template-columns:1fr}.igc-modern .igc-metric{padding:12px 14px}.igc-modern .igc-tab{padding:10px 12px}.igc-modern .igc-rink-wrap{max-width:330px!important}}
+
+/* IceIndex mobile-first refinement: Nov 2026 */
+.igc-modern .igc-scoreboard{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:12px!important;max-width:560px}
+.igc-modern .igc-score-middle{display:none!important}
+.igc-modern .igc-side-label{display:block!important;font-size:10px!important;line-height:1.2;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-weight:750;margin-top:2px}
+.igc-modern .igc-tabs{scroll-margin-top:8px}
+.igc-modern .igc-modal-box{width:min(410px,100%);padding:18px;max-height:min(85dvh,650px);overflow:auto}
+.igc-modern .igc-modal-box h2{font-size:17px;margin:0 42px 12px 0}
+.igc-modern .igc-shot-detail-top{gap:10px;margin:0 0 12px}
+.igc-modern .igc-shot-detail-top strong{font-size:15px}
+.igc-modern .igc-shot-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.igc-modern .igc-shot-fields>div{background:var(--surface-2);padding:8px 10px;border-radius:8px;min-width:0}
+.igc-modern .igc-shot-fields dt{font-size:10px}
+.igc-modern .igc-shot-fields dd{font-size:12px;margin-top:3px}
+.igc-modern .igc-modal-close{width:34px;height:34px;font-size:21px}
+@media(max-width:680px){
+ .igc-modern,.igc-modern *{box-sizing:border-box}
+ .igc-modern .igc-scoreboard{gap:8px!important}
+ .igc-modern .igc-score-team strong{font-size:clamp(11px,3.5vw,15px);overflow-wrap:break-word}
+ .igc-modern .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(36px,12vw,55px)}
+ .igc-modern .igc-hero-foot{gap:4px 12px;text-align:center;line-height:1.4}
+ /* All seven tabs are visible without horizontal swiping. */
+ .igc-modern .igc-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;overflow:visible;position:relative;padding:7px 0}
+ .igc-modern .igc-tab{min-width:0;white-space:normal;line-height:1.2;padding:10px 3px;font-size:clamp(10px,2.7vw,12px);min-height:42px;text-align:center;border:1px solid var(--border);border-radius:8px}
+ .igc-modern .igc-compare-grid{grid-template-columns:1fr}
+ .igc-modern .igc-shot-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .igc-modern .igc-shot-controls label:last-child{grid-column:1/-1}
+ .igc-modern .igc-shot-controls .select{width:100%;font-size:12px;min-height:42px;padding:8px 5px}
+ .igc-modern .igc-shot-controls label{min-width:0;font-size:11px}
+ .igc-modern .igc-modal-box{width:100%;padding:14px;max-height:80dvh;border-radius:14px}
+ .igc-modern .igc-shot-detail-top .igc-player-photo{width:40px;height:40px;flex:0 0 40px}
+ .igc-modern .igc-metric{min-width:0}
+ .igc-modern .igc-quick-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .igc-modern .igc-quick-links button{min-width:0;font-size:12px;padding:10px 7px}
+}
+@media(max-width:350px){.igc-modern .igc-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.igc-modern .igc-shot-fields{grid-template-columns:1fr 1fr}}
+
+/* IceIndex: true zero-horizontal-scroll tables on narrow screens. */
+@media(max-width:700px){
+ .igc-modern{width:100%;max-width:100%;min-width:0;overflow-x:clip}
+ .igc-modern .igc-tab-panel,.igc-modern .igc-panel,.igc-modern .igc-table-scroll{min-width:0;max-width:100%;width:100%}
+ .igc-modern .igc-table-scroll{overflow:visible!important}
+ .igc-modern .igc-table{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;border-collapse:separate}
+ .igc-modern .igc-table thead{display:none!important}
+ .igc-modern .igc-table tbody,.igc-modern .igc-table tfoot{display:grid!important;grid-template-columns:minmax(0,1fr);gap:9px;width:100%}
+ .igc-modern .igc-table tr{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);width:100%;min-width:0}
+ .igc-modern .igc-table td,.igc-modern .igc-table th{display:flex!important;flex-direction:column;align-items:flex-start!important;justify-content:center;text-align:left!important;min-width:0!important;max-width:100%;width:auto!important;padding:7px 0!important;border:0!important;white-space:normal!important;overflow-wrap:anywhere;word-break:normal;font-size:12px}
+ .igc-modern .igc-table td::before,.igc-modern .igc-table tbody th::before,.igc-modern .igc-table tfoot th::before{content:attr(data-igc-label);display:block;color:var(--muted);font-size:10px;font-weight:650;letter-spacing:.02em;margin-bottom:3px}
+ .igc-modern .igc-table tr>:first-child{grid-column:1/-1;border-bottom:1px solid var(--border)!important;padding-bottom:10px!important;margin-bottom:3px;font-weight:750;font-size:13px}
+ .igc-modern .igc-table tr>:first-child::before{display:none}
+ .igc-modern .igc-table .igc-player-cell{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+ .igc-modern .igc-table .igc-optional-stat{display:flex!important}
+ .igc-modern .igc-period-table td small{margin-top:2px}
+ .igc-modern .igc-table tfoot{margin-top:10px}
+ .igc-modern .igc-table tfoot tr{border-color:var(--accent)}
+}
+@media(max-width:380px){.igc-modern .igc-table tr{gap:0 8px;padding:9px 10px}}
+
+/* IceIndex v0.10.0 — compact mobile stat ROWS, like the Statistics Database.
+   Overrides the previous oversized two-column mobile cards. */
+@media(max-width:700px){
+ .igc-modern .igc-table-scroll{overflow-x:hidden!important;overflow-y:visible!important}
+ .igc-modern .igc-table tbody,.igc-modern .igc-table tfoot{gap:0!important;display:block!important}
+ .igc-modern .igc-table tr{
+   display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;
+   gap:0!important;padding:8px 5px!important;border:0!important;
+   border-bottom:1px solid var(--border)!important;border-radius:0!important;
+   background:transparent!important;align-items:center!important;
+ }
+ .igc-modern .igc-table tbody tr:nth-child(odd){background:var(--surface-2)!important}
+ .igc-modern .igc-table tr>:first-child{
+   grid-column:1/-1!important;margin:0 0 5px!important;padding:0 2px 5px!important;
+   border:0!important;font-size:12px!important;line-height:1.2!important;
+ }
+ .igc-modern .igc-table td,.igc-modern .igc-table th{
+   display:flex!important;align-items:center!important;flex-direction:column!important;
+   justify-content:center!important;min-width:0!important;max-width:100%!important;
+   padding:2px 1px!important;text-align:center!important;
+   font-size:12px!important;font-variant-numeric:tabular-nums;
+   white-space:nowrap!important;overflow-wrap:normal!important;
+ }
+ .igc-modern .igc-table td::before,.igc-modern .igc-table tbody th::before,.igc-modern .igc-table tfoot th::before{
+   display:block!important;content:attr(data-igc-label)!important;
+   font-size:9px!important;line-height:1.1!important;font-weight:700!important;
+   margin:0 0 4px!important;letter-spacing:0!important;
+   color:var(--muted)!important;text-transform:uppercase;
+ }
+ .igc-modern .igc-table tr>:first-child::before{display:none!important}
+ .igc-modern .igc-player-cell{display:flex!important;align-items:center!important;flex-direction:row!important;gap:7px!important;font-size:12px!important;min-width:0!important;max-width:100%!important;text-align:left!important}
+ .igc-modern .igc-player-cell .igc-mini-portrait,.igc-modern .igc-player-cell .igc-player-photo{width:25px!important;height:25px!important;flex:0 0 25px!important}
+ .igc-modern .igc-compact-players tr{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+ .igc-modern .igc-compact-goalies tr{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+ .igc-modern .igc-compact-penalties tr{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ .igc-modern .igc-compact-penalties tr>:nth-child(4){grid-column:1/3!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ .igc-modern .igc-compact-penalties tr>:nth-child(5){grid-column:3/5!important;white-space:normal!important;overflow-wrap:anywhere!important}
+ .igc-modern .igc-compact-penalties tr>:nth-child(6){grid-column:4!important}
+ .igc-modern .igc-compact-periods tr{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+ .igc-modern .igc-compact-periods tr>:first-child{grid-column:1/-1!important}
+ .igc-modern .igc-period-table td small{font-size:9px!important;line-height:1.15}
+ .igc-modern .igc-table tfoot tr{border-top:1px solid var(--accent)!important}
+ .igc-modern .igc-tab-panel>.igc-panel{padding:12px!important}
+ .igc-modern .igc-team-heading{margin:12px 0 6px!important;font-size:15px!important}
+ .igc-modern .igc-section-title{margin:0 0 9px!important}
+ .igc-modern .igc-section-title h2{font-size:17px!important}
+}
+@media(max-width:380px){
+ .igc-modern .igc-table td,.igc-modern .igc-table th{font-size:11px!important}
+ .igc-modern .igc-table td::before,.igc-modern .igc-table tbody th::before{font-size:8px!important}
+ .igc-modern .igc-table tr{padding:7px 2px!important}
+ .igc-modern .igc-player-cell{font-size:11px!important}
+}
+
+/* Mobile fit pass: period breakdown and compact table alignment. */
+@media(max-width:700px){
+ .igc-modern .igc-period-table{table-layout:fixed!important}
+ .igc-modern .igc-compact-periods tr{
+   grid-template-columns:repeat(var(--igc-period-cols,4),minmax(0,1fr))!important;
+   width:100%!important;padding:9px 4px!important;column-gap:0!important;
+ }
+ .igc-modern .igc-compact-periods tr>:first-child{
+   grid-column:1/-1!important;display:block!important;text-align:left!important;
+   padding:3px 6px 8px!important;margin:0 0 5px!important;
+   font-size:12px!important;font-weight:750!important;
+   white-space:normal!important;overflow-wrap:anywhere!important;
+ }
+ .igc-modern .igc-compact-periods td{
+   min-width:0!important;width:100%!important;text-align:center!important;
+   padding:4px 1px!important;white-space:normal!important;
+ }
+ .igc-modern .igc-compact-periods td::before{
+   text-align:center!important;display:block!important;width:100%;
+   margin-bottom:5px!important;font-size:10px!important;
+ }
+ .igc-modern .igc-compact-periods td strong{font-size:14px!important;line-height:1.25!important}
+ .igc-modern .igc-compact-periods td small{
+   display:block!important;font-size:10px!important;white-space:nowrap!important;
+   text-align:center!important;margin-top:3px!important;
+ }
+ .igc-modern .igc-section-title{display:flex!important;flex-wrap:wrap;align-items:baseline!important;gap:3px 12px!important}
+ .igc-modern .igc-section-title span{max-width:100%;white-space:normal;text-align:left}
+ .igc-modern .igc-tab-panel,.igc-modern .igc-panel,.igc-modern .igc-table-scroll{min-width:0!important}
+ .igc-modern .igc-compact-goalies td,.igc-modern .igc-compact-players td{min-width:0!important;font-size:clamp(10px,2.8vw,12px)!important}
+}
+@media(max-width:360px){
+ .igc-modern .igc-compact-periods td strong{font-size:12px!important}
+ .igc-modern .igc-compact-periods td small{font-size:8px!important}
+ .igc-modern .igc-compact-periods td::before{font-size:9px!important}
+}
+
+/* Compact penalties: dedicated mobile layout instead of squeezing six table cells. */
+.igc-modern .igc-penalties-mobile{display:none}
+@media(max-width:700px){
+ .igc-modern .igc-penalties-desktop{display:none!important}
+ .igc-modern .igc-penalties-mobile{display:block!important;width:100%;min-width:0}
+ .igc-modern .igc-penalty-mobile-row{padding:10px 2px;border-bottom:1px solid var(--border);min-width:0}
+ .igc-modern .igc-penalty-mobile-row:last-child{border-bottom:0}
+ .igc-modern .igc-penalty-mobile-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;margin-bottom:5px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+ .igc-modern .igc-penalty-clock{font-weight:750;color:var(--text,#e9f1f9);white-space:nowrap}
+ .igc-modern .igc-penalty-team{min-width:0;text-align:center}
+ .igc-modern .igc-penalty-min{white-space:nowrap;color:var(--text,#e9f1f9);font-weight:700}
+ .igc-modern .igc-penalty-mobile-bottom{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:baseline;font-size:12px;line-height:1.35;min-width:0}
+ .igc-modern .igc-penalty-mobile-bottom strong,.igc-modern .igc-penalty-mobile-bottom span{min-width:0;overflow-wrap:anywhere}
+ .igc-modern .igc-penalty-mobile-bottom span{color:var(--muted)}
+}
+
+/* Period breakdown: correct table detection + full-width, balanced mobile columns. */
+@media(max-width:700px){
+ .igc-modern .igc-period-table.igc-compact-periods{display:block!important;width:100%!important}
+ .igc-modern .igc-period-table.igc-compact-periods tbody{display:block!important;width:100%!important}
+ .igc-modern .igc-period-table.igc-compact-periods tbody tr{
+   display:grid!important;grid-template-columns:repeat(var(--igc-period-cols,4),minmax(0,1fr))!important;
+   width:100%!important;gap:0!important;padding:9px 2px!important;align-items:center!important;
+ }
+ .igc-modern .igc-period-table.igc-compact-periods tbody tr>th:first-child{
+   grid-column:1/-1!important;display:block!important;width:100%!important;
+   text-align:left!important;padding:3px 8px 7px!important;margin:0!important;
+   border:0!important;font-size:13px!important;white-space:normal!important;
+ }
+ .igc-modern .igc-period-table.igc-compact-periods tbody tr>td{
+   display:flex!important;flex-direction:column!important;align-items:center!important;
+   justify-content:center!important;width:100%!important;min-width:0!important;
+   padding:5px 0!important;text-align:center!important;white-space:normal!important;
+ }
+ .igc-modern .igc-period-table.igc-compact-periods tbody tr>td::before{
+   display:block!important;width:100%!important;text-align:center!important;
+   font-size:10px!important;margin:0 0 4px!important;
+ }
+ .igc-modern .igc-period-table.igc-compact-periods tbody tr>td strong{font-size:14px!important}
+ .igc-modern .igc-period-table.igc-compact-periods tbody tr>td small{font-size:9px!important}
+}
+
+/* IceIndex compact event filters and mobile game list */
+.igc .igc-event-period-filter{display:flex;align-items:center;gap:9px;margin:8px 0 13px;font-size:12px;font-weight:700;color:var(--muted)}
+.igc .igc-event-period-filter .select{width:auto;min-width:125px;max-width:180px;min-height:34px;padding:6px 27px 6px 10px;font-size:12px}
+.igc [data-igc-event-period][hidden]{display:none!important}
+.igc .igc-filters{grid-template-columns:repeat(4,minmax(0,1fr)) repeat(2,auto);gap:8px}
+.igc .igc-filters label{font-size:11px;gap:3px}
+.igc .igc-filters .select{min-height:35px;padding:6px 9px;font-size:12px}
+.igc .igc-filters .btn{min-height:35px;padding:6px 11px;font-size:12px}
+.igc-daily-widget{min-width:0;margin:12px 0 20px;border:1px solid var(--border);border-radius:13px;background:var(--surface);padding:12px}
+.igc-daily-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;font-size:13px}.igc-daily-head span{color:var(--muted);font-size:11px}.igc-daily-head a{margin-left:auto;color:var(--accent);font-size:11px}
+.igc-daily-list{display:grid;gap:0}.igc-daily-row{display:grid;grid-template-columns:minmax(110px,1fr) auto minmax(85px,1fr);gap:10px;align-items:center;min-width:0;padding:7px 4px;border-top:1px solid var(--border);font-size:12px}.igc-daily-match,.igc-daily-team{display:flex;align-items:center;gap:5px;min-width:0}.igc-daily-logo{width:21px;height:21px;object-fit:contain;flex:none}.igc-daily-team b{font-size:11px}.igc-daily-separator{color:var(--muted);font-size:10px}.igc-daily-time{font-weight:700;text-align:center;white-space:nowrap}.igc-daily-time small{display:block;color:var(--muted);font-size:9px;font-weight:500}.igc-daily-arena{font-size:10px;color:var(--muted);text-align:right;overflow-wrap:anywhere}.igc-daily-none{padding:10px 0;color:var(--muted);font-size:12px}
+@media(max-width:680px){.igc .igc-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.igc .igc-filters label{min-width:0}.igc .igc-filters label:nth-child(3),.igc .igc-filters label:nth-child(4){grid-column:auto}.igc .igc-filters .btn{width:100%;min-width:0}.igc .igc-panel{overflow-wrap:anywhere}.igc-daily-widget{padding:10px}.igc-daily-row{grid-template-columns:minmax(100px,1fr) auto minmax(70px,1fr);gap:5px}.igc-daily-logo{width:18px;height:18px}.igc-daily-team{gap:3px}.igc-daily-team b{font-size:10px}.igc-daily-arena{font-size:9px}}
+@media(max-width:350px){.igc-daily-row{grid-template-columns:minmax(90px,1fr) auto minmax(62px,1fr);gap:3px}.igc-daily-logo{width:16px;height:16px}}
+
+/* v0.10.0 daily fixtures: compact one-line mobile scoreboard, no sideways scrolling. */
+.igc-daily-widget{padding:8px 10px;margin:8px 0 13px;border-radius:11px}
+.igc-daily-head{margin-bottom:3px;gap:6px;font-size:11px}
+.igc-daily-head span,.igc-daily-head a{font-size:10px}
+.igc-daily-row{grid-template-columns:minmax(0,1.08fr) auto minmax(0,1.1fr);gap:6px;padding:4px 2px;min-height:29px;font-size:10px}
+.igc-daily-match{gap:3px;white-space:nowrap}
+.igc-daily-team{gap:3px;flex:none}
+.igc-daily-team b{font-size:10px;letter-spacing:.01em}
+.igc-daily-logo{width:16px;height:16px;flex:0 0 16px}
+.igc-daily-time{font-size:10px;line-height:1.15}
+.igc-daily-time small{font-size:8px;line-height:1.15;margin-top:1px}
+.igc-daily-arena{font-size:9px;line-height:1.15;text-align:right;overflow-wrap:normal;word-break:normal;min-width:0}
+@media(max-width:680px){.igc-daily-widget{padding:7px 8px}.igc-daily-row{grid-template-columns:minmax(0,1.05fr) auto minmax(0,1.05fr);gap:4px;padding:4px 0}.igc-daily-logo{width:15px;height:15px;flex-basis:15px}.igc-daily-team b{font-size:9px}.igc-daily-arena{font-size:8px}}
+@media(max-width:360px){.igc-daily-row{gap:3px}.igc-daily-logo{width:13px;height:13px;flex-basis:13px}.igc-daily-team{gap:2px}.igc-daily-team b{font-size:8px}.igc-daily-arena{font-size:7.5px}}

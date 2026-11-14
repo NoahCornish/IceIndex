@@ -1,0 +1,29 @@
+
+====================================================
+          ICEINDEX GOALIE STATISTICS               
+====================================================
+Current season year: 2027 
+Current entries: 1 
+Historical entries: 55 
+Historical seasons pending: 0 
+Total seasons to process: 1 
+
+[1/1] 2027 Season (Regular Season)
+Records: 54 
+Columns: 87 
+
+====================================================
+       ICEINDEX GOALIE STATISTICS SUMMARY          
+====================================================
+Current records: 54 
+Historical records: 2307 
+Current seasons updated: 1 
+Historical seasons updated: 0 
+Historical seasons cached: 55 
+Failed this run: 0 
+Tracked failures: 0 
+Current file: data/ohl/current/goalie_stats.csv 
+Historical file: data/ohl/historical/goalie_stats.csv 
+====================================================
+
+IceIndex goalie statistics updated successfully.

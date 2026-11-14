@@ -888,14 +888,18 @@
 
     main.innerHTML = `
       <section class="hero ice-overview-hero">
-        
-        <h1>OHL Overview</h1>
+        <div class="ice-overview-brand-row">
+          <img class="ice-overview-logo" src="assets/branding/iceindex-logo.png" alt="IceIndex" width="88" height="80">
+          <h1>OHL Overview</h1>
+        </div>
         <div class="hero-meta">
           <span class="live-dot"></span>
           ${esc(currentSeason())}
           · ${fmt(rows.length)} skaters
         </div>
       </section>
+
+      <section class="igc-daily-widget" id="igc-daily-widget" aria-label="Today’s OHL games"></section>
 
       <div class="section-title">
         
@@ -955,6 +959,7 @@
       </div>
 
     `;
+    window.IceIndexGameCentre?.renderDailyGames(main.querySelector("#igc-daily-widget"));
   }
 
   /* ==========================================================
@@ -1754,29 +1759,48 @@
   function developmentChart(p, competition = "regular") {
     const rows = icePlayerSeasons(p, competition);
     if (!rows.length) return empty("No season development history is available.");
-    const metrics = iceDevelopmentMetrics(p,competition);
+    const metrics = iceDevelopmentMetrics(p, competition);
     if (!metrics.length) return empty("No trackable statistics are available for these seasons.");
-    const metric = metrics.some(m=>m.key===S.profileTrendMetric) ? S.profileTrendMetric : metrics[0].key;
-    const name = metrics.find(m=>m.key===metric)?.label || metric;
-    const values = rows.map(r => iceDevelopmentValue(r,metric));
-    const available=values.filter(v=>v!=null);
-    const max = Math.max(1,...available.map(Math.abs));
+    const metric = metrics.some(m => m.key === S.profileTrendMetric) ? S.profileTrendMetric : metrics[0].key;
+    const name = metrics.find(m => m.key === metric)?.label || metric;
+    const values = rows.map(r => iceDevelopmentValue(r, metric));
     const fractional = ["rate","goalsRate","assistsRate","shotsRate","shootingPct","pointsPerShot","goalsAssistsRatio"].includes(metric);
-    const format = v => v == null ? "—" : fractional ? `${dec(v,metric==="shootingPct"?1:2)}${metric==="shootingPct"?"%":""}` : fmt(v);
-    const axis = r => S.profileTrendAxis==="draft" ? (iceDYLabel(p,r.season)||r.season) : r.season;
-    const latest=rows.length>1 ? values[values.length-1] : null;
-    const previous=rows.length>1 ? values[values.length-2] : null;
-    const delta=latest!=null&&previous!=null ? latest-previous : null;
+    const format = v => v == null ? "—" : fractional ? `${dec(v,metric === "shootingPct" ? 1 : 2)}${metric === "shootingPct" ? "%" : ""}` : fmt(v);
+    const axis = r => S.profileTrendAxis === "draft" ? (iceDYLabel(p,r.season) || r.season) : r.season;
+    const latest = values.length > 1 ? values[values.length - 1] : null;
+    const previous = values.length > 1 ? values[values.length - 2] : null;
+    const delta = latest != null && previous != null ? latest - previous : null;
+    const valid = values.filter(v => v != null);
+    if (!valid.length) return empty("No values are available for this statistic.");
+
+    // Plot to a responsive SVG viewBox; missing values break the line instead of becoming zero.
+    const W = 960, H = 330, left = 66, right = 24, top = 36, bottom = 66;
+    const plotW = W-left-right, plotH = H-top-bottom;
+    let min = Math.min(0,...valid), max = Math.max(0,...valid);
+    if (min === max) { min -= 1; max += 1; }
+    const padding = (max-min)*0.09;
+    min -= padding; max += padding;
+    const x = i => left + (rows.length === 1 ? plotW/2 : i*plotW/(rows.length-1));
+    const y = v => top + (max-v)*plotH/(max-min);
+    const ticks = Array.from({length:5},(_,i)=>min+(max-min)*i/4);
+    const grid = ticks.map(v=>`<g><line x1="${left}" x2="${W-right}" y1="${y(v).toFixed(2)}" y2="${y(v).toFixed(2)}" class="ice-dev-grid"/><text x="${left-12}" y="${(y(v)+4).toFixed(2)}" text-anchor="end" class="ice-dev-tick">${esc(format(v))}</text></g>`).join("");
+    let segments = [], current = [];
+    values.forEach((v,i)=>{
+      if (v == null) { if(current.length) segments.push(current); current=[]; }
+      else current.push([x(i),y(v)]);
+    });
+    if(current.length) segments.push(current);
+    const lines = segments.filter(segment=>segment.length>1).map(segment=>`<polyline class="ice-dev-line" points="${segment.map(([px,py])=>`${px.toFixed(2)},${py.toFixed(2)}`).join(" ")}"/>`).join("");
+    const points = rows.map((r,i)=>values[i]==null?"":`<g class="ice-dev-point" tabindex="0" role="img" aria-label="${esc(`${axis(r)}, ${r.season}, ${r.team||"OHL"}: ${format(values[i])}`)}"><title>${esc(`${axis(r)} · ${r.season}${r.team?` · ${r.team}`:""}: ${format(values[i])}`)}</title><circle cx="${x(i).toFixed(2)}" cy="${y(values[i]).toFixed(2)}" r="7"/><text x="${x(i).toFixed(2)}" y="${(y(values[i])-16).toFixed(2)}" text-anchor="middle" class="ice-dev-value">${esc(format(values[i]))}</text></g>`).join("");
+    const labels = rows.map((r,i)=>`<g><text x="${x(i).toFixed(2)}" y="${H-bottom+28}" text-anchor="middle" class="ice-dev-axis-label">${esc(axis(r))}</text><text x="${x(i).toFixed(2)}" y="${H-bottom+45}" text-anchor="middle" class="ice-dev-season-label">${esc(r.season)}</text></g>`).join("");
     return `<div class="ice-development-head">
-      <div><strong>${esc(name)}</strong><span>${esc(competition==="playoffs"?"Playoffs":"Regular season")} · ${rows.length} seasons</span></div>
-      ${delta==null?"":`<span class="ice-development-delta">Latest change: ${delta>0?"+":""}${format(delta)}</span>`}
+      <div><strong>${esc(name)}</strong><span>${esc(competition === "playoffs" ? "Playoffs" : "Regular season")} · ${rows.length} seasons</span></div>
+      ${delta == null ? "" : `<span class="ice-development-delta">Latest change: ${delta>0?"+":""}${format(delta)}</span>`}
     </div>
-    <div class="bars ice-profile-development" role="list" aria-label="${esc(name)} by ${S.profileTrendAxis==="draft"?"draft year":"season"}">
-      ${rows.map((r,i) => `<div class="bar-row ice-development-row ${S.profileSeason===r.season?"ice-development-selected":""}" role="listitem">
-        <div><span><b>${esc(axis(r))}</b> <small>${esc(r.season)}${r.team?` · ${esc(r.team)}`:""}</small></span>
-        <b>${format(values[i])}</b></div>
-        <span class="track"><span style="width:${values[i]==null?0:clamp(Math.abs(values[i])/max*100,0,100)}%"></span></span>
-      </div>`).join("")}
+    <div class="ice-dev-chart" role="group" aria-label="${esc(name)} development line graph">
+      <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(name)} by ${S.profileTrendAxis === "draft" ? "draft year" : "OHL season"}" preserveAspectRatio="xMidYMid meet">
+        ${grid}${lines}${points}${labels}
+      </svg>
     </div>
     <p class="ice-profile-note">DY labels are estimated from birthdate and NHL draft eligibility, not the player's actual selection. DY is the draft-year season; DY−1 is the preceding season. Seasons with multiple teams are counted once. Missing statistics are not treated as zero.</p>`;
   }
@@ -3208,24 +3232,37 @@
 
 
   const ICEINDEX_LEAGUES = Object.freeze([
-    { id: "ohl", short: "OHL", name: "Ontario Hockey League", active: true },
-    { id: "whl", short: "WHL", name: "Western Hockey League", active: false },
-    { id: "qmjhl", short: "QMJHL", name: "Quebec Maritimes Junior Hockey League", active: false }
+    {id:"ohl",short:"OHL",name:"Ontario Hockey League",route:"overview",active:true,logo:"https://cdn.freebiesupply.com/logos/large/2x/ohl-logo-png-transparent.png"},
+    {id:"whl",short:"WHL",name:"Western Hockey League",route:"whl-home",active:false,logo:"https://upload.wikimedia.org/wikipedia/en/a/af/Western_Hockey_League.svg"},
+    {id:"qmjhl",short:"QMJHL",name:"Quebec Maritimes Junior Hockey League",route:"qmjhl-home",active:false,logo:"https://thumb.wikimedia.org/wikipedia/en/thumb/2/27/Quebec_Major_Junior_Hockey_League.svg/1280px-Quebec_Major_Junior_Hockey_League.svg.png"}
   ]);
 
   function leagueTiles() {
     return ICEINDEX_LEAGUES.map(league => `
       <article class="ice-league-tile ${league.active ? "is-live" : "is-upcoming"}">
-        <div class="ice-league-monogram" aria-hidden="true">${esc(league.short)}</div>
+        <div class="ice-league-monogram" aria-hidden="true"><img src="${esc(league.logo)}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:contain;background:white;border-radius:8px;padding:4px"></div>
         <div class="ice-league-tile-body">
           <h3>${esc(league.name)}</h3>
-          <p>${esc(league.short)} · ${league.active ? "Statistics & analytics" : "Future integration"}</p>
+          <p>${esc(league.short)} · ${league.active ? "Statistics & analytics available" : "Beta release coming soon"}</p>
         </div>
-        ${league.active
-          ? `<a class="btn primary" href="#overview" data-page="overview">Explore OHL <span aria-hidden="true">→</span></a>`
-          : `<span class="ice-soon" aria-label="Not yet available">Coming soon</span>`}
+        <a class="btn ${league.active ? "primary" : "secondary"}" href="#${league.route}" data-page="${league.route}">${league.active ? "Explore OHL" : "Preview " + league.short} →</a>
       </article>
     `).join("");
+  }
+
+  function renderLeagueBeta(leagueId) {
+    const league = ICEINDEX_LEAGUES.find(item => item.id === leagueId);
+    if (!league) return;
+    main.innerHTML = `
+      <section class="ice-beta-home">
+        <img class="ice-beta-home-logo" src="${esc(league.logo)}" alt="${esc(league.short)} league logo">
+        <span class="ice-beta-label">IceIndex / ${esc(league.short)} / Beta preview</span>
+        <h1>${esc(league.short)} Home</h1>
+        <p>We're bringing ${esc(league.name)} statistics, player profiles, comparisons and analytics to IceIndex.</p>
+        <h2>Beta release coming soon</h2>
+        <p>We're aiming to launch this league in the next few weeks. The full database and Game Centre aren't available yet.</p>
+        <div class="ice-beta-actions"><a href="#leagues" data-page="leagues" class="btn secondary">All leagues</a><a href="#overview" data-page="overview" class="btn primary">Explore OHL</a></div>
+      </section>`;
   }
 
   function featuredPlayer() {
@@ -3274,7 +3311,7 @@
           </div>
         </div>
         <div class="ice-home-hero-mark" aria-hidden="true">
-          <span>I</span><small>ICEINDEX</small>
+          <img class="ice-home-brand-logo" src="assets/branding/iceindex-logo.png" alt="" width="240" height="220">
         </div>
       </section>
 
@@ -3317,7 +3354,7 @@
       </div>
       <section class="panel ice-leagues-note">
         <h2>More leagues are on the horizon.</h2>
-        <p>IceIndex currently supports the Ontario Hockey League. The WHL and QMJHL are planned but not yet integrated.</p>
+        <p>IceIndex currently supports the Ontario Hockey League. WHL and QMJHL beta homepages are available now; full statistics and analytics are planned for the coming weeks.</p>
       </section>
     `;
   }
@@ -3327,13 +3364,18 @@
      ========================================================== */
 
   const VALID_PAGES = new Set([
-    /* "home", */ "leagues", "overview", "players", "statistics",
-    "profile", "game-logs", "compare", "draft", "teams",
+    /* "home", */ "leagues", "overview", "whl-home", "qmjhl-home", "players", "statistics",
+    "profile", "game-logs", "game-centre", "compare", "draft", "teams",
     "analytics", "goalies", "goalie-profile",
     "goalie-compare"
   ]);
 
   function render() {
+    if (S.page === "whl-home" || S.page === "qmjhl-home") {
+      renderLeagueBeta(S.page === "whl-home" ? "whl" : "qmjhl");
+      updateNavigation();
+      return;
+    }
     if (S.page === "leagues") {
       renderLeagues();
       updateNavigation();
@@ -3356,6 +3398,7 @@
       case "statistics": renderStatistics(); break;
       case "profile": renderProfile(); break;
       case "game-logs": window.IceIndexGameLogs?.render(main, S.people, S.profile); break;
+      case "game-centre": window.IceIndexGameCentre?.render(main); break;
       case "compare": renderCompare(); break;
       case "draft": renderDraft(); break;
       case "teams": renderTeams(); break;
@@ -3503,7 +3546,10 @@
     const playerLink = target.closest("[data-person]");
     if (playerLink) {
       event.preventDefault();
-      S.profile = playerLink.dataset.person;
+      const requested = playerLink.dataset.person;
+      const resolved = person(requested) || S.people.find(p => String(p.id) === String(requested));
+      if (!resolved) return;
+      S.profile = resolved.key;
       S.profileSeason = "career";
       navigate("profile");
       return;
