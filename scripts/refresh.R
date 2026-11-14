@@ -1027,19 +1027,25 @@ if (all(results$Status == "SUCCESS") &&
 
 section("6C. OHL PLAYER GAME LOG PIPELINE")
 
+
 game_tasks <- data.frame(
   Task = c(
     "OHL Game Event Collection",
     "OHL Player Game Log Builder",
-    "OHL Player Game Log Enrichment"
+    "OHL Player Game Log Enrichment",
+    "OHL Shot Location Builder",
+    "OHL Shot Orientation Audit"
   ),
   Script = c(
     "scripts/games/update_all_game_events.R",
     "scripts/games/build_game_logs.R",
-    "scripts/games/enrich_game_logs.R"
+    "scripts/games/enrich_game_logs.R",
+    "scripts/games/build_shot_locations.R",
+    "scripts/games/build_shot_orientation_audit.R"
   ),
   stringsAsFactors = FALSE
 )
+
 
 record_skipped_task <- function(name, reason) {
   log_error(name, " skipped: ", reason)
