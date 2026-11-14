@@ -20,14 +20,12 @@
 #   - New, modified and removed file detection
 #   - CSV structure and quality checks
 #   - Collector execution timing
-#   - Compact console status per task; full logs in logs/refresh/
-#   - Detailed console reporting with ICEINDEX_REFRESH_VERBOSE=1
+#   - Detailed console reporting
 #   - Historical refresh CSV logging
 #   - Final system health summary
 #   - OHL skater and goalie processing after collection
 #   - Incremental game-event refresh and player game-log enrichment
 #   - Player game-log reconciliation and metadata validation
-#   - Official HockeyTech summary collection and CSV export
 #   - Incremental official game-summary collection and CSV exports
 #
 # CURRENT COLLECTORS:
@@ -44,8 +42,6 @@
 #   scripts/games/build_shot_locations.R
 #   scripts/games/build_shot_orientation_audit.R
 #   scripts/games/build_game_metadata.R
-#   scripts/games/collect_game_summaries.R
-#   scripts/games/build_official_game_data.R
 #   scripts/games/collect_game_summaries.R
 #   scripts/games/build_official_game_data.R
 #
@@ -84,11 +80,6 @@ options(
 REFRESH_VERSION <- "0.10.0"
 ICEINDEX_VERSION <- REFRESH_VERSION
 
-# Compact by default. Set ICEINDEX_REFRESH_VERBOSE=1 for full collector output.
-REFRESH_VERBOSE <- identical(Sys.getenv("ICEINDEX_REFRESH_VERBOSE"), "1")
-REFRESH_LOG_DIR <- file.path("logs", "refresh")
-dir.create(REFRESH_LOG_DIR, recursive = TRUE, showWarnings = FALSE)
-
 refresh_start <- Sys.time()
 
 refresh_run_id <- paste0(
@@ -121,16 +112,32 @@ results <- data.frame(
 # SAFE CONSOLE UTILITIES
 # ============================================================
 
-line <- function(character = "=", width = 58) {
-  if (REFRESH_VERBOSE) cat(strrep(character, width), "\n", sep = "")
+line <- function(character = "=", width = 64) {
+  
+  cat(
+    paste(rep(character, width), collapse = ""),
+    "\n",
+    sep = ""
+  )
+  
 }
 
 section <- function(title) {
-  cat("\n", title, "\n", sep = "")
+  
+  cat("\n")
+  line()
+  cat(title, "\n")
+  line()
+  
 }
 
 subsection <- function(title) {
-  if (REFRESH_VERBOSE) cat("\n", title, "\n", sep = "")
+  
+  cat("\n")
+  line("-")
+  cat(title, "\n")
+  line("-")
+  
 }
 
 format_log_message <- function(...) {
@@ -160,7 +167,6 @@ format_log_message <- function(...) {
 }
 
 log_info <- function(...) {
-  if (!REFRESH_VERBOSE) return(invisible(NULL))
   
   cat(
     "[INFO] ",
@@ -172,7 +178,6 @@ log_info <- function(...) {
 }
 
 log_ok <- function(...) {
-  if (!REFRESH_VERBOSE) return(invisible(NULL))
   
   cat(
     "[ OK ] ",
@@ -698,15 +703,81 @@ compare_snapshots <- function(before, after) {
 # ============================================================
 
 print_changes <- function(changes) {
-  cat(sprintf("    Files: +%d new  ~%d changed  -%d removed\n",
-              length(changes$new), length(changes$modified),
-              length(changes$removed)))
-  if (REFRESH_VERBOSE) {
-    for (type in c("new", "modified", "removed")) {
-      for (file in changes[[type]]) cat("      ", type, ": ", file, "\n", sep = "")
+  
+  log_info(
+    "New files: ",
+    length(changes$new)
+  )
+  
+  log_info(
+    "Modified files: ",
+    length(changes$modified)
+  )
+  
+  log_info(
+    "Removed files: ",
+    length(changes$removed)
+  )
+  
+  if (length(changes$new) > 0) {
+    
+    for (file in changes$new) {
+      
+      cat(
+        "  [NEW] ",
+        file,
+        "\n",
+        sep = ""
+      )
+      
     }
+    
   }
+  
+  if (length(changes$modified) > 0) {
+    
+    for (file in changes$modified) {
+      
+      cat(
+        "  [MOD] ",
+        file,
+        "\n",
+        sep = ""
+      )
+      
+    }
+    
+  }
+  
+  if (length(changes$removed) > 0) {
+    
+    for (file in changes$removed) {
+      
+      cat(
+        "  [DEL] ",
+        file,
+        "\n",
+        sep = ""
+      )
+      
+    }
+    
+  }
+  
+  if (
+    length(changes$new) == 0 &&
+    length(changes$modified) == 0 &&
+    length(changes$removed) == 0
+  ) {
+    
+    log_ok(
+      "No file metadata changes detected"
+    )
+    
+  }
+  
 }
+
 
 # ============================================================
 # INITIAL DATA SNAPSHOT
@@ -739,91 +810,151 @@ log_info(
 # ============================================================
 
 run_collector <- function(name, script) {
-  task_number <- nrow(results) + 1L
-  cat(sprintf("[%02d] %-39s RUNNING\n", task_number, name))
-  flush.console()
+  
+  subsection(
+    paste(
+      "RUNNING:",
+      name
+    )
+  )
+  
   started <- Sys.time()
+  
+  log_info(
+    "Started: ",
+    utc_time(started)
+  )
+  
   before <- snapshot_files()
+  
   collector_warnings <- character()
+  
   error_message <- ""
-  task_log <- file.path(REFRESH_LOG_DIR,
-    paste0(refresh_run_id, "_", sprintf("%02d", task_number), "_",
-           gsub("[^A-Za-z0-9]+", "_", name), ".log"))
-
-  # Redirect noisy collector output to a persistent per-task log.
-  # Always restore both output streams, including when source() errors.
-  execute_task <- function() {
-    if (!file.exists(script)) stop("Missing collector: ", script)
-    collector_environment <- new.env(parent = globalenv())
-    if (REFRESH_VERBOSE) {
-      withCallingHandlers(
-        source(script, local = collector_environment),
-        warning = function(w) {
-          collector_warnings <<- c(collector_warnings, conditionMessage(w))
-          invokeRestart("muffleWarning")
-        }
-      )
-    } else {
-      con <- file(task_log, open = "wt")
-      old_output <- sink.number(type = "output")
-      old_message <- sink.number(type = "message")
-      sink(con, type = "output")
-      sink(con, type = "message")
-      on.exit({
-        while (sink.number(type = "message") > old_message) sink(type = "message")
-        while (sink.number(type = "output") > old_output) sink(type = "output")
-        close(con)
-      }, add = TRUE)
-      withCallingHandlers(
-        source(script, local = collector_environment),
-        warning = function(w) {
-          collector_warnings <<- c(collector_warnings, conditionMessage(w))
-          invokeRestart("muffleWarning")
-        }
-      )
-    }
-    invisible(TRUE)
-  }
-
+  
   status <- tryCatch({
-    execute_task()
+    
+    if (!file.exists(script)) {
+      
+      stop(
+        paste(
+          "Missing collector:",
+          script
+        )
+      )
+      
+    }
+    
+    collector_environment <- new.env(
+      parent = globalenv()
+    )
+    
+    withCallingHandlers({
+      
+      source(
+        script,
+        local = collector_environment
+      )
+      
+    }, warning = function(w) {
+      
+      warning_text <- conditionMessage(w)
+      
+      collector_warnings <<- c(
+        collector_warnings,
+        warning_text
+      )
+      
+      log_warn(
+        name,
+        ": ",
+        warning_text
+      )
+      
+      invokeRestart(
+        "muffleWarning"
+      )
+      
+    })
+    
     "SUCCESS"
+    
   }, error = function(e) {
+    
     error_message <<- conditionMessage(e)
+    
+    log_error(
+      name,
+      ": ",
+      error_message
+    )
+    
     "FAILED"
+    
   })
-
-  seconds <- elapsed_seconds(started)
-  changes <- compare_snapshots(before, snapshot_files())
-  tag <- if (status == "SUCCESS") "OK" else "FAIL"
-  cat(sprintf("     %-4s %7.1fs | +%d ~%d -%d | %d warnings\n",
-              tag, seconds, length(changes$new), length(changes$modified),
-              length(changes$removed), length(collector_warnings)))
-  if (length(collector_warnings)) {
-    refresh_warnings <<- c(refresh_warnings,
-      paste0(name, ": ", collector_warnings))
-    cat("     WARN: ", collector_warnings[1L], "\n", sep = "")
-    if (length(collector_warnings) > 1L)
-      cat("     (", length(collector_warnings) - 1L,
-          " more warnings in task log)\n", sep = "")
+  
+  finished <- Sys.time()
+  
+  seconds <- elapsed_seconds(
+    started,
+    finished
+  )
+  
+  after <- snapshot_files()
+  
+  changes <- compare_snapshots(
+    before,
+    after
+  )
+  
+  cat("\n")
+  
+  log_info(
+    "Finished: ",
+    utc_time(finished)
+  )
+  
+  log_info(
+    "Runtime: ",
+    format_seconds(seconds)
+  )
+  
+  print_changes(changes)
+  
+  if (status == "SUCCESS") {
+    
+    log_ok(
+      name,
+      " completed"
+    )
+    
+  } else {
+    
+    log_error(
+      name,
+      " failed"
+    )
+    
   }
-  if (status != "SUCCESS") {
-    refresh_errors <<- c(refresh_errors, paste0(name, ": ", error_message))
-    cat("     ERROR: ", error_message, "\n", sep = "")
-  }
-  if (!REFRESH_VERBOSE && (status != "SUCCESS" || length(collector_warnings)))
-    cat("     Detail: ", task_log, "\n", sep = "")
-
-  results <<- rbind(results, data.frame(
-    Task = name, Status = status, Seconds = seconds,
-    New_Files = length(changes$new),
-    Modified_Files = length(changes$modified),
-    Removed_Files = length(changes$removed),
-    Warnings = length(collector_warnings), Error_Message = error_message,
-    stringsAsFactors = FALSE
-  ))
+  
+  results <<- rbind(
+    results,
+    data.frame(
+      Task = name,
+      Status = status,
+      Seconds = seconds,
+      New_Files = length(changes$new),
+      Modified_Files = length(changes$modified),
+      Removed_Files = length(changes$removed),
+      Warnings = length(collector_warnings),
+      Error_Message = error_message,
+      stringsAsFactors = FALSE
+    )
+  )
+  
   invisible(status)
+  
 }
+
 
 # ============================================================
 # OHL DATA COLLECTION PIPELINE
@@ -1102,6 +1233,23 @@ for (i in seq_len(nrow(official_game_tasks))) {
 
 
 # ============================================================
+# 6F. CACHED OHL TEAM LOGOS
+# ============================================================
+# Runs after game data processing. Only 20 current OHL team logos
+# are collected; no player headshots. Existing images are reused.
+# Set ICEINDEX_IMAGE_REFRESH=false to disable this task.
+# Set ICEINDEX_IMAGE_DOWNLOADS=false for inventory-only mode.
+# Review image rights before public redistribution.
+# ============================================================
+
+if (identical(tolower(Sys.getenv("ICEINDEX_IMAGE_REFRESH", "true")), "true")) {
+  section("6F. CACHED OHL TEAM LOGOS")
+  run_collector("OHL Team Logos (cached)", "scripts/collect_images.R")
+} else {
+  log_info("OHL image library disabled for automatic refresh (ICEINDEX_IMAGE_REFRESH=false).")
+}
+
+# ============================================================
 # FUTURE COLLECTORS
 # ============================================================
 #
@@ -1305,8 +1453,6 @@ log_info("Expected empty audit/failure reports: ", csv_expected_empty)
 log_info("Files with optional/blank values: ", csv_optional_missing_files)
 log_info("Blank cells across all CSVs (diagnostic only): ", csv_missing_values)
 log_info("Critical CSV issues: ", csv_critical_issues)
-cat(sprintf("CSV audit: %d inspected | %d critical issues | %d expected-empty reports\n",
-            csv_checked, csv_critical_issues, csv_expected_empty))
 if (csv_critical_issues == 0L) {
   log_ok("CSV structural and processed identity checks passed")
 }
@@ -1355,12 +1501,8 @@ overall_status <- if (overall_failed) {
 }
 
 section("9. REFRESH EXECUTION SUMMARY")
-cat(sprintf("Tasks: %d passed / %d failed | CSV issues: %d | %.1f min\n",
-            successful_tasks, failed_tasks, csv_critical_issues,
-            total_seconds / 60))
 
-
-if (REFRESH_VERBOSE) print(
+print(
   results[
     ,
     c(
@@ -1706,7 +1848,7 @@ log_info(
 
 cat("\n")
 
-if (REFRESH_VERBOSE && length(refresh_warnings) > 0) {
+if (length(refresh_warnings) > 0) {
   
   subsection(
     "RECORDED WARNINGS"
@@ -1727,7 +1869,7 @@ if (REFRESH_VERBOSE && length(refresh_warnings) > 0) {
   
 }
 
-if (REFRESH_VERBOSE && length(refresh_errors) > 0) {
+if (length(refresh_errors) > 0) {
   
   subsection(
     "RECORDED ERRORS"
