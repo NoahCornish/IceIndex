@@ -92,97 +92,54 @@ jobs:
             exit 0
           fi
 
-          # Each cron expression contains two possible
-          # UTC hours: one for EDT and one for EST.
-          #
-          # Evaluate both candidate scheduled UTC times
-          # against America/Toronto.
-          #
-          # This avoids checking only the runner's current
-          # hour, which can be incorrect when GitHub starts
-          # a scheduled job late.
-
+          # GitHub Actions cron uses UTC. Each expression covers
+          # both the EDT and EST candidate hours. Determine which
+          # occurrence is active based on Eastern local time.
+          # GitHub does not expose the exact scheduled-fire timestamp,
+          # so the closest past matching UTC occurrence is used.
           case "$SCHEDULE" in
-            "6 7,8 * * *")
-              candidate_hours="7 8"
-              target_local="03:06"
-              target_minute="06"
-              ;;
-
-            "2 16,17 * * *")
-              candidate_hours="16 17"
-              target_local="12:02"
-              target_minute="02"
-              ;;
-
-            "3 22,23 * * *")
-              candidate_hours="22 23"
-              target_local="18:03"
-              target_minute="03"
-              ;;
-
-            "25 2,3 * * *")
-              candidate_hours="2 3"
-              target_local="22:25"
-              target_minute="25"
-              ;;
-
-            *)
-              echo "ERROR: Unrecognized schedule."
-              exit 1
-              ;;
+            "6 7,8 * * *")   hours="7 8";   minute=6;  expected="03:06" ;;
+            "2 16,17 * * *") hours="16 17"; minute=2;  expected="12:02" ;;
+            "3 22,23 * * *") hours="22 23"; minute=3;  expected="18:03" ;;
+            "25 2,3 * * *")  hours="2 3";   minute=25; expected="22:25" ;;
+            *) echo "Unknown cron expression: $SCHEDULE" >&2; exit 1 ;;
           esac
 
-          now_epoch=$(date -u +%s)
-          approved=false
-
-          # Search recent scheduled occurrences.
-          # The matching occurrence must be within
-          # the previous 2 hours.
-          #
-          # This is a best-effort allowance for
-          # GitHub Actions scheduling delays.
-
-          for days_ago in 0 1; do
-            utc_date=$(date -u -d \
-              "$days_ago days ago" +%Y-%m-%d)
-
-            for hour in $candidate_hours; do
-              padded_hour=$(printf "%02d" "$hour")
-
-              candidate_utc="${utc_date}T${padded_hour}:${target_minute}:00Z"
-
-              candidate_epoch=$(date -u -d \
-                "$candidate_utc" +%s)
-
-              age_seconds=$((now_epoch - candidate_epoch))
-
-              # Ignore future occurrences and runs
-              # delayed by more than two hours.
-
-              if (( age_seconds < 0 || age_seconds > 7200 )); then
-                continue
-              fi
-
-              actual_local=$(TZ=America/Toronto \
-                date -d "@$candidate_epoch" +%H:%M)
-
-              echo "Candidate UTC: $candidate_utc"
-              echo "Candidate Eastern: $actual_local"
-              echo "Expected Eastern: $target_local"
-
-              if [[ "$actual_local" == "$target_local" ]]; then
-                approved=true
-                break 2
+          now=$(date -u +%s)
+          closest_epoch=0
+          closest_utc=""
+          for day in 0 1; do
+            utc_day=$(date -u -d "$day days ago" +%Y-%m-%d)
+            for hour in $hours; do
+              candidate=$(printf '%sT%02d:%02d:00Z' "$utc_day" "$hour" "$minute")
+              epoch=$(date -u -d "$candidate" +%s)
+              if (( epoch <= now && epoch > closest_epoch )); then
+                closest_epoch=$epoch
+                closest_utc=$candidate
               fi
             done
           done
 
-          if [[ "$approved" == "true" ]]; then
+          if (( closest_epoch == 0 )); then
+            echo "No matching past UTC occurrence." >&2
+            exit 1
+          fi
+
+          local_time=$(TZ=America/Toronto date -d "@$closest_epoch" +%H:%M)
+          delay=$((now - closest_epoch))
+          echo "Closest scheduled UTC occurrence: $closest_utc"
+          echo "Corresponding Eastern time: $local_time"
+          echo "Expected Eastern time: $expected"
+          echo "Elapsed since occurrence: ${delay}s"
+
+          # Reject an inactive DST occurrence, or a very stale job.
+          # Scheduled jobs delayed beyond one hour cannot be reliably
+          # attributed to a specific occurrence from GitHub's payload.
+          if [[ "$local_time" == "$expected" ]] && (( delay <= 3599 )); then
             echo "Scheduled Eastern refresh approved."
             echo "run_refresh=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Inactive EST/EDT occurrence."
+            echo "Inactive or delayed EST/EDT occurrence; no refresh."
             echo "run_refresh=false" >> "$GITHUB_OUTPUT"
           fi
 
@@ -376,6 +333,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          date -u +%Y-%m-%dT%H:%M:%SZ > "$RUNNER_TEMP/iceindex_refresh_started_utc"
 
           echo "========================================"
           echo " ICEINDEX DATA ENGINE"
@@ -435,7 +393,14 @@ jobs:
             "\n"
           )
 
-          cat("Refresh metadata verified.\n")
+          started <- as.POSIXct(
+            readLines(file.path(Sys.getenv("RUNNER_TEMP"), "iceindex_refresh_started_utc"), warn = FALSE),
+            format = "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"
+          )
+          if (is.na(started) || timestamp < started - 60) {
+            stop("Refresh timestamp is stale; scripts/refresh.R did not record a new successful refresh.")
+          }
+          cat("Refresh metadata verified and current.\n")
           RSCRIPT
 
       # ======================================================
@@ -493,7 +458,7 @@ jobs:
             git commit \
               -m "data: automated IceIndex refresh"
 
-            git push
+            git push origin HEAD:main
 
             echo "Updated datasets committed successfully."
           fi
