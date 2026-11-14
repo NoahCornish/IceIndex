@@ -1,110 +1,191 @@
-# IceIndex — Changelog
 
-All notable changes to IceIndex are documented here.
+# IceIndex Changelog
 
-This project uses version numbers to identify major development milestones, feature additions, improvements, and maintenance releases.
+All notable changes to IceIndex are documented in this file.
+
+IceIndex follows a development-oriented version numbering system.
 
 ---
 
-## [0.11.0] — 2026-11-14
+## [0.12.0] — 2026-11-14
 
-### Multi-League Beta Foundation & Official Branding
+### Membership & Game Export Studio
 
-Version 0.11.0 introduces a major visual and structural update to IceIndex, including official branding, multi-league selection, and an expanded OHL Game Centre.
+Version 0.12.0 introduces the first membership infrastructure and downloadable game reporting tools.
+
+This release establishes the foundation for future premium analytics and subscription-based services.
+
+### Added — Member Authentication
+
+- Integrated Supabase Authentication.
+- Added member login functionality.
+- Added authenticated session management.
+- Added persistent login sessions.
+- Added account status recognition.
+- Added member account controls.
+- Added sign-out functionality.
+- Added membership interface to the existing website layout.
+
+### Added — Manual Membership Access
+
+- Introduced administrator-controlled membership access.
+- Removed public account registration from the website interface.
+- Added a Request Access option.
+- Added membership inquiry email:
+  noahcornish.github@gmail.com
+- Added an email link with a prefilled membership request.
+- Added a return-to-login option.
+- Established a manual account creation and approval process.
+
+### Added — Membership Database
+
+- Added Supabase member profile integration.
+- Added support for pending, approved and rejected accounts.
+- Added administrator account identification.
+- Added approval status retrieval.
+- Added membership state updates within the frontend.
+
+### Added — Administrator Dashboard
+
+- Added member account listings.
+- Added membership status controls.
+- Added account approval functionality.
+- Added account rejection functionality.
+- Added the ability to revoke membership approval.
+- Added administrator-only access to membership management.
+- Added protected approval operations through Supabase RPC.
+
+### Security
+
+- Enabled Row Level Security for membership profiles.
+- Added administrator authorization checks.
+- Added restricted approval functions.
+- Prevented ordinary users from changing approval status through direct database access.
+- Prevented browser-based changes to administrator privileges through the exposed approval function.
+- Restricted self-approval through the administrator approval function.
+
+### Added — Game Export Studio
+
+- Introduced downloadable PNG reports for individual OHL games.
+- Added member-only export controls to the Game Centre interface.
+- Integrated export availability with membership approval status.
+- Added game report generation using available published statistics.
+- Added IceIndex branding to generated reports.
+
+### Game Export Content
+
+Reports can include:
+
+- Game identification
+- Team names and scores
+- Game dates
+- Venue information
+- Period statistics
+- Scoring plays
+- Player statistics
+- Goaltender statistics
+- Penalty records
+- Three stars
+- Available shot data
+
+Report content depends on the underlying game records.
+
+### Preserved
+
+- Existing Game Centre navigation
+- Share Game functionality
+- Direct game links
+- Player profile navigation
+- Goaltender profile navigation
+- Interactive shot maps
+- Player statistics
+- Goaltender statistics
+- League selection
+- Mobile navigation
+- Day and night themes
+- Data refresh status indicators
+
+### Known Limitations
+
+- Game Export Studio report formatting requires additional refinement.
+- Membership-based export restrictions currently operate through the browser interface.
+- Published game datasets remain publicly accessible.
+- Complete server-side protection of report generation is not yet implemented.
+- Subscription billing is not implemented.
+- Membership approval remains administrator-controlled.
+
+### Future Development
+
+- Improved PNG report layouts
+- Protected server-side exports
+- Subscription billing integration
+- Expanded member-exclusive analytical tools
+- Enhanced account administration
+
+---
+
+## [0.11.1] — 2026-11
+
+### Game Sharing & Goaltender Navigation
 
 ### Added
 
-**Multi-League Selection**
-- Added selectable OHL, WHL, and QMJHL leagues.
-- Added league logos to the active-league selector.
-- Added dedicated WHL and QMJHL beta preview homepages.
-- Added league-aware navigation and homepage labels.
-- Added navigation between the OHL platform and upcoming league previews.
-
-**Official IceIndex Branding**
-- Introduced the IceIndex hockey shield logo.
-- Integrated branding into the sidebar.
-- Added branding to the application header.
-- Added homepage branding.
-- Added branding near the data-update indicator.
-- Preserved day and night theme compatibility.
-
-**OHL Game Centre**
-- Expanded the official game statistics experience.
-- Added daily schedule and results presentation.
-- Added detailed individual-game views.
-- Added scoring and assist information.
-- Added player and goaltender box scores.
-- Added period-based statistics.
-- Added interactive shot maps.
-- Added penalties and Three Stars information.
-- Added clickable player names linking to player profiles.
-- Added team, date, game-status, and search filters.
-- Added automatic 10:45 AM Eastern Time date rollover.
-- Added schedule ordering improvements when filters are cleared.
-
-**Official Game Data Pipeline**
-- Integrated official game-summary collection into the master refresh.
-- Integrated official Game Centre CSV exports.
-- Added ten official game-statistics datasets.
-- Added scoring reconciliation for completed games.
-- Added support for expected shootout scoring differences.
-
-### Changed
-
-**Navigation**
-- Renamed Overview to OHL Home.
-- Moved OHL Game Centre to the top-level sidebar.
-- Moved Compare OHL Players to the top-level sidebar.
-- Reorganized the Players submenu.
-- Renamed the Goaltenders navigation heading to Goalies.
-- Preserved Teams and Analytics navigation.
-- Added league-specific navigation behaviour.
-
-**Data Engine**
-- Updated `scripts/refresh.R` to include the official Game Centre pipeline.
-- Improved console output with compact task reporting.
-- Added task runtime and file-change summaries.
-- Preserved detailed diagnostic logging.
-- Improved refresh reporting and visibility into warnings.
-
-**Interface**
-- Improved mobile presentation.
-- Refined game schedule cards.
-- Improved game-statistics readability.
-- Updated league selector presentation.
-- Integrated the new visual identity across the website.
+- Added Share Game functionality.
+- Added direct links to individual games.
+- Added native sharing support on compatible devices.
+- Added clipboard link copying as a fallback.
+- Added support for opening a specific game through a shared URL.
 
 ### Fixed
 
-- Corrected an individual-game rendering error that could leave Game Centre stuck on its loading message.
-- Corrected league selector HTML structure that temporarily hid the OHL sidebar.
-- Improved player-profile routing from Game Centre statistics.
-- Corrected Game Centre date-selection behaviour.
-- Improved schedule ordering when date filters are cleared.
-- Addressed compact layout and alignment issues across game statistics.
-
-### Notes
-
-- OHL remains the fully supported league.
-- WHL and QMJHL are selectable beta previews only.
-- Official game statistics depend on source availability.
-- The full data pipeline requires validation in the deployment environment.
+- Updated goaltender links within the Game Centre.
+- Routed goaltenders to dedicated goaltender profiles.
+- Preserved existing skater profile navigation.
 
 ---
 
-## [0.10.0] — 2026
+## [0.11.0] — 2026-11
 
-### OHL Game Centre & Data Expansion
+### OHL Game Centre
 
-- Developed the OHL Game Centre foundation.
-- Expanded game event collection and processing.
-- Added player game logs and game metadata processing.
-- Developed shot-location processing and orientation auditing.
-- Introduced official game-summary collection and statistical exports during the v0.10 development cycle.
-- Improved game-level data validation.
-- Expanded the connection between game statistics and player records.
-- Continued mobile interface refinements.
+### Added
+
+- Introduced the OHL Game Centre.
+- Added season schedule and results.
+- Added game filtering.
+- Added individual game pages.
+- Added team scoreboards.
+- Added period breakdowns.
+- Added scoring timelines.
+- Added player box scores.
+- Added goaltender box scores.
+- Added penalty information.
+- Added three-star information.
+- Added interactive shot maps.
+- Added game metadata where available.
+
+### Improved
+
+- Mobile presentation of game statistics.
+- Team branding and logos.
+- Game-level navigation.
+- Statistical tables and filtering.
+
+---
+
+## [0.10.x] — 2026
+
+### Website Interface Improvements
+
+### Improved
+
+- IceIndex branding.
+- Responsive navigation.
+- League selection.
+- Day and night themes.
+- Player search.
+- Game and statistical presentation.
+- Data refresh indicators.
 
 ---
 
@@ -112,22 +193,26 @@ Version 0.11.0 introduces a major visual and structural update to IceIndex, incl
 
 ### Condensed Overview
 
-- Introduced a condensed homepage overview.
+### Improved
+
+- Condensed homepage layout.
+- Reduced unnecessary interface spacing.
+- Improved mobile presentation.
+- Simplified navigation.
 - Improved information density.
-- Refined mobile presentation.
-- Continued player and team navigation improvements.
-- Established the condensed overview as the active development baseline.
 
 ---
 
-## [0.8.0] — 2026
+## [0.8.x] — 2026
 
-### Application & Search Improvements
+### Data & Application Improvements
 
-- Continued development of player search and navigation.
-- Expanded historical player-data support.
-- Improved application data handling.
-- Refined the interface and player exploration tools.
+### Improved
+
+- Data loading.
+- Website functionality.
+- Statistical presentation.
+- Integration of processed hockey datasets.
 
 ---
 
@@ -135,34 +220,46 @@ Version 0.11.0 introduces a major visual and structural update to IceIndex, incl
 
 ### Independent Data Infrastructure
 
-- Advanced the transition toward IceIndex-managed datasets.
-- Developed the foundation for independent data processing.
-- Improved repository-level data organization.
-- Continued work toward reducing external processed-data dependencies.
+### Development Focus
+
+- Moving IceIndex toward independently generated datasets.
+- Reducing reliance on external project data pipelines.
+- Organizing data collection within the IceIndex repository.
+- Improving automated data publishing.
 
 ---
 
 ## [0.6.0] — 2026
 
-### Data Engine Foundation
+### Data Engine
 
-- Introduced the IceIndex Data Engine architecture.
-- Added a centralized R refresh orchestrator.
-- Organized data collection and processing scripts.
-- Established configuration and API client infrastructure.
-- Prepared the foundation for automated data refreshes.
+### Added
+
+- Centralized R refresh orchestration.
+- Data processing script organization.
+- Configuration management.
+- Data collection task structure.
+- GitHub Actions integration.
+
+### Development Focus
+
+- Automated data collection.
+- Repeatable processing.
+- Independent data management.
 
 ---
 
 ## [0.5.0] — 2026
 
-### Homepage & Responsive Improvements
+### Homepage & Mobile Improvements
 
-- Condensed the homepage layout.
-- Simplified navigation and status presentation.
-- Improved mobile responsiveness.
-- Reduced unnecessary interface elements.
-- Continued performance and usability improvements.
+### Improved
+
+- Condensed homepage.
+- Responsive layout.
+- League navigation.
+- Status indicators.
+- Mobile usability.
 
 ---
 
@@ -170,11 +267,18 @@ Version 0.11.0 introduces a major visual and structural update to IceIndex, incl
 
 ### Multi-League Architecture
 
-- Introduced the multi-league homepage concept.
-- Separated the overall IceIndex homepage from OHL-specific functionality.
-- Added league-selection foundations.
-- Improved homepage organization.
-- Prepared the application for future league expansion.
+### Added
+
+- Multi-league homepage structure.
+- League selection interface.
+- Foundation for additional CHL leagues.
+
+### Preserved
+
+- Existing OHL functionality.
+- Player databases.
+- Player profiles.
+- Analytics and comparisons.
 
 ---
 
@@ -182,12 +286,14 @@ Version 0.11.0 introduces a major visual and structural update to IceIndex, incl
 
 ### Player Analytics
 
-- Introduced player analytics functionality.
-- Added percentile-based player analysis.
-- Added radar charts and scatter plots.
+### Added
+
+- Player analytics interface.
+- Percentile-based comparisons.
+- Radar charts.
+- Scatter plots.
+- Player card generation.
 - Expanded player comparison tools.
-- Added downloadable player-card functionality.
-- Improved player search and visualization.
 
 ---
 
@@ -195,49 +301,64 @@ Version 0.11.0 introduces a major visual and structural update to IceIndex, incl
 
 ### IceIndex Rebrand
 
-- Rebranded the project as IceIndex.
+### Changed
+
+- Rebranded the project to IceIndex.
+- Updated website identity.
 - Improved mobile navigation.
-- Added compact player statistics tables.
-- Expanded player profiles and career totals.
-- Improved comparison and draft-year features.
-- Added interface and performance improvements.
+- Refined player database layouts.
+
+### Added
+
+- Expanded player profiles.
+- Career statistical summaries.
+- Player comparison improvements.
+- Draft-year tools.
+- Team exploration improvements.
 
 ---
 
 ## [0.1.0] — 2026
 
-### Initial Development
+### Initial Release
 
-- Established the initial junior hockey data website.
-- Introduced OHL player and team databases.
-- Added basic player profiles.
-- Developed player comparison functionality.
-- Introduced draft-year exploration.
-- Created the initial mobile-first application structure.
+### Added
+
+- Initial hockey data website.
+- OHL player database.
+- OHL team database.
+- Player profiles.
+- Basic player statistics.
+- Search and filtering.
+- Initial responsive website layout.
 
 ---
 
-## Upcoming
+## Upcoming Development
 
-### WHL Beta
-- WHL player and team databases
-- WHL player profiles
-- WHL statistics and analytics
-- WHL Game Centre integration
+### v0.12.1 — Game Export Studio Refinement
 
-### QMJHL Beta
-- QMJHL player and team databases
-- QMJHL player profiles
-- QMJHL statistics and analytics
-- QMJHL Game Centre integration
+Planned improvements:
 
-### Future Enhancements
-- Cross-league player comparisons
-- Expanded historical data
-- Additional advanced statistics
-- Improved data validation
-- Performance improvements
-- Continued interface refinements
+- Improved PNG report formatting.
+- Better table alignment.
+- Cleaner statistical presentation.
+- Enhanced scoreboard design.
+- Improved scoring and penalty layouts.
+- More consistent report typography.
+- Improved report spacing.
+- Additional export quality checks.
+
+### Future Releases
+
+Potential development areas:
+
+- Protected server-side report generation.
+- Subscription management.
+- Premium analytical tools.
+- Expanded historical datasets.
+- Additional league support.
+- Advanced player and team analytics.
 
 ---
 

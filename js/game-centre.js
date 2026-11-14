@@ -285,7 +285,7 @@ window.IceIndexGameCentre = (() => {
     const eventColumns=gameEvents.length?Object.keys(gameEvents[0]).filter(k=>!/^season$/i.test(k)).slice(0,12):[];
     const fullEventTable=gameEvents.length?`<div class="igc-table-scroll"><table class="igc-table"><thead><tr>${eventColumns.map(k=>`<th>${esc(k.replace(/_/g," "))}</th>`).join("")}</tr></thead><tbody>${gameEvents.map(r=>`<tr>${eventColumns.map(k=>`<td>${esc(r[k])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`:`<p class="igc-note">Complete chronological play-by-play is not yet published as a CSV. Recorded shots and goals are shown below; other event types are summarized above.</p>`;
     root.innerHTML=`<div class="igc igc-boxscore igc-modern">
-      <div class="igc-share-actions"><button class="btn secondary igc-back" id="igc-back">← All games</button><button class="btn secondary" id="igc-share" type="button" aria-label="Share this game">↗ Share game</button></div>
+      <div class="igc-share-actions"><button class="btn secondary igc-back" id="igc-back">← All games</button><button class="btn secondary" id="igc-share" type="button" aria-label="Share this game">↗ Share game</button><button class="btn secondary" id="igc-download" type="button" aria-label="Download full game report as PNG">↓ Download game PNG</button></div>
       <header class="panel igc-panel igc-game-hero"><div class="igc-hero-top"><span>OHL 2026–27 · ${esc(displayDate(dateOf(game)))}</span><span class="igc-hero-status">${esc(get(official,'status')||statusLabel(status(game)))}</span></div><div class="igc-scoreboard"><div class="igc-score-team">${logo(away(game),'igc-hero-logo')}<strong>${esc(away(game))}</strong><span>${get(official,'visitor_goals')||(scoreAvailable(game)?fmt(awayScore(game)):'—')}</span><small class="igc-side-label">Away</small></div><div class="igc-score-middle" aria-hidden="true"></div><div class="igc-score-team">${logo(home(game),'igc-hero-logo')}<strong>${esc(home(game))}</strong><span>${get(official,'home_goals')||(scoreAvailable(game)?fmt(homeScore(game)):'—')}</span><small class="igc-side-label">Home</small></div></div><div class="igc-hero-foot"><span>${esc(get(official,'arena')||get(meta,'arena','venue')||'Venue unavailable')}</span><span>${get(official,'attendance')?'Attendance '+esc(get(official,'attendance')):''}</span>${gameTimingMarkup}</div></header>
       ${tabsMarkup}
       <div class="igc-tab-panel" data-igc-panel="summary">${compareMarkup}${periodsMarkup}<div class="igc-quick-links"><button data-igc-tab="scoring">View scoring plays ↗</button><button data-igc-tab="players">Full player box score ↗</button></div></div>
@@ -328,6 +328,14 @@ window.IceIndexGameCentre = (() => {
     const modal=root.querySelector('#igc-shot-modal');modal.querySelector('.igc-modal-close').onclick=()=>{modal.hidden=true;};modal.onclick=e=>{if(e.target===modal)modal.hidden=true;};
     root.querySelector("#igc-back").onclick=()=>{activeId=null;setGameUrl("");overview(games);};
     root.querySelector("#igc-share")?.addEventListener("click",()=>shareGame(game));
+    root.querySelector("#igc-download")?.addEventListener("click",async()=>{
+      const button=root.querySelector("#igc-download");if(!button)return;
+      if(!window.IceIndexMembers?.isApproved()){window.IceIndexMembers?.open();return;}
+      button.disabled=true;button.textContent="Preparing complete PNG…";
+      try{await window.IceIndexGameExport.download(root,id);button.textContent="✓ PNG downloaded";}
+      catch(error){console.error(error);alert(error.message||"Could not export game PNG.");button.textContent="↓ Download game PNG";}
+      finally{button.disabled=false;}
+    });
     const selectTab=tab=>{root.querySelectorAll('[data-igc-panel]').forEach(p=>{p.hidden=p.dataset.igcPanel!==tab;});root.querySelectorAll('.igc-tab').forEach(b=>{b.setAttribute('aria-selected',String(b.dataset.igcTab===tab));});root.querySelector('.igc-tabs')?.scrollIntoView({behavior:'smooth',block:'start'});};
     root.querySelectorAll('[data-igc-tab]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.igcTab)));
     const bind=()=>{for(const [key,field] of [["igc-shot-team","shotTeam"],["igc-shot-type","shotType"],["igc-shot-period","period"]]){const el=root.querySelector("#"+key);if(el)el.onchange=e=>{state[field]=e.target.value;root.querySelector("#igc-map").innerHTML=shotMap(gameShotRows,game);bind();bindShots();};}};bind();bindShots();

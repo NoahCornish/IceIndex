@@ -4,7 +4,7 @@
 <head>
 <script src="js/maintenance.js?v=0.6.0" defer></script>
   <!-- ======================================================
-       ICEINDEX v0.11.1
+       ICEINDEX v0.12.0
        Hockey Data Intelligence
        Compact Multi-League Navigation
        ====================================================== -->
@@ -79,10 +79,24 @@
   <script>window.IceIndexTheme.apply();</script>
 
   <!-- ======================================================
-       ICEINDEX v0.11.1 SIDEBAR STYLES
+       ICEINDEX v0.12.0 SIDEBAR STYLES
        ====================================================== -->
 
 
+  <style>
+    .ice-member-button{white-space:nowrap;font-size:12px;padding:7px 10px}
+    .ice-member-modal[hidden]{display:none!important}
+    .ice-member-modal{position:fixed;inset:0;z-index:99999;background:rgba(2,9,18,.82);display:flex;align-items:center;justify-content:center;padding:16px}
+    .ice-member-card{position:relative;width:min(100%,510px);max-height:90vh;overflow:auto;padding:30px;border:1px solid #31526c;border-radius:16px;background:#0e2030;color:#eef7ff;box-shadow:0 25px 80px #0009}
+    .ice-member-card h2{margin:0 0 12px}.ice-member-card p{line-height:1.55;color:#bbd0e0}
+    .ice-member-card label{display:block;margin:15px 0;font-size:13px;color:#cce0ee}
+    .ice-member-card input{display:block;width:100%;box-sizing:border-box;margin-top:6px;padding:12px;background:#081725;color:white;border:1px solid #36546b;border-radius:9px}
+    .ice-member-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+    .ice-member-close{position:absolute;top:10px;right:12px;border:0;background:none;color:white;font-size:30px;cursor:pointer}
+    .ice-member-row{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #294255}
+    .ice-member-row small{display:block;color:#a8c5d8}.ice-member-row select{padding:7px;border-radius:7px;max-width:140px}
+    @media(max-width:600px){.ice-member-button{font-size:11px;padding:5px 7px}.ice-member-card{padding:23px}}
+  </style>
   <!-- Sidebar-only last successful refresh indicator -->
   <style>
     .ice-refresh-stamp { margin-bottom: 14px; padding: 11px 12px; border: 1px solid rgba(88,184,255,.18); border-radius: 10px; background: rgba(88,184,255,.045); }
@@ -121,7 +135,10 @@
   <script src="js/ohl-goalies.js?v=0.8.0" defer></script>
   <script src="js/game-logs.js?v=0.10.0" defer></script>
   <script src="js/shot-map.js?v=0.10.0-halfmap" defer></script>
-  <script src="js/game-centre.js?v=0.11.4-filters-home" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
+  <script src="js/members.js?v=0.12.0" defer></script>
+  <script src="js/game-export.js?v=0.12.0" defer></script>
+  <script src="js/game-centre.js?v=0.12.0" defer></script>
   <script src="js/app.js?v=0.10.0-brand1" defer></script>
 
 </head>
@@ -501,7 +518,7 @@
         <div class="ice-footer-row">
 
           <span class="ice-footer-version">
-            IceIndex v0.11.1
+            IceIndex v0.12.0
           </span>
 
           <a class="ice-footer-github"
@@ -594,6 +611,7 @@
           Loading OHL data…
         </div>
 
+        <button type="button" class="btn secondary ice-member-button" id="ice-member-button">Log in</button>
         <!-- MANUAL DAY / NIGHT THEME SWITCH -->
         <button type="button" id="ice-theme-toggle" class="ice-theme-toggle" aria-label="Switch colour theme" title="Switch colour theme" aria-pressed="false">
           <svg class="ice-theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
@@ -627,7 +645,7 @@
 
     </header>
 
-    <!-- ICEINDEX v0.11.1 GLOBAL PLAYER SEARCH -->
+    <!-- ICEINDEX v0.12.0 GLOBAL PLAYER SEARCH -->
     <section class="ice-global-search" role="search" aria-label="Global OHL player search">
       <div class="ice-global-search-inner">
         <label for="ice-global-query" class="ice-global-search-label">PLAYER SEARCH</label>
@@ -693,7 +711,7 @@
 
         <span aria-hidden="true"> · </span>
 
-        <span>v0.11.1</span>
+        <span>v0.12.0</span>
 
       </div>
 
@@ -1071,6 +1089,9 @@
     });
   </script>
 
+  <div id="ice-member-modal" class="ice-member-modal" hidden role="dialog" aria-modal="true" aria-labelledby="ice-member-title">
+    <div class="ice-member-card"><button id="ice-member-close" class="ice-member-close" type="button" aria-label="Close">×</button><div id="ice-member-content"></div></div>
+  </div>
   <!-- JAVASCRIPT-FREE FALLBACK -->
 
   <noscript>
