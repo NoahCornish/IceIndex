@@ -419,11 +419,11 @@
 "29201","home","10","Kitchener Rangers","KIT",6,19,0,2,26,52,10
 "29202","visitor","8","Erie Otters","ER",7,11,1,5,31,61,15
 "29202","home","20","Niagara IceDogs","NIAG",3,15,0,4,30,61,17
-"29203","visitor","12","Sudbury Wolves","SBY",2,8,0,2,20,31,2
-"29203","home","19","North Bay Battalion","NB",3,12,0,1,11,31,4
-"29204","visitor","2","Kingston Frontenacs","KGN",3,18,0,2,26,55,8
-"29204","home","4","Oshawa Generals","OSH",3,15,0,3,29,55,6
-"29205","visitor","15","Sarnia Sting","SAR",4,6,0,1,32,67,2
-"29205","home","16","Soo Greyhounds","SOO",4,10,0,1,35,67,2
-"29206","visitor","34","Saginaw Spirit","SAG",0,0,0,2,3,9,4
-"29206","home","17","Windsor Spitfires","WSR",0,5,0,2,6,9,4
+"29203","visitor","12","Sudbury Wolves","SBY",2,9,1,2,26,39,4
+"29203","home","19","North Bay Battalion","NB",3,15,0,2,13,39,4
+"29204","visitor","2","Kingston Frontenacs","KGN",3,18,0,2,30,62,8
+"29204","home","4","Oshawa Generals","OSH",3,16,0,3,32,62,6
+"29205","visitor","15","Sarnia Sting","SAR",4,7,0,1,32,72,2
+"29205","home","16","Soo Greyhounds","SOO",5,11,0,1,40,72,2
+"29206","visitor","34","Saginaw Spirit","SAG",0,1,0,2,6,17,6
+"29206","home","17","Windsor Spitfires","WSR",0,5,0,2,11,17,6
