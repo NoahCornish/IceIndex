@@ -1,4 +1,4 @@
-# IceIndex v0.10.0 - incremental official OHL game-summary collector
+# IceIndex v0.12.1 - freshness-aware official OHL game-summary collector
 # Run from IceIndex repository root. Does NOT edit refresh.R.
 # Required: jsonlite. Optional: curl (recommended for HTTP timeout/retries).
 # Controls: ICEINDEX_GAME_IDS, ICEINDEX_GAME_SEASON, ICEINDEX_FORCE_SUMMARIES,
@@ -35,18 +35,77 @@ local({
   if (is.na(limit) || limit < 0) limit <- 0L
   key <- Sys.getenv('ICEINDEX_HOCKEYTECH_KEY','f1aa699db3d81487')
   if (!nzchar(key)) stop('Missing ICEINDEX_HOCKEYTECH_KEY')
-  valid_cache <- function(path) {
+  # Assess completeness, not merely whether the API marked a game final.
+  summary_quality <- function(doc) {
+    g <- tryCatch(doc$GC$Gamesummary, error=function(e) NULL)
+    if (is.null(g) || is.null(g$meta)) return(list(valid=FALSE, complete=FALSE, score=NA_character_, richness=-1L))
+    m <- g$meta
+    final <- identical(as.character(m$final), '1')
+    home <- suppressWarnings(as.numeric(m$home_goal_count))
+    away <- suppressWarnings(as.numeric(m$visiting_goal_count))
+    if (length(home)!=1L || length(away)!=1L || !is.finite(home) || !is.finite(away))
+      return(list(valid=TRUE, complete=FALSE, score=NA_character_, richness=0L))
+    goals <- g$goals
+    goal_count <- length(goals)
+    status <- paste(as.character(g$status_value), collapse=' ')
+    # A shootout may add a single scoreboard goal not present in the goal list.
+    shootout <- grepl('SO|shootout', status, ignore.case=TRUE)
+    goal_ok <- goal_count == home+away || (shootout && goal_count == home+away-1L)
+    teams <- g$totalShotsOn
+    shots <- tryCatch(c(as.numeric(teams$home),as.numeric(teams$visitor)),error=function(e) numeric())
+    shots_ok <- length(shots)==2L && all(is.finite(shots)) &&
+      (sum(shots)>0 || home+away==0)
+    # Do not require three stars: the league may publish them later.
+    complete <- final && goal_ok && shots_ok
+    richness <- as.integer(goal_count + 2L*length(g$penalties) +
+      2L*length(g$mvps) + 3L*length(g$home_team_lineup$goalies) +
+      3L*length(g$visitor_team_lineup$goalies) +
+      if (shots_ok) 10L else 0L)
+    list(valid=TRUE, complete=complete, score=paste(away,home,sep='-'),
+         richness=richness, final=final)
+  }
+  read_cache <- function(path) {
     if (!file.exists(path)) return(NULL)
-    tryCatch(jsonlite::fromJSON(path,simplifyVector=FALSE)$GC$Gamesummary$meta,error=function(e) NULL)
+    tryCatch(jsonlite::fromJSON(path,simplifyVector=FALSE),error=function(e) NULL)
+  }
+  # Eastern time matters when a GitHub runner uses UTC.
+  eastern_today <- as.Date(format(Sys.time(), '%Y-%m-%d', tz='America/Toronto'))
+  schedule_dates <- setNames(rep(as.Date(NA),length(ids)),ids)
+  if (file.exists(file.path(base,'schedule.csv'))) {
+    sched <- tryCatch(read.csv(file.path(base,'schedule.csv'),colClasses='character',check.names=FALSE),error=function(e) NULL)
+    if (!is.null(sched)) {
+      idcol <- intersect(c('ID','game_id','GameID','id'),names(sched))
+      datecol <- intersect(c('Date','date','game_date'),names(sched))
+      if (length(idcol) && length(datecol)) {
+        sd <- suppressWarnings(as.Date(sched[[datecol[1]]]))
+        schedule_dates <- setNames(sd,trimws(sched[[idcol[1]]]))
+      }
+    }
   }
   todo <- character(); reused <- 0L
   for (id in ids) {
     path <- file.path(raw_dir,paste0(id,'.json'))
-    meta <- valid_cache(path)
+    cached <- read_cache(path)
+    quality <- summary_quality(cached)
     age <- if (file.exists(path)) as.numeric(difftime(Sys.time(),file.info(path)$mtime,units='hours')) else Inf
-    final_old <- !is.null(meta) && identical(as.character(meta$final),'1') && age >= 168
-    if (!force && !is.null(meta) && (age < max_age || final_old)) reused <- reused+1L
+    game_date <- schedule_dates[[id]]
+    days_old <- if (!is.null(game_date) && !is.na(game_date)) as.numeric(eastern_today-game_date) else NA_real_
+    # Recent games: every 15 minutes; days 2-7: every 6 hours.
+    # Older complete finals: weekly; older incomplete finals: every 6 hours.
+    ttl <- max_age
+    if (is.finite(days_old)) {
+      if (days_old <= 1) ttl <- 0.25
+      else if (days_old <= 7) ttl <- 6
+      else if (isTRUE(quality$complete)) ttl <- 168
+      else ttl <- 6
+    }
+    if (!force && isTRUE(quality$valid) && age < ttl) reused <- reused+1L
     else todo <- c(todo,id)
+  }
+  # With a run limit, prioritize newest games rather than oldest IDs.
+  if (length(todo)>1L) {
+    d <- as.numeric(schedule_dates[todo]); d[is.na(d)] <- -Inf
+    todo <- todo[order(d,decreasing=TRUE)]
   }
   if (limit > 0L && length(todo) > limit) {
     message('Batch mode: processing first ',limit,' of ',length(todo),' games needing download. Run again for next batch.')
@@ -83,6 +142,24 @@ local({
     meta <- doc$GC$Gamesummary$meta
     if (is.null(meta)) {empty<-c(empty,id);cat('NO GAME DATA\n');next}
     target <- file.path(raw_dir,paste0(id,'.json'))
+    old_doc <- read_cache(target)
+    old_quality <- summary_quality(old_doc)
+    new_quality <- summary_quality(doc)
+    # Never replace a complete final with a partial response for the same score.
+    if (isTRUE(old_quality$complete) && !isTRUE(new_quality$complete) &&
+        identical(old_quality$score,new_quality$score)) {
+      reused <- reused+1L
+      cat('PRESERVED COMPLETE CACHE\n')
+      next
+    }
+    # Same final score, less detailed response: retain richer official record.
+    if (isTRUE(old_quality$final) && isTRUE(new_quality$final) &&
+        identical(old_quality$score,new_quality$score) &&
+        new_quality$richness < old_quality$richness) {
+      reused <- reused+1L
+      cat('PRESERVED RICHER CACHE\n')
+      next
+    }
     tmp <- tempfile(tmpdir=raw_dir,fileext='.json')
     writeLines(jsonlite::toJSON(doc,auto_unbox=TRUE,null='null',pretty=TRUE),tmp,useBytes=TRUE)
     # Preserve the old cache if replacement fails.
