@@ -1,4 +1,4 @@
-# IceIndex v0.12.1 - freshness-aware official OHL game-summary collector
+# IceIndex v0.12.1 diagnostic - freshness-aware official OHL game-summary collector
 # Run from IceIndex repository root. Does NOT edit refresh.R.
 # Required: jsonlite. Optional: curl (recommended for HTTP timeout/retries).
 # Controls: ICEINDEX_GAME_IDS, ICEINDEX_GAME_SEASON, ICEINDEX_FORCE_SUMMARIES,
@@ -21,7 +21,7 @@ local({
     ids <- trimws(tab[[col[1]]])
     if ('Date' %in% names(tab)) {
       dates <- suppressWarnings(as.Date(tab$Date))
-      if (any(!is.na(dates))) ids <- ids[!is.na(dates) & dates <= Sys.Date()]
+      if (any(!is.na(dates))) ids <- ids[!is.na(dates) & dates <= as.Date(format(Sys.time(), '%Y-%m-%d', tz='America/Toronto'))]
       else warning('Could not parse schedule dates: including all game IDs')
     }
     ids <- unique(ids)
@@ -58,9 +58,9 @@ local({
     # Do not require three stars: the league may publish them later.
     complete <- final && goal_ok && shots_ok
     richness <- as.integer(goal_count + 2L*length(g$penalties) +
-      2L*length(g$mvps) + 3L*length(g$home_team_lineup$goalies) +
-      3L*length(g$visitor_team_lineup$goalies) +
-      if (shots_ok) 10L else 0L)
+                             2L*length(g$mvps) + 3L*length(g$home_team_lineup$goalies) +
+                             3L*length(g$visitor_team_lineup$goalies) +
+                             if (shots_ok) 10L else 0L)
     list(valid=TRUE, complete=complete, score=paste(away,home,sep='-'),
          richness=richness, final=final)
   }
@@ -113,6 +113,17 @@ local({
   }
   cat(sprintf('IceIndex summaries: %d scheduled IDs | %d cached | %d to download now\n',length(ids),reused,length(todo)))
   downloaded <- 0L; failed <- character(); empty <- character()
+  diagnostic_rows <- list()
+  record_diagnostic <- function(id, action, old, new) {
+    diagnostic_rows[[length(diagnostic_rows)+1L]] <<- data.frame(
+      game_id=id, action=action,
+      old_score=as.character(old$score %||% ''), new_score=as.character(new$score %||% ''),
+      old_complete=isTRUE(old$complete), new_complete=isTRUE(new$complete),
+      old_richness=as.integer(old$richness %||% -1L),
+      new_richness=as.integer(new$richness %||% -1L),
+      stringsAsFactors=FALSE)
+  }
+  `%||%` <- function(a,b) if(is.null(a) || length(a)==0L || all(is.na(a))) b else a
   for (i in seq_along(todo)) {
     id <- todo[[i]]
     cat(sprintf('[%d/%d] Game %s ... ',i,length(todo),id)); flush.console()
@@ -148,6 +159,7 @@ local({
     # Never replace a complete final with a partial response for the same score.
     if (isTRUE(old_quality$complete) && !isTRUE(new_quality$complete) &&
         identical(old_quality$score,new_quality$score)) {
+      record_diagnostic(id,'preserved_complete_cache',old_quality,new_quality)
       reused <- reused+1L
       cat('PRESERVED COMPLETE CACHE\n')
       next
@@ -156,6 +168,7 @@ local({
     if (isTRUE(old_quality$final) && isTRUE(new_quality$final) &&
         identical(old_quality$score,new_quality$score) &&
         new_quality$richness < old_quality$richness) {
+      record_diagnostic(id,'preserved_richer_cache',old_quality,new_quality)
       reused <- reused+1L
       cat('PRESERVED RICHER CACHE\n')
       next
@@ -163,10 +176,21 @@ local({
     tmp <- tempfile(tmpdir=raw_dir,fileext='.json')
     writeLines(jsonlite::toJSON(doc,auto_unbox=TRUE,null='null',pretty=TRUE),tmp,useBytes=TRUE)
     # Preserve the old cache if replacement fails.
-    if (!file.copy(tmp,target,overwrite=TRUE)) {failed<-c(failed,id);cat('WRITE FAILED\n')}
-    else {downloaded<-downloaded+1L;cat(if (identical(as.character(meta$final),'1')) 'FINAL\n' else 'SAVED\n')}
+    if (!file.copy(tmp,target,overwrite=TRUE)) {
+      record_diagnostic(id,'write_failed',old_quality,new_quality)
+      failed<-c(failed,id);cat('WRITE FAILED\n')
+    } else {
+      record_diagnostic(id,'saved',old_quality,new_quality)
+      downloaded<-downloaded+1L
+      cat(if (identical(as.character(meta$final),'1')) 'FINAL\n' else 'SAVED\n')
+    }
     unlink(tmp)
     Sys.sleep(0.5)
+  }
+  if (length(diagnostic_rows)) {
+    audit_path <- file.path(base,'summary_refresh_diagnostics.csv')
+    write.csv(do.call(rbind,diagnostic_rows),audit_path,row.names=FALSE,na='')
+    cat('Diagnostic report: ',audit_path,'\n',sep='')
   }
   cat(sprintf('Finished: %d downloaded | %d reused | %d failed | %d empty\n',downloaded,reused,length(failed),length(empty)))
   if (length(failed)) warning('Failed IDs: ',paste(failed,collapse=', '))
