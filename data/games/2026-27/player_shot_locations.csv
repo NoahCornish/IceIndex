@@ -14387,35 +14387,53 @@
 "2026-27","29205","9574","shot",60,152,"4","0:13","5","Default","Quality on net","16","Kale Osipenko",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29205","9976","shot",47,111,"4","1:20","5","Default","Non quality goal","16","Kale Osipenko","8814","9570","Christopher Brown","Callum Croskery","Christopher Brown; Callum Croskery",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29205","9976","goal",47,111,"4","1:20",,,,"16",,"8814","9570","Christopher Brown","Callum Croskery","Christopher Brown; Callum Croskery",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9599","shot",95,104,"1","0:32","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9105","shot",113,131,"1","1:46","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9387","shot",506,227,"1","1:54","1","Snap","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8708","shot",53,165,"1","10:24","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8708","shot",56,120,"1","10:36","6","Tip","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9358","shot",149,235,"1","14:25","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9118","shot",463,74,"1","15:18","3","Slap","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9370","shot",173,78,"1","18:42","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8778","shot",138,250,"1","19:05","3","Slap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9597","shot",192,52,"1","19:10","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9597","shot",195,87,"1","19:45","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9740","shot",144,51,"1","19:54","4","Backhand","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8955","shot",152,77,"1","2:56","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8708","shot",69,143,"1","8:09","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9597","shot",183,62,"2","10:52","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8708","shot",60,141,"2","12:07","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8778","shot",165,149,"2","12:09","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8708","shot",70,193,"2","12:32","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9385","shot",387,159,"2","14:04","2","Wrist","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9759","shot",127,237,"2","16:47","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9787","shot",174,177,"2","16:49","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9792","shot",159,57,"2","17:06","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9792","shot",188,257,"2","18:57","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9118","shot",423,225,"2","3:41","3","Slap","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9175","shot",466,77,"2","5:21","1","Snap","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9118","shot",550,139,"2","5:46","2","Wrist","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8990","shot",496,203,"2","7:24","2","Wrist","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9461","shot",483,150,"2","7:35","2","Wrist","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8990","shot",531,160,"2","7:37","2","Wrist","Quality goal","34","Michael Newlove","9461","9383","Brody Pepoy","Levi Harper","Brody Pepoy; Levi Harper",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","8990","goal",531,160,"2","7:37",,,,"34",,"9461","9383","Brody Pepoy","Levi Harper","Brody Pepoy; Levi Harper",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9461","shot",532,124,"2","8:06","4","Backhand","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29206","9383","shot",480,263,"2","9:44","1","Snap","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9599","shot",505,196,"1","0:32","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9105","shot",487,169,"1","1:46","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9387","shot",94,73,"1","1:54","1","Snap","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",547,135,"1","10:24","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",544,180,"1","10:36","6","Tip","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9358","shot",451,65,"1","14:25","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9118","shot",137,226,"1","15:18","3","Slap","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9370","shot",427,222,"1","18:42","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8778","shot",462,50,"1","19:05","3","Slap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9597","shot",408,248,"1","19:10","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9597","shot",405,213,"1","19:45","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9740","shot",456,249,"1","19:54","4","Backhand","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8955","shot",448,223,"1","2:56","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",531,157,"1","8:09","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9597","shot",417,238,"2","10:52","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",540,159,"2","12:07","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8778","shot",435,151,"2","12:09","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",530,107,"2","12:32","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9385","shot",213,141,"2","14:04","2","Wrist","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9759","shot",473,63,"2","16:47","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9787","shot",426,123,"2","16:49","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9792","shot",441,243,"2","17:06","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9792","shot",412,43,"2","18:57","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9118","shot",177,75,"2","3:41","3","Slap","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9175","shot",134,223,"2","5:21","1","Snap","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9118","shot",50,161,"2","5:46","2","Wrist","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8990","shot",104,97,"2","7:24","2","Wrist","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9461","shot",117,150,"2","7:35","2","Wrist","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8990","shot",69,140,"2","7:37","2","Wrist","Quality goal","34","Michael Newlove","9461","9383","Brody Pepoy","Levi Harper","Brody Pepoy; Levi Harper",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8990","goal",69,140,"2","7:37",,,,"34",,"9461","9383","Brody Pepoy","Levi Harper","Brody Pepoy; Levi Harper",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9461","shot",68,176,"2","8:06","4","Backhand","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9383","shot",120,37,"2","9:44","1","Snap","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",394,166,"3","10:10","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9370","shot",388,237,"3","12:52","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9461","shot",107,89,"3","13:21","1","Snap","Quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8778","shot",473,19,"3","13:44","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9787","shot",497,238,"3","15:35","1","Snap","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9599","shot",495,87,"3","16:59","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9118","shot",149,99,"3","17:04","2","Wrist","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9812","shot",207,22,"3","17:20","2","Wrist","Non quality on net","34","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9599","shot",520,153,"3","18:13","6","Tip","Quality goal","17","Stepan Shurygin","9793","9358","Michal Svrcek","Andrew Robinson","Michal Svrcek; Andrew Robinson",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9599","goal",520,153,"3","18:13",,,,"17",,"9793","9358","Michal Svrcek","Andrew Robinson","Michal Svrcek; Andrew Robinson",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9596","shot",493,139,"3","8:14","6","Tip","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9792","shot",541,151,"3","9:06","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",485,79,"3","9:51","1","Snap","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9358","shot",460,147,"4","0:19","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9599","shot",478,230,"4","0:45","2","Wrist","Non quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9597","shot",498,85,"4","1:12","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","9597","shot",542,182,"4","3:55","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29206","8708","shot",516,117,"4","4:25","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
