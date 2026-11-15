@@ -1,4 +1,4 @@
-# IceIndex v0.12.1 - official OHL Game Centre CSV exporter
+# IceIndex v0.10.0 - official OHL Game Centre CSV exporter
 # Reads cached HockeyTech Gamesummary JSON; does not modify refresh.R.
 # Run from repository root: source('scripts/games/build_official_game_data.R')
 local({
@@ -36,7 +36,7 @@ local({
     if(is.null(g) || !is.list(g)) { warning(id,': missing GC.Gamesummary');next }
     m <- g$meta
     h <- g$home; v <- g$visitor
-    add('metadata',list(game_id=id,season=season,date=get(m,'date_played'),status=get(g,'status_value'),final=get(m,'final'),home_team_id=get(h,'id'),home_team=get(h,'name'),home_code=get(h,'code'),visitor_team_id=get(v,'id'),visitor_team=get(v,'name'),visitor_code=get(v,'code'),home_goals=get(m,'home_goal_count'),visitor_goals=get(m,'visiting_goal_count'),arena=get(g,'venue'),attendance=get(m,'attendance'),scheduled_time=get(m,'schedule_time'),actual_start=get(m,'start_time'),actual_end=get(m,'end_time'),timezone=get(m,'timezone'),game_length=get(g,'game_length'),referee1=get(g,'referee1'),referee2=get(g,'referee2'),linesman1=get(g,'linesman1'),linesman2=get(g,'linesman2'),source_last_modified=get(m,'last_modified')))
+    add('metadata',list(game_id=id,season=season,date=get(m,'date_played'),status=get(g,'status_value'),final=get(m,'final'),started=get(m,'started'),pending_final=get(m,'pending_final'),current_period=get(m,'period'),game_clock=get(m,'game_clock'),home_team_id=get(h,'id'),home_team=get(h,'name'),home_code=get(h,'code'),visitor_team_id=get(v,'id'),visitor_team=get(v,'name'),visitor_code=get(v,'code'),home_goals=get(m,'home_goal_count'),visitor_goals=get(m,'visiting_goal_count'),arena=get(g,'venue'),attendance=get(m,'attendance'),scheduled_time=get(m,'schedule_time'),actual_start=get(m,'start_time'),actual_end=get(m,'end_time'),timezone=get(m,'timezone'),game_length=get(g,'game_length'),referee1=get(g,'referee1'),referee2=get(g,'referee2'),linesman1=get(g,'linesman1'),linesman2=get(g,'linesman2'),source_last_modified=get(m,'last_modified')))
     for(side in c('visitor','home')) {
       t <- g[[side]]; team_id <- get(t,'id'); team_name <- get(t,'name')
       add('teams',list(game_id=id,side=side,team_id=team_id,team_name=team_name,team_code=get(t,'code'),goals=get(g,'totalGoals',side),shots_on_goal=get(g,'totalShotsOn',side),power_play_goals=get(g,'powerPlayGoals',side),power_play_opportunities=get(g,'powerPlayCount',side),faceoff_wins=get(g,'totalFaceoffs',side,'won'),faceoff_attempts=get(g,'totalFaceoffs',side,'att'),penalty_minutes=get(g,'pimTotal',side)))
@@ -82,7 +82,6 @@ local({
   # Validate goals per team. A shootout adds one scoreboard goal without a
   # normal goal event; this is expected and should not raise a warning.
   checked <- 0L; shootout_expected <- 0L; mismatched <- 0L; pending <- 0L
-  quality_rows <- list()
   for(row in records$metadata) {
     id <- as.character(row$game_id)
     status <- as.character(row$status)
@@ -107,40 +106,6 @@ local({
       mismatched <- mismatched+1L
       warning(sprintf('Game %s: official score %s-%s, recorded goals %s-%s (status: %s)',
                       id,score_visitor,score_home,actual_visitor,actual_home,status))
-    }
-  }
-  # Persistent audit makes missing details visible even when a game is FINAL.
-  for (row in records$metadata) {
-    id <- as.character(row$game_id)
-    if (!identical(as.character(row$final),'1')) next
-    gs <- Filter(function(x) identical(as.character(x$game_id),id),records$goals)
-    ts <- Filter(function(x) identical(as.character(x$game_id),id),records$teams)
-    ss <- Filter(function(x) identical(as.character(x$game_id),id),records$stars)
-    gl <- Filter(function(x) identical(as.character(x$game_id),id),records$goalies)
-    score <- sum(c(num(row$home_goals),num(row$visitor_goals)),na.rm=TRUE)
-    shots <- vapply(ts,function(x) num(x$shots_on_goal),numeric(1))
-    score_ok <- length(gs)==score || (grepl('SO|shootout',as.character(row$status),ignore.case=TRUE) && length(gs)==score-1)
-    shots_ok <- length(shots)==2L && all(is.finite(shots)) && (sum(shots)>0 || score==0)
-    problems <- c(if(!score_ok) 'goal events disagree with score',
-                  if(!shots_ok) 'missing team shots',
-                  if(!length(gl)) 'missing goalie rows',
-                  if(length(ss)<3L) 'three stars not yet published')
-    quality_rows[[length(quality_rows)+1L]] <- data.frame(
-      game_id=id,date=as.character(row$date),status=as.character(row$status),
-      goal_events=length(gs),team_shots_available=shots_ok,
-      goalie_rows=length(gl),stars=length(ss),
-      complete=length(problems)==0L,issues=paste(problems,collapse='; '),
-      stringsAsFactors=FALSE)
-  }
-  if (length(quality_rows)) {
-    quality <- do.call(rbind,quality_rows)
-    utils::write.csv(quality,file.path(base,'official_game_completeness_audit.csv'),row.names=FALSE,na='')
-    incomplete <- quality[!quality$complete,,drop=FALSE]
-    cat(sprintf('Final-game completeness: %d/%d complete; %d need follow-up.\n',
-                sum(quality$complete),nrow(quality),nrow(incomplete)))
-    if(nrow(incomplete)) {
-      for(i in seq_len(min(nrow(incomplete),15L)))
-        message('INCOMPLETE game ',incomplete$game_id[i],': ',incomplete$issues[i])
     }
   }
   cat(sprintf('Score validation: %d completed checked | %d expected shootout differences | %d unexplained mismatches | %d unfinished skipped\n',

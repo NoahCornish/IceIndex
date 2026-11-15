@@ -1,4 +1,4 @@
-# IceIndex v0.12.1 diagnostic - freshness-aware official OHL game-summary collector
+# IceIndex v0.12.3 - every-run live game refresh, GitHub Actions-safe official OHL game-summary collector
 # Run from IceIndex repository root. Does NOT edit refresh.R.
 # Required: jsonlite. Optional: curl (recommended for HTTP timeout/retries).
 # Controls: ICEINDEX_GAME_IDS, ICEINDEX_GAME_SEASON, ICEINDEX_FORCE_SUMMARIES,
@@ -68,6 +68,36 @@ local({
     if (!file.exists(path)) return(NULL)
     tryCatch(jsonlite::fromJSON(path,simplifyVector=FALSE),error=function(e) NULL)
   }
+  # Persist the last successful API check as DATA, never as a filesystem mtime.
+  # IMPORTANT: GitHub Actions must commit this CSV alongside the official data.
+  state_path <- file.path(base, 'summary_refresh_state.csv')
+  state <- if (file.exists(state_path)) tryCatch(
+    read.csv(state_path, colClasses='character', stringsAsFactors=FALSE),
+    error=function(e) NULL) else NULL
+  if (is.null(state) || !all(c('game_id','last_checked_utc') %in% names(state))) {
+    state <- data.frame(game_id=character(), last_checked_utc=character(),
+                        stringsAsFactors=FALSE)
+  }
+  state <- state[!duplicated(state$game_id, fromLast=TRUE), , drop=FALSE]
+  checked_at <- setNames(state$last_checked_utc, state$game_id)
+  check_time <- function(id) {
+    value <- unname(checked_at[id])
+    if (!length(value) || is.na(value)) return(as.POSIXct(NA))
+    if (is.null(value) || !nzchar(value)) return(as.POSIXct(NA))
+    suppressWarnings(as.POSIXct(value, format='%Y-%m-%dT%H:%M:%SZ', tz='UTC'))
+  }
+  mark_checked <- function(id) {
+    checked_at[id] <<- format(Sys.time(), '%Y-%m-%dT%H:%M:%SZ', tz='UTC')
+  }
+  save_state <- function() {
+    out <- data.frame(game_id=names(checked_at),
+                      last_checked_utc=unname(checked_at), stringsAsFactors=FALSE)
+    out <- out[order(suppressWarnings(as.numeric(out$game_id)), out$game_id), , drop=FALSE]
+    tmp <- tempfile(tmpdir=base, fileext='.csv')
+    write.csv(out, tmp, row.names=FALSE, na='')
+    if (!file.copy(tmp, state_path, overwrite=TRUE)) stop('Could not save ', state_path)
+    unlink(tmp)
+  }
   # Eastern time matters when a GitHub runner uses UTC.
   eastern_today <- as.Date(format(Sys.time(), '%Y-%m-%d', tz='America/Toronto'))
   schedule_dates <- setNames(rep(as.Date(NA),length(ids)),ids)
@@ -87,14 +117,18 @@ local({
     path <- file.path(raw_dir,paste0(id,'.json'))
     cached <- read_cache(path)
     quality <- summary_quality(cached)
-    age <- if (file.exists(path)) as.numeric(difftime(Sys.time(),file.info(path)$mtime,units='hours')) else Inf
+    last_check <- check_time(id)
+    age <- if (is.na(last_check)) Inf else max(0, as.numeric(difftime(Sys.time(),last_check,units='hours')))
     game_date <- schedule_dates[[id]]
     days_old <- if (!is.null(game_date) && !is.na(game_date)) as.numeric(eastern_today-game_date) else NA_real_
-    # Recent games: every 15 minutes; days 2-7: every 6 hours.
-    # Older complete finals: weekly; older incomplete finals: every 6 hours.
+    # Today and yesterday: fetch on EVERY invocation, even when the last
+    # workflow ran moments ago. Older games use persisted API-check times.
+    # Days 2-7: every 6 hours; older complete finals: weekly;
+    # older incomplete finals: every 6 hours.
+    # A missing persisted check timestamp means the cache must be revalidated.
     ttl <- max_age
     if (is.finite(days_old)) {
-      if (days_old <= 1) ttl <- 0.25
+      if (days_old <= 1) ttl <- 0
       else if (days_old <= 7) ttl <- 6
       else if (isTRUE(quality$complete)) ttl <- 168
       else ttl <- 6
@@ -159,6 +193,7 @@ local({
     # Never replace a complete final with a partial response for the same score.
     if (isTRUE(old_quality$complete) && !isTRUE(new_quality$complete) &&
         identical(old_quality$score,new_quality$score)) {
+      mark_checked(id)
       record_diagnostic(id,'preserved_complete_cache',old_quality,new_quality)
       reused <- reused+1L
       cat('PRESERVED COMPLETE CACHE\n')
@@ -168,6 +203,7 @@ local({
     if (isTRUE(old_quality$final) && isTRUE(new_quality$final) &&
         identical(old_quality$score,new_quality$score) &&
         new_quality$richness < old_quality$richness) {
+      mark_checked(id)
       record_diagnostic(id,'preserved_richer_cache',old_quality,new_quality)
       reused <- reused+1L
       cat('PRESERVED RICHER CACHE\n')
@@ -180,6 +216,7 @@ local({
       record_diagnostic(id,'write_failed',old_quality,new_quality)
       failed<-c(failed,id);cat('WRITE FAILED\n')
     } else {
+      mark_checked(id)
       record_diagnostic(id,'saved',old_quality,new_quality)
       downloaded<-downloaded+1L
       cat(if (identical(as.character(meta$final),'1')) 'FINAL\n' else 'SAVED\n')
@@ -187,12 +224,15 @@ local({
     unlink(tmp)
     Sys.sleep(0.5)
   }
+  save_state()
+  cat('Refresh timestamps saved: ', state_path, '\n', sep='')
   if (length(diagnostic_rows)) {
     audit_path <- file.path(base,'summary_refresh_diagnostics.csv')
     write.csv(do.call(rbind,diagnostic_rows),audit_path,row.names=FALSE,na='')
     cat('Diagnostic report: ',audit_path,'\n',sep='')
   }
   cat(sprintf('Finished: %d downloaded | %d reused | %d failed | %d empty\n',downloaded,reused,length(failed),length(empty)))
+  cat('Today/yesterday always checked; older games use persisted API-check timestamps.\n')
   if (length(failed)) warning('Failed IDs: ',paste(failed,collapse=', '))
   if (length(empty)) message('No data IDs: ',paste(empty,collapse=', '))
   if (!length(list.files(raw_dir,pattern='^[0-9]+\\.json$'))) stop('No cached summaries available')

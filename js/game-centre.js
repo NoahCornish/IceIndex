@@ -124,28 +124,84 @@ window.IceIndexGameCentre = (() => {
     return hasData?"final":"cancelled";
   }
   function statusLabel(s){return ({final:"FINAL",live:"LIVE",upcoming:"UPCOMING",cancelled:"CANCELLED"})[s]||s.toUpperCase();}
-  function scoreAvailable(r){return (status(r)==="live"||status(r)==="final") && homeScore(r)!==null && awayScore(r)!==null;}
+  // Published game-clock data is authoritative; scheduled puck-drop is not a clock.
+  let officialByGame = new Map();
+  function officialFor(r){return officialByGame.get(gameId(r))||{};}
+  function officialState(r){
+    const o=officialFor(r);
+    const final=get(o,'final');
+    if(final==='1'||final.toLowerCase()==='true')return 'final';
+    const raw=get(o,'status','game_status','status_value','game_state').toLowerCase();
+    if(/final|complete|finished|game over/.test(raw))return 'final';
+    if(/postpon|cancel/.test(raw))return 'cancelled';
+    const started=get(o,'started');
+    if(started==='1'||started.toLowerCase()==='true')return 'live';
+    if(started==='0'||started.toLowerCase()==='false')return 'upcoming';
+    if(/scheduled|upcoming|not started|pre.game|pregame/.test(raw))return 'upcoming';
+    if(/live|progress|intermission|period|overtime|shootout/.test(raw))return 'live';
+    // Without an authoritative flag, don't invent LIVE or CANCELLED from puck-drop time.
+    return 'upcoming';
+  }
+  function periodName(raw){
+    const p=String(raw||'').trim();
+    if(!p)return '';
+    if(/shootout|^so$/i.test(p))return 'SO';
+    if(/overtime|^ot$/i.test(p))return 'OT';
+    const n=Number(p.replace(/^p/i,''));
+    if(n===4)return 'OT';
+    if(n>4)return 'SO';
+    if(n>=1&&n<=3)return `${n}${['st','nd','rd'][n-1]} Period`;
+    return '';
+  }
+  function clockText(r){
+    const o=officialFor(r);
+    const raw=get(o,'time_remaining','period_time_remaining','clock_remaining','game_clock','clock','period_clock');
+    if(!raw)return '';
+    const value=raw.trim();
+    // Only render a known remaining-time field, never calculate from wall-clock time.
+    if(!/^\d{1,2}:\d{2}(?::\d{2})?$/.test(value))return '';
+    // HockeyTech commonly exports HH:MM:SS; display MM:SS for a period clock.
+    if(/^\d{1,2}:\d{2}:\d{2}$/.test(value)){
+      const [h,m,s]=value.split(':').map(Number);
+      return `${String(h*60+m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+    return value;
+  }
+  function gameStatusText(r){
+    const o=officialFor(r),st=officialState(r);
+    const raw=get(o,'status','game_status','status_value','game_state');
+    if(st==='final'){
+      if(/shootout|\bso\b/i.test(raw)||/shootout|\bso\b/i.test(get(o,'decision','result_type','game_type')))return 'FINAL SO';
+      if(/overtime|\bot\b/i.test(raw)||/overtime|\bot\b/i.test(get(o,'decision','result_type','game_type')))return 'FINAL OT';
+      return 'FINAL';
+    }
+    if(st!=='live')return statusLabel(st);
+    const period=periodName(get(o,'current_period','period','period_number','period_num','period_label'));
+    const clock=clockText(r);
+    return ['LIVE',period,clock?`${clock} left`:''].filter(Boolean).join(' · ');
+  }
+  function scoreAvailable(r){return (officialState(r)==="live"||officialState(r)==="final") && homeScore(r)!==null && awayScore(r)!==null;}
   function displayDate(date){if(!date)return "Date unavailable";const d=new Date(date+"T12:00:00Z");return new Intl.DateTimeFormat("en-CA",{month:"short",day:"numeric",year:"numeric",timeZone:"UTC"}).format(d);}
   function gameTime(r){return get(r,"scheduled_time","game_time","time","start_time","scheduled_start_time","scheduled_time_et","ScheduledFormattedTime");}
   function rowsByGame(rows,id){return rows.filter(r=>gameId(r)===id);}
   function teamOptions(games){return [...new Set(games.flatMap(r=>[home(r),away(r)]).filter(Boolean))].sort((a,b)=>a.localeCompare(b));}
   function filtered(games){
     let rows=games.filter(r=>state.team==="all"||home(r)===state.team||away(r)===state.team)
-      .filter(r=>state.status==="all"||status(r)===state.status)
+      .filter(r=>state.status==="all"||officialState(r)===state.status)
       .filter(r=>!state.date||dateOf(r)===state.date);
     if(state.search){const q=state.search.toLowerCase();rows=rows.filter(r=>[home(r),away(r),gameId(r),get(r,"venue","arena")].join(" ").toLowerCase().includes(q));}
     // When dates are cleared, prioritize live / next scheduled games, not season-end finals.
     if(!state.date && state.status==="all"){
-      const priority=r=>status(r)==="live"?0:status(r)==="upcoming"?1:status(r)==="final"?2:3;
+      const priority=r=>officialState(r)==="live"?0:officialState(r)==="upcoming"?1:officialState(r)==="final"?2:3;
       return rows.sort((a,b)=>priority(a)-priority(b)||(priority(a)<=1?dateOf(a).localeCompare(dateOf(b)):dateOf(b).localeCompare(dateOf(a)))||gameId(a).localeCompare(gameId(b)));
     }
     return rows.sort((a,b)=>state.status==="upcoming"?dateOf(a).localeCompare(dateOf(b))||gameId(a).localeCompare(gameId(b)):dateOf(b).localeCompare(dateOf(a))||gameId(b).localeCompare(gameId(a)));
   }
-  function card(r){const id=gameId(r),s=status(r),hs=scoreAvailable(r)?homeScore(r):null,as=scoreAvailable(r)?awayScore(r):null;
+  function card(r){const id=gameId(r),s=officialState(r),hs=scoreAvailable(r)?homeScore(r):null,as=scoreAvailable(r)?awayScore(r):null;
     const teamRow=(name,score)=>`<span class="igc-card-team">${logo(name)}<span>${esc(name||"Team unavailable")}</span></span><strong>${score===null?"—":score}</strong>`;
-    return `<button class="igc-game" data-igc-game="${esc(id)}" type="button"><span class="igc-game-date">${esc(displayDate(dateOf(r)))} <span class="igc-status igc-${s}">${esc(statusLabel(s))}</span></span><span class="igc-game-teams">${teamRow(away(r),as)}${teamRow(home(r),hs)}</span><span class="igc-game-foot">${esc(gameTime(r)||`Game ${id}`)} <span>GAME CENTRE ↗</span></span></button>`;
+    return `<button class="igc-game" data-igc-game="${esc(id)}" type="button"><span class="igc-game-date">${esc(displayDate(dateOf(r)))} <span class="igc-status igc-${s}">${esc(gameStatusText(r))}</span></span><span class="igc-game-teams">${teamRow(away(r),as)}${teamRow(home(r),hs)}</span><span class="igc-game-foot">${esc(gameTime(r)||`Game ${id}`)} <span>GAME CENTRE ↗</span></span></button>`;
   }
-  function overview(games){const all=filtered(games),final=games.filter(r=>status(r)==="final").length,upcoming=games.filter(r=>status(r)==="upcoming").length,live=games.filter(r=>status(r)==="live").length;const shown=all.slice((state.page-1)*state.perPage,state.page*state.perPage);const pages=Math.max(1,Math.ceil(all.length/state.perPage));root.innerHTML=`<div class="igc"><div class="page-heading"><div class="eyebrow">ICEINDEX / OHL / 2026–27</div><h1>OHL Game Centre</h1><p>Scores, scorers, player box scores and shot maps — all season long.</p></div><section class="panel igc-panel"><div class="igc-filters"><label>Team<select id="igc-team" class="select"><option value="all">All OHL teams</option>${teamOptions(games).map(t=>`<option value="${esc(t)}" ${state.team===t?"selected":""}>${esc(t)}</option>`).join("")}</select></label><label>Games<select id="igc-status" class="select">${[["all","All games"],["final","Final results"],["upcoming","Upcoming"],["live","In progress"],["cancelled","Cancelled"]].map(([v,l])=>`<option value="${v}" ${state.status===v?"selected":""}>${l}</option>`).join("")}</select></label><label>Date<input id="igc-date" type="date" class="select" value="${esc(state.date)}"></label><label>Search<input id="igc-search" type="search" class="select" placeholder="Team, arena or game ID" value="${esc(state.search)}"></label><button class="btn secondary" id="igc-clear" type="button">Clear filters</button><button class="btn secondary" id="igc-all-dates" type="button">Default date</button></div><div class="igc-list-head"><h2>Schedule & results</h2><span>${fmt(all.length)} matching games</span></div>${shown.length?`<div class="igc-games">${shown.map(card).join("")}</div>`:`<div class="empty">No games match these filters.</div>`}<div class="igc-pagination"><button type="button" class="btn secondary" id="igc-prev" ${state.page<=1?"disabled":""}>Previous</button><span>Page ${state.page} of ${pages}</span><button type="button" class="btn secondary" id="igc-next" ${state.page>=pages?"disabled":""}>Next</button></div></section></div>`;
+  function overview(games){const all=filtered(games),final=games.filter(r=>officialState(r)==="final").length,upcoming=games.filter(r=>officialState(r)==="upcoming").length,live=games.filter(r=>officialState(r)==="live").length;const shown=all.slice((state.page-1)*state.perPage,state.page*state.perPage);const pages=Math.max(1,Math.ceil(all.length/state.perPage));root.innerHTML=`<div class="igc"><div class="page-heading"><div class="eyebrow">ICEINDEX / OHL / 2026–27</div><h1>OHL Game Centre</h1><p>Scores, scorers, player box scores and shot maps — all season long.</p></div><section class="panel igc-panel"><div class="igc-filters"><label>Team<select id="igc-team" class="select"><option value="all">All OHL teams</option>${teamOptions(games).map(t=>`<option value="${esc(t)}" ${state.team===t?"selected":""}>${esc(t)}</option>`).join("")}</select></label><label>Games<select id="igc-status" class="select">${[["all","All games"],["final","Final results"],["upcoming","Upcoming"],["live","In progress"],["cancelled","Cancelled"]].map(([v,l])=>`<option value="${v}" ${state.status===v?"selected":""}>${l}</option>`).join("")}</select></label><label>Date<input id="igc-date" type="date" class="select" value="${esc(state.date)}"></label><label>Search<input id="igc-search" type="search" class="select" placeholder="Team, arena or game ID" value="${esc(state.search)}"></label><button class="btn secondary" id="igc-clear" type="button">Clear filters</button><button class="btn secondary" id="igc-all-dates" type="button">Default date</button></div><div class="igc-list-head"><h2>Schedule & results</h2><span>${fmt(all.length)} matching games</span></div>${shown.length?`<div class="igc-games">${shown.map(card).join("")}</div>`:`<div class="empty">No games match these filters.</div>`}<div class="igc-pagination"><button type="button" class="btn secondary" id="igc-prev" ${state.page<=1?"disabled":""}>Previous</button><span>Page ${state.page} of ${pages}</span><button type="button" class="btn secondary" id="igc-next" ${state.page>=pages?"disabled":""}>Next</button></div></section></div>`;
     root.querySelector("#igc-team").onchange=e=>{state.team=e.target.value;state.page=1;overview(games);};root.querySelector("#igc-status").onchange=e=>{state.status=e.target.value;state.page=1;overview(games);};root.querySelector("#igc-date").onchange=e=>{state.date=e.target.value;state.page=1;overview(games);};root.querySelector("#igc-search").onchange=e=>{state.search=e.target.value;state.page=1;overview(games);};root.querySelector("#igc-clear").onclick=()=>{Object.assign(state,{team:"all",status:"all",date:"",search:"",page:1});overview(games);};root.querySelector("#igc-all-dates").onclick=()=>{state.date=torontoToday();state.page=1;overview(games);};root.querySelector("#igc-prev").onclick=()=>{state.page--;overview(games);};root.querySelector("#igc-next").onclick=()=>{state.page++;overview(games);};root.querySelectorAll("[data-igc-game]").forEach(b=>b.onclick=()=>detail(games.find(r=>gameId(r)===b.dataset.igcGame),games));
   }
   function parseClock(v){const m=String(v).match(/^(\d+):(\d+)$/);return m?Number(m[1])*60+Number(m[2]):0;}
@@ -310,7 +366,7 @@ window.IceIndexGameCentre = (() => {
     const fullEventTable=gameEvents.length?`<div class="igc-table-scroll"><table class="igc-table"><thead><tr>${eventColumns.map(k=>`<th>${esc(k.replace(/_/g," "))}</th>`).join("")}</tr></thead><tbody>${gameEvents.map(r=>`<tr>${eventColumns.map(k=>`<td>${esc(r[k])}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`:`<p class="igc-note">Complete chronological play-by-play is not yet published as a CSV. Recorded shots and goals are shown below; other event types are summarized above.</p>`;
     root.innerHTML=`<div class="igc igc-boxscore igc-modern">
       <div class="igc-share-actions"><button class="btn secondary igc-back" id="igc-back">← All games</button><button class="btn secondary" id="igc-share" type="button" aria-label="Share this game">↗ Share game</button><button class="btn secondary" id="igc-download" type="button" hidden style="display:none" aria-label="Download full game report as PNG">↓ Download game PNG</button></div>
-      <header class="panel igc-panel igc-game-hero"><div class="igc-hero-top"><span>OHL 2026–27 · ${esc(displayDate(dateOf(game)))}</span><span class="igc-hero-status">${esc(officialSnapshotStale?statusLabel(status(game)):(get(official,'status')||statusLabel(status(game))))}</span></div><div class="igc-scoreboard"><div class="igc-score-team">${logo(away(game),'igc-hero-logo')}<strong>${esc(away(game))}</strong><span>${detailScoreLabel(detailAwayScore)}</span><small class="igc-side-label">Away</small></div><div class="igc-score-middle" aria-hidden="true"></div><div class="igc-score-team">${logo(home(game),'igc-hero-logo')}<strong>${esc(home(game))}</strong><span>${detailScoreLabel(detailHomeScore)}</span><small class="igc-side-label">Home</small></div></div><div class="igc-hero-foot"><span>${esc(get(official,'arena')||get(meta,'arena','venue')||'Venue unavailable')}</span><span>${get(official,'attendance')?'Attendance '+esc(get(official,'attendance')):''}</span>${gameTimingMarkup}</div></header>
+      <header class="panel igc-panel igc-game-hero"><div class="igc-hero-top"><span>OHL 2026–27 · ${esc(displayDate(dateOf(game)))}</span><span class="igc-hero-status">${esc(officialSnapshotStale?gameStatusText(game):gameStatusText(game))}</span></div><div class="igc-scoreboard"><div class="igc-score-team">${logo(away(game),'igc-hero-logo')}<strong>${esc(away(game))}</strong><span>${detailScoreLabel(detailAwayScore)}</span><small class="igc-side-label">Away</small></div><div class="igc-score-middle" aria-hidden="true"></div><div class="igc-score-team">${logo(home(game),'igc-hero-logo')}<strong>${esc(home(game))}</strong><span>${detailScoreLabel(detailHomeScore)}</span><small class="igc-side-label">Home</small></div></div><div class="igc-hero-foot"><span>${esc(get(official,'arena')||get(meta,'arena','venue')||'Venue unavailable')}</span><span>${get(official,'attendance')?'Attendance '+esc(get(official,'attendance')):''}</span>${gameTimingMarkup}</div></header>
       ${tabsMarkup}
       <div class="igc-tab-panel" data-igc-panel="summary">${officialSnapshotStale?'<p class="igc-note" role="status">Live score is available, but detailed official statistics are still catching up. Some box-score sections may be incomplete.</p>':''}${compareMarkup}${periodsMarkup}<div class="igc-quick-links"><button data-igc-tab="scoring">View scoring plays ↗</button><button data-igc-tab="players">Full player box score ↗</button></div></div>
       <div class="igc-tab-panel" data-igc-panel="scoring" hidden><section class="panel igc-panel"><div class="igc-section-title"><h2>Scoring timeline</h2><span>${officialGoals.length||goals.length} goals</span></div>${officialGoals.length||goals.length?`${eventPeriodFilter("igc-scoring-period",officialGoals.length?officialGoals:goals)}<div class="igc-goals" id="igc-scoring-events">${officialGoalMarkup}</div>`:'<div class="igc-empty-note">No scoring plays recorded.</div>'}</section></div>
@@ -367,7 +423,8 @@ window.IceIndexGameCentre = (() => {
     root.querySelectorAll('[data-igc-tab]').forEach(b=>b.addEventListener('click',()=>selectTab(b.dataset.igcTab)));
     const bind=()=>{for(const [key,field] of [["igc-shot-team","shotTeam"],["igc-shot-type","shotType"],["igc-shot-period","period"]]){const el=root.querySelector("#"+key);if(el)el.onchange=e=>{state[field]=e.target.value;root.querySelector("#igc-map").innerHTML=shotMap(gameShotRows,game);bind();bindShots();};}};bind();bindShots();
   }
-  async function render(container){clearMemberVisibilitySubscription();root=container;activeId=null;state.date=torontoToday();state.page=1;root.innerHTML=`<div class="igc"><div class="page-heading"><div class="eyebrow">ICEINDEX / OHL</div><h1>OHL Game Centre</h1></div><div class="panel igc-panel"><div class="empty">Loading the 2026–27 schedule…</div></div></div>`;const [games, summaries]=await Promise.all([load("schedule"),load("summary")]);
+  async function render(container){clearMemberVisibilitySubscription();root=container;activeId=null;state.date=torontoToday();state.page=1;root.innerHTML=`<div class="igc"><div class="page-heading"><div class="eyebrow">ICEINDEX / OHL</div><h1>OHL Game Centre</h1></div><div class="panel igc-panel"><div class="empty">Loading the 2026–27 schedule…</div></div></div>`;const [games, summaries, officialMeta]=await Promise.all([load("schedule"),load("summary"),load("officialMetadata")]);
+    officialByGame=new Map(officialMeta.map(r=>[gameId(r),r]));
     activityIds.clear();
     summaries.filter(r=>Number(get(r,"total_events"))>0).forEach(r=>activityIds.add(gameId(r)));if(root!==container||!container.isConnected||location.hash.replace(/^#/,"").split("?")[0]!=="game-centre")return;if(!games.length){root.innerHTML=`<div class="igc"><h1>OHL Game Centre</h1><div class="panel igc-panel"><div class="igc-empty-note">Unable to load <code>${esc(sources.schedule)}</code>${failures.schedule?` (${esc(failures.schedule)})`:""}. Confirm your refresh publishes this CSV, then reload.</div></div></div>`;return;}const requestedId=sharedGameId()||pendingGameId;pendingGameId=null;if(requestedId){const selected=games.find(r=>gameId(r)===requestedId);if(selected){detail(selected,games);return;}setGameUrl("");}overview(games);}
   // Official three-character team codes for the compact daily schedule.
@@ -411,12 +468,13 @@ window.IceIndexGameCentre = (() => {
     const todayGames=games.filter(r=>dateOf(r)===today).sort((a,b)=>(gameStartMinutes(a)||0)-(gameStartMinutes(b)||0));
     const officialById=new Map(officialMeta.map(r=>[gameId(r),r]));
     const fallbackById=new Map(fallbackMeta.map(r=>[gameId(r),r]));
+    officialByGame=officialById;
     const venueFor=r=>{
       const id=gameId(r),o=officialById.get(id),m=fallbackById.get(id);
       return get(o,'arena','venue','location') || get(m,'arena','venue','location') ||
         get(r,'venue','arena','location') || dailyHomeVenues[home(r)] || 'Venue TBD';
     };
-    container.innerHTML=`<div class="igc-daily-head"><strong>Today's OHL games</strong><span>${esc(displayDate(today))}</span><a href="#game-centre" data-page="game-centre">All games ↗</a></div><div class="igc-daily-list">${todayGames.length?todayGames.map(r=>{const st=status(r),sc=scoreAvailable(r);return `<a href="#game-centre" class="igc-daily-row" data-igc-daily-id="${esc(gameId(r))}" title="${esc(away(r))} at ${esc(home(r))} — ${esc(venueFor(r))}"><span class="igc-daily-match"><span class="igc-daily-team">${logo(away(r),'igc-daily-logo')}<b>${esc(dailyCode(away(r)))}</b></span><span class="igc-daily-separator">@</span><span class="igc-daily-team">${logo(home(r),'igc-daily-logo')}<b>${esc(dailyCode(home(r)))}</b></span></span><span class="igc-daily-time">${esc(sc?`${awayScore(r)}–${homeScore(r)}`:gameTime(r)||'TBD')}<small>${esc(statusLabel(st))}</small></span><span class="igc-daily-arena">${esc(venueFor(r))}</span></a>`;}).join(''):'<div class="igc-daily-none">No OHL games scheduled today.</div>'}</div>`;
+    container.innerHTML=`<div class="igc-daily-head"><strong>Today's OHL games</strong><span>${esc(displayDate(today))}</span><a href="#game-centre" data-page="game-centre">All games ↗</a></div><div class="igc-daily-list">${todayGames.length?todayGames.map(r=>{const st=officialState(r),sc=scoreAvailable(r);return `<a href="#game-centre" class="igc-daily-row" data-igc-daily-id="${esc(gameId(r))}" title="${esc(away(r))} at ${esc(home(r))} — ${esc(venueFor(r))}"><span class="igc-daily-match"><span class="igc-daily-team">${logo(away(r),'igc-daily-logo')}<b>${esc(dailyCode(away(r)))}</b></span><span class="igc-daily-separator">@</span><span class="igc-daily-team">${logo(home(r),'igc-daily-logo')}<b>${esc(dailyCode(home(r)))}</b></span></span><span class="igc-daily-time">${esc(sc?`${awayScore(r)}–${homeScore(r)}`:gameTime(r)||'TBD')}<small>${esc(gameStatusText(r))}</small></span><span class="igc-daily-arena">${esc(venueFor(r))}</span></a>`;}).join(''):'<div class="igc-daily-none">No OHL games scheduled today.</div>'}</div>`;
     container.querySelectorAll('[data-igc-daily-id]').forEach(el=>el.addEventListener('click',()=>{pendingGameId=el.dataset.igcDailyId;}));
   }
   let pendingGameId=null;
