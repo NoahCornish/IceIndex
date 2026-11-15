@@ -34,7 +34,7 @@
         "start_time": "14:11:00",
         "end_time": "16:43:00",
         "forfeit": "0",
-        "shootout": "0",
+        "shootout": "1",
         "shootout_first_shooter_home": "0",
         "attendance": "5183",
         "location": "72",
@@ -48,11 +48,11 @@
         "visiting_manager": "",
         "period": "4",
         "game_clock": "00:00:00",
-        "status": "3",
+        "status": "4",
         "started": "1",
-        "pending_final": "1",
-        "final": "0",
-        "home_goal_count": "3",
+        "pending_final": "0",
+        "final": "1",
+        "home_goal_count": "4",
         "visiting_goal_count": "3",
         "home_goals_actual": "0",
         "visiting_goals_actual": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/oshawa-generals-vs-kingston-frontenacs-oshawa-ontario-11-15-2026/event/1000650CE9CB43A7?refArtist=K8vZ9171IP7&f_simplified_filter=true&f_enable_merch_slot=true",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-15 22:01:41",
+        "last_modified": "2026-11-15 22:16:17",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153343",
@@ -100,8 +100,8 @@
       "game_ident": "29204",
       "game_date": "Sunday, November 15, 2026",
       "game_length": "2:32",
-      "status_title": "Game Status",
-      "status_value": "End of Game SO",
+      "status_title": "End",
+      "status_value": "Final SO",
       "periods": {
         "1": {
           "id": "1",
@@ -140,7 +140,7 @@
           "mandatory": "0"
         }
       },
-      "shootout": "0",
+      "shootout": "1",
       "visitor": {
         "id": "2",
         "league_id": "1",
@@ -352,8 +352,8 @@
           "player_id": "8719",
           "goalie_id": "9535",
           "shot_order": "5",
-          "goal": "0",
-          "winning_goal": "0",
+          "goal": "1",
+          "winning_goal": "1",
           "jersey_number": "4",
           "first_name": "Jacob",
           "last_name": "Therrien",
@@ -474,9 +474,11 @@
           "person_id": "6087"
         }
       ],
-      "homeShootout": 0,
+      "homeShootout": 1,
       "visitorShootout": 0,
-      "benchGoalCount": null,
+      "benchGoalCount": {
+        "1": 1
+      },
       "penalties": [
         {
           "event": "penalty",
@@ -1372,12 +1374,12 @@
             "goals_against": "3",
             "win": "0",
             "loss": "0",
-            "shootout_loss": "0",
+            "shootout_loss": "1",
             "ot_loss": "0",
             "tie": "0",
             "shutout": "0",
-            "shootout_goals_against": "1",
-            "shootout_saves": "4",
+            "shootout_goals_against": "2",
+            "shootout_saves": "3",
             "line": "1",
             "secs_mmss": "65:00",
             "shots_against": 31
@@ -1397,7 +1399,7 @@
             "secs": "3900",
             "seconds": "3900",
             "goals_against": "3",
-            "win": "0",
+            "win": "1",
             "loss": "0",
             "shootout_loss": "0",
             "ot_loss": "0",
@@ -2588,11 +2590,11 @@
       },
       "totalGoals": {
         "visitor": 3,
-        "home": 3
+        "home": 4
       },
       "totalShots": {
         "visitor": 29,
-        "home": 31
+        "home": 32
       },
       "totalShotsOn": {
         "visitor": 18,
