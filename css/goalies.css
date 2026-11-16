@@ -10,3 +10,31 @@
 #main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
 #main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 #main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}
+
+/* Unified v0.15.0 goalie design */
+#main-content .ice-goalie-profile-controls,#main-content .ice-goalie-compare-controls{gap:12px;min-width:0}
+#main-content .ice-goalie-profile-controls > *,#main-content .ice-goalie-compare-controls > *{min-width:0;max-width:100%}
+#main-content .ice-goalie-compare-head{padding:clamp(14px,2vw,24px);border-radius:16px;gap:12px}
+#main-content .ice-goalie-compare-head .avatar{width:clamp(55px,7vw,90px);height:clamp(55px,7vw,90px);object-fit:cover;border-radius:12px}
+#main-content .ice-goalie-compare-row{min-width:0;padding:12px 10px}
+#main-content .ice-goalie-picker-results{z-index:90;max-height:min(350px,55dvh);overflow-y:auto}
+html[data-ice-theme="day"] #main-content :is(.ice-goalie-picker-results,.ice-goalie-compare-head,.ice-goalie-compare-table){background:#fff!important;color:#1b3045!important;border-color:#d6e2ed!important}
+html[data-ice-theme="day"] #main-content .ice-goalie-picker-option{background:#fff!important;color:#1b3045!important;-webkit-text-fill-color:#1b3045!important}
+html[data-ice-theme="day"] #main-content .ice-goalie-picker-option:hover{background:#e9f4ff!important}
+html[data-ice-theme="night"] #main-content :is(.ice-goalie-picker-results,.ice-goalie-compare-head,.ice-goalie-compare-table){background:#1c2d40!important;color:#eef6ff!important}
+@media(max-width:640px){#main-content .ice-goalie-compare-head{padding:12px}#main-content .ice-goalie-compare-row{font-size:12px;padding:10px 7px}}
+
+/* Goalie team logo: use established OHL branding, constrain parent and image */
+#main-content .ice-player-header .ice-goalie-team-logo{width:64px;height:64px;min-width:64px;max-width:64px;display:grid;place-items:center;align-self:center;overflow:hidden;margin-left:4px}
+#main-content .ice-player-header .ice-goalie-team-logo img{display:block;width:100%!important;height:100%!important;max-width:64px!important;max-height:64px!important;object-fit:contain!important}
+@media(max-width:600px){#main-content .ice-player-header .ice-goalie-team-logo{width:42px;height:42px;min-width:42px;max-width:42px}#main-content .ice-player-header .ice-goalie-team-logo img{max-width:42px!important;max-height:42px!important}}
+
+/* v0.15.0: goaltender identity aligned to player-profile layout */
+#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header{display:grid!important;grid-template-columns:clamp(96px,10vw,140px) minmax(0,max-content) 64px!important;justify-content:start!important;align-items:center!important;gap:clamp(12px,1.8vw,20px)!important;min-width:0!important;margin:12px 0 20px!important}
+#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > .avatar{position:relative!important;display:block!important;width:clamp(96px,10vw,140px)!important;height:clamp(110px,11.5vw,158px)!important;min-width:0!important;max-width:140px!important;overflow:hidden!important;border-radius:14px!important;background:#edf3f8!important;margin:0!important;padding:0!important;align-self:center!important}
+#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > .avatar > img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:cover!important;object-position:center top!important;display:block!important;border-radius:14px!important}
+#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > div:nth-child(2){min-width:0!important;width:max-content!important;max-width:100%!important}
+#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > .ice-goalie-team-logo{grid-column:3!important;position:static!important;display:grid!important;place-items:center!important;width:64px!important;height:64px!important;min-width:64px!important;max-width:64px!important;max-height:64px!important;margin:0!important;padding:0!important;transform:none!important;overflow:hidden!important;align-self:center!important}
+#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > .ice-goalie-team-logo :is(.ohl-logo-wrap,img){width:100%!important;height:100%!important;max-width:64px!important;max-height:64px!important;object-fit:contain!important;position:static!important;transform:none!important}
+#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header h2{font-size:clamp(25px,3vw,43px)!important;line-height:1.08!important;letter-spacing:-.035em!important}
+@media(max-width:650px){#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header{grid-template-columns:76px minmax(0,1fr) 42px!important;gap:9px!important}#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > .avatar{width:76px!important;height:88px!important}#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > .ice-goalie-team-logo{width:42px!important;height:42px!important;min-width:42px!important;max-width:42px!important}#main-content .panel:has(.ice-goalie-team-logo) > .ice-player-header > .ice-goalie-team-logo :is(.ohl-logo-wrap,img){max-width:42px!important;max-height:42px!important}}

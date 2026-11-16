@@ -1,0 +1,27 @@
+/* IceIndex v0.15.0 — temporary presentation-only access screen.
+   NOT an authentication boundary: GitHub Pages and public repository files remain public. */
+body.ice-access-locked{overflow:hidden!important}
+body.ice-access-locked > :not(#ice-access-gate):not(script):not(noscript){visibility:hidden!important}
+.ice-access-gate{position:fixed;inset:0;z-index:2147483646;display:grid;place-items:center;overflow:auto;padding:24px;background:radial-gradient(circle at 18% 12%,#1e5375 0%,transparent 42%),linear-gradient(140deg,#071522,#102d46 75%,#071725);color:#edf7ff;font-family:inherit}
+.ice-access-gate[hidden]{display:none!important}
+.ice-access-card{width:min(100%,420px);box-sizing:border-box;border:1px solid rgba(158,201,235,.25);border-radius:22px;background:rgba(13,31,48,.92);box-shadow:0 28px 90px #0007;padding:36px 30px;text-align:left}
+.ice-access-mark{height:55px;width:55px;display:grid;place-items:center;border-radius:14px;background:#e6f6ff;color:#10283e;font-size:32px;font-weight:950;letter-spacing:-3px;margin-bottom:22px}
+.ice-access-mark span{color:#2793cf;font-size:18px;align-self:start;margin-top:8px}
+.ice-access-eyebrow{font-size:11px;letter-spacing:2px;color:#79c9f5;font-weight:800}
+.ice-access-card h1{margin:12px 0 8px;color:#fff;font-size:clamp(28px,5vw,36px);line-height:1.1}
+.ice-access-card p{color:#b4cadb;font-size:14px;line-height:1.55;margin:0 0 26px}
+.ice-access-card label{display:block;color:#d9eafa;font-size:12px;font-weight:700;margin-bottom:8px}
+.ice-access-input-wrap{display:flex;align-items:center;border:1px solid #52728b;border-radius:11px;background:#142d43;overflow:hidden}
+.ice-access-input-wrap:focus-within{outline:2px solid #62b8f3;outline-offset:2px}
+.ice-access-input-wrap input{min-width:0;flex:1;padding:14px;background:transparent;border:0;outline:0;color:#fff;font:inherit;font-size:15px}
+.ice-access-input-wrap button{background:none;border:0;color:#a9d5f0;cursor:pointer;padding:12px;font:inherit;font-size:12px}
+#ice-access-error{min-height:23px;color:#ffc6c6;font-size:12px;margin-top:7px}
+.ice-access-submit{width:100%;border:0;border-radius:11px;padding:15px 17px;background:#70c7f5;color:#08263d;font-size:14px;font-weight:850;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+.ice-access-submit:hover{background:#a1dcfc}
+.ice-access-foot{text-align:center;color:#83a0b7;font-size:11px;margin-top:24px}
+.ice-access-logout{display:inline-flex;align-items:center;gap:6px;border:1px solid #7798b6;border-radius:10px;padding:8px 11px;background:transparent;color:inherit;font-size:12px;font-weight:750;cursor:pointer;white-space:nowrap;margin-left:auto}
+.ice-access-logout:hover{background:rgba(101,170,213,.15)}
+@media(max-width:600px){.ice-access-card{padding:30px 22px}.ice-access-gate{padding:16px}.ice-access-logout{font-size:11px;padding:7px}}
+
+/* Keep the single logout control in the original top-right account slot. */
+#ice-access-logout{margin-left:0;flex:none;white-space:nowrap}

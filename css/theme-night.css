@@ -4302,3 +4302,11 @@ html[data-ice-theme="night"] :is(.igl-suggestions,.ice-goalie-picker-results){ba
 /* v0.15.0 legend consistency in night mode */
 html[data-ice-theme="night"] #main-content .ism-legend .ism-dot:not(.ism-goal){background:#198bd0!important}
 html[data-ice-theme="night"] #main-content .ism-legend .ism-dot.ism-goal{background:#ee963c!important}
+
+/* v0.15.0: neutral blue-slate night controls in Game Centre */
+html[data-ice-theme="night"] #main-content .igc.igc-modern :is(.igc-panel,.igc-event-period){
+ border-color:#37516a!important;
+}
+html[data-ice-theme="night"] #main-content .igc.igc-modern .igc-event-timeline :is(.igc-event-period,.igc-event-period-head){
+ background:transparent!important;
+}

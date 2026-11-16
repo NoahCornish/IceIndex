@@ -15,7 +15,7 @@
   <meta name="theme-color" content="#f6f4ee">
   <meta name="color-scheme" content="light dark">
   <meta name="author" content="Noah Cornish">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, nofollow">
 
   <title>IceIndex | Hockey Data Intelligence</title>
 
@@ -131,24 +131,24 @@
   <script src="js/ohl-data.js?v=0.8.0" defer></script>
   <script src="js/ohl-branding.js?v=0.5.0" defer></script>
   <script src="js/ohl-analytics.js?v=0.5.0" defer></script>
-  <script src="js/ohl-goalies.js?v=0.8.0" defer></script>
+  <script src="js/ohl-goalies.js?v=0.15.0-search-branding3" defer></script>
   <script src="js/game-logs.js?v=0.10.0" defer></script>
   <script src="js/shot-map.js?v=0.15.0-final-pass3" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
-  <script src="js/members.js?v=0.12.0" defer></script>
+  <!-- Membership sign-in temporarily disabled during IceIndex preview. -->
   <script src="js/game-export.js?v=0.12.0" defer></script>
   <script src="js/game-centre.js?v=0.15.0-final-pass3" defer></script>
   <script src="js/daily-score-heading.js?v=0.15.0" defer></script>
-  <script src="js/app.js?v=0.15.0-cleanse4" defer></script>
+  <script src="js/app.js?v=0.15.0-search-branding3" defer></script>
 
   <link id="ice-theme-stylesheet" rel="stylesheet" href="css/theme-day.css?v=0.15.0-cleanse4">
-<link rel="stylesheet" href="css/foundation.css?v=0.15.0-audit1">
+<link rel="stylesheet" href="css/foundation.css?v=0.15.0-score-specificity9">
 <link rel="stylesheet" href="css/overview.css?v=0.15.0-cleanse4">
-<link rel="stylesheet" href="css/game-centre.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/game-centre.css?v=0.15.0-group-selector-fix8">
 <link rel="stylesheet" href="css/standings.css?v=0.15.0-cleanse4">
 <link rel="stylesheet" href="css/statistics.css?v=0.15.0-desktop-table1">
 <link rel="stylesheet" href="css/players.css?v=0.15.0-cleanse4">
-<link rel="stylesheet" href="css/goalies.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/goalies.css?v=0.15.0-search-branding3">
 <link rel="stylesheet" href="css/game-logs.css?v=0.15.0-cleanse4">
 <link rel="stylesheet" href="css/player-profile.css?v=0.15.0-cleanse4">
 <link rel="stylesheet" href="css/analytics.css?v=0.15.0-cleanse4">
@@ -156,10 +156,28 @@
   <!-- v0.15.0: global responsive + theme audit, deliberately last -->
   <link rel="stylesheet" href="css/v015-ui-audit.css?v=0.15.0-clean2">
   <link rel="stylesheet" href="css/v015-polish.css?v=0.15.0-polish1">
-  <link rel="stylesheet" href="css/v015-player-profile.css?v=0.15.0-cleanse4">
+  <link rel="stylesheet" href="css/v015-player-profile.css?v=0.15.0-search-branding3">
+<link rel="stylesheet" href="css/temporary-login.css?v=0.15.0" />
+<script src="js/temporary-login.js?v=0.15.0" defer></script>
 </head>
 
-<body>
+<body class="ice-access-locked">
+<div id="ice-access-gate" class="ice-access-gate" role="dialog" aria-modal="true" aria-labelledby="ice-access-title">
+  <form id="ice-access-form" class="ice-access-card">
+    <div class="ice-access-mark">I<span>✦</span></div>
+    <div class="ice-access-eyebrow">ICEINDEX / PRIVATE PREVIEW</div>
+    <h1 id="ice-access-title">Welcome back.</h1>
+    <p>IceIndex is temporarily available to invited visitors only.</p>
+    <label for="ice-access-password">Access password</label>
+    <div class="ice-access-input-wrap">
+      <input id="ice-access-password" name="password" type="password" autocomplete="current-password" required placeholder="Enter access password" />
+      <button id="ice-access-show" type="button" aria-label="Show password">Show</button>
+    </div>
+    <div id="ice-access-error" role="alert" aria-live="polite"></div>
+    <button class="ice-access-submit" type="submit">Enter IceIndex <span aria-hidden="true">→</span></button>
+    <div class="ice-access-foot">Independent hockey intelligence · v0.15.0</div>
+  </form>
+</div>
 
   <a class="sr-only" href="#main-content">
     Skip to main content
@@ -232,7 +250,7 @@
           Loading OHL data…
         </div>
 
-        <button type="button" class="btn secondary ice-member-button" id="ice-member-button">Log in</button>
+        <button type="button" class="btn secondary ice-access-logout" id="ice-access-logout" title="Log out of IceIndex">Log out</button>
         <!-- MANUAL DAY / NIGHT THEME SWITCH -->
         <button type="button" id="ice-theme-toggle" class="ice-theme-toggle" aria-label="Switch colour theme" title="Switch colour theme" aria-pressed="false">
           <svg class="ice-theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>

@@ -800,3 +800,73 @@ html[data-ice-theme="day"] .igc.igc-modern{--igc-away:#1269ad;--igc-home:#a94d00
 #main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
 #main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 #main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}
+
+
+/* Consolidated v0.15.0 Game Centre theme rules, matching actual DOM. */
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-game-hero{background:linear-gradient(130deg,#e6f2ff,#f7fbff 52%,#e4effa)!important;background-color:#e6f2ff!important;border:1px solid #c9dbea!important;color:#1c3249!important}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-game-hero{background:linear-gradient(130deg,#142b40,#1c3952 52%,#183048)!important;background-color:#183048!important;border:1px solid #3a5971!important;color:#f0f7ff!important}
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-game-hero :is(h1,h2,h3,strong,.igc-game-hero-meta,.igc-game-hero-meta span,.igc-score-team small,.igc-score-team span:not(.igc-logo-fallback)){color:#1b3045!important;-webkit-text-fill-color:#1b3045!important;text-shadow:none!important}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-game-hero :is(h1,h2,h3,strong,.igc-game-hero-meta,.igc-game-hero-meta span,.igc-score-team small,.igc-score-team span:not(.igc-logo-fallback)){color:#eef6ff!important;-webkit-text-fill-color:#eef6ff!important;text-shadow:none!important}
+#main-content .igc.igc-modern .igc-game-hero .igc-scoreboard{background:transparent!important;box-shadow:none!important}
+#main-content .igc.igc-modern .igc-tabs{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:6px!important;position:static!important;overflow:visible!important;padding:8px 0!important;background:transparent!important;border:0!important}
+#main-content .igc.igc-modern .igc-tab{min-width:0!important;min-height:44px!important;white-space:normal!important;line-height:1.2!important;border-radius:10px!important;padding:9px 4px!important}
+html[data-ice-theme="day"] #main-content .igc.igc-modern .igc-tab{background:#f2f7fc!important;color:#294761!important;border:1px solid #d2e1ee!important}
+html[data-ice-theme="night"] #main-content .igc.igc-modern .igc-tab{background:#203a52!important;color:#e1effa!important;border:1px solid #3a5871!important}
+html[data-ice-theme="day"] #main-content .igc.igc-modern .igc-tab[aria-selected="true"],html[data-ice-theme="day"] #main-content .igc.igc-modern .igc-tab.is-active{background:#e3f1ff!important;color:#0768a9!important;border-color:#74b5e7!important;box-shadow:inset 0 -3px #168bd6!important}
+html[data-ice-theme="night"] #main-content .igc.igc-modern .igc-tab[aria-selected="true"],html[data-ice-theme="night"] #main-content .igc.igc-modern .igc-tab.is-active{background:#254f6f!important;color:#9ad9ff!important;border-color:#65a6d5!important;box-shadow:inset 0 -3px #59bfff!important}
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-event-timeline{background:#fff!important;color:#1c334a!important;border-color:#d5e2ed!important}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-event-timeline{background:#142a3f!important;color:#edf6ff!important;border-color:#38536b!important}
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-full-timeline{background:#edf5fc!important;background-color:#edf5fc!important;border-color:#d0e0ee!important}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-full-timeline{background:#20394f!important;background-color:#20394f!important;border-color:#476078!important}
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-full-period-break{border-color:#71869b!important}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-full-period-break{border-color:#a1b8c9!important}
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-event-timeline :is(.igc-section-title,.igc-event-key,.igc-event-key b,.igc-event-key small){color:#213b54!important;-webkit-text-fill-color:#213b54!important}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-event-timeline :is(.igc-section-title,.igc-event-key,.igc-event-key b,.igc-event-key small){color:#e3f0fa!important;-webkit-text-fill-color:#e3f0fa!important}
+@media(max-width:800px){#main-content .igc.igc-modern .igc-tabs{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:450px){#main-content .igc.igc-modern .igc-game-hero{padding:14px 12px!important}#main-content .igc.igc-modern .igc-tab{font-size:11px!important}}
+
+/* v0.15.0 score readability and final Game Centre polish.
+   Actual score markup: .igc-score-team > span */
+html[data-ice-theme="day"] #main-content .igc.igc-modern .igc-game-hero .igc-scoreboard .igc-score-team > span {
+  color:#102d49!important;-webkit-text-fill-color:#102d49!important;
+  opacity:1!important;text-shadow:none!important;
+  filter:none!important;font-weight:900!important;
+}
+html[data-ice-theme="night"] #main-content .igc.igc-modern .igc-game-hero .igc-scoreboard .igc-score-team > span {
+  color:#f6fbff!important;-webkit-text-fill-color:#f6fbff!important;
+  opacity:1!important;text-shadow:none!important;
+  filter:none!important;font-weight:900!important;
+}
+html[data-ice-theme="day"] #main-content .igc.igc-modern .igc-game-hero .igc-score-team > strong,
+html[data-ice-theme="day"] #main-content .igc.igc-modern .igc-game-hero .igc-score-team > small {
+  color:#1b354d!important;-webkit-text-fill-color:#1b354d!important;
+}
+html[data-ice-theme="day"] #main-content .igc.igc-modern .igc-event-timeline .igc-full-timeline{
+  background:#edf4fb!important;border:1px solid #d3e1ee!important;
+}
+html[data-ice-theme="night"] #main-content .igc.igc-modern .igc-event-timeline .igc-full-timeline{
+  background:#20384e!important;border:1px solid #3b5971!important;
+}
+#main-content .igc.igc-modern .igc-score-team > span{font-variant-numeric:tabular-nums!important;line-height:1.05!important}
+@media(max-width:650px){
+ #main-content .igc.igc-modern .igc-game-hero .igc-scoreboard{min-height:0!important;gap:8px!important}
+ #main-content .igc.igc-modern .igc-game-hero .igc-score-team > span{font-size:clamp(44px,11vw,68px)!important}
+ #main-content .igc.igc-modern .igc-game-hero .igc-score-team > strong{font-size:clamp(12px,3.4vw,17px)!important}
+}
+
+/* v0.15.0 — legible scores on pale day-mode scoreboard */
+html:not([data-ice-theme="night"]) #main-content .igc.igc-modern .igc-game-hero .igc-score-team > span:not(.igc-logo-fallback) {
+ color:#172c41!important;-webkit-text-fill-color:#172c41!important;
+ text-shadow:none!important;filter:none!important;opacity:1!important;
+}
+html[data-ice-theme="night"] #main-content .igc.igc-modern .igc-game-hero .igc-score-team > span:not(.igc-logo-fallback) {
+ color:#f5f9ff!important;-webkit-text-fill-color:#f5f9ff!important;
+}
+
+/* Score contrast: day mode is dark ink, night mode is light ink. */
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-game-hero .igc-score-team > span:not(.igc-logo-fallback){
+ color:#162b40!important;-webkit-text-fill-color:#162b40!important;text-shadow:none!important;opacity:1!important;
+}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-game-hero .igc-score-team > span:not(.igc-logo-fallback){
+ color:#f6fbff!important;-webkit-text-fill-color:#f6fbff!important;text-shadow:none!important;opacity:1!important;
+}

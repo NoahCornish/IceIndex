@@ -1188,11 +1188,11 @@
 
         ${
           /^https:\/\//.test(
-            person?.photo || ""
+            person?.photo || (/^\d+$/.test(String(person?.id || "")) ? `https://assets.leaguestat.com/ohl/240x240/${person.id}.jpg` : "")
           )
             ? `
               <img
-                src="${esc(person.photo)}"
+                src="${esc(person.photo || `https://assets.leaguestat.com/ohl/240x240/${person.id}.jpg`)}"
                 alt="${esc(name)}"
                 loading="lazy"
                 onerror="this.remove()"
@@ -1993,6 +1993,7 @@
                 .join(" · ")}
             </small>
           </div>
+          ${person.team && typeof window.teamLogo === "function" ? `<div class="ice-goalie-team-logo">${window.teamLogo(person.team)}</div>` : ""}
         </div>
 
         ${stats(row)}
@@ -2690,6 +2691,19 @@
 
     render,
 
+    openFromSearch: async (candidate) => {
+      try { await load(); } catch (_) {}
+      const id = String(candidate?.id || "");
+      const name = String(candidate?.name || "").trim().toLowerCase();
+      const match = state.people.find(p => id && String(p.id) === id) ||
+        state.people.find(p => name && String(p.name || "").trim().toLowerCase() === name);
+      if (!match) return false;
+      state.profile = String(match.id);
+      state.profileSeason = "career";
+      location.hash = "#goalie-profile";
+      render("goalie-profile", document.querySelector("#main-content"));
+      return true;
+    },
     inspect: () => ({
       status: state.status,
       goalies: state.people.length,

@@ -325,27 +325,9 @@
 /* Keep all small-screen rules and the repaired mobile drawer exactly as before. */
 
 
-/* ===== scoreboard-colours(1).css ===== */
-/* IceIndex v0.14.0 — corrected scoreboard contrast.
-   Both site themes use dark game-hero surfaces, so scores stay ice white.
-   Overrides the previous theme-specific colour and text-fill rules. */
-html[data-ice-theme="day"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-score-team:first-child span:not(.igc-logo-fallback),
-html[data-ice-theme="day"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-score-team:last-child span:not(.igc-logo-fallback),
-html[data-ice-theme="night"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-score-team:first-child span:not(.igc-logo-fallback),
-html[data-ice-theme="night"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-score-team:last-child span:not(.igc-logo-fallback),
-body #main-content .igc.igc-modern .igc-game-hero .igc-score-team span:not(.igc-logo-fallback) {
-  color: #f5f9ff !important;
-  -webkit-text-fill-color: #f5f9ff !important;
-  background: none !important;
-  background-clip: border-box !important;
-  -webkit-background-clip: border-box !important;
-  text-shadow: 0 2px 5px rgba(0,0,0,.18) !important;
-  opacity: 1 !important;
-  font-weight: 900 !important;
-  font-variant-numeric: tabular-nums;
-}
-
-
+/* v0.15.0: legacy scoreboard-colours(1).css removed.
+   It forced day-mode scores to white with higher-specificity first/last-child selectors.
+   Score colours now follow the selected theme. */
 
 /* === mobile-overhaul.css === */
 /* ICEINDEX v0.14.0 — iPhone-first responsive polish
@@ -882,9 +864,8 @@ body :is(.nav-link.active,.nav-link.is-active){color:var(--accent);background:va
 #main-content :is(.ice-sl-tab.is-active,.ice-sl-metric.is-active,.igc-tab.active,.igc-tab.is-active,.igc-day.active){background:var(--accent);color:var(--bg-deep);border-color:var(--accent);box-shadow:none}
 #main-content :is(button,a,[role="button"]):focus-visible{outline:2px solid var(--ix-ring);outline-offset:3px}
 #main-content :is(.leader-value,.ice-sl-value,.igc-final-score,.igc-daily-time,.kpi b){font-variant-numeric:tabular-nums;letter-spacing:-.045em}
-/* Scoreboards always have strong contrast regardless of theme. */
-body #main-content .igc.igc-modern .igc-game-hero .igc-score-team span:not(.igc-logo-fallback){color:#f8fffc!important;-webkit-text-fill-color:#f8fffc!important;background:none!important;background-clip:border-box!important;-webkit-background-clip:border-box!important;opacity:1!important;font-weight:900!important;text-shadow:0 2px 10px rgba(0,0,0,.22)}
-body #main-content .igc.igc-modern .igc-game-hero{background:linear-gradient(135deg,#182833,#1c2737)!important;border-color:#3c5560!important}
+
+
 body #main-content .igc.igc-modern .igc-game-hero :is(.igc-score-team strong,.igc-score-middle,.igc-game-hero-meta){color:#eef8f6}
 #main-content .igc-game:hover,#main-content .ice-sl-player:hover{border-color:var(--accent);transform:translateY(-1px)}
 #main-content :is(.ice-sl-avatar,.leader-photo){box-shadow:0 0 0 2px var(--border)}
@@ -1158,3 +1139,24 @@ body .topbar :is(.ice-member-button,.ice-theme-toggle){color:var(--text)!importa
 /* Prevent inherited contrast failures in navigation and header search. */
 body .topbar input,body .topbar input::placeholder{color:var(--text-soft,#49554c)!important;-webkit-text-fill-color:var(--text-soft,#49554c)!important}
 body .topbar input:focus{color:var(--text,#242b25)!important;-webkit-text-fill-color:var(--text,#242b25)!important}
+
+/* v0.15.0 — score ink matches theme, no white-on-white. */
+html[data-ice-theme="day"] body #main-content .igc.igc-modern .igc-game-hero .igc-scoreboard .igc-score-team > span:not(.igc-logo-fallback){color:#172c41!important;-webkit-text-fill-color:#172c41!important;text-shadow:none!important;filter:none!important;opacity:1!important}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern .igc-game-hero .igc-scoreboard .igc-score-team > span:not(.igc-logo-fallback){color:#f5f9ff!important;-webkit-text-fill-color:#f5f9ff!important;text-shadow:none!important;filter:none!important;opacity:1!important}
+
+/* IceIndex v0.15.0 — authoritative score colours (both teams). */
+html[data-ice-theme="day"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-scoreboard .igc-score-team:first-child > span:not(.igc-logo-fallback),
+html[data-ice-theme="day"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-scoreboard .igc-score-team:last-child > span:not(.igc-logo-fallback) {
+ color:#162d45!important;
+ -webkit-text-fill-color:#162d45!important;
+ text-shadow:none!important;
+ opacity:1!important;
+ filter:none!important;
+}
+html[data-ice-theme="night"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-scoreboard .igc-score-team:first-child > span:not(.igc-logo-fallback),
+html[data-ice-theme="night"] body #main-content .igc.igc-modern.igc-boxscore .igc-game-hero .igc-scoreboard .igc-score-team:last-child > span:not(.igc-logo-fallback) {
+ color:#f5f9ff!important;
+ -webkit-text-fill-color:#f5f9ff!important;
+ text-shadow:none!important;
+ opacity:1!important;
+}

@@ -410,6 +410,14 @@
     S.profileCompetition = "regular";
     closeGlobalSearch(true);
     globalQuery?.blur();
+    const selected = person(key);
+    const position = String(selected?.position || "").trim().toLowerCase();
+    if (/^(g|gk|goalie|goaltender)$/.test(position) && window.IceIndexGoalies?.openFromSearch) {
+      window.IceIndexGoalies.openFromSearch(selected).then(found => {
+        if (!found) navigate("profile");
+      }).catch(() => navigate("profile"));
+      return;
+    }
     navigate("profile");
   }
 
@@ -3940,7 +3948,7 @@
             class="ice-player-picker-option"
             data-picker-choice="${esc(o.value)}"
             data-picker-label="${esc(o.textContent)}">
-            ${esc(o.textContent)}
+            ${(() => { const p=person(o.value); return p ? `${image(p,"ice-picker-headshot")}<span class="ice-picker-copy"><strong>${esc(p.name)}</strong><small>${esc([p.position,p.team].filter(Boolean).join(" · "))}</small></span>` : `<span>${esc(o.textContent)}</span>`; })()}
           </button>
         `).join("") ||
           '<div class="ice-player-picker-none">No matching players</div>';
@@ -4358,4 +4366,53 @@
 
   console.info("IceIndex application v0.7.0 initialized.");
 
+})();
+
+/* v0.15.0 — unified search keyboard interaction; preserves each page's own data source. */
+(function(){
+ if(window.__iceUnifiedPickerKeys)return;
+ window.__iceUnifiedPickerKeys=true;
+ const configs=[
+  {input:'.ice-player-picker-search',box:'.ice-player-picker-results',option:'.ice-player-picker-option'},
+  {input:'.ice-goalie-picker input',box:'.ice-goalie-picker-results',option:'.ice-goalie-picker-option'},
+  {input:'#igl-search',box:'#igl-suggestions',option:'.igl-suggestion'}
+ ];
+ document.addEventListener('keydown',function(event){
+  const input=event.target;
+  if(!(input instanceof HTMLInputElement))return;
+  const cfg=configs.find(x=>input.matches(x.input));
+  if(!cfg)return;
+  const wrap=input.closest('.ice-player-picker,.ice-goalie-picker,.igl-search-wrap')||input.parentElement;
+  const box=wrap?.querySelector(cfg.box)||document.querySelector(cfg.box);
+  if(!box||box.hidden)return;
+  const options=Array.from(box.querySelectorAll(cfg.option)).filter(x=>!x.hidden);
+  if(!options.length)return;
+  if(event.key==='ArrowDown'||event.key==='ArrowUp'){
+   event.preventDefault();
+   const active=document.activeElement;
+   const current=options.indexOf(active);
+   const next=event.key==='ArrowDown'?(current+1)%options.length:(current<0?options.length-1:(current-1+options.length)%options.length);
+   options[next].focus();
+  }
+ });
+ document.addEventListener('keydown',function(event){
+  const button=event.target;
+  if(!(button instanceof HTMLElement))return;
+  const cfg=configs.find(x=>button.matches(x.option));
+  if(!cfg)return;
+  if(event.key==='ArrowDown'||event.key==='ArrowUp'){
+   const box=button.closest(cfg.box);
+   if(!box)return;
+   const options=Array.from(box.querySelectorAll(cfg.option));
+   const current=options.indexOf(button);
+   if(current<0)return;
+   event.preventDefault();
+   options[(current+(event.key==='ArrowDown'?1:-1)+options.length)%options.length]?.focus();
+  }else if(event.key==='Escape'){
+   const box=button.closest(cfg.box);
+   if(box)box.hidden=true;
+   const input=button.closest('.ice-player-picker,.ice-goalie-picker,.igl-search-wrap')?.querySelector(cfg.input);
+   input?.focus();
+  }
+ });
 })();
