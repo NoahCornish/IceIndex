@@ -4,7 +4,7 @@
 <head>
 <script src="js/maintenance.js?v=0.6.0" defer></script>
   <!-- ======================================================
-       ICEINDEX v0.13.0
+       ICEINDEX v0.14.0
        Hockey Data Intelligence
        Compact Multi-League Navigation
        ====================================================== -->
@@ -75,12 +75,13 @@
     })();
   </script>
   <link rel="stylesheet" href="css/game-centre.css?v=0.13.0-compact">
-  <link rel="stylesheet" href="css/standings-leaders.css?v=0.13.0">
+  <link rel="stylesheet" href="css/standings-leaders.css?v=0.14.0">
+  <link rel="stylesheet" href="css/mobile-overhaul.css?v=0.14.0-sidebar-fit">
   <link id="ice-theme-stylesheet" rel="stylesheet" href="css/style.css?v=0.10.0-brand1">
   <script>window.IceIndexTheme.apply();</script>
 
   <!-- ======================================================
-       ICEINDEX v0.12.0 SIDEBAR STYLES
+       ICEINDEX v0.14.0 SIDEBAR STYLES
        ====================================================== -->
 
 
@@ -140,7 +141,7 @@
   <script src="js/members.js?v=0.12.0" defer></script>
   <script src="js/game-export.js?v=0.12.0" defer></script>
   <script src="js/game-centre.js?v=0.13.0-compact" defer></script>
-  <script src="js/app.js?v=0.13.0-leaders" defer></script>
+  <script src="js/app.js?v=0.14.0-navigation" defer></script>
 
 </head>
 
@@ -245,6 +246,7 @@
 
       <nav class="sidebar-nav"
            aria-label="Main navigation">
+        <div class="ice-drawer-section-label">DISCOVER</div>
 
         <!-- HOME DISABLED: retained for future use.
         HOME NAVIGATION
@@ -290,6 +292,7 @@
         </a>
 
         <div class="ice-nav-divider"></div>
+        <div class="ice-drawer-section-label" id="ice-essentials-heading">OHL ESSENTIALS</div>
 
         <!-- OVERVIEW -->
 
@@ -330,6 +333,8 @@
             <span data-ice-league-label="compare">Compare OHL Players</span>
 
           </a>
+
+        <div class="ice-drawer-section-label ice-drawer-section-spaced">EXPLORE DATA</div>
 
         <!-- PLAYERS EXPANDABLE GROUP -->
 
@@ -434,24 +439,6 @@
           <a class="nav-link" href="#goalie-compare" data-page="goalie-compare"><span>Goaltender Comparison</span></a>
         </div>
 
-        <!-- TEAMS -->
-
-        <a class="nav-link"
-           href="#teams"
-           data-page="teams">
-
-          <svg viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.8"
-               stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true">
-            <path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"></path>
-            <path d="m9 12 2 2 4-4"></path>
-          </svg>
-
-          <span>Teams</span>
-
-        </a>
-
         <!-- ANALYTICS EXPANDABLE GROUP -->
 
         <button id="ice-analytics-toggle"
@@ -520,7 +507,7 @@
         <div class="ice-footer-row">
 
           <span class="ice-footer-version">
-            IceIndex v0.13.0
+            IceIndex v0.14.0
           </span>
 
           <a class="ice-footer-github"
@@ -586,7 +573,9 @@
 
         </button>
 
-        <div>
+        <img class="ice-title-logo" src="assets/branding/iceindex-logo.png" alt="" width="40" height="40" decoding="async">
+
+        <div class="ice-title-copy">
 
           <div class="topbar-title">
             IceIndex
@@ -620,7 +609,7 @@
           <svg class="ice-theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 15.1A8.6 8.6 0 0 1 8.9 3.6 8.7 8.7 0 1 0 20.4 15.1Z"/></svg>
         </button>
 
-        <img class="ice-header-logo" src="assets/branding/iceindex-logo.png" alt="IceIndex" width="32" height="32">
+
 
         <!-- SINGLE STATUS INDICATOR -->
 
@@ -647,7 +636,7 @@
 
     </header>
 
-    <!-- ICEINDEX v0.12.0 GLOBAL PLAYER SEARCH -->
+    <!-- ICEINDEX v0.14.0 GLOBAL PLAYER SEARCH -->
     <section class="ice-global-search" role="search" aria-label="Global OHL player search">
       <div class="ice-global-search-inner">
         <label for="ice-global-query" class="ice-global-search-label">PLAYER SEARCH</label>
@@ -713,7 +702,7 @@
 
         <span aria-hidden="true"> · </span>
 
-        <span>v0.12.0</span>
+        <span>v0.14.0</span>
 
       </div>
 
@@ -914,6 +903,8 @@
         const route = location.hash.replace(/^#/, "").split("?")[0];
         const league = route === "whl-home" ? "WHL" : route === "qmjhl-home" ? "QMJHL" : "OHL";
         document.body.dataset.iceLeague = league.toLowerCase();
+        const essentialsHeading = document.getElementById("ice-essentials-heading");
+        if (essentialsHeading) essentialsHeading.textContent = league === "OHL" ? "OHL ESSENTIALS" : "ESSENTIALS";
         const names = {OHL:"Ontario Hockey League",WHL:"Western Hockey League",QMJHL:"Quebec Maritimes Junior Hockey League"};
         const logos = {
           OHL:"https://cdn.freebiesupply.com/logos/large/2x/ohl-logo-png-transparent.png",

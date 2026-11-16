@@ -52,6 +52,8 @@
 
     page: "overview",
     standingsTab: "leaders",
+    formGames: 10,
+    formMetric: "P",
     leadersMetric: "pts",
 
     query: "",
@@ -878,16 +880,6 @@
       `;
     }).join("");
 
-    const top = sortBy(
-      rows,
-      S.overviewMetric
-    ).slice(0, 6);
-
-    const max = Math.max(
-      1,
-      ...top.map(r => valueOf(r, S.overviewMetric) || 0)
-    );
-
     main.innerHTML = `
       <section class="hero ice-overview-hero">
         <div class="ice-overview-brand-row">
@@ -910,55 +902,6 @@
 
       <div class="leader-grid ice-overview-leaders">${cards}</div>
 
-      <div class="ice-overview-rankings">
-        ${panel(
-          "Production Rankings",
-          `
-            <div class="tabs">
-              ${[
-                ["pts", "Points"],
-                ["g", "Goals"],
-                ["a", "Assists"],
-                ["rate", "P/GP"]
-              ].map(([key, label]) => `
-                <button
-                  class="btn ${S.overviewMetric === key ? "active" : ""}"
-                  data-metric="${key}">
-                  ${label}
-                </button>
-              `).join("")}
-            </div>
-            
-
-            <div class="bars">
-              ${top.map(r => `
-                <div class="bar-row">
-                  <div>
-                    <a href="#profile"
-                       data-person="${esc(r.key)}">
-                      ${esc(r.name)}
-                    </a>
-                    <b>${S.overviewMetric === "rate"
-                      ? dec(valueOf(r, S.overviewMetric))
-                      : fmt(valueOf(r, S.overviewMetric))}
-                    </b>
-                  </div>
-                  <span class="track">
-                    <span style="width:${
-                      clamp(
-                        (valueOf(r, S.overviewMetric) || 0) /
-                        max * 100,
-                        0,
-                        100
-                      )
-                    }%"></span>
-                  </span>
-                </div>
-              `).join("")}
-            </div>
-          `
-        )}
-      </div>
 
     `;
     window.IceIndexGameCentre?.renderDailyGames(main.querySelector("#igc-daily-widget"));
@@ -3403,6 +3346,100 @@
     return value !== null && Number.isFinite(value) ? value : null;
   }
 
+  // OHL Form Tracker uses the same published CSV as the Game Logs page.
+  // It never estimates game-by-game results from season totals.
+  let iceFormData = null;
+  let iceFormLoading = false;
+  let iceFormError = "";
+  function iceFormCSV(input) {
+    const rows = []; let row = [], field = "", quoted = false;
+    for (let i = 0; i < input.length; i++) {
+      const c = input[i];
+      if (quoted) {
+        if (c === '"' && input[i+1] === '"') { field += '"'; i++; }
+        else if (c === '"') quoted = false;
+        else field += c;
+      } else if (c === '"') quoted = true;
+      else if (c === ',') { row.push(field); field = ""; }
+      else if (c === '\n') { row.push(field.replace(/\r$/, "")); rows.push(row); row=[]; field=""; }
+      else field += c;
+    }
+    if (field || row.length) { row.push(field); rows.push(row); }
+    const headers = rows.shift() || [];
+    return rows.filter(r=>r.some(Boolean)).map(r=>Object.fromEntries(headers.map((h,i)=>[h,r[i] ?? ""])));
+  }
+  async function loadIceForm() {
+    if (iceFormData || iceFormLoading) return;
+    iceFormLoading = true; iceFormError = "";
+    try {
+      const response = await fetch("data/games/2026-27/player_game_logs_enriched.csv", {cache:"no-cache"});
+      if (!response.ok) throw new Error("Game log CSV unavailable (HTTP " + response.status + ")");
+      const records = iceFormCSV(await response.text());
+      iceFormData = records.filter(r=>r.player_id && r.game_id && (!r.season || r.season === currentSeason()))
+        .map(r=>({id:String(r.player_id),game:String(r.game_id),date:String(r.game_date||""),
+          name:r.player_name||"",team:r.team_name||r.team_code||"",
+          G:Number(r.G)||0,A:Number(r.A)||0,P:Number(r.P)||0,
+          S:r.SHOT_EVENT===""||r.SHOT_EVENT==null?null:Number(r.SHOT_EVENT)}));
+      if (!iceFormData.length) throw new Error("No current-season game logs found");
+    } catch(error) { iceFormData=null; iceFormError=error.message; }
+    iceFormLoading=false;
+    if (S.page === "standings-leaders" && S.standingsTab === "form") renderStandingsLeaders();
+  }
+  function iceFormLeaders() {
+    if (!iceFormData) return [];
+    const grouped = new Map();
+    for (const r of iceFormData) {
+      if (!grouped.has(r.id)) grouped.set(r.id,new Map());
+      // One record per player and game, even if the source has duplicates.
+      grouped.get(r.id).set(r.game,r);
+    }
+    const result=[];
+    for (const [id,games] of grouped) {
+      const ordered=[...games.values()].sort((a,b)=>a.date.localeCompare(b.date)||a.game.localeCompare(b.game));
+      // Require at least 10 games in the season, and a complete selected sample.
+      if (ordered.length < Math.max(10,S.formGames)) continue;
+      const recent=ordered.slice(-S.formGames);
+      const sum=k=>recent.reduce((n,r)=>n+r[k],0);
+      const goals=sum("G"),assists=sum("A"),points=sum("P");
+      const shotsAvailable=recent.every(r=>r.S!==null && Number.isFinite(r.S));
+      const shots=shotsAvailable?sum("S"):null;
+      const stats={G:goals,A:assists,P:points,rate:points/recent.length,
+        S:shots,shooting:shots>0?100*goals/shots:null};
+      const value=stats[S.formMetric];
+      if (value===null || !Number.isFinite(value)) continue;
+      const p=S.people.find(p=>String(p.id)===id);
+      result.push({id,key:p?.key||null,name:p?.name||recent.at(-1).name||id,
+        team:recent.at(-1).team||p?.team||"OHL",value,goals,assists,points,shots,player:p});
+    }
+    return result.sort((a,b)=>b.value-a.value||b.points-a.points||a.name.localeCompare(b.name)).slice(0,5);
+  }
+  function renderIceForm() {
+    if (!iceFormData && !iceFormLoading && !iceFormError) loadIceForm();
+    const metrics=[["P","Points"],["G","Goals"],["A","Assists"],["rate","Points/Game"],["S","Shots"],["shooting","Shooting %"]];
+    const label=metrics.find(x=>x[0]===S.formMetric)?.[1]||"Points";
+    const rows=iceFormLeaders();
+    return `
+      <div class="ice-sl-section-head"><h2>OHL Form Tracker</h2><span>TOP 5</span></div>
+      <p class="ice-sl-note ice-form-intro">Who's producing right now? Rankings are based on each player's most recent recorded games.</p>
+      <div class="ice-form-period" role="group" aria-label="Recent games sample">
+        ${[5,10,15].map(n=>`<button type="button" data-form-games="${n}" class="ice-sl-tab ${S.formGames===n?'is-active':''}" aria-pressed="${S.formGames===n}">Last ${n}</button>`).join("")}
+      </div>
+      <div class="ice-form-metrics" role="group" aria-label="Form statistic">
+        ${metrics.map(([key,name])=>`<button type="button" data-form-metric="${esc(key)}" class="ice-sl-metric ${S.formMetric===key?'is-active':''}" aria-pressed="${S.formMetric===key}">${esc(name)}</button>`).join("")}
+      </div>
+      <div class="ice-sl-section-head"><h2>${esc(label)} · Last ${S.formGames}</h2><span>TOP 5</span></div>
+      <div class="ice-sl-list">${iceFormLoading?'<div class="empty">Loading current-season game logs…</div>':iceFormError?`<div class="empty">Form data unavailable: ${esc(iceFormError)}</div>`:rows.length?rows.map((r,i)=>`
+        <${r.key?'a href="#profile" data-person="'+esc(r.key)+'"':'div'} class="ice-sl-player">
+          <span class="ice-sl-rank">${i+1}</span>
+          ${image(r.player||{id:r.id,name:r.name},"ice-sl-avatar")}
+          <span class="ice-sl-person"><strong>${esc(r.name)}</strong><small>${esc(r.team)} · ${r.goals} G · ${r.assists} A</small></span>
+          <span class="ice-sl-value">${S.formMetric==='rate'?dec(r.value,2):S.formMetric==='shooting'?dec(r.value,1)+'%':fmt(r.value)}</span>
+          <span class="ice-sl-arrow" aria-hidden="true">${r.key?'›':''}</span>
+        </${r.key?'a':'div'}>`).join(""):'<div class="empty">No eligible game-log records for this selection.</div>'}</div>
+      <p class="ice-sl-note">Minimum 10 season games played. Players must also have ${S.formGames} recorded games for the selected sample. Shot-based metrics appear only when shot data is available for every game in the sample.</p>
+      <p class="ice-sl-note">Source: IceIndex 2026–27 player game logs. Updated when the existing game-log CSV is refreshed.</p>`;
+  }
+
   function renderStandingsLeaders() {
     const tab = S.standingsTab;
     const selected = LEADER_METRICS.find(m => m[0] === S.leadersMetric) || LEADER_METRICS[0];
@@ -3417,14 +3454,15 @@
       metric === "shooting" ? dec(leaderValue(r,metric),1)+"%" : fmt(leaderValue(r,metric));
     main.innerHTML = `
       <section class="ice-sl-page">
-        <div class="ice-sl-title"><span class="eyebrow">OHL · ${esc(currentSeason())}</span><h1>Standings &amp; Leaders</h1></div>
-        <div class="ice-sl-tabs" role="group" aria-label="Standings and leaders">
+        <div class="ice-sl-title"><span class="eyebrow">OHL · ${esc(currentSeason())}</span><h1>Standings, Leaders &amp; Form</h1></div>
+        <div class="ice-sl-tabs" role="group" aria-label="Standings, leaders and form">
           <button type="button" data-sl-tab="standings" class="ice-sl-tab ${tab === "standings" ? "is-active" : ""}" aria-pressed="${tab === "standings"}">Standings</button>
           <button type="button" data-sl-tab="leaders" class="ice-sl-tab ${tab === "leaders" ? "is-active" : ""}" aria-pressed="${tab === "leaders"}">Leaders</button>
+          <button type="button" data-sl-tab="form" class="ice-sl-tab ${tab === "form" ? "is-active" : ""}" aria-pressed="${tab === "form"}">Form</button>
         </div>
         ${tab === "standings" ? `
           <div class="ice-sl-soon"><div class="ice-sl-soon-icon">🏆</div><h2>OHL Standings</h2><p>Coming Soon</p><small>Official league standings will appear here once a verified standings data source is connected.</small></div>
-        ` : `
+        ` : tab === "form" ? renderIceForm() : `
           <div class="ice-sl-section-head"><h2>${esc(selected[1])} Leaders</h2><span>TOP 5</span></div>
           <div class="ice-sl-metrics" role="group" aria-label="Select leaderboard statistic">
             ${LEADER_METRICS.map(([key,name,short]) => `<button type="button" title="${esc(name)}" aria-label="${esc(name)}" aria-pressed="${key===metric}" class="ice-sl-metric ${key===metric?"is-active":""}" data-sl-metric="${esc(key)}">${esc(short)}</button>`).join("")}
@@ -3585,6 +3623,10 @@
     if (slTab) { S.standingsTab = slTab.dataset.slTab; renderStandingsLeaders(); return; }
     const slMetric = target.closest("[data-sl-metric]");
     if (slMetric) { S.leadersMetric = slMetric.dataset.slMetric; renderStandingsLeaders(); return; }
+    const formGames = target.closest("[data-form-games]");
+    if (formGames) { S.formGames = Number(formGames.dataset.formGames); renderStandingsLeaders(); return; }
+    const formMetric = target.closest("[data-form-metric]");
+    if (formMetric) { S.formMetric = formMetric.dataset.formMetric; renderStandingsLeaders(); return; }
 
     const choice = target.closest("[data-picker-choice]");
     if (choice) {
