@@ -19,8 +19,8 @@ window.IceIndexShotMap = (() => {
     return lines.filter(r=>r.length>1).map(r=>Object.fromEntries(headers.map((h,i)=>[h,r[i]||''])));
   }
   async function load() {
-    if(all || promise)return promise;
-    promise=(async()=>{try{const res=await fetch(path,{cache:'no-cache'});if(!res.ok)throw Error(`HTTP ${res.status}`);all=parseCSV(await res.text()).filter(r=>Number.isFinite(+r.x_location)&&Number.isFinite(+r.y_location)&&r.x_location!==''&&r.y_location!=='');error='';}catch(e){error=e.message;all=[];}})();
+    if(all && !error)return Promise.resolve();if(promise)return promise;
+    promise=(async()=>{try{const res=await fetch(path,{cache:'no-cache'});if(!res.ok)throw Error(`HTTP ${res.status}`);all=parseCSV(await res.text()).filter(r=>Number.isFinite(+r.x_location)&&Number.isFinite(+r.y_location)&&r.x_location!==''&&r.y_location!=='');error='';}catch(e){error=e.message;all=[];}finally{promise=null;}})();
     return promise;
   }
   // Enrich individual events with actual published game-log records. The event
@@ -59,7 +59,7 @@ window.IceIndexShotMap = (() => {
       const team=String(r.team_id||r.team_code||'');
       const game=String(r.game_id||'');
       if(!team||!game)continue;
-      const k=game+'|'+team;
+      const k=game+'|'+team+'|'+String(r.period||'');
       if(!groups.has(k))groups.set(k,[]);
       groups.get(k).push(+r.x_location);
     }
@@ -74,7 +74,7 @@ window.IceIndexShotMap = (() => {
   let directions=new Map();
   function fold(r){
     const rx=+r.x_location,ry=+r.y_location;
-    const key=String(r.game_id||'')+'|'+String(r.team_id||r.team_code||'');
+    const key=String(r.game_id||'')+'|'+String(r.team_id||r.team_code||'')+'|'+String(r.period||'');
     const dir=directions.get(key)||(rx>=300?'high':'low');
     const longitudinal=(dir==='high'?rx-300:300-rx)/GEO.rawXPerFt;
     const lateral=(ry-150)/GEO.rawYPerFt*(dir==='high'?1:-1);
@@ -118,7 +118,7 @@ window.IceIndexShotMap = (() => {
   function rink(){
     return `<svg class="ism-half-rink" viewBox="0 0 600 562" role="img" aria-label="Attacking half rink shot map; events outside the displayed half are excluded" xmlns="http://www.w3.org/2000/svg">
       <defs><clipPath id="ism-half-clip"><path d="M127 46H473Q545 46 545 118V536H55V118Q55 46 127 46Z"/></clipPath></defs>
-      <path d="M127 46H473Q545 46 545 118V536H55V118Q55 46 127 46Z" fill="#27231f" stroke="#b6a38c" stroke-width="2.5"/>
+      <path d="M127 46H473Q545 46 545 118V536H55V118Q55 46 127 46Z" fill="var(--rink-ice,#f5f9fc)" stroke="var(--rink-outline,#b6c7d8)" stroke-width="2.5"/>
       <g clip-path="url(#ism-half-clip)">
         <g id="ism-zones"></g>
         <path d="M55 100H545" stroke="#b9676b" stroke-width="2.6"/>
@@ -128,7 +128,7 @@ window.IceIndexShotMap = (() => {
         <circle cx="420" cy="234" r="73.5" fill="none" stroke="#b96970" stroke-width="2"/>
         <path d="M227 536A73.5 73.5 0 0 1 373 536" fill="none" stroke="#b96970" stroke-width="1.6"/>
         <g fill="#c36a72"><circle cx="180" cy="234" r="4"/><circle cx="420" cy="234" r="4"/></g>
-        <path d="M285 100V118Q300 145 315 118V100" fill="#625245" fill-opacity=".6" stroke="#c77a80" stroke-width="2"/>
+        <path d="M285 100V118Q300 145 315 118V100" fill="#cddce8" fill-opacity=".6" stroke="#c77a80" stroke-width="2"/>
         <path d="M285 100V79H315V100" fill="none" stroke="#e6ded3" stroke-width="3"/>
         <g id="ism-markers"></g>
       </g>
@@ -194,10 +194,10 @@ window.IceIndexShotMap = (() => {
     return `<div class="ism-detail-head"><div><strong>${esc(goal?'Goal':'Shot')}${name?' · '+esc(name):''}</strong>${subtitle?`<div class="ism-detail-subtitle">${esc(subtitle)}</div>`:''}</div><button type="button" class="ism-detail-close" aria-label="Close event details">×</button></div><dl class="ism-detail-list">${lines.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>`;
   }
   function draw(body,id) {
-    if(error){body.innerHTML=`<div class="ism-empty"><strong>Shot-map data not published yet.</strong><p>Run <code>scripts/games/build_shot_locations.R</code> and publish <code>${esc(path)}</code>. (${esc(error)})</p></div>`;return;}
+    if(error){body.innerHTML=`<div class="ism-empty"><strong>Shot-map data not published yet.</strong><p>Run <code>scripts/games/build_shot_locations.R</code> and publish <code>${esc(path)}</code>. (${esc(error)})</p><button type="button" class="btn" id="ism-retry">Retry shot data</button></div>`;body.querySelector('#ism-retry')?.addEventListener('click',()=>{all=null;error='';promise=null;body.innerHTML='<div class="ism-loading">Reloading shot locations…</div>';mount({id},active?.selected||'career',active?.competition||'regular');});return;}
     directions=attackingEnds(all);
     const player=all.filter(r=>String(r.player_id)===id);
-    if(!player.length){body.innerHTML='<div class="ism-empty">No shot-location events available for this player in 2026–27.</div>';return;}
+    if(!player.length){body.innerHTML='<div class="ism-empty">No shot locations are published for this player in 2026–27. Career totals can include seasons without coordinate data.</div>';return;}
     const periods=[...new Set(player.map(r=>r.period).filter(Boolean))].sort((a,b)=>+a-+b);
     const filtered=player.filter(r=>(type==='all'||r.event_type===type)&&(period==='all'||r.period===period));
     const rows=filtered.filter(onShownHalf);

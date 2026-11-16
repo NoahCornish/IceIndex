@@ -1,0 +1,48 @@
+/* Statistics database — dense, readable data tables */
+#main-content .data-table{font-variant-numeric:tabular-nums}
+#main-content .data-table th{background:var(--surface-3)!important;color:var(--text)!important}
+#main-content .data-table td{color:var(--text)!important;border-bottom:1px solid var(--border)}
+#main-content .data-table tbody tr:nth-child(even){background:var(--surface-2)}
+#main-content .data-table tbody tr:hover{background:var(--accent-soft)}
+#main-content .data-table .player-cell strong{color:var(--text)!important}
+#main-content :is(.table-scroll,.table-wrap,.table-responsive){max-width:100%;overflow-x:auto}
+
+/* v0.15.0 shared responsive hygiene */
+#main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
+#main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}
+
+/* v0.15.0 desktop statistics density — mobile presentation unchanged.
+   Scale column space with viewport and visible column count. */
+@media (min-width: 1100px) {
+  #main-content .ice-stats-table-wrap {width:100%;max-width:100%;overflow-x:auto;}
+  #main-content .ice-stats-table {
+    width:100%;
+    min-width:100%;
+    table-layout:auto;
+    font-size:clamp(12px, .78vw, 15px);
+    line-height:1.35;
+  }
+  #main-content .ice-stats-table th,
+  #main-content .ice-stats-table td {
+    padding:clamp(8px,.62vw,12px) clamp(8px,.72vw,16px);
+    font-size:inherit;
+    white-space:nowrap;
+  }
+  #main-content .ice-stats-table thead th {font-size:clamp(10px,.66vw,12px)}
+  #main-content .ice-stats-table th:first-child,
+  #main-content .ice-stats-table td:first-child {
+    width:40px;min-width:40px;left:0;
+  }
+  #main-content .ice-stats-table th:nth-child(2),
+  #main-content .ice-stats-table td:nth-child(2) {
+    width:clamp(165px,13vw,245px);
+    min-width:clamp(165px,13vw,245px);
+    max-width:clamp(165px,13vw,245px);
+    left:40px;
+  }
+  #main-content .ice-stats-table .ice-stats-player {font-size:inherit;gap:9px;}
+  #main-content .ice-stats-table .ice-stats-headshot {
+    width:30px;height:34px;flex-basis:30px;
+  }
+}

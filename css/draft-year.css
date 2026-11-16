@@ -1,0 +1,8 @@
+/* Draft Year Central */
+#main-content :is(.ice-draft-card,.ice-draft-player){background:var(--surface);color:var(--text);border:1px solid var(--border)}
+#main-content :is(.ice-draft-card,.ice-draft-player) :is(strong,b){color:var(--text)}
+
+/* v0.15.0 shared responsive hygiene */
+#main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
+#main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}

@@ -4,7 +4,7 @@
 <head>
 <script src="js/maintenance.js?v=0.6.0" defer></script>
   <!-- ======================================================
-       ICEINDEX v0.14.0
+       ICEINDEX v0.15.0
        Hockey Data Intelligence
        Compact Multi-League Navigation
        ====================================================== -->
@@ -12,8 +12,8 @@
   <meta charset="UTF-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#07111d">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta name="color-scheme" content="light dark">
   <meta name="author" content="Noah Cornish">
   <meta name="robots" content="index, follow">
 
@@ -64,8 +64,9 @@
       function apply() {
         const theme=effective();
         document.documentElement.dataset.iceTheme=theme;
+        const finalDay=document.getElementById('ice-day-final');if(finalDay)finalDay.disabled=theme!=='day';
         const link=document.getElementById('ice-theme-stylesheet');
-        if(link){const href=theme==='day'?'css/style.css?v=0.10.0-brand1':'css/style-night.css?v=0.10.0-brand1';if(link.getAttribute('href')!==href)link.setAttribute('href',href);}
+        if(link){const href=theme==='day'?'css/theme-day.css?v=0.15.0-cleanse4':'css/theme-night.css?v=0.15.0-cleanse4';if(link.getAttribute('href')!==href)link.setAttribute('href',href);}
         const button=document.getElementById('ice-theme-toggle');
         if(button){const next=theme==='day'?'night':'day';button.setAttribute('aria-label','Switch to '+next+' theme');button.setAttribute('title','Switch to '+next+' theme (automatic at 7 AM and 5 PM ET)');button.setAttribute('aria-pressed',String(theme==='night'));}
       }
@@ -74,15 +75,6 @@
       document.addEventListener('DOMContentLoaded',function(){apply();document.getElementById('ice-theme-toggle')?.addEventListener('click',window.IceIndexTheme.toggle);setInterval(apply,30000);document.addEventListener('visibilitychange',function(){if(!document.hidden)apply();});});
     })();
   </script>
-  <link rel="stylesheet" href="css/game-centre.css?v=0.13.0-compact">
-  <link rel="stylesheet" href="css/standings-leaders.css?v=0.14.0">
-  <link rel="stylesheet" href="css/mobile-overhaul.css?v=0.14.0-desktop-one-row">
-  <link id="ice-theme-stylesheet" rel="stylesheet" href="css/style.css?v=0.10.0-brand1">
-  <link rel="stylesheet" href="css/overview-responsive.css?v=0.14.0-adaptive-overview">
-  <link rel="stylesheet" href="css/desktop-scale.css?v=0.14.0-all-pages">
-  <link rel="stylesheet" href="css/mobile-navigation-fix.css?v=0.14.0-mobile-drawer-repair">
-  <link rel="stylesheet" href="css/sitewide-responsive.css?v=0.14.0-content-responsive-1">
-  <link rel="stylesheet" href="css/all-pages-responsive.css?v=0.14.0-all-content-1">
   <script>window.IceIndexTheme.apply();</script>
 
   <!-- ======================================================
@@ -141,13 +133,30 @@
   <script src="js/ohl-analytics.js?v=0.5.0" defer></script>
   <script src="js/ohl-goalies.js?v=0.8.0" defer></script>
   <script src="js/game-logs.js?v=0.10.0" defer></script>
-  <script src="js/shot-map.js?v=0.10.0-halfmap" defer></script>
+  <script src="js/shot-map.js?v=0.15.0-final-pass3" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
   <script src="js/members.js?v=0.12.0" defer></script>
   <script src="js/game-export.js?v=0.12.0" defer></script>
-  <script src="js/game-centre.js?v=0.13.0-compact" defer></script>
-  <script src="js/app.js?v=0.14.0-navigation" defer></script>
+  <script src="js/game-centre.js?v=0.15.0-final-pass3" defer></script>
+  <script src="js/daily-score-heading.js?v=0.15.0" defer></script>
+  <script src="js/app.js?v=0.15.0-cleanse4" defer></script>
 
+  <link id="ice-theme-stylesheet" rel="stylesheet" href="css/theme-day.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/foundation.css?v=0.15.0-audit1">
+<link rel="stylesheet" href="css/overview.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/game-centre.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/standings.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/statistics.css?v=0.15.0-desktop-table1">
+<link rel="stylesheet" href="css/players.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/goalies.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/game-logs.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/player-profile.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/analytics.css?v=0.15.0-cleanse4">
+<link rel="stylesheet" href="css/draft-year.css?v=0.15.0-cleanse4">
+  <!-- v0.15.0: global responsive + theme audit, deliberately last -->
+  <link rel="stylesheet" href="css/v015-ui-audit.css?v=0.15.0-clean2">
+  <link rel="stylesheet" href="css/v015-polish.css?v=0.15.0-polish1">
+  <link rel="stylesheet" href="css/v015-player-profile.css?v=0.15.0-cleanse4">
 </head>
 
 <body>
@@ -194,7 +203,7 @@
 
         </button>
 
-        <img class="ice-title-logo" src="assets/branding/iceindex-logo.png" alt="" width="40" height="40" decoding="async">
+        <img class="ice-title-logo" src="assets/branding/iceindex-logo_2.png" alt="" width="40" height="40" decoding="async">
 
         <div class="ice-title-copy">
 
@@ -247,11 +256,12 @@
                 aria-hidden="true"></span>
 
         </button>
-        <section id="ice-status-popover" class="ice-status-popover" role="dialog" aria-label="IceIndex data status" hidden>
-          <div class="ice-status-popover-head"><strong>IceIndex data status</strong><button type="button" id="ice-status-close" aria-label="Close status details">×</button></div>
-          <p id="ice-status-description">Checking the latest data refresh…</p>
-          <p class="ice-status-timestamp">Last successful refresh: <strong id="ice-status-refresh">Checking…</strong></p>
-          
+        <section id="ice-status-popover" class="ice-status-popover" role="dialog" aria-label="IceIndex data refresh information" aria-modal="false" hidden>
+          <div class="ice-status-popover-head"><div><span class="ice-status-kicker">ICEINDEX DATA ENGINE</span><strong>Data refresh centre</strong></div><button type="button" id="ice-status-close" aria-label="Close data refresh information">×</button></div>
+          <div class="ice-refresh-health"><span class="ice-refresh-health-dot" aria-hidden="true"></span><div><strong id="ice-refresh-health-label">Checking refresh metadata…</strong><p id="ice-status-description">Checking the latest recorded update.</p></div></div>
+          <div class="ice-refresh-stat"><span>Last successful update</span><strong id="ice-status-refresh">Checking…</strong><small id="ice-refresh-age">Reading update timestamp…</small></div>
+          <div class="ice-refresh-schedule"><strong>Scheduled refresh windows</strong><div><span>Monday–Friday</span><p>9 AM, 12 PM, 3 PM, 6 PM; every 15 minutes from 7 PM–10:30 PM ET</p></div><div><span>Saturday–Sunday</span><p>Every 15 minutes from 12 PM–10:30 PM ET</p></div><small>Times shown in Toronto local time (ET). These are scheduled dispatch opportunities, not guaranteed successful updates.</small></div>
+          <div class="ice-refresh-foot"><span>Source: OHL data refresh metadata</span><button type="button" id="ice-status-recheck">Check again</button></div>
         </section>
       </div>
 
@@ -267,7 +277,7 @@
 
       <div class="sidebar-brand">
 
-        <img class="ice-brand-logo" src="assets/branding/iceindex-logo.png" alt="" width="48" height="48">
+        <img class="ice-brand-logo" src="assets/branding/iceindex-logo_2.png" alt="" width="48" height="48">
 
         <div>
           <div class="brand-name">IceIndex</div>
@@ -588,7 +598,7 @@
 
         <!-- Timestamp from last successful OHL data refresh (not page load) -->
         <div class="ice-refresh-stamp" aria-label="OHL data last updated">
-          <img class="ice-footer-logo" src="assets/branding/iceindex-logo.png" alt="" width="32" height="32">
+          <img class="ice-footer-logo" src="assets/branding/iceindex-logo_2.png" alt="" width="32" height="32">
           <div class="ice-refresh-heading"><span class="ice-refresh-dot" aria-hidden="true"></span> OHL DATA UPDATED</div>
           <time id="ice-last-updated" class="ice-refresh-time" data-state="loading">Checking last refresh…</time>
         </div>
@@ -596,7 +606,7 @@
         <div class="ice-footer-row">
 
           <span class="ice-footer-version">
-            IceIndex v0.14.0
+            IceIndex v0.15.0
           </span>
 
           <a class="ice-footer-github"
@@ -664,17 +674,7 @@
 
       </div>
 
-      <div class="panel">
-
-        <div class="loading-spinner"
-             aria-hidden="true"></div>
-
-        <div class="text-center text-muted"
-             role="status">
-          Loading IceIndex data…
-        </div>
-
-      </div>
+      <div id="ice-initial-placeholder" aria-hidden="true"></div>
 
     </main>
 
@@ -697,7 +697,7 @@
 
         <span aria-hidden="true"> · </span>
 
-        <span>v0.12.0</span>
+        <span>v0.15.0</span>
 
       </div>
 
@@ -720,7 +720,7 @@
     <div class="intro-card">
 
       <div class="brand-icon ice-intro-logo" aria-hidden="true">
-        I
+        <img src="assets/branding/iceindex-logo_2.png" alt="" width="64" height="64">
       </div>
 
       <div class="eyebrow ice-intro-eyebrow">
@@ -732,7 +732,7 @@
       </h1>
 
       <p id="intro-description">
-        Explore OHL players, statistics and performance trends.
+        Preparing player profiles, game statistics and league analytics.
       </p>
 
       
@@ -747,11 +747,7 @@
         Loading IceIndex data…
       </div>
 
-      <button id="intro-close"
-              class="btn primary"
-              type="button">
-        Explore IceIndex
-      </button>
+
 
       
 
@@ -801,22 +797,30 @@
       document.getElementById("ice-status-close")?.addEventListener("click",()=>{closeStatusPopover();indicator?.focus();});
       document.addEventListener("pointerdown",e=>{if(!statusPopover?.hidden&&!statusPopover?.contains(e.target)&&!indicator?.contains(e.target))closeStatusPopover();});
       document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!statusPopover?.hidden){closeStatusPopover();indicator?.focus();}});
-      (async function loadStatusDetails(){
+      const statusAge=document.getElementById("ice-refresh-age");
+      const statusHealth=document.getElementById("ice-refresh-health-label");
+      async function loadStatusDetails(){
+        statusHealth.textContent="Checking refresh metadata…";
         try{
           const response=await fetch("data/ohl/metadata/last_updated.json",{cache:"no-store"});
           if(!response.ok)throw Error("Refresh metadata unavailable");
           const metadata=await response.json();
           const date=new Date(metadata.last_updated_utc);
           if(!Number.isFinite(date.getTime()))throw Error("No valid refresh time");
-          statusRefresh.textContent=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Toronto",month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"}).format(date);
-          const ageHours=(Date.now()-date.getTime())/3600000;
+          const ageHours=Math.max(0,(Date.now()-date.getTime())/3600000);
           const failed=metadata.status==="failed"||metadata.status==="error";
           const delayed=ageHours>48;
-          indicator.dataset.refreshState=failed?"failed":delayed?"delayed":"fresh";
-          statusDescription.textContent=failed?"A refresh failure is reported in the metadata. Previously loaded data may still be available.":delayed?"The last successful refresh is more than 48 hours old. Data may be delayed.":"The latest recorded refresh is recent (within 48 hours).";
-          indicator.title=statusDescription.textContent;
-        }catch(error){statusRefresh.textContent="Unavailable";statusDescription.textContent="Refresh timing could not be verified. This does not confirm a failed refresh.";indicator.dataset.refreshState="unknown";}
-      })();
+          const recordedSuccess=metadata.status==="success";
+          statusRefresh.textContent=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Toronto",month:"short",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"}).format(date);
+          statusAge.textContent=ageHours<1?`${Math.max(0,Math.floor(ageHours*60))} minutes ago`:ageHours<48?`${Math.floor(ageHours)} hours ago`:`${Math.floor(ageHours/24)} days ago`;
+          indicator.dataset.refreshState=failed?"failed":delayed?"delayed":recordedSuccess?"fresh":"unknown";
+          statusHealth.textContent=failed?"Latest recorded run reported a failure":delayed?"Update may be delayed":recordedSuccess?"Successful refresh recorded":"Refresh status not confirmed";
+          statusDescription.textContent=failed?"The metadata reports a failed run. The timestamp may refer to an earlier update.":delayed?"The recorded update is more than 48 hours old.":recordedSuccess?"A successful refresh is recorded in the metadata.":"The metadata does not confirm a successful refresh.";
+          indicator.title=statusHealth.textContent;
+        }catch(error){statusRefresh.textContent="Unavailable";statusAge.textContent="Could not verify timestamp";statusHealth.textContent="Refresh status unavailable";statusDescription.textContent="Refresh metadata could not be loaded. This does not necessarily mean the data refresh failed.";indicator.dataset.refreshState="unknown";}
+      }
+      loadStatusDetails();
+      document.getElementById("ice-status-recheck")?.addEventListener("click",loadStatusDetails);
 
       /* LAST SUCCESSFUL REFRESH — SIDEBAR ONLY */
       (async function loadLastUpdated() {
@@ -1234,5 +1238,6 @@
     </div>
   </noscript>
 
+  <script src="js/v014-rink-orientation.js?v=0.15.0" defer></script>
 </body>
 </html>

@@ -746,3 +746,57 @@ html[data-ice-theme="day"] .igc.igc-modern{--igc-away:#1269ad;--igc-home:#a94d00
  .igc.igc-compact-overview .igc-game-compact{grid-template-columns:65px minmax(0,1fr) 8px;gap:3px}
  .igc.igc-compact-overview .igc-schedule-count strong{font-size:14px}
 }
+
+
+/* IceIndex 0.14.0 final polish — Stone & Forest */
+/* Full rink: horizontal on desktops, vertical on phones. */
+.igc.igc-modern.igc-boxscore .igc-rink-wrap,
+.igc.igc-boxscore .igc-rink-wrap,
+.igc-modern .igc-rink-wrap{width:min(100%,1100px)!important;max-width:1100px!important;margin:24px auto!important;}
+.igc.igc-modern.igc-boxscore .igc-rink,
+.igc.igc-boxscore .igc-rink,
+.igc-modern .igc-rink{display:block;width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:1060/600;}
+@media(max-width:760px){
+ .igc.igc-modern.igc-boxscore .igc-rink-wrap,.igc.igc-boxscore .igc-rink-wrap,.igc-modern .igc-rink-wrap{max-width:420px!important;width:100%!important;margin:18px auto!important}
+ .igc.igc-modern.igc-boxscore .igc-rink,.igc.igc-boxscore .igc-rink,.igc-modern .igc-rink{aspect-ratio:600/1060;}
+}
+/* Editorial-style player profile: one clear hero, easy-to-scan metrics and controls. */
+.ice-profile-controls{display:grid!important;grid-template-columns:minmax(220px,1.6fr) auto minmax(145px,1fr) minmax(150px,1fr);align-items:end;gap:12px;margin-bottom:18px!important}
+.ice-profile-controls>*{min-width:0;max-width:100%}
+.ice-profile-feature{overflow:hidden;position:relative;padding:clamp(18px,3vw,38px)!important;border-radius:22px!important;background:linear-gradient(120deg,#fffdf8 0%,#f3f0e7 62%,#e5eadd 100%)!important;border:1px solid #d8d1c1!important;box-shadow:0 12px 36px rgba(39,51,36,.06)}
+.ice-profile-feature-label{font-size:11px;font-weight:850;letter-spacing:.17em;color:#386b55;margin-bottom:20px}
+.ice-profile-feature-label span{color:#a6ad9b;padding:0 7px}
+.ice-profile-feature .ice-player-header{display:grid!important;grid-template-columns:minmax(100px,160px) minmax(0,1fr) minmax(65px,105px);gap:clamp(15px,3vw,36px);align-items:center;margin-bottom:28px;padding:0 0 24px;border-bottom:1px solid #d7d8cc}
+.ice-profile-feature .ice-player-header .leader-photo{width:clamp(100px,12vw,160px)!important;height:clamp(100px,12vw,160px)!important;object-fit:contain;border-radius:18px;background:#e5e9df}
+.ice-profile-feature .ice-player-header h2{font-size:clamp(28px,3.4vw,53px)!important;line-height:1.08!important;letter-spacing:-.045em;margin:6px 0 10px;color:#25322b}
+.ice-profile-feature .ice-player-header p{font-size:clamp(15px,1.3vw,19px);color:#52685c}
+.ice-profile-feature .ice-player-header .eyebrow{color:#397459;font-weight:850;letter-spacing:.12em}
+.ice-profile-feature .ice-player-header> :last-child{max-width:105px;justify-self:end}
+.ice-profile-feature .kpi-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important}
+.ice-profile-feature .kpi{background:rgba(255,255,255,.72)!important;border:1px solid #deded2!important;border-radius:14px!important;padding:19px!important;min-width:0}
+.ice-profile-feature .kpi span{display:block;color:#637268!important;font-size:11px!important;letter-spacing:.07em;font-weight:800}
+.ice-profile-feature .kpi b{display:block;color:#24352a!important;font-size:clamp(25px,2.5vw,40px)!important;line-height:1.15;margin-top:10px;font-variant-numeric:tabular-nums}
+.ice-profile-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.ice-profile-actions .btn.primary{background:#285e49!important;border-color:#285e49!important;color:#fff!important}
+@media(max-width:900px){.ice-profile-controls{grid-template-columns:repeat(2,minmax(0,1fr))!important}.ice-profile-feature .kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media(max-width:600px){.ice-profile-controls{grid-template-columns:1fr!important}.ice-profile-feature .ice-player-header{grid-template-columns:100px minmax(0,1fr)!important;gap:15px}.ice-profile-feature .ice-player-header> :last-child{display:none}.ice-profile-feature .ice-player-header h2{font-size:clamp(24px,7vw,36px)!important}.ice-profile-feature .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.ice-profile-feature .kpi{padding:14px!important}.ice-profile-feature .kpi b{font-size:29px!important}}
+
+
+/* v0.15.0 rink geometry: one horizontal two-team map or vertical half map. */
+.igc-modern .igc-rink-wrap.igc-wide-rink,.igc.igc-boxscore .igc-rink-wrap.igc-wide-rink{width:min(100%,1080px)!important;max-width:1080px!important;margin:18px auto!important}
+.igc-modern .igc-rink-wrap.igc-half-rink,.igc.igc-boxscore .igc-rink-wrap.igc-half-rink{width:min(100%,440px)!important;max-width:440px!important;margin:18px auto!important}
+.igc-modern .igc-rink-wrap .igc-rink,.igc.igc-boxscore .igc-rink-wrap .igc-rink{width:100%!important;height:auto!important;max-height:none!important;display:block!important;aspect-ratio:auto!important}
+.igc-rink-label{fill:var(--text);font:700 17px system-ui,sans-serif}
+.igc-shot-controls{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.igc-shot-controls label{min-width:0}.igc-shot-controls select{max-width:100%}
+@media(max-width:760px){.igc-shot-controls{grid-template-columns:repeat(2,minmax(0,1fr))!important}.igc-shot-controls label:last-child{grid-column:auto!important}}
+@media(max-width:420px){.igc-shot-controls{grid-template-columns:1fr!important}}
+
+/* Full rink in vertical mode, no clipping */
+.igc-modern .igc-rink-wrap.igc-half-rink,.igc.igc-boxscore .igc-rink-wrap.igc-half-rink{max-width:470px!important;width:min(100%,470px)!important;overflow:visible!important}
+.igc-modern .igc-rink-wrap.igc-half-rink svg,.igc.igc-boxscore .igc-rink-wrap.igc-half-rink svg{height:auto!important;max-height:none!important;aspect-ratio:600/1072!important}
+
+/* v0.15.0 shared responsive hygiene */
+#main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
+#main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}

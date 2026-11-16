@@ -1,0 +1,59 @@
+/* IceIndex v0.15.0 — global theme and viewport audit. Must load LAST. */
+:root[data-ice-theme="day"] {
+ color-scheme:light;
+ --bg:#f5f7fa;--bg-deep:#edf2f7;--bg-elevated:#fff;--sidebar-bg:#fff;
+ --surface:#fff;--surface-2:#f3f6fa;--surface-3:#e9f0f7;--surface-hover:#eaf2fb;
+ --border:#d8e1eb;--border-light:#cad6e3;--border-strong:#a6b9cc;
+ --text:#172b40;--text-soft:#354e66;--muted:#53697f;--muted-2:#65798e;
+ --audit-panel:#fff;--audit-alt:#f4f7fb;--audit-head:#eaf0f7;--audit-ink:#172b40;
+ --audit-muted:#53697f;--audit-border:#d8e1eb;--audit-hover:#eaf2fb;
+}
+:root[data-ice-theme="night"] {
+ color-scheme:dark;
+ --audit-panel:#0d2033;--audit-alt:#132b40;--audit-head:#1b344b;--audit-ink:#f1f7fc;
+ --audit-muted:#a6bbcf;--audit-border:#304a61;--audit-hover:#1b3b56;
+}
+/* Keep layouts within the available viewport without destroying horizontal table scrolling. */
+html,body{max-width:100%;overflow-x:clip}
+#main-content,main,.app-main,.main-content,.content,.page,.panel,.card,.igc,.igl-directory,.igl-player-panel{min-width:0;max-width:100%}
+#main-content :is(img,video,canvas,iframe){max-width:100%}
+#main-content :is(.table-wrap,.table-scroll,.table-responsive,.igc-table-scroll,.igl-table-wrap,.stats-table-wrap,.ice-table-wrap){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content table{max-width:none}
+#main-content :is(.grid,.stats-grid,.kpi-grid,.igc-grid,.igl-grid,.igl-insights,.leader-grid,.cards-grid)>*{min-width:0}
+#main-content :is(h1,h2,h3,p,.ice-player-name,.igc-game-title){overflow-wrap:break-word}
+/* The official transparent logo has a nearly square aspect ratio; do not crop it. */
+body .ice-title-logo,body .ice-brand-logo,body .ice-footer-logo{object-fit:contain!important;object-position:center!important;filter:none!important;background:transparent!important;border:0!important;box-shadow:none!important;display:block!important;flex-shrink:0}
+body .ice-title-logo{width:39px!important;height:39px!important}
+body .ice-brand-logo{width:48px!important;height:48px!important}
+body .ice-footer-logo{width:32px!important;height:32px!important}
+/* Apply shared surface treatment to all dynamically rendered statistics and game logs. */
+#main-content :is(.igl-directory,.igl-search-panel,.igl-player-panel,.igl-insight,.igl-stat,.igl-player-hero,.igl-filter-bar,.igc-panel,.igc-game,.igc-goal,.igc-empty-note,.igc-summary-metrics>div,.igc-kpis>div,.stats-card,.stat-card,.kpi-card,.game-log-panel,.player-stat-card){background:var(--audit-panel)!important;color:var(--audit-ink)!important;border-color:var(--audit-border)!important}
+#main-content :is(.igl-stat,.igl-player-hero,.igl-filter-bar,.igc-summary-metrics>div,.igc-kpis>div){background:var(--audit-alt)!important}
+#main-content :is(.igl-stat,.igl-player-hero,.igl-insight,.igc-panel,.stats-card,.stat-card) :is(h1,h2,h3,h4,b,strong){color:var(--audit-ink)!important;-webkit-text-fill-color:var(--audit-ink)!important}
+#main-content :is(.igl-stat,.igl-player-hero,.igl-insight,.igc-panel,.stats-card,.stat-card) :is(small,.muted,.subtitle){color:var(--audit-muted)!important}
+#main-content :is(table,.igc-table,.igl-table){color:var(--audit-ink);border-color:var(--audit-border)}
+#main-content :is(table,.igc-table,.igl-table) :is(thead,thead tr,th){background:var(--audit-head)!important;color:var(--audit-ink)!important;border-color:var(--audit-border)!important}
+#main-content :is(table,.igc-table,.igl-table) tbody tr{background:var(--audit-panel)!important;color:var(--audit-ink)!important}
+#main-content :is(table,.igc-table,.igl-table) tbody tr:nth-child(even){background:var(--audit-alt)!important}
+#main-content :is(table,.igc-table,.igl-table) tbody tr:hover{background:var(--audit-hover)!important}
+#main-content :is(table,.igc-table,.igl-table) :is(td,th){border-color:var(--audit-border)!important}
+#main-content :is(input,select,textarea){background:var(--audit-panel);color:var(--audit-ink);border-color:var(--audit-border)}
+#main-content :is(input,textarea)::placeholder{color:var(--audit-muted)}
+/* Daylight-only corrections for legacy navy sections and special game-log containers. */
+html[data-ice-theme="day"] #main-content :is(.igl-directory,.igl-search-panel,.igl-player-panel,.igl-insight,.igl-stat,.igl-player-hero,.igl-filter-bar,.igc-panel,.igc-game,.igc-game-hero,.igc-game-detail,.igc-game-card,.igc-boxscore,.igc-scoreboard,.igc-stat,.igc-kpi,.igc-table-scroll,.ice-stat-panel,.ice-profile-stats,.game-log-panel,.game-logs,.game-log,.player-stat-card,.stat-card,.stats-card,.kpi-card,.leader-card,.analytics-card,.chart-card,.scouting-card,.standings-card,.ice-member-card){background-color:var(--audit-panel)!important;color:var(--audit-ink)!important;border-color:var(--audit-border)!important}
+html[data-ice-theme="day"] #main-content :is(.igl-stat,.igl-player-hero,.igl-filter-bar,.igc-kpi,.igc-stat,.igc-game-hero){background-color:var(--audit-alt)!important}
+html[data-ice-theme="day"] #main-content :is(.igl-directory,.igl-player-panel,.igc-panel,.igc-game,.game-log-panel,.analytics-card,.chart-card,.scouting-card) :is(h1,h2,h3,h4,strong,b){color:var(--audit-ink)!important;-webkit-text-fill-color:var(--audit-ink)!important}
+html[data-ice-theme="day"] :is(.ice-member-card,.ice-member-card input){background:#fff!important;color:#172b40!important;border-color:#d8e1eb!important}
+html[data-ice-theme="day"] .ice-member-card :is(label,p,small){color:#53697f!important}
+/* Do not recolor the shot-map rink itself: rink dark ice is intentional data visualization. */
+@media(max-width:760px){
+ body .ice-title-logo{width:31px!important;height:31px!important}
+ body .ice-brand-logo{width:42px!important;height:42px!important}
+ #main-content :is(.igl-insights,.igc-summary-metrics,.stats-grid,.kpi-grid){grid-template-columns:repeat(2,minmax(0,1fr))}
+ #main-content :is(.igl-directory,.igl-player-panel,.igc-panel){max-width:100%}
+ .ice-status-popover{max-width:calc(100vw - 24px)}
+}
+@media(max-width:420px){
+ #main-content :is(.igl-insights,.igc-summary-metrics,.stats-grid,.kpi-grid){grid-template-columns:minmax(0,1fr)}
+ body .ice-title-logo{width:27px!important;height:27px!important}
+}

@@ -1,0 +1,23 @@
+/* IceIndex v0.15.0 — loading dialogue and responsive visual polish */
+#intro-overlay[hidden]{display:none!important}
+#intro-overlay{background:rgba(12,25,40,.38)!important;backdrop-filter:blur(7px)!important;-webkit-backdrop-filter:blur(7px)!important;z-index:10000}
+#intro-overlay .intro-card{width:min(400px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:32px 26px!important;border:1px solid var(--border)!important;border-radius:22px!important;background:var(--surface)!important;color:var(--text)!important;box-shadow:0 24px 80px rgba(5,19,35,.25)!important}
+#intro-overlay .ice-intro-logo{width:70px;height:70px;margin:0 auto 12px;display:grid;place-items:center;background:transparent!important;border:0!important}
+#intro-overlay .ice-intro-logo img{width:64px;height:64px;object-fit:contain}
+#intro-overlay #intro-title{color:var(--text)!important;font-size:28px!important;margin:4px 0 8px}
+#intro-overlay #intro-description{color:var(--muted)!important;line-height:1.5}
+#intro-overlay #intro-progress{color:var(--text-soft)!important;font-size:13px}
+#intro-overlay .loading-spinner{margin:20px auto 8px;width:30px;height:30px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:ice-spin .8s linear infinite}
+@keyframes ice-spin{to{transform:rotate(360deg)}}
+body.ice-loading-active{overflow:hidden}
+#ice-initial-placeholder{min-height:35vh}
+#main-content,.igc-modern,.igl-directory{min-width:0}
+#main-content :is(.igc-game-hero,.igl-player-hero,.ice-player-hero){overflow:hidden}
+#main-content :is(.igc-game-hero,.igl-player-hero,.ice-player-hero) img{max-width:100%;object-fit:contain}
+#main-content :is(.igc-scoreboard,.igc-score-team,.igc-hero-team,.igl-player-hero)>*{min-width:0}
+#main-content .igc-modern .igc-game-hero :is(.igc-scoreboard,.igc-score-team){background:transparent!important}
+#main-content .igc-modern .igc-game-hero .igc-score-team img{background:transparent!important}
+#main-content .igc-modern .igc-game-hero .igc-score-team strong{overflow-wrap:anywhere}
+#main-content .igc-modern .igc-game-hero .igc-score-team span{color:var(--text)!important;-webkit-text-fill-color:var(--text)!important;text-shadow:none!important}
+html[data-ice-theme="day"] #main-content .igc-modern .igc-game-hero :is(.igc-scoreboard,.igc-score-team,.igc-score-middle){background:transparent!important}
+@media(max-width:650px){#main-content .igc-modern .igc-game-hero .igc-scoreboard{width:100%;max-width:100%;gap:6px!important}#main-content .igc-modern .igc-game-hero .igc-score-team img{max-height:62px}#main-content .igc-modern .igc-game-hero .igc-score-team strong{font-size:clamp(11px,3vw,15px)}#main-content .igc-modern .igc-game-hero .igc-score-team span{font-size:clamp(28px,9vw,48px)!important}}

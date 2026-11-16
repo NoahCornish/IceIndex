@@ -1,0 +1,12 @@
+/* Goalie database and goalie profiles */
+#main-content :is(.ice-goalie-card,.ice-goalie-panel){background:var(--surface);color:var(--text);border-color:var(--border)}
+#main-content :is(.ice-goalie-card,.ice-goalie-panel) :is(strong,b){color:var(--text)}
+#main-content :is(.ice-goalie-table,.ice-goalie-stats){font-variant-numeric:tabular-nums}
+
+/* v0.15.0 goalie profile and comparison refresh */
+.ice-goalie-profile-controls,.ice-goalie-compare-controls{display:flex;flex-wrap:wrap;gap:12px;min-width:0}.ice-goalie-profile-controls>* ,.ice-goalie-compare-controls>*{flex:1 1 220px;min-width:0}.ice-goalie-picker{position:relative;min-width:0;z-index:12}.ice-goalie-picker-results{position:absolute;z-index:80;max-height:min(340px,60vh);overflow:auto}.ice-goalie-compare-head{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center}.ice-goalie-compare-head>div{min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}.ice-goalie-compare-head img{width:72px!important;height:72px!important;max-width:100%!important;object-fit:contain!important}.ice-goalie-compare-table{max-width:100%;min-width:0}.ice-goalie-compare-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(100px,1.4fr) minmax(0,1fr);align-items:center;gap:8px}.ice-goalie-compare-row>*{min-width:0;overflow-wrap:anywhere}@media(max-width:600px){.ice-goalie-compare-head img{width:52px!important;height:52px!important}.ice-goalie-profile-controls,.ice-goalie-compare-controls{display:grid;grid-template-columns:minmax(0,1fr)}}
+
+/* v0.15.0 shared responsive hygiene */
+#main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
+#main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}

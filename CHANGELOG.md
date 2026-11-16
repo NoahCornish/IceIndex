@@ -1,9 +1,259 @@
-
 # IceIndex Changelog
 
 All notable changes to IceIndex are documented in this file.
 
 IceIndex follows a development-oriented version numbering system.
+
+---
+
+## [0.15.0] — 2026-11-16
+
+### Interface Modernization & Experience Refinement
+
+Version 0.15.0 represents a substantial refinement of the IceIndex website, focusing on visual consistency, statistical presentation, interactive shot maps, player and goaltender interfaces, and responsive design.
+
+The release also introduces the IceIndex Game Reports landing page and improves the overall experience across desktop, tablet, and mobile devices.
+
+Existing statistical functionality, membership infrastructure, and independent data-processing systems are preserved.
+
+### Added — IceIndex Game Reports
+
+- Introduced a dedicated IceIndex Game Reports landing page.
+- Added a Game Reports navigation button to the OHL Overview.
+- Created a futuristic Coming Soon interface.
+- Introduced the tagline: *The game ends. The story begins.*
+- Added previews of planned game stories, player spotlights, and data-driven insights.
+- Established the interface foundation for future AI-assisted game reporting.
+- Preserved the existing Game Export Studio as a separate feature.
+
+AI-generated Game Reports are not yet available.
+
+### Added — Loading Experience
+
+- Introduced a centered loading dialogue.
+- Improved initial application-loading presentation.
+- Reduced reliance on embedded homepage loading panels.
+- Added loading-state messaging.
+- Refined loading-dialogue styling and presentation.
+
+### Changed — Site-Wide Interface
+
+- Refined the overall visual design.
+- Improved consistency between application pages.
+- Updated panel backgrounds and borders.
+- Improved typography and visual hierarchy.
+- Refined statistical card presentation.
+- Improved control spacing.
+- Reduced unnecessary interface clutter.
+- Improved day and night theme compatibility.
+- Refined responsive behaviour across desktop and mobile layouts.
+
+### Changed — Day & Night Themes
+
+- Improved day-theme consistency across statistical pages.
+- Addressed dark-background components appearing in day mode.
+- Improved text contrast.
+- Refined dropdown styling.
+- Improved table header and row presentation.
+- Updated analytical panel colours.
+- Improved shot-map visibility.
+- Preserved automatic theme switching.
+- Preserved the manual theme toggle.
+
+### Changed — Player Profiles
+
+- Redesigned player identity presentation.
+- Improved player headshot placement.
+- Refined team-logo sizing and positioning.
+- Corrected oversized team-logo containers.
+- Improved player name and team information alignment.
+- Updated career statistics cards.
+- Improved desktop and mobile spacing.
+- Refined player filters.
+- Improved search dropdown readability.
+- Improved season and career selection controls.
+- Refined Player Profile shot-map presentation.
+- Preserved career statistics and historical player information.
+
+### Fixed — Player Profile Branding
+
+- Corrected oversized team logos.
+- Improved logo-wrapper sizing.
+- Reduced logo overlap with adjacent content.
+- Improved team branding alignment.
+- Refined responsive logo dimensions.
+- Improved consistency between player headshots and team logos.
+
+### Changed — Player Game Logs
+
+- Refined player directory presentation.
+- Improved player search.
+- Updated player information cards.
+- Improved game-log summary statistics.
+- Refined season selection.
+- Improved team, location, and sample filters.
+- Updated game-by-game production charts.
+- Improved individual game-log tables.
+- Improved opponent logo presentation.
+- Improved mobile responsiveness.
+- Refined day-theme text and background contrast.
+
+### Changed — Statistics Database
+
+- Improved desktop table scaling.
+- Expanded use of available screen width.
+- Increased desktop statistical readability.
+- Improved column spacing.
+- Refined player headshot and name presentation.
+- Improved table sizing.
+- Preserved customizable columns.
+- Preserved sortable statistics.
+- Preserved existing search and filtering.
+- Maintained compact mobile presentation.
+- Preserved horizontal scrolling for wide datasets.
+
+### Changed — Player Analytics
+
+- Refined analytical panel styling.
+- Improved day and night theme compatibility.
+- Updated statistical visualizations.
+- Improved chart container responsiveness.
+- Refined percentile presentation.
+- Improved radar and scatter plot layouts.
+- Improved statistical controls.
+- Removed the Player Analytics PNG download control.
+- Preserved existing analytical calculations.
+
+### Changed — Player Comparisons
+
+- Improved side-by-side comparison layouts.
+- Refined comparison statistics.
+- Updated visual comparison components.
+- Improved mobile presentation.
+- Reduced overflow.
+- Improved theme consistency.
+- Preserved existing comparison functionality.
+
+### Changed — Goaltender Profiles
+
+- Refined goaltender profile styling.
+- Improved statistical card presentation.
+- Updated interface colours.
+- Improved profile layout consistency.
+- Refined season controls.
+- Improved responsive behaviour.
+- Preserved existing goaltender statistics.
+
+### Changed — Goaltender Comparisons
+
+- Improved comparison layouts.
+- Refined side-by-side statistical presentation.
+- Improved player identification.
+- Updated comparison controls.
+- Improved mobile responsiveness.
+- Improved day and night theme compatibility.
+- Preserved existing comparison calculations.
+
+### Changed — Game Centre
+
+- Refined game information presentation.
+- Improved scoreboard styling.
+- Updated shot-map controls.
+- Improved rink presentation.
+- Simplified rink orientation labels.
+- Refined team and period filtering.
+- Improved goal-net placement.
+- Improved IceIndex branding integration.
+- Improved shot and goal marker layering.
+- Preserved scoring summaries.
+- Preserved player and goaltender statistics.
+- Preserved penalty information and three-star selections.
+
+### Changed — Interactive Shot Maps
+
+- Refined horizontal rink presentation.
+- Refined vertical rink presentation.
+- Preserved full-rink visualizations.
+- Added or refined IceIndex rink branding.
+- Improved shot-marker visibility.
+- Improved goal-marker visibility.
+- Refined event interaction.
+- Updated marker layering.
+- Improved day and night theme compatibility.
+- Refined rink outlines and goal-net presentation.
+
+### Fixed — Player Shot Maps
+
+- Corrected an SVG styling conflict that obscured shot markers in day mode.
+- Restored visible shot-location markers.
+- Improved shot-map loading-state presentation.
+- Improved error and retry handling.
+- Refined shot and goal legend colours.
+- Standardized blue shot markers and orange goal markers.
+- Improved responsive rink presentation.
+- Preserved underlying shot-location source datasets.
+
+### Changed — Responsive Design
+
+- Improved desktop and mobile layouts.
+- Refined statistics card sizing.
+- Reduced horizontal overflow.
+- Improved table containers.
+- Improved chart scaling.
+- Refined navigation and control spacing.
+- Improved player and goaltender comparisons.
+- Improved team-logo scaling.
+- Preserved compact mobile statistics tables.
+- Improved desktop use of available screen width.
+
+### Fixed — Search & Dropdowns
+
+- Improved player search result visibility.
+- Corrected low-contrast dropdown text.
+- Improved hover and selection states.
+- Refined dropdown borders and backgrounds.
+- Improved day and night theme compatibility.
+- Improved mobile dropdown presentation.
+
+### Preserved
+
+- Existing OHL player database
+- Historical player statistics
+- Player profiles
+- Goaltender profiles
+- Player comparisons
+- Goaltender comparisons
+- Draft Year Central
+- Player analytics
+- Game Centre
+- Game sharing
+- Interactive shot maps
+- Standings, Leaders & Form
+- Membership authentication
+- Administrator dashboard
+- Game Export Studio
+- Day and night themes
+- League selection
+- Data refresh indicators
+- R data engine
+- GitHub Actions workflows
+- Existing data files and processing infrastructure
+
+### Known Limitations
+
+- Historical shot-location coverage varies by season and player.
+- Shot-coordinate orientation and event accuracy require continued validation against source records.
+- Some game statistics depend on the completeness of available event data.
+- Official OHL standings integration remains incomplete.
+- IceIndex Game Reports is a Coming Soon feature.
+- AI-generated game reports are not yet available.
+- Comprehensive browser-level regression testing remains an ongoing quality-assurance priority.
+
+### Release Notes
+
+Version 0.15.0 focuses on refining the existing IceIndex platform rather than replacing its underlying architecture.
+
+The release establishes a more consistent visual foundation for future development while preserving the independent data engine and existing hockey analytics functionality.
 
 ---
 
@@ -279,7 +529,7 @@ This release establishes the foundation for future premium analytics and subscri
 - Removed public account registration from the website interface.
 - Added a Request Access option.
 - Added membership inquiry email:
-  noahcornish.github@gmail.com
+  - noahcornish.github@gmail.com
 - Added an email link with a prefilled membership request.
 - Added a return-to-login option.
 - Established a manual account creation and approval process.
@@ -592,11 +842,14 @@ Report content depends on the underlying game records.
 - Introduce goaltender leaderboards.
 - Improve Form Tracker functionality.
 - Expand historical game data.
+- Continue shot-coordinate validation.
+- Improve cross-device visual consistency.
 
 ### Future Releases
 
 Potential development areas:
 
+- AI-assisted IceIndex Game Reports
 - Protected server-side report generation
 - Subscription management
 - Premium analytical tools
@@ -613,6 +866,7 @@ Potential development areas:
 
 | Version | Major Development |
 |---|---|
+| 0.15.0 | Interface Modernization & Experience Refinement |
 | 0.14.0 | Mobile Experience & Navigation Overhaul |
 | 0.13.0 | Game Centre, Standings, Leaders & Form |
 | 0.12.0 | Membership & Game Export Studio |
@@ -633,6 +887,6 @@ Potential development areas:
 
 **IceIndex — Hockey Data Intelligence**
 
-**Current Version: v0.14.0**
+**Current Version: v0.15.0**
 
 *Every player. Every league. One index.*

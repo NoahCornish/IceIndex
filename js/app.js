@@ -885,6 +885,7 @@
         <div class="ice-overview-brand-row">
           <img class="ice-overview-logo" src="assets/branding/iceindex-logo.png" alt="IceIndex" width="88" height="80">
           <h1>OHL Overview</h1>
+          <a href="#game-reports" data-page="game-reports" class="btn ice-reports-header-link"><span aria-hidden="true">✦</span> IceIndex Game Reports <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-meta">
           <span class="live-dot"></span>
@@ -1374,7 +1375,7 @@
       ) +
       archiveNotice() +
       `
-        <div class="controls">
+        <div class="controls ice-profile-controls">
           ${playerSelect("profile-player", p.key)}
           <button type="button" class="btn" data-open-game-logs="${esc(p.id)}">View Game Logs →</button>
 
@@ -1392,7 +1393,8 @@
           )}
         </div>
 
-        <section class="panel">
+        <section class="panel ice-profile-feature">
+          <div class="ice-profile-feature-label">PLAYER INTELLIGENCE <span>·</span> ${esc(seasonLabel)} <span>·</span> ${esc(competitionLabel)}</div>
           <div class="ice-player-header">
             ${image(p, "leader-photo")}
 
@@ -1439,7 +1441,7 @@
               : "No regular-season statistics are available for this selection."
           )}
 
-          <div class="ice-actions">
+          <div class="ice-actions ice-profile-actions">
             <button
               class="btn primary"
               data-analyze="${esc(p.key)}">
@@ -2534,9 +2536,6 @@
       </div>
 
       <div class="ice-actions">
-        <button class="btn primary" id="download-player-card">
-          Download PNG Card
-        </button>
 
         <button class="btn"
                 data-profile="${esc(record.key)}">
@@ -3483,12 +3482,36 @@
       </section>`;
   }
 
+  function renderGameReports() {
+    main.innerHTML = `
+      <section class="ice-reports-page" aria-labelledby="ice-reports-title">
+        <div class="ice-reports-grid" aria-hidden="true"></div>
+        <div class="ice-reports-orbit ice-reports-orbit-one" aria-hidden="true"></div>
+        <div class="ice-reports-orbit ice-reports-orbit-two" aria-hidden="true"></div>
+        <div class="ice-reports-content">
+          <div class="ice-reports-kicker"><span class="ice-reports-pulse"></span> ICEINDEX LABS / IN DEVELOPMENT <span>001</span></div>
+          <div class="ice-reports-symbol" aria-hidden="true">✦ <span>II</span></div>
+          <p class="ice-reports-eyebrow">THE NEXT PERIOD OF HOCKEY INTELLIGENCE</p>
+          <h1 id="ice-reports-title">The game ends.<br><em>The story begins.</em></h1>
+          <p class="ice-reports-intro">Welcome to <strong>IceIndex Game Reports</strong> — a future home for AI-powered OHL game recaps, standout performances, and the moments behind the numbers.</p>
+          <div class="ice-reports-status"><span class="ice-reports-status-dot"></span> COMING SOON <span class="ice-reports-status-line"></span> PRE-GAME WARMUP</div>
+          <div class="ice-reports-features">
+            <div><span aria-hidden="true">01 /</span><strong>Game stories</strong><small>More than a final score</small></div>
+            <div><span aria-hidden="true">02 /</span><strong>Player spotlights</strong><small>The performances that matter</small></div>
+            <div><span aria-hidden="true">03 /</span><strong>Data-driven insight</strong><small>Hockey through a new lens</small></div>
+          </div>
+          <a class="ice-reports-back" href="#overview" data-page="overview">← Back to OHL Overview</a>
+          <p class="ice-reports-disclaimer">The AI report engine is not live yet. No reports have been generated or published.</p>
+        </div>
+      </section>`;
+  }
+
   /* ==========================================================
      19. PAGE ROUTER
      ========================================================== */
 
   const VALID_PAGES = new Set([
-    /* "home", */ "leagues", "overview", "whl-home", "qmjhl-home", "players", "statistics",
+    /* "home", */ "leagues", "overview", "game-reports", "whl-home", "qmjhl-home", "players", "statistics",
     "profile", "game-logs", "game-centre", "standings-leaders", "compare", "draft", "teams",
     "analytics", "goalies", "goalie-profile",
     "goalie-compare"
@@ -3508,6 +3531,12 @@
 
     if (["goalies", "goalie-profile", "goalie-compare"].includes(S.page)) {
       window.IceIndexGoalies?.render(S.page, main);
+      updateNavigation();
+      return;
+    }
+
+    if (S.page === "game-reports") {
+      renderGameReports();
       updateNavigation();
       return;
     }
@@ -3862,11 +3891,6 @@
       return;
     }
 
-    if (target.closest("#download-player-card")) {
-      downloadPlayerCard();
-      return;
-    }
-
     const navigation = target.closest(
       '[data-page], .nav-link[href^="#"]'
     );
@@ -4183,22 +4207,15 @@
 
   function dismissIntro() {
     if (!intro) return;
-
     intro.hidden = true;
-    document.body.style.overflow = "";
-
-    try {
-      sessionStorage.setItem("iceindex-intro-dismissed", "1");
-    } catch (_) {}
+    document.body.classList.remove("ice-loading-active");
   }
-
+  function showIntro() {
+    if (!intro) return;
+    intro.hidden = false;
+    document.body.classList.add("ice-loading-active");
+  }
   introClose?.addEventListener("click", dismissIntro);
-
-  try {
-    if (sessionStorage.getItem("iceindex-intro-dismissed") === "1") {
-      dismissIntro();
-    }
-  } catch (_) {}
 
   /* ==========================================================
      22. DATA STATUS
@@ -4223,6 +4240,7 @@
     S.page = VALID_PAGES.has(initialPage) ? initialPage : "overview";
     if (initialPage === "home") history.replaceState(null, "", "#overview");
 
+    showIntro();
     introStatus("Loading current OHL statistics…");
     updateStatus("Loading current season");
     render();
@@ -4244,6 +4262,7 @@
       );
 
       introStatus("Current season ready.");
+      dismissIntro();
       render();
 
       if (typeof window.loadOHLHistory === "function") {
@@ -4299,6 +4318,7 @@
       console.error("IceIndex initialization failed:", error);
 
       introStatus("Current OHL statistics could not be loaded.");
+      dismissIntro();
       updateStatus("Data unavailable");
       S.loading = false;
 

@@ -1,0 +1,57 @@
+/* Player profile — legible cards, season summaries and responsive tables */
+#main-content :is(.ice-profile-selected-row,.ice-profile-total){color:var(--text);background:var(--surface-2);border-color:var(--border)}
+#main-content :is(.ice-profile-selected-row,.ice-profile-total) :is(strong,b){color:var(--text)!important}
+#main-content .ice-profile-note{color:var(--text-soft)!important}
+#main-content .ice-profile-table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content .ice-profile-stats-table{font-variant-numeric:tabular-nums}
+#main-content .ice-profile-stats-table th{background:var(--surface-3);color:var(--text)}
+#main-content .ice-profile-stats-table td{color:var(--text);border-bottom:1px solid var(--border)}
+
+/* v0.15.0: desktop profile identity hero — larger player portrait */
+@media(min-width:901px){
+ #main-content .ice-profile-feature .ice-player-header{grid-template-columns:minmax(170px,230px) minmax(0,1fr) minmax(75px,120px)!important;gap:clamp(20px,2.6vw,44px)!important;align-items:center!important}
+ #main-content .ice-profile-feature .ice-player-header .leader-photo,
+ #main-content .ice-profile-feature .ice-player-header .avatar,
+ #main-content .ice-profile-feature .ice-player-header img:not(.ice-team-logo){width:clamp(170px,13vw,230px)!important;height:clamp(170px,13vw,230px)!important;max-width:none!important;object-fit:contain!important;object-position:center bottom;border-radius:18px}
+}
+@media(min-width:901px) and (max-width:1100px){#main-content .ice-profile-feature .ice-player-header{grid-template-columns:170px minmax(0,1fr) 85px!important}}
+
+/* v0.15.0 audit correction: actual profile DOM is .panel > .ice-player-header.
+   Portrait is a span.leader-photo containing an img; team emblem is .team-logo.
+   Never apply portrait dimensions to all images in this header. */
+@media (min-width:901px) {
+  #main-content .panel > .ice-player-header {display:grid!important;grid-template-columns:clamp(155px,12vw,210px) minmax(0,1fr) 84px!important;gap:clamp(16px,2vw,32px)!important;align-items:center!important;min-width:0}
+  #main-content .panel > .ice-player-header > .leader-photo {display:block!important;width:clamp(155px,12vw,210px)!important;height:clamp(170px,13vw,228px)!important;max-width:100%!important;min-width:0;flex:0 0 auto!important;overflow:hidden;border-radius:16px}
+  #main-content .panel > .ice-player-header > .leader-photo img {display:block;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 20%;border-radius:inherit}
+  #main-content .panel > .ice-player-header > .team-logo,
+  #main-content .panel > .ice-player-header > img.team-logo {width:76px!important;height:76px!important;max-width:76px!important;max-height:76px!important;min-width:0!important;object-fit:contain!important;justify-self:end!important;align-self:center!important;flex:none!important}
+  #main-content .panel > .ice-player-header > .logo-fallback {width:76px!important;height:76px!important;justify-self:end!important}
+  #main-content .panel > .ice-player-header > div:nth-child(2) {min-width:0;overflow-wrap:anywhere}
+}
+@media (max-width:900px) {
+  #main-content .panel > .ice-player-header > .team-logo {width:44px!important;height:44px!important;max-width:44px!important;max-height:44px!important;object-fit:contain!important;flex:0 0 44px!important}
+  #main-content .panel > .ice-player-header > .leader-photo {flex:0 0 auto!important;overflow:hidden}
+  #main-content .panel > .ice-player-header > .leader-photo img {width:100%!important;height:100%!important;object-fit:cover!important}
+}
+
+/* v0.15.0 player shot-map refresh */
+.ism-panel,.ism-body,.ism-rink-frame,.ism-rink-wrap{min-width:0;max-width:100%}.ism-toolbar{display:flex;flex-wrap:wrap;align-items:end;gap:12px}.ism-toolbar label{flex:1 1 170px;min-width:0}.ism-toolbar select{max-width:100%;width:100%}.ism-rink-frame{overflow:hidden}.ism-rink-wrap{display:flex;justify-content:center;overflow:auto}.ism-rink-wrap svg{display:block;max-width:100%;height:auto}.ism-tooltip{z-index:12;max-width:min(280px,90vw)}.ism-loading,.ism-empty{padding:24px;text-align:center}@media(max-width:600px){.ism-toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.ism-mini-stats{grid-column:1/-1}}
+
+html[data-ice-theme="day"] #main-content .ism-panel,html[data-ice-theme="day"] #main-content .ism-body,html[data-ice-theme="day"] #main-content .ism-rink-frame,html[data-ice-theme="day"] #main-content .ism-rink-wrap{background:#fff!important;color:#1b3045!important}
+#main-content .ism-half-rink{width:min(100%,600px);height:auto;display:block}
+#main-content .ism-marker{fill:#1984c6!important;stroke:#fff!important;stroke-width:1.3!important;opacity:1!important;pointer-events:all}
+#main-content .ism-marker-goal{fill:#ed8840!important;stroke:#fff!important;stroke-width:2!important}
+#main-content #ism-markers{opacity:1!important;visibility:visible!important}
+
+/* v0.15.0: restore player shot-map markers in DAY mode (SVG-specific specificity). */
+html[data-ice-theme="day"] body #main-content svg.ism-half-rink { visibility:visible!important;opacity:1!important;display:block!important; }
+html[data-ice-theme="day"] body #main-content svg.ism-half-rink #ism-markers { display:inline!important;visibility:visible!important;opacity:1!important;filter:none!important;mix-blend-mode:normal!important; }
+html[data-ice-theme="day"] body #main-content svg.ism-half-rink #ism-markers circle.ism-marker { display:inline!important;visibility:visible!important;opacity:1!important;fill:#1687d2!important;stroke:#fff!important;stroke-width:1.5!important;filter:none!important;mix-blend-mode:normal!important; }
+html[data-ice-theme="day"] body #main-content svg.ism-half-rink #ism-markers circle.ism-marker-goal { fill:#e78a33!important;stroke:#fff!important;stroke-width:2!important; }
+html[data-ice-theme="day"] body #main-content .ism-rink-wrap,html[data-ice-theme="day"] body #main-content .ism-rink-frame{background:#f4f8fc!important}
+
+/* v0.15.0 polish: match legend with the actual blue/orange event symbols */
+#main-content .ism-legend .ism-dot:not(.ism-goal){background:#198bd0!important;border-color:#198bd0!important}
+#main-content .ism-legend .ism-dot.ism-goal{background:#ee963c!important;border-color:#ee963c!important}
+#main-content .ism-rink-wrap{max-width:100%;min-width:0}
+#main-content .ism-rink-wrap svg{max-width:100%;height:auto}

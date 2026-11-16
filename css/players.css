@@ -1,0 +1,12 @@
+/* Player directory and player listings */
+#main-content :is(.ice-player-picker,.ice-player-picker-results,.ice-sl-player){color:var(--text);border-color:var(--border)}
+#main-content :is(.ice-player-picker-results,.ice-sl-player){background:var(--surface)}
+#main-content :is(.ice-player-picker-results,.ice-sl-player) :is(strong,b){color:var(--text)}
+
+/* v0.15.0 OHL player comparison refresh */
+.ice-gm-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.ice-compare-visual,.ice-compare-visual-bars,.ice-compare-visual-row,.ice-compare-visual-item{min-width:0}.ice-compare-visual-row{display:grid;grid-template-columns:minmax(100px,160px) minmax(0,1fr);gap:12px}.ice-compare-visual-bars{display:grid;gap:8px}.ice-compare-visual-item{display:grid;grid-template-columns:minmax(70px,110px) minmax(0,1fr) auto;gap:8px;align-items:center}.ice-compare-track{min-width:0;overflow:hidden}@media(max-width:650px){.ice-compare-visual-row{grid-template-columns:minmax(0,1fr)}}
+
+/* v0.15.0 shared responsive hygiene */
+#main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
+#main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}

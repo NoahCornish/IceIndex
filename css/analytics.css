@@ -1,0 +1,19 @@
+/* Analytics and comparisons — consistent charts and metric cards */
+#main-content :is(.ice-advanced-card,.ice-compare-visual,.ice-chart-wrap,.ice-analytics-plot){background:var(--surface)!important;color:var(--text)!important;border-color:var(--border)!important}
+#main-content :is(.ice-advanced-card,.ice-compare-visual,.ice-chart-wrap) :is(h2,h3,strong,b){color:var(--text)!important}
+#main-content :is(.ice-advanced-card,.ice-compare-visual,.ice-chart-wrap) :is(p,small){color:var(--text-soft)!important}
+#main-content :is(.ice-chart-wrap,.ice-compare-visual,.ice-analytics-plot){max-width:100%;min-width:0;overflow-x:auto}
+
+/* v0.15.0 visual cleanse: analytics, player comparison and scouting cards */
+#main-content :is(.ice-analytics-intro,.ice-analytics-controls,.ice-analytics-section-title,.ice-scout-card,.ice-scout-header,.ice-scout-stats,.ice-percentile-row,.ice-compare-visual,.ice-chart-wrap,.ice-analytics-plot){min-width:0;max-width:100%;box-sizing:border-box}
+#main-content :is(.ice-analytics-intro,.ice-analytics-controls,.ice-scout-card,.ice-compare-visual,.ice-chart-wrap,.ice-analytics-plot){border-radius:14px}
+#main-content :is(.ice-scout-stats,.ice-percentile-list,.ice-analytics-controls){min-width:0}
+#main-content .ice-radar-svg,#main-content .ice-scatter-svg{max-width:100%;height:auto}
+html[data-ice-theme="day"] #main-content :is(.ice-analytics-intro,.ice-analytics-controls,.ice-scout-card,.ice-scout-header,.ice-scout-stats,.ice-percentile-row,.ice-compare-visual,.ice-chart-wrap,.ice-analytics-plot,.ice-advanced-card){background:#fff!important;color:#192f46!important;border-color:#d9e4ef!important}
+html[data-ice-theme="day"] #main-content :is(.ice-analytics-intro,.ice-analytics-controls,.ice-scout-card,.ice-scout-header,.ice-scout-stats,.ice-percentile-row,.ice-compare-visual,.ice-chart-wrap,.ice-analytics-plot,.ice-advanced-card) :is(h1,h2,h3,h4,strong,b,label){color:#192f46!important;-webkit-text-fill-color:#192f46!important}
+html[data-ice-theme="day"] #main-content :is(.ice-analytics-intro,.ice-analytics-controls,.ice-scout-card,.ice-scout-header,.ice-scout-stats,.ice-percentile-row,.ice-compare-visual,.ice-chart-wrap,.ice-analytics-plot,.ice-advanced-card) :is(p,small){color:#4e657d!important;-webkit-text-fill-color:#4e657d!important}
+html[data-ice-theme="day"] #main-content .ice-percentile-track{background:#e7eef5!important}
+html[data-ice-theme="day"] #main-content .ice-percentile-fill{background:#268ac8!important}
+html[data-ice-theme="day"] #main-content :is(input,select,textarea){color:#192f46;background:#fff;border-color:#c7d8e6}
+html[data-ice-theme="night"] #main-content :is(.ice-scout-card,.ice-analytics-controls,.ice-compare-visual,.ice-chart-wrap){background:var(--surface)!important;color:var(--text)!important}
+@media(max-width:720px){#main-content .ice-analytics-controls{display:flex;flex-wrap:wrap;gap:10px}#main-content .ice-analytics-controls>*{min-width:0;flex:1 1 180px}#main-content .ice-scout-header{display:flex;flex-wrap:wrap;gap:12px}}

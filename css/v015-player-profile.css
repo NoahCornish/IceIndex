@@ -1,0 +1,98 @@
+/* IceIndex v0.15.0 — Player Profile redesign, scoped to profile page. */
+#main-content .ice-profile-controls{display:grid!important;grid-template-columns:minmax(0,1.7fr) auto minmax(0,1fr) minmax(0,1fr)!important;gap:10px!important;align-items:stretch!important;margin:18px 0!important}
+#main-content .ice-profile-controls>*{width:100%;min-width:0;max-width:100%;min-height:44px;box-sizing:border-box}
+#main-content .ice-profile-controls .btn{white-space:nowrap;padding-inline:17px}
+#main-content .ice-profile-feature{--profile-surface:#fff;--profile-soft:#f5f8fc;--profile-border:#dbe5ef;--profile-ink:#1a3048;--profile-muted:#577087;--profile-accent:#276d99;background:var(--profile-surface)!important;color:var(--profile-ink)!important;border:1px solid var(--profile-border)!important;border-radius:20px!important;padding:clamp(18px,2.5vw,30px)!important;box-shadow:0 10px 32px rgba(25,49,75,.045)!important;min-width:0;overflow:hidden}
+html[data-ice-theme="night"] #main-content .ice-profile-feature{--profile-surface:#152538;--profile-soft:#1d3146;--profile-border:#344b62;--profile-ink:#f2f7fc;--profile-muted:#adc1d4;--profile-accent:#8fcfff}
+#main-content .ice-profile-feature-label{color:var(--profile-accent)!important;font-size:10px!important;letter-spacing:.13em!important;margin:0 0 16px!important;line-height:1.6;overflow-wrap:anywhere}
+#main-content .ice-profile-feature-label span{color:var(--profile-muted)!important;padding:0 5px}
+#main-content .ice-profile-feature .ice-player-header{display:grid!important;grid-template-columns:clamp(96px,10vw,140px) minmax(0,1fr) clamp(54px,8vw,95px)!important;align-items:center!important;gap:clamp(14px,2.3vw,27px)!important;margin:0 0 18px!important;padding:0 0 20px!important;border-bottom:1px solid var(--profile-border)!important;min-width:0}
+#main-content .ice-profile-feature .ice-player-header>div{min-width:0}
+#main-content .ice-profile-feature .ice-player-header .leader-photo{width:100%!important;height:auto!important;aspect-ratio:4/4.5;max-height:165px;object-fit:cover!important;object-position:center top;border:1px solid var(--profile-border)!important;border-radius:14px!important;background:var(--profile-soft)!important}
+#main-content .ice-profile-feature .ice-player-header h2{font-size:clamp(25px,3vw,43px)!important;line-height:1.08!important;letter-spacing:-.035em!important;color:var(--profile-ink)!important;margin:4px 0 6px!important;overflow-wrap:anywhere}
+#main-content .ice-profile-feature .ice-player-header p{color:var(--profile-muted)!important;font-size:clamp(13px,1.2vw,17px)!important;margin:0 0 6px!important}
+#main-content .ice-profile-feature .ice-player-header small{color:var(--profile-muted)!important}
+#main-content .ice-profile-feature .ice-player-header .eyebrow{color:var(--profile-accent)!important;font-size:10px!important}
+#main-content .ice-profile-feature .ice-player-header>:last-child{display:block!important;width:100%!important;max-width:95px!important;max-height:95px!important;justify-self:end!important;object-fit:contain!important}
+#main-content .ice-profile-feature .ice-scout-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+#main-content .ice-profile-feature .ice-scout-tags span{color:var(--profile-muted)!important;background:var(--profile-soft)!important;border:1px solid var(--profile-border)!important;border-radius:6px!important;padding:4px 7px!important;font-size:10px!important;letter-spacing:0!important}
+#main-content .ice-profile-feature .kpi-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:9px!important;background:transparent!important}
+#main-content .ice-profile-feature .kpi{min-width:0!important;min-height:93px!important;padding:14px 15px!important;border-radius:12px!important;background:var(--profile-soft)!important;border:1px solid var(--profile-border)!important;box-shadow:none!important;display:flex!important;flex-direction:column;justify-content:space-between;gap:10px}
+#main-content .ice-profile-feature .kpi span{font-size:10px!important;line-height:1.35!important;letter-spacing:.06em!important;color:var(--profile-muted)!important;overflow-wrap:break-word}
+#main-content .ice-profile-feature .kpi b{font-size:clamp(23px,2.4vw,33px)!important;line-height:1!important;color:var(--profile-ink)!important;margin:0!important;font-variant-numeric:tabular-nums}
+#main-content .ice-profile-actions{margin-top:16px!important;gap:8px!important}
+@media(max-width:1050px){#main-content .ice-profile-controls{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:650px){#main-content .ice-profile-controls{gap:8px!important;margin:14px 0!important}#main-content .ice-profile-controls>*{min-height:43px!important;font-size:13px!important}#main-content .ice-profile-controls>:first-child{grid-column:1/-1}#main-content .ice-profile-controls .btn{grid-column:1/-1;grid-row:3}#main-content .ice-profile-feature{padding:16px!important;border-radius:16px!important}#main-content .ice-profile-feature-label{font-size:9px!important;letter-spacing:.08em!important;margin-bottom:13px!important}#main-content .ice-profile-feature .ice-player-header{grid-template-columns:82px minmax(0,1fr) 44px!important;gap:10px!important;padding-bottom:16px!important;margin-bottom:14px!important}#main-content .ice-profile-feature .ice-player-header .leader-photo{max-height:105px;border-radius:11px!important}#main-content .ice-profile-feature .ice-player-header h2{font-size:clamp(20px,5vw,29px)!important}#main-content .ice-profile-feature .ice-player-header p{font-size:12px!important}#main-content .ice-profile-feature .ice-player-header small{font-size:10px!important}#main-content .ice-profile-feature .ice-player-header>:last-child{max-width:44px!important;max-height:54px!important}#main-content .ice-profile-feature .ice-scout-tags{gap:4px;margin-top:6px}#main-content .ice-profile-feature .ice-scout-tags span{font-size:8px!important;padding:3px 5px!important}#main-content .ice-profile-feature .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}#main-content .ice-profile-feature .kpi{min-height:82px!important;padding:12px!important}#main-content .ice-profile-feature .kpi b{font-size:27px!important}#main-content .ice-profile-actions .btn{flex:1 1 130px}}
+@media(max-width:370px){#main-content .ice-profile-feature .ice-player-header{grid-template-columns:70px minmax(0,1fr)!important}#main-content .ice-profile-feature .ice-player-header>:last-child{display:none!important}#main-content .ice-profile-feature .ice-player-header h2{font-size:21px!important}}
+
+/* v0.15.0: accessible player picker dropdown — both themes */
+#main-content .ice-player-picker{position:relative!important;min-width:0!important;overflow:visible!important;isolation:isolate}
+#main-content .ice-player-picker:focus-within{z-index:120!important}
+#main-content .ice-player-picker-results:not([hidden]){display:block!important;position:absolute!important;left:0!important;right:0!important;top:calc(100% + 5px)!important;z-index:500!important;max-height:min(340px,55vh)!important;overflow-y:auto!important;overscroll-behavior:contain!important;background:#fff!important;color:#1b3046!important;border:1px solid #c9d8e7!important;border-radius:12px!important;box-shadow:0 15px 35px rgba(20,40,60,.18)!important;padding:5px!important}
+#main-content .ice-player-picker-results:not([hidden])>*{display:block!important;width:100%!important;min-height:38px!important;padding:9px 12px!important;border:0!important;border-radius:7px!important;background:transparent!important;color:#1b3046!important;-webkit-text-fill-color:#1b3046!important;text-align:left!important;font-size:13px!important;line-height:1.4!important;cursor:pointer!important}
+#main-content .ice-player-picker-results:not([hidden])>*:is(:hover,:focus,.active,[aria-selected="true"]){background:#e9f3fb!important;color:#153b61!important;-webkit-text-fill-color:#153b61!important}
+html[data-ice-theme="night"] #main-content .ice-player-picker-results:not([hidden]){background:#1c2d40!important;border-color:#3e566e!important;color:#eef6ff!important}
+html[data-ice-theme="night"] #main-content .ice-player-picker-results:not([hidden])>*{color:#eef6ff!important;-webkit-text-fill-color:#eef6ff!important}
+html[data-ice-theme="night"] #main-content .ice-player-picker-results:not([hidden])>*:is(:hover,:focus,.active,[aria-selected="true"]){background:#304a63!important}
+#main-content .ice-profile-controls{overflow:visible!important}
+@media(max-width:650px){#main-content .ice-player-picker-results:not([hidden]){max-height:45vh!important}}
+
+
+/* Team branding returns .ohl-logo-wrap containing an img.
+   Size the actual GRID CHILD, not just the nested img. */
+#main-content .ice-profile-feature .ice-player-header {
+  grid-template-columns: clamp(96px,10vw,140px) minmax(0,max-content) 58px !important;
+  justify-content: start !important;
+  column-gap: 16px !important;
+}
+#main-content .ice-profile-feature .ice-player-header > .ohl-logo-wrap {
+  grid-column: 3 !important;
+  display: flex !important;
+  position: static !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 58px !important;
+  height: 58px !important;
+  min-width: 58px !important;
+  max-width: 58px !important;
+  max-height: 58px !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  align-self: center !important;
+}
+#main-content .ice-profile-feature .ice-player-header > .ohl-logo-wrap > img.team-logo {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+#main-content .ice-profile-feature .ice-player-header > .ohl-logo-wrap > .logo-fallback[hidden] {
+  display: none !important;
+}
+@media (max-width:650px) {
+  #main-content .ice-profile-feature .ice-player-header {
+    grid-template-columns: 76px minmax(0,1fr) 42px !important;
+    gap: 9px !important;
+  }
+  #main-content .ice-profile-feature .ice-player-header > .ohl-logo-wrap {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    max-height: 42px !important;
+  }
+}
+@media (max-width:370px) {
+  #main-content .ice-profile-feature .ice-player-header > .ohl-logo-wrap {
+    display: none !important;
+  }
+}

@@ -1,0 +1,30 @@
+/* IceIndex theme consistency patch. Load LAST, after every responsive CSS. */
+:root[data-ice-theme="day"] {color-scheme:light;--ui-panel:#fff;--ui-panel-alt:#f5f8fc;--ui-heading:#eaf0f7;--ui-text:#182b40;--ui-muted:#53677d;--ui-border:#d8e2ec;--ui-control:#fff;--ui-hover:#eaf3fb;--ui-shadow:0 5px 20px rgba(23,49,77,.07)}
+:root[data-ice-theme="night"] {color-scheme:dark;--ui-panel:#0d2033;--ui-panel-alt:#142b40;--ui-heading:#1b344b;--ui-text:#f1f7fc;--ui-muted:#a6bbcf;--ui-border:#304a61;--ui-control:#10283d;--ui-hover:#1b3b56;--ui-shadow:0 5px 20px rgba(0,0,0,.18)}
+/* Force base semantic tokens into alignment; covers old component rules that use var(--surface). */
+:root[data-ice-theme="day"] {--bg:#f5f8fc;--bg-deep:#eef3f8;--bg-elevated:#fff;--sidebar-bg:#fff;--surface:#fff;--surface-2:#f4f7fb;--surface-3:#eaf0f7;--surface-hover:#eaf3fb;--border:#d8e2ec;--border-light:#cbd8e5;--border-strong:#a6bacd;--text:#182b40;--text-soft:#334d66;--muted:#53677d;--muted-2:#62758a}
+:root[data-ice-theme="night"] {--bg:#07111d;--bg-deep:#050d17;--bg-elevated:#0b1b2c;--sidebar-bg:#081522;--surface:#0d2033;--surface-2:#10263b;--surface-3:#142d44;--surface-hover:#18354f;--border:#20394e;--border-light:#2b4961;--border-strong:#3a607b;--text:#f1f7fc;--text-soft:#d0e0ec;--muted:#a6bbcf;--muted-2:#829eb5}
+/* Data tables and game logs, including dynamically rendered pages. */
+#main-content :is(.panel,.card,.stat-card,.stats-card,.kpi-card,.profile-card,.game-log,.game-logs,.game-log-panel,.igc-panel,.igc-game,.igc-goal,.igc-empty-note,.igc-summary-metrics>div,.igc-kpis>div,.ice-beta-home){background:var(--ui-panel);color:var(--ui-text);border-color:var(--ui-border)}
+#main-content :is(.table-wrap,.table-scroll,.table-responsive,.igc-table-scroll){max-width:100%;overflow-x:auto}
+#main-content :is(table,.igc-table){color:var(--ui-text);border-color:var(--ui-border)}
+#main-content :is(table,.igc-table) :is(thead,thead tr,th){background:var(--ui-heading);color:var(--ui-text);border-color:var(--ui-border)}
+#main-content :is(table,.igc-table) tbody tr{background:var(--ui-panel);color:var(--ui-text)}
+#main-content :is(table,.igc-table) tbody tr:nth-child(even){background:var(--ui-panel-alt)}
+#main-content :is(table,.igc-table) tbody tr:hover{background:var(--ui-hover)}
+#main-content :is(table,.igc-table) :is(td,th,tfoot){border-color:var(--ui-border)}
+#main-content :is(.igc-box-table,.igc-table) tfoot{background:var(--ui-panel-alt);color:var(--ui-text)}
+#main-content :is(input,select,textarea){background:var(--ui-control);color:var(--ui-text);border-color:var(--ui-border)}
+#main-content :is(input,textarea)::placeholder{color:var(--ui-muted)}
+#main-content :is(.igc-game-date,.igc-game-foot,.igc-table th,.igc-note,.igc-goal-main small,.igc-goal-main span){color:var(--ui-muted)}
+/* Header/sidebar branding: never stretch or crop the original logo. */
+.ice-title-logo,.ice-brand-logo,.ice-footer-logo{display:block;flex:0 0 auto;object-fit:contain;object-position:center;width:40px;height:40px;max-width:100%;min-width:0;background:transparent;border:0;border-radius:0;box-shadow:none;filter:none}
+.ice-brand-logo{width:48px;height:48px}.ice-footer-logo{width:32px;height:32px}
+.topbar-left,.sidebar-brand{min-width:0}.ice-title-copy{min-width:0}
+/* Inline member modal previously forced night colors even during the day. */
+:root[data-ice-theme="day"] .ice-member-card{background:var(--ui-panel);color:var(--ui-text);border-color:var(--ui-border)}
+:root[data-ice-theme="day"] .ice-member-card :is(p,label,small){color:var(--ui-muted)}
+:root[data-ice-theme="day"] .ice-member-card input{background:var(--ui-control);color:var(--ui-text);border-color:var(--ui-border)}
+:root[data-ice-theme="day"] .ice-member-close{color:var(--ui-text)}
+:root[data-ice-theme="day"] .ice-member-row{border-color:var(--ui-border)}
+@media(max-width:600px){.ice-title-logo{width:32px;height:32px}.ice-brand-logo{width:42px;height:42px}}

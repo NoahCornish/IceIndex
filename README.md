@@ -1,4 +1,3 @@
-
 # IceIndex
 
 ### Hockey Data Intelligence
@@ -7,12 +6,12 @@
 
 IceIndex is an independent hockey data and analytics platform designed to make junior hockey statistics, player performance, team information, and game-level data accessible through a fast, modern, mobile-friendly website.
 
-The platform combines historical statistics, player profiles, advanced analytics, detailed game information, and recent-performance tracking in one centralized experience.
+The platform combines historical statistics, player profiles, advanced analytics, detailed game information, interactive shot maps, and recent-performance tracking in one centralized experience.
 
 IceIndex is independently developed by Noah Cornish.
 
-**Current Version:** v0.14.0  
-**Release:** November 15, 2026  
+**Current Version:** v0.15.0  
+**Release:** November 16, 2026  
 **Status:** Active Development
 
 **Website:** https://noahcornish.github.io/IceIndex/  
@@ -30,15 +29,19 @@ The long-term objective is to build an independent, multi-league hockey database
 - Detailed player and goaltender profiles
 - Game-by-game performance information
 - Advanced player analytics
-- Interactive player comparisons
+- Interactive player and goaltender comparisons
 - Draft-year analysis
 - Game Centre statistics and visualizations
+- Interactive shot-location mapping
 - League standings and statistical leaders
 - Recent player performance tracking
 - Downloadable game reports
 - Member-exclusive analytical features
+- Future AI-assisted game reporting
 
 IceIndex is designed for hockey fans, researchers, analysts, scouts, and anyone interested in exploring junior hockey data.
+
+Version 0.15.0 introduces a major visual refinement across the platform, improving interface consistency, day and night themes, player profiles, statistical databases, shot maps, and responsive layouts.
 
 ---
 
@@ -71,28 +74,36 @@ Features include:
 - Team logos and game results
 - Players Setting the Pace
 - Direct access to major IceIndex features
+- Navigation to IceIndex Game Reports
 - Compact, responsive presentation
 
-Version 0.14.0 simplifies the Overview by removing the Production Rankings section while preserving the four Players Setting the Pace cards.
+Version 0.14.0 simplified the Overview by removing the Production Rankings section while preserving the four Players Setting the Pace cards.
+
+Version 0.15.0 further refines the interface and introduces the IceIndex Game Reports destination.
 
 The goal is to prioritize useful information without overcrowding the homepage.
 
-### 2. Player Database
+### 2. Statistics Database
 
-Explore available OHL player statistics through a searchable and sortable database.
+Explore available OHL player statistics through a searchable, sortable, and customizable statistical database.
 
 Features include:
 
 - Player names and team information
 - Games played
 - Goals, assists, and points
-- Season statistics
+- Season and historical statistics
+- Regular-season and playoff selection
 - Player identification
-- Historical statistical records
+- Search and filtering
+- Sortable statistical columns
+- Customizable column visibility
 - Direct links to player profiles
-- Mobile-friendly statistical tables
+- Responsive statistical tables
 
-The database supports exploration of current and historical player performance.
+Version 0.15.0 improves desktop table scaling, allowing statistics and columns to use available screen width more effectively.
+
+Mobile tables retain compact presentation and horizontal scrolling where necessary.
 
 ### 3. Player Profiles
 
@@ -101,19 +112,47 @@ Dedicated player pages provide centralized access to available player informatio
 Features include:
 
 - Player headshots
-- Team identification
+- Team identification and logos
 - Season-by-season statistics
 - Career statistical summaries
 - Historical team information
 - Player game logs
 - Player Development Tracker
 - Advanced analytical visualizations
+- Career highlights
+- Shot-location visualizations
+- Regular-season and playoff selection
+
+Version 0.15.0 introduces a refined player profile interface with improved headshot placement, compact team branding, updated statistical cards, and better responsive behaviour.
+
+Player shot maps now include improved day and night theme compatibility.
 
 The Player Development Tracker allows users to explore performance changes across seasons.
 
 Historical coverage depends on available published datasets.
 
-### 4. Goaltender Database
+### 4. Player Game Logs
+
+Player Game Logs provides game-by-game statistical information for individual OHL players.
+
+Features include:
+
+- Player search
+- Player headshots and team information
+- Season selection
+- Individual game records
+- Opponent identification
+- Goals, assists, and points
+- Shots and penalty minutes
+- Available faceoff statistics
+- Home and away filtering
+- Game sample selection
+- Performance charts
+- Recent statistical trends
+
+Version 0.15.0 refines the page's visual presentation, statistical summaries, filters, tables, and responsive behaviour.
+
+### 5. Goaltender Database
 
 IceIndex maintains dedicated goaltender functionality separate from skater statistics.
 
@@ -123,11 +162,15 @@ Features include:
 - Individual goaltender profiles
 - Goaltender comparisons
 - Game-level goaltending statistics
-- Save percentage and related performance measures
+- Save percentage
+- Goals-against average
+- Available historical records
 
 Goaltenders are routed to their dedicated profile pages throughout the application.
 
-### 5. Player Comparisons
+Version 0.15.0 improves goaltender profile presentation, comparison layouts, responsive controls, and theme consistency.
+
+### 6. Player Comparisons
 
 Compare players using available statistical information.
 
@@ -140,13 +183,15 @@ Comparison functionality supports:
 - Visual analytical comparisons
 - Scouting and research
 
-### 6. Draft Year Central
+Version 0.15.0 refines comparison layouts, chart presentation, and mobile responsiveness.
+
+### 7. Draft Year Central
 
 Explore players through a draft-year-focused analytical interface.
 
 Draft Year Central is designed to support evaluation of draft-eligible players using available season statistics and analytical information.
 
-### 7. Player Analytics
+### 8. Player Analytics
 
 IceIndex provides analytical tools for evaluating player performance beyond traditional counting statistics.
 
@@ -160,13 +205,19 @@ Features include:
 - Interactive charts
 - Season-level performance exploration
 
+Version 0.15.0 improves analytical interface consistency, chart presentation, responsive layouts, and day/night theme compatibility.
+
+The previous player-card PNG download control has been removed from the Player Analytics interface.
+
 Analytical results depend on available data.
 
-### 8. Global Player Search
+### 9. Global Player Search
 
 Search for players directly from the main IceIndex interface.
 
 The global search system provides quick access to available player records and individual profiles.
+
+Version 0.15.0 improves search dropdown visibility, text contrast, selection states, and mobile usability.
 
 ---
 
@@ -186,7 +237,9 @@ Browse available games using:
 
 Version 0.13.0 introduced a more compact Game Centre layout and refined date navigation.
 
-Version 0.14.0 further improves game-card sizing and mobile readability.
+Version 0.14.0 improved game-card sizing and mobile readability.
+
+Version 0.15.0 further refines game presentation and interactive shot-map functionality.
 
 ### Individual Game Pages
 
@@ -209,15 +262,42 @@ The availability of individual statistics depends on the underlying game data.
 
 ### Interactive Shot Maps
 
-Explore recorded shot locations through rink visualizations.
+Explore recorded shot and goal locations through interactive rink visualizations.
 
 Available filtering includes:
 
 - Team
 - Event type
 - Period
+- Rink orientation
 
-Shot maps use available recorded event coordinates.
+**Rink Orientations:**
+
+- Horizontal
+- Vertical
+
+Horizontal rink presentation separates away and home team shot locations into their respective attacking ends.
+
+Vertical presentation supports a full-rink visualization.
+
+IceIndex branding is integrated into the rink visualizations, with shot and goal markers displayed above decorative elements.
+
+**Marker Colours:**
+
+- Blue — Shot events
+- Orange — Goal events
+
+Users can interact with available event markers to inspect additional details.
+
+Shot maps use recorded event coordinates. Historical availability and coordinate accuracy depend on the underlying source data.
+
+### Player Shot Maps
+
+Player profiles also support individual shot-location visualizations where recorded coordinate data is available.
+
+Version 0.15.0 improves the visibility of shot and goal markers in both day and night themes.
+
+Historical career statistics do not necessarily indicate that historical shot-coordinate records are available.
 
 ### Share Game
 
@@ -228,6 +308,36 @@ Example:
 `https://noahcornish.github.io/IceIndex/#game-centre?game=GAME_ID`
 
 The sharing system supports compatible native device sharing and clipboard link copying.
+
+---
+
+## IceIndex Game Reports
+
+**Status: Coming Soon**
+
+*The game ends. The story begins.*
+
+IceIndex Game Reports is a planned AI-assisted hockey reporting feature.
+
+Version 0.15.0 introduces a dedicated Game Reports landing page, accessible from the OHL Overview.
+
+The page features a futuristic design that previews the next stage of IceIndex development.
+
+### Planned Features
+
+- AI-assisted game recaps
+- Player performance spotlights
+- Key statistical storylines
+- Game-changing moments
+- Team performance analysis
+- Data-driven game insights
+- Automated reporting based on available IceIndex data
+
+The goal is to transform game statistics into accessible, informative hockey stories.
+
+**AI-generated game reports are not yet available.**
+
+This feature is separate from the existing member-only Game Export Studio.
 
 ---
 
@@ -395,9 +505,36 @@ Subscription billing is not currently implemented.
 
 ---
 
-## Mobile Experience
+## Day & Night Themes
 
-Version 0.14.0 introduces a substantial responsive interface refinement.
+IceIndex supports two visual themes.
+
+### Day Mode
+
+Day Mode emphasizes:
+
+- Light backgrounds
+- Clear statistical tables
+- Readable text
+- Consistent interface surfaces
+- High-contrast controls
+- Clean player and game information
+
+### Night Mode
+
+Night Mode provides a darker visual experience with adjusted backgrounds, borders, and text colours.
+
+### Automatic Theme Switching
+
+IceIndex supports automatic theme switching based on Eastern Time.
+
+The interface uses a daytime and nighttime schedule, with a manual toggle available to users.
+
+Version 0.15.0 introduces a substantial theme-consistency refinement across the website.
+
+---
+
+## Mobile Experience
 
 IceIndex is designed for use across:
 
@@ -408,6 +545,12 @@ IceIndex is designed for use across:
 - Desktop computers
 
 ### Mobile Improvements
+
+Version 0.14.0 introduced a major responsive interface refinement.
+
+Version 0.15.0 builds on that foundation with additional improvements.
+
+Features include:
 
 - Compact navigation drawer
 - Grouped navigation sections
@@ -422,6 +565,9 @@ IceIndex is designed for use across:
 - Compact Standings, Leaders & Form navigation
 - Improved header branding
 - Day and night theme compatibility
+- Responsive player and goaltender comparisons
+- Improved statistical database scaling
+- Reduced content overflow
 
 ### Navigation
 
@@ -440,6 +586,8 @@ The underlying Teams functionality remains part of the project.
 ### Responsive Tables
 
 Detailed statistics may use horizontal scrolling on smaller screens to preserve readable column widths and numerical alignment.
+
+On larger displays, the Statistics Database uses available screen space more effectively.
 
 The website is intended to adapt to the available screen width and height without requiring a separate mobile application.
 
@@ -510,7 +658,8 @@ IceIndex/
 │   ├── style-night.css
 │   ├── game-centre.css
 │   ├── standings-leaders.css
-│   └── mobile-overhaul.css
+│   ├── mobile-overhaul.css
+│   └── ...
 ├── js/
 │   ├── app.js
 │   ├── ohl-data.js
@@ -521,7 +670,8 @@ IceIndex/
 │   ├── shot-map.js
 │   ├── game-centre.js
 │   ├── iceindex-members.js
-│   └── maintenance.js
+│   ├── maintenance.js
+│   └── ...
 ├── assets/
 │   ├── branding/
 │   └── teams/
@@ -593,6 +743,8 @@ Never expose Supabase secret or service-role keys in client-side files.
 - Add historical season leaderboards
 - Introduce goaltender leaderboards
 - Refine the Form Tracker
+- Validate shot-coordinate accuracy across games
+- Continue interface and accessibility improvements
 
 ### Medium-Term Priorities
 
@@ -603,6 +755,7 @@ Never expose Supabase secret or service-role keys in client-side files.
 - Improve historical player coverage
 - Develop additional scouting tools
 - Strengthen server-side export authorization
+- Develop IceIndex Game Reports
 
 ### Long-Term Vision
 
@@ -610,6 +763,7 @@ Never expose Supabase secret or service-role keys in client-side files.
 - Expanded WHL and QMJHL support
 - Comprehensive historical CHL records
 - Advanced player evaluation models
+- AI-assisted hockey reporting
 - Premium analytical features
 - Subscription-based memberships
 - Protected member-only services
@@ -623,6 +777,7 @@ Future features are development goals and are not guaranteed release commitments
 
 | Version | Major Development |
 |---|---|
+| v0.15.0 | Interface Modernization & Experience Refinement |
 | v0.14.0 | Mobile Experience & Navigation Overhaul |
 | v0.13.0 | Game Centre, Standings, Leaders & Form |
 | v0.12.0 | Membership & Game Export Studio |
@@ -673,6 +828,6 @@ Repository: https://github.com/NoahCornish/IceIndex
 
 ---
 
-**IceIndex v0.14.0**
+**IceIndex v0.15.0**
 
 *Every player. Every league. One index.*

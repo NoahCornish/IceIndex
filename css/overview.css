@@ -1,0 +1,44 @@
+/* OHL overview — clean surface and readable scores */
+#main-content .ice-overview-hero{background:var(--surface-2)!important;border:1px solid var(--border)!important;color:var(--text)!important}
+#main-content .ice-overview-hero :is(h1,h2,strong){color:var(--text)!important;-webkit-text-fill-color:var(--text)!important}
+#main-content .ice-overview-hero :is(p,small,span){color:var(--text-soft)}
+#main-content .igc-daily-widget{background:var(--surface);border:1px solid var(--border)}
+#main-content .igc-daily-row{color:var(--text)}
+#main-content .igc-daily-row :is(b,strong){color:var(--text)}
+
+/* IceIndex v0.15.0 — Game Reports teaser, day/night friendly */
+.ice-overview-brand-row{display:flex;align-items:center;flex-wrap:wrap;gap:14px}
+.ice-reports-header-link{margin-left:auto;display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:12px;background:linear-gradient(115deg,#143753,#12627a)!important;color:#fff!important;text-decoration:none;font-size:13px;font-weight:800;white-space:normal;max-width:100%;box-shadow:0 5px 18px rgba(14,55,85,.14)}
+.ice-reports-header-link:hover{filter:brightness(1.13)}
+.ice-reports-page{position:relative;isolation:isolate;overflow:hidden;min-height:min(790px,calc(100dvh - 130px));border-radius:24px;padding:clamp(25px,5vw,70px);color:#effaff;background:radial-gradient(ellipse at 80% 10%,#163e62 0%,transparent 42%),radial-gradient(ellipse at 5% 95%,#123b4a 0%,transparent 55%),#081521;border:1px solid #28475c;box-shadow:0 22px 60px rgba(5,18,30,.15)}
+.ice-reports-grid{position:absolute;inset:0;z-index:-1;opacity:.26;background-image:linear-gradient(#61d4f01c 1px,transparent 1px),linear-gradient(90deg,#61d4f01c 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(90deg,transparent,#000)}
+.ice-reports-orbit{position:absolute;z-index:-1;right:-150px;top:-160px;width:560px;aspect-ratio:1;border:1px solid #54d7f055;border-radius:50%;box-shadow:0 0 0 48px #44cde708,0 0 0 98px #44cde70a;pointer-events:none}
+.ice-reports-orbit-two{right:-55px;top:-55px;width:370px;border-style:dashed;opacity:.55}
+.ice-reports-content{max-width:900px;position:relative;z-index:1}
+.ice-reports-kicker{display:flex;gap:12px;align-items:center;flex-wrap:wrap;color:#8cdbeb;font-size:11px;font-weight:800;letter-spacing:.18em}
+.ice-reports-kicker>span:last-child{border:1px solid #4f98a8;border-radius:5px;padding:3px 7px}
+.ice-reports-pulse,.ice-reports-status-dot{width:8px;height:8px;display:inline-block;border-radius:50%;background:#72e2b3;box-shadow:0 0 14px #72e2b3}
+.ice-reports-symbol{margin:48px 0 24px;width:95px;height:95px;display:grid;place-items:center;position:relative;font-size:55px;color:#9cf4ff;border:1px solid #4ac2d5;border-radius:22px;background:#13374b;transform:rotate(-8deg);box-shadow:0 0 42px #2fc7e32b}
+.ice-reports-symbol span{position:absolute;font-size:12px;font-weight:900;bottom:8px;right:10px;letter-spacing:.1em;color:#c8f7ff}
+.ice-reports-eyebrow{color:#80c9d9!important;font-size:12px;font-weight:800;letter-spacing:.22em}
+.ice-reports-page h1{font-size:clamp(42px,6.3vw,88px);line-height:1.03;letter-spacing:-.065em;color:#f4fcff!important;margin:20px 0 22px;font-weight:900}
+.ice-reports-page h1 em{font-style:normal;background:linear-gradient(90deg,#80f3ff,#7fe6bd,#d8ff93);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ice-reports-intro{max-width:640px;font-size:clamp(16px,2vw,20px);line-height:1.65;color:#b4cad7!important}
+.ice-reports-intro strong{color:#fff}
+.ice-reports-status{margin:30px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;font-weight:900;color:#a6edcf}
+.ice-reports-status-line{height:1px;width:48px;background:#5c9c9c}
+.ice-reports-features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:800px;margin:32px 0}
+.ice-reports-features>div{padding:19px 16px;border:1px solid #3c6c7a;border-radius:14px;background:#ffffff0c;min-width:0;display:flex;flex-direction:column;gap:8px}
+.ice-reports-features span{font-size:11px;color:#76d9e8;letter-spacing:.15em}
+.ice-reports-features strong{font-size:16px;color:#fff}
+.ice-reports-features small{color:#9fb8c6;font-size:12px}
+.ice-reports-back{display:inline-flex;padding:12px 18px;background:#a6f3df;color:#0a2732!important;border-radius:10px;text-decoration:none;font-weight:800}
+.ice-reports-back:hover{background:#d1fff3}
+.ice-reports-disclaimer{margin-top:24px;color:#8ba6b6!important;font-size:12px}
+@media(max-width:700px){.ice-reports-page{border-radius:16px;padding:24px 19px;min-height:660px}.ice-reports-features{grid-template-columns:1fr}.ice-reports-features>div{padding:13px 16px}.ice-reports-symbol{margin:32px 0 20px;width:70px;height:70px;font-size:42px}.ice-reports-header-link{margin-left:0;width:100%;justify-content:center}.ice-reports-orbit{right:-330px}}
+@media(prefers-reduced-motion:no-preference){.ice-reports-pulse{animation:ice-reports-blink 2.5s infinite}@keyframes ice-reports-blink{50%{opacity:.4;box-shadow:0 0 3px #72e2b3}}}
+
+/* v0.15.0 shared responsive hygiene */
+#main-content :is(.panel,.card,table,section,article){max-width:100%;box-sizing:border-box}
+#main-content :is(.igc-table-scroll,.igl-table-wrap,.ice-gm-scroll){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content :is(.igc-shot-controls,.igl-filter-bar,.ice-goalie-compare-controls)>*{min-width:0}
