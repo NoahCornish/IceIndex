@@ -2390,7 +2390,7 @@
             "position": "4",
             "position_str": "C",
             "status": "",
-            "rookie": "0",
+            "rookie": "1",
             "goals": 0,
             "assists": 0,
             "plusminus": 0,
@@ -2473,6 +2473,7 @@
             "first_name": "Dave",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "4742"
           },
           {
@@ -2481,6 +2482,7 @@
             "first_name": "Jan",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5630"
           }
         ],
@@ -2491,6 +2493,7 @@
             "first_name": "Jeff",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "6837"
           },
           {
@@ -2499,6 +2502,7 @@
             "first_name": "Mike",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "6744"
           }
         ]
