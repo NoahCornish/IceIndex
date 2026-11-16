@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/mississauga-steelheads-tickets/artist/1753776",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-15 21:31:21",
+        "last_modified": "2026-11-16 15:36:53",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153996",
@@ -305,15 +305,15 @@
           "home": "0",
           "period_id": "1",
           "period": "1st",
-          "offence": "17",
+          "offence": "154",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "1",
-          "minutes": 2,
-          "minutes_formatted": "2:00",
+          "minutes": 0,
+          "minutes_formatted": "0:00",
           "penalty_class_id": "1",
           "penalty_class": "Minor",
-          "lang_penalty_description": "Hooking",
+          "lang_penalty_description": "PS_Foul from Behind",
           "s": 377,
           "player_penalized_info": {
             "player_id": "9558",
@@ -2850,7 +2850,7 @@
         "home": 3
       },
       "pimTotal": {
-        "visitor": 17,
+        "visitor": 15,
         "home": 9
       },
       "infCount": {

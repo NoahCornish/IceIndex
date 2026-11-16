@@ -57,7 +57,7 @@
         "home_goals_actual": "0",
         "visiting_goals_actual": "0",
         "public_notes": "",
-        "private_notes": "Please Note Location Stats Scorer is Jim Siddall.",
+        "private_notes": "",
         "league_game_notes": "",
         "home_team_notes": "",
         "visiting_team_notes": "",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/oshawa-generals-vs-kingston-frontenacs-oshawa-ontario-11-15-2026/event/1000650CE9CB43A7?refArtist=K8vZ9171IP7&f_simplified_filter=true&f_enable_merch_slot=true",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-15 22:16:17",
+        "last_modified": "2026-11-16 15:49:27",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153343",
@@ -452,10 +452,10 @@
         {
           "official_type_id": "8",
           "description": "Location Stats Scorer",
-          "first_name": "Scott",
-          "last_name": "Yeo",
+          "first_name": "Jim",
+          "last_name": "Siddall",
           "jersey_number": "0",
-          "person_id": "8418"
+          "person_id": "9992"
         },
         {
           "official_type_id": "9",
