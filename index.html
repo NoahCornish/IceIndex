@@ -76,12 +76,17 @@
   </script>
   <link rel="stylesheet" href="css/game-centre.css?v=0.13.0-compact">
   <link rel="stylesheet" href="css/standings-leaders.css?v=0.14.0">
-  <link rel="stylesheet" href="css/mobile-overhaul.css?v=0.14.0-sidebar-fit">
+  <link rel="stylesheet" href="css/mobile-overhaul.css?v=0.14.0-desktop-one-row">
   <link id="ice-theme-stylesheet" rel="stylesheet" href="css/style.css?v=0.10.0-brand1">
+  <link rel="stylesheet" href="css/overview-responsive.css?v=0.14.0-adaptive-overview">
+  <link rel="stylesheet" href="css/desktop-scale.css?v=0.14.0-all-pages">
+  <link rel="stylesheet" href="css/mobile-navigation-fix.css?v=0.14.0-mobile-drawer-repair">
+  <link rel="stylesheet" href="css/sitewide-responsive.css?v=0.14.0-content-responsive-1">
+  <link rel="stylesheet" href="css/all-pages-responsive.css?v=0.14.0-all-content-1">
   <script>window.IceIndexTheme.apply();</script>
 
   <!-- ======================================================
-       ICEINDEX v0.14.0 SIDEBAR STYLES
+       ICEINDEX v0.12.0 SIDEBAR STYLES
        ====================================================== -->
 
 
@@ -154,390 +159,6 @@
   <!-- ======================================================
        SIDEBAR
        ====================================================== -->
-
-  <aside id="sidebar"
-         class="sidebar"
-         aria-label="IceIndex navigation">
-
-    <div class="sidebar-inner">
-
-      <!-- BRAND -->
-
-      <div class="sidebar-brand">
-
-        <img class="ice-brand-logo" src="assets/branding/iceindex-logo.png" alt="" width="48" height="48">
-
-        <div>
-          <div class="brand-name">IceIndex</div>
-          <div class="brand-subtitle">
-            HOCKEY DATA INTELLIGENCE
-          </div>
-        </div>
-
-        <button id="ice-sidebar-close"
-                class="ice-sidebar-close"
-                type="button"
-                aria-label="Close navigation menu">
-
-          <svg viewBox="0 0 24 24"
-               width="19" height="19"
-               fill="none"
-               stroke="currentColor"
-               stroke-width="2"
-               stroke-linecap="round"
-               aria-hidden="true">
-            <path d="M5 5l14 14M19 5 5 19"></path>
-          </svg>
-
-        </button>
-
-      </div>
-
-      <!-- ACTIVE LEAGUE -->
-
-      <div class="ice-league-section">
-
-        <div class="ice-league-caption">
-          ACTIVE LEAGUE
-        </div>
-
-        <details id="ice-league-picker"
-                 class="ice-league-picker">
-
-          <summary>
-
-            <span class="ice-league-code"><img src="https://cdn.freebiesupply.com/logos/large/2x/ohl-logo-png-transparent.png" alt="OHL logo" class="ice-league-logo" data-active-league-logo></span>
-
-            <span class="ice-league-info">
-
-              <span class="ice-league-name">
-                Ontario Hockey League
-              </span>
-
-              <span class="ice-league-state">
-                Available
-              </span>
-
-            </span>
-
-            <svg class="ice-league-chevron"
-                 viewBox="0 0 24 24"
-                 width="16" height="16"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2"
-                 aria-hidden="true">
-              <path d="m6 9 6 6 6-6"></path>
-            </svg>
-
-          </summary>
-
-          <div class="ice-league-menu">
-            <a class="ice-league-option" href="#overview" data-page="overview" data-league="OHL"><img class="ice-league-option-logo" src="https://cdn.freebiesupply.com/logos/large/2x/ohl-logo-png-transparent.png" alt="" loading="lazy"><span class="ice-league-option-name"><strong>OHL</strong><small>Available</small></span></a>
-            <a class="ice-league-option" href="#whl-home" data-page="whl-home" data-league="WHL"><img class="ice-league-option-logo" src="https://upload.wikimedia.org/wikipedia/en/a/af/Western_Hockey_League.svg" alt="" loading="lazy"><span class="ice-league-option-name"><strong>WHL</strong><small>Beta coming soon</small></span></a>
-            <a class="ice-league-option" href="#qmjhl-home" data-page="qmjhl-home" data-league="QMJHL"><img class="ice-league-option-logo" src="https://thumb.wikimedia.org/wikipedia/en/thumb/2/27/Quebec_Major_Junior_Hockey_League.svg/1280px-Quebec_Major_Junior_Hockey_League.svg.png" alt="" loading="lazy"><span class="ice-league-option-name"><strong>QMJHL</strong><small>Beta coming soon</small></span></a>
-          </div>
-
-        </details>
-
-      </div>
-
-      <!-- NAVIGATION -->
-
-      <nav class="sidebar-nav"
-           aria-label="Main navigation">
-        <div class="ice-drawer-section-label">DISCOVER</div>
-
-        <!-- HOME DISABLED: retained for future use.
-        HOME NAVIGATION
-
-        <a class="nav-link active"
-           href="#home"
-           data-page="home"
-           aria-current="page">
-
-          <svg viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.8"
-               stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true">
-            <path d="m3 10 9-7 9 7"></path>
-            <path d="M5 9v12h14V9"></path>
-            <path d="M9 21v-7h6v7"></path>
-          </svg>
-
-          <span>Home</span>
-
-        </a>
-
-        -->
-
-        <!-- LEAGUE DIRECTORY -->
-
-        <a class="nav-link"
-           href="#leagues"
-           data-page="leagues">
-
-          <svg viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.8"
-               stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true">
-            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
-            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
-            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
-            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
-          </svg>
-
-          <span>League Directory</span>
-
-        </a>
-
-        <div class="ice-nav-divider"></div>
-        <div class="ice-drawer-section-label" id="ice-essentials-heading">OHL ESSENTIALS</div>
-
-        <!-- OVERVIEW -->
-
-        <a class="nav-link active"
-           href="#overview"
-           data-page="overview"
-           aria-current="page">
-
-          <svg viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.8"
-               stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true">
-            <rect x="3" y="3" width="7" height="9" rx="1"></rect>
-            <rect x="14" y="3" width="7" height="5" rx="1"></rect>
-            <rect x="14" y="12" width="7" height="9" rx="1"></rect>
-            <rect x="3" y="16" width="7" height="5" rx="1"></rect>
-          </svg>
-
-          <span data-ice-league-label="home">OHL Home</span>
-
-        </a>
-
-        <!-- TOP-LEVEL GAME CENTRE AND PLAYER COMPARISON -->
-        <a class="nav-link" href="#game-centre" data-page="game-centre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4M17 2v4M3 10h18"/></svg><span data-ice-league-label="game-centre">OHL Game Centre</span></a>
-        <a class="nav-link" href="#standings-leaders" data-page="standings-leaders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 21h18M5 17V9h4v8M10 17V4h4v13M15 17v-6h4v6"/></svg><span>Standings &amp; Leaders</span></a>
-
-        <a class="nav-link"
-             href="#compare"
-             data-page="compare">
-
-            <svg viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="1.8"
-                 stroke-linecap="round" aria-hidden="true">
-              <rect x="3" y="5" width="7" height="14" rx="1"></rect>
-              <rect x="14" y="5" width="7" height="14" rx="1"></rect>
-            </svg>
-
-            <span data-ice-league-label="compare">Compare OHL Players</span>
-
-          </a>
-
-        <div class="ice-drawer-section-label ice-drawer-section-spaced">EXPLORE DATA</div>
-
-        <!-- PLAYERS EXPANDABLE GROUP -->
-
-        <button id="ice-players-toggle"
-                class="ice-nav-group-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="ice-players-menu">
-
-          <svg viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.8"
-               stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true">
-            <circle cx="9" cy="8" r="3"></circle>
-            <path d="M3 20v-2a6 6 0 0 1 12 0v2"></path>
-            <path d="M17 5a3 3 0 0 1 0 6"></path>
-            <path d="M18 14a5 5 0 0 1 3 5v1"></path>
-          </svg>
-
-          <span>Players</span>
-
-          <svg class="ice-nav-chevron"
-               viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2"
-               stroke-linecap="round"
-               aria-hidden="true">
-            <path d="m9 5 7 7-7 7"></path>
-          </svg>
-
-        </button>
-
-        <div id="ice-players-menu"
-             class="ice-nav-submenu">
-
-          <a class="nav-link"
-             href="#players"
-             data-page="players">
-
-            <svg viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="1.8"
-                 stroke-linecap="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="m20 20-4-4"></path>
-            </svg>
-
-            <span>Player Database</span>
-
-          </a>
-
-          <a class="nav-link" href="#statistics" data-page="statistics">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-              <path d="M3 3v18h18"></path><path d="M7 16v-5M12 16V7M17 16V5"></path>
-            </svg>
-            <span>Statistics Database</span>
-          </a>
-
-<a class="nav-link" href="#game-logs" data-page="game-logs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 4 2 5-7"/></svg><span>Game Logs</span></a>
-
-          <a class="nav-link"
-             href="#profile"
-             data-page="profile">
-
-            <svg viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="1.8"
-                 stroke-linecap="round" aria-hidden="true">
-              <circle cx="12" cy="8" r="4"></circle>
-              <path d="M4 21v-2a8 8 0 0 1 16 0v2"></path>
-            </svg>
-
-            <span>Player Profiles</span>
-
-          </a>
-
-<a class="nav-link"
-             href="#draft"
-             data-page="draft">
-
-            <svg viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="1.8"
-                 stroke-linecap="round" aria-hidden="true">
-              <path d="M8 21h8M12 17v4"></path>
-              <path d="M7 4h10v6a5 5 0 0 1-10 0z"></path>
-              <path d="M7 6H4v3a4 4 0 0 0 4 4"></path>
-              <path d="M17 6h3v3a4 4 0 0 1-4 4"></path>
-            </svg>
-
-            <span>Draft Year Central</span>
-
-          </a>
-
-        </div>
-
-        <!-- GOALTENDERS EXPANDABLE GROUP -->
-        <button id="ice-goalies-toggle" class="ice-nav-group-button" type="button" aria-expanded="false" aria-controls="ice-goalies-menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/><path d="M8 12h8M12 8v8"/></svg>
-          <span>Goalies</span>
-          <svg class="ice-nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
-        </button>
-        <div id="ice-goalies-menu" class="ice-nav-submenu">
-          <a class="nav-link" href="#goalies" data-page="goalies"><span>Goaltender Database</span></a>
-          <a class="nav-link" href="#goalie-profile" data-page="goalie-profile"><span>Goaltender Profiles</span></a>
-          <a class="nav-link" href="#goalie-compare" data-page="goalie-compare"><span>Goaltender Comparison</span></a>
-        </div>
-
-        <!-- ANALYTICS EXPANDABLE GROUP -->
-
-        <button id="ice-analytics-toggle"
-                class="ice-nav-group-button"
-                type="button"
-                aria-expanded="false"
-                aria-controls="ice-analytics-menu">
-
-          <svg viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.8"
-               stroke-linecap="round" stroke-linejoin="round"
-               aria-hidden="true">
-            <path d="M3 3v18h18"></path>
-            <circle cx="8" cy="15" r="1.5"></circle>
-            <circle cx="13" cy="10" r="1.5"></circle>
-            <circle cx="18" cy="6" r="1.5"></circle>
-            <path d="m9.2 13.8 2.6-2.6"></path>
-            <path d="m14.2 8.8 2.6-1.6"></path>
-          </svg>
-
-          <span>Analytics</span>
-
-          <svg class="ice-nav-chevron"
-               viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2"
-               stroke-linecap="round"
-               aria-hidden="true">
-            <path d="m9 5 7 7-7 7"></path>
-          </svg>
-
-        </button>
-
-        <div id="ice-analytics-menu"
-             class="ice-nav-submenu">
-
-          <a class="nav-link"
-             href="#analytics"
-             data-page="analytics">
-
-            <svg viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="1.8"
-                 stroke-linecap="round" aria-hidden="true">
-              <path d="M3 3v18h18"></path>
-              <path d="m6 16 4-5 4 2 5-7"></path>
-            </svg>
-
-            <span>Player Analytics</span>
-
-          </a>
-
-        </div>
-
-      </nav>
-
-      <!-- COMPACT FOOTER -->
-
-      <div class="sidebar-footer">
-
-        <!-- Timestamp from last successful OHL data refresh (not page load) -->
-        <div class="ice-refresh-stamp" aria-label="OHL data last updated">
-          <img class="ice-footer-logo" src="assets/branding/iceindex-logo.png" alt="" width="32" height="32">
-          <div class="ice-refresh-heading"><span class="ice-refresh-dot" aria-hidden="true"></span> OHL DATA UPDATED</div>
-          <time id="ice-last-updated" class="ice-refresh-time" data-state="loading">Checking last refresh…</time>
-        </div>
-
-        <div class="ice-footer-row">
-
-          <span class="ice-footer-version">
-            IceIndex v0.14.0
-          </span>
-
-          <a class="ice-footer-github"
-             href="https://github.com/NoahCornish/IceIndex"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="View IceIndex on GitHub"
-             title="View Source on GitHub">
-
-            <svg viewBox="0 0 24 24"
-                 width="18" height="18"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="1.8"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-                 aria-hidden="true">
-              <path d="M9 19c-4.3 1.4-4.3-2.5-6-3"></path>
-              <path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-7 0C5.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77 5.44 5.44 0 0 0 2.5 8.52c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"></path>
-            </svg>
-
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </aside>
 
   <!-- MOBILE SCRIM -->
 
@@ -634,9 +255,383 @@
         </section>
       </div>
 
+
+    <!-- Desktop: horizontal navigation in the header; mobile: original drawer -->
+  <aside id="sidebar"
+         class="sidebar"
+         aria-label="IceIndex navigation">
+
+    <div class="sidebar-inner">
+
+      <!-- BRAND -->
+
+      <div class="sidebar-brand">
+
+        <img class="ice-brand-logo" src="assets/branding/iceindex-logo.png" alt="" width="48" height="48">
+
+        <div>
+          <div class="brand-name">IceIndex</div>
+          <div class="brand-subtitle">
+            HOCKEY DATA INTELLIGENCE
+          </div>
+        </div>
+
+        <button id="ice-sidebar-close"
+                class="ice-sidebar-close"
+                type="button"
+                aria-label="Close navigation menu">
+
+          <svg viewBox="0 0 24 24"
+               width="19" height="19"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               aria-hidden="true">
+            <path d="M5 5l14 14M19 5 5 19"></path>
+          </svg>
+
+        </button>
+
+      </div>
+
+      <!-- ACTIVE LEAGUE -->
+
+      <div class="ice-league-section">
+
+        <div class="ice-league-caption">
+          ACTIVE LEAGUE
+        </div>
+
+        <details id="ice-league-picker"
+                 class="ice-league-picker">
+
+          <summary>
+
+            <span class="ice-league-code"><img src="https://cdn.freebiesupply.com/logos/large/2x/ohl-logo-png-transparent.png" alt="OHL logo" class="ice-league-logo" data-active-league-logo></span>
+
+            <span class="ice-league-info">
+
+              <span class="ice-league-name">
+                Ontario Hockey League
+              </span>
+
+              <span class="ice-league-state">
+                Available
+              </span>
+
+            </span>
+
+            <svg class="ice-league-chevron"
+                 viewBox="0 0 24 24"
+                 width="16" height="16"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 aria-hidden="true">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+
+          </summary>
+
+          <div class="ice-league-menu">
+            <a class="ice-league-option" href="#overview" data-page="overview" data-league="OHL"><img class="ice-league-option-logo" src="https://cdn.freebiesupply.com/logos/large/2x/ohl-logo-png-transparent.png" alt="" loading="lazy"><span class="ice-league-option-name"><strong>OHL</strong><small>Available</small></span></a>
+            <a class="ice-league-option" href="#whl-home" data-page="whl-home" data-league="WHL"><img class="ice-league-option-logo" src="https://upload.wikimedia.org/wikipedia/en/a/af/Western_Hockey_League.svg" alt="" loading="lazy"><span class="ice-league-option-name"><strong>WHL</strong><small>Beta coming soon</small></span></a>
+            <a class="ice-league-option" href="#qmjhl-home" data-page="qmjhl-home" data-league="QMJHL"><img class="ice-league-option-logo" src="https://thumb.wikimedia.org/wikipedia/en/thumb/2/27/Quebec_Major_Junior_Hockey_League.svg/1280px-Quebec_Major_Junior_Hockey_League.svg.png" alt="" loading="lazy"><span class="ice-league-option-name"><strong>QMJHL</strong><small>Beta coming soon</small></span></a>
+          </div>
+
+        </details>
+
+      </div>
+
+      <!-- NAVIGATION -->
+
+      <nav class="sidebar-nav"
+           aria-label="Main navigation">
+        
+
+        <!-- HOME DISABLED: retained for future use.
+        HOME NAVIGATION
+
+        <a class="nav-link active"
+           href="#home"
+           data-page="home"
+           aria-current="page">
+
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="m3 10 9-7 9 7"></path>
+            <path d="M5 9v12h14V9"></path>
+            <path d="M9 21v-7h6v7"></path>
+          </svg>
+
+          <span>Home</span>
+
+        </a>
+
+        -->
+        <div class="ice-drawer-section-label" id="ice-essentials-heading">OHL ESSENTIALS</div>
+
+        <!-- OVERVIEW -->
+
+        <a class="nav-link active"
+           href="#overview"
+           data-page="overview"
+           aria-current="page">
+
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <rect x="3" y="3" width="7" height="9" rx="1"></rect>
+            <rect x="14" y="3" width="7" height="5" rx="1"></rect>
+            <rect x="14" y="12" width="7" height="9" rx="1"></rect>
+            <rect x="3" y="16" width="7" height="5" rx="1"></rect>
+          </svg>
+
+          <span data-ice-league-label="home">OHL Home</span>
+
+        </a>
+
+        <!-- Desktop compact dropdown; mobile displays original direct links. -->
+        <div class="ice-core-group">
+          <button class="ice-core-toggle" type="button" aria-expanded="false" aria-controls="ice-core-menu">
+            Games &amp; Stats <svg class="ice-core-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+          </button>
+          <div id="ice-core-menu" class="ice-core-menu">
+        <!-- TOP-LEVEL GAME CENTRE AND PLAYER COMPARISON -->
+        <a class="nav-link" href="#game-centre" data-page="game-centre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4M17 2v4M3 10h18"/></svg><span data-ice-league-label="game-centre">OHL Game Centre</span></a>
+        <a class="nav-link" href="#standings-leaders" data-page="standings-leaders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 21h18M5 17V9h4v8M10 17V4h4v13M15 17v-6h4v6"/></svg><span>Standings &amp; Leaders</span></a>
+
+        <a class="nav-link"
+             href="#compare"
+             data-page="compare">
+
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" aria-hidden="true">
+              <rect x="3" y="5" width="7" height="14" rx="1"></rect>
+              <rect x="14" y="5" width="7" height="14" rx="1"></rect>
+            </svg>
+
+            <span data-ice-league-label="compare">Compare OHL Players</span>
+
+          </a>
+
+          </div>
+        </div>
+
+        <div class="ice-drawer-section-label ice-drawer-section-spaced">EXPLORE DATA</div>
+
+        <!-- PLAYERS EXPANDABLE GROUP -->
+
+        <div class="ice-nav-group ice-nav-group-players"><button id="ice-players-toggle"
+                class="ice-nav-group-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="ice-players-menu">
+
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <circle cx="9" cy="8" r="3"></circle>
+            <path d="M3 20v-2a6 6 0 0 1 12 0v2"></path>
+            <path d="M17 5a3 3 0 0 1 0 6"></path>
+            <path d="M18 14a5 5 0 0 1 3 5v1"></path>
+          </svg>
+
+          <span>Players</span>
+
+          <svg class="ice-nav-chevron"
+               viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round"
+               aria-hidden="true">
+            <path d="m9 5 7 7-7 7"></path>
+          </svg>
+
+        </button>
+
+        <div id="ice-players-menu"
+             class="ice-nav-submenu">
+
+          <a class="nav-link"
+             href="#players"
+             data-page="players">
+
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+
+            <span>Player Database</span>
+
+          </a>
+
+          <a class="nav-link" href="#statistics" data-page="statistics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M3 3v18h18"></path><path d="M7 16v-5M12 16V7M17 16V5"></path>
+            </svg>
+            <span>Statistics Database</span>
+          </a>
+
+<a class="nav-link" href="#game-logs" data-page="game-logs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 3v18h18M7 15l4-4 4 2 5-7"/></svg><span>Game Logs</span></a>
+
+          <a class="nav-link"
+             href="#profile"
+             data-page="profile">
+
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 21v-2a8 8 0 0 1 16 0v2"></path>
+            </svg>
+
+            <span>Player Profiles</span>
+
+          </a>
+
+<a class="nav-link"
+             href="#draft"
+             data-page="draft">
+
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" aria-hidden="true">
+              <path d="M8 21h8M12 17v4"></path>
+              <path d="M7 4h10v6a5 5 0 0 1-10 0z"></path>
+              <path d="M7 6H4v3a4 4 0 0 0 4 4"></path>
+              <path d="M17 6h3v3a4 4 0 0 1-4 4"></path>
+            </svg>
+
+            <span>Draft Year Central</span>
+
+          </a>
+
+        </div></div>
+
+        <!-- GOALTENDERS EXPANDABLE GROUP -->
+        <div class="ice-nav-group ice-nav-group-goalies"><button id="ice-goalies-toggle" class="ice-nav-group-button" type="button" aria-expanded="false" aria-controls="ice-goalies-menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/><path d="M8 12h8M12 8v8"/></svg>
+          <span>Goalies</span>
+          <svg class="ice-nav-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+        <div id="ice-goalies-menu" class="ice-nav-submenu">
+          <a class="nav-link" href="#goalies" data-page="goalies"><span>Goaltender Database</span></a>
+          <a class="nav-link" href="#goalie-profile" data-page="goalie-profile"><span>Goaltender Profiles</span></a>
+          <a class="nav-link" href="#goalie-compare" data-page="goalie-compare"><span>Goaltender Comparison</span></a>
+        </div></div>
+
+        <!-- ANALYTICS EXPANDABLE GROUP -->
+
+        <div class="ice-nav-group ice-nav-group-analytics"><button id="ice-analytics-toggle"
+                class="ice-nav-group-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="ice-analytics-menu">
+
+          <svg viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M3 3v18h18"></path>
+            <circle cx="8" cy="15" r="1.5"></circle>
+            <circle cx="13" cy="10" r="1.5"></circle>
+            <circle cx="18" cy="6" r="1.5"></circle>
+            <path d="m9.2 13.8 2.6-2.6"></path>
+            <path d="m14.2 8.8 2.6-1.6"></path>
+          </svg>
+
+          <span>Analytics</span>
+
+          <svg class="ice-nav-chevron"
+               viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2"
+               stroke-linecap="round"
+               aria-hidden="true">
+            <path d="m9 5 7 7-7 7"></path>
+          </svg>
+
+        </button>
+
+        <div id="ice-analytics-menu"
+             class="ice-nav-submenu">
+
+          <a class="nav-link"
+             href="#analytics"
+             data-page="analytics">
+
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" aria-hidden="true">
+              <path d="M3 3v18h18"></path>
+              <path d="m6 16 4-5 4 2 5-7"></path>
+            </svg>
+
+            <span>Player Analytics</span>
+
+          </a>
+
+        </div></div>
+
+      </nav>
+
+      <!-- COMPACT FOOTER -->
+
+      <div class="sidebar-footer">
+
+        <!-- Timestamp from last successful OHL data refresh (not page load) -->
+        <div class="ice-refresh-stamp" aria-label="OHL data last updated">
+          <img class="ice-footer-logo" src="assets/branding/iceindex-logo.png" alt="" width="32" height="32">
+          <div class="ice-refresh-heading"><span class="ice-refresh-dot" aria-hidden="true"></span> OHL DATA UPDATED</div>
+          <time id="ice-last-updated" class="ice-refresh-time" data-state="loading">Checking last refresh…</time>
+        </div>
+
+        <div class="ice-footer-row">
+
+          <span class="ice-footer-version">
+            IceIndex v0.14.0
+          </span>
+
+          <a class="ice-footer-github"
+             href="https://github.com/NoahCornish/IceIndex"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="View IceIndex on GitHub"
+             title="View Source on GitHub">
+
+            <svg viewBox="0 0 24 24"
+                 width="18" height="18"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="1.8"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 aria-hidden="true">
+              <path d="M9 19c-4.3 1.4-4.3-2.5-6-3"></path>
+              <path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.91 1S17.73.65 15 2.48a13.38 13.38 0 0 0-7 0C5.27.65 4.09 1 4.09 1A5.07 5.07 0 0 0 4 4.77 5.44 5.44 0 0 0 2.5 8.52c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 8 18.13V22"></path>
+            </svg>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
     </header>
 
-    <!-- ICEINDEX v0.14.0 GLOBAL PLAYER SEARCH -->
+    <!-- ICEINDEX v0.12.0 GLOBAL PLAYER SEARCH -->
     <section class="ice-global-search" role="search" aria-label="Global OHL player search">
       <div class="ice-global-search-inner">
         <label for="ice-global-query" class="ice-global-search-label">PLAYER SEARCH</label>
@@ -702,7 +697,7 @@
 
         <span aria-hidden="true"> · </span>
 
-        <span>v0.14.0</span>
+        <span>v0.12.0</span>
 
       </div>
 
@@ -964,7 +959,7 @@
         const inAnalytics = page === "analytics";
 
         goaliesToggle?.classList.toggle("has-active-child", inGoalies);
-        if (inGoalies) { setGroup(goaliesToggle, goaliesMenu, true); setGroup(playersToggle, playersMenu, false); setGroup(analyticsToggle, analyticsMenu, false); }
+        if (inGoalies && window.innerWidth <= 900) { setGroup(goaliesToggle, goaliesMenu, true); setGroup(playersToggle, playersMenu, false); setGroup(analyticsToggle, analyticsMenu, false); }
 
         playersToggle?.classList.toggle(
           "has-active-child",
@@ -976,10 +971,10 @@
           inAnalytics
         );
 
-        if (inPlayers) {
+        if (inPlayers && window.innerWidth <= 900) {
           setGroup(playersToggle, playersMenu, true);
           setGroup(analyticsToggle, analyticsMenu, false);
-        } else if (inAnalytics) {
+        } else if (inAnalytics && window.innerWidth <= 900) {
           setGroup(analyticsToggle, analyticsMenu, true);
           setGroup(playersToggle, playersMenu, false);
         }
@@ -1080,6 +1075,135 @@
       }
 
     });
+  </script>
+
+  <!-- Keep one live search widget: header on desktop, original position on mobile. -->
+  <script>
+    (function () {
+      const search = document.querySelector('.ice-global-search');
+      const header = document.querySelector('.topbar');
+      const accountControls = document.querySelector('.topbar-right');
+      const sidebarInner = document.querySelector('#sidebar .sidebar-inner');
+      const desktopNav = document.querySelector('#sidebar .sidebar-nav');
+      if (!search || !header || !accountControls || !sidebarInner || !desktopNav) return;
+      const desktop = window.matchMedia('(min-width: 901px)');
+      function positionSearch() {
+        if (desktop.matches) {
+          sidebarInner.insertBefore(search, desktopNav);
+          search.classList.add('ice-search-in-header');
+        } else {
+          header.insertAdjacentElement('afterend', search);
+          search.classList.remove('ice-search-in-header');
+        }
+      }
+      const results = document.getElementById('ice-global-results');
+      const query = document.getElementById('ice-global-query');
+      function positionResults() {
+        if (!desktop.matches || !results || !query) return;
+        const headerRect = header.getBoundingClientRect();
+        const searchRect = search.getBoundingClientRect();
+        const left = Math.max(16, Math.min(searchRect.left, window.innerWidth - 336));
+        const width = Math.max(240, Math.min(450, window.innerWidth - left - 16));
+        results.style.setProperty('--ice-search-results-top', Math.ceil(headerRect.bottom + 8) + 'px');
+        results.style.setProperty('--ice-search-results-left', Math.round(left) + 'px');
+        results.style.setProperty('--ice-search-results-width', Math.round(width) + 'px');
+      }
+      positionSearch();
+      positionResults();
+      if (query) query.addEventListener('focus', positionResults);
+      window.addEventListener('resize', positionResults, { passive:true });
+      window.addEventListener('scroll', positionResults, { passive:true });
+      if (desktop.addEventListener) desktop.addEventListener('change', () => { positionSearch(); positionResults(); });
+      else desktop.addListener(() => { positionSearch(); positionResults(); });
+    })();
+  </script>
+
+
+  <!-- v0.14.0: keep mobile search hidden while the drawer is open. -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('menu-toggle');
+    const scrim = document.getElementById('scrim');
+    if (!sidebar) return;
+    const sync = () => {
+      const isMobile = window.matchMedia('(max-width:900px)').matches;
+      const opened = sidebar.classList.contains('open') || sidebar.classList.contains('is-open') || sidebar.classList.contains('active') || toggle?.getAttribute('aria-expanded') === 'true';
+      document.body.classList.toggle('ice-mobile-drawer-visible', isMobile && opened);
+    };
+    new MutationObserver(sync).observe(sidebar, {attributes:true,attributeFilter:['class']});
+    if (toggle) new MutationObserver(sync).observe(toggle, {attributes:true,attributeFilter:['aria-expanded']});
+    toggle?.addEventListener('click', () => requestAnimationFrame(sync));
+    scrim?.addEventListener('click', () => requestAnimationFrame(sync));
+    window.addEventListener('resize',sync,{passive:true});
+    sync();
+  });
+  </script>
+
+  <!-- v0.14.0 compact desktop navigation and dismiss-on-outside-click. -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const desktop = window.matchMedia('(min-width:901px)');
+    const sidebar = document.getElementById('sidebar');
+    const coreButton = document.querySelector('.ice-core-toggle');
+    const coreMenu = document.getElementById('ice-core-menu');
+    const leaguePicker = document.getElementById('ice-league-picker');
+    const scrim = document.getElementById('scrim');
+    const menuButton = document.getElementById('menu-toggle');
+    const groups = ['players','goalies','analytics'].map(n=>({
+      button:document.getElementById('ice-'+n+'-toggle'),
+      menu:document.getElementById('ice-'+n+'-menu')
+    }));
+    function closeGroups(except) {
+      if(except !== coreButton){coreButton?.setAttribute('aria-expanded','false');coreMenu?.classList.remove('open');}
+      groups.forEach(({button,menu})=>{
+        if(button !== except){button?.setAttribute('aria-expanded','false');menu?.classList.remove('open');}
+      });
+      if(except !== leaguePicker && leaguePicker)leaguePicker.open=false;
+    }
+    coreButton?.addEventListener('click',()=>{
+      const opening=coreButton.getAttribute('aria-expanded')!=='true';
+      closeGroups(coreButton);
+      coreButton.setAttribute('aria-expanded',String(opening));
+      coreMenu?.classList.toggle('open',opening);
+    });
+    groups.forEach(({button})=>button?.addEventListener('click',()=>{
+      if(desktop.matches) {
+        groups.forEach(({button:other,menu})=>{
+          if(other!==button){other?.setAttribute('aria-expanded','false');menu?.classList.remove('open');}
+        });
+        coreButton?.setAttribute('aria-expanded','false');coreMenu?.classList.remove('open');
+        if(leaguePicker)leaguePicker.open=false;
+      }
+    }));
+    leaguePicker?.addEventListener('toggle',()=>{
+      if(leaguePicker.open)closeGroups(leaguePicker);
+    });
+    document.addEventListener('pointerdown',e=>{
+      if(!e.target.closest('#sidebar .ice-nav-group, #sidebar .ice-core-group, #ice-league-picker'))closeGroups(null);
+      else if(!e.target.closest('#ice-league-picker') && leaguePicker)leaguePicker.open=false;
+    });
+    function closeMobileDrawer(){
+      if(desktop.matches)return;
+      if(menuButton?.getAttribute('aria-expanded')==='true')menuButton.click();
+      else {
+        sidebar?.classList.remove('open','is-open','active');
+        scrim?.classList.remove('active','visible','show');
+      }
+    }
+    scrim?.addEventListener('click',closeMobileDrawer);
+    sidebar?.querySelectorAll('.sidebar-nav a[href^="#"],.ice-league-option').forEach(a=>a.addEventListener('click',()=>{
+      closeGroups(null);
+      closeMobileDrawer();
+    }));
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape') {closeGroups(null);closeMobileDrawer();}
+    });
+    window.addEventListener('hashchange',()=>closeGroups(null));
+    desktop.addEventListener?.('change',()=>closeGroups(null));
+    // On desktop, don't leave a route's dropdown expanded over the page.
+    if(desktop.matches)requestAnimationFrame(()=>closeGroups(null));
+  });
   </script>
 
   <div id="ice-member-modal" class="ice-member-modal" hidden role="dialog" aria-modal="true" aria-labelledby="ice-member-title">

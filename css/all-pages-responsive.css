@@ -1,0 +1,53 @@
+/* IceIndex v0.14.0 — all non-Game-Centre pages.
+   Scoped to main content; does not alter navigation or game scoreboards. */
+#main-content :is(.panel,.hero,.ice-feature-panel,.ice-advanced-card,.ice-gm-tool,.ice-gm-kpi,.ice-highlight-card,.leader-card){min-width:0}
+#main-content :is(.table-wrap,.table-responsive,.table-scroll,.ice-gm-scroll,.ice-chart-wrap,.ice-compare-table,.ice-career-timeline){max-width:100%;-webkit-overflow-scrolling:touch}
+#main-content :is(.data-table,.ice-gm-table,.ice-compare-table){font-variant-numeric:tabular-nums}
+#main-content :is(.ice-chart-wrap,.ice-compare-visual,.radar-chart,.scatter-chart){min-width:0;max-width:100%}
+#main-content :is(.ice-feature-photo,.ice-feature-headshot,.avatar,.leader-photo){object-fit:cover}
+@media(min-width:1100px){
+ #main-content{max-width:2200px!important;width:100%!important;padding-inline:clamp(26px,2.4vw,64px)!important}
+ #main-content :is(.page-heading h1,.hero h1){font-size:clamp(38px,2.8vw,60px);line-height:1.13}
+ #main-content :is(.page-heading p,.hero p){font-size:clamp(16px,1vw,21px)}
+ #main-content :is(.panel,.ice-feature-panel,.ice-advanced-card){padding:clamp(20px,1.5vw,34px)}
+ #main-content :is(.panel h2,.panel-title,.ice-analytics-section-title,.ice-home-section-heading){font-size:clamp(21px,1.4vw,29px)}
+ #main-content :is(.data-table,.ice-gm-table,.ice-compare-table){font-size:clamp(14px,.94vw,19px)}
+ #main-content :is(.data-table,.ice-gm-table,.ice-compare-table) :is(th,td){padding:clamp(10px,.75vw,17px) clamp(10px,.7vw,18px)}
+ #main-content :is(.btn,select,input:not([type=checkbox]),.ice-gm-selector){font-size:clamp(13px,.82vw,17px)}
+ #main-content :is(.btn,select){min-height:40px}
+ #main-content :is(.ice-gm-stat-number,.ice-highlight-value,.leader-value,.ice-feature-numbers strong){font-size:clamp(29px,2vw,46px)}
+ #main-content :is(.ice-feature-headshot,.leader-photo){width:clamp(62px,4.2vw,90px);height:clamp(62px,4.2vw,90px)}
+ #main-content :is(.ice-highlights-grid,.ice-gm-kpi-grid){gap:clamp(14px,1.2vw,25px)}
+ #main-content :is(.ice-compare-visual,.ice-chart-wrap){padding:clamp(14px,1vw,26px)}
+ #main-content :is(.ice-career-year,.ice-career-production,.ice-development-row,.ice-compare-row){font-size:clamp(13px,.9vw,18px)}
+}
+@media(min-width:1600px){
+ #main-content :is(.ice-gm-kpi-grid,.ice-highlights-grid){grid-template-columns:repeat(4,minmax(0,1fr))}
+ #main-content :is(.ice-advanced-grid){gap:clamp(16px,1.2vw,28px)}
+}
+@media(min-width:701px) and (max-width:1099px){
+ #main-content{padding-inline:clamp(16px,2.5vw,30px)}
+ #main-content :is(.panel,.ice-feature-panel){min-width:0}
+ #main-content :is(.data-table,.ice-gm-table){font-size:13px}
+}
+@media(max-width:700px){
+ #main-content{min-width:0;max-width:100%;padding-inline:clamp(12px,3.4vw,20px)}
+ #main-content :is(.page-heading h1,.hero h1){font-size:clamp(28px,7.6vw,40px);line-height:1.12}
+ #main-content :is(.page-heading p,.hero p){font-size:clamp(13px,3.4vw,16px)}
+ #main-content :is(.panel,.ice-feature-panel,.ice-advanced-card,.ice-gm-tool){padding:clamp(12px,3.3vw,18px);max-width:100%}
+ #main-content :is(.panel h2,.panel-title,.ice-analytics-section-title,.ice-home-section-heading){font-size:clamp(18px,4.9vw,24px)}
+ #main-content :is(.ice-gm-selector-fields,.ice-gm-selectors,.ice-analytics-controls,.ice-development-controls){max-width:100%;min-width:0;flex-wrap:wrap}
+ #main-content :is(input,select,button){max-width:100%}
+ #main-content :is(.ice-gm-scroll,.table-wrap,.table-responsive,.table-scroll){overflow-x:auto;overscroll-behavior-x:contain}
+ #main-content :is(.data-table,.ice-gm-table,.ice-compare-table){font-size:clamp(11px,2.95vw,13px)}
+ #main-content :is(.data-table,.ice-gm-table,.ice-compare-table) :is(th,td){padding:9px 7px}
+ #main-content :is(.ice-gm-stat-number,.ice-highlight-value,.leader-value){font-size:clamp(24px,7vw,35px)}
+ #main-content :is(.ice-feature-headshot,.leader-photo){width:clamp(48px,13vw,68px);height:clamp(48px,13vw,68px)}
+ #main-content :is(.ice-highlights-grid,.ice-gm-kpi-grid){gap:10px}
+ #main-content :is(.ice-chart-wrap,.ice-compare-visual){overflow-x:auto;-webkit-overflow-scrolling:touch}
+ #main-content :is(.ice-compare-row,.ice-development-row){min-width:0}
+ #main-content :is(.ice-career-year,.ice-career-production){font-size:clamp(11px,3vw,14px)}
+}
+@media(max-width:380px){
+ #main-content :is(.ice-highlights-grid,.ice-gm-kpi-grid){grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}

@@ -1,0 +1,53 @@
+/* IceIndex v0.14.0 — desktop content scale, all pages. Mobile remains untouched. */
+@media (min-width: 901px) {
+  :root { --ice-desktop-scale: clamp(1, calc(0.82 + 0.0125vw), 1.18); }
+  body #main-content { width:100%!important; max-width: 2100px!important; margin-inline:auto!important; padding:clamp(24px,2.15vw,44px) clamp(22px,2.3vw,54px) 80px!important; font-size:clamp(14px,.94vw,17px); }
+  body #main-content .page-heading h1 { font-size:clamp(30px,2.45vw,48px); line-height:1.15; }
+  body #main-content .page-heading p {font-size:clamp(14px,1vw,18px);}
+  body #main-content .section-title h2, body #main-content .panel-head h2 {font-size:clamp(18px,1.22vw,24px);}
+  body #main-content .hero:not(.ice-overview-hero) h1 {font-size:clamp(32px,2.55vw,52px);}
+  body #main-content .hero:not(.ice-overview-hero) p {font-size:clamp(14px,1vw,18px);}
+  body #main-content .panel {padding:clamp(18px,1.4vw,28px);}
+  body #main-content .data-table {font-size:clamp(12px,.86vw,16px);}
+  body #main-content .data-table th {font-size:clamp(10px,.68vw,13px);padding:clamp(11px,.8vw,16px) clamp(10px,.85vw,17px);}
+  body #main-content .data-table td {padding:clamp(12px,.9vw,18px) clamp(10px,.85vw,17px);}
+  body #main-content .player-cell strong {font-size:clamp(13px,.91vw,17px);}
+  body #main-content .player-cell small {font-size:clamp(11px,.75vw,14px);}
+  body #main-content .leader-card {padding:clamp(16px,1.25vw,26px)!important;}
+  body #main-content .leader-value {font-size:clamp(26px,1.9vw,38px)!important;}
+  body #main-content .leader-content a {font-size:clamp(14px,.94vw,18px)!important;}
+  body #main-content .leader-content small {font-size:clamp(12px,.79vw,15px)!important;}
+  body #main-content .leader-photo {width:clamp(52px,3.6vw,74px)!important;height:clamp(52px,3.6vw,74px)!important;flex-basis:clamp(52px,3.6vw,74px)!important;}
+  body #main-content .kpi b {font-size:clamp(24px,1.8vw,36px);}
+  body #main-content .kpi span {font-size:clamp(12px,.78vw,15px);}
+  /* Game Centre: make each game legible without giving up the two-column desktop layout. */
+  body #main-content .igc-game {min-height:clamp(74px,5vw,96px);padding:clamp(13px,1vw,20px)!important;}
+  body #main-content .igc-game-teams, body #main-content .igc-matchup {font-size:clamp(15px,1vw,20px);}
+  body #main-content .igc-mini-logo {width:clamp(27px,2vw,39px);height:clamp(27px,2vw,39px);}
+  body #main-content .igc-final-score {font-size:clamp(20px,1.5vw,29px);}
+  body #main-content .igc-status {font-size:clamp(11px,.72vw,14px);}
+  body #main-content .igc-section-title {font-size:clamp(18px,1.15vw,23px);}
+  body #main-content .igc-table {font-size:clamp(12px,.85vw,16px);}
+  body #main-content .igc-table th, body #main-content .igc-table td {padding:clamp(10px,.75vw,15px);}
+  /* Standings, Leaders and Form */
+  body #main-content .ice-sl-title {font-size:clamp(20px,1.35vw,27px);}
+  body #main-content .ice-sl-tab {font-size:clamp(13px,.88vw,17px);padding:clamp(12px,.85vw,18px);}
+  body #main-content .ice-sl-value {font-size:clamp(19px,1.3vw,27px);}
+  body #main-content .ice-sl-person {font-size:clamp(13px,.9vw,17px);}
+  body #main-content .ice-sl-avatar {width:clamp(42px,3vw,60px);height:clamp(42px,3vw,60px);}
+  /* Overview: score and logos scale within each desktop column. */
+  body #main-content .igc-daily-row {min-height:clamp(80px,5.4vw,106px);padding:clamp(12px,.95vw,18px) clamp(8px,.7vw,15px);}
+  body #main-content .igc-daily-logo {width:clamp(36px,2.5vw,52px);height:clamp(36px,2.5vw,52px);flex-basis:clamp(36px,2.5vw,52px);}
+  body #main-content .igc-daily-team b {font-size:clamp(14px,.98vw,19px);}
+  body #main-content .igc-daily-time {font-size:clamp(23px,1.65vw,34px);}
+  body #main-content .igc-daily-time small {font-size:clamp(11px,.75vw,14px);}
+  body #main-content .igc-daily-arena {font-size:clamp(11px,.76vw,14px);}
+}
+@media (min-width:901px) and (max-width:1199px) {
+  body #main-content .igc-daily-row {grid-template-columns:minmax(0,1.2fr) 90px minmax(0,.85fr);}
+  body #main-content .igc-daily-logo {width:32px;height:32px;flex-basis:32px;}
+  body #main-content .igc-daily-team b {font-size:13px;}
+}
+@media (min-width:1500px) and (max-width:1799px) {
+  body #main-content .igc-daily-row {grid-template-columns:minmax(0,1.3fr) minmax(65px,.48fr) minmax(0,.7fr);gap:8px;}
+}

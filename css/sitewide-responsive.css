@@ -1,0 +1,93 @@
+/* IceIndex v0.14.0 — content-only responsive refinement.
+   Does not target header, sidebar, drawer, overlay or navigation. */
+#main-content{min-width:0}
+#main-content .igc,#main-content .igc *{min-width:0}
+#main-content .igc-table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+#main-content .igc-table-scroll .igc-table{min-width:max-content}
+#main-content .igc .igc-box-table{min-width:100%}
+#main-content .igc-scoreboard{width:100%}
+#main-content .igc-score-team strong{line-height:1.2}
+#main-content .igc-score-team .igc-hero-logo{object-fit:contain;max-width:100%}
+#main-content .igc-score-team span:not(.igc-logo-fallback){font-variant-numeric:tabular-nums;letter-spacing:-.045em}
+#main-content .igc .igc-game-teams{min-width:0}
+#main-content .igc .igc-card-team{min-width:0}
+#main-content .igc .igc-game{min-width:0}
+#main-content .igc .igc-goal-main{min-width:0}
+#main-content .igc .igc-goal-text{min-width:0}
+/* Desktop: genuinely enlarge each page, not just the overview. */
+@media(min-width:1100px){
+  #main-content{max-width:2200px!important;width:100%!important;padding-inline:clamp(24px,2.1vw,58px)!important}
+  #main-content .page-heading h1{font-size:clamp(38px,3vw,64px)}
+  #main-content .page-heading p{font-size:clamp(15px,1vw,19px)}
+  #main-content .panel h2,#main-content .igc-section-title h2{font-size:clamp(19px,1.3vw,27px)}
+  #main-content .igc.igc-boxscore>.igc-panel{padding:clamp(22px,1.6vw,36px)}
+  #main-content .igc.igc-boxscore .igc-scoreboard{gap:clamp(16px,2vw,42px);min-height:clamp(205px,16vw,330px)}
+  #main-content .igc.igc-boxscore .igc-hero-logo{width:clamp(100px,8vw,168px);height:clamp(100px,8vw,168px)}
+  #main-content .igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(72px,6.2vw,122px);line-height:1}
+  #main-content .igc.igc-boxscore .igc-score-team strong{font-size:clamp(19px,1.35vw,28px)}
+  #main-content .igc.igc-boxscore .igc-score-middle{min-width:clamp(90px,7vw,145px)}
+  #main-content .igc.igc-boxscore .igc-score-middle strong{font-size:clamp(13px,.9vw,18px)}
+  #main-content .igc.igc-boxscore .igc-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,1.4vw,28px)}
+  #main-content .igc.igc-boxscore .igc-detail-grid>.igc-panel{padding:clamp(20px,1.4vw,30px)}
+  #main-content .igc.igc-boxscore .igc-goal-text strong{font-size:clamp(15px,1vw,20px)}
+  #main-content .igc.igc-boxscore .igc-goal-photo{width:clamp(46px,3vw,64px);height:clamp(46px,3vw,64px);flex-basis:clamp(46px,3vw,64px)}
+  #main-content .igc.igc-boxscore .igc-rink-wrap{max-width:clamp(350px,29vw,570px)}
+  #main-content .igc.igc-boxscore .igc-rink{max-height:none}
+  #main-content .igc .igc-team-logo{width:clamp(40px,3vw,64px);height:clamp(40px,3vw,64px);flex-basis:clamp(40px,3vw,64px)}
+  #main-content .igc .igc-game-teams strong{font-size:clamp(24px,1.65vw,36px)}
+  #main-content .igc .igc-game{padding:clamp(18px,1.25vw,28px)}
+  #main-content .igc .igc-box-table,#main-content .igc .igc-table{font-size:clamp(13px,.86vw,17px)}
+  #main-content .igc .igc-box-table th,#main-content .igc .igc-box-table td{padding:clamp(10px,.7vw,15px)}
+  #main-content .igc .igc-player-photo{width:clamp(36px,2.5vw,52px);height:clamp(36px,2.5vw,52px);flex-basis:clamp(36px,2.5vw,52px)}
+  #main-content .igc .igc-summary-metrics strong{font-size:clamp(25px,1.8vw,38px)}
+  #main-content .data-table{font-size:clamp(13px,.88vw,18px)}
+  #main-content .data-table th,#main-content .data-table td{padding-block:clamp(11px,.85vw,18px)}
+  #main-content .leader-card{min-width:0}
+  #main-content .leader-value{font-size:clamp(28px,2vw,42px)}
+  #main-content .leader-photo{width:clamp(54px,4vw,84px);height:clamp(54px,4vw,84px)}
+  #main-content .ice-sl-value{font-size:clamp(22px,1.5vw,32px)}
+  #main-content .ice-sl-avatar{width:clamp(48px,3.2vw,70px);height:clamp(48px,3.2vw,70px)}
+}
+/* Large laptops: scoreboards remain substantial without crowding. */
+@media(min-width:701px) and (max-width:1099px){
+  #main-content .igc.igc-boxscore .igc-hero-logo{width:clamp(68px,7vw,95px);height:clamp(68px,7vw,95px)}
+  #main-content .igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(52px,6vw,74px)}
+  #main-content .igc.igc-boxscore .igc-scoreboard{min-height:185px}
+}
+/* Phones: make game identity dominant while retaining all data sections. */
+@media(max-width:700px){
+  #main-content .igc.igc-boxscore>.igc-panel{padding:clamp(12px,3.4vw,18px)}
+  #main-content .igc.igc-boxscore .igc-scoreboard{display:grid;grid-template-columns:minmax(0,1fr) minmax(42px,.42fr) minmax(0,1fr);gap:clamp(4px,1.4vw,10px);align-items:center;min-height:clamp(175px,48vw,240px)}
+  #main-content .igc.igc-boxscore .igc-hero-logo{width:clamp(62px,19vw,100px);height:clamp(62px,19vw,100px);margin:6px 0}
+  #main-content .igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(51px,15vw,78px);line-height:1}
+  #main-content .igc.igc-boxscore .igc-score-team strong{font-size:clamp(12px,3.4vw,17px);overflow-wrap:break-word}
+  #main-content .igc.igc-boxscore .igc-score-middle{padding:5px 2px;min-width:0}
+  #main-content .igc.igc-boxscore .igc-score-middle strong{font-size:clamp(10px,2.8vw,13px)}
+  #main-content .igc.igc-boxscore .igc-detail-grid{grid-template-columns:minmax(0,1fr);gap:10px}
+  #main-content .igc.igc-boxscore .igc-detail-grid>.igc-panel{padding:clamp(12px,3vw,17px)}
+  #main-content .igc.igc-boxscore .igc-section-title{flex-direction:row;align-items:center;gap:8px}
+  #main-content .igc.igc-boxscore .igc-section-title h2{font-size:clamp(18px,4.7vw,23px)}
+  #main-content .igc.igc-boxscore .igc-rink-wrap{max-width:min(100%,420px)}
+  #main-content .igc.igc-boxscore .igc-rink{max-height:none}
+  #main-content .igc.igc-boxscore .igc-goal-photo{width:clamp(38px,10vw,48px);height:clamp(38px,10vw,48px);flex-basis:clamp(38px,10vw,48px)}
+  #main-content .igc.igc-boxscore .igc-goal-text strong{font-size:clamp(13px,3.6vw,16px)}
+  #main-content .igc .igc-team-logo{width:clamp(36px,10vw,48px);height:clamp(36px,10vw,48px);flex-basis:clamp(36px,10vw,48px)}
+  #main-content .igc .igc-game-teams strong{font-size:clamp(22px,6vw,30px)}
+  #main-content .igc .igc-game{padding:clamp(13px,3.5vw,18px)}
+  #main-content .igc .igc-game-teams{gap:8px}
+  #main-content .igc .igc-box-table{font-size:clamp(11px,2.9vw,13px)}
+  #main-content .igc .igc-box-table td,#main-content .igc .igc-box-table th{padding:9px 6px}
+  #main-content .igc .igc-player-cell{font-size:clamp(11px,3vw,13px)}
+  #main-content .igc .igc-player-photo{width:30px;height:30px;flex-basis:30px}
+  #main-content .igc .igc-summary-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #main-content .igc .igc-summary-metrics strong{font-size:clamp(22px,6vw,30px)}
+  #main-content .page-heading h1{font-size:clamp(29px,8vw,42px)}
+  #main-content .data-table{font-size:clamp(11px,2.9vw,13px)}
+  #main-content .leader-value{font-size:clamp(25px,7vw,34px)}
+  #main-content .ice-sl-value{font-size:clamp(19px,5.2vw,27px)}
+}
+@media(max-width:360px){
+  #main-content .igc.igc-boxscore .igc-score-team span:not(.igc-logo-fallback){font-size:clamp(42px,13vw,52px)}
+  #main-content .igc.igc-boxscore .igc-hero-logo{width:56px;height:56px}
+  #main-content .igc.igc-boxscore .igc-scoreboard{grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr)}
+}

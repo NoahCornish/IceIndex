@@ -1,0 +1,37 @@
+/* IceIndex v0.14.0 — adaptive OHL Overview. Desktop-only; mobile styles unchanged. */
+@media (min-width:901px) {
+  body #main-content { max-width: 1840px; padding:clamp(20px,2.1vw,34px) clamp(20px,2.3vw,44px) 64px; }
+  body .ice-overview-hero { padding:clamp(19px,2vw,28px) clamp(24px,2.6vw,44px)!important; margin-bottom:clamp(14px,1.5vw,22px)!important; }
+  body .ice-overview-hero h1 {font-size:clamp(26px,2.25vw,38px)!important;}
+  body .igc-daily-widget {padding:clamp(15px,1.3vw,23px) clamp(16px,1.4vw,25px);margin:14px 0 24px;border-radius:16px;}
+  body .igc-daily-head {font-size:clamp(16px,1.05vw,20px);gap:12px;margin-bottom:12px;}
+  body .igc-daily-head span,body .igc-daily-head a {font-size:clamp(12px,.78vw,14px);}
+  body .igc-daily-row {grid-template-columns:minmax(0,1.35fr) minmax(82px,.45fr) minmax(0,1fr);gap:clamp(12px,1.4vw,24px);min-height:clamp(64px,4.4vw,80px);padding:10px 8px;font-size:clamp(14px,.98vw,17px);transition:background .15s ease;}
+  body .igc-daily-row:hover {background:var(--surface-hover,rgba(88,184,255,.07));}
+  body .igc-daily-match {gap:clamp(7px,.7vw,12px);}
+  body .igc-daily-team {gap:clamp(7px,.6vw,11px);}
+  body .igc-daily-logo {width:clamp(30px,2.25vw,42px);height:clamp(30px,2.25vw,42px);flex:0 0 clamp(30px,2.25vw,42px);object-fit:contain;}
+  body .igc-daily-team b {font-size:clamp(13px,.94vw,17px);letter-spacing:.02em;}
+  body .igc-daily-separator {font-size:clamp(11px,.8vw,14px);}
+  body .igc-daily-time {font-size:clamp(19px,1.45vw,26px);font-weight:800;line-height:1.08;font-variant-numeric:tabular-nums;}
+  body .igc-daily-time small {font-size:clamp(10px,.7vw,12px);line-height:1.25;margin-top:4px;letter-spacing:.035em;}
+  body .igc-daily-arena {font-size:clamp(11px,.78vw,14px);line-height:1.4;}
+  body .ice-overview-leaders {gap:clamp(12px,1.3vw,22px);}
+}
+/* On roomy desktops, use the width for two legible matchup columns instead of long, sparse rows. */
+@media (min-width:1500px) {
+  body .igc-daily-list {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px;row-gap:0;}
+  body .igc-daily-row {grid-template-columns:minmax(0,1.4fr) minmax(70px,.48fr) minmax(0,.9fr);gap:10px;min-height:76px;padding:12px 8px;}
+  body .igc-daily-logo {width:34px;height:34px;flex-basis:34px;}
+  body .igc-daily-team b {font-size:14px;}
+  body .igc-daily-time {font-size:21px;}
+  body .igc-daily-arena {font-size:11px;}
+}
+/* At desktop zoom / compact laptop widths, keep every score, logo and arena visible. */
+@media (min-width:901px) and (max-width:1099px) {
+  body .igc-daily-row {grid-template-columns:minmax(0,1.1fr) 75px minmax(0,.85fr);gap:9px;}
+  body .igc-daily-logo {width:28px;height:28px;flex-basis:28px;}
+  body .igc-daily-team b {font-size:12px;}
+  body .igc-daily-time {font-size:18px;}
+  body .igc-daily-arena {font-size:11px;}
+}

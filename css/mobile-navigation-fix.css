@@ -1,0 +1,15 @@
+/* IceIndex v0.14.0 — mobile drawer stacking repair.
+   The sidebar now lives inside .topbar for the desktop one-row layout.
+   On mobile the header must stack ABOVE the page scrim so the drawer
+   receives taps rather than the scrim swallowing them. */
+@media (max-width:900px) {
+  body .main-shell, body .topbar { isolation:auto!important; }
+  body .topbar { position:relative!important; z-index:12000!important; overflow:visible!important; }
+  body #sidebar { position:fixed!important; top:0!important; bottom:0!important; left:0!important; right:auto!important; z-index:12010!important; height:100dvh!important; max-height:100dvh!important; pointer-events:auto!important; background:var(--sidebar-bg,#081522)!important; }
+  body #sidebar .sidebar-inner, body #sidebar .sidebar-nav, body #sidebar .nav-link, body #sidebar button, body #sidebar summary { pointer-events:auto!important; }
+  body #sidebar .sidebar-nav { overflow-y:auto!important; -webkit-overflow-scrolling:touch; }
+  body #scrim { z-index:11000!important; }
+  body #sidebar:not(.open):not(.is-open):not(.active) { pointer-events:none!important; }
+  body #sidebar:not(.open):not(.is-open):not(.active) * { pointer-events:none!important; }
+  body #sidebar.open, body #sidebar.is-open, body #sidebar.active { visibility:visible!important; pointer-events:auto!important; }
+}
