@@ -692,3 +692,57 @@ html[data-ice-theme="day"] .igc.igc-modern{--igc-away:#1269ad;--igc-home:#a94d00
  .igc.igc-modern .igc-period-fold>summary>span:nth-child(2){font-size:10px}
 }
 @media(max-width:350px){.igc.igc-modern .igc-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}.igc.igc-modern .igc-tab{font-size:11px}}
+
+
+/* IceIndex v0.13.0 — high-density, phone-first Game Centre schedule */
+.igc.igc-compact-overview{max-width:100%;min-width:0}
+.igc.igc-compact-overview *{box-sizing:border-box}
+.igc.igc-compact-overview .page-heading{padding:2px 0 6px}
+.igc.igc-compact-overview .page-heading .eyebrow{font-size:10px;letter-spacing:.12em}
+.igc.igc-compact-overview .page-heading h1{font-size:clamp(25px,3.5vw,36px);margin:5px 0 0;line-height:1.1}
+.igc.igc-compact-overview .igc-date-navigator{padding:10px 12px;margin:8px 0!important;border-radius:13px}
+.igc.igc-compact-overview .igc-date-nav-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 8px}
+.igc.igc-compact-overview .igc-date-nav-head>strong{font-size:13px}
+.igc.igc-compact-overview .igc-date-nav-actions{display:flex;gap:7px;align-items:center}
+.igc.igc-compact-overview .igc-today-link,.igc.igc-compact-overview .igc-all-games-link{font-size:11px;padding:5px 7px;margin:0;white-space:nowrap}
+.igc.igc-compact-overview .igc-date-nav-days{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+.igc.igc-compact-overview .igc-day-choice{min-width:0;min-height:62px;padding:6px 2px!important;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;border-radius:9px}
+.igc.igc-compact-overview .igc-day-choice span{font-size:10px;letter-spacing:.04em}
+.igc.igc-compact-overview .igc-day-choice strong{font-size:18px;line-height:1.15}
+.igc.igc-compact-overview .igc-day-choice small{font-size:9px;white-space:nowrap}
+.igc.igc-compact-overview .igc-schedule-panel{padding:10px 12px;margin:8px 0}
+.igc.igc-compact-overview .igc-schedule-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.igc.igc-compact-overview .igc-schedule-count{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.igc.igc-compact-overview .igc-schedule-count strong{font-size:16px;letter-spacing:-.02em}
+.igc.igc-compact-overview .igc-schedule-count span{font-size:11px;color:var(--muted)}
+.igc.igc-compact-overview .igc-filter-toggle{cursor:pointer;flex:none;padding:7px 10px;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;color:var(--text);font-size:12px;font-weight:700}
+.igc.igc-compact-overview .igc-filter-toggle.has-filters{border-color:var(--accent);color:var(--accent)}
+.igc.igc-compact-overview .igc-filter-body[hidden],.igc.igc-compact-overview .igc-pagination[hidden]{display:none!important}
+.igc.igc-compact-overview .igc-filter-body{border-bottom:1px solid var(--border);margin:0 0 10px;padding:6px 0 12px}
+.igc.igc-compact-overview .igc-filters{gap:8px}
+.igc.igc-compact-overview .igc-games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.igc.igc-compact-overview .igc-game-compact{display:grid;grid-template-columns:minmax(65px,auto) minmax(0,1fr) 10px;align-items:center;gap:6px;padding:9px 10px!important;min-height:60px;border-radius:10px!important;transform:none!important;box-shadow:none!important}
+.igc.igc-compact-overview .igc-compact-status{font-size:10px;line-height:1.3;font-weight:800;letter-spacing:.025em;text-transform:uppercase;overflow-wrap:anywhere}
+.igc.igc-compact-overview .igc-compact-match{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-width:0}
+.igc.igc-compact-overview .igc-compact-team{display:flex;align-items:center;gap:5px;min-width:0}
+.igc.igc-compact-overview .igc-compact-team .igc-team-logo,.igc.igc-compact-overview .igc-compact-team .igc-logo-fallback{width:24px;height:24px;flex:0 0 24px}
+.igc.igc-compact-overview .igc-compact-team-name{font-size:12px;font-weight:750;white-space:nowrap}
+.igc.igc-compact-overview .igc-compact-score{font-size:18px;font-weight:850;line-height:1;font-variant-numeric:tabular-nums}
+.igc.igc-compact-overview .igc-compact-separator{font-size:11px;color:var(--muted)}
+.igc.igc-compact-overview .igc-compact-open{font-size:19px;color:var(--muted);line-height:1}
+@media(max-width:780px){
+ .igc.igc-compact-overview .igc-games{grid-template-columns:1fr;gap:5px}
+ .igc.igc-compact-overview .igc-game-compact{grid-template-columns:minmax(72px,auto) minmax(0,1fr) 10px;min-height:54px;padding:7px 9px!important}
+ .igc.igc-compact-overview .igc-compact-match{gap:5px}
+ .igc.igc-compact-overview .igc-compact-team .igc-team-logo,.igc.igc-compact-overview .igc-compact-team .igc-logo-fallback{width:22px;height:22px;flex-basis:22px}
+ .igc.igc-compact-overview .igc-compact-score{font-size:17px}
+ .igc.igc-compact-overview .igc-compact-status{font-size:9px}
+ .igc.igc-compact-overview .igc-filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .igc.igc-compact-overview .igc-filters label{grid-column:span 1}
+}
+@media(max-width:370px){
+ .igc.igc-compact-overview .igc-compact-team-name{font-size:10px}
+ .igc.igc-compact-overview .igc-compact-team .igc-team-logo,.igc.igc-compact-overview .igc-compact-team .igc-logo-fallback{width:18px;height:18px;flex-basis:18px}
+ .igc.igc-compact-overview .igc-game-compact{grid-template-columns:65px minmax(0,1fr) 8px;gap:3px}
+ .igc.igc-compact-overview .igc-schedule-count strong{font-size:14px}
+}

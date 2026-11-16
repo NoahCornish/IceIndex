@@ -51,6 +51,8 @@
     ready: false,
 
     page: "overview",
+    standingsTab: "leaders",
+    leadersMetric: "pts",
 
     query: "",
     dbSeason: "all",
@@ -3359,13 +3361,97 @@
     `;
   }
 
+
+  /* ==========================================================
+     v0.13.0 — STANDINGS & LEADERS
+     Standings will be connected when a verified team feed exists.
+     Leaders use the existing current-season skater dataset.
+     ========================================================== */
+  const LEADER_METRICS = [
+    ["pts","Points","PTS"], ["g","Goals","G"],
+    ["a","Assists","A"], ["rate","Points / Game","P/GP"],
+    ["ppp","Power Play Points","PPP"], ["ppa","Power Play Assists","PPA"],
+    ["ppg","Power Play Goals","PPG"], ["pim","Penalty Minutes","PIM"],
+    ["shots","Shots","SOG"], ["shooting","Shooting %","SH%"]
+  ];
+
+  function leaderRows() {
+    // Prefer season-combined records, avoiding double-counting players traded
+    // during the current season. When multiple records remain, prefer a TOT
+    // row, otherwise the row with the greatest GP (not a sum of overlaps).
+    const current = S.current.filter(r => r && r.key &&
+      competitionOf(r) === "regular" &&
+      (!currentSeason() || r.season === currentSeason()));
+    const grouped = new Map();
+    for (const row of current) {
+      const key = String(row.key);
+      const previous = grouped.get(key);
+      const total = r => /^(tot|total|all teams|combined|multiple teams)$/i.test(String(r.team || "").trim());
+      if (!previous || (total(row) && !total(previous)) ||
+          (total(row) === total(previous) && Number(row.gp || 0) > Number(previous.gp || 0))) {
+        grouped.set(key,row);
+      }
+    }
+    return [...grouped.values()];
+  }
+
+  function leaderValue(r, metric) {
+    const n = field => r[field] === null || r[field] === undefined || r[field] === "" ? null : Number(r[field]);
+    if (metric === "rate") return n("gp") > 0 && n("pts") !== null ? n("pts") / n("gp") : null;
+    if (metric === "shooting") return n("shots") > 0 && n("g") !== null ? n("g") / n("shots") * 100 : null;
+    const value = n(metric);
+    return value !== null && Number.isFinite(value) ? value : null;
+  }
+
+  function renderStandingsLeaders() {
+    const tab = S.standingsTab;
+    const selected = LEADER_METRICS.find(m => m[0] === S.leadersMetric) || LEADER_METRICS[0];
+    const metric = selected[0];
+    const all = leaderRows();
+    // Every leaderboard requires a minimum of 10 games played.
+    const eligible = all.filter(r => Number(r.gp) >= 10)
+      .filter(r => Number.isFinite(leaderValue(r,metric)));
+    const leaders = eligible.sort((a,b) => leaderValue(b,metric)-leaderValue(a,metric) ||
+      String(a.name || "").localeCompare(String(b.name || ""))).slice(0,5);
+    const valueLabel = r => metric === "rate" ? dec(leaderValue(r,metric),2) :
+      metric === "shooting" ? dec(leaderValue(r,metric),1)+"%" : fmt(leaderValue(r,metric));
+    main.innerHTML = `
+      <section class="ice-sl-page">
+        <div class="ice-sl-title"><span class="eyebrow">OHL · ${esc(currentSeason())}</span><h1>Standings &amp; Leaders</h1></div>
+        <div class="ice-sl-tabs" role="group" aria-label="Standings and leaders">
+          <button type="button" data-sl-tab="standings" class="ice-sl-tab ${tab === "standings" ? "is-active" : ""}" aria-pressed="${tab === "standings"}">Standings</button>
+          <button type="button" data-sl-tab="leaders" class="ice-sl-tab ${tab === "leaders" ? "is-active" : ""}" aria-pressed="${tab === "leaders"}">Leaders</button>
+        </div>
+        ${tab === "standings" ? `
+          <div class="ice-sl-soon"><div class="ice-sl-soon-icon">🏆</div><h2>OHL Standings</h2><p>Coming Soon</p><small>Official league standings will appear here once a verified standings data source is connected.</small></div>
+        ` : `
+          <div class="ice-sl-section-head"><h2>${esc(selected[1])} Leaders</h2><span>TOP 5</span></div>
+          <div class="ice-sl-metrics" role="group" aria-label="Select leaderboard statistic">
+            ${LEADER_METRICS.map(([key,name,short]) => `<button type="button" title="${esc(name)}" aria-label="${esc(name)}" aria-pressed="${key===metric}" class="ice-sl-metric ${key===metric?"is-active":""}" data-sl-metric="${esc(key)}">${esc(short)}</button>`).join("")}
+          </div>
+          <div class="ice-sl-list">
+            ${leaders.length ? leaders.map((r,i) => `
+              <a href="#profile" data-person="${esc(r.key)}" class="ice-sl-player">
+                <span class="ice-sl-rank">${i+1}</span>
+                ${image(person(r.key) || r,"ice-sl-avatar")}
+                <span class="ice-sl-person"><strong>${esc(r.name || person(r.key)?.name || "Unknown Player")}</strong><small>${esc(r.team || person(r.key)?.team || "OHL")}</small></span>
+                <span class="ice-sl-value">${esc(valueLabel(r))}</span>
+                <span class="ice-sl-arrow" aria-hidden="true">›</span>
+              </a>`).join("") : `<div class="empty">No current-season records are available for this statistic.</div>`}
+          </div>
+          <p class="ice-sl-note">Eligibility: minimum 10 games played for every category.${metric === "shooting" ? " Shooting percentage is calculated as goals ÷ shots × 100." : ""}</p>
+          <p class="ice-sl-note">Regular-season skaters · current IceIndex data. Traded-player totals depend on the source's combined-season records.</p>
+        `}
+      </section>`;
+  }
+
   /* ==========================================================
      19. PAGE ROUTER
      ========================================================== */
 
   const VALID_PAGES = new Set([
     /* "home", */ "leagues", "overview", "whl-home", "qmjhl-home", "players", "statistics",
-    "profile", "game-logs", "game-centre", "compare", "draft", "teams",
+    "profile", "game-logs", "game-centre", "standings-leaders", "compare", "draft", "teams",
     "analytics", "goalies", "goalie-profile",
     "goalie-compare"
   ]);
@@ -3399,6 +3485,7 @@
       case "profile": renderProfile(); break;
       case "game-logs": window.IceIndexGameLogs?.render(main, S.people, S.profile); break;
       case "game-centre": window.IceIndexGameCentre?.render(main); break;
+      case "standings-leaders": renderStandingsLeaders(); break;
       case "compare": renderCompare(); break;
       case "draft": renderDraft(); break;
       case "teams": renderTeams(); break;
@@ -3493,6 +3580,11 @@
   document.addEventListener("click", event => {
     const target = event.target;
     if (!(target instanceof Element)) return;
+
+    const slTab = target.closest("[data-sl-tab]");
+    if (slTab) { S.standingsTab = slTab.dataset.slTab; renderStandingsLeaders(); return; }
+    const slMetric = target.closest("[data-sl-metric]");
+    if (slMetric) { S.leadersMetric = slMetric.dataset.slMetric; renderStandingsLeaders(); return; }
 
     const choice = target.closest("[data-picker-choice]");
     if (choice) {

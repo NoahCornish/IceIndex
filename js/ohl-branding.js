@@ -61,7 +61,7 @@
     [
       "Brampton Steelheads",
       "BRAM",
-      "18.jpg"
+      "18.png"
     ],
 
     [
@@ -109,7 +109,7 @@
     [
       "Niagara IceDogs",
       "NIAG",
-      "20.jpg"
+      "20.png"
     ],
 
     [
@@ -476,6 +476,12 @@
         .test(clean)
     ) {
       return "";
+    }
+
+    // Custom transparent logos are hosted inside IceIndex, not HockeyTech.
+    // All other OHL team logos continue using the original external source.
+    if (clean === "18.png" || clean === "20.png") {
+      return "assets/teams/ohl/" + clean;
     }
 
     return LOGO_BASE + clean;

@@ -4,7 +4,7 @@
 <head>
 <script src="js/maintenance.js?v=0.6.0" defer></script>
   <!-- ======================================================
-       ICEINDEX v0.12.0
+       ICEINDEX v0.13.0
        Hockey Data Intelligence
        Compact Multi-League Navigation
        ====================================================== -->
@@ -74,7 +74,8 @@
       document.addEventListener('DOMContentLoaded',function(){apply();document.getElementById('ice-theme-toggle')?.addEventListener('click',window.IceIndexTheme.toggle);setInterval(apply,30000);document.addEventListener('visibilitychange',function(){if(!document.hidden)apply();});});
     })();
   </script>
-  <link rel="stylesheet" href="css/game-centre.css?v=0.12.0-premium2">
+  <link rel="stylesheet" href="css/game-centre.css?v=0.13.0-compact">
+  <link rel="stylesheet" href="css/standings-leaders.css?v=0.13.0">
   <link id="ice-theme-stylesheet" rel="stylesheet" href="css/style.css?v=0.10.0-brand1">
   <script>window.IceIndexTheme.apply();</script>
 
@@ -138,8 +139,8 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js" defer></script>
   <script src="js/members.js?v=0.12.0" defer></script>
   <script src="js/game-export.js?v=0.12.0" defer></script>
-  <script src="js/game-centre.js?v=0.12.0-premium2" defer></script>
-  <script src="js/app.js?v=0.10.0-brand1" defer></script>
+  <script src="js/game-centre.js?v=0.13.0-compact" defer></script>
+  <script src="js/app.js?v=0.13.0-leaders" defer></script>
 
 </head>
 
@@ -313,6 +314,7 @@
 
         <!-- TOP-LEVEL GAME CENTRE AND PLAYER COMPARISON -->
         <a class="nav-link" href="#game-centre" data-page="game-centre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4M17 2v4M3 10h18"/></svg><span data-ice-league-label="game-centre">OHL Game Centre</span></a>
+        <a class="nav-link" href="#standings-leaders" data-page="standings-leaders"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 21h18M5 17V9h4v8M10 17V4h4v13M15 17v-6h4v6"/></svg><span>Standings &amp; Leaders</span></a>
 
         <a class="nav-link"
              href="#compare"

@@ -1,4 +1,4 @@
-# IceIndex Image Library — v0.12.1
+# IceIndex Image Library — v0.13.0
 # Run from the IceIndex repository root: source('scripts/collect_images.R')
 # Base R only. Team logos only; review rights before public redistribution.
 
@@ -8,6 +8,7 @@ CONFIG <- list(
   download_players = FALSE,
   download_teams = TRUE,
   overwrite = FALSE,
+  protected_team_codes = c('BRAM', 'NIAG'), # Preserve custom transparent logos; never fetch these teams
   max_file_mb = 5,
   delay_seconds = 0.3,
   missing_retry_days = 30, # Cache missing/invalid image responses for 30 days
@@ -153,6 +154,10 @@ run_collection <- function() {
   }
   if (CONFIG$download_teams) {
     for (i in seq_len(nrow(TEAMS))) {
+      if (TEAMS$code[i] %in% CONFIG$protected_team_codes) {
+        message('Protected custom team logo (download skipped): ', TEAMS$name[i])
+        next
+      }
       name <- TEAMS$filename[i]
       ext <- tolower(tools::file_ext(name))
       url <- paste0('https://assets.leaguestat.com/ohl/logos/',name)
