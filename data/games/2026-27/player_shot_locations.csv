@@ -14439,3 +14439,27 @@
 "2026-27","29206","8708","shot",84,183,"4","4:25","2","Wrist","Quality on net","17","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29206","9596","shot",50,160,"4","4:50","4","Backhand","Quality goal","17","Stepan Shurygin","9358","9105","Andrew Robinson","Max Brocklehurst","Andrew Robinson; Max Brocklehurst",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29206","9596","goal",50,160,"4","4:50",,,,"17",,"9358","9105","Andrew Robinson","Max Brocklehurst","Andrew Robinson; Max Brocklehurst",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9529","shot",532,163,"1","11:48","5","Default","Quality goal","2","Noah LaGambina","9412","9137","Alex Misiak","Nolan Buttar","Alex Misiak; Nolan Buttar",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9529","goal",532,163,"1","11:48",,,,"2",,"9412","9137","Alex Misiak","Nolan Buttar","Alex Misiak; Nolan Buttar",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9321","shot",64,159,"1","13:33","5","Default","Quality goal","5","Royden Smith","9516","8977","Brock Chitaroni","Chase Yanni","Brock Chitaroni; Chase Yanni",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9321","goal",64,159,"1","13:33",,,,"5",,"9516","8977","Brock Chitaroni","Chase Yanni","Brock Chitaroni; Chase Yanni",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9500","shot",384,153,"1","16:18","5","Default","Non quality goal","2","Noah LaGambina","9228",,"Cole Zurawski",,"Cole Zurawski",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9500","goal",384,153,"1","16:18",,,,"2",,"9228",,"Cole Zurawski",,"Cole Zurawski",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","8820","shot",394,180,"1","17:08","5","Default","Non quality goal","2","Noah LaGambina","9158","9327","Alex McLean","Landon Wright","Alex McLean; Landon Wright",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","8820","goal",394,180,"1","17:08",,,,"2",,"9158","9327","Alex McLean","Landon Wright","Alex McLean; Landon Wright",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","8976","shot",87,141,"1","17:46","5","Default","Quality goal","5","Royden Smith","9321",,"Spencer Bowes",,"Spencer Bowes",,"PP",,,TRUE,FALSE,FALSE,,TRUE
+"2026-27","29207","8976","goal",87,141,"1","17:46",,,,"5",,"9321",,"Spencer Bowes",,"Spencer Bowes",1,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
+"2026-27","29207","9498","shot",453,217,"1","9:23","5","Default","Non quality goal","2","Noah LaGambina","9481","9137","Gavin Christie","Nolan Buttar","Gavin Christie; Nolan Buttar",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9498","goal",453,217,"1","9:23",,,,"2",,"9481","9137","Gavin Christie","Nolan Buttar","Gavin Christie; Nolan Buttar",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9498","shot",520,208,"2","1:14","5","Default","Non quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9951","shot",495,228,"2","12:26","5","Default","Non quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9327","shot",438,111,"2","12:39","5","Default","Non quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9951","shot",477,89,"2","12:50","5","Default","Quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9537","shot",388,113,"2","13:22","5","Default","Quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9228","shot",507,123,"2","13:25","5","Default","Quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9412","shot",413,252,"2","15:20","5","Default","Non quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9498","shot",481,164,"2","16:05","5","Default","Quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9158","shot",467,273,"2","16:26","5","Default","Non quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9327","shot",541,123,"2","18:05","5","Default","Quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9158","shot",490,282,"2","2:14","5","Default","Non quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29207","9307","shot",341,98,"2","8:05","5","Default","Non quality on net","2","Noah LaGambina",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
