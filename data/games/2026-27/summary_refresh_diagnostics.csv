@@ -1,5 +1,5 @@
 "game_id","action","old_score","new_score","old_complete","new_complete","old_richness","new_richness"
-"29207","saved","0-0","2-4",FALSE,FALSE,22,48
-"29208","saved","0-0","0-0",FALSE,FALSE,16,16
+"29207","saved","2-4","2-6",FALSE,TRUE,48,54
+"29208","saved","0-0","0-0",FALSE,FALSE,16,22
 "29209","saved","0-0","0-0",FALSE,FALSE,16,16
 "29210","saved","0-0","0-0",FALSE,FALSE,16,16
