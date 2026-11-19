@@ -208,7 +208,48 @@
           "person_id": "8047"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Todd",
+          "last_name": "Guthrie",
+          "jersey_number": "0",
+          "person_id": "5772"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Remy",
+          "last_name": "Pieper",
+          "jersey_number": "0",
+          "person_id": "9941"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Jason",
+          "last_name": "Kivinen",
+          "jersey_number": "0",
+          "person_id": "5845"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Remy",
+          "last_name": "Pieper",
+          "jersey_number": "0",
+          "person_id": "9941"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Matt",
+          "last_name": "Davie",
+          "jersey_number": "0",
+          "person_id": "9454"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
