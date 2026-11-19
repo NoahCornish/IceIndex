@@ -700,7 +700,38 @@
               "last_name": "Hankai"
             }
           ],
-          "minus": []
+          "minus": [
+            {
+              "player_id": "9778",
+              "jersey_number": "13",
+              "first_name": "Abe",
+              "last_name": "Barnett"
+            },
+            {
+              "player_id": "9552",
+              "jersey_number": "16",
+              "first_name": "Kaden",
+              "last_name": "McGregor"
+            },
+            {
+              "player_id": "9782",
+              "jersey_number": "22",
+              "first_name": "Noah",
+              "last_name": "Lapointe"
+            },
+            {
+              "player_id": "9774",
+              "jersey_number": "23",
+              "first_name": "Adam",
+              "last_name": "Nemec"
+            },
+            {
+              "player_id": "9779",
+              "jersey_number": "26",
+              "first_name": "Jet",
+              "last_name": "Kwajah"
+            }
+          ]
         },
         {
           "event": "goal",
@@ -777,7 +808,38 @@
               "last_name": "Perreault"
             }
           ],
-          "minus": []
+          "minus": [
+            {
+              "player_id": "9579",
+              "jersey_number": "19",
+              "first_name": "Aleksandr",
+              "last_name": "Sementsov"
+            },
+            {
+              "player_id": "9141",
+              "jersey_number": "20",
+              "first_name": "Camden",
+              "last_name": "McCuaig"
+            },
+            {
+              "player_id": "9780",
+              "jersey_number": "53",
+              "first_name": "Cullen",
+              "last_name": "McCrate"
+            },
+            {
+              "player_id": "9769",
+              "jersey_number": "66",
+              "first_name": "Aiden",
+              "last_name": "Kelly"
+            },
+            {
+              "player_id": "9478",
+              "jersey_number": "71",
+              "first_name": "David",
+              "last_name": "Buchman"
+            }
+          ]
         }
       ],
       "goalies": {
@@ -1511,7 +1573,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -2,
+            "plusminus": -3,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -1538,7 +1600,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "1",
             "faceoff_attempts": "10",
@@ -1565,7 +1627,7 @@
             "rookie": "1",
             "goals": 0,
             "assists": 0,
-            "plusminus": 0,
+            "plusminus": -1,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -1592,7 +1654,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": 0,
+            "plusminus": -1,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "3",
@@ -1646,7 +1708,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -1673,7 +1735,7 @@
             "rookie": "1",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -1700,7 +1762,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -2,
+            "plusminus": -3,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -1754,7 +1816,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": 0,
+            "plusminus": -1,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -1808,7 +1870,7 @@
             "rookie": "1",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "3",
             "faceoff_attempts": "9",
@@ -1835,7 +1897,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": 0,
+            "plusminus": -1,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
