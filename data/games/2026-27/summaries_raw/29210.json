@@ -671,6 +671,142 @@
             "first_name": "Dmitri",
             "last_name": "Toporowski"
           }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "19:54",
+          "team_id": "10",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "101",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 0,
+          "minutes_formatted": "0:00",
+          "penalty_class_id": "5",
+          "penalty_class": "Misconduct",
+          "lang_penalty_description": "Misc-USC",
+          "s": 1194,
+          "player_penalized_info": {
+            "player_id": "9161",
+            "jersey_number": "21",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Kaden",
+            "last_name": "Schneider"
+          },
+          "player_served_info": {
+            "player_id": "9161",
+            "jersey_number": "21",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Kaden",
+            "last_name": "Schneider"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "19:54",
+          "team_id": "10",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "29",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Roughing",
+          "s": 1194,
+          "player_penalized_info": {
+            "player_id": "9161",
+            "jersey_number": "21",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Kaden",
+            "last_name": "Schneider"
+          },
+          "player_served_info": {
+            "player_id": "9161",
+            "jersey_number": "21",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Kaden",
+            "last_name": "Schneider"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "19:54",
+          "team_id": "12",
+          "home": "1",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "101",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 0,
+          "minutes_formatted": "0:00",
+          "penalty_class_id": "5",
+          "penalty_class": "Misconduct",
+          "lang_penalty_description": "Misc-USC",
+          "s": 1194,
+          "player_penalized_info": {
+            "player_id": "9685",
+            "jersey_number": "71",
+            "team_id": "12",
+            "team_code": "SBY",
+            "first_name": "Adam",
+            "last_name": "Nemec"
+          },
+          "player_served_info": {
+            "player_id": "9685",
+            "jersey_number": "71",
+            "team_id": "12",
+            "team_code": "SBY",
+            "first_name": "Adam",
+            "last_name": "Nemec"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "19:54",
+          "team_id": "12",
+          "home": "1",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "29",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Roughing",
+          "s": 1194,
+          "player_penalized_info": {
+            "player_id": "9685",
+            "jersey_number": "71",
+            "team_id": "12",
+            "team_code": "SBY",
+            "first_name": "Adam",
+            "last_name": "Nemec"
+          },
+          "player_served_info": {
+            "player_id": "9685",
+            "jersey_number": "71",
+            "team_id": "12",
+            "team_code": "SBY",
+            "first_name": "Adam",
+            "last_name": "Nemec"
+          }
         }
       ],
       "goals": [
@@ -1416,7 +1552,7 @@
           "event": "goal",
           "x_location": "81",
           "y_location": "207",
-          "time": "8:38",
+          "time": "8:41",
           "team_id": "10",
           "home": "0",
           "period_id": "3",
@@ -1430,7 +1566,7 @@
           "game_winning": "0",
           "game_tieing": "0",
           "scorer_goal_num": "11",
-          "s": 518,
+          "s": 521,
           "goal_scorer": {
             "player_id": "9921",
             "jersey_number": "23",
@@ -1879,7 +2015,7 @@
             "goals": 1,
             "assists": 1,
             "plusminus": 0,
-            "pim": 2,
+            "pim": 4,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
             "hits": "0",
@@ -2361,7 +2497,7 @@
             "goals": 0,
             "assists": 0,
             "plusminus": -1,
-            "pim": 4,
+            "pim": 6,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
             "hits": "0",
@@ -2742,12 +2878,12 @@
         "home": 5
       },
       "pimTotal": {
-        "visitor": 12,
-        "home": 10
+        "visitor": 14,
+        "home": 12
       },
       "infCount": {
-        "visitor": 6,
-        "home": 5
+        "visitor": 8,
+        "home": 7
       },
       "shotsByPeriod": {
         "visitor": {
