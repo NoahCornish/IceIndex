@@ -244,18 +244,18 @@
         {
           "official_type_id": "9",
           "description": "Official Scorer",
-          "first_name": "Wayne",
-          "last_name": "Briggs-Jude",
-          "jersey_number": "0",
-          "person_id": "5866"
-        },
-        {
-          "official_type_id": "10",
-          "description": "Video Goal Judge",
           "first_name": "Curtis",
           "last_name": "Pirson",
           "jersey_number": "0",
           "person_id": "7662"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Dave",
+          "last_name": "Taylor",
+          "jersey_number": "0",
+          "person_id": "6101"
         }
       ],
       "homeShootout": 0,
