@@ -331,7 +331,7 @@
           "home": "0",
           "period_id": "2",
           "period": "2nd",
-          "offence": "21",
+          "offence": "92",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "0",
@@ -339,7 +339,7 @@
           "minutes_formatted": "2:00",
           "penalty_class_id": "1",
           "penalty_class": "Minor",
-          "lang_penalty_description": "Interference",
+          "lang_penalty_description": "Diving",
           "s": 182,
           "player_penalized_info": {
             "player_id": "9673",
@@ -365,7 +365,7 @@
           "home": "1",
           "period_id": "2",
           "period": "2nd",
-          "offence": "92",
+          "offence": "21",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "0",
@@ -373,7 +373,7 @@
           "minutes_formatted": "2:00",
           "penalty_class_id": "1",
           "penalty_class": "Minor",
-          "lang_penalty_description": "Diving",
+          "lang_penalty_description": "Interference",
           "s": 182,
           "player_penalized_info": {
             "player_id": "9305",
@@ -1192,8 +1192,8 @@
             "assists": 0,
             "plusminus": "+1",
             "pim": 0,
-            "faceoff_wins": "3",
-            "faceoff_attempts": "10",
+            "faceoff_wins": "4",
+            "faceoff_attempts": "11",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1810,7 +1810,7 @@
             "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "8",
-            "faceoff_attempts": "13",
+            "faceoff_attempts": "14",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2212,12 +2212,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 44,
+          "att": 45,
           "won": 27
         },
         "home": {
-          "att": 44,
-          "won": 17
+          "att": 45,
+          "won": 18
         }
       },
       "totalHits": {

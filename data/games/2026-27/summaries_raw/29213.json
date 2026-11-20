@@ -47,7 +47,7 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "2",
-        "game_clock": "00:00:50",
+        "game_clock": "00:00:00",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://wfcucentre.evenue.net/event/S27/G12",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-20 01:34:03",
+        "last_modified": "2026-11-20 01:36:21",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153422",
@@ -101,7 +101,7 @@
       "game_date": "Thursday, November 19, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (0:50 remaining in 2nd)",
+      "status_value": "In Progress (0:00 remaining in 2nd)",
       "periods": {
         "1": {
           "id": "1",
@@ -337,6 +337,40 @@
             "team_code": "WSR",
             "first_name": "Conor",
             "last_name": "Walton"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "19:02",
+          "team_id": "16",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "30",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "1",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Slashing",
+          "s": 1142,
+          "player_penalized_info": {
+            "player_id": "9576",
+            "jersey_number": "91",
+            "team_id": "16",
+            "team_code": "SOO",
+            "first_name": "Noah",
+            "last_name": "Laus"
+          },
+          "player_served_info": {
+            "player_id": "9576",
+            "jersey_number": "91",
+            "team_id": "16",
+            "team_code": "SOO",
+            "first_name": "Noah",
+            "last_name": "Laus"
           }
         }
       ],
@@ -676,10 +710,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "2nd",
-            "time_end": "19:10",
+            "time_end": "20:00",
             "saves": "17",
-            "secs": "2350",
-            "seconds": "2350",
+            "secs": "2400",
+            "seconds": "2400",
             "goals_against": "3",
             "win": "0",
             "loss": "0",
@@ -690,7 +724,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "39:10",
+            "secs_mmss": "40:00",
             "shots_against": 20
           }
         ],
@@ -703,10 +737,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "2nd",
-            "time_end": "19:10",
-            "saves": "16",
-            "secs": "2350",
-            "seconds": "2350",
+            "time_end": "20:00",
+            "saves": "17",
+            "secs": "2400",
+            "seconds": "2400",
             "goals_against": "0",
             "win": "0",
             "loss": "0",
@@ -717,8 +751,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "39:10",
-            "shots_against": 16
+            "secs_mmss": "40:00",
+            "shots_against": 17
           }
         ]
       },
@@ -734,11 +768,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 2350,
-            "time": "39:10",
-            "shots_against": 16,
+            "seconds": 2400,
+            "time": "40:00",
+            "shots_against": 17,
             "goals_against": 0,
-            "saves": 16,
+            "saves": 17,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -1135,8 +1169,8 @@
             "assists": 1,
             "plusminus": "+3",
             "pim": 0,
-            "faceoff_wins": "2",
-            "faceoff_attempts": "7",
+            "faceoff_wins": "3",
+            "faceoff_attempts": "8",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1270,8 +1304,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 2350,
-            "time": "39:10",
+            "seconds": 2400,
+            "time": "40:00",
             "shots_against": 20,
             "goals_against": 3,
             "saves": 17,
@@ -1541,7 +1575,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "1",
+            "shots": "2",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -1564,7 +1598,7 @@
             "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "2",
-            "faceoff_attempts": "4",
+            "faceoff_attempts": "5",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1862,17 +1896,17 @@
         "home": 9
       },
       "pimTotal": {
-        "visitor": 2,
+        "visitor": 4,
         "home": 2
       },
       "infCount": {
-        "visitor": 1,
+        "visitor": 2,
         "home": 1
       },
       "shotsByPeriod": {
         "visitor": {
           "1": 9,
-          "2": 7
+          "2": 8
         },
         "home": {
           "1": 11,
@@ -1912,12 +1946,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 34,
+          "att": 35,
           "won": 23
         },
         "home": {
-          "att": 34,
-          "won": 11
+          "att": 35,
+          "won": 12
         }
       },
       "totalHits": {
@@ -1929,7 +1963,7 @@
         "home": 3
       },
       "totalShots": {
-        "visitor": 16,
+        "visitor": 17,
         "home": 20
       },
       "totalShotsOn": {
