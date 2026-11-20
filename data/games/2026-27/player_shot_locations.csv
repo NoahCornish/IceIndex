@@ -14767,6 +14767,14 @@
 "2026-27","29211","9805","shot",63,134,"3","1:10","1","Snap","Quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9673","shot",485,282,"3","1:45","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9580","shot",56,209,"3","11:48","1","Snap","Non quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9534","shot",91,88,"3","12:15","1","Snap","Quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9662","shot",430,234,"3","13:10","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9578","shot",71,193,"3","14:27","1","Snap","Quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9844","shot",201,61,"3","15:16","1","Snap","Non quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9510","shot",453,183,"3","18:34","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9147","shot",458,241,"3","19:15","2","Wrist","Non quality goal","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9147","goal",458,241,"3","19:15",,,,"13",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9534","shot",154,59,"3","19:34","1","Snap","Non quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9673","shot",489,129,"3","2:11","1","Snap","Quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9147","shot",514,150,"3","2:15","1","Snap","Quality goal","13","Hagan Bach","9499",,"Josh Bonnyman",,"Josh Bonnyman",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9147","goal",514,150,"3","2:15",,,,"13",,"9499",,"Josh Bonnyman",,"Josh Bonnyman",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
@@ -14845,6 +14853,7 @@
 "2026-27","29212","9142","shot",466,203,"3","17:07","5","Default","Quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9461","shot",548,181,"3","18:45","5","Default","Non quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9142","shot",468,39,"3","19:06","5","Default","Non quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9385","shot",489,256,"3","19:28","5","Default","Non quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9501","shot",180,85,"3","3:09","5","Default","Non quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9810","shot",65,67,"3","4:00","5","Default","Non quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9142","shot",507,177,"3","4:50","5","Default","Quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -14898,6 +14907,11 @@
 "2026-27","29213","9575","shot",483,84,"3","11:02","2","Wrist","Quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9221","shot",501,51,"3","11:59","2","Wrist","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9576","shot",469,38,"3","13:07","2","Wrist","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","8708","shot",238,274,"3","14:37","2","Wrist","Non quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9792","shot",141,154,"3","15:38","2","Wrist","Quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","8900","shot",423,73,"3","15:59","2","Wrist","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9787","shot",56,150,"3","16:54","6","Tip","Quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9596","shot",358,27,"3","17:50","2","Wrist","Non quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9574","shot",543,160,"3","3:57","6","Tip","Quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9728","shot",379,81,"3","3:59","2","Wrist","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9599","shot",143,142,"3","4:25","2","Wrist","Quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
