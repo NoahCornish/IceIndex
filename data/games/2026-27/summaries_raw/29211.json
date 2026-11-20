@@ -47,11 +47,11 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "3",
-        "game_clock": "00:00:26",
-        "status": "2",
+        "game_clock": "00:00:00",
+        "status": "4",
         "started": "1",
         "pending_final": "0",
-        "final": "0",
+        "final": "1",
         "home_goal_count": "2",
         "visiting_goal_count": "6",
         "home_goals_actual": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://barriecolts.ticketpro.ca/en/pages/BarrieColts_Games",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-20 02:40:26",
+        "last_modified": "2026-11-20 02:44:28",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153986",
@@ -100,8 +100,8 @@
       "game_ident": "29211",
       "game_date": "Thursday, November 19, 2026",
       "game_length": "2:24",
-      "status_title": "Game Status",
-      "status_value": "In Progress (2:24 remaining in 3rd)",
+      "status_title": "End",
+      "status_value": "Final",
       "periods": {
         "1": {
           "id": "1",
@@ -244,7 +244,56 @@
           "person_id": "6304"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Mike",
+          "last_name": "Browning",
+          "jersey_number": "0",
+          "person_id": "7719"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Alyssa",
+          "last_name": "Mallion",
+          "jersey_number": "0",
+          "person_id": "8099"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Julianne",
+          "last_name": "Bouwhuis",
+          "jersey_number": "0",
+          "person_id": "7665"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Zoe",
+          "last_name": "Leisk",
+          "jersey_number": "0",
+          "person_id": "8758"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Kyle",
+          "last_name": "Martin",
+          "jersey_number": "0",
+          "person_id": "7693"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Mike",
+          "last_name": "Robinson",
+          "jersey_number": "0",
+          "person_id": "8414"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
@@ -1524,12 +1573,12 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "3rd",
-            "time_end": "19:34",
+            "time_end": "20:00",
             "saves": "22",
-            "secs": "3574",
-            "seconds": "3574",
+            "secs": "3600",
+            "seconds": "3600",
             "goals_against": "2",
-            "win": "0",
+            "win": "1",
             "loss": "0",
             "shootout_loss": "0",
             "ot_loss": "0",
@@ -1538,7 +1587,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "59:34",
+            "secs_mmss": "60:00",
             "shots_against": 24
           }
         ],
@@ -1551,13 +1600,13 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "3rd",
-            "time_end": "19:34",
+            "time_end": "20:00",
             "saves": "44",
-            "secs": "3574",
-            "seconds": "3574",
+            "secs": "3600",
+            "seconds": "3600",
             "goals_against": "6",
             "win": "0",
-            "loss": "0",
+            "loss": "1",
             "shootout_loss": "0",
             "ot_loss": "0",
             "tie": "0",
@@ -1565,7 +1614,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "1",
-            "secs_mmss": "59:34",
+            "secs_mmss": "60:00",
             "shots_against": 50
           }
         ]
@@ -1582,8 +1631,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "1",
-            "seconds": 3574,
-            "time": "59:34",
+            "seconds": 3600,
+            "time": "60:00",
             "shots_against": 50,
             "goals_against": 6,
             "saves": 44,
@@ -2140,8 +2189,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 3574,
-            "time": "59:34",
+            "seconds": 3600,
+            "time": "60:00",
             "shots_against": 24,
             "goals_against": 2,
             "saves": 22,
