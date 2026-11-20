@@ -14708,20 +14708,51 @@
 "2026-27","29210","9681","shot",511,96,"3","9:10","5","Default","Quality on net","10","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9502","shot",254,37,"1","1:39","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9503","shot",540,117,"1","1:50","1","Snap","Quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9147","shot",513,222,"1","11:00","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9534","shot",162,57,"1","11:29","2","Wrist","Non quality goal","7","Trenten Bennett","8800","9037","Carter Lowe","Justin Handsor","Carter Lowe; Justin Handsor",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9534","goal",162,57,"1","11:29",,,,"7",,"8800","9037","Carter Lowe","Justin Handsor","Carter Lowe; Justin Handsor",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","8713","shot",57,189,"1","12:38","6","Tip","Non quality goal","7","Trenten Bennett","9150",,"Patrick Babin",,"Patrick Babin",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","8713","goal",57,189,"1","12:38",,,,"7",,"9150",,"Patrick Babin",,"Patrick Babin",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9305","shot",54,127,"1","14:33","1","Snap","Quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9499","shot",526,127,"1","15:00","1","Snap","Quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9805","shot",213,227,"1","3:27","1","Snap","Non quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29211","9846","shot",216,279,"1","5:00","1","Snap","Non quality on net","7","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9662","shot",531,129,"1","6:20","1","Snap","Quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9503","shot",535,208,"1","6:50","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9507","shot",544,112,"1","8:10","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29211","9600","shot",556,111,"1","8:31","1","Snap","Non quality on net","13","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","8753","shot",208,244,"1","0:40","5","Default","Non quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9501","shot",95,70,"1","0:46","4","Backhand","Non quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","8990","shot",455,212,"1","1:04","5","Default","Non quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9668","shot",92,165,"1","1:41","6","Tip","Quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9383","shot",513,225,"1","10:49","5","Default","Non quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","8958","shot",141,257,"1","11:38","5","Default","Non quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","10026","shot",149,51,"1","11:38","5","Default","Non quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9384","shot",538,170,"1","11:54","5","Default","Quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9118","shot",436,231,"1","14:00","5","Default","Non quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9118","shot",490,86,"1","14:17","5","Default","Quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9385","shot",513,216,"1","14:24","5","Default","Non quality goal","34","Connor Haffner","9118","8990","Dima Zhilkin","Jacob Cloutier","Dima Zhilkin; Jacob Cloutier",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9385","goal",513,216,"1","14:24",,,,"34",,"9118","8990","Dima Zhilkin","Jacob Cloutier","Dima Zhilkin; Jacob Cloutier",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9040","shot",68,166,"1","2:19","5","Default","Quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9337","shot",45,189,"1","2:26","5","Default","Non quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","9561","shot",207,288,"1","3:22","5","Default","Non quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29212","8971","shot",121,162,"1","4:35","5","Default","Quality on net","20","Stepan Shurygin",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9815","shot",527,141,"1","8:27","5","Default","Quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9142","shot",474,207,"1","8:56","5","Default","Quality on net","34","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9668","shot",57,143,"1","9:17","5","Default","Quality goal","20","Stepan Shurygin","8753",,"Callum Cheynowski",,"Callum Cheynowski",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29212","9668","goal",57,143,"1","9:17",,,,"20",,"8753",,"Callum Cheynowski",,"Callum Cheynowski",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9221","shot",479,146,"1","1:54","5","Default","Quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9108","shot",62,134,"1","10:42","4","Backhand","Quality goal","17","David Vermirovsky","9596","8708","John McLaughlin","Anthony Cristoforo","John McLaughlin; Anthony Cristoforo",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9108","goal",62,134,"1","10:42",,,,"17",,"9596","8708","John McLaughlin","Anthony Cristoforo","John McLaughlin; Anthony Cristoforo",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9792","shot",58,198,"1","11:39","2","Wrist","Non quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9105","shot",63,137,"1","12:09","2","Wrist","Quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9575","shot",491,30,"1","12:16","2","Wrist","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9596","shot",48,171,"1","12:52","2","Wrist","Quality goal","17","David Vermirovsky","8708","9597","Anthony Cristoforo","Jonathan Brown","Anthony Cristoforo; Jonathan Brown",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9596","goal",48,171,"1","12:52",,,,"17",,"8708","9597","Anthony Cristoforo","Jonathan Brown","Anthony Cristoforo; Jonathan Brown",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9575","shot",506,220,"1","2:14","1","Snap","Quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9572","shot",444,226,"1","2:20","1","Snap","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9971","shot",455,78,"1","3:10","2","Wrist","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9596","shot",116,204,"1","3:48","2","Wrist","Quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9764","shot",105,212,"1","4:54","2","Wrist","Quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29213","9596","shot",64,188,"1","6:29","2","Wrist","Quality on net","17","David Vermirovsky",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29213","9017","shot",487,228,"1","7:38","2","Wrist","Non quality on net","16","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
