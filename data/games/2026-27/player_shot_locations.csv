@@ -15609,16 +15609,16 @@
 "2026-27","29226","8963","shot",510,111,"1","12:41","5","Default","Quality goal","9","Arvin Jaswal","9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8963","goal",510,111,"1","12:41",,,,"9",,"9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8920","shot",59,193,"1","13:37","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9586","shot",525,111,"1","13:47","5","Default","Quality goal","9","Arvin Jaswal","8968",,"Joshua Avery",,"Joshua Avery",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9586","goal",525,111,"1","13:47",,,,"9",,"8968",,"Joshua Avery",,"Joshua Avery",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9884","shot",129,84,"1","14:27","5","Default","Quality goal","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9884","goal",129,84,"1","14:27",,,,"14",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9586","shot",525,111,"1","13:47","5","Default","Quality goal","9","Arvin Jaswal","9160",,"Carter Stevens",,"Carter Stevens",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9586","goal",525,111,"1","13:47",,,,"9",,"9160",,"Carter Stevens",,"Carter Stevens",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9884","shot",129,84,"1","14:27","5","Default","Quality goal","14","Zach Jovanovski","9437",,"Cody Wood",,"Cody Wood",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9884","goal",129,84,"1","14:27",,,,"14",,"9437",,"Cody Wood",,"Cody Wood",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","9437","shot",188,76,"1","15:18","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8920","shot",59,117,"1","15:44","5","Default","Quality goal","14","Zach Jovanovski","8991","9322","Carson Harmer","Jonathan Kapageridis","Carson Harmer; Jonathan Kapageridis",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8920","goal",59,117,"1","15:44",,,,"14",,"8991","9322","Carson Harmer","Jonathan Kapageridis","Carson Harmer; Jonathan Kapageridis",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","10036","shot",405,57,"1","17:30","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8991","shot",70,119,"1","18:15","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","9333","shot",92,231,"1","18:15","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8991","shot",70,119,"1","18:15","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8932","shot",522,136,"1","19:28","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8792","shot",401,145,"1","19:33","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8991","shot",123,243,"1","19:54","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -15633,3 +15633,5 @@
 "2026-27","29226","9656","shot",488,159,"1","7:39","5","Default","Quality goal","9","Arvin Jaswal","8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","9656","goal",488,159,"1","7:39",,,,"9",,"8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8999","shot",539,181,"1","9:22","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9586","shot",491,221,"2","1:24","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8932","shot",435,248,"2","3:54","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
