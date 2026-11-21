@@ -22,9 +22,9 @@
         "type_id": "",
         "if_necessary": "0",
         "quick_score": "0",
-        "mvp1": "",
-        "mvp2": "",
-        "mvp3": "",
+        "mvp1": "9656",
+        "mvp2": "8963",
+        "mvp3": "9884",
         "featured_player_id": "",
         "date_played": "2026-11-21",
         "date_tbd": "0",
@@ -32,7 +32,7 @@
         "time_tbd": "0",
         "timezone": "America/Toronto",
         "start_time": "16:08:00",
-        "end_time": "",
+        "end_time": "18:36:00",
         "forfeit": "0",
         "shootout": "0",
         "shootout_first_shooter_home": "0",
@@ -47,7 +47,7 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "3",
-        "game_clock": "00:00:18",
+        "game_clock": "00:00:00",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://tickets.guelphstorm.com",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-21 23:34:13",
+        "last_modified": "2026-11-21 23:39:54",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153571",
@@ -87,10 +87,10 @@
         "uses_spalk_rc": "",
         "tournament_id": "",
         "start_time_without_seconds": "16:08",
-        "end_time_without_seconds": "",
+        "end_time_without_seconds": "18:36",
         "12_hour_start_time_without_seconds": "4:08 pm",
-        "12_hour_end_time_without_seconds": "",
-        "length": "",
+        "12_hour_end_time_without_seconds": "6:36 pm",
+        "length": "2:28",
         "timezone_short": "EST"
       },
       "txt_title": "GAME SUMMARY",
@@ -99,9 +99,9 @@
       "txt_shots": "Shots",
       "game_ident": "29226",
       "game_date": "Saturday, November 21, 2026",
-      "game_length": "",
+      "game_length": "2:28",
       "status_title": "Game Status",
-      "status_value": "In Progress (0:18 remaining in 3rd)",
+      "status_value": "In Progress (2:28 remaining in 3rd)",
       "periods": {
         "1": {
           "id": "1",
@@ -183,9 +183,27 @@
       "mvp_type": 1,
       "shootoutDetail": [],
       "mvps": [
-        null,
-        null,
-        null
+        {
+          "player_id": "9656",
+          "first_name": "Vladimir",
+          "last_name": "Dravecky",
+          "jersey_number": "29",
+          "home": 1
+        },
+        {
+          "player_id": "8963",
+          "first_name": "Ryan",
+          "last_name": "Roobroeck",
+          "jersey_number": "25",
+          "home": 1
+        },
+        {
+          "player_id": "9884",
+          "first_name": "Thomas",
+          "last_name": "Zocco",
+          "jersey_number": "11",
+          "home": 0
+        }
       ],
       "venue": "Sleeman Centre",
       "referee1": "Drew Jackson (21)",
@@ -1568,10 +1586,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "3rd",
-            "time_end": "19:42",
+            "time_end": "20:00",
             "saves": "20",
-            "secs": "3582",
-            "seconds": "3582",
+            "secs": "3600",
+            "seconds": "3600",
             "goals_against": "2",
             "win": "0",
             "loss": "0",
@@ -1582,7 +1600,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "1",
-            "secs_mmss": "59:42",
+            "secs_mmss": "60:00",
             "shots_against": 22
           }
         ]
@@ -1599,8 +1617,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 3582,
-            "time": "59:42",
+            "seconds": 3600,
+            "time": "60:00",
             "shots_against": 22,
             "goals_against": 2,
             "saves": 20,
@@ -2082,7 +2100,7 @@
             "plusminus": "+1",
             "pim": 0,
             "faceoff_wins": "15",
-            "faceoff_attempts": "22",
+            "faceoff_attempts": "23",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2374,8 +2392,8 @@
             "assists": 1,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "12",
-            "faceoff_attempts": "23",
+            "faceoff_wins": "13",
+            "faceoff_attempts": "24",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2752,11 +2770,11 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 59,
-          "won": 27
+          "att": 60,
+          "won": 28
         },
         "home": {
-          "att": 59,
+          "att": 60,
           "won": 32
         }
       },
