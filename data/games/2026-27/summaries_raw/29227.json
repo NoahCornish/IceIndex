@@ -208,7 +208,16 @@
           "person_id": "9749"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Brian",
+          "last_name": "Thompson",
+          "jersey_number": "0",
+          "person_id": "7804"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
