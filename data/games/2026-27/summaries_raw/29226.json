@@ -47,12 +47,12 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "2",
-        "game_clock": "00:14:48",
+        "game_clock": "00:05:48",
         "status": "2",
         "started": "1",
         "pending_final": "0",
         "final": "0",
-        "home_goal_count": "3",
+        "home_goal_count": "4",
         "visiting_goal_count": "2",
         "home_goals_actual": "0",
         "visiting_goals_actual": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://tickets.guelphstorm.com",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-21 22:19:41",
+        "last_modified": "2026-11-21 22:33:20",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153571",
@@ -101,7 +101,7 @@
       "game_date": "Saturday, November 21, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (14:48 remaining in 2nd)",
+      "status_value": "In Progress (5:48 remaining in 2nd)",
       "periods": {
         "1": {
           "id": "1",
@@ -610,6 +610,40 @@
             "first_name": "Thomas",
             "last_name": "Zocco"
           }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "9:18",
+          "team_id": "14",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "17",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Hooking",
+          "s": 558,
+          "player_penalized_info": {
+            "player_id": "9044",
+            "jersey_number": "14",
+            "team_id": "14",
+            "team_code": "LDN",
+            "first_name": "Evan",
+            "last_name": "Van Gorp"
+          },
+          "player_served_info": {
+            "player_id": "9044",
+            "jersey_number": "14",
+            "team_id": "14",
+            "team_code": "LDN",
+            "first_name": "Evan",
+            "last_name": "Van Gorp"
+          }
         }
       ],
       "goals": [
@@ -1103,6 +1137,59 @@
             }
           ],
           "minus": []
+        },
+        {
+          "event": "goal",
+          "x_location": "169",
+          "y_location": "249",
+          "time": "9:50",
+          "team_id": "9",
+          "home": "1",
+          "period_id": "2",
+          "goal_type": "",
+          "location_set": "0",
+          "power_play": "0",
+          "empty_net": "0",
+          "penalty_shot": "0",
+          "short_handed": "0",
+          "insurance_goal": "1",
+          "game_winning": "0",
+          "game_tieing": "0",
+          "scorer_goal_num": "11",
+          "s": 590,
+          "goal_scorer": {
+            "player_id": "8964",
+            "jersey_number": "22",
+            "team_id": "9",
+            "team_code": "GUE",
+            "first_name": "Ethan",
+            "last_name": "Czata"
+          },
+          "assist1_player": {
+            "player_id": null,
+            "jersey_number": null,
+            "team_id": null,
+            "team_code": null,
+            "first_name": null,
+            "last_name": null
+          },
+          "assist2_player": {
+            "player_id": null,
+            "jersey_number": null,
+            "team_id": null,
+            "team_code": null,
+            "first_name": null,
+            "last_name": null
+          },
+          "plus": [
+            {
+              "player_id": "8964",
+              "jersey_number": "22",
+              "first_name": "Ethan",
+              "last_name": "Czata"
+            }
+          ],
+          "minus": []
         }
       ],
       "goalies": {
@@ -1115,11 +1202,11 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "2nd",
-            "time_end": "5:12",
-            "saves": "11",
-            "secs": "1512",
-            "seconds": "1512",
-            "goals_against": "3",
+            "time_end": "14:12",
+            "saves": "13",
+            "secs": "2052",
+            "seconds": "2052",
+            "goals_against": "4",
             "win": "0",
             "loss": "0",
             "shootout_loss": "0",
@@ -1129,8 +1216,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "25:12",
-            "shots_against": 14
+            "secs_mmss": "34:12",
+            "shots_against": 17
           }
         ],
         "home": [
@@ -1142,10 +1229,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "2nd",
-            "time_end": "5:12",
-            "saves": "9",
-            "secs": "1512",
-            "seconds": "1512",
+            "time_end": "14:12",
+            "saves": "12",
+            "secs": "2052",
+            "seconds": "2052",
             "goals_against": "2",
             "win": "0",
             "loss": "0",
@@ -1156,8 +1243,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "1",
-            "secs_mmss": "25:12",
-            "shots_against": 11
+            "secs_mmss": "34:12",
+            "shots_against": 14
           }
         ]
       },
@@ -1173,11 +1260,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 1512,
-            "time": "25:12",
-            "shots_against": 11,
+            "seconds": 2052,
+            "time": "34:12",
+            "shots_against": 14,
             "goals_against": 2,
-            "saves": 9,
+            "saves": 12,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -1250,8 +1337,8 @@
             "assists": 2,
             "plusminus": "+1",
             "pim": 0,
-            "faceoff_wins": "5",
-            "faceoff_attempts": "11",
+            "faceoff_wins": "6",
+            "faceoff_attempts": "12",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1390,7 +1477,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "1",
+            "shots": "2",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -1435,16 +1522,16 @@
             "position_str": "LW",
             "status": "A",
             "rookie": "0",
-            "goals": 0,
+            "goals": 1,
             "assists": 0,
-            "plusminus": 0,
+            "plusminus": "+1",
             "pim": 7,
             "faceoff_wins": "1",
             "faceoff_attempts": "1",
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
+            "shots": "1",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -1547,8 +1634,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "2",
-            "faceoff_attempts": "10",
+            "faceoff_wins": "3",
+            "faceoff_attempts": "12",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1633,7 +1720,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
+            "shots": "1",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -1655,8 +1742,8 @@
             "assists": 0,
             "plusminus": "+1",
             "pim": 0,
-            "faceoff_wins": "5",
-            "faceoff_attempts": "8",
+            "faceoff_wins": "7",
+            "faceoff_attempts": "11",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1709,11 +1796,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 1512,
-            "time": "25:12",
-            "shots_against": 14,
-            "goals_against": 3,
-            "saves": 11,
+            "seconds": 2052,
+            "time": "34:12",
+            "shots_against": 17,
+            "goals_against": 4,
+            "saves": 13,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -1764,7 +1851,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
+            "shots": "1",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -1787,7 +1874,7 @@
             "plusminus": "+1",
             "pim": 2,
             "faceoff_wins": "3",
-            "faceoff_attempts": "7",
+            "faceoff_attempts": "8",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1839,7 +1926,7 @@
             "goals": 0,
             "assists": 0,
             "plusminus": 0,
-            "pim": 0,
+            "pim": 2,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
             "hits": "0",
@@ -1948,12 +2035,12 @@
             "assists": 1,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "8",
-            "faceoff_attempts": "11",
+            "faceoff_wins": "9",
+            "faceoff_attempts": "14",
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "3",
+            "shots": "4",
             "shots_on": "2",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -2007,7 +2094,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
+            "shots": "1",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -2137,8 +2224,8 @@
             "assists": 0,
             "plusminus": -1,
             "pim": 0,
-            "faceoff_wins": "4",
-            "faceoff_attempts": "9",
+            "faceoff_wins": "5",
+            "faceoff_attempts": "11",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2286,11 +2373,11 @@
       },
       "powerPlayCount": {
         "visitor": 2,
-        "home": 1
+        "home": 2
       },
       "goalCount": {
         "visitor": 2,
-        "home": 3
+        "home": 4
       },
       "assistCount": {
         "visitor": 3,
@@ -2298,24 +2385,24 @@
       },
       "pointsCount": {
         "visitor": 5,
-        "home": 8
+        "home": 9
       },
       "pimTotal": {
-        "visitor": 14,
+        "visitor": 16,
         "home": 16
       },
       "infCount": {
-        "visitor": 5,
+        "visitor": 6,
         "home": 5
       },
       "shotsByPeriod": {
         "visitor": {
           "1": 11,
-          "2": 0
+          "2": 3
         },
         "home": {
           "1": 12,
-          "2": 2
+          "2": 5
         }
       },
       "penaltyshots": {
@@ -2324,12 +2411,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 32,
-          "won": 19
+          "att": 38,
+          "won": 21
         },
         "home": {
-          "att": 32,
-          "won": 13
+          "att": 38,
+          "won": 17
         }
       },
       "totalHits": {
@@ -2338,11 +2425,11 @@
       },
       "totalGoals": {
         "visitor": 2,
-        "home": 3
+        "home": 4
       },
       "totalShots": {
-        "visitor": 11,
-        "home": 14
+        "visitor": 14,
+        "home": 17
       },
       "totalShotsOn": {
         "visitor": 6,
@@ -2355,7 +2442,7 @@
         },
         "home": {
           "1": 3,
-          "2": 0
+          "2": 1
         }
       }
     }
