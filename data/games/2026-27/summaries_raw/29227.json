@@ -210,12 +210,52 @@
       ],
       "officialsOffIce": [
         {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Andy",
+          "last_name": "Randall",
+          "jersey_number": "0",
+          "person_id": "8397"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Jon",
+          "last_name": "Parsons",
+          "jersey_number": "0",
+          "person_id": "6221"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Murray",
+          "last_name": "Kerester",
+          "jersey_number": "0",
+          "person_id": "6245"
+        },
+        {
           "official_type_id": "8",
           "description": "Location Stats Scorer",
           "first_name": "Brian",
           "last_name": "Thompson",
           "jersey_number": "0",
           "person_id": "7804"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Stu",
+          "last_name": "Carter",
+          "jersey_number": "0",
+          "person_id": ""
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Ross",
+          "last_name": "Sisco",
+          "jersey_number": "0",
+          "person_id": "6155"
         }
       ],
       "homeShootout": 0,
