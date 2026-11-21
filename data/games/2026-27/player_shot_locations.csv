@@ -15606,8 +15606,19 @@
 "2026-27","29223","9658","shot",509,223,"3","5:49","5","Default","Non quality on net","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29223","9012","shot",105,77,"3","8:29","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","9064","shot",196,55,"1","12:11","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","10034","shot",78,140,"1","12:29","5","Default","Quality goal","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","10034","goal",78,140,"1","12:29",,,,"9",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8963","shot",90,189,"1","12:41","5","Default","Quality goal","9","Arvin Jaswal","9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8963","goal",90,189,"1","12:41",,,,"9",,"9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8920","shot",541,107,"1","13:37","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9586","shot",75,189,"1","13:47","5","Default","Quality goal","9","Arvin Jaswal","8968",,"Joshua Avery",,"Joshua Avery",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9586","goal",75,189,"1","13:47",,,,"9",,"8968",,"Joshua Avery",,"Joshua Avery",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9884","shot",471,216,"1","14:27","5","Default","Quality goal","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9884","goal",471,216,"1","14:27",,,,"14",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9437","shot",412,224,"1","15:18","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8920","shot",541,183,"1","15:44","5","Default","Quality goal","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8920","goal",541,183,"1","15:44",,,,"14",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","10036","shot",195,243,"1","17:30","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8991","shot",530,181,"1","18:15","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9333","shot",508,69,"1","18:15","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","9333","shot",503,87,"1","2:22","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","9322","shot",417,81,"1","2:34","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29226","8920","shot",543,123,"1","2:40","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
