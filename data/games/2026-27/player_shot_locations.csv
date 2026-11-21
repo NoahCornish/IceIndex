@@ -15605,28 +15605,31 @@
 "2026-27","29223","9780","shot",463,273,"3","5:21","5","Default","Non quality on net","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29223","9658","shot",509,223,"3","5:49","5","Default","Non quality on net","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29223","9012","shot",105,77,"3","8:29","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9064","shot",196,55,"1","12:11","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8963","shot",90,189,"1","12:41","5","Default","Quality goal","9","Arvin Jaswal","9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8963","goal",90,189,"1","12:41",,,,"9",,"9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8920","shot",541,107,"1","13:37","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9586","shot",75,189,"1","13:47","5","Default","Quality goal","9","Arvin Jaswal","8968",,"Joshua Avery",,"Joshua Avery",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9586","goal",75,189,"1","13:47",,,,"9",,"8968",,"Joshua Avery",,"Joshua Avery",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9884","shot",471,216,"1","14:27","5","Default","Quality goal","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9884","goal",471,216,"1","14:27",,,,"14",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9437","shot",412,224,"1","15:18","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8920","shot",541,183,"1","15:44","5","Default","Quality goal","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8920","goal",541,183,"1","15:44",,,,"14",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","10036","shot",195,243,"1","17:30","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8991","shot",530,181,"1","18:15","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9333","shot",508,69,"1","18:15","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9333","shot",503,87,"1","2:22","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9322","shot",417,81,"1","2:34","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8920","shot",543,123,"1","2:40","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8991","shot",534,119,"1","4:09","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9418","shot",93,196,"1","4:37","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9418","shot",57,177,"1","4:49","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","10034","shot",146,174,"1","7:15","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8932","shot",57,159,"1","7:20","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9656","shot",112,141,"1","7:39","5","Default","Quality goal","9","Arvin Jaswal","8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","9656","goal",112,141,"1","7:39",,,,"9",,"8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29226","8999","shot",61,119,"1","9:22","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9064","shot",404,245,"1","12:11","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8963","shot",510,111,"1","12:41","5","Default","Quality goal","9","Arvin Jaswal","9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8963","goal",510,111,"1","12:41",,,,"9",,"9656","8932","Vladimir Dravecky","Owen Griffin","Vladimir Dravecky; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8920","shot",59,193,"1","13:37","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9586","shot",525,111,"1","13:47","5","Default","Quality goal","9","Arvin Jaswal","8968",,"Joshua Avery",,"Joshua Avery",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9586","goal",525,111,"1","13:47",,,,"9",,"8968",,"Joshua Avery",,"Joshua Avery",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9884","shot",129,84,"1","14:27","5","Default","Quality goal","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9884","goal",129,84,"1","14:27",,,,"14",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9437","shot",188,76,"1","15:18","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8920","shot",59,117,"1","15:44","5","Default","Quality goal","14","Zach Jovanovski","8991","9322","Carson Harmer","Jonathan Kapageridis","Carson Harmer; Jonathan Kapageridis",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8920","goal",59,117,"1","15:44",,,,"14",,"8991","9322","Carson Harmer","Jonathan Kapageridis","Carson Harmer; Jonathan Kapageridis",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","10036","shot",405,57,"1","17:30","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8991","shot",70,119,"1","18:15","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9333","shot",92,231,"1","18:15","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8932","shot",522,136,"1","19:28","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8792","shot",401,145,"1","19:33","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8991","shot",123,243,"1","19:54","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9333","shot",97,213,"1","2:22","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9322","shot",183,219,"1","2:34","5","Default","Non quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8920","shot",57,177,"1","2:40","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8991","shot",66,181,"1","4:09","5","Default","Quality on net","14","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9418","shot",507,104,"1","4:37","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9418","shot",543,123,"1","4:49","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","10034","shot",454,126,"1","7:15","5","Default","Non quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8932","shot",543,141,"1","7:20","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9656","shot",488,159,"1","7:39","5","Default","Quality goal","9","Arvin Jaswal","8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","9656","goal",488,159,"1","7:39",,,,"9",,"8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29226","8999","shot",539,181,"1","9:22","5","Default","Quality on net","9","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
