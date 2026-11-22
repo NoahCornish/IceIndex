@@ -469,10 +469,10 @@
 "29226","home","9","Guelph Storm","GUE",4,18,1,7,32,60,18
 "29227","visitor","6","Peterborough Petes","PBO",4,16,2,6,40,65,16
 "29227","home","17","Windsor Spitfires","WSR",6,17,2,6,25,65,18
-"29228","visitor","1","Brantford Bulldogs","BFD",0,6,0,3,7,22,15
-"29228","home","18","Brampton Steelheads","BRAM",0,4,0,5,15,22,15
-"29229","visitor","75","Blainville-Boisbriand Armada","BLB",1,2,0,0,3,8,0
-"29229","home","2","Kingston Frontenacs","KGN",1,1,0,0,5,8,0
+"29228","visitor","1","Brantford Bulldogs","BFD",0,6,0,3,8,24,15
+"29228","home","18","Brampton Steelheads","BRAM",0,4,0,4,16,24,15
+"29229","visitor","75","Blainville-Boisbriand Armada","BLB",2,2,0,1,4,15,0
+"29229","home","2","Kingston Frontenacs","KGN",2,1,0,0,11,15,2
 "29230","visitor","6","Peterborough Petes","PBO",0,0,0,0,0,0,0
 "29230","home","14","London Knights","LDN",0,0,0,0,0,0,0
 "29231","visitor","20","Niagara IceDogs","NIAG",1,2,0,2,10,19,5
@@ -481,5 +481,5 @@
 "29232","home","4","Oshawa Generals","OSH",0,0,0,0,0,0,0
 "29233","visitor","64","Gatineau Olympiques","GAT",0,0,0,0,0,0,0
 "29233","home","5","Ottawa 67's","OTT",0,0,0,0,0,0,0
-"29234","visitor","16","Soo Greyhounds","SOO",4,5,1,1,5,20,0
-"29234","home","15","Sarnia Sting","SAR",0,2,0,0,15,20,2
+"29234","visitor","16","Soo Greyhounds","SOO",4,5,1,1,5,22,0
+"29234","home","15","Sarnia Sting","SAR",0,2,0,0,17,22,2
