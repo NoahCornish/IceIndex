@@ -36,7 +36,7 @@
         "forfeit": "0",
         "shootout": "0",
         "shootout_first_shooter_home": "0",
-        "attendance": "",
+        "attendance": "3205",
         "location": "45",
         "home_coach": "",
         "home_assistant_coach1": "0",
@@ -48,10 +48,10 @@
         "visiting_manager": "",
         "period": "3",
         "game_clock": "00:00:00",
-        "status": "3",
+        "status": "4",
         "started": "1",
-        "pending_final": "1",
-        "final": "0",
+        "pending_final": "0",
+        "final": "1",
         "home_goal_count": "4",
         "visiting_goal_count": "1",
         "home_goals_actual": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.axs.com/events/1504585/erie-otters-vs-owen-sound-attack-tickets?skin=erieotters\t\t\t\t\t\t\t",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-22 01:30:33",
+        "last_modified": "2026-11-22 01:39:09",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153641",
@@ -100,8 +100,8 @@
       "game_ident": "29225",
       "game_date": "Saturday, November 21, 2026",
       "game_length": "2:15",
-      "status_title": "Game Status",
-      "status_value": "End of Game",
+      "status_title": "End",
+      "status_value": "Final",
       "periods": {
         "1": {
           "id": "1",
@@ -1203,7 +1203,44 @@
               "last_name": "Ambrosio"
             }
           ],
-          "minus": []
+          "minus": [
+            {
+              "player_id": "9564",
+              "jersey_number": "10",
+              "first_name": "Max",
+              "last_name": "Delisle"
+            },
+            {
+              "player_id": "9560",
+              "jersey_number": "12",
+              "first_name": "John",
+              "last_name": "Banks"
+            },
+            {
+              "player_id": "9191",
+              "jersey_number": "21",
+              "first_name": "Pierce",
+              "last_name": "Mbuyi"
+            },
+            {
+              "player_id": "9030",
+              "jersey_number": "34",
+              "first_name": "Harry",
+              "last_name": "Nansi"
+            },
+            {
+              "player_id": "9794",
+              "jersey_number": "43",
+              "first_name": "Max",
+              "last_name": "Fransen"
+            },
+            {
+              "player_id": "9980",
+              "jersey_number": "90",
+              "first_name": "Lucian",
+              "last_name": "Bernat"
+            }
+          ]
         }
       ],
       "goalies": {
@@ -2018,7 +2055,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "8",
             "faceoff_attempts": "20",
@@ -2045,7 +2082,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -2126,7 +2163,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "1",
             "faceoff_attempts": "3",
@@ -2207,7 +2244,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": "+1",
+            "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "2",
             "faceoff_attempts": "2",
@@ -2234,7 +2271,7 @@
             "rookie": "1",
             "goals": 0,
             "assists": 0,
-            "plusminus": -2,
+            "plusminus": -3,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -2315,7 +2352,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -2,
+            "plusminus": -3,
             "pim": 2,
             "faceoff_wins": "1",
             "faceoff_attempts": "2",

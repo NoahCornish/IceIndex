@@ -15631,6 +15631,12 @@
 "2026-27","29224","9921","shot",147,159,"1","7:23","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29224","10029","shot",431,188,"1","8:09","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29224","9820","shot",390,253,"1","8:28","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8947","shot",58,168,"2","0:46","4","Backhand","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9161","shot",191,82,"2","0:55","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9162","shot",208,243,"2","1:45","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9820","shot",389,135,"2","2:34","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8953","shot",104,81,"2","4:20","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9037","shot",405,49,"2","5:34","3","Slap","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9799","shot",401,231,"1","0:54","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9367","shot",359,34,"1","11:44","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9980","shot",390,210,"1","12:05","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -15782,6 +15788,11 @@
 "2026-27","29227","9554","shot",171,39,"2","14:06","1","Snap","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9789","shot",515,214,"2","14:53","1","Snap","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9226","shot",63,195,"2","15:42","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9020","shot",101,80,"2","18:17","2","Wrist","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9596","shot",495,191,"2","18:25","2","Wrist","Quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","10048","shot",76,36,"2","19:03","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","10050","shot",51,164,"2","19:06","2","Wrist","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","8708","shot",411,48,"2","19:30","2","Wrist","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9558","shot",130,197,"2","4:07","1","Snap","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","8799","shot",68,124,"2","4:09","2","Wrist","Quality goal","6","Jake Windbiel","9558","9554","Matthew Perreault","Yanis Lutz","Matthew Perreault; Yanis Lutz",,"PP",,,TRUE,FALSE,FALSE,,TRUE
 "2026-27","29227","8799","goal",68,124,"2","4:09",,,,"6",,"9558","9554","Matthew Perreault","Yanis Lutz","Matthew Perreault; Yanis Lutz",2,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
