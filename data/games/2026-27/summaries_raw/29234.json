@@ -24,7 +24,7 @@
         "quick_score": "0",
         "mvp1": "9995",
         "mvp2": "9027",
-        "mvp3": "9998",
+        "mvp3": "9017",
         "featured_player_id": "",
         "date_played": "2026-11-22",
         "date_tbd": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://tickets.sarniasting.com/",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-22 21:55:46",
+        "last_modified": "2026-11-22 22:14:08",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153558",
@@ -198,11 +198,11 @@
           "home": 1
         },
         {
-          "player_id": "9998",
-          "first_name": "Carter",
-          "last_name": "Chadwick",
+          "player_id": "9017",
+          "first_name": "Travis",
+          "last_name": "Hayes",
           "jersey_number": "13",
-          "home": 1
+          "home": 0
         }
       ],
       "venue": "Progressive Auto Sales Arena",
