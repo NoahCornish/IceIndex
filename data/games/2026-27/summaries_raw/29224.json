@@ -218,12 +218,36 @@
           "person_id": "8099"
         },
         {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Zoe",
+          "last_name": "Leisk",
+          "jersey_number": "0",
+          "person_id": "8758"
+        },
+        {
           "official_type_id": "7",
           "description": "Timekeeper",
           "first_name": "Julianne",
           "last_name": "Bouwhuis",
           "jersey_number": "0",
           "person_id": "7665"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Phil",
+          "last_name": "Leisk",
+          "jersey_number": "0",
+          "person_id": "8757"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Kyle",
+          "last_name": "Martin",
+          "jersey_number": "0",
+          "person_id": "7693"
         },
         {
           "official_type_id": "10",
