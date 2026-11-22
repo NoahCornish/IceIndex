@@ -208,7 +208,32 @@
           "person_id": "9243"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Dave",
+          "last_name": "Garrison",
+          "jersey_number": "0",
+          "person_id": "6183"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Victoria",
+          "last_name": "Cadue",
+          "jersey_number": "0",
+          "person_id": "8110"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Doug",
+          "last_name": "Graham",
+          "jersey_number": "0",
+          "person_id": "7366"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
