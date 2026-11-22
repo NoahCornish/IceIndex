@@ -15676,8 +15676,11 @@
 "2026-27","29225","9166","shot",81,105,"3","14:29","5","Default","Quality goal","8","Ryerson Leenders","9408","9413","Mclean Agrette","Julius Saari","Mclean Agrette; Julius Saari",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9166","goal",81,105,"3","14:29",,,,"8",,"9408","9413","Mclean Agrette","Julius Saari","Mclean Agrette; Julius Saari",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9413","shot",208,99,"3","14:40","5","Default","Non quality on net","8","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29225","9408","shot",188,210,"3","15:38","5","Default","Non quality on net","8",,,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29225","9449","shot",75,82,"3","16:44","5","Default","Non quality on net","8",,,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29225","9408","shot",188,210,"3","15:38","5","Default","Non quality on net","8","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29225","9449","shot",75,82,"3","16:44","5","Default","Non quality on net","8","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29225","9766","shot",402,170,"3","18:02","5","Default","Non quality goal","8","Ryerson Leenders","9361","9130","Kayden Edwards","Lucas Ambrosio","Kayden Edwards; Lucas Ambrosio",,"EN",,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29225","9766","goal",402,170,"3","18:02",,,,"8",,"9361","9130","Kayden Edwards","Lucas Ambrosio","Kayden Edwards; Lucas Ambrosio",2,"EN","EN","event_fields",FALSE,FALSE,TRUE,,TRUE
+"2026-27","29225","9408","shot",70,61,"3","19:03","5","Default","Non quality on net","8","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9766","shot",174,56,"3","2:54","5","Default","Non quality on net","8","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9800","shot",471,89,"3","5:05","5","Default","Quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9404","shot",195,53,"3","6:27","5","Default","Non quality on net","8","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -15771,6 +15774,14 @@
 "2026-27","29227","9108","shot",537,135,"2","1:39","6","Tip","Quality goal","17","Aleksei Medvedev","8778","8708","Conor Walton","Anthony Cristoforo","Conor Walton; Anthony Cristoforo",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9108","goal",537,135,"2","1:39",,,,"17",,"8778","8708","Conor Walton","Anthony Cristoforo","Conor Walton; Anthony Cristoforo",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9473","shot",93,58,"2","1:58","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9597","shot",404,214,"2","10:24","3","Slap","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9596","shot",534,143,"2","10:51","2","Wrist","Quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","8731","shot",46,121,"2","11:27","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9554","shot",123,136,"2","11:30","2","Wrist","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9554","shot",77,191,"2","11:38","1","Snap","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9554","shot",171,39,"2","14:06","1","Snap","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9789","shot",515,214,"2","14:53","1","Snap","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9226","shot",63,195,"2","15:42","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9558","shot",130,197,"2","4:07","1","Snap","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","8799","shot",68,124,"2","4:09","2","Wrist","Quality goal","6","Jake Windbiel","9558","9554","Matthew Perreault","Yanis Lutz","Matthew Perreault; Yanis Lutz",,"PP",,,TRUE,FALSE,FALSE,,TRUE
 "2026-27","29227","8799","goal",68,124,"2","4:09",,,,"6",,"9558","9554","Matthew Perreault","Yanis Lutz","Matthew Perreault; Yanis Lutz",2,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
@@ -15782,3 +15793,4 @@
 "2026-27","29227","9638","shot",165,94,"2","7:24","1","Snap","Non quality goal","6","Jake Windbiel","9473","8731","Cooper Dennis","Lucas Karmiris","Cooper Dennis; Lucas Karmiris",,"PP",,,TRUE,FALSE,FALSE,,TRUE
 "2026-27","29227","9638","goal",165,94,"2","7:24",,,,"6",,"9473","8731","Cooper Dennis","Lucas Karmiris","Cooper Dennis; Lucas Karmiris",2,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
 "2026-27","29227","9740","shot",424,51,"2","7:36","2","Wrist","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","8799","shot",63,86,"2","9:34","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
