@@ -15605,46 +15605,52 @@
 "2026-27","29223","9780","shot",463,273,"3","5:21","5","Default","Non quality on net","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29223","9658","shot",509,223,"3","5:49","5","Default","Non quality on net","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29223","9012","shot",105,77,"3","8:29","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9281","shot",153,29,"1","1:28","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9170","shot",93,280,"1","1:53","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9162","shot",66,188,"1","10:52","2","Wrist","Quality goal","10","Hagan Bach","9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9162","goal",66,188,"1","10:52",,,,"10",,"9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9078","shot",64,150,"1","12:03","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9648","shot",202,153,"1","12:15","3","Slap","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9844","shot",512,124,"1","15:27","4","Backhand","Quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9281","shot",48,95,"1","17:28","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8953","shot",68,143,"1","17:37","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9921","shot",82,110,"1","18:19","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8947","shot",81,195,"1","18:34","2","Wrist","Quality goal","10","Hagan Bach","9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8947","goal",81,195,"1","18:34",,,,"10",,"9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9170","shot",246,78,"1","18:45","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10011","shot",297,19,"1","18:59","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8953","shot",69,131,"1","19:53","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10029","shot",507,146,"1","4:13","2","Wrist","Quality goal","7","Jason Schaubel","9534","9182","Eamon Edgar","Jonah McCormick","Eamon Edgar; Jonah McCormick",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10029","goal",507,146,"1","4:13",,,,"7",,"9534","9182","Eamon Edgar","Jonah McCormick","Eamon Edgar; Jonah McCormick",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8800","shot",491,32,"1","4:55","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8800","shot",524,99,"1","5:00","2","Wrist","Quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10009","shot",210,98,"1","5:29","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8947","shot",39,184,"1","6:12","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9150","shot",532,164,"1","7:00","2","Wrist","Quality goal","7","Jason Schaubel","9037",,"Justin Handsor",,"Justin Handsor",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9150","goal",532,164,"1","7:00",,,,"7",,"9037",,"Justin Handsor",,"Justin Handsor",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9921","shot",147,159,"1","7:23","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10029","shot",431,188,"1","8:09","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9820","shot",390,253,"1","8:28","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8947","shot",58,168,"2","0:46","4","Backhand","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9161","shot",191,82,"2","0:55","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9162","shot",208,243,"2","1:45","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9150","shot",407,189,"2","10:04","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9646","shot",67,140,"2","10:17","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10029","shot",538,87,"2","12:58","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9681","shot",136,81,"2","13:10","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10005","shot",48,195,"2","14:21","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10005","shot",55,181,"2","14:22","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10010","shot",213,207,"2","16:22","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9820","shot",389,135,"2","2:34","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","8953","shot",104,81,"2","4:20","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9037","shot",405,49,"2","5:34","3","Slap","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","10010","shot",118,129,"2","9:10","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9281","shot",447,271,"1","1:28","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9170","shot",507,20,"1","1:53","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9162","shot",534,112,"1","10:52","2","Wrist","Quality goal","10","Hagan Bach","9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9162","goal",534,112,"1","10:52",,,,"10",,"9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9078","shot",536,150,"1","12:03","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9648","shot",398,147,"1","12:15","3","Slap","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9844","shot",88,176,"1","15:27","4","Backhand","Quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9281","shot",552,205,"1","17:28","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8953","shot",532,157,"1","17:37","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9921","shot",518,190,"1","18:19","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8947","shot",519,105,"1","18:34","2","Wrist","Quality goal","10","Hagan Bach","9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8947","goal",519,105,"1","18:34",,,,"10",,"9921","8945","Luca Santala","Tanner Lam","Luca Santala; Tanner Lam",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9170","shot",354,222,"1","18:45","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10011","shot",303,281,"1","18:59","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8953","shot",531,169,"1","19:53","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10029","shot",93,154,"1","4:13","2","Wrist","Quality goal","7","Jason Schaubel","9534","9182","Eamon Edgar","Jonah McCormick","Eamon Edgar; Jonah McCormick",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10029","goal",93,154,"1","4:13",,,,"7",,"9534","9182","Eamon Edgar","Jonah McCormick","Eamon Edgar; Jonah McCormick",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8800","shot",109,268,"1","4:55","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8800","shot",76,201,"1","5:00","2","Wrist","Quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10009","shot",390,202,"1","5:29","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8947","shot",561,116,"1","6:12","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9150","shot",68,136,"1","7:00","2","Wrist","Quality goal","7","Jason Schaubel","9037",,"Justin Handsor",,"Justin Handsor",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9150","goal",68,136,"1","7:00",,,,"7",,"9037",,"Justin Handsor",,"Justin Handsor",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9921","shot",453,141,"1","7:23","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10029","shot",169,112,"1","8:09","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9820","shot",210,47,"1","8:28","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8947","shot",542,132,"2","0:46","4","Backhand","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9161","shot",409,218,"2","0:55","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9162","shot",392,57,"2","1:45","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9150","shot",193,111,"2","10:04","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9646","shot",533,160,"2","10:17","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10029","shot",62,213,"2","12:58","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9681","shot",464,219,"2","13:10","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10005","shot",552,105,"2","14:21","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10005","shot",545,119,"2","14:22","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10010","shot",387,93,"2","16:22","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9150","shot",48,207,"2","16:39","4","Backhand","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9578","shot",121,129,"2","18:10","6","Tip","Quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9078","shot",556,69,"2","18:44","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9921","shot",505,164,"2","18:51","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9281","shot",467,192,"2","19:51","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9170","shot",527,144,"2","19:54","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9820","shot",211,165,"2","2:34","2","Wrist","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","8953","shot",496,219,"2","4:20","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9037","shot",195,251,"2","5:34","3","Slap","Non quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10010","shot",482,171,"2","9:10","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9799","shot",401,231,"1","0:54","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9367","shot",359,34,"1","11:44","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9980","shot",390,210,"1","12:05","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -15817,4 +15823,12 @@
 "2026-27","29227","9638","shot",547,188,"3","1:25","6","Tip","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9350","shot",447,177,"3","1:30","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9473","shot",441,135,"3","1:42","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9793","shot",67,153,"3","10:46","2","Wrist","Quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9247","shot",509,184,"3","11:10","1","Snap","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9793","shot",100,65,"3","12:38","3","Slap","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9596","shot",37,124,"3","2:35","2","Wrist","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9476","shot",426,62,"3","4:46","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9311","shot",444,96,"3","5:13","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9792","shot",142,150,"3","6:04","2","Wrist","Quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9553","shot",547,131,"3","7:44","6","Tip","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9553","shot",543,147,"3","7:45","2","Wrist","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
