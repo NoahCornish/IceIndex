@@ -295,6 +295,40 @@
             "first_name": "Cody",
             "last_name": "Wood"
           }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "18:34",
+          "team_id": "14",
+          "home": "1",
+          "period_id": "1",
+          "period": "1st",
+          "offence": "17",
+          "pp": "1",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Hooking",
+          "s": 1114,
+          "player_penalized_info": {
+            "player_id": "10103",
+            "jersey_number": "92",
+            "team_id": "14",
+            "team_code": "LDN",
+            "first_name": "Juho",
+            "last_name": "Piiparinen"
+          },
+          "player_served_info": {
+            "player_id": "10103",
+            "jersey_number": "92",
+            "team_id": "14",
+            "team_code": "LDN",
+            "first_name": "Juho",
+            "last_name": "Piiparinen"
+          }
         }
       ],
       "goals": [
@@ -334,12 +368,12 @@
             "last_name": "Levac"
           },
           "assist2_player": {
-            "player_id": null,
-            "jersey_number": null,
-            "team_id": null,
-            "team_code": null,
-            "first_name": null,
-            "last_name": null
+            "player_id": "9311",
+            "jersey_number": "9",
+            "team_id": "6",
+            "team_code": "PBO",
+            "first_name": "Jacob",
+            "last_name": "Xu"
           },
           "plus": [
             {
@@ -714,8 +748,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "3",
-            "faceoff_attempts": "3",
+            "faceoff_wins": "4",
+            "faceoff_attempts": "4",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -956,7 +990,7 @@
             "goals": 0,
             "assists": 0,
             "plusminus": 0,
-            "pim": 0,
+            "pim": 2,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
             "hits": "0",
@@ -1112,7 +1146,7 @@
             "status": "",
             "rookie": "0",
             "goals": 0,
-            "assists": 0,
+            "assists": 1,
             "plusminus": "+1",
             "pim": 0,
             "faceoff_wins": "0",
@@ -1251,7 +1285,7 @@
             "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "1",
-            "faceoff_attempts": "4",
+            "faceoff_attempts": "5",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1560,7 +1594,7 @@
         "home": 0
       },
       "powerPlayCount": {
-        "visitor": 1,
+        "visitor": 2,
         "home": 0
       },
       "goalCount": {
@@ -1568,20 +1602,20 @@
         "home": 0
       },
       "assistCount": {
-        "visitor": 1,
+        "visitor": 2,
         "home": 0
       },
       "pointsCount": {
-        "visitor": 2,
+        "visitor": 3,
         "home": 0
       },
       "pimTotal": {
         "visitor": 0,
-        "home": 2
+        "home": 4
       },
       "infCount": {
         "visitor": 0,
-        "home": 1
+        "home": 2
       },
       "shotsByPeriod": {
         "visitor": {
@@ -1597,12 +1631,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 15,
+          "att": 16,
           "won": 6
         },
         "home": {
-          "att": 15,
-          "won": 9
+          "att": 16,
+          "won": 10
         }
       },
       "totalHits": {
