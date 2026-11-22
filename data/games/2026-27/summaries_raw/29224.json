@@ -208,7 +208,32 @@
           "person_id": "5697"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Alyssa",
+          "last_name": "Mallion",
+          "jersey_number": "0",
+          "person_id": "8099"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Julianne",
+          "last_name": "Bouwhuis",
+          "jersey_number": "0",
+          "person_id": "7665"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Mike",
+          "last_name": "Robinson",
+          "jersey_number": "0",
+          "person_id": "8414"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
