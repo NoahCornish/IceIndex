@@ -1,10 +1,10 @@
 "game_id","action","old_score","new_score","old_complete","new_complete","old_richness","new_richness"
-"29228","saved","2-0","3-0",FALSE,FALSE,66,91
-"29231","saved","1-6","1-6",FALSE,FALSE,47,49
-"29229","saved","3-2","3-2",FALSE,FALSE,37,41
-"29234","saved","4-2","4-4",FALSE,FALSE,44,46
-"29233","saved","1-1","2-1",FALSE,FALSE,34,35
-"29230","saved","0-0","0-0",FALSE,FALSE,22,22
+"29228","saved","3-0","3-0",FALSE,FALSE,91,91
+"29231","saved","1-6","1-7",FALSE,FALSE,49,50
+"29229","saved","3-2","3-2",FALSE,FALSE,41,41
+"29234","saved","4-4","4-5",FALSE,FALSE,46,47
+"29233","saved","2-1","2-1",FALSE,FALSE,35,39
+"29230","saved","0-0","0-0",FALSE,FALSE,22,28
 "29232","saved","0-0","0-0",FALSE,FALSE,22,22
 "29226","saved","2-4","2-4",TRUE,TRUE,70,70
 "29225","saved","1-4","1-4",TRUE,TRUE,57,57
