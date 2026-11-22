@@ -210,12 +210,28 @@
       ],
       "officialsOffIce": [
         {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Al",
+          "last_name": "McArthur",
+          "jersey_number": "0",
+          "person_id": "5897"
+        },
+        {
           "official_type_id": "6",
           "description": "Online Scorekeeper",
           "first_name": "Dave",
           "last_name": "Garrison",
           "jersey_number": "0",
           "person_id": "6183"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Louis",
+          "last_name": "Cabral",
+          "jersey_number": "0",
+          "person_id": "5883"
         },
         {
           "official_type_id": "8",
