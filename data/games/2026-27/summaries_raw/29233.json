@@ -31,7 +31,7 @@
         "schedule_time": "15:00:00",
         "time_tbd": "0",
         "timezone": "America/Toronto",
-        "start_time": "",
+        "start_time": "15:05:00",
         "end_time": "17:19:00",
         "forfeit": "0",
         "shootout": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/ottawa-67s-tickets/artist/838347?home_away=home",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-22 22:19:27",
+        "last_modified": "2026-11-22 22:20:10",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1154596",
@@ -86,11 +86,11 @@
         "flo_live_event_id": "254573",
         "uses_spalk_rc": "",
         "tournament_id": "",
-        "start_time_without_seconds": "",
+        "start_time_without_seconds": "15:05",
         "end_time_without_seconds": "17:19",
-        "12_hour_start_time_without_seconds": "",
+        "12_hour_start_time_without_seconds": "3:05 pm",
         "12_hour_end_time_without_seconds": "5:19 pm",
-        "length": "",
+        "length": "2:14",
         "timezone_short": "EST"
       },
       "txt_title": "GAME SUMMARY",
@@ -99,7 +99,7 @@
       "txt_shots": "Shots",
       "game_ident": "29233",
       "game_date": "Sunday, November 22, 2026",
-      "game_length": "",
+      "game_length": "2:14",
       "status_title": "Game Status",
       "status_value": "End of Game",
       "periods": {
@@ -1121,7 +1121,7 @@
             "time_start": "0:00",
             "period_end": "3rd",
             "time_end": "20:00",
-            "saves": "41",
+            "saves": "42",
             "secs": "3600",
             "seconds": "3600",
             "goals_against": "4",
@@ -1135,7 +1135,7 @@
             "shootout_saves": "0",
             "line": "",
             "secs_mmss": "60:00",
-            "shots_against": 45
+            "shots_against": 46
           }
         ]
       },
@@ -1175,9 +1175,9 @@
             "rookie": "0",
             "seconds": 3600,
             "time": "60:00",
-            "shots_against": 45,
+            "shots_against": 46,
             "goals_against": 4,
-            "saves": 41,
+            "saves": 42,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -2066,8 +2066,8 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "4",
-            "shots_on": "2",
+            "shots": "5",
+            "shots_on": "3",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -2271,7 +2271,7 @@
         "visitor": {
           "1": 18,
           "2": 11,
-          "3": 16
+          "3": 17
         },
         "home": {
           "1": 8,
@@ -2302,11 +2302,11 @@
         "home": 1
       },
       "totalShots": {
-        "visitor": 45,
+        "visitor": 46,
         "home": 19
       },
       "totalShotsOn": {
-        "visitor": 17,
+        "visitor": 18,
         "home": 7
       },
       "goalsByPeriod": {
