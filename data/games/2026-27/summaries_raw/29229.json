@@ -248,6 +248,14 @@
           "last_name": "Graham",
           "jersey_number": "0",
           "person_id": "7366"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Pat",
+          "last_name": "Brown",
+          "jersey_number": "0",
+          "person_id": "6814"
         }
       ],
       "homeShootout": 0,

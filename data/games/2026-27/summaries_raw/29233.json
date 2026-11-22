@@ -208,7 +208,16 @@
           "person_id": "7073"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Jeff",
+          "last_name": "Johnston",
+          "jersey_number": "0",
+          "person_id": "5915"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
