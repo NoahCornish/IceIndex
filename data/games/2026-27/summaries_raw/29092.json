@@ -64,7 +64,7 @@
         "capacity": "",
         "schedule_notes": "",
         "schedule_notes_fr": "",
-        "home_audio_url": "https://www.iheart.com/live/wjet-am-1400-8290/?sc=inferno&campid=a&pname=WJET-AM",
+        "home_audio_url": "https://sportsradio1330.iheart.com/",
         "home_video_url": "https://flosports.link/ohl-er",
         "home_webcast_url": "https://flosports.link/ohl-er",
         "home_audio_url_fr": "",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.axs.com/events/1504248/erie-otters-vs-london-knights-tickets?skin=erieotters\t\t\t\t\t\t\t",
         "tickets_url_fr": "",
-        "last_modified": "2026-10-20 17:31:05",
+        "last_modified": "2026-11-19 20:05:34",
         "imported_id": "",
         "created": "2026-06-15 20:06:43",
         "htv_game_id": "1153361",
@@ -2955,6 +2955,7 @@
             "first_name": "Dale",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "4748"
           },
           {
@@ -2963,6 +2964,7 @@
             "first_name": "Mark",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "4815"
           }
         ],
@@ -2973,6 +2975,7 @@
             "first_name": "Kris",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9079"
           },
           {
@@ -2981,6 +2984,7 @@
             "first_name": "Dave",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5166"
           }
         ]

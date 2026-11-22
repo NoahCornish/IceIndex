@@ -2637,6 +2637,7 @@
             "first_name": "Steve",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9191"
           },
           {
@@ -2645,6 +2646,7 @@
             "first_name": "Yannick",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "9399"
           }
         ],
@@ -2655,6 +2657,7 @@
             "first_name": "Scott",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "203"
           },
           {
@@ -2663,6 +2666,7 @@
             "first_name": "Rob",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "6833"
           }
         ]

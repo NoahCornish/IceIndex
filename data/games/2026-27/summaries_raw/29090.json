@@ -3582,6 +3582,7 @@
             "first_name": "Keenan",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "5074"
           },
           {
@@ -3590,6 +3591,7 @@
             "first_name": "Tyler",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5049"
           }
         ],
@@ -3600,6 +3602,7 @@
             "first_name": "Greg",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "4761"
           },
           {
@@ -3608,6 +3611,7 @@
             "first_name": "Bill",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "4785"
           }
         ]

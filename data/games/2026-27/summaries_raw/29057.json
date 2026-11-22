@@ -2217,6 +2217,7 @@
             "first_name": "Dave",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "4742"
           },
           {
@@ -2225,6 +2226,7 @@
             "first_name": "Jan",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5630"
           }
         ],
@@ -2235,6 +2237,7 @@
             "first_name": "Jake",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9717"
           },
           {
@@ -2243,6 +2246,7 @@
             "first_name": "Dale",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5170"
           }
         ]

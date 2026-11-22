@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://blocktickets.xyz/venue/niagara-icedogs-hockey-club",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-06 02:44:13",
+        "last_modified": "2026-11-18 06:47:38",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153317",
@@ -1022,20 +1022,20 @@
             "last_name": "Read"
           },
           "assist1_player": {
+            "player_id": "10027",
+            "jersey_number": "16",
+            "team_id": "20",
+            "team_code": "NIAG",
+            "first_name": "Finn",
+            "last_name": "Merrill"
+          },
+          "assist2_player": {
             "player_id": "9429",
             "jersey_number": "72",
             "team_id": "20",
             "team_code": "NIAG",
             "first_name": "Blake",
             "last_name": "Barnes"
-          },
-          "assist2_player": {
-            "player_id": "9373",
-            "jersey_number": "17",
-            "team_id": "20",
-            "team_code": "NIAG",
-            "first_name": "Ryerson",
-            "last_name": "Edgar"
           },
           "plus": [
             {
@@ -1858,7 +1858,7 @@
             "status": "",
             "rookie": "1",
             "goals": 0,
-            "assists": 0,
+            "assists": 1,
             "plusminus": 0,
             "pim": 2,
             "faceoff_wins": "0",
@@ -1885,7 +1885,7 @@
             "status": "A",
             "rookie": "0",
             "goals": 0,
-            "assists": 1,
+            "assists": 0,
             "plusminus": 0,
             "pim": 2,
             "faceoff_wins": "11",
@@ -2799,6 +2799,7 @@
             "first_name": "James",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "5593"
           },
           {
@@ -2807,6 +2808,7 @@
             "first_name": "James",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5593"
           }
         ],
@@ -2817,6 +2819,7 @@
             "first_name": "Jake",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9717"
           },
           {
@@ -2825,6 +2828,7 @@
             "first_name": "Dale",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5170"
           }
         ]

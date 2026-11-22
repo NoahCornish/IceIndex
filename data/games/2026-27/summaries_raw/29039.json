@@ -998,7 +998,7 @@
             {
               "player_id": "9818",
               "jersey_number": "93",
-              "first_name": "Alex",
+              "first_name": "Alexander",
               "last_name": "Milojevic"
             }
           ]
@@ -2410,7 +2410,7 @@
           {
             "person_id": "9610",
             "player_id": "9818",
-            "first_name": "Alex",
+            "first_name": "Alexander",
             "last_name": "Milojevic",
             "start": "0",
             "position": "3",
@@ -2472,6 +2472,7 @@
             "first_name": "Brendan",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "3165"
           },
           {
@@ -2480,6 +2481,7 @@
             "first_name": "Dave",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5295"
           }
         ],
@@ -2490,6 +2492,7 @@
             "first_name": "Jeff",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "6837"
           },
           {
@@ -2498,6 +2501,7 @@
             "first_name": "Mike",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "6744"
           }
         ]

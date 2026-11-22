@@ -2773,6 +2773,7 @@
             "first_name": "Jake",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9717"
           },
           {
@@ -2781,6 +2782,7 @@
             "first_name": "Dale",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5170"
           }
         ],
@@ -2791,6 +2793,7 @@
             "first_name": "Jeff",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "6837"
           },
           {
@@ -2799,6 +2802,7 @@
             "first_name": "Mike",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "6744"
           }
         ]

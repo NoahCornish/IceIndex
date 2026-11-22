@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.etix.com/ticket/v/18541",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-08 06:12:42",
+        "last_modified": "2026-11-18 06:56:01",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153346",
@@ -1386,20 +1386,20 @@
             "last_name": "Cooper"
           },
           "assist1_player": {
+            "player_id": "8950",
+            "jersey_number": "13",
+            "team_id": "18",
+            "team_code": "BRAM",
+            "first_name": "Kieran",
+            "last_name": "Witkowski"
+          },
+          "assist2_player": {
             "player_id": "9457",
             "jersey_number": "4",
             "team_id": "18",
             "team_code": "BRAM",
             "first_name": "Peter",
             "last_name": "Green"
-          },
-          "assist2_player": {
-            "player_id": "9178",
-            "jersey_number": "29",
-            "team_id": "18",
-            "team_code": "BRAM",
-            "first_name": "Nathan",
-            "last_name": "Amidovski"
           },
           "plus": [
             {
@@ -2278,7 +2278,7 @@
             "status": "A",
             "rookie": "0",
             "goals": 1,
-            "assists": 0,
+            "assists": 1,
             "plusminus": "+1",
             "pim": 0,
             "faceoff_wins": "10",
@@ -2413,7 +2413,7 @@
             "status": "",
             "rookie": "0",
             "goals": 2,
-            "assists": 1,
+            "assists": 0,
             "plusminus": "+3",
             "pim": 0,
             "faceoff_wins": "1",
@@ -2629,6 +2629,7 @@
             "first_name": "James",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "5593"
           },
           {
@@ -2637,6 +2638,7 @@
             "first_name": "James",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5593"
           }
         ],
@@ -2647,6 +2649,7 @@
             "first_name": "Paul",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "2345"
           },
           {
@@ -2655,6 +2658,7 @@
             "first_name": "Dave",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "8627"
           }
         ]

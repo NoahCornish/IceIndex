@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://tickets.sarniasting.com/",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-07 02:49:22",
+        "last_modified": "2026-11-18 06:51:34",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153324",
@@ -1294,12 +1294,12 @@
             "last_name": "Govedaris"
           },
           "assist2_player": {
-            "player_id": "9769",
-            "jersey_number": "66",
+            "player_id": "9478",
+            "jersey_number": "71",
             "team_id": "1",
             "team_code": "BFD",
-            "first_name": "Aiden",
-            "last_name": "Kelly"
+            "first_name": "David",
+            "last_name": "Buchman"
           },
           "plus": [
             {
@@ -2567,7 +2567,7 @@
             "status": "",
             "rookie": "1",
             "goals": 1,
-            "assists": 1,
+            "assists": 0,
             "plusminus": "+1",
             "pim": 2,
             "faceoff_wins": "2",
@@ -2594,7 +2594,7 @@
             "status": "",
             "rookie": "0",
             "goals": 0,
-            "assists": 0,
+            "assists": 1,
             "plusminus": "+1",
             "pim": 2,
             "faceoff_wins": "0",
@@ -2702,6 +2702,7 @@
             "first_name": "Michael",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9552"
           },
           {
@@ -2710,6 +2711,7 @@
             "first_name": "Spencer",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "9257"
           }
         ],
@@ -2720,6 +2722,7 @@
             "first_name": "Mathieu",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9439"
           },
           {
@@ -2728,6 +2731,7 @@
             "first_name": "Dylan",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "7727"
           }
         ]

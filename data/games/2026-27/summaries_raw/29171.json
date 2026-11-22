@@ -72,13 +72,13 @@
         "home_webcast_url_fr": "",
         "visiting_webcast_url": "https://flosports.link/ohl-er",
         "visiting_video_url": "https://flosports.link/ohl-er",
-        "visiting_audio_url": "https://www.iheart.com/live/wjet-am-1400-8290/?sc=inferno&campid=a&pname=WJET-AM",
+        "visiting_audio_url": "https://sportsradio1330.iheart.com/",
         "visiting_webcast_url_fr": "",
         "visiting_video_url_fr": "",
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.com/saginaw-spirit-tickets/artist/836382",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-08 02:34:52",
+        "last_modified": "2026-11-19 20:05:34",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153217",
@@ -1678,7 +1678,7 @@
           {
             "person_id": "9610",
             "player_id": "9818",
-            "first_name": "Alex",
+            "first_name": "Alexander",
             "last_name": "Milojevic",
             "start": "0",
             "position": "3",
@@ -2303,6 +2303,7 @@
             "first_name": "Kris",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9079"
           },
           {
@@ -2311,6 +2312,7 @@
             "first_name": "Dave",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5166"
           }
         ],
@@ -2321,6 +2323,7 @@
             "first_name": "Brendan",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "3165"
           },
           {
@@ -2329,6 +2332,7 @@
             "first_name": "Dave",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5295"
           }
         ]

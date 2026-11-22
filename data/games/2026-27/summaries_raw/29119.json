@@ -2869,6 +2869,7 @@
             "first_name": "Dale",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "4748"
           },
           {
@@ -2877,6 +2878,7 @@
             "first_name": "Mark",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "4815"
           }
         ],
@@ -2887,6 +2889,7 @@
             "first_name": "Keenan",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "5074"
           },
           {
@@ -2895,6 +2898,7 @@
             "first_name": "Tyler",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5049"
           }
         ]

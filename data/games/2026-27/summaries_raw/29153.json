@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://kitchenerlive.evenue.net/events/RANGERS",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-14 14:06:10",
+        "last_modified": "2026-11-16 14:01:55",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153638",
@@ -611,7 +611,7 @@
           "home": "1",
           "period_id": "2",
           "period": "2nd",
-          "offence": "54",
+          "offence": "145",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "0",
@@ -619,7 +619,7 @@
           "minutes_formatted": "5:00",
           "penalty_class_id": "3",
           "penalty_class": "Major",
-          "lang_penalty_description": "Fighting",
+          "lang_penalty_description": "Fight-Inst. Upon",
           "s": 1076,
           "player_penalized_info": {
             "player_id": "9646",
@@ -2742,6 +2742,7 @@
             "first_name": "Cory",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "6834"
           },
           {
@@ -2750,6 +2751,7 @@
             "first_name": "George",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "4732"
           }
         ],
@@ -2760,6 +2762,7 @@
             "first_name": "Jeff",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "6837"
           },
           {
@@ -2768,6 +2771,7 @@
             "first_name": "Mike",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "6744"
           }
         ]

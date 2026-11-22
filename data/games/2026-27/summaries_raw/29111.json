@@ -72,13 +72,13 @@
         "home_webcast_url_fr": "",
         "visiting_webcast_url": "https://flosports.link/ohl-er",
         "visiting_video_url": "https://flosports.link/ohl-er",
-        "visiting_audio_url": "https://www.iheart.com/live/wjet-am-1400-8290/?sc=inferno&campid=a&pname=WJET-AM",
+        "visiting_audio_url": "https://sportsradio1330.iheart.com/",
         "visiting_webcast_url_fr": "",
         "visiting_video_url_fr": "",
         "visiting_audio_url_fr": "",
         "tickets_url": "https://blocktickets.xyz/venue/niagara-icedogs-hockey-club",
         "tickets_url_fr": "",
-        "last_modified": "2026-10-24 01:44:34",
+        "last_modified": "2026-11-19 20:05:34",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1152559",
@@ -2300,6 +2300,7 @@
             "first_name": "Kris",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9079"
           },
           {
@@ -2308,6 +2309,7 @@
             "first_name": "Dave",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5166"
           }
         ],
@@ -2318,6 +2320,7 @@
             "first_name": "Jake",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9717"
           },
           {
@@ -2326,6 +2329,7 @@
             "first_name": "Dale",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5170"
           }
         ]

@@ -2470,6 +2470,7 @@
             "first_name": "Dylan",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "3959"
           },
           {
@@ -2478,6 +2479,7 @@
             "first_name": "Marty",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "4778"
           }
         ],
@@ -2488,6 +2490,7 @@
             "first_name": "Paul",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "2345"
           },
           {
@@ -2496,6 +2499,7 @@
             "first_name": "Dave",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "8627"
           }
         ]
