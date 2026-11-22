@@ -15653,9 +15653,13 @@
 "2026-27","29224","10010","shot",482,171,"2","9:10","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29224","8945","shot",556,93,"3","0:22","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29224","9394","shot",409,70,"3","0:40","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9281","shot",470,210,"3","1:04","2","Wrist","Quality goal","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29224","9281","goal",470,210,"3","1:04",,,,"10",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9281","shot",470,210,"3","1:04","2","Wrist","Quality goal","10","Hagan Bach","10009","8953","Dmitri Toporowski","Gabriel Chiarot","Dmitri Toporowski; Gabriel Chiarot",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9281","goal",470,210,"3","1:04",,,,"10",,"10009","8953","Dmitri Toporowski","Gabriel Chiarot","Dmitri Toporowski; Gabriel Chiarot",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29224","8945","shot",426,239,"3","1:49","3","Slap","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9162","shot",419,140,"3","2:00","3","Slap","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9037","shot",482,226,"3","2:40","2","Wrist","Quality on net","7","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","10011","shot",433,163,"3","3:43","2","Wrist","Non quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29224","9170","shot",494,112,"3","3:46","2","Wrist","Quality on net","10","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9799","shot",401,231,"1","0:54","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9367","shot",359,34,"1","11:44","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29225","9980","shot",390,210,"1","12:05","5","Default","Non quality on net","11","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -15835,10 +15839,13 @@
 "2026-27","29227","9211","goal",114,197,"3","13:44",,,,"17",,"9759",,"Lauchlan Whelan",,"Lauchlan Whelan",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9554","shot",507,116,"3","14:46","2","Wrist","Quality goal","6","Jake Windbiel","8992",,"Aiden Young",,"Aiden Young",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9554","goal",507,116,"3","14:46",,,,"6",,"8992",,"Aiden Young",,"Aiden Young",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29227","9473","shot",459,115,"3","16:33","3","Slap","Quality goal","6","Jake Windbiel","9553","8992","Leon Kolarik","Aiden Young","Leon Kolarik; Aiden Young",,"PP",,,TRUE,FALSE,FALSE,,TRUE
+"2026-27","29227","9473","goal",459,115,"3","16:33",,,,"6",,"9553","8992","Leon Kolarik","Aiden Young","Leon Kolarik; Aiden Young",2,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
 "2026-27","29227","8799","shot",560,131,"3","17:59","6","Tip","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","8992","shot",529,55,"3","18:19","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9108","shot",93,126,"3","18:19","5","Default","Quality goal","17",,"9793",,"Michal Svrcek",,"Michal Svrcek",,"EN",,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9108","goal",93,126,"3","18:19",,,,"17",,"9793",,"Michal Svrcek",,"Michal Svrcek",1,"EN","EN","event_fields",FALSE,FALSE,TRUE,,TRUE
+"2026-27","29227","9311","shot",522,149,"3","19:52","4","Backhand","Quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9596","shot",37,124,"3","2:35","2","Wrist","Non quality on net","17","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9476","shot",426,62,"3","4:46","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29227","9311","shot",444,96,"3","5:13","2","Wrist","Non quality on net","6","Jake Windbiel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
