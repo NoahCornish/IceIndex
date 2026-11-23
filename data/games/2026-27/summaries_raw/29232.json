@@ -47,10 +47,10 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "3",
-        "game_clock": "00:01:00",
-        "status": "2",
+        "game_clock": "00:00:00",
+        "status": "3",
         "started": "1",
-        "pending_final": "0",
+        "pending_final": "1",
         "final": "0",
         "home_goal_count": "4",
         "visiting_goal_count": "3",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/oshawa-generals-vs-flint-firebirds-oshawa-ontario-11-22-2026/event/1000650CE9CF43C0?refArtist=K8vZ9171IP7&f_simplified_filter=true&f_enable_merch_slot=true",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-23 01:34:08",
+        "last_modified": "2026-11-23 01:38:06",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153206",
@@ -101,7 +101,7 @@
       "game_date": "Sunday, November 22, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (1:00 remaining in 3rd)",
+      "status_value": "End of Game",
       "periods": {
         "1": {
           "id": "1",
@@ -1107,7 +1107,38 @@
               "last_name": "Cloutier"
             }
           ],
-          "minus": []
+          "minus": [
+            {
+              "player_id": "9502",
+              "jersey_number": "4",
+              "first_name": "Bryson",
+              "last_name": "Morgan"
+            },
+            {
+              "player_id": "9673",
+              "jersey_number": "44",
+              "first_name": "Carter",
+              "last_name": "Beauchesne"
+            },
+            {
+              "player_id": "9482",
+              "jersey_number": "54",
+              "first_name": "Jude",
+              "last_name": "Bray"
+            },
+            {
+              "player_id": "9600",
+              "jersey_number": "80",
+              "first_name": "Beksultan",
+              "last_name": "Makysh"
+            },
+            {
+              "player_id": "9503",
+              "jersey_number": "86",
+              "first_name": "Charlie",
+              "last_name": "Murata"
+            }
+          ]
         }
       ],
       "goalies": {
@@ -1126,7 +1157,7 @@
             "seconds": "3540",
             "goals_against": "4",
             "win": "0",
-            "loss": "0",
+            "loss": "1",
             "shootout_loss": "0",
             "ot_loss": "0",
             "tie": "0",
@@ -1136,6 +1167,31 @@
             "line": "",
             "secs_mmss": "59:00",
             "shots_against": 33
+          },
+          {
+            "id": "81235",
+            "player_id": "9297",
+            "first_name": "Trenten",
+            "last_name": "Bennett",
+            "period_start": "3rd",
+            "time_start": "19:38",
+            "period_end": "3rd",
+            "time_end": "19:50",
+            "saves": "0",
+            "secs": "12",
+            "seconds": "12",
+            "goals_against": "0",
+            "win": "0",
+            "loss": "1",
+            "shootout_loss": "0",
+            "ot_loss": "0",
+            "tie": "0",
+            "shutout": "0",
+            "shootout_goals_against": "0",
+            "shootout_saves": "0",
+            "line": "",
+            "secs_mmss": "00:12",
+            "shots_against": 0
           }
         ],
         "home": [
@@ -1147,12 +1203,12 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "3rd",
-            "time_end": "19:00",
+            "time_end": "20:00",
             "saves": "27",
-            "secs": "3540",
-            "seconds": "3540",
+            "secs": "3600",
+            "seconds": "3600",
             "goals_against": "3",
-            "win": "0",
+            "win": "1",
             "loss": "0",
             "shootout_loss": "0",
             "ot_loss": "0",
@@ -1161,7 +1217,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "59:00",
+            "secs_mmss": "60:00",
             "shots_against": 30
           }
         ]
@@ -1178,8 +1234,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 3540,
-            "time": "59:00",
+            "seconds": 3600,
+            "time": "60:00",
             "shots_against": 30,
             "goals_against": 3,
             "saves": 27,
@@ -1282,8 +1338,8 @@
             "assists": 0,
             "plusminus": -1,
             "pim": 0,
-            "faceoff_wins": "11",
-            "faceoff_attempts": "17",
+            "faceoff_wins": "12",
+            "faceoff_attempts": "18",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1736,8 +1792,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 3540,
-            "time": "59:00",
+            "seconds": 3552,
+            "time": "59:12",
             "shots_against": 33,
             "goals_against": 4,
             "saves": 29,
@@ -1762,7 +1818,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": 0,
+            "plusminus": -1,
             "pim": 0,
             "faceoff_wins": "8",
             "faceoff_attempts": "12",
@@ -1873,7 +1929,7 @@
             "plusminus": "+3",
             "pim": 0,
             "faceoff_wins": "13",
-            "faceoff_attempts": "24",
+            "faceoff_attempts": "25",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2005,7 +2061,7 @@
             "rookie": "1",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "1",
@@ -2032,7 +2088,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -2113,7 +2169,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -2167,7 +2223,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": -1,
+            "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -2331,12 +2387,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 73,
+          "att": 74,
           "won": 38
         },
         "home": {
-          "att": 73,
-          "won": 35
+          "att": 74,
+          "won": 36
         }
       },
       "totalHits": {
