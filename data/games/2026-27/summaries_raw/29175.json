@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/peterborough-petes-vs-niagara-icedogs-peterborough-ontario-11-08-2026/event/10006507E08275B1",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-08 21:49:14",
+        "last_modified": "2026-11-18 06:49:31",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153224",
@@ -853,20 +853,20 @@
             "last_name": "Colosimo"
           },
           "assist1_player": {
+            "player_id": "9337",
+            "jersey_number": "73",
+            "team_id": "20",
+            "team_code": "NIAG",
+            "first_name": "Layne",
+            "last_name": "Gallacher"
+          },
+          "assist2_player": {
             "player_id": "9501",
             "jersey_number": "64",
             "team_id": "20",
             "team_code": "NIAG",
             "first_name": "Chase",
             "last_name": "Hull"
-          },
-          "assist2_player": {
-            "player_id": null,
-            "jersey_number": null,
-            "team_id": null,
-            "team_code": null,
-            "first_name": null,
-            "last_name": null
           },
           "plus": [
             {
@@ -2313,7 +2313,7 @@
             "status": "",
             "rookie": "0",
             "goals": 0,
-            "assists": 0,
+            "assists": 1,
             "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "2",
@@ -2421,6 +2421,7 @@
             "first_name": "Jake",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "9717"
           },
           {
@@ -2429,6 +2430,7 @@
             "first_name": "Dale",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5170"
           }
         ],
@@ -2439,6 +2441,7 @@
             "first_name": "Rob",
             "description": "Head Coach",
             "person_role_id": "2",
+            "roster": "1",
             "person_id": "7154"
           },
           {
@@ -2447,6 +2450,7 @@
             "first_name": "Mike",
             "description": "General Manager",
             "person_role_id": "7",
+            "roster": "1",
             "person_id": "5176"
           }
         ]
@@ -2468,11 +2472,11 @@
         "home": 3
       },
       "assistCount": {
-        "visitor": 3,
+        "visitor": 4,
         "home": 6
       },
       "pointsCount": {
-        "visitor": 5,
+        "visitor": 6,
         "home": 9
       },
       "pimTotal": {
