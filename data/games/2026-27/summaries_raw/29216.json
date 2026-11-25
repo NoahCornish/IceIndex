@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-21 02:37:08",
+        "last_modified": "2026-11-25 22:09:58",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1154586",
@@ -218,7 +218,7 @@
       "referee1": "Sean Reid (26)",
       "referee2": "Olivier Gouin (7)",
       "linesman1": "Charlie Millen (60)",
-      "linesman2": "Maxime Mongeon (95)",
+      "linesman2": "Philippe Pilon (57)",
       "officialsOnIce": [
         {
           "official_type_id": "1",
@@ -247,9 +247,9 @@
         {
           "official_type_id": "4",
           "description": "Linesman 2",
-          "first_name": "Maxime",
-          "last_name": "Mongeon",
-          "jersey_number": "95",
+          "first_name": "Philippe",
+          "last_name": "Pilon",
+          "jersey_number": "57",
           "person_id": "9993"
         }
       ],
