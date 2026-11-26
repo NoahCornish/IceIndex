@@ -16373,10 +16373,16 @@
 "2026-27","29235","9388","shot",74,206,"1","9:09","5","Default","Non quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29235","9389","shot",143,223,"2","10:12","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29235","9779","shot",453,55,"2","10:37","5","Default","Non quality on net","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29235","9658","shot",556,163,"2","10:39","5","Default","Quality goal","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29235","9658","goal",556,163,"2","10:39",,,,"1",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9658","shot",556,163,"2","10:39","5","Default","Quality goal","1","Owen Leonard","9779","9776","Jet Kwajah","Jack Good","Jet Kwajah; Jack Good",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9658","goal",556,163,"2","10:39",,,,"1",,"9779","9776","Jet Kwajah","Jack Good","Jet Kwajah; Jack Good",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29235","9212","shot",206,260,"2","12:23","5","Default","Non quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29235","9390","shot",107,213,"2","12:30","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9012","shot",81,166,"2","14:47","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9949","shot",200,81,"2","16:14","5","Default","Non quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9685","shot",50,135,"2","16:26","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9389","shot",203,135,"2","16:33","5","Default","Non quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9685","shot",59,100,"2","17:41","5","Default","Non quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29235","9012","shot",129,83,"2","19:00","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29235","9099","shot",69,158,"2","2:45","5","Default","Quality on net","12","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29235","9478","shot",471,178,"2","4:10","5","Default","Quality on net","1","Owen Leonard",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29235","9478","shot",418,95,"2","4:41","5","Default","Non quality goal","1","Owen Leonard","9780",,"Cullen McCrate",,"Cullen McCrate",,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16412,6 +16418,11 @@
 "2026-27","29236","9313","shot",411,76,"2","1:45","2","Wrist","Non quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29236","9405","shot",463,218,"2","10:45","2","Wrist","Quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29236","9361","shot",494,78,"2","11:06","2","Wrist","Quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29236","9405","shot",405,84,"2","14:16","3","Slap","Non quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29236","9313","shot",472,170,"2","14:23","2","Wrist","Quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29236","9410","shot",550,165,"2","15:37","4","Backhand","Quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29236","9823","shot",523,105,"2","18:12","2","Wrist","Quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29236","9677","shot",82,105,"2","18:51","2","Wrist","Quality on net","14","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29236","9285","shot",505,77,"2","2:09","2","Wrist","Non quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29236","8780","shot",416,244,"2","2:22","2","Wrist","Non quality on net","8","Arvin Jaswal",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29236","9884","shot",74,150,"2","4:53","2","Wrist","Quality on net","14","David Egorov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16449,6 +16460,17 @@
 "2026-27","29237","9142","shot",39,123,"1","9:26","5","Default","Non quality on net","34","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29237","8927","shot",487,167,"2","0:13","5","Default","Quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29237","9662","shot",536,87,"2","10:58","5","Default","Non quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","8990","shot",141,91,"2","11:23","5","Default","Quality on net","34","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9118","shot",150,159,"2","12:01","5","Default","Non quality goal","34","Trenten Bennett","9142","9385","Braidy Wassilyn","Nikita Klepov","Braidy Wassilyn; Nikita Klepov",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9118","goal",150,159,"2","12:01",,,,"34",,"9142","9385","Braidy Wassilyn","Nikita Klepov","Braidy Wassilyn; Nikita Klepov",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9118","shot",179,183,"2","12:19","5","Default","Non quality on net","34","Trenten Bennett",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9125","shot",542,174,"2","14:16","5","Default","Quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9510","shot",396,288,"2","14:52","5","Default","Non quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9229","shot",454,224,"2","15:15","5","Default","Non quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9499","shot",457,242,"2","16:25","5","Default","Non quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9506","shot",387,42,"2","16:40","5","Default","Non quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","9147","shot",463,188,"2","17:01","5","Default","Quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29237","10018","shot",465,212,"2","17:06","5","Default","Quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29237","10018","shot",449,25,"2","3:06","5","Default","Non quality on net","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29237","9502","shot",553,155,"2","3:10","5","Default","Quality goal","13","Brady Knowling",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29237","9502","goal",553,155,"2","3:10",,,,"13",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
@@ -16480,5 +16502,11 @@
 "2026-27","29238","9281","shot",94,56,"2","12:44","2","Wrist","Non quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29238","9787","shot",531,151,"2","13:57","6","Tip","Quality on net","17","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29238","9740","shot",425,253,"2","14:55","2","Wrist","Non quality on net","17","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29238","9078","shot",99,242,"2","15:34","1","Snap","Non quality goal","10","Michael Newlove","9162","9281","Alexander Bilecki","Haeden Ellis","Alexander Bilecki; Haeden Ellis",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29238","9078","goal",99,242,"2","15:34",,,,"10",,"9162","9281","Alexander Bilecki","Haeden Ellis","Alexander Bilecki; Haeden Ellis",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29238","9792","shot",497,164,"2","18:48","2","Wrist","Quality on net","17","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29238","9787","shot",515,267,"2","18:49","2","Wrist","Non quality goal","17","Jason Schaubel","9792","9599","Bogdan Yakushevsky","Caden Harvey","Bogdan Yakushevsky; Caden Harvey",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29238","9787","goal",515,267,"2","18:49",,,,"17",,"9792","9599","Bogdan Yakushevsky","Caden Harvey","Bogdan Yakushevsky; Caden Harvey",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29238","9108","shot",550,113,"2","19:26","6","Tip","Non quality on net","17","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29238","8708","shot",519,73,"2","4:04","2","Wrist","Non quality on net","17","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29238","8778","shot",411,64,"2","5:25","2","Wrist","Non quality on net","17","Jason Schaubel",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
