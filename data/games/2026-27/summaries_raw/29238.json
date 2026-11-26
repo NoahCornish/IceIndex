@@ -36,7 +36,7 @@
         "forfeit": "0",
         "shootout": "0",
         "shootout_first_shooter_home": "0",
-        "attendance": "",
+        "attendance": "4741",
         "location": "37",
         "home_coach": "",
         "home_assistant_coach1": "0",
@@ -46,8 +46,8 @@
         "visiting_assistant_coach1": "0",
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
-        "period": "2",
-        "game_clock": "00:00:34",
+        "period": "3",
+        "game_clock": "00:17:59",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://wfcucentre.evenue.net/event/S27/G14",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-26 01:29:07",
+        "last_modified": "2026-11-26 01:49:19",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153432",
@@ -101,7 +101,7 @@
       "game_date": "Wednesday, November 25, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (0:34 remaining in 2nd)",
+      "status_value": "In Progress (17:59 remaining in 3rd)",
       "periods": {
         "1": {
           "id": "1",
@@ -118,6 +118,15 @@
           "long_name": "2nd",
           "sort_order": "2",
           "period_id": "2",
+          "length": "1200",
+          "mandatory": "1"
+        },
+        "3": {
+          "id": "3",
+          "short_name": "3",
+          "long_name": "3rd",
+          "sort_order": "3",
+          "period_id": "3",
           "length": "1200",
           "mandatory": "1"
         }
@@ -1021,11 +1030,11 @@
             "last_name": "Schaubel",
             "period_start": "1st",
             "time_start": "0:00",
-            "period_end": "2nd",
-            "time_end": "19:26",
+            "period_end": "3rd",
+            "time_end": "2:01",
             "saves": "11",
-            "secs": "2366",
-            "seconds": "2366",
+            "secs": "2521",
+            "seconds": "2521",
             "goals_against": "4",
             "win": "0",
             "loss": "0",
@@ -1036,7 +1045,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "39:26",
+            "secs_mmss": "42:01",
             "shots_against": 15
           }
         ],
@@ -1048,11 +1057,11 @@
             "last_name": "Newlove",
             "period_start": "1st",
             "time_start": "0:00",
-            "period_end": "2nd",
-            "time_end": "19:26",
-            "saves": "5",
-            "secs": "2366",
-            "seconds": "2366",
+            "period_end": "3rd",
+            "time_end": "2:01",
+            "saves": "7",
+            "secs": "2521",
+            "seconds": "2521",
             "goals_against": "2",
             "win": "0",
             "loss": "0",
@@ -1063,8 +1072,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "39:26",
-            "shots_against": 7
+            "secs_mmss": "42:01",
+            "shots_against": 9
           }
         ]
       },
@@ -1080,11 +1089,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 2366,
-            "time": "39:26",
-            "shots_against": 7,
+            "seconds": 2521,
+            "time": "42:01",
+            "shots_against": 9,
             "goals_against": 2,
-            "saves": 5,
+            "saves": 7,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -1509,7 +1518,7 @@
             "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "2",
-            "faceoff_attempts": "3",
+            "faceoff_attempts": "4",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1638,8 +1647,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 2366,
-            "time": "39:26",
+            "seconds": 2521,
+            "time": "42:01",
             "shots_against": 15,
             "goals_against": 4,
             "saves": 11,
@@ -1828,8 +1837,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "4",
-            "faceoff_attempts": "9",
+            "faceoff_wins": "5",
+            "faceoff_attempts": "10",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2049,8 +2058,8 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
-            "shots_on": "0",
+            "shots": "1",
+            "shots_on": "1",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -2130,8 +2139,8 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
-            "shots_on": "0",
+            "shots": "1",
+            "shots_on": "1",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -2218,11 +2227,13 @@
       "shotsByPeriod": {
         "visitor": {
           "1": 5,
-          "2": 2
+          "2": 2,
+          "3": 2
         },
         "home": {
           "1": 7,
-          "2": 8
+          "2": 8,
+          "3": 0
         }
       },
       "penaltyshots": {
@@ -2231,11 +2242,11 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 33,
-          "won": 16
+          "att": 34,
+          "won": 17
         },
         "home": {
-          "att": 33,
+          "att": 34,
           "won": 17
         }
       },
@@ -2248,21 +2259,23 @@
         "home": 4
       },
       "totalShots": {
-        "visitor": 7,
+        "visitor": 9,
         "home": 15
       },
       "totalShotsOn": {
-        "visitor": 2,
+        "visitor": 4,
         "home": 4
       },
       "goalsByPeriod": {
         "visitor": {
           "1": 1,
-          "2": 1
+          "2": 1,
+          "3": 0
         },
         "home": {
           "1": 3,
-          "2": 1
+          "2": 1,
+          "3": 0
         }
       }
     }
