@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://wfcucentre.evenue.net/event/S27/G14",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-26 03:00:15",
+        "last_modified": "2026-11-26 03:55:45",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153432",
@@ -509,6 +509,40 @@
           "home": "0",
           "period_id": "3",
           "period": "3rd",
+          "offence": "69",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 5,
+          "minutes_formatted": "5:00",
+          "penalty_class_id": "4",
+          "penalty_class": "Match",
+          "lang_penalty_description": "Match-Att/Deliberate Injury",
+          "s": 1169,
+          "player_penalized_info": {
+            "player_id": "9646",
+            "jersey_number": "44",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Ryder",
+            "last_name": "Roberson"
+          },
+          "player_served_info": {
+            "player_id": "9646",
+            "jersey_number": "44",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Ryder",
+            "last_name": "Roberson"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "19:29",
+          "team_id": "10",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
           "offence": "118",
           "pp": "0",
           "bench": "0",
@@ -586,6 +620,40 @@
           "penalty_class_id": "3",
           "penalty_class": "Major",
           "lang_penalty_description": "Kneeing",
+          "s": 1169,
+          "player_penalized_info": {
+            "player_id": "9211",
+            "jersey_number": "3",
+            "team_id": "17",
+            "team_code": "WSR",
+            "first_name": "Thanasi",
+            "last_name": "Marentette"
+          },
+          "player_served_info": {
+            "player_id": "9211",
+            "jersey_number": "3",
+            "team_id": "17",
+            "team_code": "WSR",
+            "first_name": "Thanasi",
+            "last_name": "Marentette"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "19:29",
+          "team_id": "17",
+          "home": "1",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "119",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 0,
+          "minutes_formatted": "0:00",
+          "penalty_class_id": "6",
+          "penalty_class": "Game Misconduct",
+          "lang_penalty_description": "Game Misc-Kneeing",
           "s": 1169,
           "player_penalized_info": {
             "player_id": "9211",
@@ -2731,7 +2799,7 @@
             "goals": 0,
             "assists": 0,
             "plusminus": 0,
-            "pim": 7,
+            "pim": 12,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
             "hits": "0",
@@ -3004,12 +3072,12 @@
         "home": 11
       },
       "pimTotal": {
-        "visitor": 11,
+        "visitor": 16,
         "home": 14
       },
       "infCount": {
-        "visitor": 5,
-        "home": 4
+        "visitor": 6,
+        "home": 5
       },
       "shotsByPeriod": {
         "visitor": {

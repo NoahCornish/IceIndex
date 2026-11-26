@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://barriecolts.ticketpro.ca/en/pages/BarrieColts_Games",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-20 02:44:28",
+        "last_modified": "2026-11-26 04:53:19",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153986",
@@ -948,20 +948,20 @@
             "last_name": "Makysh"
           },
           "assist1_player": {
+            "player_id": "9673",
+            "jersey_number": "44",
+            "team_id": "13",
+            "team_code": "FLNT",
+            "first_name": "Carter",
+            "last_name": "Beauchesne"
+          },
+          "assist2_player": {
             "player_id": "10019",
             "jersey_number": "2",
             "team_id": "13",
             "team_code": "FLNT",
             "first_name": "Nick",
             "last_name": "Bogas"
-          },
-          "assist2_player": {
-            "player_id": "9046",
-            "jersey_number": "65",
-            "team_id": "13",
-            "team_code": "FLNT",
-            "first_name": "Rylan",
-            "last_name": "Fellinger"
           },
           "plus": [
             {
@@ -1382,12 +1382,12 @@
             "last_name": "Murata"
           },
           "assist2_player": {
-            "player_id": null,
-            "jersey_number": null,
-            "team_id": null,
-            "team_code": null,
-            "first_name": null,
-            "last_name": null
+            "player_id": "9600",
+            "jersey_number": "80",
+            "team_id": "13",
+            "team_code": "FLNT",
+            "first_name": "Beksultan",
+            "last_name": "Makysh"
           },
           "plus": [
             {
@@ -2511,7 +2511,7 @@
             "status": "",
             "rookie": "1",
             "goals": 0,
-            "assists": 1,
+            "assists": 2,
             "plusminus": "+3",
             "pim": 2,
             "faceoff_wins": "0",
@@ -2538,7 +2538,7 @@
             "status": "A",
             "rookie": "0",
             "goals": 0,
-            "assists": 1,
+            "assists": 0,
             "plusminus": "+2",
             "pim": 2,
             "faceoff_wins": "0",
@@ -2592,7 +2592,7 @@
             "status": "",
             "rookie": "0",
             "goals": 1,
-            "assists": 1,
+            "assists": 2,
             "plusminus": "+3",
             "pim": 0,
             "faceoff_wins": "1",
@@ -2751,11 +2751,11 @@
         "home": 2
       },
       "assistCount": {
-        "visitor": 8,
+        "visitor": 9,
         "home": 3
       },
       "pointsCount": {
-        "visitor": 14,
+        "visitor": 15,
         "home": 5
       },
       "pimTotal": {
