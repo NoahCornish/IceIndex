@@ -603,40 +603,6 @@
             "first_name": "Thanasi",
             "last_name": "Marentette"
           }
-        },
-        {
-          "event": "penalty",
-          "time_off_formatted": "19:29",
-          "team_id": "17",
-          "home": "1",
-          "period_id": "3",
-          "period": "3rd",
-          "offence": "119",
-          "pp": "0",
-          "bench": "0",
-          "penalty_shot": "0",
-          "minutes": 0,
-          "minutes_formatted": "0:00",
-          "penalty_class_id": "6",
-          "penalty_class": "Game Misconduct",
-          "lang_penalty_description": "Game Misc-Kneeing",
-          "s": 1169,
-          "player_penalized_info": {
-            "player_id": "9211",
-            "jersey_number": "3",
-            "team_id": "17",
-            "team_code": "WSR",
-            "first_name": "Thanasi",
-            "last_name": "Marentette"
-          },
-          "player_served_info": {
-            "player_id": "9211",
-            "jersey_number": "3",
-            "team_id": "17",
-            "team_code": "WSR",
-            "first_name": "Thanasi",
-            "last_name": "Marentette"
-          }
         }
       ],
       "goals": [
@@ -3043,7 +3009,7 @@
       },
       "infCount": {
         "visitor": 5,
-        "home": 5
+        "home": 4
       },
       "shotsByPeriod": {
         "visitor": {
