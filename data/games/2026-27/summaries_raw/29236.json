@@ -57,7 +57,7 @@
         "home_goals_actual": "0",
         "visiting_goals_actual": "0",
         "public_notes": "",
-        "private_notes": "",
+        "private_notes": "Teddy Bear Toss started at",
         "league_game_notes": "",
         "home_team_notes": "",
         "visiting_team_notes": "",
@@ -209,6 +209,46 @@
         }
       ],
       "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Paul",
+          "last_name": "Cantor",
+          "jersey_number": "0",
+          "person_id": "5885"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Chris",
+          "last_name": "Oleski",
+          "jersey_number": "0",
+          "person_id": "8195"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Joe",
+          "last_name": "Komorek",
+          "jersey_number": "0",
+          "person_id": "6254"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Tristan",
+          "last_name": "Hodinko",
+          "jersey_number": "0",
+          "person_id": "8457"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Tom",
+          "last_name": "Markley",
+          "jersey_number": "0",
+          "person_id": "7373"
+        },
         {
           "official_type_id": "10",
           "description": "Video Goal Judge",
