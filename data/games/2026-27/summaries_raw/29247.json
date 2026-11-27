@@ -208,7 +208,56 @@
           "person_id": "8304"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Kevin",
+          "last_name": "Demarsh",
+          "jersey_number": "0",
+          "person_id": "5873"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Robert",
+          "last_name": "Hughes",
+          "jersey_number": "0",
+          "person_id": "5696"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Jim",
+          "last_name": "Morrison",
+          "jersey_number": "0",
+          "person_id": "6233"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Gavin",
+          "last_name": "Clark",
+          "jersey_number": "0",
+          "person_id": "8594"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Ryan",
+          "last_name": "Gordon",
+          "jersey_number": "0",
+          "person_id": "8475"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Larry",
+          "last_name": "Beaton",
+          "jersey_number": "0",
+          "person_id": "7080"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
@@ -376,7 +425,7 @@
             "player_id": "9448",
             "first_name": "Easton",
             "last_name": "Walos",
-            "start": "0",
+            "start": "1",
             "position": "4",
             "position_str": "C",
             "status": "",
@@ -565,7 +614,7 @@
             "player_id": "9997",
             "first_name": "Simon",
             "last_name": "Katolicky",
-            "start": "0",
+            "start": "1",
             "position": "3",
             "position_str": "LW",
             "status": "",
@@ -673,7 +722,7 @@
             "player_id": "9583",
             "first_name": "Cole",
             "last_name": "Emerton",
-            "start": "0",
+            "start": "1",
             "position": "6",
             "position_str": "RD",
             "status": "",
@@ -700,7 +749,7 @@
             "player_id": "8736",
             "first_name": "Liam",
             "last_name": "Spencer",
-            "start": "0",
+            "start": "1",
             "position": "5",
             "position_str": "LD",
             "status": "",
@@ -754,7 +803,7 @@
             "player_id": "9131",
             "first_name": "Tyler",
             "last_name": "Challenger",
-            "start": "0",
+            "start": "1",
             "position": "2",
             "position_str": "RW",
             "status": "",

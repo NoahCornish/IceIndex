@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://tickets.guelphstorm.com",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-21 03:41:17",
+        "last_modified": "2026-11-27 21:05:57",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153823",
@@ -436,6 +436,40 @@
         },
         {
           "event": "penalty",
+          "time_off_formatted": "0:00",
+          "team_id": "7",
+          "home": "0",
+          "period_id": "2",
+          "period": "2nd",
+          "offence": "101",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 0,
+          "minutes_formatted": "0:00",
+          "penalty_class_id": "5",
+          "penalty_class": "Misconduct",
+          "lang_penalty_description": "Misc-USC",
+          "s": 0,
+          "player_penalized_info": {
+            "player_id": "9305",
+            "jersey_number": "98",
+            "team_id": "7",
+            "team_code": "BAR",
+            "first_name": "Anthony",
+            "last_name": "Figliomeni"
+          },
+          "player_served_info": {
+            "player_id": "9305",
+            "jersey_number": "98",
+            "team_id": "7",
+            "team_code": "BAR",
+            "first_name": "Anthony",
+            "last_name": "Figliomeni"
+          }
+        },
+        {
+          "event": "penalty",
           "time_off_formatted": "7:22",
           "team_id": "7",
           "home": "0",
@@ -466,40 +500,6 @@
             "team_code": "BAR",
             "first_name": "Luc",
             "last_name": "Gauvreau"
-          }
-        },
-        {
-          "event": "penalty",
-          "time_off_formatted": "20:00",
-          "team_id": "7",
-          "home": "0",
-          "period_id": "2",
-          "period": "2nd",
-          "offence": "101",
-          "pp": "0",
-          "bench": "0",
-          "penalty_shot": "0",
-          "minutes": 0,
-          "minutes_formatted": "0:00",
-          "penalty_class_id": "5",
-          "penalty_class": "Misconduct",
-          "lang_penalty_description": "Misc-USC",
-          "s": 1200,
-          "player_penalized_info": {
-            "player_id": "9305",
-            "jersey_number": "98",
-            "team_id": "7",
-            "team_code": "BAR",
-            "first_name": "Anthony",
-            "last_name": "Figliomeni"
-          },
-          "player_served_info": {
-            "player_id": "9305",
-            "jersey_number": "98",
-            "team_id": "7",
-            "team_code": "BAR",
-            "first_name": "Anthony",
-            "last_name": "Figliomeni"
           }
         },
         {
@@ -538,7 +538,7 @@
         },
         {
           "event": "penalty",
-          "time_off_formatted": "8:54",
+          "time_off_formatted": "8:57",
           "team_id": "7",
           "home": "0",
           "period_id": "3",
@@ -552,7 +552,7 @@
           "penalty_class_id": "3",
           "penalty_class": "Major",
           "lang_penalty_description": "Fighting",
-          "s": 534,
+          "s": 537,
           "player_penalized_info": {
             "player_id": "9305",
             "jersey_number": "98",
@@ -568,40 +568,6 @@
             "team_code": "BAR",
             "first_name": "Anthony",
             "last_name": "Figliomeni"
-          }
-        },
-        {
-          "event": "penalty",
-          "time_off_formatted": "8:54",
-          "team_id": "9",
-          "home": "1",
-          "period_id": "3",
-          "period": "3rd",
-          "offence": "36",
-          "pp": "0",
-          "bench": "0",
-          "penalty_shot": "0",
-          "minutes": 2,
-          "minutes_formatted": "2:00",
-          "penalty_class_id": "1",
-          "penalty_class": "Minor",
-          "lang_penalty_description": "Unsportsmanlike Cnd.",
-          "s": 534,
-          "player_penalized_info": {
-            "player_id": "10036",
-            "jersey_number": "28",
-            "team_id": "9",
-            "team_code": "GUE",
-            "first_name": "Carter",
-            "last_name": "Kucher"
-          },
-          "player_served_info": {
-            "player_id": "10036",
-            "jersey_number": "28",
-            "team_id": "9",
-            "team_code": "GUE",
-            "first_name": "Carter",
-            "last_name": "Kucher"
           }
         },
         {
@@ -670,6 +636,40 @@
             "team_code": "BAR",
             "first_name": "Justin",
             "last_name": "Handsor"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "8:57",
+          "team_id": "9",
+          "home": "1",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "36",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Unsportsmanlike Cnd.",
+          "s": 537,
+          "player_penalized_info": {
+            "player_id": "10036",
+            "jersey_number": "28",
+            "team_id": "9",
+            "team_code": "GUE",
+            "first_name": "Carter",
+            "last_name": "Kucher"
+          },
+          "player_served_info": {
+            "player_id": "10036",
+            "jersey_number": "28",
+            "team_id": "9",
+            "team_code": "GUE",
+            "first_name": "Carter",
+            "last_name": "Kucher"
           }
         },
         {
@@ -815,7 +815,7 @@
           "home": "0",
           "period_id": "3",
           "period": "3rd",
-          "offence": "101",
+          "offence": "98",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "0",
@@ -823,7 +823,7 @@
           "minutes_formatted": "0:00",
           "penalty_class_id": "5",
           "penalty_class": "Misconduct",
-          "lang_penalty_description": "Misc-USC",
+          "lang_penalty_description": "Misc-Instigating",
           "s": 594,
           "player_penalized_info": {
             "player_id": "9837",
