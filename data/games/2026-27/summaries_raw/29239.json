@@ -22,9 +22,9 @@
         "type_id": "",
         "if_necessary": "0",
         "quick_score": "0",
-        "mvp1": "",
-        "mvp2": "",
-        "mvp3": "",
+        "mvp1": "9330",
+        "mvp2": "9321",
+        "mvp3": "8975",
         "featured_player_id": "",
         "date_played": "2026-11-26",
         "date_tbd": "0",
@@ -32,11 +32,11 @@
         "time_tbd": "0",
         "timezone": "America/Toronto",
         "start_time": "19:06:00",
-        "end_time": "",
+        "end_time": "21:31:00",
         "forfeit": "0",
         "shootout": "0",
         "shootout_first_shooter_home": "0",
-        "attendance": "",
+        "attendance": "2801",
         "location": "106",
         "home_coach": "",
         "home_assistant_coach1": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://barriecolts.ticketpro.ca/en/pages/BarrieColts_Games",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-27 02:30:51",
+        "last_modified": "2026-11-27 02:36:48",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153236",
@@ -87,10 +87,10 @@
         "uses_spalk_rc": "",
         "tournament_id": "",
         "start_time_without_seconds": "19:06",
-        "end_time_without_seconds": "",
+        "end_time_without_seconds": "21:31",
         "12_hour_start_time_without_seconds": "7:06 pm",
-        "12_hour_end_time_without_seconds": "",
-        "length": "",
+        "12_hour_end_time_without_seconds": "9:31 pm",
+        "length": "2:25",
         "timezone_short": "EST"
       },
       "txt_title": "GAME SUMMARY",
@@ -99,9 +99,9 @@
       "txt_shots": "Shots",
       "game_ident": "29239",
       "game_date": "Thursday, November 26, 2026",
-      "game_length": "",
+      "game_length": "2:25",
       "status_title": "Game Status",
-      "status_value": "In Progress (0:27 remaining in 3rd)",
+      "status_value": "In Progress (2:25 remaining in 3rd)",
       "periods": {
         "1": {
           "id": "1",
@@ -183,9 +183,27 @@
       "mvp_type": 1,
       "shootoutDetail": [],
       "mvps": [
-        null,
-        null,
-        null
+        {
+          "player_id": "9330",
+          "first_name": "Matthew",
+          "last_name": "Manza",
+          "jersey_number": "21",
+          "home": 0
+        },
+        {
+          "player_id": "9321",
+          "first_name": "Spencer",
+          "last_name": "Bowes",
+          "jersey_number": "12",
+          "home": 0
+        },
+        {
+          "player_id": "8975",
+          "first_name": "Kaleb",
+          "last_name": "Dietsch",
+          "jersey_number": "4",
+          "home": 0
+        }
       ],
       "venue": "Sadlon Arena",
       "referee1": "Harry Smith (31)",
