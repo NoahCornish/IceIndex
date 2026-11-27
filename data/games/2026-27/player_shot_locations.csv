@@ -16641,6 +16641,7 @@
 "2026-27","29239","9530","shot",550,175,"2","8:29","2","Wrist","Quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","8800","shot",105,140,"2","9:00","2","Wrist","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","8977","shot",393,170,"2","9:58","2","Wrist","Non quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9805","shot",213,34,"3","3:42","2","Wrist","Non quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","9473","shot",63,111,"1","1:37","5","Default","Non quality on net","6","Ben Hrebik",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","9554","shot",99,177,"1","10:06","5","Default","Quality on net","6","Ben Hrebik",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","8972","shot",513,190,"1","13:07","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16676,8 +16677,8 @@
 "2026-27","29240","8799","shot",430,237,"2","10:09","5","Default","Non quality on net","6","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","9008","shot",207,139,"2","10:28","5","Default","Non quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","8963","shot",132,83,"2","11:25","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29240","8932","shot",99,190,"2","11:29","5","Default","Quality goal","9","Aleksei Medvedev","8963",,"Ryan Roobroeck",,"Ryan Roobroeck",,"PP",,,TRUE,FALSE,FALSE,,TRUE
-"2026-27","29240","8932","goal",99,190,"2","11:29",,,,"9",,"8963",,"Ryan Roobroeck",,"Ryan Roobroeck",1,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
+"2026-27","29240","8932","shot",99,190,"2","11:29","5","Default","Quality goal","9","Aleksei Medvedev","8963","9656","Ryan Roobroeck","Vladimir Dravecky","Ryan Roobroeck; Vladimir Dravecky",,"PP",,,TRUE,FALSE,FALSE,,TRUE
+"2026-27","29240","8932","goal",99,190,"2","11:29",,,,"9",,"8963","9656","Ryan Roobroeck","Vladimir Dravecky","Ryan Roobroeck; Vladimir Dravecky",2,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
 "2026-27","29240","8972","shot",114,69,"2","11:53","5","Default","Non quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","8963","shot",89,173,"2","12:20","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","8963","shot",88,185,"2","12:30","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
