@@ -46,8 +46,8 @@
         "visiting_assistant_coach1": "0",
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
-        "period": "2",
-        "game_clock": "00:02:47",
+        "period": "3",
+        "game_clock": "00:15:16",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/peterborough-petes-vs-guelph-storm-peterborough-ontario-11-26-2026/event/10006507E08F75E2",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-27 01:46:33",
+        "last_modified": "2026-11-27 02:16:30",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153625",
@@ -101,7 +101,7 @@
       "game_date": "Thursday, November 26, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (2:47 remaining in 2nd)",
+      "status_value": "In Progress (15:16 remaining in 3rd)",
       "periods": {
         "1": {
           "id": "1",
@@ -118,6 +118,15 @@
           "long_name": "2nd",
           "sort_order": "2",
           "period_id": "2",
+          "length": "1200",
+          "mandatory": "1"
+        },
+        "3": {
+          "id": "3",
+          "short_name": "3",
+          "long_name": "3rd",
+          "sort_order": "3",
+          "period_id": "3",
           "length": "1200",
           "mandatory": "1"
         }
@@ -637,12 +646,12 @@
             "last_name": "Parish"
           },
           "player_served_info": {
-            "player_id": "9247",
-            "jersey_number": "18",
+            "player_id": "9554",
+            "jersey_number": "44",
             "team_id": "6",
             "team_code": "PBO",
-            "first_name": "Francis",
-            "last_name": "Parish"
+            "first_name": "Yanis",
+            "last_name": "Lutz"
           }
         },
         {
@@ -1587,11 +1596,11 @@
             "last_name": "Jovanovski",
             "period_start": "2nd",
             "time_start": "11:22",
-            "period_end": "2nd",
-            "time_end": "17:13",
-            "saves": "5",
-            "secs": "351",
-            "seconds": "351",
+            "period_end": "3rd",
+            "time_end": "4:44",
+            "saves": "6",
+            "secs": "802",
+            "seconds": "802",
             "goals_against": "0",
             "win": "0",
             "loss": "0",
@@ -1602,8 +1611,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "2",
-            "secs_mmss": "05:51",
-            "shots_against": 5
+            "secs_mmss": "13:22",
+            "shots_against": 6
           }
         ],
         "home": [
@@ -1614,11 +1623,11 @@
             "last_name": "Medvedev",
             "period_start": "1st",
             "time_start": "0:00",
-            "period_end": "2nd",
-            "time_end": "17:13",
-            "saves": "28",
-            "secs": "2233",
-            "seconds": "2233",
+            "period_end": "3rd",
+            "time_end": "4:44",
+            "saves": "30",
+            "secs": "2684",
+            "seconds": "2684",
             "goals_against": "3",
             "win": "0",
             "loss": "0",
@@ -1629,8 +1638,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "37:13",
-            "shots_against": 31
+            "secs_mmss": "44:44",
+            "shots_against": 33
           }
         ]
       },
@@ -1668,11 +1677,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 2233,
-            "time": "37:13",
-            "shots_against": 31,
+            "seconds": 2684,
+            "time": "44:44",
+            "shots_against": 33,
             "goals_against": 3,
-            "saves": 28,
+            "saves": 30,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -1890,8 +1899,8 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "2",
-            "shots_on": "2",
+            "shots": "3",
+            "shots_on": "3",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -2020,8 +2029,8 @@
             "assists": 0,
             "plusminus": "+1",
             "pim": 0,
-            "faceoff_wins": "5",
-            "faceoff_attempts": "11",
+            "faceoff_wins": "7",
+            "faceoff_attempts": "14",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2048,7 +2057,7 @@
             "plusminus": "+1",
             "pim": 0,
             "faceoff_wins": "5",
-            "faceoff_attempts": "5",
+            "faceoff_attempts": "6",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2102,7 +2111,7 @@
             "plusminus": 0,
             "pim": 2,
             "faceoff_wins": "0",
-            "faceoff_attempts": "0",
+            "faceoff_attempts": "1",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2182,11 +2191,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 1031,
-            "time": "17:11",
-            "shots_against": 7,
+            "seconds": 1482,
+            "time": "24:42",
+            "shots_against": 8,
             "goals_against": 0,
-            "saves": 7,
+            "saves": 8,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -2286,8 +2295,8 @@
             "assists": 1,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "2",
-            "faceoff_attempts": "6",
+            "faceoff_wins": "3",
+            "faceoff_attempts": "7",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2340,8 +2349,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "2",
-            "faceoff_attempts": "3",
+            "faceoff_wins": "3",
+            "faceoff_attempts": "4",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2449,7 +2458,7 @@
             "plusminus": -1,
             "pim": 0,
             "faceoff_wins": "1",
-            "faceoff_attempts": "5",
+            "faceoff_attempts": "6",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2615,8 +2624,8 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
-            "shots_on": "0",
+            "shots": "1",
+            "shots_on": "1",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -2664,8 +2673,8 @@
             "assists": 0,
             "plusminus": -2,
             "pim": 0,
-            "faceoff_wins": "4",
-            "faceoff_attempts": "16",
+            "faceoff_wins": "5",
+            "faceoff_attempts": "18",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -2696,7 +2705,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "3",
+            "shots": "4",
             "shots_on": "3",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -2784,11 +2793,13 @@
       "shotsByPeriod": {
         "visitor": {
           "1": 8,
-          "2": 23
+          "2": 23,
+          "3": 2
         },
         "home": {
           "1": 18,
-          "2": 7
+          "2": 7,
+          "3": 1
         }
       },
       "penaltyshots": {
@@ -2824,12 +2835,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 42,
-          "won": 15
+          "att": 47,
+          "won": 18
         },
         "home": {
-          "att": 42,
-          "won": 27
+          "att": 47,
+          "won": 29
         }
       },
       "totalHits": {
@@ -2841,21 +2852,23 @@
         "home": 5
       },
       "totalShots": {
-        "visitor": 31,
-        "home": 25
+        "visitor": 33,
+        "home": 26
       },
       "totalShotsOn": {
-        "visitor": 17,
-        "home": 14
+        "visitor": 18,
+        "home": 15
       },
       "goalsByPeriod": {
         "visitor": {
           "1": 0,
-          "2": 3
+          "2": 3,
+          "3": 0
         },
         "home": {
           "1": 5,
-          "2": 0
+          "2": 0,
+          "3": 0
         }
       }
     }
