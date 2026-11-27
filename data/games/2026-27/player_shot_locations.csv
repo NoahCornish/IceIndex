@@ -16596,8 +16596,8 @@
 "2026-27","29239","9518","shot",399,105,"1","10:00","2","Wrist","Non quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","10142","shot",196,105,"1","12:39","2","Wrist","Non quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9835","shot",72,128,"1","13:53","2","Wrist","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29239","9835","shot",65,134,"1","13:54","2","Wrist","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9522","shot",476,173,"1","13:54","2","Wrist","Quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9835","shot",65,134,"1","13:54","2","Wrist","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9821","shot",76,177,"1","15:15","2","Wrist","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9330","shot",494,75,"1","15:36","2","Wrist","Quality goal","5","Matvei Nikonovich","9321","9522","Spencer Bowes","Ondrej Ruml","Spencer Bowes; Ondrej Ruml",,"PP",,,TRUE,FALSE,FALSE,,TRUE
 "2026-27","29239","9330","goal",494,75,"1","15:36",,,,"5",,"9321","9522","Spencer Bowes","Ondrej Ruml","Spencer Bowes; Ondrej Ruml",2,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
@@ -16636,13 +16636,20 @@
 "2026-27","29239","8976","shot",531,99,"2","6:10","2","Wrist","Non quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9846","shot",107,149,"2","7:16","2","Wrist","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9330","shot",500,161,"2","7:35","2","Wrist","Quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29239","9321","shot",541,146,"2","8:03","2","Wrist","Quality goal","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29239","9321","goal",541,146,"2","8:03",,,,"5",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9321","shot",541,146,"2","8:03","2","Wrist","Quality goal","5","Matvei Nikonovich","9330","9037","Matthew Manza","Justin Handsor","Matthew Manza; Justin Handsor",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9321","goal",541,146,"2","8:03",,,,"5",,"9330","9037","Matthew Manza","Justin Handsor","Matthew Manza; Justin Handsor",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9530","shot",550,175,"2","8:29","2","Wrist","Quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","8800","shot",105,140,"2","9:00","2","Wrist","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","8977","shot",393,170,"2","9:58","2","Wrist","Non quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29239","8975","shot",395,166,"3","10:04","3","Slap","Non quality goal","5","Matvei Nikonovich","9033",,"Zach Houben",,"Zach Houben",,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29239","8975","goal",395,166,"3","10:04",,,,"5",,"9033",,"Zach Houben",,"Zach Houben",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","8975","shot",395,166,"3","10:53","3","Slap","Non quality goal","5","Matvei Nikonovich","9033",,"Zach Houben",,"Zach Houben",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","8975","goal",395,166,"3","10:53",,,,"5",,"9033",,"Zach Houben",,"Zach Houben",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9837","shot",217,37,"3","14:02","3","Slap","Non quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9330","shot",555,110,"3","14:51","2","Wrist","Non quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9580","shot",229,43,"3","14:59","3","Slap","Non quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9330","shot",525,134,"3","17:40","2","Wrist","Quality goal","5","Matvei Nikonovich","9321","8977","Spencer Bowes","Chase Yanni","Spencer Bowes; Chase Yanni",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9330","goal",525,134,"3","17:40",,,,"5",,"9321","8977","Spencer Bowes","Chase Yanni","Spencer Bowes; Chase Yanni",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","9805","shot",216,191,"3","18:19","2","Wrist","Non quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29239","8800","shot",53,147,"3","19:18","6","Tip","Quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","9805","shot",213,34,"3","3:42","2","Wrist","Non quality on net","7","Jaeden Nelson",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","8976","shot",542,176,"3","4:00","2","Wrist","Quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29239","8975","shot",399,67,"3","4:24","2","Wrist","Non quality on net","5","Matvei Nikonovich",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16712,5 +16719,14 @@
 "2026-27","29240","8963","shot",549,189,"2","8:55","5","Default","Non quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","8972","shot",543,250,"2","9:30","5","Default","Non quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","9160","shot",157,165,"3","1:35","5","Default","Non quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","8972","shot",45,139,"3","10:26","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","10033","shot",49,138,"3","11:35","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","9473","shot",530,171,"3","13:15","5","Default","Quality on net","6","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","8968","shot",114,76,"3","3:01","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29240","9638","shot",525,106,"3","4:44","5","Default","Quality on net","6","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","10033","shot",67,193,"3","6:09","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","10050","shot",479,227,"3","6:36","5","Default","Non quality on net","6","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","9311","shot",269,64,"3","7:40","5","Default","Non quality on net","6","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","9160","shot",177,242,"3","8:27","5","Default","Non quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","9473","shot",459,262,"3","9:05","5","Default","Non quality on net","6","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29240","8932","shot",51,130,"3","9:55","5","Default","Quality on net","9","Aleksei Medvedev",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
