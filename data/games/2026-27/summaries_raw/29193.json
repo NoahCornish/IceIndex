@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://mpv.tickets.com/schedule/?agency=SUDV_PLAGENCY_MPV&orgid=46229#/?event=WOLVES&view=list&includePackages=false",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-14 06:10:24",
+        "last_modified": "2026-11-26 05:04:58",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1153665",
@@ -640,20 +640,20 @@
             "last_name": "Katolicky"
           },
           "assist1_player": {
-            "player_id": "9027",
-            "jersey_number": "16",
-            "team_id": "15",
-            "team_code": "SAR",
-            "first_name": "Jake",
-            "last_name": "Crawford"
-          },
-          "assist2_player": {
             "player_id": "9131",
             "jersey_number": "84",
             "team_id": "15",
             "team_code": "SAR",
             "first_name": "Tyler",
             "last_name": "Challenger"
+          },
+          "assist2_player": {
+            "player_id": "9446",
+            "jersey_number": "6",
+            "team_id": "15",
+            "team_code": "SAR",
+            "first_name": "Cameron",
+            "last_name": "Aucoin"
           },
           "plus": [
             {
@@ -1856,7 +1856,7 @@
             "status": "A",
             "rookie": "0",
             "goals": 0,
-            "assists": 0,
+            "assists": 1,
             "plusminus": "+2",
             "pim": 0,
             "faceoff_wins": "0",
@@ -1964,7 +1964,7 @@
             "status": "",
             "rookie": "0",
             "goals": 0,
-            "assists": 1,
+            "assists": 0,
             "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "8",

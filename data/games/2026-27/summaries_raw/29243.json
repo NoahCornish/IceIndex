@@ -219,8 +219,46 @@
       "visitor_team_lineup": [],
       "game_date_iso_8601": "2026-11-27T19:07:00-05:00",
       "coaches": {
-        "visitor": [],
-        "home": []
+        "visitor": [
+          {
+            "coach_id": "266",
+            "last_name": "Mallette",
+            "first_name": "Kris",
+            "description": "Head Coach",
+            "person_role_id": "2",
+            "roster": "1",
+            "person_id": "9079"
+          },
+          {
+            "coach_id": "146",
+            "last_name": "Brown",
+            "first_name": "Dave",
+            "description": "General Manager",
+            "person_role_id": "7",
+            "roster": "1",
+            "person_id": "5166"
+          }
+        ],
+        "home": [
+          {
+            "coach_id": "213",
+            "last_name": "Stillman",
+            "first_name": "Cory",
+            "description": "Head Coach",
+            "person_role_id": "2",
+            "roster": "1",
+            "person_id": "6834"
+          },
+          {
+            "coach_id": "15",
+            "last_name": "Burnett",
+            "first_name": "George",
+            "description": "General Manager",
+            "person_role_id": "7",
+            "roster": "1",
+            "person_id": "4732"
+          }
+        ]
       },
       "pimBench": {
         "visitor": 0,
