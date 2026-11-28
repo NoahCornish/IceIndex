@@ -48,10 +48,10 @@
         "visiting_manager": "",
         "period": "3",
         "game_clock": "00:00:00",
-        "status": "3",
+        "status": "4",
         "started": "1",
-        "pending_final": "1",
-        "final": "0",
+        "pending_final": "0",
+        "final": "1",
         "home_goal_count": "2",
         "visiting_goal_count": "4",
         "home_goals_actual": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/brantford-bulldogs-tickets/artist/806495",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 02:44:36",
+        "last_modified": "2026-11-28 02:56:42",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153757",
@@ -100,8 +100,8 @@
       "game_ident": "29242",
       "game_date": "Friday, November 27, 2026",
       "game_length": "2:32",
-      "status_title": "Game Status",
-      "status_value": "End of Game",
+      "status_title": "End",
+      "status_value": "Final",
       "periods": {
         "1": {
           "id": "1",
@@ -821,16 +821,16 @@
           },
           "plus": [
             {
-              "player_id": "9801",
-              "jersey_number": "7",
-              "first_name": "Lucas",
-              "last_name": "Prud'homme"
+              "player_id": "9192",
+              "jersey_number": "9",
+              "first_name": "Ethan",
+              "last_name": "Kindree"
             },
             {
-              "player_id": "9802",
-              "jersey_number": "23",
-              "first_name": "Cameron",
-              "last_name": "Merrick"
+              "player_id": "9564",
+              "jersey_number": "10",
+              "first_name": "Max",
+              "last_name": "Delisle"
             },
             {
               "player_id": "8940",
@@ -1113,12 +1113,6 @@
               "jersey_number": "33",
               "first_name": "Jeremy",
               "last_name": "Freeman"
-            },
-            {
-              "player_id": "9030",
-              "jersey_number": "34",
-              "first_name": "Harry",
-              "last_name": "Nansi"
             },
             {
               "player_id": "9794",
@@ -2089,7 +2083,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": "+1",
+            "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "1",
             "faceoff_attempts": "3",
@@ -2143,7 +2137,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": 0,
+            "plusminus": "+1",
             "pim": 0,
             "faceoff_wins": "11",
             "faceoff_attempts": "16",
@@ -2170,7 +2164,7 @@
             "rookie": "0",
             "goals": 2,
             "assists": 0,
-            "plusminus": "+3",
+            "plusminus": "+4",
             "pim": 2,
             "faceoff_wins": "4",
             "faceoff_attempts": "12",
@@ -2278,7 +2272,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 0,
-            "plusminus": "+1",
+            "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
@@ -2359,7 +2353,7 @@
             "rookie": "0",
             "goals": 0,
             "assists": 1,
-            "plusminus": "+1",
+            "plusminus": 0,
             "pim": 2,
             "faceoff_wins": "0",
             "faceoff_attempts": "1",

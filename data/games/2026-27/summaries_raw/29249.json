@@ -32,11 +32,11 @@
         "time_tbd": "0",
         "timezone": "America/Toronto",
         "start_time": "19:09:00",
-        "end_time": "21:40:00",
+        "end_time": "21:41:00",
         "forfeit": "0",
         "shootout": "0",
         "shootout_first_shooter_home": "0",
-        "attendance": "",
+        "attendance": "4418",
         "location": "17",
         "home_coach": "",
         "home_assistant_coach1": "0",
@@ -47,11 +47,11 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "4",
-        "game_clock": "00:00:00",
-        "status": "3",
+        "game_clock": "00:00:23",
+        "status": "4",
         "started": "1",
-        "pending_final": "1",
-        "final": "0",
+        "pending_final": "0",
+        "final": "1",
         "home_goal_count": "1",
         "visiting_goal_count": "2",
         "home_goals_actual": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://mpv.tickets.com/schedule/?agency=SUDV_PLAGENCY_MPV&orgid=46229#/?event=WOLVES&view=list&includePackages=false",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 02:43:44",
+        "last_modified": "2026-11-28 03:03:21",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153822",
@@ -87,10 +87,10 @@
         "uses_spalk_rc": "",
         "tournament_id": "",
         "start_time_without_seconds": "19:09",
-        "end_time_without_seconds": "21:40",
+        "end_time_without_seconds": "21:41",
         "12_hour_start_time_without_seconds": "7:09 pm",
-        "12_hour_end_time_without_seconds": "9:40 pm",
-        "length": "2:31",
+        "12_hour_end_time_without_seconds": "9:41 pm",
+        "length": "2:32",
         "timezone_short": "EST"
       },
       "txt_title": "GAME SUMMARY",
@@ -99,9 +99,9 @@
       "txt_shots": "Shots",
       "game_ident": "29249",
       "game_date": "Friday, November 27, 2026",
-      "game_length": "2:31",
-      "status_title": "Game Status",
-      "status_value": "End of Game",
+      "game_length": "2:32",
+      "status_title": "End",
+      "status_value": "Final OT",
       "periods": {
         "1": {
           "id": "1",
@@ -255,12 +255,28 @@
       ],
       "officialsOffIce": [
         {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Randy",
+          "last_name": "Pascal",
+          "jersey_number": "0",
+          "person_id": "5831"
+        },
+        {
           "official_type_id": "6",
           "description": "Online Scorekeeper",
           "first_name": "Remy",
           "last_name": "Pieper",
           "jersey_number": "0",
           "person_id": "9941"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Todd",
+          "last_name": "Guthrie",
+          "jersey_number": "0",
+          "person_id": "5772"
         },
         {
           "official_type_id": "8",
@@ -277,6 +293,14 @@
           "last_name": "Pieper",
           "jersey_number": "0",
           "person_id": "9941"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Matt",
+          "last_name": "Davie",
+          "jersey_number": "0",
+          "person_id": "9454"
         }
       ],
       "homeShootout": 0,
@@ -528,15 +552,15 @@
           "home": "1",
           "period_id": "2",
           "period": "2nd",
-          "offence": "94",
+          "offence": "96",
           "pp": "2",
           "bench": "0",
           "penalty_shot": "0",
           "minutes": 5,
           "minutes_formatted": "5:00",
-          "penalty_class_id": "3",
-          "penalty_class": "Major",
-          "lang_penalty_description": "Check to the Head",
+          "penalty_class_id": "4",
+          "penalty_class": "Match",
+          "lang_penalty_description": "Match-Head Check",
           "s": 139,
           "player_penalized_info": {
             "player_id": "9200",
@@ -553,40 +577,6 @@
             "team_code": "SBY",
             "first_name": "Patrik",
             "last_name": "Ula"
-          }
-        },
-        {
-          "event": "penalty",
-          "time_off_formatted": "2:19",
-          "team_id": "12",
-          "home": "1",
-          "period_id": "2",
-          "period": "2nd",
-          "offence": "114",
-          "pp": "0",
-          "bench": "0",
-          "penalty_shot": "0",
-          "minutes": 0,
-          "minutes_formatted": "0:00",
-          "penalty_class_id": "6",
-          "penalty_class": "Game Misconduct",
-          "lang_penalty_description": "Game Misc-Check to Head",
-          "s": 139,
-          "player_penalized_info": {
-            "player_id": "9200",
-            "jersey_number": "77",
-            "team_id": "12",
-            "team_code": "SBY",
-            "first_name": "Rowan",
-            "last_name": "Henderson"
-          },
-          "player_served_info": {
-            "player_id": "9200",
-            "jersey_number": "77",
-            "team_id": "12",
-            "team_code": "SBY",
-            "first_name": "Rowan",
-            "last_name": "Henderson"
           }
         },
         {
@@ -1270,10 +1260,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "OT",
-            "time_end": "5:00",
+            "time_end": "4:37",
             "saves": "41",
-            "secs": "3900",
-            "seconds": "3900",
+            "secs": "3877",
+            "seconds": "3877",
             "goals_against": "1",
             "win": "1",
             "loss": "0",
@@ -1284,7 +1274,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "1",
-            "secs_mmss": "65:00",
+            "secs_mmss": "64:37",
             "shots_against": 42
           }
         ],
@@ -1297,10 +1287,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "OT",
-            "time_end": "5:00",
+            "time_end": "4:37",
             "saves": "25",
-            "secs": "3900",
-            "seconds": "3900",
+            "secs": "3877",
+            "seconds": "3877",
             "goals_against": "2",
             "win": "0",
             "loss": "0",
@@ -1311,7 +1301,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "65:00",
+            "secs_mmss": "64:37",
             "shots_against": 27
           }
         ]
@@ -1350,8 +1340,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 3900,
-            "time": "65:00",
+            "seconds": 3877,
+            "time": "64:37",
             "shots_against": 27,
             "goals_against": 2,
             "saves": 25,
@@ -1886,8 +1876,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "1",
-            "seconds": 3900,
-            "time": "65:00",
+            "seconds": 3877,
+            "time": "64:37",
             "shots_against": 42,
             "goals_against": 1,
             "saves": 41,
@@ -2461,7 +2451,7 @@
       },
       "infCount": {
         "visitor": 11,
-        "home": 9
+        "home": 8
       },
       "shotsByPeriod": {
         "visitor": {
