@@ -1,8 +1,8 @@
 "game_id","action","old_score","new_score","old_complete","new_complete","old_richness","new_richness"
 "29253","saved","0-0","0-0",FALSE,FALSE,28,28
-"29254","saved","0-0","0-0",FALSE,FALSE,22,28
+"29254","saved","0-0","0-0",FALSE,FALSE,28,28
 "29251","saved","0-0","0-0",FALSE,FALSE,16,16
-"29252","saved","0-0","0-0",FALSE,FALSE,16,16
+"29252","saved","0-0","0-0",FALSE,FALSE,16,22
 "29255","saved","0-0","0-0",FALSE,FALSE,16,16
 "29256","saved","0-0","0-0",FALSE,FALSE,16,16
 "29257","saved","0-0","0-0",FALSE,FALSE,16,16
