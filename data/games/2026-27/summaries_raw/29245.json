@@ -208,7 +208,56 @@
           "person_id": "10031"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Tom",
+          "last_name": "Galloway",
+          "jersey_number": "0",
+          "person_id": "5686"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Aaron",
+          "last_name": "Logan",
+          "jersey_number": "0",
+          "person_id": "8101"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Tom",
+          "last_name": "Galloway",
+          "jersey_number": "0",
+          "person_id": "5686"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Zack",
+          "last_name": "Raines",
+          "jersey_number": "0",
+          "person_id": "7902"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Joel",
+          "last_name": "Klassen",
+          "jersey_number": "0",
+          "person_id": "8109"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Lance",
+          "last_name": "Roberts",
+          "jersey_number": "0",
+          "person_id": "6358"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
@@ -430,7 +479,7 @@
             "player_id": "9161",
             "first_name": "Kaden",
             "last_name": "Schneider",
-            "start": "1",
+            "start": "0",
             "position": "6",
             "position_str": "RD",
             "status": "",
@@ -565,7 +614,7 @@
             "player_id": "9648",
             "first_name": "Tommy",
             "last_name": "Kut",
-            "start": "0",
+            "start": "1",
             "position": "6",
             "position_str": "RD",
             "status": "",

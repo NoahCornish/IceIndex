@@ -47,9 +47,9 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "1",
-        "game_clock": "00:00:00",
-        "status": "1",
-        "started": "0",
+        "game_clock": "00:20:00",
+        "status": "2",
+        "started": "1",
         "pending_final": "0",
         "final": "0",
         "home_goal_count": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/brantford-bulldogs-tickets/artist/806495",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-27 06:24:09",
+        "last_modified": "2026-11-27 23:57:55",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153757",
@@ -101,7 +101,7 @@
       "game_date": "Friday, November 27, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": " 7:00 PM",
+      "status_value": "In Progress (20:00 remaining in 1st)",
       "periods": {
         "1": {
           "id": "1",
@@ -210,12 +210,36 @@
       ],
       "officialsOffIce": [
         {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Dan",
+          "last_name": "Castonguay",
+          "jersey_number": "0",
+          "person_id": "7906"
+        },
+        {
           "official_type_id": "6",
           "description": "Online Scorekeeper",
           "first_name": "Olivia",
           "last_name": "Mclenon",
           "jersey_number": "0",
           "person_id": "9873"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Steve",
+          "last_name": "Jennings",
+          "jersey_number": "0",
+          "person_id": "7720"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Cameron",
+          "last_name": "Farrell",
+          "jersey_number": "0",
+          "person_id": "8699"
         },
         {
           "official_type_id": "9",
@@ -239,7 +263,62 @@
       "benchGoalCount": null,
       "penalties": null,
       "goals": null,
-      "goalies": null,
+      "goalies": {
+        "visitor": [
+          {
+            "id": "81260",
+            "player_id": "8732",
+            "first_name": "Ryerson",
+            "last_name": "Leenders",
+            "period_start": "1st",
+            "time_start": "0:00",
+            "period_end": "1st",
+            "time_end": "0:00",
+            "saves": "0",
+            "secs": "0",
+            "seconds": "0",
+            "goals_against": "0",
+            "win": "0",
+            "loss": "0",
+            "shootout_loss": "0",
+            "ot_loss": "0",
+            "tie": "0",
+            "shutout": "0",
+            "shootout_goals_against": "0",
+            "shootout_saves": "0",
+            "line": "1",
+            "secs_mmss": "00:00",
+            "shots_against": 0
+          }
+        ],
+        "home": [
+          {
+            "id": "81259",
+            "player_id": "9783",
+            "first_name": "Vilmer",
+            "last_name": "Salen Forsberg",
+            "period_start": "1st",
+            "time_start": "0:00",
+            "period_end": "1st",
+            "time_end": "0:00",
+            "saves": "0",
+            "secs": "0",
+            "seconds": "0",
+            "goals_against": "0",
+            "win": "0",
+            "loss": "0",
+            "shootout_loss": "0",
+            "ot_loss": "0",
+            "tie": "0",
+            "shutout": "0",
+            "shootout_goals_against": "0",
+            "shootout_saves": "0",
+            "line": "1",
+            "secs_mmss": "00:00",
+            "shots_against": 0
+          }
+        ]
+      },
       "home_team_lineup": {
         "goalies": [
           {
@@ -253,10 +332,10 @@
             "status": "",
             "rookie": "1",
             "seconds": 0,
-            "time": null,
-            "shots_against": 0,
-            "goals_against": 0,
-            "saves": 0,
+            "time": "-",
+            "shots_against": "-",
+            "goals_against": "-",
+            "saves": "-",
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -811,10 +890,10 @@
             "status": "",
             "rookie": "0",
             "seconds": 0,
-            "time": null,
-            "shots_against": 0,
-            "goals_against": 0,
-            "saves": 0,
+            "time": "-",
+            "shots_against": "-",
+            "goals_against": "-",
+            "saves": "-",
             "goals": 0,
             "assists": 0,
             "pim": 0,

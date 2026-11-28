@@ -47,9 +47,9 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "1",
-        "game_clock": "00:00:00",
-        "status": "1",
-        "started": "0",
+        "game_clock": "00:20:00",
+        "status": "2",
+        "started": "1",
         "pending_final": "0",
         "final": "0",
         "home_goal_count": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://am.ticketmaster.com/frontenacs/",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-27 06:24:54",
+        "last_modified": "2026-11-27 23:59:00",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153799",
@@ -101,7 +101,7 @@
       "game_date": "Friday, November 27, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": " 7:05 PM",
+      "status_value": "In Progress (20:00 remaining in 1st)",
       "periods": {
         "1": {
           "id": "1",
@@ -208,13 +208,117 @@
           "person_id": "9246"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Al",
+          "last_name": "McArthur",
+          "jersey_number": "0",
+          "person_id": "5897"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Dave",
+          "last_name": "Garrison",
+          "jersey_number": "0",
+          "person_id": "6183"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Louis",
+          "last_name": "Cabral",
+          "jersey_number": "0",
+          "person_id": "5883"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Victoria",
+          "last_name": "Cadue",
+          "jersey_number": "0",
+          "person_id": "8110"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Doug",
+          "last_name": "Graham",
+          "jersey_number": "0",
+          "person_id": "7366"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Pat",
+          "last_name": "Brown",
+          "jersey_number": "0",
+          "person_id": "6814"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
       "penalties": null,
       "goals": null,
-      "goalies": null,
+      "goalies": {
+        "visitor": [
+          {
+            "id": "81262",
+            "player_id": "9087",
+            "first_name": "Matthew",
+            "last_name": "Koprowski",
+            "period_start": "1st",
+            "time_start": "0:00",
+            "period_end": "1st",
+            "time_end": "0:00",
+            "saves": "0",
+            "secs": "0",
+            "seconds": "0",
+            "goals_against": "0",
+            "win": "0",
+            "loss": "0",
+            "shootout_loss": "0",
+            "ot_loss": "0",
+            "tie": "0",
+            "shutout": "0",
+            "shootout_goals_against": "0",
+            "shootout_saves": "0",
+            "line": "",
+            "secs_mmss": "00:00",
+            "shots_against": 0
+          }
+        ],
+        "home": [
+          {
+            "id": "81261",
+            "player_id": "9527",
+            "first_name": "Matthew",
+            "last_name": "Minchak",
+            "period_start": "1st",
+            "time_start": "0:00",
+            "period_end": "1st",
+            "time_end": "0:00",
+            "saves": "0",
+            "secs": "0",
+            "seconds": "0",
+            "goals_against": "0",
+            "win": "0",
+            "loss": "0",
+            "shootout_loss": "0",
+            "ot_loss": "0",
+            "tie": "0",
+            "shutout": "0",
+            "shootout_goals_against": "0",
+            "shootout_saves": "0",
+            "line": "1",
+            "secs_mmss": "00:00",
+            "shots_against": 0
+          }
+        ]
+      },
       "home_team_lineup": {
         "goalies": [
           {
@@ -250,10 +354,10 @@
             "status": "",
             "rookie": "0",
             "seconds": 0,
-            "time": null,
-            "shots_against": 0,
-            "goals_against": 0,
-            "saves": 0,
+            "time": "-",
+            "shots_against": "-",
+            "goals_against": "-",
+            "saves": "-",
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -764,10 +868,10 @@
             "status": "",
             "rookie": "0",
             "seconds": 0,
-            "time": null,
-            "shots_against": 0,
-            "goals_against": 0,
-            "saves": 0,
+            "time": "-",
+            "shots_against": "-",
+            "goals_against": "-",
+            "saves": "-",
             "goals": 0,
             "assists": 0,
             "pim": 0,
