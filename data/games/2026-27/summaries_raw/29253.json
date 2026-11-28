@@ -208,7 +208,56 @@
           "person_id": "9710"
         }
       ],
-      "officialsOffIce": [],
+      "officialsOffIce": [
+        {
+          "official_type_id": "5",
+          "description": "Score Keeper",
+          "first_name": "Dean",
+          "last_name": "Johnson",
+          "jersey_number": "0",
+          "person_id": "5974"
+        },
+        {
+          "official_type_id": "6",
+          "description": "Online Scorekeeper",
+          "first_name": "Tony",
+          "last_name": "Mezenberg",
+          "jersey_number": "0",
+          "person_id": "8410"
+        },
+        {
+          "official_type_id": "7",
+          "description": "Timekeeper",
+          "first_name": "Ron",
+          "last_name": "DeLeeuw",
+          "jersey_number": "0",
+          "person_id": "5850"
+        },
+        {
+          "official_type_id": "8",
+          "description": "Location Stats Scorer",
+          "first_name": "Yannis",
+          "last_name": "Economopoulos",
+          "jersey_number": "0",
+          "person_id": "8747"
+        },
+        {
+          "official_type_id": "9",
+          "description": "Official Scorer",
+          "first_name": "Al",
+          "last_name": "Bourne",
+          "jersey_number": "0",
+          "person_id": "8508"
+        },
+        {
+          "official_type_id": "10",
+          "description": "Video Goal Judge",
+          "first_name": "Bruce",
+          "last_name": "Byers",
+          "jersey_number": "0",
+          "person_id": "8113"
+        }
+      ],
       "homeShootout": 0,
       "visitorShootout": 0,
       "benchGoalCount": null,
