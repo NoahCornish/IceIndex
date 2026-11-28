@@ -16778,7 +16778,13 @@
 "2026-27","29241","10037","goal",519,113,"3","0:37",,,,"19",,"9523","9661","Arseny Pronin","Zach Nyman","Arseny Pronin; Zach Nyman",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29241","9470","shot",198,75,"3","10:06","5","Default","Non quality on net","18","Mike McIvor",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29241","10037","shot",461,71,"3","12:45","5","Default","Non quality on net","19","Oskari Ahmajarvi",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
-"2026-27","29241","9233","shot",406,66,"3","13:15","5","Default","Non quality on net","19",,,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29241","9233","shot",406,66,"3","13:15","5","Default","Non quality on net","19","Oskari Ahmajarvi",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29241","10037","shot",444,33,"3","14:32","5","Default","Non quality on net","19","Oskari Ahmajarvi",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29241","10037","shot",465,134,"3","14:41","5","Default","Quality on net","19","Oskari Ahmajarvi",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29241","9784","shot",51,164,"3","16:27","5","Default","Quality on net","18","Mike McIvor",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29241","9784","shot",81,109,"3","16:37","5","Default","Quality on net","18","Mike McIvor",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29241","9665","shot",556,187,"3","18:26","5","Default","Non quality on net","19","Oskari Ahmajarvi",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29241","9409","shot",105,86,"3","19:06","5","Default","Quality on net","18","Mike McIvor",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29241","8924","shot",493,60,"3","3:43","5","Default","Non quality goal","19","Oskari Ahmajarvi","9523","9781","Arseny Pronin","Jean-Samuel Daigneault","Arseny Pronin; Jean-Samuel Daigneault",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29241","8924","goal",493,60,"3","3:43",,,,"19",,"9523","9781","Arseny Pronin","Jean-Samuel Daigneault","Arseny Pronin; Jean-Samuel Daigneault",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29241","9233","shot",416,141,"3","4:30","5","Default","Non quality on net","19","Oskari Ahmajarvi",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16844,6 +16850,15 @@
 "2026-27","29242","10172","shot",121,183,"2","7:45","5","Default","Quality on net","1","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29242","9769","shot",121,223,"2","9:05","5","Default","Quality on net","1","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29242","9191","shot",555,163,"2","9:53","5","Default","Quality on net","11","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9222","shot",135,61,"3","0:23","5","Default","Non quality on net","1","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9141","shot",51,173,"3","1:15","5","Default","Quality on net","1","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9658","shot",45,118,"3","2:32","5","Default","Non quality on net","1","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9191","shot",471,238,"3","3:04","5","Default","Non quality on net","11","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9684","shot",545,217,"3","5:28","5","Default","Non quality on net","11","Vilmer Salen Forsberg",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9191","shot",539,111,"3","5:43","5","Default","Non quality goal","11","Vilmer Salen Forsberg","9475","9799","Jeremy Freeman","Caden Bell","Jeremy Freeman; Caden Bell",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9191","goal",539,111,"3","5:43",,,,"11",,"9475","9799","Jeremy Freeman","Caden Bell","Jeremy Freeman; Caden Bell",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9141","shot",105,181,"3","6:21","5","Default","Quality on net","1","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29242","9478","shot",141,250,"3","7:48","5","Default","Non quality on net","1","Ryerson Leenders",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29243","8932","shot",66,154,"1","0:45","5","Default","Quality on net","9","Liam Karbowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29243","8972","shot",45,184,"1","1:19","5","Default","Non quality on net","9","Liam Karbowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29243","9160","shot",160,83,"1","10:42","5","Default","Non quality on net","9","Liam Karbowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16900,6 +16915,18 @@
 "2026-27","29243","9313","shot",523,90,"2","9:58","5","Default","Non quality on net","8","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29243","9418","shot",87,213,"3","0:32","5","Default","Quality goal","9","Liam Karbowski","8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29243","9418","goal",87,213,"3","0:32",,,,"9",,"8963","8932","Ryan Roobroeck","Owen Griffin","Ryan Roobroeck; Owen Griffin",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","8963","shot",78,153,"3","3:32","5","Default","Quality goal","9","Liam Karbowski","8932",,"Owen Griffin",,"Owen Griffin",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","8963","goal",78,153,"3","3:32",,,,"9",,"8932",,"Owen Griffin",,"Owen Griffin",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","8972","shot",100,204,"3","4:00","5","Default","Quality on net","9","Liam Karbowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9688","shot",196,63,"3","4:06","5","Default","Non quality on net","9","Liam Karbowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9833","shot",525,183,"3","5:38","5","Default","Quality on net","8","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9166","shot",553,122,"3","6:07","5","Default","Non quality on net","8","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9823","shot",402,141,"3","6:36","5","Default","Non quality on net","8","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9680","shot",531,147,"3","7:45","5","Default","Quality goal","8","Zach Jovanovski","9449",,"Kase Kamzik",,"Kase Kamzik",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9680","goal",531,147,"3","7:45",,,,"8",,"9449",,"Kase Kamzik",,"Kase Kamzik",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9313","shot",477,48,"3","9:02","5","Default","Non quality on net","8","Zach Jovanovski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9823","shot",519,141,"3","9:29","5","Default","Quality goal","8","Zach Jovanovski","9313","9408","Michael Dec","Mclean Agrette","Michael Dec; Mclean Agrette",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29243","9823","goal",519,141,"3","9:29",,,,"8",,"9313","9408","Michael Dec","Mclean Agrette","Michael Dec; Mclean Agrette",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9733","shot",471,284,"1","12:05","5","Default","Non quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9327","shot",149,141,"1","12:26","5","Default","Non quality on net","2","Matthew Koprowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9311","shot",400,63,"1","13:50","5","Default","Non quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16951,6 +16978,18 @@
 "2026-27","29244","9327","shot",73,122,"2","7:18","5","Default","Quality on net","2","Matthew Koprowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9757","shot",86,202,"2","8:35","5","Default","Quality on net","2","Matthew Koprowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9228","shot",100,53,"2","9:48","5","Default","Non quality on net","2","Matthew Koprowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","9139","shot",49,118,"3","12:17","5","Default","Non quality on net","2","Matthew Koprowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","8731","shot",524,168,"3","14:49","5","Default","Quality goal","6","Matthew Minchak","9553","9934","Leon Kolarik","Pacey Adduono","Leon Kolarik; Pacey Adduono",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","8731","goal",524,168,"3","14:49",,,,"6",,"9553","9934","Leon Kolarik","Pacey Adduono","Leon Kolarik; Pacey Adduono",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","8731","shot",464,138,"3","16:09","5","Default","Quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","9473","shot",389,91,"3","16:25","5","Default","Non quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","8731","shot",549,111,"3","16:26","5","Default","Non quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","9553","shot",458,160,"3","16:52","5","Default","Quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","8731","shot",473,142,"3","17:18","5","Default","Quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","8992","shot",537,21,"3","18:20","5","Default","Non quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","9307","shot",99,224,"3","18:50","5","Default","Quality goal","2","Matthew Koprowski","9228","9481","Cole Zurawski","Gavin Christie","Cole Zurawski; Gavin Christie",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","9307","goal",99,224,"3","18:50",,,,"2",,"9228","9481","Cole Zurawski","Gavin Christie","Cole Zurawski; Gavin Christie",2,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29244","9935","shot",525,286,"3","19:41","5","Default","Non quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9412","shot",410,21,"3","2:52","5","Default","Non quality on net","2","Matthew Koprowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9558","shot",525,269,"3","3:33","5","Default","Non quality on net","6","Matthew Minchak",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29244","9498","shot",53,177,"3","3:41","5","Default","Quality on net","2","Matthew Koprowski",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -16982,8 +17021,15 @@
 "2026-27","29245","9165","shot",297,176,"2","6:23","6","Tip","Non quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29245","8953","shot",93,147,"2","7:48","1","Snap","Quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29245","9596","shot",495,129,"3","0:19","5","Default","Quality on net","17","Mason Hriczov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29245","8945","shot",59,162,"3","10:46","4","Backhand","Quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29245","9596","shot",471,68,"3","11:22","5","Default","Non quality on net","17","Mason Hriczov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29245","8947","shot",52,115,"3","12:34","5","Default","Non quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29245","8947","shot",60,153,"3","15:15","6","Tip","Quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29245","9792","shot",512,158,"3","16:10","5","Default","Quality on net","17","Mason Hriczov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29245","8953","shot",71,140,"3","16:41","5","Default","Quality on net","10",,,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29245","9599","shot",536,147,"3","2:01","5","Default","Quality on net","17","Mason Hriczov",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29245","9281","shot",141,99,"3","7:46","2","Wrist","Quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29245","8953","shot",103,138,"3","9:16","5","Default","Quality on net","10","Michael Newlove",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29246","9501","shot",533,68,"1","10:06","5","Default","Non quality on net","20","Brian Cooke",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29246","9429","shot",418,226,"1","10:44","5","Default","Non quality on net","20","Brian Cooke",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29246","10098","shot",110,170,"1","16:06","5","Default","Quality goal","14","Connor Haffner","8991","9427","Carson Harmer","Maksim Sokolovskii","Carson Harmer; Maksim Sokolovskii",,,,,FALSE,FALSE,FALSE,,TRUE
@@ -17018,7 +17064,15 @@
 "2026-27","29246","9044","goal",161,11,"2","5:21",,,,"14",,"10103",,"Juho Piiparinen",,"Juho Piiparinen",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29246","9373","shot",462,182,"3","0:40","5","Default","Quality on net","20","Brian Cooke",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29246","9668","shot",495,166,"3","0:48","5","Default","Quality on net","20","Brian Cooke",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","8991","shot",189,47,"3","11:29","5","Default","Non quality on net","14","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","9439","shot",185,186,"3","13:06","5","Default","Non quality on net","14","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","10026","shot",307,109,"3","13:58","5","Default","Non quality on net","20","Brian Cooke",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","8920","shot",69,93,"3","14:31","5","Default","Non quality on net","14","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","8753","shot",399,64,"3","15:08","5","Default","Non quality on net","20","Brian Cooke",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","9115","shot",84,119,"3","15:18","5","Default","Quality on net","14","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29246","8991","shot",103,106,"3","5:28","5","Default","Quality on net","14","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","10098","shot",134,213,"3","9:16","5","Default","Quality on net","14","Connor Haffner",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29246","9429","shot",497,117,"3","9:39","5","Default","Quality on net","20","Brian Cooke",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29247","9999","shot",154,248,"1","11:09","5","Default","Non quality on net","15","Mason Courville",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29247","9997","shot",51,149,"1","11:11","5","Default","Quality goal","15","Mason Courville","9999","9122","Adrian Sgro","Chase Gaughan","Adrian Sgro; Chase Gaughan",,"PP",,,TRUE,FALSE,FALSE,,TRUE
 "2026-27","29247","9997","goal",51,149,"1","11:11",,,,"15",,"9999","9122","Adrian Sgro","Chase Gaughan","Adrian Sgro; Chase Gaughan",2,"PP","PP","event_fields",TRUE,FALSE,FALSE,,TRUE
@@ -17064,6 +17118,16 @@
 "2026-27","29247","9027","shot",132,171,"2","8:40","5","Default","Quality on net","15","Mason Courville",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29247","9027","shot",95,35,"2","9:44","5","Default","Non quality on net","15","Mason Courville",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29247","9125","shot",505,243,"3","1:28","5","Default","Non quality on net","13","Ivan Tkach-Tkachenko",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9992","shot",62,245,"3","5:13","5","Default","Non quality goal","15","Mason Courville","9110",,"Logan Hawery",,"Logan Hawery",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9992","goal",62,245,"3","5:13",,,,"15",,"9110",,"Logan Hawery",,"Logan Hawery",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","8802","shot",51,164,"3","5:39","5","Default","Quality on net","15","Mason Courville",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","10019","shot",543,118,"3","6:18","5","Default","Quality on net","13","Ivan Tkach-Tkachenko",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9131","shot",203,42,"3","7:53","5","Default","Non quality on net","15","Mason Courville",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9482","shot",468,146,"3","8:29","5","Default","Quality on net","13","Ivan Tkach-Tkachenko",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9673","shot",561,149,"3","8:31","5","Default","Quality goal","13","Ivan Tkach-Tkachenko",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9673","goal",561,149,"3","8:31",,,,"13",,,,,,,0,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9499","shot",536,143,"3","9:57","5","Default","Quality goal","13","Ivan Tkach-Tkachenko","9502",,"Bryson Morgan",,"Bryson Morgan",,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29247","9499","goal",536,143,"3","9:57",,,,"13",,"9502",,"Bryson Morgan",,"Bryson Morgan",1,,"EV","event_fields",FALSE,FALSE,FALSE,,TRUE
 "2026-27","29248","9572","shot",179,52,"1","0:23","5","Default","Non quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29248","9974","shot",107,277,"1","10:29","5","Default","Non quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29248","9807","shot",465,30,"1","10:47","5","Default","Non quality on net","4","William Camputaro",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -17126,6 +17190,15 @@
 "2026-27","29248","9976","shot",61,178,"2","9:29","5","Default","Quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29248","9808","shot",465,69,"2","9:40","5","Default","Non quality on net","4","William Camputaro",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29248","9126","shot",479,278,"3","0:25","5","Default","Non quality on net","4","William Camputaro",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9438","shot",401,153,"3","10:19","5","Default","Non quality on net","4","William Camputaro",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9971","shot",95,209,"3","11:13","5","Default","Quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9126","shot",543,233,"3","11:44","5","Default","Non quality on net","4","William Camputaro",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9315","shot",195,62,"3","3:33","5","Default","Non quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9971","shot",73,151,"3","3:37","5","Default","Quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9818","shot",60,230,"3","5:20","5","Default","Non quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9574","shot",111,140,"3","8:50","5","Default","Quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9574","shot",69,151,"3","8:51","5","Default","Quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29248","9017","shot",148,138,"3","9:10","5","Default","Non quality on net","16","Jaden Cholette",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29249","9106","shot",100,105,"1","0:25","5","Default","Quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29249","9821","shot",549,111,"1","1:57","5","Default","Non quality on net","7","Bjorn Bronas",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29249","9099","shot",318,237,"1","11:04","5","Default","Non quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
@@ -17175,4 +17248,11 @@
 "2026-27","29249","9106","shot",47,250,"2","8:34","5","Default","Non quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29249","9549","shot",195,63,"2","9:08","5","Default","Non quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29249","9012","shot",54,143,"2","9:15","5","Default","Quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29249","9012","shot",54,219,"3","10:22","5","Default","Non quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29249","9844","shot",395,241,"3","11:28","5","Default","Non quality on net","7","Bjorn Bronas",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
 "2026-27","29249","9393","shot",171,248,"3","2:01","5","Default","Non quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29249","9182","shot",479,161,"3","4:49","5","Default","Quality on net","7","Bjorn Bronas",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29249","8967","shot",453,105,"3","5:54","5","Default","Non quality on net","7","Bjorn Bronas",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29249","9844","shot",547,107,"3","8:03","5","Default","Non quality on net","7","Bjorn Bronas",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29249","9393","shot",117,219,"3","9:34","5","Default","Quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
+"2026-27","29249","9388","shot",49,125,"3","9:53","5","Default","Non quality on net","12","Hagan Bach",,,,,,,,,,FALSE,FALSE,FALSE,,TRUE
