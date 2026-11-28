@@ -22,9 +22,9 @@
         "type_id": "",
         "if_necessary": "0",
         "quick_score": "0",
-        "mvp1": "",
-        "mvp2": "",
-        "mvp3": "",
+        "mvp1": "9327",
+        "mvp2": "9498",
+        "mvp3": "10082",
         "featured_player_id": "",
         "date_played": "2026-11-27",
         "date_tbd": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://am.ticketmaster.com/frontenacs/",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 02:18:23",
+        "last_modified": "2026-11-28 02:21:33",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153799",
@@ -183,9 +183,27 @@
       "mvp_type": 1,
       "shootoutDetail": [],
       "mvps": [
-        null,
-        null,
-        null
+        {
+          "player_id": "9327",
+          "first_name": "Landon",
+          "last_name": "Wright",
+          "jersey_number": "36",
+          "home": 1
+        },
+        {
+          "player_id": "9498",
+          "first_name": "Aleks",
+          "last_name": "Kulemin",
+          "jersey_number": "41",
+          "home": 1
+        },
+        {
+          "player_id": "10082",
+          "first_name": "Adam",
+          "last_name": "Goljer",
+          "jersey_number": "8",
+          "home": 1
+        }
       ],
       "venue": "Slush Puppie Place",
       "referee1": "Darcy Burchell (38)",
@@ -1300,8 +1318,8 @@
         },
         {
           "event": "goal",
-          "x_location": "622",
-          "y_location": "175",
+          "x_location": "619",
+          "y_location": "169",
           "time": "6:53",
           "team_id": "2",
           "home": "1",
@@ -1408,8 +1426,8 @@
         },
         {
           "event": "goal",
-          "x_location": "96",
-          "y_location": "146",
+          "x_location": "97",
+          "y_location": "144",
           "time": "14:49",
           "team_id": "6",
           "home": "0",
