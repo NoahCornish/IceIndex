@@ -47,7 +47,7 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "2",
-        "game_clock": "00:01:47",
+        "game_clock": "00:00:00",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://tickets.sarniasting.com/",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 01:33:20",
+        "last_modified": "2026-11-28 01:35:53",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1152560",
@@ -101,7 +101,7 @@
       "game_date": "Friday, November 27, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (1:47 remaining in 2nd)",
+      "status_value": "In Progress (0:00 remaining in 2nd)",
       "periods": {
         "1": {
           "id": "1",
@@ -459,20 +459,20 @@
           "lang_penalty_description": "PS_Cover puck in crease",
           "s": 880,
           "player_penalized_info": {
-            "player_id": "10019",
-            "jersey_number": "2",
+            "player_id": "9507",
+            "jersey_number": "14",
             "team_id": "13",
             "team_code": "FLNT",
-            "first_name": "Nick",
-            "last_name": "Bogas"
+            "first_name": "Luka",
+            "last_name": "Graziano"
           },
           "player_served_info": {
-            "player_id": "10019",
-            "jersey_number": "2",
+            "player_id": "9507",
+            "jersey_number": "14",
             "team_id": "13",
             "team_code": "FLNT",
-            "first_name": "Nick",
-            "last_name": "Bogas"
+            "first_name": "Luka",
+            "last_name": "Graziano"
           }
         },
         {
@@ -550,7 +550,7 @@
           "home": "1",
           "period_id": "2",
           "period": "2nd",
-          "offence": "101",
+          "offence": "125",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "0",
@@ -558,7 +558,7 @@
           "minutes_formatted": "0:00",
           "penalty_class_id": "5",
           "penalty_class": "Misconduct",
-          "lang_penalty_description": "Misc-USC",
+          "lang_penalty_description": "Misc-Failure to Clear Zone",
           "s": 901,
           "player_penalized_info": {
             "player_id": "9131",
@@ -1226,10 +1226,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "2nd",
-            "time_end": "18:13",
+            "time_end": "20:00",
             "saves": "18",
-            "secs": "2293",
-            "seconds": "2293",
+            "secs": "2400",
+            "seconds": "2400",
             "goals_against": "3",
             "win": "0",
             "loss": "0",
@@ -1240,7 +1240,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "38:13",
+            "secs_mmss": "40:00",
             "shots_against": 21
           }
         ],
@@ -1253,10 +1253,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "2nd",
-            "time_end": "18:13",
+            "time_end": "20:00",
             "saves": "15",
-            "secs": "2293",
-            "seconds": "2293",
+            "secs": "2400",
+            "seconds": "2400",
             "goals_against": "3",
             "win": "0",
             "loss": "0",
@@ -1267,7 +1267,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "5",
-            "secs_mmss": "38:13",
+            "secs_mmss": "40:00",
             "shots_against": 18
           }
         ]
@@ -1306,8 +1306,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 2293,
-            "time": "38:13",
+            "seconds": 2400,
+            "time": "40:00",
             "shots_against": 18,
             "goals_against": 3,
             "saves": 15,
@@ -1820,8 +1820,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 2293,
-            "time": "38:13",
+            "seconds": 2400,
+            "time": "40:00",
             "shots_against": 21,
             "goals_against": 3,
             "saves": 18,
