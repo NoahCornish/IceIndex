@@ -47,7 +47,7 @@
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
         "period": "1",
-        "game_clock": "00:03:21",
+        "game_clock": "00:00:00",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://am.ticketmaster.com/frontenacs/",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 00:33:45",
+        "last_modified": "2026-11-28 00:38:00",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153799",
@@ -101,7 +101,7 @@
       "game_date": "Friday, November 27, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (3:21 remaining in 1st)",
+      "status_value": "In Progress (0:00 remaining in 1st)",
       "periods": {
         "1": {
           "id": "1",
@@ -408,8 +408,8 @@
         },
         {
           "event": "goal",
-          "x_location": "577",
-          "y_location": "143",
+          "x_location": "532",
+          "y_location": "219",
           "time": "7:28",
           "team_id": "2",
           "home": "1",
@@ -525,10 +525,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "1st",
-            "time_end": "16:39",
-            "saves": "9",
-            "secs": "999",
-            "seconds": "999",
+            "time_end": "20:00",
+            "saves": "11",
+            "secs": "1200",
+            "seconds": "1200",
             "goals_against": "2",
             "win": "0",
             "loss": "0",
@@ -539,8 +539,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "16:39",
-            "shots_against": 11
+            "secs_mmss": "20:00",
+            "shots_against": 13
           }
         ],
         "home": [
@@ -552,10 +552,10 @@
             "period_start": "1st",
             "time_start": "0:00",
             "period_end": "1st",
-            "time_end": "16:39",
+            "time_end": "20:00",
             "saves": "9",
-            "secs": "999",
-            "seconds": "999",
+            "secs": "1200",
+            "seconds": "1200",
             "goals_against": "0",
             "win": "0",
             "loss": "0",
@@ -566,7 +566,7 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "1",
-            "secs_mmss": "16:39",
+            "secs_mmss": "20:00",
             "shots_against": 9
           }
         ]
@@ -605,8 +605,8 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 999,
-            "time": "16:39",
+            "seconds": 1200,
+            "time": "20:00",
             "shots_against": 9,
             "goals_against": 0,
             "saves": 9,
@@ -660,8 +660,8 @@
             "assists": 0,
             "plusminus": "+1",
             "pim": 0,
-            "faceoff_wins": "1",
-            "faceoff_attempts": "3",
+            "faceoff_wins": "2",
+            "faceoff_attempts": "4",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -688,7 +688,7 @@
             "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "6",
-            "faceoff_attempts": "8",
+            "faceoff_attempts": "9",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -855,7 +855,7 @@
             "icings": null,
             "offsides": null,
             "shots": "3",
-            "shots_on": "2",
+            "shots_on": "1",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -962,8 +962,8 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
-            "shots_on": "0",
+            "shots": "1",
+            "shots_on": "1",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -1043,8 +1043,8 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
-            "shots_on": "0",
+            "shots": "1",
+            "shots_on": "1",
             "power_play_goals": 0,
             "short_handed_goals": 0,
             "game_winning_goal": 0,
@@ -1119,11 +1119,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 999,
-            "time": "16:39",
-            "shots_against": 11,
+            "seconds": 1200,
+            "time": "20:00",
+            "shots_against": 13,
             "goals_against": 2,
-            "saves": 9,
+            "saves": 11,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -1251,7 +1251,7 @@
             "plusminus": -2,
             "pim": 0,
             "faceoff_wins": "2",
-            "faceoff_attempts": "7",
+            "faceoff_attempts": "8",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1493,8 +1493,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "6",
-            "faceoff_attempts": "7",
+            "faceoff_wins": "7",
+            "faceoff_attempts": "8",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1669,7 +1669,7 @@
           "1": 9
         },
         "home": {
-          "1": 11
+          "1": 13
         }
       },
       "penaltyshots": {
@@ -1678,12 +1678,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 22,
-          "won": 11
+          "att": 24,
+          "won": 12
         },
         "home": {
-          "att": 22,
-          "won": 11
+          "att": 24,
+          "won": 12
         }
       },
       "totalHits": {
@@ -1696,11 +1696,11 @@
       },
       "totalShots": {
         "visitor": 9,
-        "home": 11
+        "home": 13
       },
       "totalShotsOn": {
         "visitor": 2,
-        "home": 5
+        "home": 6
       },
       "goalsByPeriod": {
         "visitor": {
