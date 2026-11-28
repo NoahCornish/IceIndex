@@ -46,8 +46,8 @@
         "visiting_assistant_coach1": "0",
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
-        "period": "2",
-        "game_clock": "00:00:00",
+        "period": "3",
+        "game_clock": "00:20:00",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/brantford-bulldogs-tickets/artist/806495",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 01:44:50",
+        "last_modified": "2026-11-28 01:55:23",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153757",
@@ -101,7 +101,7 @@
       "game_date": "Friday, November 27, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (0:00 remaining in 2nd)",
+      "status_value": "In Progress (20:00 remaining in 3rd)",
       "periods": {
         "1": {
           "id": "1",
@@ -118,6 +118,15 @@
           "long_name": "2nd",
           "sort_order": "2",
           "period_id": "2",
+          "length": "1200",
+          "mandatory": "1"
+        },
+        "3": {
+          "id": "3",
+          "short_name": "3",
+          "long_name": "3rd",
+          "sort_order": "3",
+          "period_id": "3",
           "length": "1200",
           "mandatory": "1"
         }
@@ -1047,8 +1056,8 @@
             "last_name": "Leenders",
             "period_start": "1st",
             "time_start": "0:00",
-            "period_end": "2nd",
-            "time_end": "20:00",
+            "period_end": "3rd",
+            "time_end": "0:00",
             "saves": "26",
             "secs": "2400",
             "seconds": "2400",
@@ -1074,8 +1083,8 @@
             "last_name": "Salen Forsberg",
             "period_start": "1st",
             "time_start": "0:00",
-            "period_end": "2nd",
-            "time_end": "20:00",
+            "period_end": "3rd",
+            "time_end": "0:00",
             "saves": "21",
             "secs": "2400",
             "seconds": "2400",
@@ -2244,11 +2253,13 @@
       "shotsByPeriod": {
         "visitor": {
           "1": 10,
-          "2": 13
+          "2": 13,
+          "3": 0
         },
         "home": {
           "1": 14,
-          "2": 14
+          "2": 14,
+          "3": 0
         }
       },
       "penaltyshots": {
@@ -2257,12 +2268,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 48,
+          "att": 49,
           "won": 22
         },
         "home": {
-          "att": 48,
-          "won": 26
+          "att": 49,
+          "won": 27
         }
       },
       "totalHits": {
@@ -2284,11 +2295,13 @@
       "goalsByPeriod": {
         "visitor": {
           "1": 1,
-          "2": 1
+          "2": 1,
+          "3": 0
         },
         "home": {
           "1": 2,
-          "2": 0
+          "2": 0,
+          "3": 0
         }
       }
     }
