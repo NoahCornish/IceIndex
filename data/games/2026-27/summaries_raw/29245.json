@@ -373,15 +373,15 @@
           "home": "1",
           "period_id": "1",
           "period": "1st",
-          "offence": "29",
+          "offence": "105",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "0",
-          "minutes": 2,
-          "minutes_formatted": "2:00",
-          "penalty_class_id": "1",
-          "penalty_class": "Minor",
-          "lang_penalty_description": "Roughing",
+          "minutes": 0,
+          "minutes_formatted": "0:00",
+          "penalty_class_id": "5",
+          "penalty_class": "Misconduct",
+          "lang_penalty_description": "10-Min. Misc.",
           "s": 1200,
           "player_penalized_info": {
             "player_id": "10009",
@@ -407,15 +407,15 @@
           "home": "1",
           "period_id": "1",
           "period": "1st",
-          "offence": "105",
+          "offence": "29",
           "pp": "0",
           "bench": "0",
           "penalty_shot": "0",
-          "minutes": 0,
-          "minutes_formatted": "0:00",
-          "penalty_class_id": "5",
-          "penalty_class": "Misconduct",
-          "lang_penalty_description": "10-Min. Misc.",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Roughing",
           "s": 1200,
           "player_penalized_info": {
             "player_id": "10009",
@@ -637,6 +637,74 @@
             "first_name": "Luca",
             "last_name": "Romano"
           }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "20:00",
+          "team_id": "17",
+          "home": "0",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "29",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Roughing",
+          "s": 1200,
+          "player_penalized_info": {
+            "player_id": "9358",
+            "jersey_number": "27",
+            "team_id": "17",
+            "team_code": "WSR",
+            "first_name": "Andrew",
+            "last_name": "Robinson"
+          },
+          "player_served_info": {
+            "player_id": "9358",
+            "jersey_number": "27",
+            "team_id": "17",
+            "team_code": "WSR",
+            "first_name": "Andrew",
+            "last_name": "Robinson"
+          }
+        },
+        {
+          "event": "penalty",
+          "time_off_formatted": "20:00",
+          "team_id": "10",
+          "home": "1",
+          "period_id": "3",
+          "period": "3rd",
+          "offence": "29",
+          "pp": "0",
+          "bench": "0",
+          "penalty_shot": "0",
+          "minutes": 2,
+          "minutes_formatted": "2:00",
+          "penalty_class_id": "1",
+          "penalty_class": "Minor",
+          "lang_penalty_description": "Roughing",
+          "s": 1200,
+          "player_penalized_info": {
+            "player_id": "9078",
+            "jersey_number": "11",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Cameron",
+            "last_name": "Arquette"
+          },
+          "player_served_info": {
+            "player_id": "9078",
+            "jersey_number": "11",
+            "team_id": "10",
+            "team_code": "KIT",
+            "first_name": "Cameron",
+            "last_name": "Arquette"
+          }
         }
       ],
       "goals": [
@@ -644,7 +712,7 @@
           "event": "goal",
           "x_location": "79",
           "y_location": "234",
-          "time": "17:22",
+          "time": "17:21",
           "team_id": "10",
           "home": "1",
           "period_id": "2",
@@ -658,7 +726,7 @@
           "game_winning": "1",
           "game_tieing": "0",
           "scorer_goal_num": "13",
-          "s": 1042,
+          "s": 1041,
           "goal_scorer": {
             "player_id": "9921",
             "jersey_number": "23",
@@ -914,7 +982,7 @@
             "goals": 0,
             "assists": 1,
             "plusminus": 0,
-            "pim": 0,
+            "pim": 2,
             "faceoff_wins": "1",
             "faceoff_attempts": "1",
             "hits": "0",
@@ -1639,7 +1707,7 @@
             "goals": 0,
             "assists": 0,
             "plusminus": 0,
-            "pim": 2,
+            "pim": 4,
             "faceoff_wins": "0",
             "faceoff_attempts": "0",
             "hits": "0",
@@ -1966,12 +2034,12 @@
         "home": 3
       },
       "pimTotal": {
-        "visitor": 8,
-        "home": 10
+        "visitor": 10,
+        "home": 12
       },
       "infCount": {
-        "visitor": 4,
-        "home": 6
+        "visitor": 5,
+        "home": 7
       },
       "shotsByPeriod": {
         "visitor": {
