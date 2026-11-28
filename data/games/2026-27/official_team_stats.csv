@@ -495,21 +495,21 @@
 "29239","home","7","Barrie Colts","BAR",3,11,0,2,29,62,10
 "29240","visitor","9","Guelph Storm","GUE",3,22,1,3,21,59,26
 "29240","home","6","Peterborough Petes","PBO",6,17,0,2,38,59,26
-"29241","visitor","19","North Bay Battalion","NB",0,0,0,0,0,0,0
-"29241","home","18","Brampton Steelheads","BRAM",0,0,0,0,0,0,0
-"29242","visitor","11","Owen Sound Attack","OS",0,0,0,0,0,0,0
-"29242","home","1","Brantford Bulldogs","BFD",0,0,0,0,0,0,0
-"29243","visitor","8","Erie Otters","ER",0,0,0,0,0,0,0
-"29243","home","9","Guelph Storm","GUE",0,0,0,0,0,0,0
-"29244","visitor","6","Peterborough Petes","PBO",0,0,0,0,0,0,0
-"29244","home","2","Kingston Frontenacs","KGN",0,0,0,0,0,0,0
-"29245","visitor","17","Windsor Spitfires","WSR",0,0,0,0,0,0,0
-"29245","home","10","Kitchener Rangers","KIT",0,0,0,0,0,0,0
-"29246","visitor","20","Niagara IceDogs","NIAG",0,0,0,0,0,0,0
-"29246","home","14","London Knights","LDN",0,0,0,0,0,0,0
-"29247","visitor","13","Flint Firebirds","FLNT",0,0,0,0,0,0,0
-"29247","home","15","Sarnia Sting","SAR",0,0,0,0,0,0,0
-"29248","visitor","4","Oshawa Generals","OSH",0,0,0,0,0,0,0
-"29248","home","16","Soo Greyhounds","SOO",0,0,0,0,0,0,0
-"29249","visitor","7","Barrie Colts","BAR",0,0,0,0,0,0,0
-"29249","home","12","Sudbury Wolves","SBY",0,0,0,0,0,0,0
+"29241","visitor","19","North Bay Battalion","NB",0,3,0,0,3,9,0
+"29241","home","18","Brampton Steelheads","BRAM",0,2,0,0,6,9,0
+"29242","visitor","11","Owen Sound Attack","OS",0,0,0,0,4,7,0
+"29242","home","1","Brantford Bulldogs","BFD",0,1,0,0,3,7,0
+"29243","visitor","8","Erie Otters","ER",0,0,0,0,7,7,0
+"29243","home","9","Guelph Storm","GUE",0,1,0,0,0,7,0
+"29244","visitor","6","Peterborough Petes","PBO",0,1,0,1,6,11,0
+"29244","home","2","Kingston Frontenacs","KGN",1,3,0,0,5,11,2
+"29245","visitor","17","Windsor Spitfires","WSR",0,0,0,0,1,3,0
+"29245","home","10","Kitchener Rangers","KIT",0,0,0,0,2,3,0
+"29246","visitor","20","Niagara IceDogs","NIAG",0,4,0,1,2,7,2
+"29246","home","14","London Knights","LDN",0,0,0,1,5,7,2
+"29247","visitor","13","Flint Firebirds","FLNT",0,1,0,0,4,8,0
+"29247","home","15","Sarnia Sting","SAR",0,0,0,0,4,8,0
+"29248","visitor","4","Oshawa Generals","OSH",0,0,0,0,1,2,0
+"29248","home","16","Soo Greyhounds","SOO",1,0,0,0,1,2,0
+"29249","visitor","7","Barrie Colts","BAR",0,0,0,1,4,5,4
+"29249","home","12","Sudbury Wolves","SBY",1,4,0,1,1,5,4
