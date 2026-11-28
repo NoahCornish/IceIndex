@@ -22,9 +22,9 @@
         "type_id": "",
         "if_necessary": "0",
         "quick_score": "0",
-        "mvp1": "",
-        "mvp2": "",
-        "mvp3": "",
+        "mvp1": "9017",
+        "mvp2": "9974",
+        "mvp3": "9728",
         "featured_player_id": "",
         "date_played": "2026-11-27",
         "date_tbd": "0",
@@ -57,7 +57,7 @@
         "home_goals_actual": "0",
         "visiting_goals_actual": "0",
         "public_notes": "",
-        "private_notes": "teddy bear toss\n   start 7:09\n   end 7:19",
+        "private_notes": "teddy bear toss; start 7:09/end 7:19",
         "league_game_notes": "",
         "home_team_notes": "",
         "visiting_team_notes": "",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://gflgardens.evenue.net/events/GH",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 02:34:38",
+        "last_modified": "2026-11-28 13:00:37",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153304",
@@ -183,9 +183,27 @@
       "mvp_type": 1,
       "shootoutDetail": [],
       "mvps": [
-        null,
-        null,
-        null
+        {
+          "player_id": "9017",
+          "first_name": "Travis",
+          "last_name": "Hayes",
+          "jersey_number": "13",
+          "home": 1
+        },
+        {
+          "player_id": "9974",
+          "first_name": "Doman",
+          "last_name": "Szongoth",
+          "jersey_number": "22",
+          "home": 1
+        },
+        {
+          "player_id": "9728",
+          "first_name": "Charlie",
+          "last_name": "Ashcroft",
+          "jersey_number": "8",
+          "home": 1
+        }
       ],
       "venue": "GFL Memorial Gardens",
       "referee1": "Mitchell Hardy (37)",

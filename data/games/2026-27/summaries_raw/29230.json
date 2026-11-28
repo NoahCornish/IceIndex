@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://www.ticketmaster.ca/london-knights-tickets/artist/829717",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-23 01:36:24",
+        "last_modified": "2026-11-28 12:39:29",
         "imported_id": "",
         "created": "2026-06-15 20:06:44",
         "htv_game_id": "1152378",
@@ -2167,7 +2167,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "1",
+            "shots": "0",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -2445,7 +2445,7 @@
         "visitor": {
           "1": 20,
           "2": 8,
-          "3": 7
+          "3": 6
         },
         "home": {
           "1": 6,
@@ -2476,7 +2476,7 @@
         "home": 0
       },
       "totalShots": {
-        "visitor": 35,
+        "visitor": 34,
         "home": 20
       },
       "totalShotsOn": {
