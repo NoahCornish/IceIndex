@@ -46,8 +46,8 @@
         "visiting_assistant_coach1": "0",
         "visiting_assistant_coach2": "0",
         "visiting_manager": "",
-        "period": "1",
-        "game_clock": "00:00:00",
+        "period": "2",
+        "game_clock": "00:18:45",
         "status": "2",
         "started": "1",
         "pending_final": "0",
@@ -78,7 +78,7 @@
         "visiting_audio_url_fr": "",
         "tickets_url": "https://mpv.tickets.com/schedule/?agency=SUDV_PLAGENCY_MPV&orgid=46229#/?event=WOLVES&view=list&includePackages=false",
         "tickets_url_fr": "",
-        "last_modified": "2026-11-28 00:42:50",
+        "last_modified": "2026-11-28 01:03:12",
         "imported_id": "",
         "created": "2026-06-15 20:06:45",
         "htv_game_id": "1153822",
@@ -101,7 +101,7 @@
       "game_date": "Friday, November 27, 2026",
       "game_length": "",
       "status_title": "Game Status",
-      "status_value": "In Progress (0:00 remaining in 1st)",
+      "status_value": "In Progress (18:45 remaining in 2nd)",
       "periods": {
         "1": {
           "id": "1",
@@ -109,6 +109,15 @@
           "long_name": "1st",
           "sort_order": "1",
           "period_id": "1",
+          "length": "1200",
+          "mandatory": "1"
+        },
+        "2": {
+          "id": "2",
+          "short_name": "2",
+          "long_name": "2nd",
+          "sort_order": "2",
+          "period_id": "2",
           "length": "1200",
           "mandatory": "1"
         }
@@ -596,11 +605,11 @@
             "last_name": "Bach",
             "period_start": "1st",
             "time_start": "0:00",
-            "period_end": "1st",
-            "time_end": "20:00",
-            "saves": "12",
-            "secs": "1200",
-            "seconds": "1200",
+            "period_end": "2nd",
+            "time_end": "1:15",
+            "saves": "13",
+            "secs": "1275",
+            "seconds": "1275",
             "goals_against": "1",
             "win": "0",
             "loss": "0",
@@ -611,8 +620,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "1",
-            "secs_mmss": "20:00",
-            "shots_against": 13
+            "secs_mmss": "21:15",
+            "shots_against": 14
           }
         ],
         "home": [
@@ -623,11 +632,11 @@
             "last_name": "Bronas",
             "period_start": "1st",
             "time_start": "0:00",
-            "period_end": "1st",
-            "time_end": "20:00",
-            "saves": "5",
-            "secs": "1200",
-            "seconds": "1200",
+            "period_end": "2nd",
+            "time_end": "1:15",
+            "saves": "6",
+            "secs": "1275",
+            "seconds": "1275",
             "goals_against": "0",
             "win": "0",
             "loss": "0",
@@ -638,8 +647,8 @@
             "shootout_goals_against": "0",
             "shootout_saves": "0",
             "line": "",
-            "secs_mmss": "20:00",
-            "shots_against": 5
+            "secs_mmss": "21:15",
+            "shots_against": 6
           }
         ]
       },
@@ -677,11 +686,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "0",
-            "seconds": 1200,
-            "time": "20:00",
-            "shots_against": 5,
+            "seconds": 1275,
+            "time": "21:15",
+            "shots_against": 6,
             "goals_against": 0,
-            "saves": 5,
+            "saves": 6,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -814,7 +823,7 @@
             "plusminus": 0,
             "pim": 0,
             "faceoff_wins": "2",
-            "faceoff_attempts": "5",
+            "faceoff_attempts": "6",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -867,8 +876,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 2,
-            "faceoff_wins": "3",
-            "faceoff_attempts": "8",
+            "faceoff_wins": "4",
+            "faceoff_attempts": "10",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -980,7 +989,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "1",
+            "shots": "2",
             "shots_on": "1",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -1213,11 +1222,11 @@
             "position_str": "G",
             "status": "",
             "rookie": "1",
-            "seconds": 1200,
-            "time": "20:00",
-            "shots_against": 13,
+            "seconds": 1275,
+            "time": "21:15",
+            "shots_against": 14,
             "goals_against": 1,
-            "saves": 12,
+            "saves": 13,
             "goals": 0,
             "assists": 0,
             "pim": 0,
@@ -1241,8 +1250,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 0,
-            "faceoff_wins": "1",
-            "faceoff_attempts": "2",
+            "faceoff_wins": "2",
+            "faceoff_attempts": "3",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1350,7 +1359,7 @@
             "plusminus": 0,
             "pim": 2,
             "faceoff_wins": "4",
-            "faceoff_attempts": "5",
+            "faceoff_attempts": "6",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1516,7 +1525,7 @@
             "hits": "0",
             "icings": null,
             "offsides": null,
-            "shots": "0",
+            "shots": "1",
             "shots_on": "0",
             "power_play_goals": 0,
             "short_handed_goals": 0,
@@ -1673,8 +1682,8 @@
             "assists": 0,
             "plusminus": 0,
             "pim": 4,
-            "faceoff_wins": "4",
-            "faceoff_attempts": "6",
+            "faceoff_wins": "5",
+            "faceoff_attempts": "7",
             "hits": "0",
             "icings": null,
             "offsides": null,
@@ -1792,10 +1801,12 @@
       },
       "shotsByPeriod": {
         "visitor": {
-          "1": 5
+          "1": 5,
+          "2": 1
         },
         "home": {
-          "1": 13
+          "1": 13,
+          "2": 1
         }
       },
       "penaltyshots": {
@@ -1804,12 +1815,12 @@
       },
       "totalFaceoffs": {
         "visitor": {
-          "att": 18,
-          "won": 13
+          "att": 21,
+          "won": 15
         },
         "home": {
-          "att": 18,
-          "won": 5
+          "att": 21,
+          "won": 6
         }
       },
       "totalHits": {
@@ -1821,8 +1832,8 @@
         "home": 1
       },
       "totalShots": {
-        "visitor": 5,
-        "home": 13
+        "visitor": 6,
+        "home": 14
       },
       "totalShotsOn": {
         "visitor": 1,
@@ -1830,10 +1841,12 @@
       },
       "goalsByPeriod": {
         "visitor": {
-          "1": 0
+          "1": 0,
+          "2": 0
         },
         "home": {
-          "1": 1
+          "1": 1,
+          "2": 0
         }
       }
     }
